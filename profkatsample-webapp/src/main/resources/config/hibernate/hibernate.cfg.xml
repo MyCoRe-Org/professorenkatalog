@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+  <session-factory >
+
+    <!-- Database connection settings -->
+    <!-- HSQLDB -->
+    <!-- 
+    <property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
+    <property name="connection.url">jdbc:hsqldb:hsql://localhost:8298</property>
+    <property name="connection.username">sa</property>
+    <property name="connection.password"></property>
+    <property name="dialect">org.hibernate.dialect.HSQLDialect</property>
+    -->
+    <!-- MySQL -->
+    <!-- 
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="connection.url">jdbc:mysql://127.0.0.1/cpr</property>
+    <property name="connection.username">profkatadmin</property>
+    <property name="connection.password">profkat</property>
+    <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+    -->
+    <!-- MySQL Logging -->
+    <!--  
+    <property name="connection.driver_class">net.sf.log4jdbc.DriverSpy</property>
+    <property name="connection.url">jdbc:log4jdbc:mysql://127.0.0.1/cpr</property>
+    <property name="connection.username">profkatadmin</property>
+    <property name="connection.password">profkat</property>
+    <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+     -->
+  
+    <!--  Postgres -->
+   	<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    <property name="connection.driver_class">org.postgresql.Driver</property>
+    <property name="connection.url">jdbc:postgresql://127.0.0.1/mycoredb</property>
+    <property name="default_schema">profkat</property>
+    <property name="connection.username">profkatadmin</property>
+    <property name="connection.password">profkat</property>
+        
+    <!-- DB2 -->
+    <!--
+    <property name="connection.driver_class">com.ibm.db2.jcc.DB2Driver</property>
+    <property name="connection.url">jdbc:db2://localhost:50000/docportal</property>
+    <property name="connection.username"></property>
+    <property name="connection.password"></property>
+    <property name="dialect">org.hibernate.dialect.DB2Dialect</property>
+    -->
+
+    <property name="generate_statistics">false</property>
+
+    <!-- Enable Hibernate's automatic session context management -->
+    <property name="current_session_context_class">org.mycore.backend.hibernate.MCRSessionContext</property>
+
+    <!-- second-level cache  -->
+    <!-- disabled -->
+  
+    <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+    <property name="cache.use_second_level_cache">false</property>
+    <property name="cache.use_query_cache">false</property>
+  
+  
+    <!-- net/sf/ehcache/hibernate/Provider -->
+
+<!-- 
+    <property name="cache.provider_class">net.sf.ehcache.hibernate.SingletonEhCacheProvider</property>
+    <property name="cache.use_second_level_cache">true</property>
+    <property name="cache.use_query_cache">true</property>
+    <!- more human readable cache entries ->
+    <property name="cache.use_structured_entries">true</property>
+    <!- do not read to often from db just to save a few write operations ->
+    <property name="cache.use_minimal_puts">false</property>
+
+-->
+
+
+    <!-- Echo all executed SQL to stdout -->
+    <property name="show_sql">false</property>
+
+    <!-- Drop and re-create the database schema on startup -->
+    <!-- 
+      <property name="hbm2ddl.auto">update</property>
+    -->
+
+    <!-- configuration pool via c3p0 -->
+    <!-- HowTo: http://www.hibernate.org/214.html -->
+    <property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+    <property name="c3p0.validate">false</property>
+    <property name="c3p0.maxStatements">2000</property>
+    <property name="c3p0.maxStatementsPerConnection">30</property>
+    <property name="c3p0.idleConnectionTestPeriod">300</property>
+    <property name="c3p0.minPoolSize">10</property>
+    <property name="c3p0.maxPoolSize">100</property>
+    <property name="c3p0.acquireIncrement">2</property>
+    <property name="c3p0.numHelperThreads">6</property>
+
+    <!-- misc options -->
+    <property name="hibernate.bytecode.use_reflection_optimizer">true</property>
+    <!-- Set batch_size to "0" in case of SQL batch Errors -->
+    <property name="jdbc.batch_size">2000</property>
+    <property name="default_batch_fetch_size">100</property>
+
+    <mapping resource="org/mycore/backend/hibernate/tables/MCRACCESS.hbm.xml"/>
+    <mapping resource="org/mycore/backend/hibernate/tables/MCRACCESSRULE.hbm.xml"/>
+    <mapping resource="org/mycore/backend/hibernate/tables/MCRCSTORE.hbm.xml"/>
+    <mapping resource="org/mycore/backend/hibernate/tables/MCRFSNODES.hbm.xml"/>
+    <mapping resource="org/mycore/backend/hibernate/tables/MCRLINKHREF.hbm.xml"/>
+<!-- mapping resource="org/mycore/backend/hibernate/tables/MCRRESUMPTIONTOKEN.hbm.xml"/>-->
+    <mapping resource="org/mycore/backend/hibernate/tables/MCRURN.hbm.xml"/>
+    <mapping resource="org/mycore/backend/hibernate/tables/MCRDELETEDITEMS.hbm.xml"/>
+    <mapping resource="org/mycore/backend/hibernate/tables/MCRDNBTRANSFERRESULTS.hbm.xml"/>
+<!-- <mapping resource="org/mycore/migration20_21/hibernate/MCRXMLTABLE.hbm.xml"/> -->
+    <mapping resource="org/mycore/datamodel/classifications2/impl/MCRCategoryImpl.hbm.xml"/>
+    <mapping resource="org/mycore/datamodel/classifications2/impl/MCRCategoryLink.hbm.xml"/>
+<!--  user2 -->    
+    <mapping resource="org/mycore/user2/MCRUser.hbm.xml" />
+   </session-factory>
+</hibernate-configuration>
