@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>Professorenkatalog Installation</title>
+	<link rel="stylesheet" type="text/css" href="documentation.css">
+</head>
+<body>
+<h1>Installation der Anwendung &quot;Professorenkatalog&quot;</h1>
+
+ <h2>Buildfiles anpassen</h2>
+	<ul>	
+		<li><code>profkatsample-webapp/pom.xml</code></li>
+		<li><code>profkatsample-complete/pom.xml</code></li>
+		<li><code>profkatsample-complete/src/assemble/merge.xml</code></li>
+	</ul>
+	
+<h2>Klassifikationen</h2>
+<ul>
+	<li>Anpassung der Klassifikationen</li>
+ </ul>
+ 
+
+<h3>Postgres Datenbank einrichten</h3>
+In Postgres können wir eine DB für alle MyCoRe Instanzen verwenden. Die eigentlichen Datenbanken können in Schemas abgelegt werden.
+
+<h4>Konfiguration mittels pgadmin3 – GUI</h4>
+<h4>Nutzer <code>profkatadmin</code> anlegen</h4>
+<ul><li>Eigenschaft "can create databases" auswählen </li></ul>
+<h4>Datenbanken anlegen (falls noch nicht vorhanden)</h4>
+	<ul>
+		<li>Name: <code>mycoredb</code></li>
+		<li>Eigentümer: <code>mcradmin</code></li>
+		<li>Kodierung: <code>UTF8</code></li>
+	</ul>
+<h4>Schemas anlegen</h4>
+	<ul>	
+		<li>2 Schemas anlegen: <code>profkat</code>, <code>profkat_workflow</code></li>
+		<li>Für jedes Schema eine Sequenz anlegen
+			<ul class="commandline"><li>
+			&gt; CREATE SEQUENCE $SCHEMA$.hibernate_sequence<br />  
+	        &nbsp;&nbsp;&nbsp;INCREMENT 1   MINVALUE 1  <br />
+	        &nbsp;&nbsp;&nbsp;MAXVALUE 9223372036854775807  <br />
+	        &nbsp;&nbsp;&nbsp;START 1 CACHE 1; </li>
+	        <li>&gt; ALTER SEQUENCE $SCHEMA$.hibernate_sequence OWNER TO profkatadmin;</li>
+	       </ul>
+	   
+	</ul>
+
+
+
+<div style="min-height:128px;">&nbsp;</div>
+</body>
+</html>

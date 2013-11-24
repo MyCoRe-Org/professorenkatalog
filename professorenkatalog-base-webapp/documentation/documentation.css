@@ -1,0 +1,56 @@
+/* CSS for documentation */
+
+body{
+	width:750px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+h2{
+	margin-top:36px;	
+}
+
+h3{
+	margin-top:36px;	
+}
+
+h4{
+	margin-top:36px;	
+}
+
+
+ul.commandline{
+	display:block;
+	padding-top:6px;
+	padding-bottom:6px;
+	margin-top:12px;
+	background:lightgrey;
+	border: 1px solid darkgrey;
+	font-family: monospace;
+	font-weight: bold;
+	line-height: 150%;
+}
+
+.variable{
+	font-family: monospace;
+	padding: 0 3px;
+}
+
+.filename{
+	font-family: monospace;
+	font-style: italic;
+	padding: 0 3px;
+}
+
+.textfile{
+	font-family: monospace;
+	white-space:pre;
+	border: 1px solid darkgrey;
+	font-family: monospace;
+	background:#F6F6F6;
+	text-indent: -20px;
+	padding-left: 25px;
+	margin-top:4px;
+	margin-left:24px;
+	padding-bottom:16px;
+}
