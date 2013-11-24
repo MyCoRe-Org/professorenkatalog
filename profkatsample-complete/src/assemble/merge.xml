@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uberwar>
+  <wars>
+    <war>org.mycore:jspdocportal-mycore-war</war>
+    <war>org.mycore:jspdocportal-webapp</war>
+    <war>org.mycore:professorenkatalog-base-webapp</war>
+    <war>org.mycore:profkatsample-webapp</war>
+  </wars>
+
+  <merges>
+   <merge>
+      <!-- <document>WEB-INF/web.xml</document> -->
+      <file>WEB-INF/classes/mycore.properties</file>
+      <classname>org.mycore.buildtools.cargo.PropertiesMerger</classname>
+    </merge>
+    <merge>
+      <file>WEB-INF/classes/messages_de.properties</file>
+      <classname>org.mycore.buildtools.cargo.PropertiesMerger</classname>
+    </merge>
+    <merge>
+      <file>WEB-INF/classes/messages_en.properties</file>
+      <classname>org.mycore.buildtools.cargo.PropertiesMerger</classname>
+    </merge>
+    
+   <merge>
+      <file>WEB-INF/classes/searchfields.xml</file>
+      <classname>org.mycore.buildtools.cargo.SearchfieldsXMLMerger</classname>
+    </merge>
+  </merges>
+  
+  <!-- 
+
+  <webXml>
+    <contextParams>
+      <strategy name="ChooseByName">
+        <default>
+          <strategy name="Preserve"/>
+        </default>
+        <choice name="contextConfigLocation">
+          <strategy name="NodeMerge">
+            <context-param>
+              <param-name>$left:param-name</param-name>
+              <param-value>$left:param-value $right:param-value</param-value>
+            </context-param>
+          </strategy>
+        </choice>
+      </strategy>
+    </contextParams>
+  </webXml>
+ -->
+</uberwar>

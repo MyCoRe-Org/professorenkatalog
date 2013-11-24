@@ -1,0 +1,196 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.mycore</groupId>
+  <artifactId>profkatsampLe-complete</artifactId>
+  <version>2013.06.0.2-SNAPSHOT</version>
+  <packaging>uberwar</packaging>
+  <name>Professorenkatalog Sample Complete</name>
+  <description>Beispielanwendung für Professorenkatalog</description>
+  <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- Change these properties for your local application -->
+    	<mcr.local-app>profkatsample-webapp</mcr.local-app>
+    	<mcr.final-name>profkatsample</mcr.final-name>
+  	</properties>
+  	
+	<pluginRepositories>
+		<pluginRepository>
+			<id>MyCoRe HQ</id>
+			<url>http://www.mycore.de/artifactory/mycore-releases</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>MyCoRe HQ Snapshots</id>
+			<url>http://www.mycore.de/artifactory/mycore-snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+	<repositories>
+		<repository>
+			<id>JBoss JBPM</id>
+			<!-- <url>http://repository.jboss.org/maven2</url>-->
+			<url>http://repository.jboss.org/maven2</url>
+		</repository>
+		<repository>
+			<id>MyCoRe HQ</id>
+			<url>http://www.mycore.de/artifactory/mycore-releases</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>MyCoRe HQ Snapshots</id>
+			<url>http://www.mycore.de/artifactory/mycore-snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<dependencies>
+        <dependency>
+      <groupId>org.mycore</groupId>
+      <artifactId>professorenkatalog-base-webapp</artifactId>
+      <version>${project.version}</version>
+      <type>war</type>
+      <optional>false</optional>
+    </dependency>
+		<dependency>
+			<groupId>org.mycore</groupId>
+			<artifactId>jspdocportal-webapp</artifactId>
+			<version>${project.version}</version>
+			<type>war</type>
+			<optional>false</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.mycore</groupId>
+			<artifactId>jspdocportal-mycore-war</artifactId>
+			<version>${project.version}</version>
+			<type>war</type>
+			<optional>false</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.mycore</groupId>
+			<artifactId>${mcr.local-app}</artifactId>
+			<version>${project.version}</version>
+			<type>war</type>
+			<optional>false</optional>
+		</dependency>
+	</dependencies>    	
+	<build>
+		<finalName>${mcr.final-name}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.cargo</groupId>
+				<artifactId>cargo-maven2-plugin</artifactId>
+				<version>1.4.5</version>
+				<extensions>true</extensions>
+				<dependencies>
+					<dependency>
+						<groupId>org.mycore</groupId>
+						<artifactId>mycore-buildtools</artifactId>
+						<version>${project.version}</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<descriptor>src/assemble/merge.xml</descriptor>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>javax.servlet</groupId>
+									<artifactId>servlet-api</artifactId>
+									<version>2.5</version>
+									<type>jar</type>
+									<overWrite>true</overWrite>
+                             	</artifactItem>
+							</artifactItems>
+							<outputDirectory>${project.build.directory}/${project.build.finalName}-app/lib</outputDirectory>
+							<stripVersion>true</stripVersion>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<configuration>
+							<target>
+								<unzip
+									src="${project.build.directory}/${project.build.finalName}.war"
+									dest="${project.build.directory}/${project.build.finalName}-app/${project.build.finalName}">
+								</unzip>
+
+								<!-- create CLI jar -->
+								<property name="build.compiler" value="extJavac" />
+
+								<path id="class-path">
+									<fileset
+										dir="${project.build.directory}/${project.build.finalName}-app">
+										<include name="${project.build.finalName}/WEB-INF/lib/*.jar" />
+									</fileset>
+								</path>
+								<mkdir dir="${project.build.directory}/classes" />
+								<copy todir="${project.build.directory}/classes">
+									<fileset
+										dir="${project.build.directory}/${project.build.finalName}-app/${project.build.finalName}/WEB-INF/classes" />
+								</copy>
+
+								<pathconvert property="cpProp" dirsep="/" pathsep=" "
+									refid="class-path">
+									<map
+										from="${project.build.directory}/${project.build.finalName}-app/${project.build.finalName}"
+										to="${project.build.finalName}" />
+								</pathconvert>
+
+								<manifest file="${project.build.directory}/MANIFEST.MF">
+									<attribute name="Main-Class" value="org.mycore.frontend.cli.MCRCommandLineInterface" />
+									<attribute name="Class-Path" value="${cpProp} lib/servlet-api.jar" />
+								</manifest>
+								<jar
+									jarfile="${project.build.directory}/${project.build.finalName}-app/${project.build.finalName}-cli.jar"
+									basedir="${project.build.directory}/classes" manifest="${project.build.directory}/MANIFEST.MF" />
+
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.ant</groupId>
+						<artifactId>ant</artifactId>
+						<version>1.8.0</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+
+		</plugins>
+	</build>
+</project>
