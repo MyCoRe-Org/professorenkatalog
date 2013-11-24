@@ -12,9 +12,7 @@
       <groupId>org.mycore</groupId>
       <artifactId>jspdocportal-webapp</artifactId>
       <version>${project.version}</version>
-      <type>jar</type>
-      <classifier>classes</classifier>
-      <scope>provided</scope>
+      <type>war</type>
     </dependency>
   </dependencies>
   <build>
