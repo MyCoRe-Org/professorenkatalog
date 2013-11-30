@@ -5,7 +5,7 @@
 <!-- =================================================================== -->
 
 <project name="CPR" default="usage" basedir=".">
-	<property name="APP_NAME" value="profkat" />
+	<property name="APP_NAME" value="profkatsample" />
 	<property name="PARENT_BUILD_FILE" value="${basedir}/src/build/buildfile_application.xml" />
 	<property name="CONTENT_DIR" value="${basedir}/content" />
 	
@@ -54,11 +54,15 @@
 			encrypt passwords in user xml file ${CONTENT_DIR}/user/user_editorWeb.xml to file ${basedir}/target/user_encrypted/user_editorWeb.xml
 			update user from file ${basedir}/target/user_encrypted/user_editorWeb.xml
 
-			encrypt passwords in user xml file ${CONTENT_DIR}/user/user_editorCP.xml to file ${basedir}/target/user_encrypted/user_editorPK.xml			
+			encrypt passwords in user xml file ${CONTENT_DIR}/user/user_editorPK.xml to file ${basedir}/target/user_encrypted/user_editorPK.xml			
 			update user from file ${basedir}/target/user_encrypted/user_editorPK.xml
 			
-			load permissions data from file ${basedir}/content/user/default-object-permissions.xml
+			load permissions data from file ${CONTENT_DIR}/user/default-object-permissions.xml
     	</mcr-execute>
+	</target>
+	
+	<target name="create.workflow.database" depends="init">
+		<antcall target="main_build.create.workflow.database" />		
 	</target>
 
 	<target name="create.class" depends="init">
