@@ -30,25 +30,17 @@
 	<head>
 		<meta charset="UTF-8" />
 		<%--
-		<meta name="description" lang="de"
-	          content="Im Catalogus Professorum Rostochiensium sollen alle an der Universität Rostock seit 1419 tätigen Professoren mit Angaben zur Person, zum wissenschaftlichen Profil und zu den Aktivitäten an der Rostocker Hochschule dokumentiert werden." />
-		<meta name="author" content="Forschungsstelle Universitätsgeschichte der Universität Rostock" />
-		<meta name="keywords" lang="de"
-			  content="Professorenkatalog Rostock Universität Uni Professorenlexikon Gelehrtenkatalog Gelehrtenlexikon Lexikon Katalog Professor Professoren Gelehrter Gelehrte" />
-		<meta name="keywords" lang="en"
-	          content="professor scolar catalogue catalog lexicon encyclopedia encyclopaedia" />
 
-       
  		<title>	${pageTitle} @ <fmt:message key="Webpage.title" /></title>
 
 		<c:if test="${not empty param.id}">
-			<link rel="canonical" href="${WebApplicationBaseURL}metadata/${param.id}" />
+			<link rel="canonical" href="${WebApplicationBaseURL}resolve/id/${param.id}" />
 		</c:if>
 
 
 		<script src="${WebApplicationBaseURL}javascript/jspdocportal.js" type="text/javascript"></script>
 		 --%>
-		<link rel="shortcut icon" href="${WebApplicationBaseURL}images/icon_cpr.ico">
+		<link rel="shortcut icon" href="${WebApplicationBaseURL}images/favicon_profkat.ico">
 		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_reset.css">
 		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_layout.css">
 		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_content.css">
@@ -99,10 +91,10 @@
 					</ul>									
 				</div> <%--END OF top_navigation --%>
 				<div id="logo_uni">
-						<a href="http://www.uni-rostock.de/">
-							<img title="Universität Rostock" alt="Universität Rostock" class="logo_uni" src="${WebApplicationBaseURL}images/layout/uni/logo_uni.png"/>
-							<img title="Sigillum Universität Rostock" alt="Sigillum Universität Rostock" class="logo_sigill" src="${WebApplicationBaseURL}images/layout/uni/logo_sigill.gif"/>
-							<img title="traditio et innovatio" alt="traditio et innovatio" class="logo_trad" src="${WebApplicationBaseURL}images/layout/uni/logo_trad.png"/></a>
+						<a href="http://www.mycore.org">
+							<img title="Logo der Einrichtung" alt="MyCoRe" class="logo_uni" src="${WebApplicationBaseURL}images/mycore_logo_129x34_knopf_dunkel.png"/>
+					   </a>
+					   <span style="font-family:Verdana;font-size:150%">Beispielanwendung für Professorenkatalog</span>
 				</div>						
 			</div><!-- END OF header -->
 			<div id="left_col" class="left_col_${layout}">
