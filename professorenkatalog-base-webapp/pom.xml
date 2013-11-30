@@ -7,6 +7,30 @@
   <version>2013.06.0.2-SNAPSHOT</version>
   <name>Professorenkatalog Base Webapp</name>
   <description>generic code for professorenkatalog</description>
+  <repositories>
+    <repository>
+      <id>JBoss JBPM</id>
+      <!-- <url>http://repository.jboss.org/maven2</url> -->
+      <url>http://repository.jboss.org/nexus/content/groups/public-jboss</url>
+    </repository>
+    <repository>
+      <id>MyCoRe HQ</id>
+      <url>http://artifactory.mycore.de/mycore-releases</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>MyCoRe HQ Snapshots</id>
+      <url>http://artifactory.mycore.de/mycore-snapshots</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
   <dependencies>
     <dependency>
       <groupId>org.mycore</groupId>

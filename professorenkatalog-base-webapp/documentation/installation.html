@@ -8,6 +8,31 @@
 <body>
 <h1>Installation der Anwendung &quot;Professorenkatalog&quot;</h1>
 
+Der Professorenkatalog basiert auf MyCoRe, dem JSPDocportal (JSP Frontend für MyCoRe) und 
+<code>professorenkatalog-base-web</code>, welches die generischen Bestandteile der Professorenkataloge
+enthalten wird.
+Neue Professorenkatalogs-Anwendungen sollten <code>profkatsample-webapp</code> und <code>profkatsample-complete</code>
+zunächst umbenennen und diese weiter anpassen.
+
+Im weiteren Verlauf dieser Dokumentation soll die Beispielanwendung installiert werden.
+Dabei wird an den entsprechenden Stellen auf Anpassungsmöglichkeiten hingewiesen.
+
+<h2>Auschecken mittels SVN</h2>
+	<ul>
+		<li><code>http://server.mycore.de/svn/jspdocportal/trunk/jspdocportal-mycore-war</code></li>
+		<li><code>http://server.mycore.de/svn/jspdocportal/trunk/jspdocportal-webapp</code></li>
+		<li><code>http://server.mycore.de/svn/professorenkatalog/trunk/professorenkatalog-base-webapp</code></li>
+		<li><code>http://server.mycore.de/svn/professorenkatalog/trunk/profkatsample-webapp</code></li>
+		<li><code>http://server.mycore.de/svn/professorenkatalog/trunk/profkatsample-complete</code></li>
+	</ul>
+	
+<h2>Kompilieren der generischen Bestandteile mittels Maven </h2>
+	In den Projekten <code> jspdocportal-mycore-war, jspdocportal-webapp, professorenkatalog-base-webapp</code> 
+	in der benannten Reihenfolge, ist folgendes auszuführen:
+	<ul class="commandline"><li>mvn clean install</li></ul>
+	
+	
+	
 
  <h2>Buildfiles anpassen</h2>
 	<ul>	
