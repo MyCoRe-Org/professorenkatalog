@@ -42,6 +42,66 @@
           <target>1.7</target>
         </configuration>
       </plugin>
-    </plugins>
+    <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.1-beta-1</version>
+        <configuration>
+          <archiveClasses>true</archiveClasses>
+          <webResources>
+            <resource>
+              <directory>src/main/resources</directory>
+              <targetPath>WEB-INF/classes</targetPath>
+            </resource>
+            <resource>
+              <directory>src/main/resources/config</directory>
+              <targetPath>WEB-INF/classes</targetPath>
+              <includes>
+                <include>*.*</include>
+              </includes>
+              <excludes>
+                <exclude>web.xml</exclude>
+                <exclude>*.template</exclude>
+                <exclude>datamodel-*.xml</exclude>
+              </excludes>
+            </resource>
+            <resource>
+              <directory>src/main/resources/config/lang</directory>
+              <targetPath>WEB-INF/classes</targetPath>
+              <includes>
+                <include>*.*</include>
+              </includes>
+              <excludes>
+                <exclude>*.template</exclude>
+              </excludes>
+            </resource>
+            <resource>
+              <directory>src/main/resources/config/lang/webcontent</directory>
+              <targetPath>content/webcontent</targetPath>
+            </resource>
+            <resource>
+              <directory>src/main/resources/config/hibernate</directory>
+              <targetPath>WEB-INF/classes</targetPath>
+              <excludes>
+                <exclude>*.template</exclude>
+              </excludes>
+            </resource>
+            <resource>
+              <directory>src/main/resources/config/workflow</directory>
+              <targetPath>WEB-INF/classes/workflow</targetPath>
+              <includes>
+                <include>**/*.xml</include>
+              </includes>
+            </resource>
+            <resource>
+              <directory>src/main/resources/config</directory>
+              <targetPath>WEB-INF</targetPath>
+              <includes>
+                <include>web.xml</include>
+              </includes>
+            </resource>
+          </webResources>
+        </configuration>
+      </plugin>
+      </plugins>
   </build>
 </project>
