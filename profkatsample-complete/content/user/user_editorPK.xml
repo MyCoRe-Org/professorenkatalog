@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<user name="editorCP" realm="local">
+	<owner name="administrator" realm="local" />
+	<realName>Editor Professorenkatalog</realName>
+	<eMail>professorenkatalog@meine-einrichtung.de</eMail>
+	<roles>
+		<role name="editprofessorum" />
+	</roles>
+	<attributes>
+		<attribute name="sex" value="male" />
+		<attribute name="institution" value="AG Professorenkatalog an der Beispieluniversität" />
+		<attribute name="street" value="Musterstraße 1" />
+		<attribute name="city" value="Musterort" />
+		<attribute name="postalcode" value="12345" />
+		<attribute name="tel" value="+49 111 222 3333" />
+	</attributes>
+	<password hashType="sha1" hash="profkat" />
+</user>

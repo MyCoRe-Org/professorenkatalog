@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mcrpermissions
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="MCRPermissions.xsd"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xml="http://www.w3.org/XML/1998/namespace">
+	
+	<mcrpermission name="read" objectid="default_person" 
+	               description="Person lesen">
+		<condition format="xml">
+			<boolean operator="true" />
+   		</condition>
+	</mcrpermission>
+	
+	<mcrpermission name="commitdb" objectid="default_person" 
+	               description="Person in Datenbank hochladen">
+		<condition format="xml">
+			<boolean operator="or">
+				<condition value="admin" operator="=" field="group"/>
+				<condition value="editprofessorum" operator="=" field="group"/>
+			</boolean>
+   		</condition>
+	</mcrpermission>
+
+	<mcrpermission name="deletedb" objectid="default_person" 
+	               description="Person aus Datenbank löschen">
+		<condition format="xml">
+			<boolean operator="or">
+				<condition value="admin" operator="=" field="group"/>
+				<condition value="editprofessorum" operator="=" field="group"/>
+			</boolean>
+   		</condition>
+	</mcrpermission>
+	
+	<mcrpermission name="writedb" objectid="default_person" 
+	               description="Person in Datenbank speichern">
+		<condition format="xml">
+			<boolean operator="or">
+				<condition value="admin" operator="=" field="group"/>
+				<condition value="editprofessorum" operator="=" field="group"/>
+			</boolean>
+   		</condition>
+	</mcrpermission>
+	
+	<mcrpermission name="deletewf" objectid="default_person" 
+	               description="Person aus Workflow löschen">
+		<condition format="xml">
+			<boolean operator="or">
+				<condition value="admin" operator="=" field="group"/>
+				<condition value="editprofessorum" operator="=" field="group"/>
+			</boolean>
+   		</condition>
+	</mcrpermission>
+	
+	<mcrpermission name="read" objectid="default_derivate" 
+	               description="Derivate lesen">
+		<condition format="xml">
+			<boolean operator="true" />
+   		</condition>
+	</mcrpermission>
+	
+	<mcrpermission name="commitdb" objectid="default_derivate" 
+	               description="Derivate in Datenbank hochladen">
+		<condition format="xml">
+			<boolean operator="or">
+				<condition value="admin" operator="=" field="group"/>
+				<condition value="editprofessorum" operator="=" field="group"/>
+			</boolean>
+   		</condition>
+	</mcrpermission>
+
+	<mcrpermission name="deletedb" objectid="default_derivate" 
+	               description="Derivate aus Datenbank löschen">
+		<condition format="xml">
+			<boolean operator="or">
+				<condition value="admin" operator="=" field="group"/>
+				<condition value="editprofessorum" operator="=" field="group"/>
+			</boolean>
+   		</condition>
+	</mcrpermission>
+	
+	<mcrpermission name="writedb" objectid="default_derivate" 
+	               description="Derivate in Datenbank speichern">
+		<condition format="xml">
+			<boolean operator="or">
+				<condition value="admin" operator="=" field="group"/>
+				<condition value="editprofessorum" operator="=" field="group"/>
+			</boolean>
+   		</condition>
+	</mcrpermission>
+	
+	<mcrpermission name="deletewf" objectid="default_derivate" 
+	               description="Derivate aus Workflow löschen">
+		<condition format="xml">
+			<boolean operator="or">
+				<condition value="admin" operator="=" field="group"/>
+				<condition value="editprofessorum" operator="=" field="group"/>
+			</boolean>
+   		</condition>
+	</mcrpermission>
+</mcrpermissions>
