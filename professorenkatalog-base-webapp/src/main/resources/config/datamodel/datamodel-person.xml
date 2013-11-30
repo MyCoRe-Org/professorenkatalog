@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration type="person">
+	<structure>
+		<!-- Object Children -->
+		<element name="children" minOccurs='0' maxOccurs='1'>
+			<mcrmetalinkid name="child" class="MCRMetaLinkID" minOccurs='1' maxOccurs='unbounded' />
+		</element>
+		<!-- Object Parent -->
+		<element name="parents" minOccurs='0' maxOccurs='1'>
+			<mcrmetalinkid name="parent" class="MCRMetaLinkID" minOccurs='1' maxOccurs='unbounded' />
+		</element>
+		<!-- Derivate Objects -->
+		<element name="derobjects" minOccurs='0' maxOccurs='1'>
+			<mcrmetalinkid name="derobject" class="MCRMetaLinkID" minOccurs='1' maxOccurs='unbounded' />
+		</element>
+	</structure>
+	<!--  ====================================================================================== -->
+	<metadata>
+		<!-- 10 - Nachname-->
+		<element name="box.surname" minOccurs='1' maxOccurs='1'>
+			<mcrmetalangtext name="surname" class="MCRMetaLangText" minOccurs='1' maxOccurs='unbounded' length="128" />
+		</element>
+		<!-- 11 - Vorname -->
+		<element name="box.firstname" minOccurs='0' maxOccurs='1'>
+			<mcrmetalangtext name="firstname" class="MCRMetaLangText" minOccurs='0' maxOccurs='unbounded' length="128" />
+		</element>
+		 <!-- 12 - Namenszusatz -->
+		<element name="box.nameaffix" minOccurs='0' maxOccurs='1'>
+			<mcrmetalangtext name="nameaffix" class="MCRMetaLangText" minOccurs='0' maxOccurs='unbounded' length="1024" />
+		</element>
+		<!-- 13 - Titel -->
+		<element name="box.academictitle" minOccurs='0' maxOccurs='1'>
+			<mcrmetalangtext name="academictitle" class="MCRMetaLangText" minOccurs='0' maxOccurs='unbounded' length="128" />
+		</element>
+		<!-- 14 - Professuren (honorar,habil,Priv,..)-->
+		<element name="box.professorship" minOccurs='0' maxOccurs='1'>
+			<mcrmetahistoryevent name="professorship" class="MCRMetaHistoryEvent" minOccurs='0' maxOccurs='unbounded'/>
+		</element>
+		<!-- 15 - Zeit in Rostock (gesamt) -->
+		<element name="box.period" minOccurs='0' maxOccurs='1'>
+			<mcrmetahistorydate name="period" class="MCRMetaHistoryDate" minOccurs='0' maxOccurs='5'/>
+		</element>
+		
+		<!--  ====================================================================================== -->
+		<!-- 20 - historische Institute  -->
+		<element name="box.institute" minOccurs='0' maxOccurs='1'>
+			<mcrmetalangtext name="institute" class="MCRMetaLangText" minOccurs='0' maxOccurs='unbounded' length="1024" />
+		</element>
+		<!-- 21 - Fachgebiet  -->
+		<element name="box.fieldofstudy" minOccurs='0' maxOccurs='1'>
+			<mcrmetalangtext name="fieldofstudy" class="MCRMetaLangText" minOccurs='0' maxOccurs='unbounded' length="1024" />
+		</element>
+		<!-- 22 - Fachgebietsklassifikation -->
+		<element name="box.subjectclass" minOccurs='0' maxOccurs='1'>
+			<mcrmetaclassification name="subjectclass" class="MCRMetaClassification" minOccurs='0' maxOccurs='unbounded' />
+		</element>
+		<!-- 23 - Fakultät (Zeitraum + Systematik) -->
+		<element name="box.faculty" minOccurs='0' maxOccurs='1'>
+			<mcrmetahistoryevent name="faculty" class="MCRMetaHistoryEvent" minOccurs="0" maxOccurs="unbounded" />
+		</element>
+		
+		<!--  ====================================================================================== -->
+		<!-- 31 - eMail -->
+		<element name="box.email" minOccurs='0' maxOccurs='1'>
+			<mcrmetalangtext name="email" class="MCRMetaLangText" minOccurs='0' maxOccurs='unbounded' length="128" />
+		</element>
+		<!-- 32 - Homepage-->
+		<element name="box.homepage" minOccurs='0' maxOccurs='1'>
+			<mcrmetalink name="homepage" class="MCRMetaLink" minOccurs='0' maxOccurs='unbounded' />
+		</element>
+		
+		<!--  ====================================================================================== -->
+		<!-- 40 - Geburtstag / Geburtsort -->
+		<element name="box.birth" minOccurs='0' maxOccurs='1'>
+			<mcrmetahistoryevent name="birth" class="MCRMetaHistoryEvent" minOccurs="1" maxOccurs="1" />
+		</element>
+		<!-- 41 - Sterbetag / Sterbeort -->
+		<element name="box.death" minOccurs='0' maxOccurs='1'>
+			<mcrmetahistoryevent name="death" class="MCRMetaHistoryEvent" minOccurs="1" maxOccurs="1" />
+		</element>
+		<!-- 42 - Geschlecht  -->
+		<element name="box.sex" minOccurs='0' maxOccurs='1'>
+			<mcrmetalangtext name="sex" class="MCRMetaLangText" minOccurs='0' maxOccurs='1' length="128" />
+		</element>
+		<!-- 43 - Konfession  -->
+		<element name="box.confession" minOccurs='0' maxOccurs='1'>
+			<mcrmetalangtext name="confession" class="MCRMetaLangText" minOccurs='0' maxOccurs='1' length="1024" />
+		</element>
+		<!-- 44 - Familie -->
+		<element name="box.family" minOccurs='0' maxOccurs='1'>
+			<mcrmetaxml name="family" class="MCRMetaXML" minOccurs='0' maxOccurs='unbounded' length="1024" />
+		</element>
+		
+		<!--  ====================================================================================== -->
+		<!-- 50 - Kurzlebenslauf, Stichpunkte    -->
+		<element name="box.biographic" minOccurs='0' maxOccurs='1'>
+			<mcrmetaxml name="biographic" class="MCRMetaXML" minOccurs='0' maxOccurs='unbounded' length="1024" />
+		</element>
+		<!-- 51 - Akademische Abschlüsse -->
+		<element name="box.academicdegree" minOccurs='0' maxOccurs='1'>
+			<mcrmetaxml name="academicdegree" class="MCRMetaXML" minOccurs='0' maxOccurs='unbounded'/>
+		</element>
+		<!-- 52 - Funktion in der akademischen selbstverwaltung  Funktion -->
+		<element name="box.adminfunction" minOccurs='0' maxOccurs='1'  >
+			<mcrmetaxml name="adminfunction" class="MCRMetaXML" minOccurs='0' maxOccurs="unbounded" />
+		</element>
+		<!-- 53 - weitere Funktionen -->
+		<element name="box.otherfunction" minOccurs='0' maxOccurs='1'>
+			<mcrmetaxml name="otherfunction" class="MCRMetaXML" minOccurs='0' maxOccurs='unbounded' length="1024" />
+		</element>
+		<!-- 54 - Mitgliedschaften -->
+		<element name="box.membership" minOccurs='0' maxOccurs='1'>
+			<mcrmetaxml name="membership" class="MCRMetaXML" minOccurs='0' maxOccurs='unbounded' length="1024" />
+		</element>
+		<!-- 55 - Ehrungen / Auszeichnungen -->
+		<element name="box.award" minOccurs='0' maxOccurs='1'>
+			<mcrmetaxml name="award" class="MCRMetaXML" minOccurs='0' maxOccurs='unbounded' length="1024" />
+		</element>
+		<!-- 56 - Zusatzinformationen -->
+		<element name="box.otherinfo" minOccurs='0' maxOccurs='1'>
+			<mcrmetalangtext name="otherinfo" class="MCRMetaLangText" minOccurs='0' maxOccurs='unbounded' length="1024" />
+		</element>	
+		
+		<!--  ====================================================================================== -->
+		<!-- 60 - main works -->
+		<element name="box.mainpublication" minOccurs='0' maxOccurs='1'>
+			<mcrmetalangtext name="mainpublication" class="MCRMetaLangText" minOccurs='0' maxOccurs='unbounded' length="1024" />
+		</element>
+		<!-- 61 -  Link zu Webseiten mit Literaturverzeichnissen) -->
+		<element name="box.publicationslink" minOccurs='0' maxOccurs='1'  >
+			<mcrmetalink name="publicationslink" class="MCRMetaLink" minOccurs='0' maxOccurs='unbounded' length="1024" />
+		</element>
+		<!-- 62 - sonstige Quellen -->
+		<element name="box.source" minOccurs='0' maxOccurs='1'>
+			<mcrmetalink name="source" class="MCRMetaLink" minOccurs='0' maxOccurs='unbounded' length="1024" />
+		</element>
+		<!-- 63 -  Quellen: Literatur references (Angaben aus, weitere Literatur) -->
+		<element name="box.reference" minOccurs='0' maxOccurs='1'  >
+			<mcrmetalink name="reference" class="MCRMetaLink" minOccurs='0' maxOccurs='unbounded' length="1024" />
+		</element>
+		<!-- 64 -  Komplexe Linkstrukturen (zur Zeit verwendet für Etwas-Personenregister) -->
+		<element name="box.complexref" minOccurs='0' maxOccurs='1'  >
+			<mcrmetalangtext name="complexref" class="MCRMetaLangText" minOccurs='0' maxOccurs='unbounded' />
+		</element>	
+
+		<!--  ====================================================================================== -->
+		<!-- 70  other Identifiers (z.B. PND, GBV, ...) -->
+		<element name="box.identifier" minOccurs='0' maxOccurs='1'>
+			<mcrmetalangtext name="identifier" class="MCRMetaLangText" minOccurs='1' maxOccurs='5' length="128" />
+		</element>
+		<!-- 71 - (Status des Eintrages (in Bearbeitung, Lang-/Kurz-/Dokumenteintrag ...) -->
+		<element name="box.state" minOccurs='0' maxOccurs='1'>
+			<mcrmetalangtext name="state" class="MCRMetaLangText" minOccurs='0' maxOccurs='unbounded' length="1024" />
+		</element>
+		<!-- 72 - Personentyp Klassifikation -->
+		<element name="box.type" minOccurs='0' maxOccurs='1'>
+			<mcrmetaclassification name="type" class="MCRMetaClassification" minOccurs='1' maxOccurs='unbounded' />
+		</element>
+	</metadata>
+	<!--  ====================================================================================== -->
+	<service>
+		<!-- Datum der Erstellung / letzten Änderung -->
+		<element name="servdates" minOccurs='0' maxOccurs='1'>
+			<mcrmetaiso8601date name="servdate" class="MCRMetaISO8601Date" minOccurs='1' maxOccurs='unbounded' />
+		</element>
+		    <!-- Service Flags (@type='creator'|'editor')-->
+    	<element name="servflags" minOccurs='0' maxOccurs='1'>
+      		<mcrmetalangtext name="servflag" class="MCRMetaLangText" minOccurs='1' maxOccurs='unbounded' length="256" />
+    	</element>
+    	<!-- Service ACLs -->
+    	<element name="servacls" minOccurs='0' maxOccurs='1'>
+      		<mcrmetaaccessrule name="servacl" class="MCRMetaAccessRule" minOccurs='1' maxOccurs='unbounded' length="512" />
+    	</element>		
+	</service>
+</configuration>

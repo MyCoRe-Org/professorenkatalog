@@ -20,11 +20,133 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
         <configuration>
           <source>1.7</source>
           <target>1.7</target>
         </configuration>
       </plugin>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.1-beta-1</version>
+        <configuration>
+          <archiveClasses>true</archiveClasses>
+          <webResources>
+            <resource>
+              <directory>src/main/resources</directory>
+              <targetPath>WEB-INF/classes</targetPath>
+            </resource>
+            <resource>
+              <directory>src/main/resources/config</directory>
+              <targetPath>WEB-INF/classes</targetPath>
+              <includes>
+                <include>*.*</include>
+              </includes>
+              <excludes>
+                <exclude>web.xml</exclude>
+                <exclude>*.template</exclude>
+                <exclude>datamodel-*.xml</exclude>
+              </excludes>
+            </resource>
+            <resource>
+              <directory>src/main/resources/config/lang</directory>
+              <targetPath>WEB-INF/classes</targetPath>
+              <includes>
+                <include>*.*</include>
+              </includes>
+              <excludes>
+                <exclude>*.template</exclude>
+              </excludes>
+            </resource>
+            <resource>
+              <directory>src/main/resources/config/workflow</directory>
+              <targetPath>WEB-INF/classes/workflow</targetPath>
+              <includes>
+                <include>**/*.xml</include>
+              </includes>
+            </resource>
+            <resource>
+              <directory>src/main/resources/config/datamodel</directory>
+              <targetPath>WEB-INF/classes</targetPath>
+              <includes>
+                <include>**/*.xsd</include>
+              </includes>
+            </resource>
+            <resource>
+              <directory>src/main/resources/config</directory>
+              <targetPath>WEB-INF</targetPath>
+              <includes>
+                <include>web.xml</include>
+              </includes>
+            </resource>
+          </webResources>
+        </configuration>
+      </plugin>
+      <plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>xml-maven-plugin</artifactId>
+				<version>1.0</version>
+				<executions>
+					<execution>
+                        <phase>generate-resources</phase>
+						<goals>
+							<goal>transform</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<transformationSets>
+						<transformationSet>
+							<dir>src/main/resources/config/datamodel</dir>
+							<outputDir>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDir>
+							<stylesheet>./../jspdocportal-webapp/src/main/resources/xsl/MCRMetadataSchema.xsl</stylesheet>
+							<fileMappers>
+								<fileMapper
+									implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
+									<targetExtension>.xsd</targetExtension>
+								</fileMapper>
+							</fileMappers>
+						</transformationSet>
+					</transformationSets>
+				</configuration>
+			</plugin>
     </plugins>
+    
+    <!-- needed to execute maven-xml-plugin  -->
+    <pluginManagement>
+      <plugins>
+        <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>
+                      org.codehaus.mojo
+                    </groupId>
+                    <artifactId>
+                      xml-maven-plugin
+                    </artifactId>
+                    <versionRange>
+                      [1.0,)
+                    </versionRange>
+                    <goals>
+                      <goal>transform</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore></ignore>
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
   </build>
 </project>
