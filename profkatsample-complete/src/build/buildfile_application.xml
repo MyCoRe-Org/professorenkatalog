@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- =================================================================== -->
+<!-- MyCoRe sample application build file for use with Apache Ant        -->
+<!-- $Revision$ $Date$                      -->
+<!-- =================================================================== -->
+
+<project name="main_build" default="usage">
+	<!-- !!! ATTENTION !!! -->
+	<!-- !!! basedir is overwritten by derrived build processes with the xxx_app directory !!! -->
+
+	<property name="APP_NAME" value="sample" />
+    <property name="CONTENT_DIR" value="${basedir}/content" />
+
+	<property name="HOME" value="${basedir}/target/app" />
+	<property name="APP_HOME" value="${HOME}/${APP_NAME}" />
+
+	<path id="APP_CLASSPATH">
+		<pathelement path="${HOME}/${APP_NAME}-cli.jar" />
+	</path>
+	
+	 <condition property="os.is.unix">
+	    <os family="unix" />
+	  </condition>
+	  <condition property="os.is.windows">
+	    <os family="dos" />
+	  </condition>
+	  <condition property="os.is.mac">
+	    <os name="Mac OS X" />
+	  </condition>
+	 <!-- Maximum amount of memory to allocate to java VM when loading -->
+	  <property name="java.maxmemory" value="512m" />
+
+	<!-- =================================================================== -->
+	<!-- Help on usage                                                       -->
+	<!-- =================================================================== -->
+
+	<target name="usage">
+		<echo>
+            Usage: build.sh [target] or build.cmd [target] or ant
+            [target]
+
+            Available targets are: info --> Shows Java/Ant/Operating
+            System version, CLASSPATH etc. clean --> Removes all
+            generated files, cleaning up
+
+            hsqldbstart --> for starting the hsqldb-database hsqldbstop
+            --> for stopping the hsqldb-database
+
+            create.class --> load all default classifications
+            create.directories --> Create all working directories
+            create.genkeys --> Create a key pair to sign the Java
+            applets create.metastore --> Create datastore structures for
+            XML persistency from configuration create.schema --> Generates all schema files from the configuration files
+            create.scripts --> Create the commandline scripts
+            create.users --> Laden der Start-User, Groups and Privilegs.
+            create.hibindexer --> Creates the java-class for the sql-query-table, must be executed before the first: ant jar
+            webapps --> Build the complete sample web application
+            directory war --> Build the web application archive (war)
+
+            Please do not use any of the other targets, they are
+            internal.
+        </echo>
+	</target>
+
+	<!-- =================================================================== -->
+	<!-- Output environment variables, software and operating system version -->
+	<!-- =================================================================== -->
+
+	<target name="info" depends="show" />
+
+	<target name="init" depends="loadproperties" />
+	
+	<target name="loadproperties">
+		<loadproperties srcFile="${APP_HOME}/WEB-INF/classes/mycore.properties">
+			<filterchain>
+				<linecontains>
+					<contains value="MCR.basedir=" />
+				</linecontains>
+			</filterchain>
+			<filterchain>
+				<linecontains>
+					<contains value="MCR.datadir=" />
+				</linecontains>
+			</filterchain>
+		</loadproperties>
+		<loadproperties srcFile="${APP_HOME}/WEB-INF/classes/mycore.properties">
+			<filterchain>
+				<tokenfilter>
+					<replacestring from="%MCR.basedir%" to="${MCR.basedir}" />
+					<replacestring from="%MCR.datadir%" to="${MCR.datadir}" />
+				</tokenfilter>
+			</filterchain>
+		</loadproperties>
+
+	</target>
+
+	<target name="show" depends="init">
+		<echo>Base directory     : ${basedir}</echo>
+		<echo>Application        : ${HOME}</echo>
+		<echo>Operating system   : ${os.name} Version ${os.version} on ${os.arch} </echo>
+		<echo>Java version       : JDK ${ant.java.version} Version ${java.version} from ${java.vendor}</echo>
+		<echo>Java home          : ${env.JAVA_HOME}</echo>
+		<echo>Ant build file     : $Revision$ $Date$</echo>
+		<echo>Ant version        : ${ant.version}</echo>
+		<echo>Ant home           : ${env.ANT_HOME}</echo>
+		<echo>Active CLASSPATH   : ${APP_CLASSPATH.translated}</echo>
+		
+		<echo>Application CP     : ${APP_CLASSPATH}</echo>
+		
+	</target>
+
+		<!-- =================================================================== -->
+	<!-- Create local working directories                                    -->
+	<!-- =================================================================== -->
+
+	<target name="create.directories" depends="loadproperties">
+		<mkdir dir="${MCR.Editor.FileUpload.TempStoragePath}" />
+		<mkdir dir="${MCR.LogDirectory}" />
+		<mkdir dir="${MCR.Save.FileSystem}" />
+		<mkdir dir="${MCR.WebContent.SaveFolder}" />
+		<mkdir dir="${MCR.WorkflowEngine.EditDirectory.document}" />
+		<mkdir dir="${MCR.WorkflowEngine.EditDirectory.disshab}" />
+		<mkdir dir="${MCR.WorkflowEngine.EditDirectory.thesis}" />
+		<mkdir dir="${MCR.WorkflowEngine.EditDirectory.user}" />
+		<mkdir dir="${MCR.WorkflowEngine.EditDirectory.bundle}" />
+		<mkdir dir="${MCR.WorkflowEngine.DeleteDirectory}" />
+		<mkdir dir="${MCR.EHCache.diskStore.path}" />
+	</target>
+
+
+	<!-- =================================================================== -->
+	<!-- Create script bin/mycore.sh or mycore.cmd for CommandLineInterface  -->
+	<!-- =================================================================== -->
+	<target name="create.scripts" depends="init, script.windows, script.unix" description="Create commandline scripts" />
+
+	<target name="script.windows" if="os.is.windows">
+		<antcall target="script.windows.write">
+			<param name="mycore.cmd.file" value="mycore.cmd" />
+			<param name="mycore.cmd.class" value="org.mycore.frontend.cli.MCRCommandLineInterface %1 %2 %3 %4 %5 %6 %7 %8 %9" />
+		</antcall>
+		<antcall target="script.windows.write">
+			<param name="mycore.cmd.file" value="listPlugins.cmd" />
+			<param name="mycore.cmd.class" value="org.mycore.sample.PluginLister $*" />
+		</antcall>
+	</target>
+
+	<target name="script.unix" if="os.is.unix">
+		<antcall target="script.unix.write">
+			<param name="mycore.cmd.file" value="mycore.sh" />
+			<param name="mycore.cmd.class" value="org.mycore.frontend.cli.MCRCommandLineInterface $*" />
+		</antcall>
+		<antcall target="script.unix.write">
+			<param name="mycore.cmd.file" value="listPlugins.sh" />
+			<param name="mycore.cmd.class" value="org.mycore.sample.PluginLister $*" />
+		</antcall>
+	</target>
+
+
+	<target name="script.windows.write">
+		<property name="tmp.cmd.file" value="${HOME}/${mycore.cmd.file}" />
+		<echo level="info">Creating ${mycore.cmd.file} to invoke ${mycore.cmd.class}</echo>
+		<echo file="${tmp.cmd.file}" append="false">@echo off
+
+	rem
+	rem This batch file invokes the MyCoRe class
+	rem ${mycore.cmd.class}
+	rem Generated by ant using the target "scripts".
+	rem
+
+	set JAVA_HOME=${env.JAVA_HOME}
+	set CLASSPATH=${APP_NAME}-cli.jar
+
+	java -Xmx${java.maxmemory} ${mycore.cmd.class}
+	    </echo>
+	</target>
+
+	<target name="script.unix.write">
+		<property name="tmp.cmd.file" value="${HOME}/${mycore.cmd.file}" />
+		<echo level="info">Creating ${mycore.cmd.file} to invoke ${mycore.cmd.class}</echo>
+		<echo file="${tmp.cmd.file}" append="false">#!/bin/bash
+
+	#
+	# This shell script invokes the MyCoRe class
+	# ${mycore.cmd.class}
+	# Generated by ant using the target "scripts".
+	#
+
+	JAVA_HOME=${env.JAVA_HOME}
+	export JAVA_HOME
+
+	CLASSPATH=CLASSPATH=${APP_NAME}-cli.jar
+	export CLASSPATH
+
+	#LIBPATH=${application.libpath.translated}
+	#export LIBPATH
+
+	#LD_LIBRARY_PATH=$LIBPATH
+	#export LIBPATH
+
+	$JAVA_HOME/bin/java -Xmx${java.maxmemory} ${mycore.cmd.class}
+	    </echo>
+		<chmod file="${tmp.cmd.file}" perm="755" />
+	</target>
+
+	<target name="create.class" depends="init">
+		<taskdef name="mcr-execute" classname="org.mycore.buildtools.anttasks.MCRExecuteCommandTask" classpathref="APP_CLASSPATH" />
+		<mcr-execute>
+            update all classifications from directory ${CONTENT_DIR}/classification
+		</mcr-execute>
+	</target>
+
+	<target name="create.users" depends="init">
+		
+		<taskdef name="mcr-execute" classname="org.mycore.buildtools.anttasks.MCRExecuteCommandTask" classpathref="APP_CLASSPATH" />
+		<mkdir dir="content/user_encrypted" />
+		<mcr-execute>
+			update classification from file ${CONTENT_DIR}/user/mcr-roles.xml
+		</mcr-execute>
+		
+		<mcr-execute>
+            load permissions data from file ${CONTENT_DIR}/user/permissions.xml
+
+      	    init superuser
+
+            change to user root with alleswirdgut
+			
+         	encrypt passwords in user xml file ${CONTENT_DIR}/user/user_administrator.xml to file ${basedir}/target/content/user_encrypted/user_administrator.xml
+			encrypt passwords in user xml file ${CONTENT_DIR}/user/user_editorUser.xml to file ${basedir}/target/content/user_encrypted/user_editorUser.xml
+			encrypt passwords in user xml file ${CONTENT_DIR}/user/user_editorClass.xml to file ${basedir}/target/content/user_encrypted/user_editorClass.xml
+			encrypt passwords in user xml file ${CONTENT_DIR}/user/user_editorWeb.xml to file ${basedir}/target/content/user_encrypted/user_editorWeb.xml
+
+        	update user from file ${basedir}/target/content/user_encrypted/user_administrator.xml  
+        	update user from file ${basedir}/target/content/user_encrypted/user_editorUser.xml
+        	update user from file ${basedir}/target/content/user_encrypted/user_editorClass.xml
+        	update user from file ${basedir}/target/content/user_encrypted/user_editorWeb.xml
+    	</mcr-execute>
+	</target>
+
+
+	<target name="load_default_content">
+		<subant target="load" inheritall="false" inheritrefs="true">
+			<fileset file="${basedir}/content/defaultsample/build.xml" />
+		</subant>
+	</target>
+
+	<target name="create.workflow.database">
+		<taskdef name="mcr-execute" classname="org.mycore.buildtools.anttasks.MCRExecuteCommandTask" classpathref="APP_CLASSPATH" />
+		<mcr-execute>
+			create jbpm database schema       	
+        </mcr-execute>
+	</target>
+
+	<target name="deploy.processdefinition.thesis">
+		<taskdef name="mcr-execute" classname="org.mycore.buildtools.anttasks.MCRExecuteCommandTask" classpathref="APP_CLASSPATH" />
+		<!-- loads processdefinition as resource from classpath -->
+		<mcr-execute>
+        	deploy jbpm processdefinition from file workflow/thesis.par/processdefinition.xml      	
+        </mcr-execute>
+	</target>
+
+	<target name="deploy.processdefinition.bundle">
+		<taskdef name="mcr-execute" classname="org.mycore.buildtools.anttasks.MCRExecuteCommandTask" classpathref="APP_CLASSPATH" />
+		<mcr-execute>
+        	deploy jbpm processdefinition from file workflow/bundle.par/processdefinition.xml      	
+        </mcr-execute>
+	</target>
+
+	<target name="deploy.processdefinition.xmetadiss">
+		<taskdef name="mcr-execute" classname="org.mycore.buildtools.anttasks.MCRExecuteCommandTask" classpathref="APP_CLASSPATH" />
+		<mcr-execute>
+        	deploy jbpm processdefinition from file workflow/xmetadiss.par/processdefinition.xml      	
+        </mcr-execute>
+	</target>
+
+	<target name="deploy.processdefinition.publication">
+		<taskdef name="mcr-execute" classname="org.mycore.buildtools.anttasks.MCRExecuteCommandTask" classpathref="APP_CLASSPATH" />
+		<mcr-execute>
+        	deploy jbpm processdefinition from file workflow\publication.par\processdefinition.xml      	
+   		</mcr-execute>
+	</target>
+
+	<target name="deploy.workflow.processdefinitions">
+		<taskdef name="mcr-execute" classname="org.mycore.buildtools.anttasks.MCRExecuteCommandTask" classpathref="APP_CLASSPATH" />
+		<mcr-execute>
+        	deploy jbpm processdefinition from file workflow/publication.par/processdefinition.xml      	
+        	
+        	deploy jbpm processdefinition from file workflow/xmetadiss.par/processdefinition.xml      	        	
+
+        	deploy jbpm processdefinition from file workflow/thesis.par/processdefinition.xml
+        	
+        	deploy jbpm processdefinition from file workflow/bundle.par/processdefinition.xml  
+        </mcr-execute>
+	</target>
+</project>

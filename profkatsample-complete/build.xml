@@ -5,10 +5,12 @@
 <!-- =================================================================== -->
 
 <project name="CPR" default="usage" basedir=".">
-	<property name="APP_NAME" value="cpr" />
+	<property name="APP_NAME" value="profkat" />
+	<property name="PARENT_BUILD_FILE" value="${basedir}/src/build/buildfile_application.xml" />
+	<property name="CONTENT_DIR" value="${basedir}/content" />
+	
 	<property name="HOME" value="${basedir}/target/${APP_NAME}-app" />
 	                                                 
-	<property name = "PARENT_BUILD_FILE" value="./../jspdocportal-webapp/src/build/buildfile_application.xml" />
 
 	<property environment="env" />
 	<condition property="env.JAVA_HOME" value="/usr/lib/java" else="c:/Programme/Java/jdk1.6.0_03">
@@ -19,10 +21,6 @@
 	</condition>
 	<property name="MCR.JDBCStore.Type" value="hibernate" />
 	<property name="MCR.XMLStore.Type" value="hibernate" />
-	<!-- Provide a default value for MYCORE_HOME if not set in env -->
-	<property name="env.MYCORE_HOME" value="${basedir}/../mycore" />
-	<property name="MYCORE_HOME" value="${basedir}/../mycore" />
-	<property name="env.MYCORE_APP" value ="." />
 
 	<import file="${PARENT_BUILD_FILE}"/>
 	<classloader classpathref="APP_CLASSPATH" />
@@ -41,42 +39,32 @@
 		<taskdef name="mcr-execute" classname="org.mycore.buildtools.anttasks.MCRExecuteCommandTask" classpathref="APP_CLASSPATH"/>
 
 		<mcr-execute>
-			update classification from file ${basedir}/../cpr-webapp/content/user/mcr-roles.xml
+			update classification from file ${basedir}/content/user/mcr-roles.xml
 		</mcr-execute>
 	
 		<mcr-execute>
-			load permissions data from file ${basedir}/../cpr-webapp/content/user/permissions.xml
+			load permissions data from file ${CONTENT_DIR}/user/permissions.xml
      	    init superuser
             
 			change to user root with alleswirdgut
 			
-			encrypt passwords in user xml file ${basedir}/../cpr-webapp/content/user/user_administrator.xml to file ${basedir}/target/user_encrypted/user_administrator.xml
+			encrypt passwords in user xml file ${CONTENT_DIR}/user/user_administrator.xml to file ${basedir}/target/user_encrypted/user_administrator.xml
 			update user from file ${basedir}/target/user_encrypted/user_administrator.xml	
 			
-			encrypt passwords in user xml file ${basedir}/../cpr-webapp/content/user/user_editorWeb.xml to file ${basedir}/target/user_encrypted/user_editorWeb.xml
+			encrypt passwords in user xml file ${CONTENT_DIR}/user/user_editorWeb.xml to file ${basedir}/target/user_encrypted/user_editorWeb.xml
 			update user from file ${basedir}/target/user_encrypted/user_editorWeb.xml
 
-			encrypt passwords in user xml file ${basedir}/../cpr-webapp/content/user/user_editorCP.xml to file ${basedir}/target/user_encrypted/user_editorCP.xml			
-			update user from file ${basedir}/target/user_encrypted/user_editorCP.xml
+			encrypt passwords in user xml file ${CONTENT_DIR}/user/user_editorCP.xml to file ${basedir}/target/user_encrypted/user_editorPK.xml			
+			update user from file ${basedir}/target/user_encrypted/user_editorPK.xml
 			
-			encrypt passwords in user xml file ${basedir}/../cpr-webapp/content/user/user_klabahn.xml to file ${basedir}/target/user_encrypted/user_klabahn.xml
-			encrypt passwords in user xml file ${basedir}/../cpr-webapp/content/user/user_mglasow.xml to file ${basedir}/target/user_encrypted/user_mglasow.xml			
-			encrypt passwords in user xml file ${basedir}/../cpr-webapp/content/user/user_eeckhardt.xml to file ${basedir}/target/user_encrypted/user_eeckhardt.xml
-			encrypt passwords in user xml file ${basedir}/../cpr-webapp/content/user/user_nhapp.xml to file ${basedir}/target/user_encrypted/user_nhapp.xml
-			
-			update user from file ${basedir}/target/user_encrypted/user_klabahn.xml
-			update user from file ${basedir}/target/user_encrypted/user_mglasow.xml
-			update user from file ${basedir}/target/user_encrypted/user_eeckhardt.xml
-			update user from file ${basedir}/target/user_encrypted/user_nhapp.xml
-			
-			load permissions data from file ${basedir}/../cpr-webapp/content/user/default-object-permissions.xml
+			load permissions data from file ${basedir}/content/user/default-object-permissions.xml
     	</mcr-execute>
 	</target>
 
 	<target name="create.class" depends="init">
 		<taskdef name="mcr-execute" classname="org.mycore.buildtools.anttasks.MCRExecuteCommandTask" classpathref="APP_CLASSPATH" />
 		<mcr-execute>
-	           update all classifications from directory ${basedir}/../cpr-webapp/content/classification
+	           update all classifications from directory ${CONTENT_DIR}/classification
 		</mcr-execute>
 	</target>
 
@@ -87,37 +75,14 @@
        	</mcr-execute>
 	</target>
 
-	<target name="deploy.processdefinition.professorum">
-		<taskdef name="mcr-execute" classname="org.mycore.buildtools.anttasks.MCRExecuteCommandTask" classpathref="APP_CLASSPATH" />
-		<mcr-execute>
-			deploy jbpm processdefinition from file workflow/professorum.par/processdefinition.xml      	
-		</mcr-execute>
-	</target>
 
-
-	<target name="webapps">
-		<antcall target="main_build.webapps" />
-		<!--		<ant antfile="./../jspdocportal/modules/module-iview/build.xml" target="integrate">
-			<property name="usemodule" value="true" />
-	    </ant> -->
-	</target>
-
-	<target name="svnrevision">
-		<loadfile property="svnrevion"
-		          srcFile=".svn/entries" >
-			<filterchain>
-				<headfilter lines="1" skip="3" />
-			</filterchain>
-		</loadfile>
-		<echo message="${svnrevion}" />
-	</target>
-	
-	<target name="zip.projects">
-		<zip destfile="./../projects.zip" >
-		    <zipfileset dir="./../mycore" prefix="mycore" excludes="**/.svn build/**" />
-			<zipfileset file="./../mycore/.svn/entries" prefix="mycore/.svn" />
-			<zipfileset dir="./../jspdocportal" prefix="jspdocportal" excludes="**/.svn build/**" />
-			<zipfileset dir="./../cpr_app" prefix="cpr_app" excludes="**/.svn build/**" />
-		  </zip>
-	</target>
+	<target name="zip4deployment">
+			<zip destfile="./target/${APP_NAME}_deploy.zip" >
+				<zipfileset dir="./target/app" prefix="target/app"  />
+				<zipfileset dir="./content" prefix="content" />
+			    <zipfileset file="./target/buildfile_application.xml" prefix="target"/>
+				<zipfileset file="build.xml" />
+			    <zipfileset file="./target/${APP_NAME}.war" />
+			</zip>
+		</target>
 </project>
