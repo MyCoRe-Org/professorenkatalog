@@ -1,0 +1,412 @@
+/* =================================================================== */
+/* $Revision: 1.13 $ $Date: 2011/01/31 04:00:23 $                      */
+/* CSS für BasisLayout                                                 */
+/* =================================================================== */
+
+/* ------------------------------------------------------------------- */
+/*  Outer Framework, 3 column design + header                          */
+/* ------------------------------------------------------------------- */  
+body{
+	#background:#ffffff url('../images/layout/profkat_header_background.jpg') no-repeat center top;
+	font-family:    Arial, Helvetica, sans-serif;
+	/*default browser font-size is 16px */
+	line-height: normal;
+}
+
+div#wrapper {
+	width: 990px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+div#header{
+	background: url('../images/layout/profkat_Logo.png') no-repeat left bottom;
+	height: 100px;	
+}
+
+div#footer{
+	border-top: 1px solid #004A99;
+	padding-top:6px;
+	margin-bottom:24px;
+	
+	text-align:center;
+	font-size:0.7em;
+}
+
+
+div#left_col{
+	float:left;	
+}
+
+div#center_col{	
+	float:left;   
+}
+
+div#right_col{
+	float: left;
+}
+
+div.left_col_print {display:none; }
+div.left_col_1column {display:none; }
+div.left_col_2columns {width: 190px;}
+div.left_col_2columns_wide {width: 240px;}
+div.left_col_3columns {width: 190px;}
+
+
+div.center_col_print {width: 800px;}
+div.center_col_1column {width: 990px;}
+div.center_col_2columns {width: 800px;}
+div.center_col_2columns_wide {width: 750px;}
+div.center_col_3columns {width: 610px;}
+
+div.right_col_print {}
+div.right_col_1column {display:none;}
+div.right_col_2columns {display:none;}
+div.right_col_2columns_wide {display:none;}
+div.right_col_3columns {width: 190px;}
+
+
+
+/* ------------------------------------------------------------------- */
+/*  Basic page elements                                                */
+/* ------------------------------------------------------------------- */  
+div.none{
+	display:none;
+}
+
+div.base_box{
+	margin: 4px;
+	padding: 10px 8px 8px 8px;
+	border: 1px solid olive;
+}
+
+div.base_content{
+	margin: 4px;
+	padding: 4px 12px 4px 12px;
+	border-top: 1px solid #FFFFFF;
+	border-left: 1px solid #FFFFFF;
+	border-right: 1px solid #FFFFFF;
+	font-size: 0.8em;	
+}
+
+/* ------------------------------------------------------------------- */
+/*  Uni Logo
+/* ------------------------------------------------------------------- */  
+div.logo{
+	float: left;
+	padding:36px 10px 10px 10px;
+}
+
+div.logo a{
+	text-decoration: none;
+}
+
+/* ------------------------------------------------------------------- */
+/*  Top Navigation      (as ordered list)                              */
+/* ------------------------------------------------------------------- */  
+div.top_navigation{
+	float: right;
+	font-family: Arial, sans-serif;
+	font-size:0.7em;
+	color: #C6C6C6;
+	padding-top:10px;
+}
+
+div.top_navigation ul{
+	float:left;
+}
+
+div.top_navigation ul li{
+	float:left;
+	padding-left:6px; 
+	padding-right:6px;
+}
+
+div.top_navigation ul li.separator{
+	color: #666666;
+}
+
+div.top_navigation a{
+	text-decoration: none;
+	color: #666666;	
+}
+
+div.top_navigation a:VISITED{
+	color: #666666;
+}
+
+/* ------------------------------------------------------------------- */
+/*  Main Navigation  on left side    (as unordered list)                 */
+/* ------------------------------------------------------------------- */
+div.main_navigation {
+	font-size:0.8em;
+}
+div.main_navigation ul li {
+	padding-top: 4px;
+	padding-bottom: 4px;	
+}
+
+div.main_navigation > ul > li > a{
+    text-decoration: none;
+    color: #336EAD;
+    font-family:    Verdana, Arial, Helvetica, sans-serif;
+    font-size:    1.5em;
+}
+div.main_navigation > ul > li.active > a{
+    color: #004A99;    
+}
+
+
+/* 2nd level and below */
+div.main_navigation > ul > li > ul li a{
+	text-decoration: none;
+	color: #666666;       
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1em;
+}
+div.main_navigation > ul > li > ul > li{
+	border-bottom: 1px solid #B6B6B6;
+}
+div.main_navigation > ul > li > ul > li:FIRST-CHILD{
+	border-top: 1px solid #B6B6B6;
+	margin-top: 8px;
+}
+
+div.main_navigation > ul > li > ul li a{
+	text-decoration: none;
+	color: #666666;       
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1em;
+}
+
+div.main_navigation ul > li > ul li.active > a{
+	font-weight: bold;
+}
+div.main_navigation ul > li > ul li{
+	margin-top: 4px;
+	margin-left: 0px;
+	margin-bottom: 4px;	
+	padding-left: 16px;
+}
+
+
+/* ------------------------------------------------------------------- */
+/*  Breadcrumb Navigation  on top of content  (as ordered list)        */
+/* ------------------------------------------------------------------- */  
+div.breadcrumbs{
+	min-height: 1em;
+	font-family: Arial, sans-serif;
+	font-size:0.7em;
+	color: #C6C6C6;
+}
+
+div.breadcrumbs ul {
+	float:left;
+}
+
+div.breadcrumbs ul li{
+	float:left;
+	padding-left:6px; 
+	padding-right:6px;
+}
+
+div.breadcrumbs ul li.separator{
+	color: #565656;
+}
+
+div.breadcrumbs a{
+	text-decoration: none;
+	color: #565656;	
+}
+
+div.breadcrumbs a:VISITED{
+	color: #565656;
+}
+
+
+/* ------------------------------------------------------------------- */
+/*  Infobox content layout                                             */
+/* ------------------------------------------------------------------- */  
+div.infobox{
+	min-height: 48px;
+	margin-bottom: 48px;
+	font-size: 0.75em;	
+}
+
+div.infobox h3{
+	color: #336EAD;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	padding-bottom:6px;
+	font-size: 1.15em;
+}
+
+div.infobox h4{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight:bold;
+}
+div.infobox p{
+	padding-bottom:6px;	
+}
+
+div.infobox ul li{
+	list-style-type: disc;
+	padding-bottom:6px;
+	margin-left: 16px;
+}
+div.infobox ul.news li{
+	list-style-position:inside;
+	text-align: justify;
+	margin-left: 0px;
+}
+div.infobox a{
+	text-decoration: none;
+	color: #336EAD;
+	font-size:1.1em;
+}
+
+div.infobox a:VISITED{
+	color: #336EAD;
+}
+
+/* ------------------------------------------------------------------- */
+/*  Style of normal text on a content page                             */
+/* ------------------------------------------------------------------- */  
+div.text{
+	
+}
+
+div.text table{
+	margin: 6px 0px;
+}
+div.text td {
+	padding:3px;
+}
+
+div.text th {
+	color:white;
+	background-color: #004A99;
+	padding:3px;
+	text-align: left;
+	font-weight: bold;
+	border-left: 2px solid white;
+	border-right: 2px solid white;
+}
+
+div.text th h3{
+	color:white;
+}
+
+div.text ul{
+    list-style: none;
+    padding-left: 1.5em;
+}
+
+div.text ul li{
+	line-height: 1.5em;
+	text-indent:-1.1em;
+}
+
+div.text ul li:before{
+    content: "â—�";
+    padding-right:0.5em;
+    color:#004A99;
+}
+
+div.text ul.action {	
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;	
+}
+
+div.text ul.action li{
+	list-style: none;
+	background-image: url(../images/greenArrow.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 6px;
+	padding-left:32px;	
+}
+
+div.text ul.action li:before{
+    content:none;
+}
+
+div.text h1{
+	color: #004A99;
+	font-size: 1.75em;
+	padding-bottom:6px;
+}
+
+div.text h2{
+	color: #004A99;
+	font-size: 1.5em;
+	padding-bottom:6px;
+}
+div.text h3{
+	color: #004A99;
+	font-size: 1.2em;
+	padding-top:12px;
+	padding-bottom:6px;
+}
+
+div.text h4{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	padding-top:12px;
+}
+
+div.text p{
+	padding-top:6px;
+	text-align:justify;
+}
+
+div.text a{
+	text-decoration: none;
+	color: #336EAD;
+}
+
+div.text a:VISITED{
+	color: #336EAD;
+}
+
+div.text strong{
+	font-weight: bold;
+}
+
+div.text em{
+	font-style: italic;
+}
+
+/* ------------------------------------------------------------------- */
+/*  Links / Texts with Icons                                           */
+/* ------------------------------------------------------------------- */  
+
+div.infobox a.link_internal,
+div.text a.link_internal{
+	padding-left:18px; 
+	background: url(../images/ub/link_internal.gif) center left no-repeat;
+}
+
+div.infobox a.link_external,
+div.text a.link_external{
+	padding-left:18px; 
+	background: url(../images/ub/link_external.gif) center left no-repeat;
+}
+
+div.infobox a.link_e-mail,
+div.text a.link_e-mail{
+	padding-left:18px; 
+	background: url(../images/ub/mail2.gif) center left no-repeat;
+}
+
+div.infobox span.telefon,
+div.text span.telefon{
+	padding-left:16px; 
+	background: url(../images/ub/tel.gif) center left no-repeat;	
+}
+
+
+div.infobox span.fax,
+div.text span.fax{
+	padding-left:18px; 
+	background: url(../images/ub/fax.gif) center left no-repeat;
+}

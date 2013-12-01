@@ -90,13 +90,13 @@
 						</li>
 					</ul>									
 				</div> <%--END OF top_navigation --%>
-				<div id="logo_uni">
-						<a href="http://www.mycore.org">
-							<img title="Logo der Einrichtung" alt="MyCoRe" class="logo_uni" src="${WebApplicationBaseURL}images/mycore_logo_129x34_knopf_dunkel.png"/>
-					   </a>
-					   <span style="font-family:Verdana;font-size:150%">Beispielanwendung für Professorenkatalog</span>
+				<div style="clear:both;"></div>
+				<div id="logo">
+					<a href="http://www.mycore.org"><img class="logo_uni" src="http://localhost:8080/profkatsample/images/mycore_logo_129x34_knopf_dunkel.png" alt="MyCoRe" title="Logo der Einrichtung" style="vertical-align:middle;height:100%"></img></a>
+   					 <span style="font-family:Verdana;font-size:150%;vertical-align:middle;padding-left:12px"> Beispielanwendung für Professorenkatalog</span>
 				</div>						
 			</div><!-- END OF header -->
+			
 			<div id="left_col" class="left_col_${layout}">
 				<div class="base_box">
 					<div class="main_navigation">
