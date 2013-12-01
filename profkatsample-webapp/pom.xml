@@ -89,7 +89,7 @@
               </includes>
             </resource>
             <resource>
-              <directory>src/main/resources/config</directory>
+              <directory>src/main/config</directory>
               <targetPath>WEB-INF</targetPath>
               <includes>
                 <include>web.xml</include>
