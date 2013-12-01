@@ -71,12 +71,12 @@
         <configuration>
           <archiveClasses>true</archiveClasses>
           <webResources>
-            <resource>
-              <directory>src/main/resources</directory>
-              <targetPath>WEB-INF/classes</targetPath>
+           <resource>
+              <directory>src/main/config/lang/webcontent</directory>
+              <targetPath>content/webcontent</targetPath>
             </resource>
             <resource>
-              <directory>src/main/resources/config</directory>
+              <directory>src/main/config</directory>
               <targetPath>WEB-INF/classes</targetPath>
               <includes>
                 <include>*.*</include>
@@ -88,7 +88,7 @@
               </excludes>
             </resource>
             <resource>
-              <directory>src/main/resources/config/lang</directory>
+              <directory>src/main/config/lang</directory>
               <targetPath>WEB-INF/classes</targetPath>
               <includes>
                 <include>*.*</include>
@@ -98,27 +98,30 @@
               </excludes>
             </resource>
             <resource>
-              <directory>src/main/resources/config/workflow</directory>
+              <directory>src/main/config/workflow</directory>
               <targetPath>WEB-INF/classes/workflow</targetPath>
               <includes>
                 <include>**/*.xml</include>
               </includes>
             </resource>
             <resource>
-              <directory>src/main/resources/config/datamodel</directory>
+              <directory>src/main/config/datamodel</directory>
               <targetPath>WEB-INF/classes</targetPath>
               <includes>
                 <include>**/*.xsd</include>
               </includes>
             </resource>
             <resource>
-              <directory>src/main/resources/config</directory>
+              <directory>src/main/config</directory>
               <targetPath>WEB-INF</targetPath>
               <includes>
                 <include>web.xml</include>
               </includes>
             </resource>
           </webResources>
+          <!-- disable overlays -->
+          <dependentWarExcludes>**/*</dependentWarExcludes>
+
         </configuration>
       </plugin>
       <plugin>
@@ -136,7 +139,7 @@
 				<configuration>
 					<transformationSets>
 						<transformationSet>
-							<dir>src/main/resources/config/datamodel</dir>
+							<dir>src/main/config/datamodel</dir>
 							<outputDir>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDir>
 							<stylesheet>./../jspdocportal-webapp/src/main/resources/xsl/MCRMetadataSchema.xsl</stylesheet>
 							<fileMappers>
