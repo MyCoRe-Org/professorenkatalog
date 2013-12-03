@@ -36,7 +36,7 @@
       <groupId>org.mycore</groupId>
       <artifactId>jspdocportal-webapp</artifactId>
       <version>${project.version}</version>
-      <type>war</type>
+      <classifier>classes</classifier>
     </dependency>
     <dependency>
       <groupId>org.mycore</groupId>
