@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE editor>
+
+<editor id="editor-derivate">
+ <!-- <target type="servlet" name="MCRCheckEditDataServlet" method="post" format="xml" /> -->
+<!--
+ <target type="debug" />
+-->
+ 	<source uri="{sourceUri}" />
+ 	<cancel url="{cancelUrl}" />
+ 	<target type="servlet" name="MCRPassToTargetServlet" method="post" format="xml" />
+  	<validationMessage>
+	 	<label i18n="Editor.Common.validationMessage" />
+	 </validationMessage>
+	 
+	 <components root="derivate" var="/mycorederivate">
+	 	<headline anchor="CENTER">
+   			<text><label i18n="Editor.derivate.label" /></text>
+   		</headline>
+   		
+   		<panel id="derivate">
+   			<cell row="10" col="1" anchor="NORTHWEST" ref="LLabel" />
+   			<cell row="10" col="2" anchor="NORTHWEST" ref="DLabel" />
+   			<cell row="10" col="3" anchor="NORTHWEST" >
+   				<space width="20" height="0" />
+   			</cell>
+   			<cell row="10" col="4" anchor="NORTHWEST" ref="HLabel" />
+   			
+   			<cell row="20" col="1" anchor="NORTHWEST" ref="LTitle" />
+   			<cell row="20" col="2" ref="DTitle" />
+   			<cell row="20" col="3" anchor="NORTHWEST" >
+   				<space width="20" height="0" />
+   			</cell>
+   			<cell row="20" col="4" anchor="NORTHWEST" ref="HTitle" />
+   			
+   			
+   			<cell row="30" col="1"  />
+   			<cell row="30" col="2" anchor="EAST" ref="TwoButtons"  />
+   		</panel>
+   		
+   		<text id="LLabel" i18n="Editor.Common.derivate.label" />
+   		
+   		<panel id="DLabel">
+   			<cell col="1" row="1" anchor="NORTHWEST" var="@label">
+   				<list id="SDerivateLabel" type="dropdown" class="intern" >
+					<item value="display_none" i18n="OMD.derivatedisplay.display_none" />
+					<item value="display_image" i18n="OMD.derivatedisplay.display_image" />
+					<item value="display_biography" i18n="OMD.derivatedisplay.display_biography" />					
+				</list>
+   			</cell>    
+  		</panel>
+  		<helpHover id="HLabel"  i18n="Editor.Help.ChangeDerivateLabel" />
+  		
+  		<text id="LTitle" i18n="Editor.Common.derivate.title" />
+   		<panel id="DTitle">
+   			<cell col="1" row="1" anchor="NORTHWEST" var="service/servflags/servflag[@type='title']">
+   				<textarea width="70" height="4" maxlength="1024" />
+   			</cell>    
+  		</panel>
+  		<helpHover id="HTitle"  i18n="Editor.Help.ChangeDerivateTitle" />
+  		
+  		<panel id="TwoButtons">
+			<cell col="1" row="1" anchor="WEST">
+				<cancelButton id="BCancel" width="100px">
+					<label i18n="Editor.Common.button.Cancel" />
+				</cancelButton>	
+			</cell>
+			<cell col="2" row="1" anchor="WEST" var="save">
+				<submitButton id="BSubmit" width="100px" jsaction="return checkMyForm()">
+					<label i18n="Editor.Common.button.Submit" />
+				</submitButton>	
+			</cell>
+		</panel>		
+ </components>
+</editor>

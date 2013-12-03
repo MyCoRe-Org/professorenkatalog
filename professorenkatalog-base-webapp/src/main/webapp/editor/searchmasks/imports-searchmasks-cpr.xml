@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<imports>
+	<include uri="webapp:editor/searchmasks/imports-searchmasks-common.xml" />
+	
+	<!-- combine search parameters with AND or OR -->
+	<panel id="SearchConnect">
+    	<cell row="1" col="1" anchor="WEST">
+    		<text i18n="Editor.Search.connect" />
+   		</cell>
+   		<cell row="1" col="2" anchor="WEST" var="@operator">
+   			<list type="dropdown" default="and">
+   				<item value="and" i18n="Editor.Search.and" />
+   				<item value="or" i18n="Editor.Search.or" />
+            </list>
+   		</cell> 
+	</panel>
+	
+	<!-- Professor Names -->
+    <text id="LProfNames">
+		<label i18n="Editor.Search.Label.ProfNames" />
+	</text>
+	<panel id="DProfNames">
+		<hidden var="@field" default="profsortname" />
+		<hidden var="@operator" default="like" />
+		<cell col="1" row="1" anchor="NORTHWEST" var="@value" >
+			<textfield width="60" />
+		</cell>
+	</panel>
+
+	<!-- historic faculty classification  -->
+    <text id="LHistOrigins">
+    	<label i18n="Editor.Search.Label.Historigin" />
+    </text>
+    <panel id="DHistOrigins">
+    	<hidden var="@operator" default="or" />
+    	<cell row="1" col="1" anchor="NORTHWEST" var="/condition">
+    		<repeater min="1" max="5">
+    			<panel lines="off">
+    				<hidden var="@field" default="class_fac" />
+    				<hidden var="@operator" default="=" />
+    				<cell col="1" row="1" anchor="NORTHWEST" var="@value">
+    					<list id="CHistOrigins" style="width:300px" type="dropdown">
+    						<item value="">
+    							<label i18n="Editor.Search.List.all" />
+    						</item>
+    						<include uri="classification:editor:-1:children:profkat_class_institutions" cacheable="false" /> 
+    						<!--  MyCoRe URIResolver for Classifications doesn't allow to hide empty leaves
+    						<include uri="classification:editor[TextCounter]:-1:children:profkat_class_institutions" cacheable="false" /> -->
+    						<!-- MCRCategoryLink Tabelle wird für MCRMetaHistoryEvent Klassifikationen nicht aktualisiert  -->    						
+    					</list>
+    				</cell>
+    			</panel>
+    		</repeater>
+    	</cell>
+    </panel>
+    
+    <!-- Fachklassifikation -->
+    <text id="LBklProf">
+    	<label i18n="Editor.Search.Label.SubjectProf" />
+    </text>
+    <panel id="DBklProf">
+    	<hidden var="@operator" default="or" />
+    	<cell row="1" col="1" anchor="NORTHWEST" var="/condition">
+    		<repeater min="1" max="5">
+    			<panel lines="off">
+    				<hidden var="@field" default="class_bkl" />
+    				<hidden var="@operator" default="=" />
+    				<cell col="1" row="1" anchor="NORTHWEST"
+    					var="@value">
+    					<list id="CBklProf" style="width:300px" type="dropdown">
+    						<item value="">
+    							<label i18n="Editor.Search.List.all" />
+    						</item>
+    						<include uri="classification:editor:-1:children:profkat_class_subjects" cacheable="false" />    						
+    					</list>
+    				</cell>
+    			</panel>
+    		</repeater>
+    	</cell>
+    </panel>
+
+    <!--  Art der Professur -->
+    <text id="LProfTypes">
+    	<label i18n="Editor.Search.Label.ProfTypes" />
+    </text>            
+    <panel id="DProfTypes">
+    	<hidden var="@operator" default="or" />
+    	<cell row="1" col="1" anchor="NORTHWEST" var="/condition">
+    		<repeater min="1" max="5">
+    			<panel lines="off">
+    				<hidden var="@field" default="class_proftypes" />
+    				<hidden var="@operator" default="=" />
+    				<cell col="1" row="1" anchor="NORTHWEST" var="@value">
+
+    					<list id="CProfTypes" style="width:300px" type="dropdown">
+    						<item value="">
+    							<label i18n="Editor.Search.List.all" />
+    						</item>
+    						<include uri="classification:editor:-1:children:profkat_class_professorshiptypes" cacheable="false" />    						
+    					</list>
+    				</cell>
+    			</panel>
+    		</repeater>
+    	</cell>
+    </panel>
+
+	<!-- Status des Eintrages -->
+    <text id="LProfStates">
+    	<label i18n="Editor.Search.Label.ProfStates" />
+    </text>
+    <panel id="DProfStates">
+    	<hidden var="@operator" default="or" />
+    	<cell row="1" col="1" anchor="NORTHWEST" var="/condition">
+    		<repeater min="1" max="5">
+    			<panel lines="off">
+    				<hidden var="@field" default="profstates" />
+    				<hidden var="@operator" default="=" />
+    				<cell col="1" row="1" anchor="NORTHWEST" var="@value">
+    					<list id="CProfStates" width="300px" type="dropdown">
+    						<item value="" i18n="Editor.Common.choose" />
+    						<item value="inprogress" i18n="OMD.CPR.states.inprogress" />
+							<item value="long" i18n="OMD.CPR.states.long" />
+							<item value="short" i18n="OMD.CPR.states.short" />
+							<item value="document" i18n="OMD.CPR.states.document" />
+							<item value="other" i18n="OMD.CPR.states.other" />
+    					</list>
+    				</cell>
+    			</panel>
+    		</repeater>
+    	</cell>
+    </panel>
+
+    <!-- Zeitraumsuche über Professur -->
+	<text id="LProfessortime">
+		<label i18n="Editor.Search.Label.Professortime" />
+	</text>
+	<panel id="DProfessortime">
+		<hidden var="@operator" default="and" />
+		<hidden var="condition1/@field" default="proftype_ibis-proftype_ibis" />
+		<hidden var="condition1/@operator" default="&gt;=" />
+		<hidden var="condition2/@field" default="proftype_ivon-proftype_ivon" />
+		<hidden var="condition2/@operator" default="&lt;=" />
+		<hidden var="condition3/@field" default="proftype_ivon-proftype_ivon" />
+		<hidden var="condition4/@field" default="proftype_ibis-proftype_ibis" />
+		<cell row="1" col="1" anchor="NORTHWEST">
+ 	   		<text><label i18n="Editor.Search.label.Timespan" /></text>
+ 	   	</cell>
+		<cell row="1" col="2" anchor="NORTH" ref="Lbetween" />
+		<cell row="1" col="3" anchor="NORTHWEST" ref="TFzeile10" var="condition1/@value" />
+ 		<cell row="1" col="4" anchor="NORTH" ref="LbetweenAnd" />
+ 		<cell row="1" col="5" anchor="NORTHWEST" ref="TFzeile10" var="condition2/@value" />
+ 		<cell row="2" col="1" anchor="NORTHWEST">
+ 	   		<text><label i18n="Editor.Search.Label.Professor.after" /></text>
+ 	   	</cell>
+ 	   	<cell row="2" col="2" anchor="NORTHWEST" ref="list.operators.time" var="condition3/@operator" />
+ 		<cell row="2" col="3" anchor="NORTHWEST" ref="TFzeile10" var="condition3/@value" />
+ 		<cell row="3" col="1" anchor="NORTHWEST">
+ 	   		<text><label i18n="Editor.Search.Label.Professor.before" /></text>
+ 	   	</cell>
+ 	   	<cell row="3" col="2" anchor="NORTHWEST" ref="list.operators.time" var="condition4/@operator" />
+ 		<cell row="3" col="3" anchor="NORTHWEST" ref="TFzeile10" var="condition4/@value" />
+	</panel>
+ 	    
+ 	<!-- Zeitraumsuche über Lebenszeit -->
+ 	<text id="LLifetime">
+    	<label i18n="Editor.Search.Label.Lifetime" />
+    </text>
+ 	<panel id="DLifetime">
+ 	   	<hidden var="@operator" default="and" />
+		<hidden var="condition1/@field" default="lifetime_ibis-lifetime_ibis" />
+		<hidden var="condition1/@operator" default="=" />
+		<hidden var="condition2/@field" default="lifetime_ivon-lifetime_ivon" />
+		<hidden var="condition2/@operator" default="=" />
+		<hidden var="condition3/@field" default="lifetime_ivon-lifetime_ivon" />
+		<hidden var="condition4/@field" default="lifetime_ibis-lifetime_ibis" />
+ 	   	<cell row="1" col="1" anchor="NORTHWEST">
+ 	   		<text><label i18n="Editor.Search.label.Timespan" /></text>
+ 	   	</cell>
+ 	   	<cell row="1" col="2" anchor="NORTHWEST" ref="Lbetween" />
+ 	   	<cell row="1" col="3" anchor="NORTHWEST" ref="TFzeile10" var="condition1/@value" />
+ 	   	<cell row="1" col="4" anchor="NORTH" ref="LbetweenAnd" />
+ 	   	<cell row="1" col="5" anchor="NORTHWEST" ref="TFzeile10" var="condition2/@value" />
+ 	   	<cell row="2" col="1" anchor="NORTHWEST">
+ 	   		<text><label i18n="Editor.Search.Label.Life.born" /></text>
+ 	   	</cell>
+ 	   	<cell row="2" col="2" anchor="NORTHWEST" ref="list.operators.time" var="condition3/@operator" />
+ 	   	<cell row="2" col="3" anchor="NORTHWEST" ref="TFzeile10" var="condition3/@value" />
+ 	   	<cell row="3" col="1" anchor="NORTHWEST">
+ 	   		<text><label i18n="Editor.Search.Label.Life.died" /></text>
+ 	   	</cell>
+ 	   	<cell row="3" col="2" anchor="NORTHWEST" ref="list.operators.time" var="condition4/@operator" />
+ 		<cell row="3" col="3" anchor="NORTHWEST" ref="TFzeile10" var="condition4/@value" />
+ 	</panel>
+ 	  
+	<!-- Zeitraumsuche über Fakultätsangehörigkeit -->
+  	<text id="LFacultytime">
+    	<label i18n="Editor.Search.Label.Facultytime" />
+  	</text>    
+	<panel id="DFacultytime">
+ 		<hidden var="@operator" default="and" />
+		<hidden var="condition1/@field" default="fac_ivon-fac_ibis" />
+		<hidden var="condition1/@operator" default="=" />
+		<hidden var="condition2/@field" default="fac_ivon-fac_ibis" />
+		<hidden var="condition2/@operator" default="=" />
+		<hidden var="condition3/@field" default="fac_ibis-fac_ivon" />
+		<hidden var="condition3/@operator" default="&gt;=" />
+		<hidden var="condition4/@field" default="fac_ibis-fac_ivon" />
+		<hidden var="condition4/@operator" default="&lt;=" />
+ 		<cell row="1" col="1" anchor="NORTHWEST" ref="Lbetween" />
+ 		<cell row="1" col="2" anchor="NORTHWEST" ref="TFzeile10" var="condition1/@value" />
+ 		<cell row="1" col="3" anchor="NORTHWEST" ref="LbetweenAnd" />
+ 		<cell row="1" col="4" anchor="NORTHWEST" ref="TFzeile10" var="condition2/@value" />
+ 		<cell row="2" col="1" anchor="NORTHWEST" ref="Lafter" />
+ 		<cell row="2" col="2" anchor="NORTHWEST" ref="TFzeile10" var="condition3/@value" />
+ 		<cell row="2" col="3" anchor="NORTHWEST" ref="Lbefore" />
+ 		<cell row="2" col="4" anchor="NORTHWEST" ref="TFzeile10" var="condition4/@value" />
+	</panel>
+	
+	<!-- allgemeine Labels -->
+	<text id="Lbetween">
+		<label i18n="Editor.Search.Label.Time.between" />
+	</text>
+    <text id="LbetweenAnd">
+    	<label i18n="Editor.Search.Label.Time.betweenAnd" />
+    </text>
+    <text id="Lafter">
+    	<label i18n="Editor.Search.Label.Time.after" />
+      </text>
+      <text id="Lbefore">
+      	<label i18n="Editor.Search.Label.Time.before" />
+      </text>
+      <list type="dropdown" id="list.operators.time" default="=">
+      	<item value="="     label="="     />
+     	<item value="&gt;"  label="&gt;"  />
+      	<item value="&gt;=" label="&gt;=" />
+      	<item value="&lt;"  label="&lt;"  />
+     	<item value="&lt;=" label="&lt;=" />
+    </list>
+    
+     <panel id="DMetadataCPR">
+            <hidden var="@field" default="allMeta" />
+            <hidden var="@operator" default="contains" />            
+            <cell row="1" col="3" anchor="WEST" var="@value">
+              <textfield width="60" />
+            </cell>
+      </panel>
+</imports>

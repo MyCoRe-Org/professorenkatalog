@@ -1,0 +1,848 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<imports>
+
+   <!-- ====================================================================================== -->
+
+	<text id="Lname" i18n="OMD.CPR.nameM" />
+
+	<panel id="Dsurname">
+		<hidden var="metadata/box.surname/@class" default="MCRMetaLangText" />
+		<cell col="1" row="1" var="metadata/box.surname/surname">
+			<repeater min="2" max="5">
+				<textfield width="60" />
+			</repeater>
+		</cell>
+		<cell col="2" row="1" anchor="NORTHWEST">
+			<text class="editorHint" i18n="OMD.CPR.hint.nameSurnameM" />
+		</cell>
+	</panel>
+
+	<panel id="Dfirstname">
+		<hidden var="metadata/box.firstname/@class" default="MCRMetaLangText" />
+		<cell col="1" row="1" var="metadata/box.firstname/firstname">
+			<repeater min="1" max="5">
+				<textfield width="60" />
+			</repeater>
+		</cell>
+		<cell col="2" row="1" anchor="NORTHWEST">
+			<text class="editorHint" i18n="OMD.CPR.hint.nameFirstnameM" />
+		</cell>
+	</panel>
+	
+	<panel id="Dnameaffix">
+		<hidden var="metadata/box.nameaffix/@class" default="MCRMetaLangText" />
+		<cell col="1" row="1" var="metadata/box.nameaffix/nameaffix">
+			<repeater min="1" max="5">
+				<textfield width="60" />
+			</repeater>
+		</cell>
+		<cell col="2" row="1" anchor="NORTHWEST">
+			<text class="editorHint" i18n="OMD.CPR.nameaffixes" />
+		</cell>
+	</panel>
+
+	<panel id="Dacademictitle">
+		<hidden var="metadata/box.academictitle/@class" default="MCRMetaLangText" />
+		<cell col="1" row="1" anchor="NORTHWEST" var="metadata/box.academictitle/academictitle">
+			<textfield width="60" />
+		</cell>
+		<cell col="2" row="1" anchor="NORTHWEST">
+			<text class="editorHint" i18n="OMD.CPR.hint.nameTitle" />
+		</cell>
+	</panel>
+
+	<text id="Lprofessorship" i18n="OMD.CPR.professorshipsM" />
+	<panel id="Dprofessorship">
+		<hidden var="metadata/box.professorship/@class" default="MCRMetaHistoryEvent" />
+		<cell col="1" row="1" var="metadata/box.professorship/professorship">
+			<repeater min="2" max="20">
+				<panel>
+					<cell col="1" row="1" anchor="NORTHWEST" var="text" sortnr="1">
+						<textfield width="15" maxlength="64" />
+						<hidden var="@xml:lang" default="de" />
+					</cell>
+					<cell col="2" row="1" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.dateShown" />
+					</cell>
+					<hidden var="classification/@classid" default="profkat_class_professortypes" />
+					<cell col="1" colspan="3" row="2" anchor="NORTHWEST" var="classification/@categid" sortnr="12">
+						<list id="CInstitution" width="250" type="dropdown" class="intern">
+							<include uri="classification:editor:-1:children:profkat_class_professortypes" cacheable="false" />
+						</list>
+					</cell>
+					<cell col="4" row="2" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.profType" />
+					</cell>
+					<cell col="1" colspan="3" row="4" anchor="NORTHWEST" var="text[2]" sortnr="3">
+						<textfield width="50" maxlength="64" class="intern" />
+					</cell>
+					<cell col="4" row="4" anchor="NORTHWEST" var="text[2]/@xml:lang" sortnr="4">
+						<list id="SProfTypeText2" type="dropdown" class="intern" >
+							<item value="" i18n="Editor.Common.choose" />
+							<item value="x-chair" i18n="OMD.CPR.hint.chairID" />
+							<item value="x-predec" i18n="OMD.CPR.hint.predec" />
+							<item value="x-succ" i18n="OMD.CPR.hint.succ" />
+						</list>
+					</cell>
+
+					<cell col="1" colspan="3" row="5" anchor="NORTHWEST" var="text[3]" sortnr="5">
+						<textfield width="50" class="intern" />
+					</cell>
+					<cell col="4" row="5" anchor="NORTHWEST" var="text[3]/@xml:lang"
+						sortnr="6">
+						<list id="SProfTypeText3" type="dropdown" class="intern">
+							<item value="" i18n="Editor.Common.choose" />
+							<item value="x-chair" i18n="OMD.CPR.hint.chairID" />
+							<item value="x-predec" i18n="OMD.CPR.hint.predec" />
+							<item value="x-succ" i18n="OMD.CPR.hint.succ" />
+						</list>
+					</cell>
+					<cell col="1" colspan="3" row="6" anchor="NORTHWEST" var="text[4]" sortnr="7">
+						<textfield width="50" class="intern"/>
+					</cell>
+					<cell col="4" row="6" anchor="NORTHWEST" var="text[4]/@xml:lang" sortnr="8">
+						<list id="SProfTypeText4" type="dropdown" class="intern">
+							<item value="" i18n="Editor.Common.choose" />
+							<item value="x-chair" i18n="OMD.CPR.hint.chairID" />
+							<item value="x-predec" i18n="OMD.CPR.hint.predec" />
+							<item value="x-succ" i18n="OMD.CPR.hint.succ" />
+						</list>
+					</cell>
+
+					<cell col="3" row="1" anchor="NORTHWEST" var="von" sortnr="9">
+						<textfield width="13" maxlength="13" class="intern"/>
+					</cell>
+					<cell col="4" row="1" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.dateFrom" />
+					</cell>
+					<cell col="5" row="1" anchor="NORTHWEST" var="bis" sortnr="10">
+						<textfield width="13" maxlength="13" class="intern"/>
+					</cell>
+					<cell col="6" row="1" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.dateTo" />
+					</cell>
+					<cell col="1" row="3" colspan="6" anchor="NORTHWEST" var="event" sortnr="11">
+						<textfield width="90" maxlength="1024" />
+					</cell>
+					
+					<cell col="1" row="7" colspan="6" anchor="WEST">
+						<br />
+					</cell>
+				</panel>
+			</repeater>
+		</cell>
+	</panel>
+
+	<text id="Lperiod" i18n="OMD.CPR.periodsM" />
+	<panel id="Dperiod">
+		<hidden var="metadata/box.period/@class" default="MCRMetaHistoryDate" />
+		<cell col="1" row="1" var="metadata/box.period/period">
+			<repeater min="1" max="10">
+				<panel>
+					<cell col="1" row="1" anchor="NORTHWEST" var="text">
+						<textfield width="15" maxlength="64" />
+						<hidden var="@xml:lang" default="de" />
+					</cell>
+					<cell col="2" row="1" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.dateShown" />
+					</cell>
+					<cell col="3" row="1" anchor="NORTHWEST" var="von">
+						<textfield width="13" maxlength="13" class="intern" />
+					</cell>
+					<cell col="4" row="1" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.dateFrom" />
+					</cell>
+
+					<cell col="5" row="1" anchor="NORTHWEST" var="bis">
+						<textfield width="13" maxlength="13"  class="intern"/>
+					</cell>
+					<cell col="6" row="1" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.dateTo" />
+					</cell>
+				</panel>
+			</repeater>
+		</cell>
+	</panel>
+
+	<text id="Linstitute" i18n="OMD.CPR.institutes" />
+	<panel id="Dinstitute">
+		<hidden var="metadata/box.institute/@class" default="MCRMetaLangText" />
+		<cell col="1" row="1" anchor="NORTHWEST" var="metadata/box.institute/institute">
+			<repeater min="1" max="10">
+				<textfield width="60" />
+			</repeater>
+		</cell>
+	</panel>
+
+	<text id="Lfieldofstudy" i18n="OMD.CPR.fieldofstudies" />
+	<panel id="Dfieldofstudy">
+		<hidden var="metadata/box.fieldofstudy/@class" default="MCRMetaLangText" />
+		<cell col="1" colspan="2" row="1" var="metadata/box.fieldofstudy/fieldofstudy">
+			<repeater min="1" max="10">
+				<textfield width="60" />
+			</repeater>
+		</cell>
+	</panel>
+
+	<text id="Lsubjectclass" i18n="OMD.CPR.subjectsM" />
+	<panel id="Dsubjectclass">
+		<hidden var="metadata/box.subjectclass/@class" default="MCRMetaClassification" />
+		<cell col="1" row="1" var="metadata/box.subjectclass/subjectclass"
+			sortnr="34">
+			<repeater min="3" max="10">
+				<panel id="Rsubject">
+					<hidden var="@classid" default="profkat_class_cprbkl" />
+					<cell col="1" row="1" anchor="WEST" var="@categid">
+						<list width="100px" type="dropdown">
+							<item value="">
+								<label i18n="Editor.Common.choose" />
+							</item>
+							<include uri="classification:editor:-1:children:profkat_class_cprbkl"
+								cacheable="false" />
+						</list>
+					</cell>
+				</panel>
+			</repeater>
+		</cell>
+	</panel>
+
+
+	<text id="Lfaculty" i18n="OMD.CPR.facultiesM" />
+	<panel id="Dfaculty">
+		<hidden var="metadata/box.faculty/@class" default="MCRMetaHistoryEvent" />
+		<cell col="1" row="1" var="metadata/box.faculty/faculty">
+			<repeater min="3" max="10">
+				<panel>
+					<cell col="1" row="1" anchor="NORTHWEST" var="text">
+						<textfield width="15" maxlength="64" />
+						<hidden var="@xml:lang" default="de" />
+					</cell>
+					<cell col="2" row="1" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.dateShown" />
+					</cell>
+					<cell col="3" row="1" anchor="NORTHWEST" var="von">
+						<textfield width="13" maxlength="13" class="intern" />
+					</cell>
+					<cell col="4" row="1" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.dateFrom" />
+					</cell>
+
+					<cell col="5" row="1" anchor="NORTHWEST" var="bis">
+						<textfield width="13" maxlength="13" class="intern"/>
+					</cell>
+					<cell col="6" row="1" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.dateTo" />
+					</cell>
+
+					<hidden var="classification/@classid" default="profkat_class_histfak" />
+					<cell col="1" colspan="6" row="2" anchor="NORTHWEST"
+						var="classification/@categid">
+						<list style="width:500px" type="dropdown">
+							<include uri="classification:editor:-1:children:profkat_class_histfak" cacheable="false" />
+						</list>
+					</cell>
+
+					<cell col="1" row="3" colspan="6" anchor="WEST">
+						<br />
+					</cell>
+				</panel>
+			</repeater>
+		</cell>
+	</panel>
+
+	<text id="Lemail" i18n="OMD.CPR.emails" />
+	<panel id="Demail">
+		<hidden var="metadata/box.email/@class" default="MCRMetaLangText" />
+		<cell col="1" row="1" anchor="NORTHWEST" var="metadata/box.email/email">
+			<textfield width="60" />
+		</cell>
+	</panel>
+
+	<text id="Lhomepage" i18n="OMD.CPR.homepages" />
+	<panel id="Dhomepage">
+		<hidden var="metadata/box.homepage/@class" default="MCRMetaLink" />
+		<cell col="1" row="1" anchor="NORTHWEST" var="metadata/box.homepage/homepage">
+			<repeater min="1" max="3">
+				<panel>
+					<hidden var="@xlink:type" default="locator" />
+					<cell col="1" row="1" anchor="NORTHWEST" var="@xlink:href">
+						<textfield width="60" class="intern" />
+					</cell>
+					<cell col="2" row="1" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.linkurl" />
+					</cell>
+					<cell col="1" row="2" anchor="NORTHWEST" var="@xlink:title">
+						<textfield width="60" />
+					</cell>
+					<cell col="2" row="2" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.linktitle" />
+					</cell>
+				</panel>
+			</repeater>
+		</cell>
+	</panel>
+
+	<text id="Lbirth" i18n="OMD.CPR.birthsM" />
+
+	<panel id="Dbirth">
+		<hidden var="metadata/box.birth/@class" default="MCRMetaHistoryEvent" />
+		<cell col="1" row="1" var="metadata/box.birth/birth">
+			<panel>
+				<cell col="1" row="1" anchor="NORTHWEST" var="text">
+					<textfield width="25" maxlength="64" />
+					<hidden var="@xml:lang" default="de" />
+				</cell>
+				<cell col="2" row="1" anchor="NORTHWEST">
+					<text class="editorHint" i18n="OMD.CPR.hint.dateShown" />
+				</cell>
+				<cell col="3" row="1" anchor="NORTHWEST" var="von">
+					<textfield width="13" maxlength="13" class="intern"/>
+				</cell>
+				<cell col="4" row="1" anchor="NORTHWEST">
+					<text class="editorHint" i18n="OMD.CPR.hint.dateFrom" />
+				</cell>
+
+				<cell col="5" row="1" anchor="NORTHWEST" var="bis">
+					<textfield width="13" maxlength="13" class="intern"/>
+				</cell>
+				<cell col="6" row="1" anchor="NORTHWEST">
+					<text class="editorHint" i18n="OMD.CPR.hint.dateTo" />
+				</cell>
+				<cell col="1" colspan="1" row="2" anchor="NORTHWEST" var="event">
+					<textfield width="25" />
+				</cell>
+				<cell col="2" colspan="2" row="2" anchor="NORTHWEST" var="text[2]">
+						<textfield width="30" class="intern" />
+				</cell>
+				<hidden var="text[2]/@xml:lang" default="x-geoid" />
+				<cell col="4" row="2" anchor="NORTHWEST">
+					<text class="editorHint" i18n="OMD.CPR.hint.place_geoid" />
+				</cell>
+			</panel>
+
+		</cell>
+	</panel>
+
+	<text id="Ldeath" i18n="OMD.CPR.deaths" />
+
+	<panel id="Ddeath">
+		<hidden var="metadata/box.death/@class" default="MCRMetaHistoryEvent" />
+		<cell col="1" row="1" var="metadata/box.death/death">
+			<panel>
+				<cell col="1" row="1" anchor="NORTHWEST" var="text">
+					<textfield width="25" maxlength="64" />
+					<hidden var="@xml:lang" default="de" />
+				</cell>
+				<cell col="2" row="1" anchor="NORTHWEST">
+					<text class="editorHint" i18n="OMD.CPR.hint.dateShown" />
+				</cell>
+				<cell col="3" row="1" anchor="NORTHWEST" var="von">
+					<textfield width="13" maxlength="13" class="intern"/>
+				</cell>
+				<cell col="4" row="1" anchor="NORTHWEST">
+					<text class="editorHint" i18n="OMD.CPR.hint.dateFrom" />
+				</cell>
+
+				<cell col="5" row="1" anchor="NORTHWEST" var="bis">
+					<textfield width="13" maxlength="13" class="intern"/>
+				</cell>
+				<cell col="6" row="1" anchor="NORTHWEST">
+					<text class="editorHint" i18n="OMD.CPR.hint.dateTo" />
+				</cell>
+								<cell col="1" colspan="1" row="2" anchor="NORTHWEST" var="event">
+					<textfield width="25" />
+				</cell>
+				<cell col="2" colspan="2" row="2" anchor="NORTHWEST" var="text[2]">
+						<textfield width="30" class="intern" />
+				</cell>
+				<hidden var="text[2]/@xml:lang" default="x-geoid" />
+				<cell col="4" row="2" anchor="NORTHWEST">
+					<text class="editorHint" i18n="OMD.CPR.hint.place_geoid" />
+				</cell>
+			</panel>
+		</cell>
+	</panel>
+
+	<text id="Lsex" i18n="OMD.CPR.sexM" />
+	<panel id="Dsex">
+		<hidden var="metadata/box.sex/@class" default="MCRMetaLangText" />
+		<cell col="1" row="1" anchor="NORTHWEST" var="metadata/box.sex/sex">
+			<list id="STypeSex" type="dropdown">
+				<item value="male" i18n="OMD.CPR.sex.male" />
+				<item value="female" i18n="OMD.CPR.sex.female" />
+				<item value="unknown" i18n="OMD.CPR.sex.unknown" />
+			</list>
+		</cell>
+	</panel>
+
+	<text id="Lconfession" i18n="OMD.CPR.confessions" />
+	<panel id="Dconfession">
+		<hidden var="metadata/box.confession/@class" default="MCRMetaLangText" />
+		<cell col="1" row="1" anchor="NORTHWEST" var="metadata/box.confession/confession">
+			<textfield width="60" />
+		</cell>
+	</panel>
+
+	<text id="Lfamily" i18n="OMD.CPR.family" />
+	<panel id="Dfamily">
+		<hidden var="metadata/box.family/@class" default="MCRMetaXML" />
+		<cell col="1" row="1" var="metadata/box.family/family">
+			<repeater min="2" max="10">
+				<panel>
+					<cell col="1" row="1" anchor="NORTHWEST" var="@type">
+						<list id="STypeFamily" type="dropdown" class="intern">
+							<item value="" i18n="Editor.Common.Empty" />
+							<item value="father" i18n="OMD.CPR.family.father" />
+							<item value="mother" i18n="OMD.CPR.family.mother" />
+							<item value="other" i18n="OMD.CPR.family.other" />
+							
+						</list>
+					</cell>
+					<cell col="1" row="2" anchor="NORTHWEST" var="name">
+						<textfield width="60" />
+					</cell>
+					<cell col="1" row="3" anchor="NORTHWEST" var="profession">
+						<textfield width="60" />
+					</cell>
+					<cell col="1" row="4" anchor="NORTHWEST" var="name/@id">
+						<textfield width="60" class="intern" />
+					</cell>
+					<cell col="2" row="1" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.type" />
+					</cell>
+					<cell col="2" row="2" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.name" />
+					</cell>
+					<cell col="2" row="3" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.profession" />
+					</cell>
+					<cell col="2" row="4" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.id" />
+					</cell>
+				</panel>
+			</repeater>
+		</cell>
+	</panel>
+
+	<text id="Lbiographic" i18n="OMD.CPR.biographics" />
+	<panel id="Dbiographic">
+		<hidden var="metadata/box.biographic/@class" default="MCRMetaXML" />
+		<cell col="1" row="1" var="metadata/box.biographic/biographic">
+			<repeater min="10" max="40">
+				<panel>
+					<cell col="1" row="1" anchor="NORTHWEST" var="time">
+						<textfield width="15" />
+					</cell>
+					<cell col="2" row="1" anchor="NORTHEAST" var="@type">
+						<list id="STypeBiographic" type="dropdown" class="intern">
+							<item value="" i18n="Editor.Common.Empty" />
+							<item value="school" i18n="OMD.CPR.biographic.school" />
+							<item value="studies" i18n="OMD.CPR.biographic.studies" />
+							<item value="otherprofessorship" i18n="OMD.CPR.biographic.otherprofessorship" />
+						</list>
+					</cell>
+					<cell col="1" colspan="2" row="2" anchor="NORTHWEST" var="text">
+						<textarea width="70" height="2" />
+					</cell>
+					<cell col="1" colspan="2" row="3" anchor="NORTHWEST" var="places">
+						<repeater min="1" max="10">
+							<panel>
+								<cell col="1" colspan="1" row="1" anchor="NORTHWEST" var="place">
+									<textfield width="25" class="intern"/>
+								</cell>
+								<cell col="2" colspan="1" row="1" anchor="NORTHWEST" var="place/@geoid">
+									<textfield width="30" class="intern"/>
+								</cell>
+							</panel>
+						</repeater>
+					</cell>
+					
+					<cell col="3" row="1" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.time_type" />
+					</cell>
+					<cell col="3" row="2" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.text" />
+					</cell>
+					<cell col="3" row="3" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.place_geoid" />
+					</cell>
+					<cell col="1" row="4" anchor="NORTHWEST">
+						<br />
+					</cell>
+				</panel>
+			</repeater>
+		</cell>
+	</panel>
+
+	<text id="Lacademicdegree" i18n="OMD.CPR.academicdegrees" />
+	<panel id="Dacademicdegree">
+		<hidden var="metadata/box.academicdegree/@class" default="MCRMetaXML" />
+		<cell col="1" row="1" var="metadata/box.academicdegree/academicdegree">
+			<repeater min="3" max="20">
+				<panel>
+					<cell col="1" row="1" anchor="NORTHWEST" var="time">
+						<textfield width="15" maxlength="64" />
+					</cell>				
+					<cell col="2" row="1" anchor="NORTHEAST" var="@type">
+						<list id="STypeAcademic" width="180px" type="dropdown">
+							<item value="" i18n="Editor.Common.Empty" />
+							<item value="studies" i18n="OMD.CPR.academicdegree.studies" />
+							<item value="promotion" i18n="OMD.CPR.academicdegree.promotion" />
+							<item value="promotion_bis1800" i18n="OMD.CPR.academicdegree.promotion_bis1800" />
+							<item value="habilitation" i18n="OMD.CPR.academicdegree.habilitation" />
+							<item value="habilitation_bis1934" i18n="OMD.CPR.academicdegree.habilitation_bis1934" />
+							<item value="other" i18n="OMD.CPR.academicdegree.other" />
+						</list>
+					</cell>
+					<cell col="3" row="1" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.time_type" />
+					</cell>
+
+					<cell col="1" colspan="2" row="2" anchor="NORTHWEST" var="text">
+						<textfield width="75" maxlength="1024" />
+					</cell>
+					<cell col="2" colspan="2" row="2" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.text" />
+					</cell>
+
+					<cell col="1" colspan="2" row="3" anchor="NORTHWEST" var="dissertation">
+						<textarea width="70" height="2" maxlength="1024" />
+					</cell>
+					<cell col="2" colspan="2" row="3" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.dissertationTitle" />
+					</cell>
+					<cell col="1" row="4" colspan="3" anchor="WEST">
+						<br />
+					</cell>
+				</panel>
+			</repeater>
+		</cell>
+	</panel>
+
+	<text id="Ladminfunction" i18n="OMD.CPR.adminfunctions" />
+	<panel id="Dadminfunction">
+		<hidden var="metadata/box.adminfunction/@class" default="MCRMetaXML" />
+		<cell col="1" row="1" var="metadata/box.adminfunction/adminfunction">
+			<repeater min="5" max="20">
+				<panel>
+					<cell col="1" row="1" anchor="NORTHWEST" var="time">
+						<textfield width="15" maxlength="64" />
+					</cell>
+					<cell col="2" row="1" anchor="NORTHEAST" var="@type">
+						<list width="180px" type="dropdown" class="intern">
+							<item value="" i18n="Editor.Common.Empty" />
+							<item value="rektor" i18n="OMD.CPR.adminfunction.rektor" />
+							<item value="dekan" i18n="OMD.CPR.adminfunction.dekan" />
+							<item value="direktor" i18n="OMD.CPR.adminfunction.direktor" />
+							<item value="prorektor" i18n="OMD.CPR.adminfunction.prorektor" />
+							<item value="prodekan" i18n="OMD.CPR.adminfunction.prodekan" />
+							<item value="stellvdirektor" i18n="OMD.CPR.adminfunction.stellvdirektor" />
+							<item value="other" i18n="OMD.CPR.adminfunction.other" />
+						</list>
+					</cell>
+					<cell col="3" row="1" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.time_type" />
+					</cell>
+					<cell col="1" row="2" colspan="2" anchor="NORTHWEST" var="text">
+						<textfield width="75" maxlength="1024" />
+					</cell>
+					<cell col="3" row="2" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.text" />
+					</cell>
+				</panel>
+				<cell col="1" row="4" colspan="6" anchor="WEST">
+					<br />
+				</cell>
+			</repeater>
+		</cell>
+	</panel>
+
+	<text id="Lotherfunction" i18n="OMD.CPR.otherfunctions" />
+	<panel id="Dotherfunction">
+		<hidden var="metadata/box.otherfunction/@class" default="MCRMetaXML" />
+		<cell col="1" row="1" var="metadata/box.otherfunction/otherfunction">
+			<repeater min="5" max="20">
+				<panel>
+					<cell col="1" row="1" anchor="NORTHWEST" var="time">
+						<textfield width="15" />
+					</cell>
+					<cell col="2" row="1" anchor="NORTHEAST" var="@type">
+						<list id="STypeOtherFunction" width="180px" type="dropdown"  class="intern">
+							<item value="" i18n="Editor.Common.Empty" />
+						</list>
+					</cell>
+					<cell col="3" row="1" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.time_type" />
+					</cell>
+					<cell col="1" colspan="2" row="2" anchor="NORTHWEST" var="text">
+						<textfield width="75"/>
+					</cell>
+					<cell col="3" row="2" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.text" />
+					</cell>
+				</panel>
+			</repeater>
+		</cell>
+	</panel>
+
+	<text id="Lmembership" i18n="OMD.CPR.memberships" />
+	<panel id="Dmembership">
+		<hidden var="metadata/box.membership/@class" default="MCRMetaXML" />
+		<cell col="1" row="1" var="metadata/box.membership/membership">
+			<repeater min="5" max="20">
+				<panel>
+					<cell col="1" row="1" anchor="NORTHWEST" var="time">
+						<textfield width="15" />
+					</cell>
+					<cell col="2" row="1" anchor="NORTHEAST" var="@type">
+						<list id="STypeMembership" width="180px" type="dropdown" class="intern">
+							<item value="" i18n="Editor.Common.Empty" />
+							<item value="party" i18n="OMD.CPR.membership.party" />
+						</list>
+					</cell>
+					<cell col="3" row="1" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.time_type" />
+					</cell>
+					<cell col="1" colspan="2" row="2" anchor="NORTHWEST" var="text">
+						<textfield width="75"/>
+					</cell>
+					<cell col="3" row="2" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.text" />
+					</cell>
+				</panel>
+			</repeater>
+		</cell>
+	</panel>
+
+	<text id="Laward" i18n="OMD.CPR.awards" />
+	<panel id="Daward">
+		<hidden var="metadata/box.award/@class" default="MCRMetaXML" />
+		<cell col="1" row="1" var="metadata/box.award/award">
+			<repeater min="5" max="40">
+				<panel>
+					<cell col="1" row="1" anchor="NORTHWEST" var="time">
+						<textfield width="15" />
+					</cell>
+					<cell col="2" row="1" anchor="NORTHEAST" var="@type">
+						<list id="STypeAward" width="180px" type="dropdown"  class="intern">
+							<item value="" i18n="Editor.Common.Empty" />
+						</list>
+					</cell>
+					<cell col="3" row="1" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.time_type" />
+					</cell>
+					<cell col="1" colspan="2" row="2" anchor="NORTHWEST" var="text">
+						<textfield width="75"/>
+					</cell>
+					<cell col="3" row="2" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.text" />
+					</cell>
+				</panel>
+			</repeater>
+		</cell>
+	</panel>
+
+
+
+	<text id="Lotherinfo" i18n="OMD.CPR.otherinfos" />
+	<panel id="Dotherinfo">
+		<hidden var="metadata/box.otherinfo/@class" default="MCRMetaLangText" />
+		<cell col="1" row="1" anchor="NORTHWEST" var="metadata/box.otherinfo/otherinfo">
+			<repeater min="1" max="10">
+				<panel>
+					<cell col="1" row="1" anchor="NORTHWEST">
+						<textfield width="75" />
+					</cell>
+				</panel>
+			</repeater>
+		</cell>
+	</panel>
+
+
+	<text id="Lmainpublication" i18n="OMD.CPR.mainpublications" />
+
+	<panel id="Dmainpublication">
+		<hidden var="metadata/box.mainpublication/@class" default="MCRMetaLangText" />
+		<cell col="1" row="1" var="metadata/box.mainpublication/mainpublication">
+			<repeater min="5" max="20">
+				<panel>
+					<cell col="1" row="1" anchor="NORTHWEST">
+						<textarea width="75" height="2" />
+					</cell>
+				</panel>
+			</repeater>
+		</cell>
+	</panel>
+
+	<text id="Lpublicationslink" i18n="OMD.CPR.bibliographicrefs" />
+	<panel id="Dpublicationslink">
+		<hidden var="metadata/box.publicationslink/@class" default="MCRMetaLink" />
+		<cell col="1" row="1" anchor="NORTHWEST"
+			var="metadata/box.publicationslink/publicationslink">
+			<repeater min="1" max="10">
+				<panel>
+					<hidden var="@xlink:type" default="locator" />
+					<cell col="1" row="1" anchor="NORTHWEST" var="@xlink:href">
+						<textfield width="75" class="intern" />
+					</cell>
+					<cell col="2" row="1" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.linkurl" />
+					</cell>
+					<cell col="1" row="2" anchor="NORTHWEST" var="@xlink:title">
+						<textfield width="75" />
+					</cell>
+					<cell col="2" row="2" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.linktitle" />
+					</cell>
+					<cell col="1" row="4" colspan="2" anchor="WEST">
+						<br />
+					</cell>
+				</panel>
+
+			</repeater>
+		</cell>
+	</panel>
+
+	<text id="Lsource" i18n="OMD.CPR.sources" />
+	<panel id="Dsource">
+		<hidden var="metadata/box.source/@class" default="MCRMetaLink" />
+		<cell col="1" row="1" anchor="NORTHWEST" var="metadata/box.source/source">
+			<repeater min="3" max="10">
+				<panel>
+					<hidden var="@xlink:type" default="locator" />
+					<cell col="1" row="1" anchor="NORTHWEST" var="@xlink:href">
+						<textfield width="75"  class="intern"/>
+					</cell>
+					<cell col="2" row="1" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.linkurl" />
+					</cell>
+					<cell col="1" row="2" anchor="NORTHWEST" var="@xlink:title">
+						<textfield width="75" />
+					</cell>
+					<cell col="2" row="2" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.linktitle" />
+					</cell>
+					<cell col="1" row="4" colspan="2" anchor="WEST">
+						<br />
+					</cell>
+				</panel>
+			</repeater>
+		</cell>
+	</panel>
+
+	<text id="Lreference" i18n="OMD.CPR.references" />
+	<panel id="Dreference">
+		<hidden var="metadata/box.reference/@class" default="MCRMetaLink" />
+		<cell col="1" row="1" anchor="NORTHWEST" var="metadata/box.reference/reference">
+			<repeater min="3" max="10">
+				<panel>
+					<hidden var="@xlink:type" default="locator" />
+					<cell col="1" row="1" anchor="NORTHWEST" var="@xlink:href">
+						<textfield width="75"  class="intern" />
+					</cell>
+					<cell col="2" row="1" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.linkurl" />
+					</cell>
+					<cell col="1" row="2" anchor="NORTHWEST" var="@xlink:title">
+						<textarea width="75" />
+					</cell>
+					<cell col="2" row="2" anchor="NORTHWEST">
+						<text class="editorHint" i18n="OMD.CPR.hint.linktitle" />
+					</cell>
+					<cell col="1" row="4" colspan="2" anchor="WEST">
+						<br />
+					</cell>
+				</panel>
+
+			</repeater>
+		</cell>
+	</panel>
+
+	<text id="Lcomplexref" i18n="OMD.CPR.complexrefs" />
+	<panel id="Dcomplexref">
+		<hidden var="metadata/box.complexref/@class" default="MCRMetaLangText" />
+		<cell col="1" row="1" anchor="NORTHWEST" var="metadata/box.complexref/complexref">
+			<repeater min="1 " max="20">
+				<panel>
+					<cell col="1" row="1" anchor="NORTHWEST">
+						<textarea width="75" />
+					</cell>
+				</panel>
+			</repeater>
+		</cell>
+	</panel>
+
+
+
+	<text id="Lidentifier" i18n="OMD.CPR.identifiersM" />
+
+	<panel id="Didentifier">
+		<hidden var="metadata/box.identifier/@class" default="MCRMetaLangText" />
+		<cell col="1" row="1" var="metadata/box.identifier/identifier">
+			<repeater min="1" max="5">
+				<panel>
+					<cell col="1" row="1" anchor="NORTHWEST" var="@type">
+						<list type="dropdown">
+							<item value="pnd" i18n="OMD.CPR.identifiers.pnd" />
+						</list>
+					</cell>
+					<cell col="2" row="1" anchor="NORTHWEST">
+						<textfield width="40" />
+					</cell>
+				</panel>
+			</repeater>
+		</cell>
+	</panel>
+
+	<text id="Lstate" i18n="OMD.CPR.statesM" />
+	<panel id="Dstate">
+		<hidden var="metadata/box.state/@class" default="MCRMetaLangText" />
+		<cell col="1" row="1" var="metadata/box.state/state">
+			<list id="STypeState" type="dropdown">
+				<item value="inprogress" i18n="OMD.CPR.states.inprogress" />
+				<item value="long" i18n="OMD.CPR.states.long" />
+				<item value="short" i18n="OMD.CPR.states.short" />
+				<item value="document" i18n="OMD.CPR.states.document" />
+				<item value="other" i18n="OMD.CPR.states.other" />
+			</list>
+		</cell>
+	</panel>
+	
+	<text id="Ltype" i18n="OMD.CPR.typeM" />
+	<panel id="Dtype">
+		<hidden var="metadata/box.type/@class" default="MCRMetaClassification" />
+		<cell col="1" row="1" var="metadata/box.type/type"
+			sortnr="34">
+			<repeater min="1" max="10">
+				<panel id="Rtype">
+					<hidden var="@classid" default="profkat_class_persontypes" />
+					<cell col="1" row="1" anchor="WEST" var="@categid">
+						<list width="100px" type="dropdown">
+							<item value="">
+								<label i18n="Editor.Common.choose" />
+							</item>
+							<include uri="classification:editor:-1:children:profkat_class_persontypes"
+								cacheable="false" />
+						</list>
+					</cell>
+				</panel>
+			</repeater>
+		</cell>
+	</panel>
+
+	<panel id="Dinitiator">
+		<hidden var="service/servflags" descendants="true" />
+		<cell col="1" row="1" />
+	</panel>
+
+	<submitButton id="BSubmitProf" width="100px"
+		i18n="Editor.Common.button.Submit" jsaction="return checkMyFormProfessorum()" />
+	<cancelButton id="BCancel" width="100px"
+		i18n="Editor.Common.button.Cancel" />
+
+	<panel id="CheckButton">
+		<cell col="1" row="1" anchor="EAST" ref="BCancel" />
+		<cell col="2" row="1" anchor="WEST" ref="BSubmitProf" />
+	</panel>
+
+</imports>

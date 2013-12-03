@@ -1,0 +1,25 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="mcr" uri="http://www.mycore.org/jspdocportal/base.tld" %>
+<%@ taglib prefix="mcrb" uri="http://www.mycore.org/jspdocportal/browsing.tld" %>
+<%@ taglib prefix="stripes" uri="http://stripes.sourceforge.net/stripes.tld" %>
+
+<fmt:message var="pageTitle" key="Nav.Historigin" />
+<stripes:layout-render name="../WEB-INF/layout/default.jsp" pageTitle="${pageTitle}" layout="2columns">
+	<stripes:layout-component name="html_header">
+		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_classification-browser.css">
+	</stripes:layout-component>
+	
+    <stripes:layout-component name="contents">
+		<fmt:setBundle basename="messages" />
+		<h2><fmt:message key="Webpage.browse.title.histfac" /></h2>
+		<mcr:includeWebContent file="browse_histfac_intro.html" />
+		<mcrb:classificationBrowser classification="cpr_class_histfak"
+			count="true" hideemptyleaves="true" searchfield="class_fac"
+			searchmask="~searchstart-classcpr_histfac"
+			searchrestriction="objectType=person" showdescription="true"
+			showid="true" />
+	</stripes:layout-component>
+</stripes:layout-render>
