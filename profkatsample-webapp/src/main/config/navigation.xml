@@ -34,7 +34,7 @@
 						<navitem id="docdetail" i18n="Nav.DocumentDetails" href="content/docdetails.jsp" hidden="true" />
 					</navitem>
 				</navitem>
-				<navitem id="extended" i18n="Nav.Search.Profkat.Extended" ref="content/searchmask-profkat-extended-editor.jsp">
+				<navitem id="extended" i18n="Nav.Search.Profkat.Extended" href="content/searchmask-profkat-extended-editor.jsp">
 					<refitem id="~searchstart-extended-profkat" />
 					<navitem id="searchresult-extended-profkat" i18n="Nav.Searchresults" href="content/searchresult.jsp" hidden="true">
 						<refitem id="~searchresult-extended-profkat" />
