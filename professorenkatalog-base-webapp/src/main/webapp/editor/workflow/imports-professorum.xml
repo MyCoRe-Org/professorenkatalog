@@ -64,10 +64,10 @@
 					<cell col="2" row="1" anchor="NORTHWEST">
 						<text class="editorHint" i18n="OMD.CPR.hint.dateShown" />
 					</cell>
-					<hidden var="classification/@classid" default="profkat_class_professortypes" />
+					<hidden var="classification/@classid" default="profkat_class_professorshiptypes" />
 					<cell col="1" colspan="3" row="2" anchor="NORTHWEST" var="classification/@categid" sortnr="12">
 						<list id="CInstitution" width="250" type="dropdown" class="intern">
-							<include uri="classification:editor:-1:children:profkat_class_professortypes" cacheable="false" />
+							<include uri="classification:editor:-1:children:profkat_class_professorshiptypes" cacheable="false" />
 						</list>
 					</cell>
 					<cell col="4" row="2" anchor="NORTHWEST">
@@ -191,13 +191,13 @@
 			sortnr="34">
 			<repeater min="3" max="10">
 				<panel id="Rsubject">
-					<hidden var="@classid" default="profkat_class_cprbkl" />
+					<hidden var="@classid" default="profkat_class_subjects" />
 					<cell col="1" row="1" anchor="WEST" var="@categid">
 						<list width="100px" type="dropdown">
 							<item value="">
 								<label i18n="Editor.Common.choose" />
 							</item>
-							<include uri="classification:editor:-1:children:profkat_class_cprbkl"
+							<include uri="classification:editor:-1:children:profkat_class_subjects"
 								cacheable="false" />
 						</list>
 					</cell>
@@ -234,11 +234,11 @@
 						<text class="editorHint" i18n="OMD.CPR.hint.dateTo" />
 					</cell>
 
-					<hidden var="classification/@classid" default="profkat_class_histfak" />
+					<hidden var="classification/@classid" default="profkat_class_institutions" />
 					<cell col="1" colspan="6" row="2" anchor="NORTHWEST"
 						var="classification/@categid">
 						<list style="width:500px" type="dropdown">
-							<include uri="classification:editor:-1:children:profkat_class_histfak" cacheable="false" />
+							<include uri="classification:editor:-1:children:profkat_class_institutions" cacheable="false" />
 						</list>
 					</cell>
 
