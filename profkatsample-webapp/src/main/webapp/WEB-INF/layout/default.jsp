@@ -46,7 +46,9 @@
 		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_content.css">
 		<stripes:layout-component name="html_header">
 			<%-- any additional HTML header content --%>
-		</stripes:layout-component>		
+		</stripes:layout-component>
+		
+		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_profkatsample.css">
 	</head>
 
 	<body>

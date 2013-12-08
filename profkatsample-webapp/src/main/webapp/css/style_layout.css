@@ -307,7 +307,7 @@ div.text ul li{
 }
 
 div.text ul li:before{
-    content: "â—�";
+    content: "►";
     padding-right:0.5em;
     color:#004A99;
 }
