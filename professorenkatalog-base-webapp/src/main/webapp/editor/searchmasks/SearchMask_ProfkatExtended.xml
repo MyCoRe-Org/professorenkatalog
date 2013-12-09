@@ -16,7 +16,7 @@
 
   <include uri="webapp:editor/searchmasks/imports-searchmasks-cpr.xml" />
   <panel id="SearchMask_CPRExtended"> 
-    <hidden var="@mask" default="~searchstart-extcpr" />
+    <hidden var="@mask" default="~searchresult-extended-profkat" />
     <hidden var="conditions/@format" default="xml" />
     <hidden var="conditions/boolean/@operator" default="AND" />
     <hidden var="conditions/boolean/boolean1/@operator" default="OR" />
