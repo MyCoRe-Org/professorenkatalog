@@ -60,7 +60,7 @@
 		<div id="wrapper">
 			<div id="header">
 				<div class="top_navigation">
-					<mcr:outputNavigation id="top" mode="top" separatorString="|" /> 
+					<mcr:outputNavigation id="top" mode="top" /> 
 					<%--<div  class="separator" >|</div>
 						<div class="item">
 							<span style="padding-left:10px;padding-right:10px">
@@ -68,7 +68,7 @@
 							</span>
 						</div> 	--%>
 					<ul>
-						<li class="separator">|</li> 
+						
 						<li class="userinfo">
 							<mcr:session method="get" var="username" type="userID" />
 							<c:if test="${not (username eq 'gast' || username eq 'guest')}">
@@ -119,7 +119,7 @@
 			
 			<div id="center_col" class="center_col_${layout}">
 				<div class="base_box breadcrumbs">
-					<mcr:outputNavigation id="left" mode="breadcrumbs" separatorString="»" />				
+					<mcr:outputNavigation id="left" mode="breadcrumbs" />				
 				</div>
 				
 				<div id="contents" class="base_content text">

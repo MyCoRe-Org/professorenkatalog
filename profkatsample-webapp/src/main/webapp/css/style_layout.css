@@ -122,8 +122,10 @@ div.top_navigation ul li{
 	padding-right:6px;
 }
 
-div.top_navigation ul li.separator{
+div.top_navigation ul li:not(:first-child):before, div.top_navigation ul:last-child li:before{
 	color: #666666;
+	content: "|";
+	padding-right: 6px;
 }
 
 div.top_navigation a{
@@ -210,8 +212,11 @@ div.breadcrumbs ul li{
 	padding-right:6px;
 }
 
-div.breadcrumbs ul li.separator{
+div.breadcrumbs ul li:not(:first-child):before{
 	color: #565656;
+	content: "»";
+	padding-right:6px;
+	
 }
 
 div.breadcrumbs a{
