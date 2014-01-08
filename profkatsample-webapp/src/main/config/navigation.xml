@@ -10,10 +10,10 @@
 			<navitem id="indexsearch" i18n="Nav.Profkat.Index"
 				href="content/indexSearch.jsp?searchclass=professorum">
 				<refitem id="~searchstart-index_professorum" />
-				<navitem id="searchresult-cpr" i18n="Nav.Profkat.Index" href="content/searchresult.jsp" hidden="true">
-					<refitem id="~searchresult-indexcpr" />
+				<navitem id="searchresult-person" i18n="Nav.Profkat.Index" href="content/searchresult.jsp" hidden="true">
+					<refitem id="~searchresult-index_person" />
 					<navitem id="docdetail" i18n="Nav.DocumentDetails" href="content/docdetails.jsp" hidden="true">
-						<refitem id="~searchdocdetails-indexcpr" />
+						<refitem id="~searchdocdetails-index_person" />
 					</navitem>
 				</navitem>
 				<navitem id="docdetail" i18n="Nav.DocumentDetails" href="content/docdetails.jsp" hidden="true" />
