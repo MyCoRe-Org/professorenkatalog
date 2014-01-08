@@ -5,7 +5,7 @@
 <%@ taglib prefix="stripes" uri="http://stripes.sourceforge.net/stripes.tld" %>
 
 <fmt:setBundle basename="messages" />
-<fmt:message var="pageTitle" key="Nav.CPRSearchSimple" /> 
+<fmt:message var="pageTitle" key="Nav.Search.Profkat.Simple" /> 
 <stripes:layout-render name="../WEB-INF/layout/default.jsp" currentPath="left.search.simple"  pageTitle = "${pageTitle}" layout="2columns">
     <stripes:layout-component name="contents">
 		<h2><fmt:message key="Webpage.editor.title.simple" /></h2>

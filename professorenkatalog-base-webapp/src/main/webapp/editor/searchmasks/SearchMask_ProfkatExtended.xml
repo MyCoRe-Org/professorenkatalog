@@ -34,29 +34,29 @@
             <cell row="1" col="1" anchor="WEST" var="@field">
               <list type="dropdown" default="allMeta" style="width:150px">
                 <item value="allMeta" i18n="Editor.Search.metadata" />
-                <item value="name" i18n="Professorum.OMD.name" />
+                <item value="name" i18n="OMD.CPR.name" />
                 <item value="institute" i18n="OMD.CPR.institutes" />
                 <item value="area" i18n="OMD.CPR.fieldofstudies" />
-                <item value="proftype" i18n="Professorum.OMD.profarea" />
-                <item value="birthplace" i18n="Professorum.OMD.birthplace" />
-                <item value="deathplace" i18n="Professorum.OMD.deathplace" />
+                <item value="proftype" i18n="OMD.CPR.subjects" />
+                <item value="birthplace" i18n="OMD.CPR.birthplace" />
+                <item value="deathplace" i18n="OMD.CPR.deathplace" />
                 <item value="confession" i18n="OMD.CPR.confessions" />
-                <item value="parentprofession" i18n="Professorum.OMD.parentprofession" />
+                <item value="parentprofession" i18n="OMD.CPR.parentprofession" />
                 <item value="biography" i18n="OMD.CPR.biographics" />
-                <item value="academicdegree" i18n="Professorum.OMD.academicdegrees" />
-                <item value="acad_degree_study" i18n="Professorum.OMD.acad_degree_study" />
-                <item value="acad_degree_promo" i18n="Professorum.OMD.acad_degree_promo" />
-                <item value="acad_degree_habil" i18n="Professorum.OMD.acad_degree_habil" />              
+                <item value="academicdegree" i18n="OMD.CPR.academicdegrees" />
+                <item value="acad_degree_study" i18n="OMD.CPR.academicdegree.studies" />
+                <item value="acad_degree_promo" i18n="OMD.CPR.academicdegree.promotion" />
+                <item value="acad_degree_habil" i18n="OMD.CPR.academicdegree.habilitation" />              
                 
-                <item value="otherprofessorship" i18n="Professorum.OMD.otherprofessorships" />
-                <item value="adminfunction" i18n="Professorum.OMD.adminfunctions" />
-                <item value="otherfunction" i18n="Professorum.OMD.otherfunctions" />
-                <item value="membership" i18n="Professorum.OMD.memberships_short" />
-                <item value="award" i18n="Professorum.OMD.awards" />
-                <item value="mainpublication" i18n="Professorum.OMD.mainpublications" />
-                <item value="source" i18n="Professorum.OMD.sources" />
-                <item value="reference" i18n="Professorum.OMD.references_short" />
-                <item value="derivatelabel" i18n="Professorum.OMD.derivatelabel" />                
+                <item value="otherprofessorship" i18n="OMD.CPR.otherprofessorships" />
+                <item value="adminfunction" i18n="OMD.CPR.otherprofessorships" />
+                <item value="otherfunction" i18n="OMD.CPR.otherfunctions" />
+                <item value="membership" i18n="OMD.CPR.memberships" />
+                <item value="award" i18n="OMD.CPR.awards" />
+                <item value="mainpublication" i18n="OMD.CPR.mainpublications" />
+                <item value="source" i18n="OMD.CPR.sources" />
+                <item value="reference" i18n="OMD.CPR.references_short" />
+                <item value="derivatelabel" i18n="OMD.CPR.derivatelabel" />                
               </list>
             </cell>
             <cell row="1" col="2" anchor="WEST" var="@operator" ref="list.operators.text" />
