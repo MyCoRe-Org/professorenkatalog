@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.mycore</groupId>
   <artifactId>profkatsampLe-complete</artifactId>
-  <version>2013.06.0.2-SNAPSHOT</version>
+  <version>2013.06.0.3-SNAPSHOT</version>
   <packaging>uberwar</packaging>
   <name>Professorenkatalog Sample Complete</name>
   <description>Beispielanwendung für Professorenkatalog</description>
