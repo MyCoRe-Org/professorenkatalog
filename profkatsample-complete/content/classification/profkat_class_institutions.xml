@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mycoreclass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink"
+  xsi:noNamespaceSchemaLocation="MCRClassification.xsd" ID="profkat_class_institutions">
+  <label xml:lang="de" text="Historische Gliederungseinheiten" description="Historische Organisationsstruktur der Universität Rostock" />
+  <categories>
+    <category ID="sampleuni">
+      <label xml:lang="de" text="Beispieluniversität" />
+      <category ID="sampleuni_jur">
+        <label xml:lang="de" text="Juristische Fakultät" />
+      </category>
+
+      <category ID="sampleuni_med">
+        <label xml:lang="de" text="Medizinische Fakultät" />
+      </category>
+
+      <category ID="sampleuni_phil">
+        <label xml:lang="de" text="Philosophische Fakultät" />
+      </category>
+
+      <category ID="sampleuni_theol">
+        <label xml:lang="de" text="Theologische Fakultät" />
+      </category>
+
+      <category ID="sampleuni_tech">
+        <label xml:lang="de" text="Technische Fakultät" />
+      </category>
+      <category ID="sampleuni_mathnat">
+        <label xml:lang="de" text="Mathematisch-Naturwissenschaftliche Fakultät" />
+      </category>
+
+      <category ID="sampleuni_wiwi">
+        <label xml:lang="de" text="Wirtschaftswissenschaftliche Fakultät" description="(auch 1.020, 3.010 (bis 1924) und 9.010)" />
+      </category>
+
+      <category ID="sampleuni_other">
+        <label xml:lang="de" text="Sontige Einrichtung" />
+        <category ID="sampleuni_other-verw">
+          <label xml:lang="de" text="Verwaltung" />
+        </category>
+      </category>
+    </category>
+  </categories>
+</mycoreclass>

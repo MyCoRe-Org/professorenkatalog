@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- =================================================================== -->
+<!-- MyCoRe sample application build file for use with Apache Ant        -->
+<!-- $Revision$ $Date$                      -->
+<!-- =================================================================== -->
+
+<project name="CPR" default="usage" basedir=".">
+	<property name="APP_NAME" value="profkatsample" />
+	<property name="PARENT_BUILD_FILE" value="${basedir}/src/build/buildfile_application.xml" />
+	<property name="CONTENT_DIR" value="${basedir}/content" />
+	
+	<property name="HOME" value="${basedir}/target/${APP_NAME}-app" />
+	                                                 
+
+	<property environment="env" />
+	<condition property="env.JAVA_HOME" value="/usr/lib/java" else="c:/Programme/Java/jdk1.6.0_03">
+		<os family="unix" />
+	</condition>
+	<condition property="ant.library.dir" value="${ant.home}/lib">
+		<os family="unix" />
+	</condition>
+	<property name="MCR.JDBCStore.Type" value="hibernate" />
+	<property name="MCR.XMLStore.Type" value="hibernate" />
+
+	<import file="${PARENT_BUILD_FILE}"/>
+	<classloader classpathref="APP_CLASSPATH" />
+
+	<target name="usage">
+		<antcall target="main_build.usage" />
+	</target>
+	
+	<target name="create.directories" depends="init">
+		<antcall target="main_build.create.directories" />
+		<mkdir dir="${MCR.WorkflowEngine.EditDirectory.person}" />		
+	</target>
+
+	<target name="create.users" depends="init">
+		<mkdir dir="${basedir}/target/user_encrypted" />
+		<taskdef name="mcr-execute" classname="org.mycore.buildtools.anttasks.MCRExecuteCommandTask" classpathref="APP_CLASSPATH"/>
+
+		<mcr-execute>
+			update classification from file ${basedir}/content/user/mcr-roles.xml
+		</mcr-execute>
+	
+		<mcr-execute>
+			load permissions data from file ${CONTENT_DIR}/user/permissions.xml
+     	    init superuser
+            
+			change to user root with alleswirdgut
+			
+			encrypt passwords in user xml file ${CONTENT_DIR}/user/user_administrator.xml to file ${basedir}/target/user_encrypted/user_administrator.xml
+			update user from file ${basedir}/target/user_encrypted/user_administrator.xml	
+			
+			encrypt passwords in user xml file ${CONTENT_DIR}/user/user_editorWeb.xml to file ${basedir}/target/user_encrypted/user_editorWeb.xml
+			update user from file ${basedir}/target/user_encrypted/user_editorWeb.xml
+
+			encrypt passwords in user xml file ${CONTENT_DIR}/user/user_editorPK.xml to file ${basedir}/target/user_encrypted/user_editorPK.xml			
+			update user from file ${basedir}/target/user_encrypted/user_editorPK.xml
+			
+			load permissions data from file ${CONTENT_DIR}/user/default-object-permissions.xml
+    	</mcr-execute>
+	</target>
+	
+	<target name="create.workflow.database" depends="init">
+		<antcall target="main_build.create.workflow.database" />		
+	</target>
+
+	<target name="create.class" depends="init">
+		<taskdef name="mcr-execute" classname="org.mycore.buildtools.anttasks.MCRExecuteCommandTask" classpathref="APP_CLASSPATH" />
+		<mcr-execute>
+	           update all classifications from directory ${CONTENT_DIR}/classification
+		</mcr-execute>
+	</target>
+
+	<target name="deploy.workflow.processdefinitions" >
+		<taskdef name="mcr-execute" classname="org.mycore.buildtools.anttasks.MCRExecuteCommandTask" classpathref="APP_CLASSPATH" />
+		<mcr-execute>
+		   	deploy jbpm processdefinition from file workflow/professorum.par/processdefinition.xml      	
+       	</mcr-execute>
+	</target>
+
+
+	<target name="zip4deployment">
+			<zip destfile="./target/${APP_NAME}_deploy.zip" >
+				<zipfileset dir="./target/app" prefix="target/app"  />
+				<zipfileset dir="./content" prefix="content" />
+			    <zipfileset file="./target/buildfile_application.xml" prefix="target"/>
+				<zipfileset file="build.xml" />
+			    <zipfileset file="./target/${APP_NAME}.war" />
+			</zip>
+		</target>
+</project>
