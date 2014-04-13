@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>Professorenkatalog Installation</title>
+	<link rel="stylesheet" type="text/css" href="documentation.css">
+</head>
+<body>
+<h1>Installation der Anwendung &quot;Professorenkatalog&quot;</h1>
+
+Der Professorenkatalog basiert auf MyCoRe, dem JSPDocportal (JSP Frontend für MyCoRe) und 
+<code>professorenkatalog-base-web</code>, welches die generischen Bestandteile der Professorenkataloge
+enthalten wird.
+Neue Professorenkatalogs-Anwendungen sollten <code>profkatsample-webapp</code> und <code>profkatsample-complete</code>
+zunächst umbenennen und diese weiter anpassen.
+
+Im weiteren Verlauf dieser Dokumentation soll die Beispielanwendung installiert werden.
+Dabei wird an den entsprechenden Stellen auf Anpassungsmöglichkeiten hingewiesen.
+
+<h2>Auschecken der Maven Projekte mittels SVN</h2>
+	<ul>
+		<li><code>http://server.mycore.de/svn/jspdocportal/trunk/jspdocportal-mycore-war</code></li>
+		<li><code>http://server.mycore.de/svn/jspdocportal/trunk/jspdocportal-webapp</code></li>
+		<li><code>http://server.mycore.de/svn/professorenkatalog/trunk/professorenkatalog-base-webapp</code></li>
+		<li><code>http://server.mycore.de/svn/professorenkatalog/trunk/profkatsample-webapp</code></li>
+		<li><code>http://server.mycore.de/svn/professorenkatalog/trunk/profkatsample-complete</code></li>
+	</ul>
+	
+ <h2>Buildfiles anpassen</h2>
+ Wenn eigene Projektnamen /-identifier verwendet werden sollen sind folgende
+ Maven-Build-Konfigurationsdateien anzupassen.
+	<ul>	
+		<li><code>profkatsample-webapp/pom.xml</code></li>
+		<li><code>profkatsample-complete/pom.xml</code></li>
+		<li><code>profkatsample-complete/src/assemble/merge.xml</code></li>
+	</ul>
+	
+
+<h2>Postgres Datenbank einrichten</h2>
+In Postgres können wir eine DB für alle MyCoRe Instanzen verwenden. Die eigentlichen Datenbanken können in Schemas abgelegt werden.
+
+<h4>Konfiguration mittels pgadmin3 – GUI</h4>
+<h4>Nutzer <code>profkatadmin</code> anlegen</h4>
+<ul><li>Eigenschaft "can create databases" auswählen </li></ul>
+<h4>Datenbanken anlegen (falls noch nicht vorhanden)</h4>
+	<ul>
+		<li>Name: <code>mycoredb</code></li>
+		<li>Eigentümer: <code>mcradmin</code></li>
+		<li>Kodierung: <code>UTF8</code></li>
+	</ul>
+<h4>Schemas anlegen</h4>
+	<ul>	
+		<li>2 Schemas anlegen: <code>profkat</code>, <code>profkat_workflow</code></li>
+		<li><span class="hint">eigene Schema-Namen verwenden</span></li>
+		<li>Für jedes Schema eine Sequenz anlegen
+			<ul class="commandline"><li>
+			&gt; CREATE SEQUENCE $SCHEMA$.hibernate_sequence<br />  
+	        &nbsp;&nbsp;&nbsp;INCREMENT 1   MINVALUE 1  <br />
+	        &nbsp;&nbsp;&nbsp;MAXVALUE 9223372036854775807  <br />
+	        &nbsp;&nbsp;&nbsp;START 1 CACHE 1; </li>
+	        <li>&gt; ALTER SEQUENCE $SCHEMA$.hibernate_sequence OWNER TO profkatadmin;</li>
+	       </ul>
+	</ul>
+
+<h2>Anwendungen konfigurieren</h2>	
+<h4>Hibernate-Konfiguration anpassen</h4>
+	Anzupassen sind i.d.R. nur Datenbank- und Schemaname, Nutzer und Passwort
+	<ul>
+		<li><code>src/main/resources/config/hibernate/hibernate.cfg.xml</code></li>
+		<li><code>src/main/resources/config/workflow/jbpm_hibernate.cfg.xml</code></li>
+	</ul>
+
+<h4>Properties anpassen</h4>
+	<p>
+	siehe <code>profkatsample-webapp/src/main/resources/config/mycore.properties</code>
+	</p>
+	<span class="hint">Jedes Projekt enthält unter diesem Pfad eine Properties-Datei. 
+	Gleichnamige Properties werden durch den Merge-Prozess des Maven-Builds von
+	<code>profkatsample-complete</code> überschrieben</span>.
+	Lokale Einstellungen deshalb in der Propertiesdatei von <code>profksample-webapp vorzunehmen</code>
+	
+	<p>
+	Besonderes Augenmerk ist auf folgende Properties zu legen:
+	</p>
+	<ul>
+		<li><code>MCR.datadir=C:/workspaces/profkat/working_content</code></li>
+		<li><code>C:/workspaces/profkat/projects/profkatsample-complete/target/profkatsample-app/profkatsample</code></li>
+		<li><code>MCR.baseurl=http://localhost:8080/profkatsample/</code><br />
+			<b style="padding-left:48px">!!! Wichtig ist der <code>/</code> am Ende !!!</b>
+		</li>
+		<li><code>MCR.NameOfProject=ProfKat</code></li>
+	</ul>
+	
+	
+
+
+<h2>Webseite anpassen</h2>
+<ul><li>Stripes Layout: <code>/WEB-INF/layout/default.jsp</code> anpassen</ul>
+
+
+<h2>Kompilieren mittels Maven</h2>
+In allen Projekten ist in der angegebenen Reihenfolge auszuführen:
+<ul class="commandline"><li>mvn clean install</li></ul>
+
+<ul>
+	<li><code>jspdocportal-mycore-war</code></li>
+	<li><code>jspdocportal-webapp</code></li>
+	<li><code>professorenkatalog-base-webapp</code></li>
+	<li><code>profkatsample-webapp</code></li>
+	<li><code>profkatsample-complete</code></li>
+</ul>
+
+<h2>Basiskonfiguration</h2>
+<h4>Klassifikationen</h4>
+<ul>
+	<li>Klassifikationen <code>/profkatsample-complete/content/classification</code></li>
+</ul>
+
+<h4>Nutzer</h4>
+Jetzt sind Nutzer und Klassifikationen für die eigene Einrichtung anzupassen.
+<ul>
+	<li>Nutzer im Verzeichnis <code>/profkatsample-complete/content/user</code></li>
+	<li>Weitere Nutzer durch Kopieren der Datei <code>user_editorPK.xml</code></li>
+	<li>Der Nutzer <code>editorWeb</code> wird zum Editieren statischer Webseitetexte verwendet.</li>
+	<li><code>administrator</code> hat erweiterte Rechte in der Anwendung</li>
+	<li>Für beide Nutzer sollten die Passworte geändert werden</li>
+	<li>Die Nutzer werden per ANT-Buildskript (<code>/profkatsample-complete/build.xml</code>)geladen,
+	    in welches analog zu den vorhandenen Nutzern die entsprechenden Befehle ergänzt werden müssen</li>
+ </ul>
+
+<h4>Basiskonfiguration laden (per ANT-Build)</h4>
+Im Verzeichnis <code>/profkatsample-complete</code> ausführen:
+	<ul class="commandline">
+		<li>ant create.directories</li>
+		<li>ant create.users</li>
+		<li>ant create.class</li>
+		<li>ant create.workflow.database</li>
+		<li>ant deploy.workflow.processdefinitions</li>
+	</ul>
+<div style="min-height:128px;">&nbsp;</div>
+
+
+<h1>Migration des RostockerProfessorenkatalogs</h1>
+Wegen der Umstrukturierung des Codes (Extrahieren generischer Bestandteile) sind folgende Anpassungen am Rostocker 
+Professorenkatalog (CPR) vorzunehmen:
+<ul><li>Umbenennung der Klassifikationen (IDs)</li></ul>
+
+
+<div style="min-height:128px;">&nbsp;</div>
+</body>
+</html>

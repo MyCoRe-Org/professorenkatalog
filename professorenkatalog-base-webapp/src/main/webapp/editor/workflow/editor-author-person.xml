@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<editor class="editor" id="editor-professorum">
+      <source uri="{sourceUri}" />
+      <cancel url="{cancelUrl}" />
+      <target type="servlet" name="MCRPassToTargetServlet" method="post" format="xml" />
+      
+	<!--   
+	<target type="servlet" type="debug" />
+	-->
+
+      <components root="author-professorum" var="/mycoreobject" xmlns:xlink="http://www.w3.org/1999/xlink">
+         <validationMessage>
+          <text i18n="Editor.Common.validationMessage" />
+        </validationMessage>
+
+        <include uri="webapp:editor/workflow/imports-professorum.xml" />
+        <headline class = "editorHeadline" anchor="CENTER">
+            <text i18n="Editor.Common.headline"/>
+        </headline>
+        <panel id="author-professorum">
+           <hidden var="@ID" />
+           <hidden var="@label" />
+           <hidden var="service/servdates/@class" default="MCRMetaISO8601Date" sortnr="101" />
+		   <hidden var="service/servdates/@heritable" default="false" sortnr="101" />
+    	   <hidden var="service/servdates/@notinherit" default="false" sortnr="101" />
+    	  
+           <hidden var="service/servdates/servdate/@inherited" default ="0"/>
+           <hidden var="service/servdates/servdate/@type" default="createdate"/>
+           <hidden var="service/servdates/servdate" />
+ 
+<!--      <hidden var="service/servdates/servdate[2]/@inherited" default ="0" />
+          <hidden var="service/servdates/servdate[2]/@type" default="modifydate"/>
+          <hidden var="service/servdates/servdate[2]" />  -->
+
+          <cell col="1" row="1" anchor="NORTHWEST" ref="Lstate" />
+          <cell col="2" row="1" anchor="NORTHWEST" ref="Dstate" sortnr="71" colspan="3" />  
+          
+          <cell col="1" row="2" anchor="NORTHWEST" ref="Ltype" />
+          <cell col="2" row="2" anchor="NORTHWEST" ref="Dtype" sortnr="72" colspan="3" />
+
+		  <cell col="1" row="12" anchor="NORTHWEST" ref="Lname" />
+          <cell col="2" row="12" anchor="NORTHWEST" ref="Dsurname" sortnr="10" colspan="3" />
+          <cell col="2" row="13" anchor="NORTHWEST" ref="Dfirstname" sortnr="11" colspan="3" />
+          <cell col="2" row="14" anchor="NORTHWEST" ref="Dnameaffix" sortnr="12" colspan="3" />
+          <cell col="2" row="15" anchor="NORTHWEST" ref="Dacademictitle" sortnr="13" colspan="3" />
+
+          <cell col="1" row="16" colspan="4" anchor="WEST" ><hr/> </cell>
+ 
+          <cell col="1" row="17" anchor="NORTHWEST" ref="Lprofessorship" />
+          <cell col="2" row="17" anchor="NORTHWEST" ref="Dprofessorship" sortnr="14" colspan="3" />
+
+	      <cell col="1" row="18" anchor="NORTHWEST" ref="Lperiod" />
+          <cell col="2" row="18" anchor="NORTHWEST" ref="Dperiod" sortnr="15" colspan="3" />
+       
+          <cell col="1" row="19" colspan="4" anchor="WEST" ><hr/> </cell>
+        
+          <cell col="1" row="21" anchor="NORTHWEST" ref="Lfaculty" />
+          <cell col="2" row="21" anchor="NORTHWEST" ref="Dfaculty" sortnr="23" colspan="3" />
+
+          <cell col="1" row="22" anchor="NORTHWEST" ref="Linstitute" />
+          <cell col="2" row="22" anchor="NORTHWEST" ref="Dinstitute" sortnr="20" colspan="3" />
+
+          <cell col="1" row="23" anchor="NORTHWEST" ref="Lfieldofstudy" />
+          <cell col="2" row="23" anchor="NORTHWEST" ref="Dfieldofstudy" sortnr="21" colspan="3" />
+
+          <cell col="1" row="24" anchor="NORTHWEST" ref="Lsubjectclass" />
+          <cell col="2" row="24" anchor="NORTHWEST" ref="Dsubjectclass" sortnr="22" colspan="3" />
+
+
+          <cell col="1" row="30"  colspan="4" anchor="WEST" ><hr/> </cell>
+
+          <cell col="1" row="32" anchor="NORTHWEST" ref="Lemail" />
+          <cell col="2" row="32" anchor="NORTHWEST" ref="Demail" sortnr="31" colspan="3" />
+
+          <cell col="1" row="33" anchor="NORTHWEST" ref="Lhomepage" />
+          <cell col="2" row="33" anchor="NORTHWEST" ref="Dhomepage" sortnr="32" colspan="3" />
+
+          <cell col="1" row="35" colspan="4" anchor="WEST" ><hr/> </cell>
+
+ 	      <cell col="1" row="40" anchor="NORTHWEST" ref="Lbirth" />
+          <cell col="2" row="40" anchor="NORTHWEST" ref="Dbirth" sortnr="40" colspan="3" />
+
+          <cell col="1" row="41" anchor="NORTHWEST" ref="Ldeath" />
+          <cell col="2" row="41" anchor="NORTHWEST" ref="Ddeath" sortnr="41" colspan="3" />
+
+		  <cell col="1" row="42" anchor="NORTHWEST" ref="Lsex" />
+          <cell col="2" row="42" anchor="NORTHWEST" ref="Dsex" sortnr="42" colspan="3" />
+
+          <cell col="1" row="43" anchor="NORTHWEST" ref="Lconfession" />
+          <cell col="2" row="43" anchor="NORTHWEST" ref="Dconfession" sortnr="43" colspan="3" />
+
+          <cell col="1" row="44" anchor="NORTHWEST" ref="Lfamily" />
+          <cell col="2" row="44" anchor="NORTHWEST" ref="Dfamily" sortnr="44" colspan="3" />
+
+          <cell col="1" row="50"  colspan="4" anchor="WEST" ><hr/> </cell>
+
+          <cell col="1" row="51" anchor="NORTHWEST" ref="Lbiographic" />
+          <cell col="2" row="51" anchor="NORTHWEST" ref="Dbiographic" sortnr="50" colspan="3" />
+          
+          <cell col="1" row="53" anchor="NORTHWEST" ref="Lacademicdegree" />
+          <cell col="2" row="53" anchor="NORTHWEST" ref="Dacademicdegree" sortnr="51"  colspan="3" />
+
+          <cell col="1" row="60"  colspan="4" anchor="WEST" ><hr/> </cell>
+
+          <cell col="1" row="61" anchor="NORTHWEST" ref="Ladminfunction" />
+          <cell col="2" row="61" anchor="NORTHWEST" ref="Dadminfunction"  sortnr="52" colspan="3" />
+
+          <cell col="1" row="62" anchor="NORTHWEST" ref="Lotherfunction" />
+          <cell col="2" row="62" anchor="NORTHWEST" ref="Dotherfunction"  sortnr="53" colspan="3" />
+
+          <cell col="1" row="63" anchor="NORTHWEST" ref="Lmembership" />
+          <cell col="2" row="63" anchor="NORTHWEST" ref="Dmembership"  sortnr="54" colspan="3" />
+
+          <cell col="1" row="64" anchor="NORTHWEST" ref="Laward" />
+          <cell col="2" row="64" anchor="NORTHWEST" ref="Daward"  sortnr="55" colspan="3" />
+
+          <cell col="1" row="66" anchor="NORTHWEST" ref="Lotherinfo" />
+          <cell col="2" row="66" anchor="NORTHWEST" ref="Dotherinfo"  sortnr="56" colspan="3" />
+          
+          <cell col="1" row="69"  colspan="4" anchor="WEST" ><hr/> </cell>
+
+      	  <cell col="1" row="70" anchor="NORTHWEST" ref="Lmainpublication" />
+          <cell col="2" row="70" anchor="NORTHWEST" ref="Dmainpublication"  sortnr="60" colspan="3" />
+
+          <cell col="1" row="71" anchor="NORTHWEST" ref="Lpublicationslink" />
+          <cell col="2" row="71" anchor="NORTHWEST" ref="Dpublicationslink" sortnr="61" colspan="3" />
+          
+ 		  <cell col="1" row="72" anchor="NORTHWEST" ref="Lsource" />
+          <cell col="2" row="72" anchor="NORTHWEST" ref="Dsource"  sortnr="62" colspan="3" />
+
+		  <cell col="1" row="74" anchor="NORTHWEST" ref="Lreference" />
+          <cell col="2" row="74" anchor="NORTHWEST" ref="Dreference"  sortnr="63" colspan="3" />
+
+		  <cell col="1" row="75" anchor="NORTHWEST" ref="Lcomplexref" />
+          <cell col="2" row="75" anchor="NORTHWEST" ref="Dcomplexref"  sortnr="64" colspan="3" />
+
+		  <cell col="1" row="79"  colspan="4" anchor="WEST" ><hr/> </cell>
+          
+          <cell col="1" row="80" anchor="NORTHWEST" ref="Lidentifier" />
+          <cell col="2" row="80" anchor="NORTHWEST" ref="Didentifier" sortnr="70" colspan="3" />
+
+          <cell col="2" row="91" anchor="NORTHWEST" ref="Dinitiator" sortnr="102" colspan="3" />  
+          
+ 		  <cell col="1" row="100" anchor="CENTER" ref="CheckButton" colspan="4" /> 
+
+		</panel>
+	</components>
+</editor>

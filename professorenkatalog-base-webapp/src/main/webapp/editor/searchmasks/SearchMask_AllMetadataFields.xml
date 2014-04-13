@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE MyCoReWebPage>
+<MyCoReWebPage>
+	<section title="Searchmask for all Documents" xml:lang="de">
+		<editor id="SearchMask_AllMetadataFields">
+			<!-- <target type="debug" /> -->
+
+			<!-- MyCore-Default: <source uri="request:servlets/MCRSearchServlet?mode=load&amp;id={id}" />
+				<target type="servlet" name="MCRSearchServlet" method="post" format="xml" />  -->
+			<source uri="request:servlets/MCRJSPSearchServlet?mode=load&amp;id={XSL.editor.source.id}&amp;MCRSessionID={MCRSessionID}" />
+			<target type="servlet" url="/servlets/MCRJSPSearchServlet" method="post" format="xml" />
+			<validationMessage>
+				<label i18n="Editor.Common.validationMessage" />
+			</validationMessage>
+
+			<components root="SearchMask_AllMetadataFields" var="/query">
+				<panel id="SearchMask_AllMetadataFields">
+					<hidden var="@mask" default="~searchstart-allmeta" />
+					<hidden var="@maxResults" default="100" />
+					<hidden var="conditions/@format" default="xml" />
+					<hidden var="conditions/boolean/@operator" default="AND" />
+
+					<cell col="1" row="5" anchor="NORTHWEST">
+						<text>
+							<label i18n="Editor.Search.Label.metadataFastSearch" />
+						</text>
+					</cell>
+					<cell col="2" row="5" anchor="NORTHWEST">
+						&#160;<space width="20" height="0" />
+					</cell>
+					<cell col="3" row="5" anchor="NORTHWEST" ref="DOnlyMetadata" var="conditions/boolean/condition" />
+
+					<cell col="4" row="5" anchor="NORTHWEST"> 
+						<space width="20" height="0" />
+					</cell>
+					<cell col="5" row="5" anchor="WEST" ref="SearchButton" />
+					<hidden var="/host/host/@field" default="local" />
+					<hidden var="sortBy/field/@name" default="rostockdate_ivon" />
+   					<hidden var="sortBy/field/@order" default="ascending" />
+				</panel>
+
+				<panel id="DOnlyMetadata">
+					<hidden var="@field" default="allMeta" />
+					<hidden var="@operator" default="contains" />
+					<cell col="1" row="1" anchor="NORTHWEST" ref="TFAllMetadata" var="@value" />
+				</panel>
+				<textfield id="TFAllMetadata" width="48" maxlength="64">
+					<condition id="cond.minlength" minLength="3" required="true">
+						<label i18n="Editor.Validate.minlength" />
+					</condition>
+				</textfield>
+
+				<panel id="SearchButton">
+					<cell col="2" row="1" anchor="WEST" ref="BSubmit" var="search" />
+				</panel>
+				<submitButton id="BSubmit" width="150px">
+					<label i18n="Editor.Search.Button.submit" />
+				</submitButton>
+			</components>
+		</editor>
+	</section>
+</MyCoReWebPage>
