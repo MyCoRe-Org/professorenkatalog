@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navigations xmlns="http://www.mycore.org/jspdocportal/navigation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mycore.org/jspdocportal/navigation navigation.xsd">
+	<navigation id="left">
+		<navitem id="start" i18n="Nav.Start" href="content/index.jsp">
+			<refitem id="~start" />
+		</navitem>
+	
+			<navitem id="indexsearch" i18n="Nav.Profkat.Index"
+				href="content/indexSearch.jsp?searchclass=professorum">
+				<refitem id="~searchstart-index_professorum" />
+				<navitem id="searchresult-person" i18n="Nav.Profkat.Index" href="content/searchresult.jsp" hidden="true">
+					<refitem id="~searchresult-index_person" />
+					<navitem id="docdetail" i18n="Nav.DocumentDetails" href="content/docdetails.jsp" hidden="true">
+						<refitem id="~searchdocdetails-index_person" />
+					</navitem>
+				</navitem>
+				<navitem id="docdetail" i18n="Nav.DocumentDetails" href="content/docdetails.jsp" hidden="true" />
+			</navitem>
+
+			<navitem id="search" i18n="Nav.Search" href="content/search.jsp">
+				<navitem id="allmeta" i18n="Nav.SearchAll" href="content/searchmask-editor.jsp?editor=editor/searchmasks/SearchMask_AllMetadataFields.xml" hidden="true">
+					<refitem id="~searchstart-allmeta" />
+					<navitem id="searchresult-allmeta" i18n="Nav.Search" href="content/searchresult.jsp" hidden="true">
+						<refitem id="~searchresult-allmeta" />
+						<navitem id="docdetail" i18n="Nav.DocumentDetails" href="content/docdetails.jsp" hidden="true" />
+					</navitem>
+				</navitem>
+				<navitem id="simple" i18n="Nav.Search.Profkat.Simple" href="content/searchmask-profkat-simple-editor.jsp">
+					<refitem id="~searchstart-simple-profkat" />
+					<navitem id="searchresult-simple" i18n="Nav.Searchresults" href="content/searchresult.jsp" hidden="true">
+						<refitem id="~searchresult-simple-profkat" />
+						<navitem id="docdetail" i18n="Nav.DocumentDetails" href="content/docdetails.jsp" hidden="true" />
+					</navitem>
+				</navitem>
+				<navitem id="extended" i18n="Nav.Search.Profkat.Extended" href="content/searchmask-profkat-extended-editor.jsp">
+					<refitem id="~searchstart-extended-profkat" />
+					<navitem id="searchresult-extended-profkat" i18n="Nav.Searchresults" href="content/searchresult.jsp" hidden="true">
+						<refitem id="~searchresult-extended-profkat" />
+						<navitem id="docdetail" i18n="Nav.DocumentDetails" href="content/docdetails.jsp" hidden="true" />
+					</navitem>
+				</navitem>
+
+				<navitem id="docdetail" i18n="Nav.DocumentDetails" href="content/docdetails.jsp" hidden="true">
+					<refitem id="~docdetail" />
+					<refitem id="~query" />
+					<navitem id="derivatedetails" i18n="Nav.DigitalisatDetails"
+						href="content/derivatedetails.jsp" hidden="true"> <refitem id="~derivatedetails" />
+					</navitem>
+				</navitem>
+			</navitem>
+
+			<navitem id="browse" i18n="Nav.ClassificationsSearch" href="content/browsenode.jsp">
+				<navitem id="subject_prof" i18n="Nav.Browse.Profkat.Subject" href="content/browse-profkat-bkl.jsp">
+					<refitem id="~searchstart-class_bkl-profkat" />
+					<navitem id="result" i18n="Nav.Browseresults" href="content/searchresult.jsp" hidden="true">
+						<refitem id="~searchresult-class_bkl-profkat" />
+						<navitem id="docdetail" i18n="Nav.DocumentDetails" href="content/docdetails.jsp" hidden="true" />
+					</navitem>
+				</navitem>
+				<navitem id="historigin" i18n="Nav.Browse.Profkat.Historigin" href="content/browse-profkat-histfac.jsp">
+					<refitem id="~searchstart-class_histfac-profkat" />
+					<navitem id="result" i18n="Nav.Browseresults" href="content/searchresult.jsp" hidden="true">
+						<refitem id="~searchresult-class_histfac-profkat" />
+						<navitem id="docdetail" i18n="Nav.DocumentDetails" href="content/docdetails.jsp" hidden="true" />
+					</navitem>
+				</navitem>
+			</navitem>
+			
+			<navitem id="aktuelles" i18n="Nav.Aktuelles" href="content/aktuelles.jsp">
+				<refitem id="~aktuelles" />
+			</navitem>
+	</navigation>
+
+	<navigation id="top">
+		<navitem id="start" i18n="Nav.Start" href="content/index.jsp">
+			<refitem id="~index" />
+		</navitem>
+		<navitem id="sitemap" i18n="Nav.Sitemap" href="content/sitemap.jsp" />
+		<navitem id="impressum" i18n="Nav.Impressum" href="content/impressum.jsp">
+				<refitem id="~impressum" />
+		</navitem>
+		<navitem id="login" i18n="Nav.Login" href="content/login.jsp" hidden="true">
+			<refitem id="~login" />
+			<navitem id="showuser" i18n="Nav.UserDetails" href="content/docdetails.jsp?style=user">
+				<refitem id="~userdetail" />
+			</navitem>
+		</navitem>
+		<navitem id="logout" i18n="Nav.Logout" href="logout" hidden="true">
+			<refitem id="~logout" />
+		</navitem>
+		<navitem id="form-feedback" i18n="Nav.Feedback" href="content/feedback.jsp" hidden="true">
+			<refitem id="~feedback" />
+		</navitem>
+
+		<!-- hidden entries for editor include and previews -->
+		<navitem id="workflow-edit" i18n="Nav.WF.Edit" href="content/workflow-editor.jsp" hidden="true">
+			<refitem id="~workflow-edit" />
+		</navitem>
+		<navitem id="editor-include" i18n="Nav.WF.Edit" href="content/editor-include.jsp" hidden="true">
+			<refitem id="~editor-include" />
+		</navitem>
+
+		<navitem id="workflow-preview" i18n="Nav.WF.Preview" href="content/docdetails.jsp" hidden="true">
+			<refitem id="~workflow-preview" />
+		</navitem>
+	
+		<!-- hidden errors 
+		ToDo - Check which of them are deprecated-->
+		<navitem id="mycore-message" i18n="MyCoReMessage" href="mycore-message.jsp" hidden="true">
+			<refitem id="~mycore-message" />
+		</navitem>
+		<navitem id="editor-form-error" i18n="EditorFormError" href="editor/error-formular.jsp" hidden="true">
+			<refitem id="~editor-form-error" />
+		</navitem>
+		<navitem id="editor-error" i18n="EditorError" href="editor/editor-error.jsp" hidden="true">
+			<refitem id="~editor-error" />
+		</navitem>
+		<navitem id="error" i18n="Webpage.error.Error" hidden="true" href="mycore-error.jsp">
+			<refitem id="~mycore-error" />
+		</navitem>
+		<navitem id="error-editor" i18n="Webpage.error.Error" hidden="true" href="content/editor-validating-errors.jsp">
+			<refitem id="~editor-validating-errors" />
+		</navitem>
+		<navitem id="error-gnd-404" i18n="Webpage.error.Error" hidden="true" href="content/error-gnd-404.jsp">
+			<refitem id="~error-gnd-404" />
+		</navitem>
+	</navigation>
+
+	<navigation id="admin">
+		<navitem id="admin" i18n="Nav.AdminMenue" href="admin/main.jsp" permission="administrate-person">
+			<navitem id="professorum" i18n="Nav.Admin.Profkat"
+				href="admin/main.jsp?type=person" permission="administrate-person">
+				<navitem id="professorum" i18n="WF.professorum"
+					href="content/workflow/professorum/workflow.jsp" permission="administrate-person">
+					<refitem id="~workflow-professorum" />
+					<navitem id="professorumbegin" i18n="WF.professorum.begin" href="content/workflow/professorum/begin.jsp" hidden="true">
+						<refitem id="~workflow-professorum-begin" />
+					</navitem>
+					<navitem id="workflow-fileupload" i18n="Nav.WorfklowFileUpload" href="content/fileupload.jsp" hidden="true">
+						<refitem id="~workflow-fileupload" />
+					</navitem>
+					<navitem id="professorumsearch" i18n="Nav.Search" href="content/searchmask-editor.jsp?editor=editor/searchmasks/SearchMask_ProfessorumEdit.xml" hidden="true">
+						<refitem id="~searchstart-wfprofessorum" />
+						<navitem id="searchresult-wfprofessorum" i18n="Nav.Searchresults" href="content/searchresult.jsp" hidden="true">
+							<refitem id="~searchresult-wfprofessorum" />
+							<navitem id="docdetail" i18n="Nav.DocumentDetails" href="content/docdetails.jsp" hidden="true" />
+						</navitem>
+					</navitem>
+				</navitem>
+				<navitem id="process-professorum" i18n="Nav.Admin.Processes" href="admin/processes_list.jsp?workflowProcessType=professorum" permission="administrate-person">
+					<refitem id="~process-professorum" />
+				</navitem>
+			</navitem>
+			<navitem id="editwebcontent" i18n="Nav.Admin.EditWebcontent" href="admin/webcontent.jsp" permission="administrate-webcontent">
+				<refitem id="~editwebcontent" />
+			</navitem>
+		</navitem>
+	</navigation>
+</navigations>
