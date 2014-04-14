@@ -61,7 +61,7 @@
 
 
 	<stripes:layout-component name="contents">
-		<jsp:include page="/content/docdetails/docdetails_person.jsp">
+		<jsp:include page="docdetails/docdetails_person.jsp">
    			<jsp:param name="id" value="${mcrid}" />
    			<jsp:param name="fromWF" value="${from}" />
    		</jsp:include>

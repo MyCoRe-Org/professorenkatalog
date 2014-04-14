@@ -13,16 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.Transaction;
 import org.mycore.backend.hibernate.MCRHIBConnection;
-import org.mycore.datamodel.metadata.MCRMetaElement;
-import org.mycore.datamodel.metadata.MCRMetaLangText;
-import org.mycore.datamodel.metadata.MCRMetadataManager;
-import org.mycore.datamodel.metadata.MCRObject;
-import org.mycore.datamodel.metadata.MCRObjectID;
 import org.mycore.frontend.servlets.MCRServlet;
 import org.mycore.services.fieldquery.MCRQuery;
-import org.mycore.services.fieldquery.MCRQueryManager;
 import org.mycore.services.fieldquery.MCRQueryParser;
-import org.mycore.services.fieldquery.MCRResults;
 
 
 
@@ -95,7 +88,8 @@ public class ProfKatPNDBeaconServlet extends MCRServlet {
 		Transaction tx  = MCRHIBConnection.instance().getSession().beginTransaction();
 		try{
 			MCRQuery query = new MCRQuery((new MCRQueryParser()).parse("((pnd like *) and (not (pnd = \"xxx\")))"));
-			MCRResults result = MCRQueryManager.search(query);
+			//TODO SOLR Migration
+			/*MCRResults result = MCRQueryManager.search(query);
 			for(int i=0;i<result.getNumHits();i++){
 				String pnd="";
 				String mcrID = result.getHit(i).getID();
@@ -112,6 +106,7 @@ public class ProfKatPNDBeaconServlet extends MCRServlet {
 				}
 				w.write(pnd+"\n");
 			}
+			*/
 		}
 		finally{
 			tx.commit();
