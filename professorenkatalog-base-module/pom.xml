@@ -151,7 +151,7 @@
 						</manifest>
 						<manifestEntries>
 							<MCR-Application-Module>${project.name}</MCR-Application-Module>
-							<Priority>601</Priority>
+							<Priority>61</Priority>
 						</manifestEntries>
 					</archive>
 				</configuration>
