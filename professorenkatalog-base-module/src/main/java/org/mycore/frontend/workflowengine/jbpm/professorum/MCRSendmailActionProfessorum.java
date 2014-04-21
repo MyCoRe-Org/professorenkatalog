@@ -6,6 +6,7 @@ import java.util.PropertyResourceBundle;
 import org.jbpm.graph.exe.ExecutionContext;
 import org.mycore.frontend.workflowengine.jbpm.MCRAbstractAction;
 import org.mycore.frontend.workflowengine.jbpm.MCRJbpmSendmail;
+import org.mycore.services.i18n.MCRTranslation;
 
 public class MCRSendmailActionProfessorum  extends MCRAbstractAction {
 	
@@ -50,14 +51,14 @@ public class MCRSendmailActionProfessorum  extends MCRAbstractAction {
 				ret += "Sehr geehrte(r) Autor(in)";
 			String body = " Der Eintrag in den CPR wurde angenommen und publiziert.";
 			try {
-				body = PropertyResourceBundle.getBundle("messages", new Locale(lang)).getString("WF.Mails.SuccessMessage.publication");
+				body = MCRTranslation.translate("WF.Mails.SuccessMessage.publication", new Locale(lang));
 			} catch (java.util.MissingResourceException mRE) {
 				// ignore and take the standard text
 				;
 			}			
 			if(body != null)
 				ret += body + "\r\n\r\n";
-			String footer = PropertyResourceBundle.getBundle("messages", new Locale(lang)).getString("WF.Mails.Footer");
+			String footer = MCRTranslation.translate("WF.Mails.Footer", new Locale(lang));
 			if(footer != null)
 				ret += footer;
 		}
