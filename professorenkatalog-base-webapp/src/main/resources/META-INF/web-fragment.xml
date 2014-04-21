@@ -4,8 +4,17 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-fragment_3_0.xsd">  
   <!-- @metadata-complete -> do not process annotations -->
+   	<name>profkatbase</name>
     <display-name>Professorenkatalog Base</display-name>
     <description></description>
-  
+   
+   <ordering>
+        <after>
+            <name>jspdocportal</name>
+        </after>
+        <before>
+            <others/>
+        </before>
+    </ordering> 
   
 </web-fragment>

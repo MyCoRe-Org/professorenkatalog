@@ -8,9 +8,9 @@
 		<version>2014.04-SNAPSHOT</version>
 		<relativePath>../mycore/pom.xml</relativePath>
 	</parent>
-	<artifactId>professorenkatalog-base-webapp</artifactId>
+	<artifactId>professorenkatalog-base-module</artifactId>
 	<packaging>jar</packaging>
-	<name>Professorenkatalog Base Webapp</name>
+	<name>Professorenkatalog Base</name>
 	<description>generic code for professorenkatalog</description>
 	<repositories>
 		<repository>
@@ -39,7 +39,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.mycore</groupId>
-			<artifactId>jspdocportal-webapp</artifactId>
+			<artifactId>jspdocportal-module</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
@@ -88,6 +88,49 @@
 </dependency>
 	</dependencies>
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>config/**</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>config/**</include>
+				</includes>
+				<excludes>
+					<exclude>web.xml</exclude>
+					<exclude>*.template</exclude>
+					<exclude>datamodel-*.xml</exclude>
+				</excludes>
+				
+			</resource>
+			<resource>
+				<directory>src/main/resources/config/lang/webcontent</directory>
+				<targetPath>META-INF/webcontent</targetPath>
+			</resource>
+			<resource>
+				<directory>src/main/resources/config/hibernate</directory>
+				<excludes>
+					<exclude>*.template</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/resources/config/workflow</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources/config/tld</directory>
+				<targetPath>META-INF/tld</targetPath>
+				<includes>
+					<include>*.tld</include>
+				</includes>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -98,62 +141,19 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.1-beta-1</version>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
-					<archiveClasses>true</archiveClasses>
-					<webResources>
-						<resource>
-							<directory>src/main/config/lang/webcontent</directory>
-							<targetPath>content/webcontent</targetPath>
-						</resource>
-						<resource>
-							<directory>src/main/config</directory>
-							<targetPath>WEB-INF/classes</targetPath>
-							<includes>
-								<include>*.*</include>
-							</includes>
-							<excludes>
-								<exclude>web.xml</exclude>
-								<exclude>*.template</exclude>
-								<exclude>datamodel-*.xml</exclude>
-							</excludes>
-						</resource>
-						<resource>
-							<directory>src/main/config/lang</directory>
-							<targetPath>WEB-INF/classes</targetPath>
-							<includes>
-								<include>*.*</include>
-							</includes>
-							<excludes>
-								<exclude>*.template</exclude>
-							</excludes>
-						</resource>
-						<resource>
-							<directory>src/main/config/workflow</directory>
-							<targetPath>WEB-INF/classes/workflow</targetPath>
-							<includes>
-								<include>**/*.xml</include>
-							</includes>
-						</resource>
-						<resource>
-							<directory>src/main/config/datamodel</directory>
-							<targetPath>WEB-INF/classes</targetPath>
-							<includes>
-								<include>**/*.xsd</include>
-							</includes>
-						</resource>
-						<resource>
-							<directory>src/main/config</directory>
-							<targetPath>WEB-INF</targetPath>
-							<includes>
-								<include>web.xml</include>
-							</includes>
-						</resource>
-					</webResources>
-					<!-- disable overlays -->
-					<dependentWarExcludes>**/*</dependentWarExcludes>
-
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addExtensions />
+						</manifest>
+						<manifestEntries>
+							<MCR-Application-Module>${project.name}</MCR-Application-Module>
+							<Priority>601</Priority>
+						</manifestEntries>
+					</archive>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -172,7 +172,7 @@
 						<transformationSet>
 							<dir>src/main/config/datamodel</dir>
 							<outputDir>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDir>
-							<stylesheet>./../jspdocportal-webapp/src/main/resources/xsl/MCRMetadataSchema.xsl</stylesheet>
+							<stylesheet>./../jspdocportal-module/src/main/resources/xsl/MCRMetadataSchema.xsl</stylesheet>
 							<fileMappers>
 								<fileMapper
 									implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
