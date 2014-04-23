@@ -11,7 +11,7 @@ import org.jbpm.context.exe.ContextInstance;
 import org.jbpm.graph.exe.ExecutionContext;
 import org.jdom2.Element;
 import org.mycore.access.MCRAccessManager;
-import org.mycore.common.MCRConfiguration;
+import org.mycore.common.config.MCRConfiguration;
 import org.mycore.common.MCRException;
 import org.mycore.common.xml.MCRXMLHelper;
 import org.mycore.frontend.workflowengine.jbpm.MCRAbstractAction;
