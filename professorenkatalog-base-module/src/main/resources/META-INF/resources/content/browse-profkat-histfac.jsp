@@ -13,7 +13,6 @@
 	</stripes:layout-component>
 	
     <stripes:layout-component name="contents">
-		<fmt:setBundle basename="messages" />
 		<h2><fmt:message key="Webpage.browse.title.histfac" /></h2>
 		<mcr:includeWebContent file="browse_histfac_intro.html" />
 		<mcrb:classificationBrowser classification="cpr_class_histfak"

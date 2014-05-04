@@ -19,7 +19,6 @@
 		<meta name="robots" content="nofollow" />
 	</stripes:layout-component>
 	<stripes:layout-component name="contents">
-		<fmt:setBundle basename="messages" />
 		<c:choose>
 			<c:when test="${fn:contains(requestScope.path,'browse')}">
 				<fmt:message var="headline"

@@ -32,7 +32,6 @@
 
 <mcr:session method="get" type="language" var="lang" />
 <fmt:setLocale value="${lang}" scope="session" />
-<fmt:setBundle basename="messages" scope="session" />
 
 <html>
 <head><title>Print Details</title>

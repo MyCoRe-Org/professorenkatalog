@@ -4,8 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="stripes" uri="http://stripes.sourceforge.net/stripes.tld" %>
 
-<fmt:setBundle basename="messages" />
-
 <fmt:message var="pageTitle" key="Nav.Search.Profkat.Extended" /> 
 <stripes:layout-render name="../WEB-INF/layout/default.jsp" currentPath="left.search.extended"  pageTitle = "${pageTitle}" layout="2columns">
 	<stripes:layout-component name="contents">

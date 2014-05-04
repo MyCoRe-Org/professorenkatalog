@@ -4,7 +4,6 @@
 <%@ taglib prefix="mcr" uri="http://www.mycore.org/jspdocportal/base.tld" %>
 <%@ taglib prefix="stripes" uri="http://stripes.sourceforge.net/stripes.tld" %>
 
-<fmt:setBundle basename="messages"/>
 <fmt:message var="heading1" key="Webpage.Search.h1" /> 
 <stripes:layout-render name="../WEB-INF/layout/default.jsp" heading1="${heading1}" 
                        layout="2columns">
