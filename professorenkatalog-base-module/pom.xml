@@ -47,45 +47,47 @@
 			<artifactId>javax.servlet-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		
-		
-		
+
+
+
 		<dependency>
-  <groupId>org.mycore</groupId>
-  <artifactId>mycore-user2</artifactId>
-  <version>${project.version}</version>
-</dependency>
-<dependency>
-  <groupId>org.mycore</groupId>
-  <artifactId>mycore-base</artifactId>
-  <version>${project.version}</version>
-</dependency>
-<dependency>
-  <groupId>org.jdom</groupId>
-  <artifactId>jdom2</artifactId>
-</dependency>
-<dependency>
-  <groupId>log4j</groupId>
-  <artifactId>log4j</artifactId>
-</dependency>
-<dependency>
-  <groupId>org.hibernate</groupId>
-  <artifactId>hibernate-core</artifactId>
-</dependency>
-<dependency>
-  <groupId>com.google.inject</groupId>
-  <artifactId>guice</artifactId>
-  <version>1.0</version>
-</dependency>
-<dependency>
-  <groupId>commons-fileupload</groupId>
-  <artifactId>commons-fileupload</artifactId>
-</dependency>
-<dependency>
-  <groupId>jboss</groupId>
-  <artifactId>jbpm</artifactId>
-  <version>3.1.1</version>
-</dependency>
+			<groupId>org.mycore</groupId>
+			<artifactId>mycore-user2</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mycore</groupId>
+			<artifactId>mycore-base</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jdom</groupId>
+			<artifactId>jdom2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>jboss</groupId>
+			<artifactId>jbpm</artifactId>
+			<version>3.1.1</version>
+			<type>jar</type>
+			<optional>false</optional>
+		</dependency>
 	</dependencies>
 	<build>
 		<resources>
@@ -105,7 +107,7 @@
 					<exclude>*.template</exclude>
 					<exclude>datamodel-*.xml</exclude>
 				</excludes>
-				
+
 			</resource>
 			<resource>
 				<directory>src/main/resources/config/lang/webcontent</directory>
