@@ -119,19 +119,6 @@
 					<exclude>*.template</exclude>
 				</excludes>
 			</resource>
-			<resource>
-				<directory>src/main/resources/config/workflow</directory>
-				<includes>
-					<include>**/*.xml</include>
-				</includes>
-			</resource>
-			<resource>
-				<directory>src/main/resources/config/tld</directory>
-				<targetPath>META-INF/tld</targetPath>
-				<includes>
-					<include>*.tld</include>
-				</includes>
-			</resource>
 		</resources>
 		<plugins>
 			<plugin>
