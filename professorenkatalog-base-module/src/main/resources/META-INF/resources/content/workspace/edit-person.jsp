@@ -5,6 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/xml" prefix="x"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://www.mycore.org/jspdocportal/base.tld" prefix="mcr" %>
+<%@ taglib prefix="stripes" uri="http://stripes.sourceforge.net/stripes.tld" %>
 
 <%-- Subpage of workflow.jsp -> Do not use stripes layout here !!! --%>
 <mcr:session method="get" var="username" type="userID" />
@@ -15,6 +16,7 @@
    <h4><fmt:message key="WF.professorum.Professorum" /> (<fmt:message key="WF.common.Processnumber" /> ${currentTask.id}): </h4>
      <%request.setAttribute("currentVariables", MCRActivitiMgr.getWorfklowProcessEngine().getRuntimeService().getVariables(((Task)request.getAttribute("currentTask")).getExecutionId())); %>
      MCRObjectID: ${currentVariables.objectID}
+     <stripes:submit name="doEditObject-task_${currentTask.id}-${currentVariables.objectID}">Edit Object</stripes:submit>
       <%--><c:import url="/content/workflow/editorButtons.jsp" /> --%>
       <p>
 	        <img title="" alt="" src="${baseURL}images/greenArrow.gif">         

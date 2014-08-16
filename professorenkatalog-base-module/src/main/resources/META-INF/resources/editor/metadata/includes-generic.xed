@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xed:template xmlns:xed="http://www.mycore.de/xeditor">
+
+  <xed:template id="in.out">
+    <xed:source uri="{$sourceURI}" />
+    <!-- 
+    <xed:source uri="xslStyle:editor/mycoreobject-template-{$template}:mcrobject:{$source}" />
+    <xed:source uri="xslStyle:editor/mods-preprocessor:mcrobject:{$id}" />
+    <xed:source uri="xslStyle:editor/mycoreobject-duepublico2ubo:http://duepublico.uni-duisburg-essen.de/servlets/DocumentServlet?id={$doc}&amp;format=mycore&amp;XSL.Style=xml" />
+    -->
+    <xed:cancel url="{$cancelURL}" />
+    <!-- 
+    <xed:cancel url="receive/{$source}?XSL.Transformer=mcrmods2ubo" />
+    <xed:cancel url="ubo/index.xml" />
+    -->
+    <!-- <xed:post-processor xsl="editor/mods-postprocessor.xsl" /> -->
+  </xed:template>
+
+  <xed:template id="mycore.common">
+    <xed:bind xpath="@ID" initially="cpr_person_0" />
+    <xed:bind xpath="@label" initially="person" />
+    <xed:bind xpath="@xsi:noNamespaceSchemaLocation" initially="datamodel-person.xsd" />
+  </xed:template>
+
+  
+
+  <xed:template id="cancel.submit">
+  <!-- simulate placeholders for old browsers
+    <script src="{$WebApplicationBaseURL}external/jquery.placeholder.min.js"></script>
+    <script>
+      jQuery("input[placeholder]").placeholder();
+      jQuery("textarea[placeholder]").placeholder();
+    </script>
+    -->
+    <div class="form-group">
+      <div class="col-md-offset-3 col-md-6">
+        <button type="submit" class="btn btn-default" xed:target="debug">
+       		<xed:output i18n="Editor.Common.button.debug" />
+        </button>
+        <button type="submit" class="btn btn-default" xed:target="cancel">
+          <xed:output i18n="Editor.Common.button.cancel" />
+        </button>                                                                    
+        <button type="submit" class="btn btn-primary" xed:target="servlet" xed:href="/servlets/MCRStoreMetadataServlet">
+          <xed:output i18n="Editor.Common.button.save" />
+        </button>
+      </div>
+    </div>
+  </xed:template>
+  
+  <xed:template id="failed-validation-messages">
+    <xed:if test="$xed-validation-failed">
+      <div>
+        <h3>
+          <xed:output i18n="ubo.validation.failed" />
+        </h3>
+        <ul class="ubo-validation-messages">
+          <xed:display-validation-messages />
+        </ul>
+      </div>
+    </xed:if>
+  </xed:template>
+  
+ 
+</xed:template>

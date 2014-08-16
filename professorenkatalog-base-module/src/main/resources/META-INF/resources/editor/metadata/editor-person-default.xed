@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- method='post' to avoid charset problems !!! -->
+<xed:form xmlns:xed="http://www.mycore.de/xeditor" role="form" class="form-horizontal" accept-charset="UTF-8" method="post">
+    <xed:output i18n="WF.professorum.completedocumentandsendtolibrary" />
+    <xed:include uri="webapp:editor/metadata/includes-generic.xed" ref="in.out" />
+    <xed:bind xpath="/mycoreobject">
+      <xed:include uri="webapp:editor/metadata/includes-generic.xed" ref="mycore.common" />
+      <xed:bind xpath="metadata">
+		<xed:include uri="webapp:editor/metadata/includes-generic.xed" ref="failed-validation-messages" />
+		
+		 <xed:bind xpath="box.surname/surname">
+		 	<div>
+		 		<label for="surname" ><xed:output i18n="Editor.Common.surname" /></label>
+		 		<input id="surname" type="text" />
+		 	 </div>
+		 </xed:bind>
+		
+		
+	  	<xed:include uri="webapp:editor/metadata/includes-generic.xed" ref="cancel.submit" />
+	  </xed:bind>
+	 </xed:bind> 
+
+</xed:form>
