@@ -1,20 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- method='post' to avoid charset problems !!! -->
+
 <xed:form xmlns:xed="http://www.mycore.de/xeditor" role="form" class="form-horizontal" accept-charset="UTF-8" method="post">
-    <xed:output i18n="WF.professorum.completedocumentandsendtolibrary" />
+    <div class="row">
+    <div class="alert alert-info col-sm-12">
+    	<xed:output i18n="Editor.Common.headline" />
+   </div>
+   </div>
+   
     <xed:include uri="webapp:editor/metadata/includes-generic.xed" ref="in.out" />
     <xed:bind xpath="/mycoreobject">
       <xed:include uri="webapp:editor/metadata/includes-generic.xed" ref="mycore.common" />
       <xed:bind xpath="metadata">
 		<xed:include uri="webapp:editor/metadata/includes-generic.xed" ref="failed-validation-messages" />
 		
+		
+		<!--Status -->
+		<xed:bind xpath="box.state[@class='MCRMetaLangText']">
+			<div class="form-group">
+				<label class="col-sm-2 control-label" for="status"><xed:output i18n="OMD.CPR.statesM" /></label>
+				<div class="col-sm-10">
+					<xed:bind xpath="state">
+						<select id="status" class="form-control">
+							<option value="inprogress"><xed:output i18n="OMD.CPR.states.inprogress" /></option>
+							<option value="long"><xed:output i18n="OMD.CPR.states.long" /></option>
+							<option value="short"><xed:output i18n="OMD.CPR.states.short" /></option>
+							<option value="document"><xed:output i18n="OMD.CPR.states.document" /></option>
+							<option value="other"><xed:output i18n="OMD.CPR.states.other" /></option>
+						</select>
+					</xed:bind>		
+				</div>
+			</div>
+		</xed:bind>
+		 <!-- Status [ENDE] -->
+		
+		<!-- Personentyp -->
+		<xed:bind xpath="box.type[@class='MCRMetaClassification']">
+			<div class="form-group">
+				<label class="col-sm-2 control-label" for="persontype"><xed:output i18n="OMD.CPR.typeM"/></label>
+				<div class="col-sm-10">
+					<div class="row">
+					<xed:repeat xpath="type[@classid='cpr_class_persontypes']">
+						<div class="col-sm-10">
+								<xed:bind xpath="@categid">
+									<select id="persontype" class="form-control">
+										<option value=""><xed:output i18n="Editor.Common.choose" /></option>
+										<xed:include uri="xslStyle:items2options:classification:editor:-1:children:cpr_class_persontypes" />
+									</select>				
+								</xed:bind>
+						</div>
+						 <div class="col-sm-2">
+                                <div class="btn-group pull-right">
+                                  <xed:controls />                               
+                                </div>
+                            </div>
+                      
+					</xed:repeat>
+					</div>
+				</div>
+			</div>
+		</xed:bind>
+		<!-- Personentyp [ENDE]-->
+		
 		 <xed:bind xpath="box.surname/surname">
-		 	<div>
-		 		<label for="surname" ><xed:output i18n="Editor.Common.surname" /></label>
-		 		<input id="surname" type="text" />
+		 	<div class="form-group">
+		 		<label class="col-sm-2 control-label" for="surname" ><xed:output i18n="Editor.Common.surname" /></label>
+		 		<div class="col-sm-10">
+		 			<input id="surname" type="text" class="form-control"   />
+		 		</div>
 		 	 </div>
 		 </xed:bind>
-		
+	
 		
 	  	<xed:include uri="webapp:editor/metadata/includes-generic.xed" ref="cancel.submit" />
 	  </xed:bind>
