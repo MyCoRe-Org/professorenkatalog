@@ -392,7 +392,7 @@
 				<xed:repeat xpath="institute">
 					<div class="form-group">
 						<div class="col-sm-10">
-							<xed:bind xpath="@categid">
+							<xed:bind xpath=".">
 								<input id="institute" type="text" class="form-control"   />
 							</xed:bind>
 						</div>
@@ -717,7 +717,7 @@
 									<xed:output i18n="OMD.CPR.hint.type" />
 								</label>
 								<xed:bind xpath="@type">
-									<div class="col-sm-10">
+									<div class="col-sm-2">
 										<select id="family_type" class="form-control input-sm">
 											<option value=""><xed:output i18n="Editor.Common.Empty" /></option>
 											<option value="father"><xed:output i18n="OMD.CPR.family.father" /></option>
@@ -726,13 +726,11 @@
 										</select>
 									</div>
 								</xed:bind>
-							</div>
-							<div class="row" style="margin-bottom:6px"> 	
 								<label class="col-sm-2 control-label input-sm" for="family_name">
 									<xed:output i18n="OMD.CPR.hint.name" />
 								</label>
 								<xed:bind xpath="name">
-									<div class="col-sm-10">
+									<div class="col-sm-6">
 										<input id="family_name" type="text" class="form-control input-sm"   />
 									</div>
 								</xed:bind>
@@ -742,17 +740,15 @@
 									<xed:output i18n="OMD.CPR.hint.profession" />
 								</label>
 								<xed:bind xpath="profession">
-									<div class="col-sm-10">
+									<div class="col-sm-4">
 										<input id="family_profession" type="text" class="form-control input-sm"   />
 									</div>
 								</xed:bind>
-							</div>
-							<div class="row" style="margin-bottom:6px">	
 								<label class="col-sm-2 control-label input-sm" for="family_name_id">
 									<xed:output i18n="OMD.CPR.hint.id" />
 								</label>
 								<xed:bind xpath="name/@id">
-									<div class="col-sm-10">
+									<div class="col-sm-4">
 										<input id="family_name_id" type="text" class="form-control input-sm" />
 									</div>
 								</xed:bind>
@@ -1173,10 +1169,253 @@
 			</div>
 		</div>
 	</xed:bind>
-	<!-- Ehrungen [ENDE] -->		
-		</xed:bind>
+	<!-- Ehrungen [ENDE] -->
+	<!--  Weitere Infos [START] -->
 	
-		
+	<xed:bind xpath="box.otherinfo[@class='MCRMetaLangText']">
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="otherinfo">
+				<xed:output i18n="OMD.CPR.otherinfos" />
+			</label>
+			<div class="col-sm-10">
+				<xed:repeat xpath="otherinfo">
+					<div class="form-group">
+						<div class="col-sm-10">
+							<xed:bind xpath=".">
+								<input id="otherinfo" type="text" class="form-control"   />
+							</xed:bind>
+						</div>
+						<div class="col-sm-2">
+							<div class="btn-group btn-group-sm pull-right">
+								<xed:controls />
+							</div>
+						</div>
+					</div>
+				</xed:repeat>
+			</div>
+		</div>
+	</xed:bind>
+	<!--  Weitere Infos [ENDE] -->
+	
+	<!--  Hauptwerke [START] -->
+	<xed:bind xpath="box.mainpublication[@class='MCRMetaLangText']">
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="mainpublication">
+				<xed:output i18n="OMD.CPR.mainpublications" />
+			</label>
+			<div class="col-sm-10">
+				<xed:repeat xpath="mainpublication">
+					<div class="form-group">
+						<div class="col-sm-10">
+							<xed:bind xpath=".">
+								<input id="mainpublication" type="text" class="form-control"   />
+							</xed:bind>
+						</div>
+						<div class="col-sm-2">
+							<div class="btn-group btn-group-sm pull-right">
+								<xed:controls />
+							</div>
+						</div>
+					</div>
+				</xed:repeat>
+			</div>
+		</div>
+	</xed:bind>
+	<!--  Hauptwerke [ENDE] -->
+	
+	<!-- Nachweis von Publikationen [START] -->
+	<xed:bind xpath="box.publicationslink[@class='MCRMetaLink']">
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="otherfunction">
+				<xed:output i18n="OMD.CPR.bibliographicrefs" />
+			</label>
+			<div class="col-sm-10">
+				<xed:repeat xpath="publicationslink">
+					<div class="form-group">
+						<div class="col-sm-10">
+							<div class="row" style="margin-bottom:6px"> 
+								<label class="col-sm-2 control-label input-sm" for="publink_href">
+									<xed:output i18n="OMD.CPR.hint.linkurl" />
+								</label>
+								<xed:bind xpath="@xlink:href">
+									<div class="col-sm-10">
+										<input id="publink_href" type="text" class="form-control input-sm"   />
+									</div>
+								</xed:bind>
+							</div>
+							<div class="row" style="margin-bottom:6px"> 	
+								<label class="col-sm-2 control-label input-sm" for="publink_title">
+									<xed:output i18n="OMD.CPR.hint.linktitle" />
+								</label>
+								<xed:bind xpath="@xlink:title">
+									<div class="col-sm-10">
+										<input id="publink_title" type="text" class="form-control input-sm"   />
+									</div>
+								</xed:bind>
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<div class="btn-group btn-group-sm pull-right">
+								<xed:controls />
+							</div>
+						</div>
+					</div>
+				</xed:repeat>
+			</div>
+		</div>
+	</xed:bind>
+	<!-- Nachweis von Publikationen [ENDE] -->
+
+	<!-- Quellen [START] -->
+	<xed:bind xpath="box.source[@class='MCRMetaLink']">
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="sources">
+				<xed:output i18n="OMD.CPR.sources" />
+			</label>
+			<div class="col-sm-10">
+				<xed:repeat xpath="source">
+					<div class="form-group">
+						<div class="col-sm-10">
+							<div class="row" style="margin-bottom:6px"> 
+								<label class="col-sm-2 control-label input-sm" for="sources_href">
+									<xed:output i18n="OMD.CPR.hint.linkurl" />
+								</label>
+								<xed:bind xpath="@xlink:href">
+									<div class="col-sm-10">
+										<input id="sources_href" type="text" class="form-control input-sm"   />
+									</div>
+								</xed:bind>
+							</div>
+							<div class="row" style="margin-bottom:6px"> 	
+								<label class="col-sm-2 control-label input-sm" for="sources_title">
+									<xed:output i18n="OMD.CPR.hint.linktitle" />
+								</label>
+								<xed:bind xpath="@xlink:title">
+									<div class="col-sm-10">
+										<input id="sources_title" type="text" class="form-control input-sm"   />
+									</div>
+								</xed:bind>
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<div class="btn-group btn-group-sm pull-right">
+								<xed:controls />
+							</div>
+						</div>
+					</div>
+				</xed:repeat>
+			</div>
+		</div>
+	</xed:bind>
+	<!-- Quellen [ENDE] -->	
+	
+	<!-- weitere Literatur [START] -->
+	<xed:bind xpath="box.reference[@class='MCRMetaLink']">
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="reference">
+				<xed:output i18n="OMD.CPR.references" />
+			</label>
+			<div class="col-sm-10">
+				<xed:repeat xpath="reference">
+					<div class="form-group">
+						<div class="col-sm-10">
+							<div class="row" style="margin-bottom:6px"> 
+								<label class="col-sm-2 control-label input-sm" for="reference_href">
+									<xed:output i18n="OMD.CPR.hint.linkurl" />
+								</label>
+								<xed:bind xpath="@xlink:href">
+									<div class="col-sm-10">
+										<input id="reference_href" type="text" class="form-control input-sm"   />
+									</div>
+								</xed:bind>
+							</div>
+							<div class="row" style="margin-bottom:6px"> 	
+								<label class="col-sm-2 control-label input-sm" for="reference_title">
+									<xed:output i18n="OMD.CPR.hint.linktitle" />
+								</label>
+								<xed:bind xpath="@xlink:title">
+									<div class="col-sm-10">
+										<textarea id="reference_title" rows="2" class="form-control input-sm"   />
+									</div>
+								</xed:bind>
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<div class="btn-group btn-group-sm pull-right">
+								<xed:controls />
+							</div>
+						</div>
+					</div>
+				</xed:repeat>
+			</div>
+		</div>
+	</xed:bind>
+	<!-- weitere Literatur [ENDE] -->
+	<!--  Komplexe Velinkung [START] -->
+	<xed:bind xpath="box.complexref[@class='MCRMetaLangText']">
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="complexref">
+				<xed:output i18n="OMD.CPR.complexrefs" />
+			</label>
+			<div class="col-sm-10">
+				<xed:repeat xpath="complexref">
+					<div class="form-group">
+						<div class="col-sm-10">
+							<xed:bind xpath=".">
+								<textarea id="complexref" rows="3" class="form-control" />
+							</xed:bind>
+						</div>
+						<div class="col-sm-2">
+							<div class="btn-group btn-group-sm pull-right">
+								<xed:controls />
+							</div>
+						</div>
+					</div>
+				</xed:repeat>
+			</div>
+		</div>
+	</xed:bind>
+	<!--  Komplexe Verlinkung [ENDE] -->
+	
+		<!-- Identifiers [START] -->
+	<xed:bind xpath="box.identifier[@class='MCRMetaLangText']">
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="identifier">
+				<xed:output i18n="OMD.CPR.identifiersM" />
+			</label>
+			<div class="col-sm-10">
+				<xed:repeat xpath="identifier">
+					<div class="form-group">
+						<div class="col-sm-10">
+							<div class="row" style="margin-bottom:6px"> 
+								<xed:bind xpath="@type">
+									<div class="col-sm-4">
+										<select id="identifier_type" class="form-control input-sm">
+											<option value="pnd"><xed:output i18n="OMD.CPR.identifiers.pnd" /></option>
+										</select>
+									</div>
+								</xed:bind>
+								<xed:bind xpath=".">
+									<div class="col-sm-8">
+										<input id="identifier_text" type="text" class="form-control input-sm"   />
+									</div>
+								</xed:bind>
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<div class="btn-group btn-group-sm pull-right">
+								<xed:controls />
+							</div>
+						</div>
+					</div>
+				</xed:repeat>
+			</div>
+		</div>
+	</xed:bind>
+	<!-- Identifiers [ENDE] -->
+	
+	
+		</xed:bind>
 	  	<xed:include uri="webapp:editor/metadata/includes-generic.xed" ref="cancel.submit" />
 	  </xed:bind>
 </xed:form>
