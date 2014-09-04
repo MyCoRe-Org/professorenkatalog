@@ -52,6 +52,7 @@
 			</label>
 			<div class="col-sm-10">
 				<xed:repeat xpath="type[@classid='cpr_class_persontypes']">
+					<xed:cleanup-rule xpath="//box.type/type" relevant-if="@categid" />
 					<div class="form-group">
 						<div class="col-sm-10">
 							<xed:bind xpath="@categid">
@@ -154,6 +155,7 @@
 			</label>
 			<div class="col-sm-10">
 				<xed:repeat xpath="professorship[@xml:lang='de']">
+					<xed:cleanup-rule xpath="//box.professorship/professorship" relevant-if="event" />
 					<div class="form-group">
 						<div class="col-sm-10">
 							<div class="row" style="margin-bottom:6px"> 
@@ -273,7 +275,7 @@
 	<!-- Zeitraum insgesamt [START] -->
 	<xed:bind xpath="box.period[@class='MCRMetaHistoryDate']">
 		<div class="form-group">
-			<label class="col-sm-2 control-label" for="faculty">
+			<label class="col-sm-2 control-label" for="period">
 				<xed:output i18n="OMD.CPR.periodsM" />
 			</label>
 			<div class="col-sm-10">
@@ -332,6 +334,7 @@
 			</label>
 			<div class="col-sm-10">
 				<xed:repeat xpath="faculty">
+					<xed:cleanup-rule xpath="//box.faculty/faculty" relevant-if="text" />
 					<div class="form-group">
 						<div class="col-sm-10">
 							<div class="row" style="margin-bottom:6px"> 
@@ -442,6 +445,7 @@
 			</label>
 			<div class="col-sm-10">
 				<xed:repeat xpath="subjectclass[@classid='cpr_class_cprbkl']">
+				<xed:cleanup-rule xpath="//box.subjectclass/subjectclass" relevant-if="@categid" />
 					<div class="form-group">
 						<div class="col-sm-10">
 							<xed:bind xpath="@categid">
@@ -537,6 +541,7 @@
 			</label>
 			<div class="col-sm-10">
 				<xed:bind xpath="birth">
+				<xed:cleanup-rule xpath="//box.birth/birth" relevant-if="string-length(text) &gt; 0" />
 					<div class="form-group">
 						<div class="col-sm-10">
 							<div class="row" style="margin-bottom:6px"> 
@@ -600,6 +605,7 @@
 			</label>
 			<div class="col-sm-10">
 				<xed:bind xpath="death">
+				<xed:cleanup-rule xpath="//box.death/death" relevant-if="string-length(text) &gt; 0" />
 					<div class="form-group">
 						<div class="col-sm-10">
 							<div class="row" style="margin-bottom:6px"> 
@@ -1385,6 +1391,7 @@
 			</label>
 			<div class="col-sm-10">
 				<xed:repeat xpath="identifier">
+				<xed:cleanup-rule xpath="//box.identifier/identifier" relevant-if="string-length(text()) &gt; 0" />
 					<div class="form-group">
 						<div class="col-sm-10">
 							<div class="row" style="margin-bottom:6px"> 
