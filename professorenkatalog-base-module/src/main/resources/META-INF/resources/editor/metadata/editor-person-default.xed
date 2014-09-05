@@ -7,6 +7,9 @@
     	<xed:output i18n="Editor.Common.headline" />
    </div>
    </div>
+   <xed:cleanup-rule xpath="//*" relevant-if="true()" />
+   <xed:cleanup-rule xpath="/mycoreobject/metadata//*" relevant-if="@* or * or (string-length(text()) &gt; 0)" />
+   <xed:cleanup-rule xpath="/mycoreobject/metadata/*" relevant-if="@*[name()!='class'] or * or (string-length(text()) &gt; 0)" />
    
     <xed:include uri="webapp:editor/metadata/includes-generic.xed" ref="in.out" />
     <xed:bind xpath="/mycoreobject">
@@ -98,7 +101,7 @@
 					</xed:repeat> 
 		 		</xed:bind>
 		 		<xed:bind xpath="box.firstname[@class='MCRMetaLangText']">
-		 			<xed:repeat xpath="fistname">
+		 			<xed:repeat xpath="firstname">
 		 				<div class="row" style="margin-bottom:6px">
 		 					<label class="col-sm-2 control-label input-sm" for="firstname">
 								<xed:output i18n="OMD.CPR.hint.nameFirstnameM" />
