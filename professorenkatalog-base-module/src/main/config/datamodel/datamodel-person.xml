@@ -72,11 +72,11 @@
 		<!--  ====================================================================================== -->
 		<!-- 40 - Geburtstag / Geburtsort -->
 		<element name="box.birth" minOccurs='0' maxOccurs='1'>
-			<mcrmetahistoryevent name="birth" class="MCRMetaHistoryEvent" minOccurs="1" maxOccurs="1" />
+			<mcrmetahistoryevent name="birth" class="MCRMetaHistoryEvent" minOccurs="0" maxOccurs="1" />
 		</element>
 		<!-- 41 - Sterbetag / Sterbeort -->
 		<element name="box.death" minOccurs='0' maxOccurs='1'>
-			<mcrmetahistoryevent name="death" class="MCRMetaHistoryEvent" minOccurs="1" maxOccurs="1" />
+			<mcrmetahistoryevent name="death" class="MCRMetaHistoryEvent" minOccurs="0" maxOccurs="1" />
 		</element>
 		<!-- 42 - Geschlecht  -->
 		<element name="box.sex" minOccurs='0' maxOccurs='1'>
@@ -146,7 +146,7 @@
 		<!--  ====================================================================================== -->
 		<!-- 70  other Identifiers (z.B. PND, GBV, ...) -->
 		<element name="box.identifier" minOccurs='0' maxOccurs='1'>
-			<mcrmetalangtext name="identifier" class="MCRMetaLangText" minOccurs='1' maxOccurs='5' length="128" />
+			<mcrmetalangtext name="identifier" class="MCRMetaLangText" minOccurs='0' maxOccurs='5' length="128" />
 		</element>
 		<!-- 71 - (Status des Eintrages (in Bearbeitung, Lang-/Kurz-/Dokumenteintrag ...) -->
 		<element name="box.state" minOccurs='0' maxOccurs='1'>
