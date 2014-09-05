@@ -12,23 +12,21 @@
  <c:choose>
  	<c:when test="${currentTask.name eq 'Objekt bearbeiten'}">
  		<div class="panel-body">
-						
-					
+ 	   <%request.setAttribute("currentVariables", MCRActivitiMgr.getWorfklowProcessEngine().getRuntimeService().getVariables(((Task)request.getAttribute("currentTask")).getExecutionId())); %>
+  		<c:if test="${not empty currentVariables.validationMessage}">
+			<div class="alert alert-danger" role="alert">${currentVariables.validationMessage}</div>
+		</c:if> 			
+      MCRObjectID: ${currentVariables.mcrObjectID}<br /><br />
 
-		
- 	
- 	
-     <%request.setAttribute("currentVariables", MCRActivitiMgr.getWorfklowProcessEngine().getRuntimeService().getVariables(((Task)request.getAttribute("currentTask")).getExecutionId())); %>
-     MCRObjectID: ${currentVariables.objectID}<br /><br />
-     <button name="doEditObject-task_${currentTask.id}-${currentVariables.objectID}" value="" class="btn btn-default" type="submit">
+     <button name="doEditObject-task_${currentTask.id}-${currentVariables.mcrObjectID}" value="" class="btn btn-default" type="submit">
      	<span class="glyphicon glyphicon-pencil"></span> Objekt bearbeiten</button>
      	 <%--><c:import url="/content/workflow/editorButtons.jsp" /> --%>
 					</div>
 	  						<div class="panel-footer">
 	  						
-							  <button name="doFollow-task_${currentTask.id}-edit_object.do_save" value="" class="btn btn-default" type="submit"><span class="glyphicon glyphicon-floppy-disk"></span> Speichern</button>
-							  <button name="doFollow-task_${currentTask.id}-edit_object.do_cancel" value="" class="btn btn-default" type="submit"><span class="glyphicon glyphicon-remove"></span> Bearbeitung abbrechen</button>
-  							  <button name="doFollow-task_${currentTask.id}-edit_object.do_delete" value="" class="btn btn-danger btn-sm pull-right" style="margin-top:0.2em" type="submit"><span class="glyphicon glyphicon-trash"></span> Objekt löschen</button>
+							  <button name="doGoto-task_${currentTask.id}-edit_object.do_save" value="" class="btn btn-default" type="submit"><span class="glyphicon glyphicon-floppy-disk"></span> Speichern</button>
+							  <button name="doGoto-task_${currentTask.id}-edit_object.do_cancel" value="" class="btn btn-default" type="submit"><span class="glyphicon glyphicon-remove"></span> Bearbeitung abbrechen</button>
+  							  <button name="doGoto-task_${currentTask.id}-edit_object.do_drop" value="" class="btn btn-danger btn-sm pull-right" style="margin-top:0.2em" type="submit"><span class="glyphicon glyphicon-trash"></span> Objekt löschen</button>
   							   <%--
 							  <stripes:submit class="btn btn-default" name="doFollow-edit_object.do_save"><span class="glyphicon glyphicon-floppy-disk"></span> Speichern</stripes:submit>
 							  <stripes:submit class="btn btn-default" name="doFollow-edit_object.do_cancel "><span class="glyphicon glyphicon-remove"></span> Bearbeitung abbrechen</stripes:submit>
