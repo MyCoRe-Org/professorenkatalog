@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib uri="http://www.mycore.org/jspdocportal/base.tld" prefix="mcr"%>
-<!-- $data as xml element representing mcrlink object --->
+<%-- $data as xml element representing mcrlink object --%>
 <c:set var="WebApplicationBaseURL"
 	value="${applicationScope.WebApplicationBaseURL}" />
 

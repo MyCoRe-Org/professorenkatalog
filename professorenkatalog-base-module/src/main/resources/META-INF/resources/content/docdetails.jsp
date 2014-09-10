@@ -78,7 +78,7 @@
     		<div class="docdetails-toolbar">
     			<c:if test="${empty param.print and !fn:contains(style,'user')}">
      				<div class="docdetails-toolbar-item">
-		   				<a href="${WebApplicationBaseURL}content/print_details.jsp?id=${param.id}&print=true&fromWF=${param.fromWF}" target="_blank">
+		   				<a href="${WebApplicationBaseURL}content/print_details.jsp?id=${param.id}&amp;print=true&amp;fromWF=${param.fromWF}" target="_blank">
 	       					<img height="24px" src="${WebApplicationBaseURL}images/workflow_print.gif" border="0" title="<fmt:message key="WF.common.printdetails" />"  class="imagebutton" height="30"/>
 	       				</a>
 	       			</div>
@@ -94,7 +94,7 @@
      			</c:if>
      			<c:if test="${(not from)}" > 
      				<mcr:checkAccess var="modifyAllowed" permission="writedb" key="${mcrid}" />
-     				<mcr:isObjectNotLocked var="bhasAccess" objectid="${mcrid}" />
+     				<mcr:isObjectNotLocked var="bhasAccess" mcrObjectID="${mcrid}" />
       				<c:if test="${modifyAllowed}">
         				<c:choose>
          					<c:when test="${bhasAccess}"> 
