@@ -21,7 +21,7 @@
     </field>
     <field name="profkat_idx_profkat_facet">
     	<!--  There is no replace in XSLT 1.0 !!! -->
-    	<xsl:variable name="headline_normiert" select="translate($headline, 'äöüß', 'aoes')" />
+    	<xsl:variable name="headline_normiert" select="translate($headline, 'äöüß', 'aous')" />
     	<xsl:choose>
     		<xsl:when test="starts-with($headline_normiert, 'Sch')"><xsl:value-of select="substring($headline_normiert,1,4)" /></xsl:when>
     		<xsl:when test="starts-with($headline_normiert, 'St')"><xsl:value-of select="substring($headline_normiert,1,3)" /></xsl:when>
