@@ -15,12 +15,26 @@
 
   <xsl:template match="metadata">
     <xsl:apply-imports/>
-    <field name="idx_person">
-    	<xsl:value-of select="concat(box.surname/surname,', ', box.firstname/firstname[1])" />
+    <xsl:variable name="headline" select="concat(box.surname/surname,', ', box.firstname/firstname[1])" />
+    <field name="profkat_idx_profkat">
+    	<xsl:value-of select="$headline" />
     </field>
-    <field name="idx_person_data">
-    	{period:<xsl:value-of select="box.period/period/text" />,last_professorship:<xsl:value-of select="box.professorship/professorship[last()]/event" />,last_faculty:<xsl:value-of select="box.faculty/faculty[last()]/classification/@categid" />,state:<xsl:value-of select="box.state/state" />}
+    <field name="profkat_idx_profkat_facet">
+    	<!--  There is no replace in XSLT 1.0 !!! -->
+    	<xsl:variable name="headline_normiert" select="translate($headline, 'äöüß', 'aoes')" />
+    	<xsl:choose>
+    		<xsl:when test="starts-with($headline_normiert, 'Sch')"><xsl:value-of select="substring($headline_normiert,1,4)" /></xsl:when>
+    		<xsl:when test="starts-with($headline_normiert, 'St')"><xsl:value-of select="substring($headline_normiert,1,3)" /></xsl:when>
+    		<xsl:otherwise><xsl:value-of select="substring($headline_normiert,1,2)" /></xsl:otherwise>
+    	</xsl:choose>
     </field>
+    <field name="profkat_period"><xsl:value-of select="box.period/period/text" /></field>
+    <field name="profkat_last_professorship"><xsl:value-of select="box.professorship/professorship[last()]/event" /></field>
+    <xsl:for-each select="box.faculty/faculty[last()]/classification">
+    <field name="profkat_last_faculty_class"><xsl:value-of select="@classid" />:<xsl:value-of select="@categid" /></field>
+    </xsl:for-each>
+    <field name="profkat_state_msg">OMD.CPR.states.<xsl:value-of select="box.state/state" /></field>
+    
 
   </xsl:template>
 </xsl:stylesheet>
