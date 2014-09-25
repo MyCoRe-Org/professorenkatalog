@@ -17,10 +17,10 @@
 			title="Person" />
 		</td>
 		<td class="searchresult-table-header">
-			<c:set var="title"><x:out select="$xml/mycoreobject/metadata/box.surname/surname[1]" />,&nbsp;
+			<c:set var="title"><x:out select="$xml/mycoreobject/metadata/box.surname/surname[1]" />,&#160;
 			<x:out select="$xml/mycoreobject/metadata/box.firstname/firstname[1]" />
 			<x:if select="string-length($xml/metadata/box.nameaffix/nameaffix)>0">
-				&nbsp;(<x:out select="$xml/mycoreobject/metadata/box.nameaffix/nameaffix" />)
+				&#160;(<x:out select="$xml/mycoreobject/metadata/box.nameaffix/nameaffix" />)
 			</x:if></c:set>
 			<a href="${param.url}"><b>${title}</b></a>
 		</td>
@@ -53,7 +53,7 @@
 	<x:if select="string-length($data1)>0">
 		<tr>
 			<td class="searchresult-table-value">
-				<fmt:message key="OMD.CPR.professorships" />:&nbsp; <x:out select="$data1" />
+				<fmt:message key="OMD.CPR.professorships" />:&#160; <x:out select="$data1" />
 			</td>
 		</tr>
 	</x:if>
@@ -61,7 +61,7 @@
 	<x:if select="string-length($data2)>0">
 		<tr>
 			<td class="searchresult-table-value">
-				<fmt:message key="OMD.common.last" />:&nbsp; <x:out select="$data2" />
+				<fmt:message key="OMD.common.last" />:&#160; <x:out select="$data2" />
 			</td>
 		</tr>
 	</x:if>
@@ -72,7 +72,7 @@
 			    <c:set var="classid"><x:out select="$data3/@classid" /></c:set>
 			    <c:set var="categid"><x:out select="$data3/@categid" /></c:set>
 			    
-				<fmt:message key="OMD.common.last" />:&nbsp; 
+				<fmt:message key="OMD.common.last" />:&#160; 
 				<mcr:displayClassificationCategory lang="de" classid="${classid}" categid="${categid}"/>
 			</td>
 		</tr>
@@ -82,7 +82,7 @@
 		<tr>
 			<td class="searchresult-table-value">
 			    <c:set var="x"><x:out select="$data4" /></c:set>
-				<fmt:message key="OMD.CPR.states" />:&nbsp; <fmt:message key="OMD.CPR.states.${x}" />
+				<fmt:message key="OMD.CPR.states" />:&#160; <fmt:message key="OMD.CPR.states.${x}" />
 			</td>
 		</tr>
 	</x:if>

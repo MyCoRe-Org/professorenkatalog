@@ -31,30 +31,30 @@
 								<x:out select="$xml/value/col[@name='surname']" />, 
 								<x:out select="$xml/value/col[@name='firstname']" />
 								<x:if select="$xml/value/col[@name='//box.nameaffix/nameaffix' and ./text() != '']">
-									&nbsp;(<x:out select="$xml/value/col[@name='//box.nameaffix/nameaffix']/text()" />)
+									&#160;(<x:out select="$xml/value/col[@name='//box.nameaffix/nameaffix']/text()" />)
 								</x:if>					
 							</a>
 					  </div>
 					  
 						<x:if select="$xml/value/col[@name='//box.period/period/text' and ./text() != '' and ./text() != 'unbekannt']">
-							<fmt:message key="OMD.CPR.professorships" />:&nbsp;
+							<fmt:message key="OMD.CPR.professorships" />:&#160;
 							<c:set var="profdates"><x:out select="$xml/value/col[@name='//box.period/period/text']" /></c:set>
 							<c:out value="${fn:replace(profdates, ' - ', ', ')}" /> 
 							<br />
 						</x:if>
 						<x:if select="$xml/value/col[@name='//box.professorship/professorship[last()]/event' and ./text() != '']">
-							<fmt:message key="OMD.common.last" />:&nbsp;
+							<fmt:message key="OMD.common.last" />:&#160;
 							<x:out select="$xml/value/col[@name='//box.professorship/professorship[last()]/event']" />
 							<br />
 						</x:if>
 						<x:if select="$xml/value/col[@name='//box.faculty/faculty[last()]/classification/@categid' and ./text() != '']">
-							<fmt:message key="OMD.common.last" />:&nbsp;
+							<fmt:message key="OMD.common.last" />:&#160;
 							<c:set var="categid"><x:out select="$xml/value/col[@name='//box.faculty/faculty[last()]/classification/@categid']" /></c:set>
 							<mcr:displayClassificationCategory lang="de" classid="profkat_class_institutions" categid="${categid}" />
 							<br />
 						</x:if>
 						<x:if select="$xml/value/col[@name='state' and ./text() != '']">
-							<fmt:message key="OMD.CPR.states" />:&nbsp;
+							<fmt:message key="OMD.CPR.states" />&#160;
 							<c:set var="state"><x:out select="$xml/value/col[@name='state']" /></c:set>
 							<fmt:message key="OMD.CPR.states.${state}"/>
 							<br />

@@ -74,17 +74,17 @@ return false;
 <table cellpadding="10px">
 <tr>
 <td style="width: 20%;">
-<span style="font-weight: bold; color: #FF0000;">&nbsp;&nbsp;</span>
+<span style="font-weight: bold; color: #FF0000;">&#160;&#160;</span>
 <span class="mcfontSmall">Empfänger:</span>
 </td>
 <td style="width: 80%;">
 <div>unigeschichte@uni-rostock.de</div>
 </td>
 </tr>
-<tr><td>&nbsp;</td></tr>
+<tr><td>&#160;</td></tr>
 <tr>
 <td style="width: 20%;">
-<span style="font-weight: bold; color: #FF0000;">&nbsp;&nbsp;</span>
+<span style="font-weight: bold; color: #FF0000;">&#160;&#160;</span>
 <span class="mcfontSmall">Ihre Angaben zu:</span>
 </td>
 <td style="width: 80%;">
@@ -101,7 +101,7 @@ return false;
 
 <tr>
 <td style="width: 20%;">
-<span style="font-weight: bold; color: #FF0000;">&nbsp;&nbsp;</span>
+<span style="font-weight: bold; color: #FF0000;">&#160;&#160;</span>
 <span class="mcfontSmall">Ihr Name:</span>
 </td>
 <td style="width: 80%;">
@@ -113,7 +113,7 @@ return false;
 </tr>
 <tr>
 <td style="width: 20%;" valign="top">
-<span style="font-weight: bold; color: #FF0000;">&nbsp;&nbsp;</span>
+<span style="font-weight: bold; color: #FF0000;">&#160;&#160;</span>
 <span class="mcfontSmall">Ihre E-Mail:</span>
 </td>
 <td style="width: 80%;">

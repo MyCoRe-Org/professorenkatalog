@@ -37,7 +37,7 @@
 	<tr><td>  
 	      <img title="" alt="" src="${baseURL}images/greenArrow.gif">
 	      <a target="_self" href="${baseURL}nav?path=~workflow-professorum-begin"><fmt:message key="WF.professorum.StartWorkflow" /></a>
-	      <br/>&nbsp;<br>	      
+	      <br/>&#160;<br>	      
 	    </td>  
 	<tr>
 		<td><img title="" alt="" src="${baseURL}images/greenArrow.gif"><fmt:message key="WF.professorum.SearchToEdit" /> </td>

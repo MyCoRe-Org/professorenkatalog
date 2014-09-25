@@ -60,7 +60,7 @@
     	     <input name="processID" value="${requestScope.task.processID}" type="hidden" />
     	     <input name="jbpmVariableNames" value="initiatorEmail" type="hidden" />
         	 <input type="text" size="80" name="initiatorEmail">
-        	 <br>&nbsp;<br>
+        	 <br>&#160;<br>
          	 <input name=submit" type="submit" value="<fmt:message key="WF.common.Send" />"/>      
 	     </form>	
    </c:when>   
@@ -83,7 +83,7 @@
          <input name="processID" value="${requestScope.task.processID}" type="hidden" />
          <input name="jbpmVariableNames" value="tmpTaskMessage" type="hidden" /> 
 	     <textarea name="tmpTaskMessage" cols="50" rows="4">Sie müssen noch...</textarea>  
-	     <br>&nbsp;<br>
+	     <br>&#160;<br>
     	<input name=submit" type="submit" value="<fmt:message key="WF.common.SendTask" />"/>      
       </form>
    </c:when>

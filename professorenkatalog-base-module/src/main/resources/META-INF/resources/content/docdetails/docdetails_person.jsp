@@ -58,7 +58,7 @@
         <mcrdd:item select="/mycoreobject/metadata/box.nameaffix/nameaffix" var="affix" />
         <mcrdd:item select="/mycoreobject/metadata/box.academictitle/academictitle" var="akadtitle" />
 		<mcrdd:item select="/mycoreobject/metadata/box.state/state" labelkeyPrefix="OMD.CPR.states." var="status"/>
-		<c:set var="doctitle">${last},&nbsp;${first}</c:set>
+		<c:set var="doctitle">${last},&#160;${first}</c:set>
 		
         <div>
 			<h2>
@@ -87,11 +87,11 @@
 					<c:if test="${fn:startsWith(currentID, 'cpr_')}">
 						<mcr:receiveMcrObjAsJdom mcrid="${currentID}" varDom="linked" fromWF="false"/>
    						<c:if test="${not empty linked}">
-   							<c:set var="doctitle"><fmt:message key="OMD.CPR.hint.predec"/>:&nbsp;</c:set>
-   							<c:set var="doctitle">${doctitle}<x:out select="$linked/metadata/box.surname/surname" />,&nbsp;</c:set>
+   							<c:set var="doctitle"><fmt:message key="OMD.CPR.hint.predec"/>:&#160;</c:set>
+   							<c:set var="doctitle">${doctitle}<x:out select="$linked/metadata/box.surname/surname" />,&#160;</c:set>
     						<c:set var="doctitle">${doctitle}<x:out select="$linked/metadata/box.firstname/firstname" /></c:set>
 							<c:set var="affix"><x:out select="$linked/metadata/box.nameaffix/nameaffix" /></c:set>
-							<c:if test="${fn:length(affix)>2}"><c:set var="doctitle">${doctitle}&nbsp;(<c:out value="${affix}" />)</c:set></c:if>
+							<c:if test="${fn:length(affix)>2}"><c:set var="doctitle">${doctitle}&#160;(<c:out value="${affix}" />)</c:set></c:if>
 							<a href="${WebApplicationBaseURL}metadata/${currentID}">
 								<img src="${WebApplicationBaseURL}images/prof_predec.gif" border="0" title="${doctitle}" />  
 					   		</a>
@@ -106,11 +106,11 @@
 	  				<c:if test="${fn:startsWith(currentID, 'cpr_')}">
 	  					<mcr:receiveMcrObjAsJdom mcrid="${currentID}" varDom="linked" fromWF="false"/>
    						<c:if test="${not empty linked}">
-   							<c:set var="doctitle"><fmt:message key="OMD.CPR.hint.succ"/>:&nbsp;</c:set>
-   							<c:set var="doctitle">${doctitle}<x:out select="$linked/metadata/box.surname/surname" />,&nbsp;</c:set>
+   							<c:set var="doctitle"><fmt:message key="OMD.CPR.hint.succ"/>:&#160;</c:set>
+   							<c:set var="doctitle">${doctitle}<x:out select="$linked/metadata/box.surname/surname" />,&#160;</c:set>
          					<c:set var="doctitle">${doctitle}<x:out select="$linked/metadata/box.firstname/firstname" /></c:set>
 							<c:set var="affix"><x:out select="$linked/metadata/box.nameaffix/nameaffix" /></c:set>
-							<c:if test="${fn:length(affix)>2}"><c:set var="doctitle">${doctitle}&nbsp;(<c:out value="${affix}" />)</c:set></c:if>
+							<c:if test="${fn:length(affix)>2}"><c:set var="doctitle">${doctitle}&#160;(<c:out value="${affix}" />)</c:set></c:if>
 							<a href="${WebApplicationBaseURL}metadata/${currentID}">
 								<img src="${WebApplicationBaseURL}images/prof_succ.gif" border="0" title="${doctitle}" />  
 				   			</a>
@@ -201,7 +201,7 @@
 		 		<c:set var="profession"><x:out select="$current/profession" escapeXml="false"/></c:set>
 		 		<c:set var="url"><x:out select="$current/name/@id" escapeXml="false"/></c:set>
 				<c:if test="${fn:length(name) gt 1}">
-					<c:out value="${name}" escapeXml="false" /><c:if test="${fn:length(profession) gt 1}">,&nbsp;</c:if>
+					<c:out value="${name}" escapeXml="false" /><c:if test="${fn:length(profession) gt 1}">,&#160;</c:if>
 				</c:if>
 				<c:if test="${fn:length(profession) gt 1}">
 					<c:out value="${profession}" escapeXml="false" />
@@ -234,7 +234,7 @@
  			<mcrdd:outputitem select="." var="xml">
    				<x:out select="$xml/text" />
    				<x:if select="$xml/dissertation">
-   					<br /><i><fmt:message key="OMD.CPR.dissertationTitle"/>:&nbsp;</i><x:out select="$xml/dissertation" escapeXml="false"/>
+   					<br /><i><fmt:message key="OMD.CPR.dissertationTitle"/>:&#160;</i><x:out select="$xml/dissertation" escapeXml="false"/>
    				</x:if>
    			</mcrdd:outputitem> 
     	</mcrdd:row>
@@ -353,9 +353,9 @@
    		<mcrdd:item select="./service/servdates/servdate[@type='createdate']" datePattern ="dd.MM.yyyy" var="createdate"/>
    		<mcrdd:item select="./service/servdates/servdate[@type='modifydate']" datePattern ="dd.MM.yyyy" var="modifydate" />
    		<mcrdd:outputitem select="." var="current">
-   			<c:out value="${createdate}"/>,&nbsp;
-   			<x:out select="$current/service/servflags/servflag[@type='creator']"/>&nbsp;/&nbsp;
-   			<c:out value="${modifydate}"/>,&nbsp;
+   			<c:out value="${createdate}"/>,&#160;
+   			<x:out select="$current/service/servflags/servflag[@type='creator']"/>&#160;/&#160;
+   			<c:out value="${modifydate}"/>,&#160;
    			<x:out select="$current/service/servflags/servflag[@type='editor']"/>
    		</mcrdd:outputitem>  
    	</mcrdd:row>
@@ -386,7 +386,7 @@
    		<mcrdd:outputitem select="./@ID" var="current">
    			<%-- OMD.CPR.quoting.text=Eintrag von &quot;{0}&quot; im Rostocker Professorenkatalog, URL: <a href="{1}">{1}</a> (abgerufen am {2})  --%> 
    			<fmt:message key="OMD.CPR.quoting.text">
-      			<fmt:param>${first}&nbsp;${last}</fmt:param>
+      			<fmt:param>${first}&#160;${last}</fmt:param>
       			<fmt:param>http://cpr.uni-rostock.de/metadata/<x:out select="string($current)"/></fmt:param>
       			<fmt:param><fmt:formatDate value="${now}" pattern="dd.MM.yyyy" /></fmt:param>
       		</fmt:message>      			
