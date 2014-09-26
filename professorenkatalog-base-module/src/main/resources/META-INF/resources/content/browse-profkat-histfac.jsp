@@ -9,16 +9,19 @@
 <fmt:message var="pageTitle" key="Nav.Historigin" />
 <stripes:layout-render name="../WEB-INF/layout/default.jsp" pageTitle="${pageTitle}" layout="2columns">
 	<stripes:layout-component name="html_header">
-		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_classification-browser.css">
+		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_classification-browser.css" />
 	</stripes:layout-component>
 	
     <stripes:layout-component name="contents">
-		<h2><fmt:message key="Webpage.browse.title.histfac" /></h2>
+		<div class="ur-box ur-text">
+			<h1><fmt:message key="Webpage.browse.title.histfac" /></h1>
 		<mcr:includeWebContent file="browse_histfac_intro.html" />
 		<mcrb:classificationBrowser classification="cpr_class_histfak"
-			count="true" hideemptyleaves="true" searchfield="class_fac"
+			count="true" hideemptyleaves="true"
 			searchmask="~searchstart-classcpr_histfac"
-			searchrestriction="objectType=person" showdescription="true"
+			searchrestriction="objectType:person" showdescription="true"
 			showid="true" />
+			<div style="min-height:100px">&#160;</div>
+		</div>
 	</stripes:layout-component>
 </stripes:layout-render>

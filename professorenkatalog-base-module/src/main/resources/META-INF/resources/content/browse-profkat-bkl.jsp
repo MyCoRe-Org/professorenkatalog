@@ -9,16 +9,19 @@
 <fmt:message var="pageTitle" key="Nav.ClassificationsSearch" />
 <stripes:layout-render name="../WEB-INF/layout/default.jsp" pageTitle="${pageTitle}" layout="2columns">
 	<stripes:layout-component name="html_header">
-		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_classification-browser.css">
+		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_classification-browser.css" />
 	</stripes:layout-component>
     <stripes:layout-component name="contents">
-		<h2><fmt:message key="Webpage.browse.title.subject" /></h2>
-		<mcr:includeWebContent file="browse_bkl_intro.html" />
+    	<div class="ur-box ur-text">
+			<h1><fmt:message key="Webpage.browse.title.subject" /></h1>
+			<mcr:includeWebContent file="browse_bkl_intro.html" />
 
-		<mcrb:classificationBrowser classification="cpr_class_cprbkl"
-			count="true" hideemptyleaves="true" expand="false"
-			searchfield="class_bkl" searchmask="~searchstart-classcpr_bkl"
-			searchrestriction="objectType=person" showdescription="true"
-			showuri="false" showid="false" />
+			<mcrb:classificationBrowser classification="cpr_class_cprbkl"
+				count="true" hideemptyleaves="true" expand="false"
+				searchmask="~searchstart-classcpr_bkl"
+				searchrestriction="objectType:person" showdescription="true"
+				showuri="false" showid="false" />
+				<div style="min-height:100px">&#160;</div>
+		</div>
 	</stripes:layout-component>
 </stripes:layout-render>
