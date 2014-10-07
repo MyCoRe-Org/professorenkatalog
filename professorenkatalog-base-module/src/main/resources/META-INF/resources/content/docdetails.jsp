@@ -85,7 +85,7 @@
      			</c:if>
     
      			<c:if test="${empty param.print}">
-     				<c:set var="url">${WebApplicationBaseURL}metadata/${param.id}</c:set>
+     				<c:set var="url">${WebApplicationBaseURL}resolve/id/${param.id}</c:set>
      					<div class="docdetails-toolbar-item">
 		     			<a target="_blank" href="${WebApplicationBaseURL}nav?path=~feedback&amp;prof_url=<%=java.net.URLEncoder.encode(pageContext.getAttribute("url").toString(), "ISO-8859-1")%>&amp;prof_name=<%=java.net.URLEncoder.encode(pageContext.getAttribute("prof_name").toString().replace("\n",""), "ISO-8859-1")%>">
 	    	    			<img height="24px" src="${WebApplicationBaseURL}images/feedback.gif" border="0" title="<fmt:message key="WF.professorum.feedback" />"  class="imagebutton"/>

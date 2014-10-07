@@ -12,10 +12,6 @@
 <c:set var="type" value="${fn:substringBefore(fn:substringAfter(param.id, '_'),'_')}" />
 <table class="searchresult-table">
 	<tr>
-		<td class="searchresult-table-icon" rowspan="10">
-			<img src="${applicationScope.WebApplicationBaseURL}images/greenArrow.gif"
-			title="Person" />
-		</td>
 		<td class="searchresult-table-header">
 			<c:set var="title"><x:out select="$xml/mycoreobject/metadata/box.surname/surname[1]" />,&#160;
 			<x:out select="$xml/mycoreobject/metadata/box.firstname/firstname[1]" />
@@ -37,12 +33,12 @@
 							<input name="page" value="nav?path=~workflowEditor-${doctype}"  type="hidden">                                       
 							<input name="mcrid" value="${param.id}" type="hidden"/>
 							<input title="<fmt:message key="WF.common.object.EditObject" />" border="0" 
-							       src="${applicationScope.WebApplicationBaseURL}images/workflow1.gif" type="image"  class="imagebutton" height="30" />
+							       src="${applicationScope.WebApplicationBaseURL}images/workflow1.gif" type="image"  class="imagebutton" height="30px" />
 						</form> 
 					</c:when>
 					<c:otherwise>
 						<img title="<fmt:message key="WF.common.object.EditObjectIsLocked" />" border="0" 
-						     src="${applicationScope.WebApplicationBaseURL}images/workflow_locked.gif" height="30" />
+						     src="${applicationScope.WebApplicationBaseURL}images/workflow_locked.gif" height="30px" />
 					</c:otherwise>
 				</c:choose>         
 			</c:if>   

@@ -11,38 +11,53 @@
 /* Docdetails                                                          */
 /* =================================================================== */
 	
-table.docdetails-table {
-	border-spacing: 0px;
+div.docdetails-table {
+	border-spacing: 0px;	
 }
 
-th.docdetails-header {
-	background-color: #CCDBEB;
+div.docdetails-header {
+	
 	padding: 10px 5px 10px 5px;
 	vertical-align: bottom;
 	border-bottom: 5px solid white;
+	min-height:16px;
 }
 
-td.docdetails-infolabel,
-td.docdetails-label {
-	text-align:right;
-	background-color: #E6EDF5;
+div.docdetails-header h2{
+	text-align: left;
+}
+
+div.docdetails-block{
+	clear: both;
+	padding-top:6px;
+}
+
+div.docdetails-infolabel,
+div.docdetails-label {
+	display:inline;
+	float:left;
 	padding: 4px;
-	vertical-align: top;
 	border-bottom: 4px solid white;
 	white-space:nowrap;
+	/*font-weight: bold;*/
+	font-size: 85%;
+	font-weight:bold;
+	color:#565656;
+	font-family: Verdana,Arial,sans-serif
 }
 
-td.docdetails-values {
+div.docdetails-values {
+	clear:both;
 	border-bottom: 4px solid white;
-	padding-left: 10px;
-	width:90%;
+	padding-left: 12px;
+	font-size:100%;
 }
 
-td.docdetails-preview {
+div.docdetails-preview {
 	vertical-align: top;
 }
 
-td.docdetails-preview img {
+div.docdetails-preview img {
 	padding: 10px;
 	border: none;
 }
@@ -54,6 +69,7 @@ td.docdetails-value {
      padding-left: 20px;
      vertical-align: top;
      line-height: 125%;
+     padding-bottom:4px;
 }
 
 td.docdetails-value-bold {
@@ -61,15 +77,18 @@ td.docdetails-value-bold {
      vertical-align: top;
      font-weight:bold;
      line-height: 125%;
-     
+     padding-bottom:4px;    
 }
 
 
-td.docdetails-separator hr {
+div.docdetails-separator {
+	margin-top:12px;
+}
+div.docdetails-separator hr {
 	border: none;
-	background-color: #0A50A1;
-	color: #0A50A1;
-	height: 1px;
+	background-color: #565656;
+	color: #565656;
+	height: 1px;	
 }
 
 dl.docdetails-derivate-list {
@@ -87,14 +106,6 @@ dl.docdetails-derivate-list img {
 	padding-right: 10px;
 }
 
-.docdetails-value a {
-	color: #9A5B11;
-	text-decoration: none;
-}
-
-.docdetails-value a:hover {
-	text-decoration: underline;
-}
 
 .docdetails-value a img {
 	border: none;
@@ -113,44 +124,42 @@ dl.docdetails-derivate-list img {
 
 div.docdetails-toolbar{
     padding-bottom:8px;
-    
+    clear: both;        
 }
 div.docdetails-toolbar-item{
     float:left;
     padding-left:6px;
-	padding-right:6px;
-    padding-bottom:4px;
-    
+	padding-right:6px;    
 }
 
+div.docdetails-image{
+	padding-top:12px;
+	padding-bottom:12px;
+	padding-left:6px;
+	padding-right:6px;
+}
+
+div.docdetails-image img{
+	display: block;
+	margin-top: 12px;
+	margin-left: auto;
+	margin-right: auto;
+}
 
 /* =================================================================== */
 /* Info Hover (button + messagebox on mouse over)                      */
 /* =================================================================== */
 div.docdetails-infohover a {
-	font: bold 10px courier, sans-serif;
-	text-decoration: none;
-	display: boxed;
- 	padding: 1px;
-        border: 1px solid black;
-}
-
-div.docdetails-infohover a:link,
-div.docdetails-infohover a:visited,
-div.docdetails-infohover a:focus,
-div.docdetails-infohover a:active{
-	text-decoration: none !important;
-	border: 1px solid #004A99;
-	color: #004A99 !important;
-	background: #E6E6E6;
+	float: left;
+    font-size: 0.8em;
+    text-decoration: none;
+    color: #565656!important;
+    padding:6px;
 }
 
 div.docdetails-infohover a:hover {
 	text-decoration: none !important;
-	border: 1px solid #666666;
-	color: #666666 !important;
-	background: #ffff88;
-	
+	background: #ffffcc;
 }
 
 div.docdetails-infohover a span {
@@ -159,20 +168,22 @@ div.docdetails-infohover a span {
 
 div.docdetails-infohover a:hover span {
 	position: fixed;
-	bottom: 20px;
+	bottom: 40px;
 	left: 40px;
 	z-index: 30;
 	text-align: justify;
 	display: block;
-	color: #0A50A1;
+	color: #565656;
 	width: 300px;
-	background: #ffff88;
-	font: normal 10px Verdana, Arial, Helvetica, sans-serif;
-	border-width: 2px;
-	border-color: #004A99;
-	border-style: outset;
-	padding: 10px;
+	background: #ffffcc;
+	border:1px solid #565656;
+	font-family:"Comic Sans MS", sans-serif;
+
+	padding: 12px;
 	white-space: normal !important;
+	box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+	transform:rotate3d(2.0,2.0,2.0, 3deg); 
+		
 }
 
 /* Star Hack - this entry is only interpreted by IE 
@@ -183,49 +194,50 @@ div.docdetails-infohover a:hover span {
 
 
 /* =================================================================== */
-/* Tabbbar (to split docdetails into sections                          */
+/* Searchresult Navigation on Docdetails page
 /* =================================================================== */
-ul.tabbar {
-	list-style:none;
-	margin:0px 0 0px 0;
-	padding-top:2px;
-	padding-bottom:24px;
-	padding-left:0px;
-	clear:both;
+div.searchdetail-navigation{
+   width: 140px;
+   padding:6px;
+   border-radius: 15px;
+   margin-bottom: 12px;
+   margin-top:12px;
+   border-radius:5px;
+   border: 1px solid #565656;
+   background-color:#E6E6E6; 
+}
+div.searchdetail-navigation div.headline{
+  text-align:center;
+  font-weight:bold;
 }
 
-ul.tabbar li.tabbar-item {
-	 float:left;
-	 margin-left:12px;
-	 text-align:center
+div.searchdetail-navigation div.hitcount{
+  text-align:center;
+  padding-top:3px;
+  padding-bottom:3px;
 }
 
-ul.tabbar li.tabbar-item a{
-	display:block !important;
+div.searchdetail-navigation div.button{
+  text-align:center;
+  border: 1px solid #565656;
+  border-radius: 3px;
+  background-color:#969696;
+  padding-left:3px;
+  padding-right:3px;
+}
+div.searchdetail-navigation div.centerbutton{
+  margin-left:36px;
+  margin-right:36px;
 }
 
-ul.tabbar li.tabbar-item a:hover{
-	background-color:#9A5B11 !important;
-	color:white !important;
-}
-
-ul.tabbar li.tabbar-item a.selected{
-	background-color:#CCDBEB !important;
-	padding:4px 8px 6px 8px;
-	color:black !important;
-	font-size:125% !important;
-}
-
-ul.tabbar li.tabbar-item a.normal{
-	background-color:#FFFF !important;
-	padding:4px 8px 6px 8px;
-	font-size:125% !important;
+div.searchdetail-navigation div.button a{
+  color:white;
 }
 
 /* =================================================================== */
-/* special cases
+/* Special Formats                                                     */
 /* =================================================================== */
 
 ul.pndbeaconlist{
-	margin-top: 8px;
+ 	margin-top:12px;
 }
