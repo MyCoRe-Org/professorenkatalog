@@ -55,8 +55,8 @@
 		<meta name="author" content="Forschungsstelle Universitätsgeschichte der Universität Rostock" />
 				<title>${prof_name} @ <fmt:message key="Webpage.title" /></title>
 		<link rel="canonical" href="${WebApplicationBaseURL}/metadata/${mcrid}" />
-		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_docdetails.css">
-		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_biogr_article.css">		
+		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_docdetails.css" />
+		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_biogr_article.css" />		
  	</stripes:layout-component>
 
 
@@ -79,7 +79,7 @@
     			<c:if test="${empty param.print and !fn:contains(style,'user')}">
      				<div class="docdetails-toolbar-item">
 		   				<a href="${WebApplicationBaseURL}content/print_details.jsp?id=${param.id}&amp;print=true&amp;fromWF=${param.fromWF}" target="_blank">
-	       					<img height="24px" src="${WebApplicationBaseURL}images/workflow_print.gif" border="0" title="<fmt:message key="WF.common.printdetails" />"  class="imagebutton" height="30"/>
+	       					<img height="24px" src="${WebApplicationBaseURL}images/workflow_print.gif" border="0" title="<fmt:message key="WF.common.printdetails" />"  class="imagebutton"/>
 	       				</a>
 	       			</div>
      			</c:if>
@@ -87,8 +87,8 @@
      			<c:if test="${empty param.print}">
      				<c:set var="url">${WebApplicationBaseURL}metadata/${param.id}</c:set>
      					<div class="docdetails-toolbar-item">
-		     			<a target="_blank" href="${WebApplicationBaseURL}nav?path=~feedback&prof_url=<%=java.net.URLEncoder.encode(pageContext.getAttribute("url").toString(), "ISO-8859-1")%>&prof_name=<%=java.net.URLEncoder.encode(pageContext.getAttribute("prof_name").toString().replace("\n",""), "ISO-8859-1")%>">
-	    	    			<img height="24px" src="${WebApplicationBaseURL}images/feedback.gif" border="0" title="<fmt:message key="WF.professorum.feedback" />"  class="imagebutton" height="30"/>
+		     			<a target="_blank" href="${WebApplicationBaseURL}nav?path=~feedback&amp;prof_url=<%=java.net.URLEncoder.encode(pageContext.getAttribute("url").toString(), "ISO-8859-1")%>&amp;prof_name=<%=java.net.URLEncoder.encode(pageContext.getAttribute("prof_name").toString().replace("\n",""), "ISO-8859-1")%>">
+	    	    			<img height="24px" src="${WebApplicationBaseURL}images/feedback.gif" border="0" title="<fmt:message key="WF.professorum.feedback" />"  class="imagebutton"/>
 	        			</a>
 	         		</div>
      			</c:if>
@@ -109,7 +109,7 @@
          					</c:when>
          					<c:otherwise>
            						<div class="docdetails-toolbar-item">  
-           							<img height="24px" title="<fmt:message key="WF.common.object.EditObjectIsLocked" />" border="0" src="${WebApplicationBaseURL}images/workflow_locked.gif" height="30" />
+           							<img height="24px" title="<fmt:message key="WF.common.object.EditObjectIsLocked" />" border="0" src="${WebApplicationBaseURL}images/workflow_locked.gif" />
            						</div>
          					</c:otherwise>
         				</c:choose>
@@ -117,7 +117,7 @@
         				<!--  RTF Export -->
         				<div class="docdetails-toolbar-item"> 
         					<a href="${WebApplicationBaseURL}servlets/CPR2RTFServlet?id=${param.id}" target="_blank">
-          						<img height="24px" src="${WebApplicationBaseURL}images/workflow_rtf_export.gif" border="0" title="<fmt:message key="WF.common.rtfexport" />"  class="imagebutton" height="30"/>
+          						<img height="24px" src="${WebApplicationBaseURL}images/workflow_rtf_export.gif" border="0" title="<fmt:message key="WF.common.rtfexport" />"  class="imagebutton" />
            					</a>        
          				</div>
       				</c:if>      
