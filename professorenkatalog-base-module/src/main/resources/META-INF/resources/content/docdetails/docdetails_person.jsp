@@ -16,32 +16,32 @@
 	<mcrdd:setnamespace prefix="xlink" uri="http://www.w3.org/1999/xlink" />
 	<mcr:receiveMcrObjAsJdom mcrid="${param.id}" varDom="mcrobj" fromWF="${param.fromWF}"/>
 	<c:if test="${not(param.print eq 'true')}">
-		<div  class="tabbar">
+		<div  class="tabbar ur-embedded">
 			<c:set var="msgKeyStatus">OMD.CPR.states.<x:out select="$mcrobj//mycoreobject/metadata/box.state/state"/></c:set>
-			<div style="float:right; font-style: italic; color: #666666; padding-right:8px; padding-top:4px;"><fmt:message key="${msgKeyStatus}" /></div>
-			<ul id="tabs_on_page">
+			<div class="pull-right" style="font-style: italic; color: #666666; padding-right:16px; padding-top:11px;"><fmt:message key="${msgKeyStatus}" /></div>
+			<ul id="tabs_on_page" class="nav nav-tabs">
 				<c:set var="tabtokens" value="data|article|documents" />
 				<c:forTokens items="${tabtokens}" delims="|" var="current" varStatus="status">
       				<c:set var="tabstyle" value="" /> 
 					<c:if test="${current eq tab}">
-						<c:set var="tabstyle" value="selected" />
+						<c:set var="tabstyle" value="active" />
 					</c:if>
 					<c:if test="${current eq 'data'}">
-						<li class="tabbar-item">
-							<a class="${tabstyle}" href="${WebApplicationBaseURL}nav?path=${param.path}&amp;id=${param.id}&amp;offset=${param.offset}&amp;resultid=${param.resultid}&amp;fromWF=${param.fromWF}&amp;tab=${current}"><fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
+						<li class="${tabstyle}">
+							<a href="${WebApplicationBaseURL}nav?path=${param.path}&amp;id=${param.id}&amp;offset=${param.offset}&amp;resultid=${param.resultid}&amp;fromWF=${param.fromWF}&amp;tab=${current}"><fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
 						</li>
 					</c:if>
 					<c:if test="${current eq 'article'}">
 						<x:if select="$mcrobj/mycoreobject/structure/derobjects/derobject[@xlink:label='display_biography']">
-							<li class="tabbar-item">
-								<a class="${tabstyle}" href="${WebApplicationBaseURL}nav?path=${param.path}&amp;id=${param.id}&amp;offset=${param.offset}&amp;resultid=${param.resultid}&amp;fromWF=${param.fromWF}&amp;tab=${current}"><fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
+							<li class="${tabstyle}">
+								<a href="${WebApplicationBaseURL}nav?path=${param.path}&amp;id=${param.id}&amp;offset=${param.offset}&amp;resultid=${param.resultid}&amp;fromWF=${param.fromWF}&amp;tab=${current}"><fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
 							</li>
 						</x:if>		
 					</c:if>
 					<c:if test="${current eq 'documents'}">
 						<x:if select="$mcrobj/mycoreobject/structure/derobjects/derobject">
-							<li class="tabbar-item">
-								<a class="${tabstyle}" href="${WebApplicationBaseURL}nav?path=${param.path}&amp;id=${param.id}&amp;offset=${param.offset}&amp;resultid=${param.resultid}&amp;fromWF=${param.fromWF}&amp;tab=${current}"><fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
+							<li class="${tabstyle}">
+								<a href="${WebApplicationBaseURL}nav?path=${param.path}&amp;id=${param.id}&amp;offset=${param.offset}&amp;resultid=${param.resultid}&amp;fromWF=${param.fromWF}&amp;tab=${current}"><fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
 							</li>
 						</x:if>		
 					</c:if>

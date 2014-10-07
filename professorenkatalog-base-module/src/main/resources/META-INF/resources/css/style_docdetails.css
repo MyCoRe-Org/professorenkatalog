@@ -199,68 +199,6 @@ div.docdetails-infohover a:hover span {
 
 
 /* =================================================================== */
-/* Tabbbar (to split docdetails into sections                          */
-/* =================================================================== */
-div.tabbar{
-	margin-bottom:8px;
-	padding-left:24px;
-	border-bottom:2px solid #565656;
-	
-}
-div.tabbar ul {
-	display:block;
-	list-style:none;
-	margin:0px 0 0px 0;		
-}
-
-div.tabbar ul li.tabbar-item {
-	 margin-left:2px;
-	 margin-right:2px;
-	 display:inline;
-}
-
-div.tabbar ul li.tabbar-item:before {
-	 content:none;
-}
-
-div.tabbar ul li.tabbar-item a{
-	background-color:#969696;
-	color:white !important;
-	padding:4px 4px 2px 4px;
-	border-top: 1px solid black;
-	border-left: 1px solid black;
-	border-right: 1px solid black;
-	border-top-left-radius: 8px 8px;
-	border-top-right-radius: 8px 8px;
-}
-
-div.tabbar ul li.tabbar-item a:hover{
-	background-color:#96A671 !important;
-	color:white !important;
-}
-
-div.tabbar ul li.tabbar-item a.selected{
-	background-color:#FFD795 !important;
-	padding:8px 12px 2px 12px !important;
-	margin-left:4px;
-	margin-right: 4px;
-	color:black !important;
-	font-size:125% !important;	
-	border-top: 1px solid #004A99;
-	border-left: 1px solid #004A99;
-	border-right: 1px solid #004A99;
-	border-top-left-radius: 10px 10px;
-	border-top-right-radius: 10px 10px;
-}
-
-dvi.tabbar ul li.tabbar-item a.normal{
-	background-color:#FFFF !important;
-	padding:4px 8px 6px 8px;
-	font-size:125% !important;
-}
-
-
-/* =================================================================== */
 /* Searchresult Navigation on Docdetails page
 /* =================================================================== */
 div.searchdetail-navigation{

@@ -55,7 +55,7 @@
 		<meta name="author" content="Forschungsstelle Universitätsgeschichte der Universität Rostock" />
 				<title>${prof_name} @ <fmt:message key="Webpage.title" /></title>
 		<link rel="canonical" href="${WebApplicationBaseURL}/metadata/${mcrid}" />
-		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_docdetails.css" />
+		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_docdetails_headlines.css" />
 		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_biogr_article.css" />		
  	</stripes:layout-component>
 
@@ -68,7 +68,7 @@
  	</stripes:layout-component>
  	
 	 <stripes:layout-component name="right_side">
-		<div class="base_box infobox">
+		<div class="ur-box ur-box-bordered infobox" style="margin-bottom:32px">
 			<div class="docdetails-toolbar">
 				<div class="docdetails-toolbar-item">
 					<mcrb:searchDetailBrowser/>
@@ -127,7 +127,8 @@
 		</div>
 		
 		<x:if select="$linked/mycoreobject/structure/derobjects/derobject[@xlink:label='display_image']">
-			<div class="base_box infobox">
+			
+			<div class="ur-box ur-box-bordered infobox">
 				<mcrb:derivateImageBrowser mcrid="${mcrid}" imageWidth="150" labelContains="display_image" />
 			</div>
 		</x:if>
