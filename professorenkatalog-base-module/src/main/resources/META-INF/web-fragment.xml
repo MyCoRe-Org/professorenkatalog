@@ -9,11 +9,8 @@
     <description></description>
    
    <ordering>
-        <after>
-            <name>jspdocportal</name>
-        </after>
         <before>
-            <others/>
+            <name>jspdocportal</name>
         </before>
     </ordering> 
   
