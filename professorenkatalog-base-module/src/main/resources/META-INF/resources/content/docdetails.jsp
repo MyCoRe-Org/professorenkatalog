@@ -68,14 +68,9 @@
  	</stripes:layout-component>
  	
 	 <stripes:layout-component name="right_side">
-		<div class="ur-box ur-box-bordered infobox" style="margin-bottom:32px">
+		<div class="ur-box ur-box-bordered infobox" style="margin-bottom:32px; padding: 18px 6px 6px 6px;">
+			<mcrb:searchDetailBrowser mcrid="${mcrid}"/>
 			<div class="docdetails-toolbar">
-				<div class="docdetails-toolbar-item">
-					<mcrb:searchDetailBrowser mcrid="${mcrid}"/>
-				</div>
-				<div style="clear: both;"></div>
-			</div>
-    		<div class="docdetails-toolbar">
     			<c:if test="${empty param.print and !fn:contains(style,'user')}">
      				<div class="docdetails-toolbar-item">
 		   				<a href="${WebApplicationBaseURL}content/print_details.jsp?id=${param.id}&amp;print=true&amp;fromWF=${param.fromWF}" target="_blank">
@@ -129,7 +124,7 @@
 		<x:if select="$linked/mycoreobject/structure/derobjects/derobject[@xlink:label='display_image']">
 			
 			<div class="ur-box ur-box-bordered infobox">
-				<mcrb:derivateImageBrowser mcrid="${mcrid}" imageWidth="150" labelContains="display_image" />
+				<mcrb:derivateImageBrowser mcrid="${mcrid}" imageWidth="100%" labelContains="display_image" />
 			</div>
 		</x:if>
 	</stripes:layout-component>
