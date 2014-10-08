@@ -71,7 +71,7 @@
 		<div class="ur-box ur-box-bordered infobox" style="margin-bottom:32px">
 			<div class="docdetails-toolbar">
 				<div class="docdetails-toolbar-item">
-					<mcrb:searchDetailBrowser/>
+					<mcrb:searchDetailBrowser mcrid="${mcrid}"/>
 				</div>
 				<div style="clear: both;"></div>
 			</div>
