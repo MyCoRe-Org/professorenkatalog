@@ -183,46 +183,6 @@ div.docdetails-infohover a:hover span {
 
 
 /* =================================================================== */
-/* Tabbbar (to split docdetails into sections                          */
-/* =================================================================== */
-ul.tabbar {
-	list-style:none;
-	margin:0px 0 0px 0;
-	padding-top:2px;
-	padding-bottom:24px;
-	padding-left:0px;
-	clear:both;
-}
-
-ul.tabbar li.tabbar-item {
-	 float:left;
-	 margin-left:12px;
-	 text-align:center
-}
-
-ul.tabbar li.tabbar-item a{
-	display:block !important;
-}
-
-ul.tabbar li.tabbar-item a:hover{
-	background-color:#9A5B11 !important;
-	color:white !important;
-}
-
-ul.tabbar li.tabbar-item a.selected{
-	background-color:#CCDBEB !important;
-	padding:4px 8px 6px 8px;
-	color:black !important;
-	font-size:125% !important;
-}
-
-ul.tabbar li.tabbar-item a.normal{
-	background-color:#FFFF !important;
-	padding:4px 8px 6px 8px;
-	font-size:125% !important;
-}
-
-/* =================================================================== */
 /* special cases
 /* =================================================================== */
 
