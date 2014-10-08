@@ -10,18 +10,26 @@
 
 <mcr:receiveMcrObjAsJdom mcrid="${param.id}" varDom="xml"/>
 <c:set var="type" value="${fn:substringBefore(fn:substringAfter(param.id, '_'),'_')}" />
-<table class="table table-condensed ur-searchresult-table">
-	<tr>
-		<th colspan="2">
+<div class="panel panel-default ur-searchresult-item-panel">
+	<div class="panel-heading">
 			<c:set var="title"><x:out select="$xml/mycoreobject/metadata/box.surname/surname[1]" />,&#160;
 			<x:out select="$xml/mycoreobject/metadata/box.firstname/firstname[1]" />
 			<x:if select="string-length($xml/metadata/box.nameaffix/nameaffix)>0">
 				&#160;(<x:out select="$xml/mycoreobject/metadata/box.nameaffix/nameaffix" />)
 			</x:if></c:set>
-			<a href="${param.url}"><b>${title}</b></a>
-		</th>
+			<h4 class="panel-title"><a href="${param.url}"><b>${title}</b></a>
+			<span class="badge pull-right"><x:out select="$xml/mycoreobject/@ID" /></span>
+			</h4>
+	</div>
+	<div class="panel-body">
+	
+	
+<table style="border-spacing:4px;border-collapse:separate;font-size:100%">
+	<tr>
+		<th></th>
+		<td></td>
 		<td rowspan="10" style="text-align: right; padding-top:10px;">
-			<span style="font-family:monospace;">[<x:out select="$xml/mycoreobject/@ID" />]</span>
+			
 			<br /><br />
 			 <mcr:checkAccess var="modifyAllowed" permission="writedb" key="${param.id}" />
 			 <c:if test="${modifyAllowed}">
@@ -45,23 +53,13 @@
 		</td>
 	</tr>
  
-	<x:set var="data1" select="substring-before(concat($xml/metadata/box.period/period[1]/text,', ',$xml/metadata/box.period/period[2]/text,', ',$xml/metadata/box.period/period[3]/text,', ',$xml/metadata/box.period/period[4]/text,', ',$xml/metadata/box.period/period[5]/text,', ',$xml/metadata/box.period/period[6]/text,', ',$xml/metadata/box.period/period[7]/text,',',$xml/metadata/box.period/period[8]/text,', ,'),', ,')" /> 
-	<x:if select="string-length($data1)>0">
-		<tr>
-			<td>
-				<fmt:message key="OMD.CPR.professorships" />
-			</td>
-			<td>
-				<x:out select="$data1" />
-			</td>
-		</tr>
-	</x:if>
+
 	<x:set var="data2" select="$xml/mycoreobject/metadata/box.professorship/professorship[last()]/event" /> 
 	<x:if select="string-length($data2)>0">
 		<tr>
-			<td>
+			<th style="min-width:80px">
 				<fmt:message key="OMD.common.last" />:
-			</td>
+			</th>
 			<td>
 				<x:out select="$data2" />
 			</td>
@@ -70,9 +68,9 @@
 	<x:set var="data3" select="$xml/mycoreobject/metadata/box.faculty/faculty[last()]/classification" /> 
 	<x:if select="string-length($data3/@categid)>0">
 		<tr>
-			<td>
+			<th style="min-width:80px">
 				<fmt:message key="OMD.common.last" />:
-			</td>
+			</th>
 		
 			<td>
 			    <c:set var="classid"><x:out select="$data3/@classid" /></c:set>
@@ -84,9 +82,9 @@
 	<x:set var="data4" select="$xml/mycoreobject/metadata/box.state/state" />
 	<x:if select="string-length($data4)>0">
 		<tr>
-			<td>
+			<th style="min-width:80px">
 				<fmt:message key="OMD.CPR.states" />:
-			</td>
+			</th>
 			<td>
 			    <c:set var="x"><x:out select="$data4" /></c:set>
 				<fmt:message key="OMD.CPR.states.${x}" />
@@ -94,3 +92,6 @@
 		</tr>
 	</x:if>
  </table>
+	</div>
+</div>
+ 
