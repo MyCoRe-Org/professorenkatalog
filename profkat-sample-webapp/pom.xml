@@ -13,17 +13,36 @@
 		<hibernate.version>4.3.4.Final</hibernate.version>
 		<mcr.finalName>profkat</mcr.finalName>
 	</properties>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>MyCoRe HQ</id>
+			<url>http://artifactory.mycore.de/mycore-releases</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>MyCoRe HQ Snapshots</id>
+			<url>http://artifactory.mycore.de/mycore-snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
 	<repositories>
 		<repository>
 			<id>MyCoRe HQ</id>
-			<url>http://www.mycore.de/artifactory/mycore-releases</url>
+			<url>http://artifactory.mycore.de/mycore-releases</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
 		<repository>
 			<id>MyCoRe HQ Snapshots</id>
-			<url>http://www.mycore.de/artifactory/mycore-snapshots</url>
+			<url>http://artifactory.mycore.de/mycore-snapshots</url>
 			<releases>
 				<enabled>false</enabled>
 			</releases>
