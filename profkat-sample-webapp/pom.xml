@@ -11,7 +11,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<hibernate.version>4.3.4.Final</hibernate.version>
-		<mcr.finalName>profkat</mcr.finalName>
+		<mcr.finalName>profkatsample</mcr.finalName>
 	</properties>
 	<pluginRepositories>
 		<pluginRepository>
@@ -119,7 +119,7 @@
 									<overWrite>true</overWrite>
 								</artifactItem>
 							</artifactItems>
-							<outputDirectory>${project.build.directory}/${mcr.finalName}-app/lib</outputDirectory>
+							<outputDirectory>${project.build.directory}/app/lib</outputDirectory>
 							<stripVersion>true</stripVersion>
 						</configuration>
 					</execution>
@@ -189,27 +189,27 @@
 							<target>
 								<unzip
 									src="${project.build.directory}/${project.build.finalName}.war"
-									dest="${project.build.directory}/${mcr.finalName}-app/${mcr.finalName}">
+									dest="${project.build.directory}/app/${mcr.finalName}">
 								</unzip>
 
 								<!-- create CLI jar -->
 								<property name="build.compiler" value="extJavac" />
 
 								<path id="class-path">
-									<fileset dir="${project.build.directory}/${mcr.finalName}-app">
+									<fileset dir="${project.build.directory}/app">
 										<include name="${mcr.finalName}/WEB-INF/lib/*.jar" />
 									</fileset>
 								</path>
 								<mkdir dir="${project.build.directory}/classes" />
 								<copy todir="${project.build.directory}/classes">
 									<fileset
-										dir="${project.build.directory}/${mcr.finalName}-app/${mcr.finalName}/WEB-INF/classes" />
+										dir="${project.build.directory}/app/${mcr.finalName}/WEB-INF/classes" />
 								</copy>
 
 								<pathconvert property="cpProp" dirsep="/" pathsep=" "
 									refid="class-path">
 									<map
-										from="${project.build.directory}/${mcr.finalName}-app/${mcr.finalName}"
+										from="${project.build.directory}/app/${mcr.finalName}"
 										to="${mcr.finalName}" />
 								</pathconvert>
 
@@ -219,7 +219,7 @@
 									<attribute name="Class-Path" value="${cpProp} lib/javax.servlet-api.jar" />
 								</manifest>
 								<jar
-									jarfile="${project.build.directory}/${mcr.finalName}-app/${mcr.finalName}-cli.jar"
+									jarfile="${project.build.directory}/app/${mcr.finalName}-cli.jar"
 									basedir="${project.build.directory}/classes" manifest="${project.build.directory}/MANIFEST.MF" />
 
 							</target>
