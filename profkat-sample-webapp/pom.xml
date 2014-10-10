@@ -2,104 +2,222 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.mycore</groupId>
-  <artifactId>profkatsample-webapp</artifactId>
-  <version>2013.06.0.3-SNAPSHOT</version>
-  <packaging>war</packaging>
+  <artifactId>profkat-sample-webapp</artifactId>
   <name>Sample for Professorenkatalog</name>
   <description>Sample of a professorenkatalog</description>
-
-  <dependencies>
-    <!-- <dependency> <groupId>mysql</groupId> <artifactId>mysql-connector-java</artifactId> <version>5.1.12</version> </dependency> -->
-
-    <dependency>
-      <groupId>postgresql</groupId>
-      <artifactId>postgresql</artifactId>
-      <version>9.1-901.jdbc4</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.mycore</groupId>
-      <artifactId>professorenkatalog-base-webapp</artifactId>
-      <version>${project.version}</version>
-      <type>war</type>
-    </dependency>
-    
-    <dependency>
-      <groupId>org.mycore</groupId>
-      <artifactId>jspdocportal-webapp</artifactId>
-      <version>${project.version}</version>
-      <type>war</type>
-    </dependency>
-  </dependencies>
+  <version>2014.07-SNAPSHOT</version>
+  <packaging>war</packaging>
   
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
-        </configuration>
-      </plugin>
-    <plugin>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>2.1-beta-1</version>
-        <configuration>
-          <archiveClasses>true</archiveClasses>
-          <webResources>
-            <resource>
-              <directory>src/main/config</directory>
-              <targetPath>WEB-INF/classes</targetPath>
-              <includes>
-                <include>*.*</include>
-              </includes>
-              <excludes>
-                <exclude>web.xml</exclude>
-                <exclude>*.template</exclude>
-                <exclude>datamodel-*.xml</exclude>
-              </excludes>
-            </resource>
-            <resource>
-              <directory>src/main/config/lang</directory>
-              <targetPath>WEB-INF/classes</targetPath>
-              <includes>
-                <include>*.*</include>
-              </includes>
-              <excludes>
-                <exclude>*.template</exclude>
-              </excludes>
-            </resource>
-            <resource>
-              <directory>src/main/config/lang/webcontent</directory>
-              <targetPath>content/webcontent</targetPath>
-            </resource>
-            <resource>
-              <directory>src/main/config/hibernate</directory>
-              <targetPath>WEB-INF/classes</targetPath>
-              <excludes>
-                <exclude>*.template</exclude>
-              </excludes>
-            </resource>
-            <resource>
-              <directory>src/main/config/workflow</directory>
-              <targetPath>WEB-INF/classes/workflow</targetPath>
-              <includes>
-                <include>**/*.xml</include>
-              </includes>
-            </resource>
-            <resource>
-              <directory>src/main/config</directory>
-              <targetPath>WEB-INF</targetPath>
-              <includes>
-                <include>web.xml</include>
-              </includes>
-            </resource>
-          </webResources>
-            <!-- disable overlays -->
-          <dependentWarExcludes>**/*</dependentWarExcludes>
-        </configuration>
-      </plugin>
-      </plugins>
-  </build>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<hibernate.version>4.3.4.Final</hibernate.version>
+		<mcr.finalName>profkat</mcr.finalName>
+	</properties>
+	<repositories>
+		<repository>
+			<id>MyCoRe HQ</id>
+			<url>http://www.mycore.de/artifactory/mycore-releases</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>MyCoRe HQ Snapshots</id>
+			<url>http://www.mycore.de/artifactory/mycore-snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<type>jar</type>
+			<scope>test</scope>
+			<optional>false</optional>
+		</dependency>
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.1-901.jdbc4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mycore</groupId>
+			<artifactId>profkat-base-module</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.2</version>
+			<type>jar</type>
+			<scope>provided</scope>
+			<optional>false</optional>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>javax.servlet</groupId>
+									<artifactId>javax.servlet-api</artifactId>
+									<version>3.0.1</version>
+									<type>jar</type>
+									<overWrite>true</overWrite>
+								</artifactItem>
+							</artifactItems>
+							<outputDirectory>${project.build.directory}/${mcr.finalName}-app/lib</outputDirectory>
+							<stripVersion>true</stripVersion>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1-beta-1</version>
+				<configuration>
+					<archiveClasses>true</archiveClasses>
+					<webResources>
+						<resource>
+							<directory>src/main/resources</directory>
+							<targetPath>WEB-INF/classes</targetPath>
+						</resource>
+						<resource>
+							<directory>src/main/config</directory>
+							<targetPath>WEB-INF/classes</targetPath>
+							<includes>
+								<include>*.*</include>
+							</includes>
+							<excludes>
+								<exclude>web.xml</exclude>
+								<exclude>*.template</exclude>
+								<exclude>datamodel-*.xml</exclude>
+							</excludes>
+						</resource>
+						<resource>
+							<directory>src/main/config/lang</directory>
+							<targetPath>WEB-INF/classes</targetPath>
+							<includes>
+								<include>*.*</include>
+							</includes>
+							<excludes>
+								<exclude>*.template</exclude>
+							</excludes>
+						</resource>
+						<resource>
+							<directory>src/main/config/lang/webcontent</directory>
+							<targetPath>content/webcontent</targetPath>
+						</resource>
+						<resource>
+							<directory>src/main/config/hibernate</directory>
+							<targetPath>WEB-INF/classes</targetPath>
+							<excludes>
+								<exclude>*.template</exclude>
+							</excludes>
+						</resource>
+						<resource>
+							<directory>src/main/config</directory>
+							<targetPath>WEB-INF</targetPath>
+							<includes>
+								<include>web.xml</include>
+							</includes>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<configuration>
+							<target>
+								<unzip
+									src="${project.build.directory}/${project.build.finalName}.war"
+									dest="${project.build.directory}/${mcr.finalName}-app/${mcr.finalName}">
+								</unzip>
+
+								<!-- create CLI jar -->
+								<property name="build.compiler" value="extJavac" />
+
+								<path id="class-path">
+									<fileset dir="${project.build.directory}/${mcr.finalName}-app">
+										<include name="${mcr.finalName}/WEB-INF/lib/*.jar" />
+									</fileset>
+								</path>
+								<mkdir dir="${project.build.directory}/classes" />
+								<copy todir="${project.build.directory}/classes">
+									<fileset
+										dir="${project.build.directory}/${mcr.finalName}-app/${mcr.finalName}/WEB-INF/classes" />
+								</copy>
+
+								<pathconvert property="cpProp" dirsep="/" pathsep=" "
+									refid="class-path">
+									<map
+										from="${project.build.directory}/${mcr.finalName}-app/${mcr.finalName}"
+										to="${mcr.finalName}" />
+								</pathconvert>
+
+								<manifest file="${project.build.directory}/MANIFEST.MF">
+									<attribute name="Main-Class"
+										value="org.mycore.frontend.cli.MCRCommandLineInterface" />
+									<attribute name="Class-Path" value="${cpProp} lib/javax.servlet-api.jar" />
+								</manifest>
+								<jar
+									jarfile="${project.build.directory}/${mcr.finalName}-app/${mcr.finalName}-cli.jar"
+									basedir="${project.build.directory}/classes" manifest="${project.build.directory}/MANIFEST.MF" />
+
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.ant</groupId>
+						<artifactId>ant</artifactId>
+						<version>1.8.0</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
 </project>
