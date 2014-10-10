@@ -83,7 +83,7 @@
        	</mcr-execute>
 	</target>
 
-	<target name="update.solr.core.dir">
+	<target name="update.solr.config">
 		<delete dir="${SOLR_CORE_DIR}/conf" />
 		<mkdir dir="${SOLR_CORE_DIR}/conf"/>
 		<unzip src="${basedir}/../jspdocportal-module/src/main/solr-4.8.1-core-conf.zip" dest="${SOLR_CORE_DIR}/conf" />
