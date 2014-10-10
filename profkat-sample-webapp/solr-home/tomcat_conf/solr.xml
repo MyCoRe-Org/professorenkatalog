@@ -1,0 +1,5 @@
+<Context docBase="C:\workspaces\cpr_2014\projects\solr\solr-4.8.1-20140625.135347-2.war:wq" debug="0" crossContext="true" >
+<Valve className="org.apache.catalina.valves.RemoteAddrValve" allow="127\.0\.0\.1|139\.30\.240\.171|139\.30\.240\.172|139\.30\.240\.175|139\.30\.48\.77|139\.30\.48\.32" />    
+	 <Environment name="solr/home" type="java.lang.String" 
+		    value="C:\workspaces\cpr\working_content\solr-home" override="true" />
+</Context>

@@ -4,14 +4,17 @@
 <!-- $Revision$ $Date$                      -->
 <!-- =================================================================== -->
 
-<project name="CPR" default="usage" basedir=".">
+<project name="Profkat Sample" default="usage" basedir=".">
 	<property name="APP_NAME" value="profkatsample" />
-	<property name="PARENT_BUILD_FILE" value="${basedir}/src/build/buildfile_application.xml" />
+	<property name="PARENT_BUILD_FILE" value="${basedir}/../jspdocportal-module/src/build/buildfile_application.xml" />
 	<property name="CONTENT_DIR" value="${basedir}/content" />
 	
 	<property name="HOME" value="${basedir}/target/${APP_NAME}-app" />
-	                                                 
-
+	
+	<condition property="SOLR_CORE_DIR" value="/opt/solr/cores/profkat" else="C:\workspaces\cpr\working_content\solr-home\cores\profkat">
+		<os family="unix" />
+	</condition>
+	
 	<property environment="env" />
 	<condition property="env.JAVA_HOME" value="/usr/lib/java" else="c:/Programme/Java/jdk1.6.0_03">
 		<os family="unix" />
@@ -25,6 +28,7 @@
 	<import file="${PARENT_BUILD_FILE}"/>
 	<classloader classpathref="APP_CLASSPATH" />
 
+	<target name="init" />
 	<target name="usage">
 		<antcall target="main_build.usage" />
 	</target>
@@ -79,6 +83,15 @@
        	</mcr-execute>
 	</target>
 
+	<target name="update.solr.core.dir">
+		<delete dir="${SOLR_CORE_DIR}/conf" />
+		<mkdir dir="${SOLR_CORE_DIR}/conf"/>
+		<unzip src="${basedir}/../jspdocportal-module/src/main/solr-4.8.1-core-conf.zip" dest="${SOLR_CORE_DIR}/conf" />
+		<copy todir="${SOLR_CORE_DIR}/conf" overwrite="true">
+			<fileset dir="${basedir}/solr-home/cores/profkat/conf" />
+		</copy>
+	</target>
+	
 
 	<target name="zip4deployment">
 			<zip destfile="./target/${APP_NAME}_deploy.zip" >
