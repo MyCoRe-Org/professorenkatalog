@@ -7,7 +7,7 @@
 		<version>2014.07-SNAPSHOT</version>
 		<relativePath>../mycore/pom.xml</relativePath>
 	</parent>
-	<artifactId>professorenkatalog-base-module</artifactId>
+	<artifactId>profkat-base-module</artifactId>
 	<packaging>jar</packaging>
 	<name>Professorenkatalog Base</name>
 	<description>generic code for professorenkatalog</description>
