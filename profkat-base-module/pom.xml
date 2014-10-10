@@ -5,12 +5,30 @@
 		<artifactId>mycore</artifactId>
 		<groupId>org.mycore</groupId>
 		<version>2014.07-SNAPSHOT</version>
-		<relativePath>../mycore/pom.xml</relativePath>
 	</parent>
 	<artifactId>profkat-base-module</artifactId>
 	<packaging>jar</packaging>
 	<name>Professorenkatalog Base</name>
 	<description>generic code for professorenkatalog</description>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>MyCoRe HQ</id>
+			<url>http://artifactory.mycore.de/mycore-releases</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>MyCoRe HQ Snapshots</id>
+			<url>http://artifactory.mycore.de/mycore-snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
 	<repositories>
 		<repository>
 			<id>JBoss JBPM</id>
