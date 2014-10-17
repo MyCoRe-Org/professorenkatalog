@@ -5,11 +5,11 @@
 <!-- =================================================================== -->
 
 <project name="Profkat Sample" default="usage" basedir=".">
-	<property name="APP_NAME" value="profkatsample" />
-	<property name="PARENT_BUILD_FILE" value="${basedir}/../jspdocportal-module/src/build/buildfile_application.xml" />
+	<property name="APP_NAME" value="profkat-sample" />
+	<property name="PARENT_BUILD_FILE" value="${basedir}/buildfile_application.xml" />
 	<property name="CONTENT_DIR" value="${basedir}/content" />
 	
-	<property name="HOME" value="${basedir}/target/${APP_NAME}-app" />
+	<property name="HOME" value="${basedir}/target/app" />
 	
 	<condition property="SOLR_CORE_DIR" value="/opt/solr/cores/profkat" else="C:\workspaces\cpr\working_content\solr-home\cores\profkat">
 		<os family="unix" />
@@ -24,11 +24,15 @@
 	</condition>
 	<property name="MCR.JDBCStore.Type" value="hibernate" />
 	<property name="MCR.XMLStore.Type" value="hibernate" />
+	
+	<import file="${PARENT_BUILD_FILE}" optional="true"/>
 
-	<import file="${PARENT_BUILD_FILE}"/>
-	<classloader classpathref="APP_CLASSPATH" />
 
-	<target name="init" />
+	<target name="init">
+		<get src="http://server.mycore.de/svn/jspdocportal/trunk/jspdocportal-module/src/build/buildfile_application.xml" dest="${basedir}" />
+		
+		<classloader classpathref="APP_CLASSPATH" />
+	</target>
 	<target name="usage">
 		<antcall target="main_build.usage" />
 	</target>
