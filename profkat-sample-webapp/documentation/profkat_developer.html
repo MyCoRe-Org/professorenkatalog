@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>MyCoRe Professorenkatalog:<br /> Informationen für Entwickler</title>
+	<link rel="stylesheet" type="text/css" href="_layout/documentation.css">
+	<script type="text/javascript" src="_Layout/generated_toc.js"></script>
+</head>
+<body>
+
+<h1>MyCoRe Professorenkatalog: Informationen für Entwickler</h1>
+ <div id="generated-toc" class="generate_from_h2"></div> 
+
+<h2>Voraussetzungen</h2>
+
+
+<h2 id="config_files">Anpassungen / Konfigurationsdateien</h2>
+<h3>pom.xml</h3>
+<ul>
+	<li>Property <span class="variable">mcr.finalName</span></li>
+	<li>Elemente <span class="variable">artifactID, name, description</span></li>
+</ul>
+<h3>Mycore-Properties</h3>
+/src/main/config/mycore.properties
+<ul><li>oberer Block</li></ul>
+<div class="textfile">
+MCR.datadir=/opt/profkat/data
+MCR.basedir=/opt/profkat/projects/profkat-sample-webapp/target/profkat-sample
+MCR.baseurl=http://localhost:8080/profkat-sample/
+MCR.Module-solr.ServerURL=http://localhost:8080/solr/profkat
+log4j.rootLogger=INFO, stdout, R
+...
+</div>	
+
+<h3>Hibernate Konfiguration</h3>
+/src/main/config/hibernate/hibernate.cfg.xml
+<ul><li>Datenbankparameter</li></ul>
+
+<h3>Activiti Workflowengine Konfiguration</h3>
+src/main/resources/config/worfklow/activiti.cfg.xml
+<ul><li>Datenbankparameter und Email </li></ul>
+
+<h3>Sprachdateien</h3>
+src\main\config\lang\messages_de.properties<br />
+src\main\config\lang\messages_en.properties
+<ul><li>diverse Properties</li></ul>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>MyCoRe Professorenkatalog: Installation</title>
+	<link rel="stylesheet" type="text/css" href="_layout/documentation.css">
+	<script type="text/javascript" src="_Layout/generated_toc.js"></script>
+</head>
+<body>
+
+<h1>MyCoRe Professorenkatalog: Installation</h1>
+ <div id="generated-toc" class="generate_from_h2"></div> 
+
+<h2>Voraussetzungen</h2>
+Für den Betrieb und die Installation des Professorenkatalogs wird folgende Software empfohlen.
+Der Einsatz einer anderen Datenbank oder eines anderen Webapplication-Servers ist möglich:
+<ul>
+	<li>Webapplication-Server: Tomcat 7.0</li>
+	<li>Datenbank: PostgreSQL 9.1</li>
+	<li>Worfklow engine: Activiti 5.15.1</li>
+	<li>SOLR (von MycoRe bereitgestellt): 4.7.2</li> 
+	<li>Build-Tools: Maven und SVN</li>
+</ul>
+
+<h2>Vorbereitung der Datenbank</h2>
+Lege folgende Datenbanken und Schemata an (am Beispiel von PostreSQL):
+<ul class="commandline">
+	<li>psql -U postgres</li>
+</ul>
+<ul class="commandline postgres">
+	<li>CREATE ROLE pkadmin LOGIN PASSWORD 'alleswirdgut' CREATEDB VALIID UNTIL 'infinity';</li>
+	<li>CREATE DATABASE mycoredb WITH OWNER mcradmin ENCODING 'UTF8';</li>
+	<li>CREATE SCHEMA profkat AUTHORIZATION pkadmin;</li>
+	<li>CREATE SCHEMA profkat_activiti AUTHORIZATION pkadmin;</li>
+	<li>\q</li>
+</ul>
+
+<h2>SOLR-Installation</h2>
+Die MyCoRe-Community stellt ein vorkonfiguriertes <code>SOLR.war</code> bereit, welches
+wir für den Professorenkatalog nutzen ...
+<a href="http://www.mycore.de/documentation/search/solr.html">siehe Anleitung in der MyCoRe Doku</a>
+
+<ul class="commandline">
+	<li>sudo mkdir /opt/solr</li>
+	<li>sudo mkdir /opt/solr/data</li>
+	<li>cd /opt/solr</li>
+	<li>sudo wget http://artifactory.mycore.de/libs-snapshots-local/org/mycore/solr/solr/4.8.1-SNAPSHOT/solr-4.8.1-20140625.135347-2.war</li>
+	<li>sudo chown tomcat7:tomcat /opt/solr -R </li>
+	<li> sudo vi /var/lib/tomcat7/conf/Catalina/localhost/solr.xml</li>
+</ul>
+<div class="textfile">
+&lt;Context docBase="/opt/solr/solr-4.8.1-20140625.135347-2.war" 
+         debug="0" crossContext="true" &gt;
+  &lt;Valve className="org.apache.catalina.valves.RemoteAddrValve" 
+         allow="127\.0\.0\.1|139\.30\.\d+\.\d+" /&gt;
+  &lt;Environment name="solr/home" type="java.lang.String" 
+               value="/opt/solr/data" overwrite="true"/&gt;
+&lt;/Context&gt;
+</div>
+Basis-Konfiguration aus <code>solr-home</code> Verzeichnis der Anwendung profkatsample-webapp auf den Server kopieren und Nutzer+Gruppenzugehörigkeit anpassen.
+
+Verbindung testen <a href="http://localhost:8080/solr">http://localhost:8080/solr</a>
+
+
+<h2>Activiti-Workflowengine Installation</h2>
+<ul>
+	<li>ggf Schema <span class="variable">profkat_activiti</span> der PostgreSQL-Datenbank <span class="variable">mycoredb</span> anlegen (s.o.)</li>
+</ul>
+
+<h3>optional: Activiti-Explorer Webanwendung installieren</h3>	
+<ul>
+	<li>Datei von <a href="http://www.activiti.org">http://www.activiti.org</a> herunterladen und in Tomcat deployen</li>
+	<li><span class="filename">postgresql-9.1-901.jdbc4.jar</span> nach <span class="filename">WEB-INF/lib</span> kopieren
+	<li><span class="filename">activiti-standalone-context.xml</span> im Verzeichnis <span class="filename">WEB-INF</span> ersetzen.	
+</ul>
+
+<h2>Herunterladen und Kompilieren der MyCoRe Profkat Anwendung</h2>
+<h3>Projekt-Verzeichnis erstellen</h3>
+<ul class="commandline">
+	<li>sudo mkdir /opt/profkat</li>
+	
+	<li>sudo mkdir /opt/profkat/projects</li>
+	<li>sudo chown mcradmin:mcradmin /opt/profkat/projects</li>
+	<li>cd /opt/profkat/projects</li>
+</ul>
+<h3>Dateien auschecken</h3>
+<ul class="commandline">
+	<li>svn checkout http://server.mycore.de/svn/jspdocportal/trunk/jspdocportal-module/ jspdocportal-module</li>
+	<li>svn checkout http://server.mycore.de/svn/professorenkatalog/trunk/profkat-base-module/ profkat-base-module</li>
+	<li>svn checkout http://server.mycore.de/svn/professorenkatalog/trunk/profkat-sample-webapp/ profkat-sample-webapp</li>
+</ul>
+<h3>Konfiguration anpassen</h3>
+<h4>Datenverzeichnis erstellen</h4>
+<ul class="commandline">
+	<li>sudo mkdir /opt/profkat/data</li>
+	<li>sudo chown tomcat7:tomcat7 /opt/profkat/data</li>
+</ul>
+<h4>Konfigurationsdateien anpassen</h4>
+siehe <a href="profkat_developer.html#config_files">Profkat-Developer-Dokumentation</a>
+
+<h3>Kompilieren der Anwendung</h3>
+<ul class="commandline">
+	<li>cd /opt/profkat/projects/jspdocportal-module</li>
+	<li>svn update</li>
+	<li>mvn clean install</li>
+	<li>cd /opt/profkat/projects/profkat-base-module</li>
+	<li>svn update</li>
+	<li>mvn clean install</li>
+	<li>cd /opt/profkat/projects/profkat-sample-webapp</li>
+	<li>svn update</li>
+	<li>mvn clean install</li>
+</ul>
+
+<h3>Update der SOLR-Konfiguration</h3>
+<ul class="commandline">
+	<li>cd /opt/profkat/projects/profkat-sample-webapp</li>
+	<li>sudo -u tomcat7 ant update.solr.config</li>
+</ul>
+
+<h3>Initialisierung der Anwendung</h3>
+Anlegen der Arbeitsverzeichnisse, Laden der Nutzer, Erstellen der Klassifikationen
+<ul class="commandline">
+	<li>cd /opt/profkat/projects/profkat-sample-webapp</li>
+	<li>sudo -u tomcat7 ant update.solr.config</li>
+</ul>
+
+<h2>Start der Kommandozeile</h2>
+
+<h2>Deployen der Webanwendung</h2>
+
+</body>
+</html>
