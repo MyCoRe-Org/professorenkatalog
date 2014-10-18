@@ -37,9 +37,8 @@
 			 	<c:choose>
 			 		<c:when test="${bhasAccess}">
 			 			<!--  Editbutton -->
-			 			<form method="get" action="${applicationScope.WebApplicationBaseURL}StartEdit" class="resort">                 
-							<input name="page" value="nav?path=~workflowEditor-${doctype}"  type="hidden">                                       
-							<input name="mcrid" value="${param.id}" type="hidden"/>
+			 			<form method="get" action="${applicationScope.WebApplicationBaseURL}startedit.action" class="resort">                 
+							<input name="mcrid" value="${param.id}" type="hidden" />
 							<input title="<fmt:message key="WF.common.object.EditObject" />" border="0" 
 							       src="${applicationScope.WebApplicationBaseURL}images/workflow1.gif" type="image"  class="imagebutton" height="30px" />
 						</form> 

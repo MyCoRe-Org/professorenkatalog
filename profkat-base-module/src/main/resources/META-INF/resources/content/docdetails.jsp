@@ -95,9 +95,8 @@
          					<c:when test="${bhasAccess}"> 
 		         				<!--  Editbutton -->
 								<div class="docdetails-toolbar-item">
-	    	     					<form method="get" action="${WebApplicationBaseURL}StartEdit" class="resort">                 
-	        	    					<input name="page" value="nav?path=~workflowEditor-${type}"  type="hidden">                                       
-	            						<input name="mcrid" value="${mcrid}" type="hidden"/>
+	    	     					<form method="get" action="${WebApplicationBaseURL}startedit.action" class="resort">                 
+	        	    					<input name="mcrid" value="${mcrid}" type="hidden"/>
 										<input title="<fmt:message key="WF.common.object.EditObject" />" src="${WebApplicationBaseURL}images/workflow1.gif" type="image"  class="imagebutton" height="24px" />
 	         						</form> 
 	         					</div>
