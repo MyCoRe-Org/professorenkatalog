@@ -10,8 +10,13 @@
 	<property name="CONTENT_DIR" value="${basedir}/content" />
 	
 	<property name="HOME" value="${basedir}/target/app" />
-	
-	<condition property="SOLR_CORE_DIR" value="/opt/solr/cores/profkat" else="C:\workspaces\cpr\working_content\solr-home\cores\profkat">
+
+	<property name="SOLR_DEFAULT_CONFIG_URL" value="http://artifactory.mycore.de/libs-snapshots-local/org/mycore/solr/solr-home/4.8.1-SNAPSHOT/solr-home-4.8.1-20141014.165252-1.zip" />
+	<property name="SOLR_CORE_ID" value="profkat" />
+	<condition property="SOLR_HOME_DIR" value="/opt/solr" else="c:\workspaces\cpr\profkat-data\solr-home">
+		<os family="unix" />
+	</condition>
+	<condition property="SOLR_CONF_DIR" value="/opt/profkat/projects/profkat-sample-webapp/solr-conf" else="C:\workspaces\cpr\projects\profkat-sample-webapp\solr-conf">
 		<os family="unix" />
 	</condition>
 	
@@ -88,11 +93,18 @@
 	</target>
 
 	<target name="update.solr.config">
-		<delete dir="${SOLR_CORE_DIR}/conf" />
-		<mkdir dir="${SOLR_CORE_DIR}/conf"/>
-		<unzip src="${basedir}/../jspdocportal-module/src/main/solr-4.8.1-core-conf.zip" dest="${SOLR_CORE_DIR}/conf" />
-		<copy todir="${SOLR_CORE_DIR}/conf" overwrite="true">
-			<fileset dir="${basedir}/solr-home/cores/profkat/conf" />
+		<get src="${SOLR_DEFAULT_CONFIG_URL}" dest="${SOLR_HOME_DIR}/solr-default-config.zip" />
+		<delete dir="${SOLR_HOME_DIR}/cores/${SOLR_CORE_ID}/conf" />
+		<mkdir  dir="${SOLR_HOME_DIR}/cores/${SOLR_CORE_ID}/conf" />
+		<mkdir  dir="${SOLR_HOME_DIR}/data/${SOLR_CORE_ID}" />
+		<unzip src="${SOLR_HOME_DIR}/solr-default-config.zip" dest="${SOLR_HOME_DIR}/cores/${SOLR_CORE_ID}/conf">
+			<patternset>
+			        <include name="/solr/collection1/conf/**"/>
+			    </patternset>
+			<cutdirsmapper dirs="3"/>
+		</unzip>
+		<copy todir="${SOLR_HOME_DIR}/cores/${SOLR_CORE_ID}/conf" overwrite="true">
+			<fileset dir="${SOLR_CONF_DIR}/cores/${SOLR_CORE_ID}/conf" />
 		</copy>
 	</target>
 	
