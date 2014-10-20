@@ -3,7 +3,6 @@
 <!-- MyCoRe sample application build file for use with Apache Ant        -->
 <!-- $Revision$ $Date$                      -->
 <!-- =================================================================== -->
-
 <project name="Profkat Sample" default="usage" basedir=".">
 	<property name="APP_NAME" value="profkat-sample" />
 	<property name="PARENT_BUILD_FILE" value="${basedir}/buildfile_application.xml" />
@@ -32,30 +31,37 @@
 	
 	<import file="${PARENT_BUILD_FILE}" optional="true"/>
 
-
+	<classloader name="cli-classloader" classpathref="APP_CLASSPATH" />
 	<target name="init">
+		<!--
 		<get src="http://server.mycore.de/svn/jspdocportal/trunk/jspdocportal-module/src/build/buildfile_application.xml" dest="${basedir}" />
+		-->
 		
-		<classloader classpathref="APP_CLASSPATH" />
 	</target>
 	<target name="usage">
 		<antcall target="main_build.usage" />
 	</target>
 	
 	<target name="create.directories" depends="init">
-		<antcall target="main_build.create.directories" />
-		<mkdir dir="${MCR.WorkflowEngine.EditDirectory.person}" />		
-	</target>
+			<taskdef name="mcr-execute" classname="org.mycore.buildtools.anttasks.MCRExecuteCommandTask" classpathref="APP_CLASSPATH" />
+			<mcr-execute>
+				create directory ${MCR.Editor.FileUpload.TempStoragePath}
+				create directory ${MCR.LogDirectory}
+				create directory ${MCR.Save.FileSystem}
+				create directory ${MCR.WebContent.SaveFolder}
+				create directory ${MCR.WorkflowEngine.EditDirectory.person}
+				create directory ${MCR.WorkflowEngine.DeleteDirectory}
+				create directory ${MCR.EHCache.diskStore.path}
+			</mcr-execute>
+		</target>
 
 	<target name="create.users" depends="init">
 		<mkdir dir="${basedir}/target/user_encrypted" />
-		<taskdef name="mcr-execute" classname="org.mycore.buildtools.anttasks.MCRExecuteCommandTask" classpathref="APP_CLASSPATH"/>
+		<taskdef name="mcr-execute" classname="org.mycore.buildtools.anttasks.MCRExecuteCommandTask" classpathref="APP_CLASSPATH" />
 
 		<mcr-execute>
 			update classification from file ${basedir}/content/user/mcr-roles.xml
-		</mcr-execute>
-	
-		<mcr-execute>
+
 			load permissions data from file ${CONTENT_DIR}/user/permissions.xml
      	    init superuser
             
@@ -64,20 +70,16 @@
 			encrypt passwords in user xml file ${CONTENT_DIR}/user/user_administrator.xml to file ${basedir}/target/user_encrypted/user_administrator.xml
 			update user from file ${basedir}/target/user_encrypted/user_administrator.xml	
 			
+			encrypt passwords in user xml file ${CONTENT_DIR}/user/user_editorPK.xml to file ${basedir}/target/user_encrypted/user_editorPK.xml
+			update user from file ${basedir}/target/user_encrypted/user_editorPK.xml
+
 			encrypt passwords in user xml file ${CONTENT_DIR}/user/user_editorWeb.xml to file ${basedir}/target/user_encrypted/user_editorWeb.xml
 			update user from file ${basedir}/target/user_encrypted/user_editorWeb.xml
-
-			encrypt passwords in user xml file ${CONTENT_DIR}/user/user_editorPK.xml to file ${basedir}/target/user_encrypted/user_editorPK.xml			
-			update user from file ${basedir}/target/user_encrypted/user_editorPK.xml
-			
+				
 			load permissions data from file ${CONTENT_DIR}/user/default-object-permissions.xml
     	</mcr-execute>
 	</target>
 	
-	<target name="create.workflow.database" depends="init">
-		<antcall target="main_build.create.workflow.database" />		
-	</target>
-
 	<target name="create.class" depends="init">
 		<taskdef name="mcr-execute" classname="org.mycore.buildtools.anttasks.MCRExecuteCommandTask" classpathref="APP_CLASSPATH" />
 		<mcr-execute>
@@ -85,10 +87,10 @@
 		</mcr-execute>
 	</target>
 
-	<target name="deploy.workflow.processdefinitions" >
+	<target name="deploy.workflows" >
 		<taskdef name="mcr-execute" classname="org.mycore.buildtools.anttasks.MCRExecuteCommandTask" classpathref="APP_CLASSPATH" />
 		<mcr-execute>
-		   	deploy jbpm processdefinition from file workflow/professorum.par/processdefinition.xml      	
+			deploy workflow processdefinition from resource /config/workflow/processdefinitions/create_object_simple.bpmn20.xml   	
        	</mcr-execute>
 	</target>
 
