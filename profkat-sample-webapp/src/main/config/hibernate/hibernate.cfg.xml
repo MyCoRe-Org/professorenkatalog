@@ -21,15 +21,17 @@
 
     <!-- second-level cache  -->
     <!-- disabled -->
-    <!--
+    
     <property name="cache.region.factory_class">org.hibernate.cache.internal.NoCachingRegionFactory</property>
     <property name="cache.use_second_level_cache">false</property>
     <property name="cache.use_query_cache">false</property>
-    -->
+    
     <!-- net/sf/ehcache/hibernate/Provider -->
+    <!-- 
     <property name="cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
     <property name="cache.use_second_level_cache">true</property>
     <property name="cache.use_query_cache">true</property>
+    -->
     <!-- more human readable cache entries -->
     <property name="cache.use_structured_entries">true</property>
     <!-- do not read to often from db just to save a few write operations -->

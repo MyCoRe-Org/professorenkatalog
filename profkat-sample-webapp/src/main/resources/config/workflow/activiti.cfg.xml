@@ -1,35 +1,51 @@
-<beans xmlns="http://www.springframework.org/schema/beans" 
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd">
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-    <property name="driverClassName" value="org.postgresql.Driver" />
-    <property name="url" value="jdbc:postgresql://127.0.0.1/mycoredb" />
-    <property name="username" value="pkadmin" />
-    <property name="password" value="alleswirdgut" />
-    <property name="defaultAutoCommit" value="true" />
-    <property name="connectionInitSqls" value="SET search_path TO profkat_activiti;" /> <!--  set the default schema for the current connection -->
-  </bean>
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="org.postgresql.Driver" />
+		<property name="url" value="jdbc:postgresql://127.0.0.1:5432/mycoredb" />
+		<property name="username" value="pkadmin" />
+		<property name="password" value="alleswirdgut" />
+		<property name="defaultAutoCommit" value="true" />
+		<!-- set the default schema for the current connection, remember to set 
+			property databaseSchema in processEngineConfiguration below, if necessary -->
+		<property name="connectionInitSqls" value="SET SCHEMA 'profkat_activiti';" />
+	</bean>
+	<!-- 
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"> 
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://127.0.0.1/profkat_activiti" />
+		<property name="username" value="pkadmin" /> 
+		<property name="password" value="alleswirdgut" /> 
+		<property name="defaultAutoCommit" value="true" />
+	</bean> 
+	-->
 
+	<bean id="processEngineConfiguration" name="MyCoRe"
+		class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
+		<!-- property databaseSchema: 
+			 dissable for MySQL or if no database schema is used -->
+		<property name="databaseSchema" value="profkat_activiti" />
+		
+		<property name="databaseSchemaUpdate" value="true" />
+		<property name="dataSource" ref="dataSource" />
+		<property name="jobExecutorActivate" value="false" />
 
-  <bean id="processEngineConfiguration" name="MyCoRe" class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
-    <property name="databaseSchemaUpdate" value="true" />
-    <property name="dataSource" ref="dataSource" />
-    <property name="jobExecutorActivate" value="false" />
-    
-    <property name="mailServerHost" value="mail.email-provider.de" />
-    <property name="mailServerPort" value="587" />
-    <property name="mailServerDefaultFrom" value="profkat@email-provider.de" />
-    <property name="mailServerUsername" value="profkat" />
-    <property name="mailServerPassword" value="alleswirdgut" />
-    <property name="mailServerUseTLS" value="true" />
-    
-    <property name="customSessionFactories">
-    	<list>
-			<bean class="org.mycore.activiti.identity.MCRActivitiUserManagerFactory" />
-            <bean class="org.mycore.activiti.identity.MCRActivitiGroupManagerFactory"  />
-        </list>
-   </property>
-  </bean>
+		<!-- 
+		<property name="mailServerHost" value="mail.email-provider.de" /> 
+		<property name="mailServerPort" value="587" /> 
+		<property name="mailServerDefaultFrom" value="profkat@email-provider.de" /> 
+		<property name="mailServerUsername" value="profkat" /> 
+		<property name="mailServerPassword" value="alleswirdgut" /> 
+		<property name="mailServerUseTLS" value="true" /> 
+		-->
 
+		<property name="customSessionFactories">
+			<list>
+				<bean class="org.mycore.activiti.identity.MCRActivitiUserManagerFactory" />
+				<bean class="org.mycore.activiti.identity.MCRActivitiGroupManagerFactory" />
+			</list>
+		</property>
+	</bean>
 </beans>

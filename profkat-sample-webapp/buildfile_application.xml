@@ -15,8 +15,12 @@
 	<property name="APP_HOME" value="${HOME}/${APP_NAME}" />
 
 	<path id="APP_CLASSPATH">
+		<pathelement path="${HOME}" />
 		<pathelement path="${HOME}/${APP_NAME}-cli.jar" />
-		<!--<pathelement path="${HOME}/${APP_NAME}/WEB-INF/classes" /> -->
+		 <fileset dir="${HOME}/${APP_NAME}/WEB-INF/lib">
+		        <include name="**/*.jar"/>
+		      </fileset>
+		<pathelement path="${HOME}/${APP_NAME}/WEB-INF/classes/" />
 	</path>
 	
 	 <condition property="os.is.unix">
@@ -72,17 +76,17 @@
 	<target name="init" />
 	
 	<target name="show" depends="init">
-		<echo>Base directory     : ${basedir}</echo>
-		<echo>Application        : ${HOME}</echo>
-		<echo>Operating system   : ${os.name} Version ${os.version} on ${os.arch} </echo>
-		<echo>Java version       : JDK ${ant.java.version} Version ${java.version} from ${java.vendor}</echo>
-		<echo>Java home          : ${env.JAVA_HOME}</echo>
-		<echo>Ant build file     : $Revision$ $Date$</echo>
-		<echo>Ant version        : ${ant.version}</echo>
-		<echo>Ant home           : ${env.ANT_HOME}</echo>
-		<echo>Active CLASSPATH   : ${APP_CLASSPATH.translated}</echo>
-		
-		<echo>Application CP     : ${APP_CLASSPATH}</echo>
+		<echo>Base directory         : ${basedir}</echo>
+		<echo>Application name       : ${APP_NAME}</echo>
+		<echo>Application directory  : ${HOME}</echo>
+		<echo>Operating system       : ${os.name} Version ${os.version} on ${os.arch} </echo>
+		<echo>Java version           : JDK ${ant.java.version} Version ${java.version} from ${java.vendor}</echo>
+		<echo>Java home              : ${env.JAVA_HOME}</echo>
+		<echo>Ant build file         : $Revision$ $Date$</echo>
+		<echo>Ant version            : ${ant.version}</echo>
+		<echo>Ant home               : ${env.ANT_HOME}</echo>
+	
+		<echo>Application Classpath  : ${toString:APP_CLASSPATH}</echo>
 		
 	</target>
 
@@ -149,7 +153,7 @@
 			<fileset file="${basedir}/content/defaultsample/build.xml" />
 		</subant>
 	</target>
-
+	<!--
 	<target name="create.workflow.database">
 		<taskdef name="mcr-execute" classname="org.mycore.buildtools.anttasks.MCRExecuteCommandTask" classpathref="APP_CLASSPATH" />
 		<mcr-execute>
@@ -159,7 +163,7 @@
 
 	<target name="deploy.processdefinition.thesis">
 		<taskdef name="mcr-execute" classname="org.mycore.buildtools.anttasks.MCRExecuteCommandTask" classpathref="APP_CLASSPATH" />
-		<!-- loads processdefinition as resource from classpath -->
+		<!- loads processdefinition as resource from classpath ->
 		<mcr-execute>
         	deploy jbpm processdefinition from file config/workflow/thesis.par/processdefinition.xml      	
         </mcr-execute>
@@ -198,4 +202,6 @@
         	deploy jbpm processdefinition from file config/workflow/bundle.par/processdefinition.xml  
         </mcr-execute>
 	</target>
+	
+	-->
 </project>
