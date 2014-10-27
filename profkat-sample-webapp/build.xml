@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- =================================================================== -->
 <!-- MyCoRe sample application build file for use with Apache Ant        -->
-<!-- $Revision$ $Date$                      -->
+<!-- $Revision$ $Date$                      							 -->
 <!-- =================================================================== -->
-<project name="Profkat Sample" default="usage" basedir=".">
+<project name="Profkat Sample"  basedir=".">
 	<property name="APP_NAME" value="profkat-sample" />
-	<property name="PARENT_BUILD_FILE" value="${basedir}/buildfile_application.xml" />
+	<property name="HOME" value="${basedir}/target/app" />
 	<property name="CONTENT_DIR" value="${basedir}/content" />
 	
-	<property name="HOME" value="${basedir}/target/app" />
-	
-
 	<property name="SOLR_DEFAULT_CONFIG_URL" value="http://artifactory.mycore.de/libs-snapshots-local/org/mycore/solr/solr-home/4.8.1-SNAPSHOT/solr-home-4.8.1-20141014.165252-1.zip" />
 	<property name="SOLR_CORE_ID" value="profkat" />
 	<condition property="SOLR_HOME_DIR" value="/opt/solr" else="c:\workspaces\cpr\profkat-data\solr-home">
@@ -20,26 +17,8 @@
 		<os family="unix" />
 	</condition>
 	
-	<property environment="env" />
-	<condition property="env.JAVA_HOME" value="/usr/lib/java" else="c:/Programme/Java/jdk1.6.0_03">
-		<os family="unix" />
-	</condition>
-	<condition property="ant.library.dir" value="${ant.home}/lib">
-		<os family="unix" />
-	</condition>
-		
-	<import file="${PARENT_BUILD_FILE}" optional="true"/>
-
-	<classloader name="cli-classloader" classpathref="APP_CLASSPATH" />
 	<target name="init">
-		<!--
-		<get src="http://server.mycore.de/svn/jspdocportal/trunk/jspdocportal-module/src/build/buildfile_application.xml" dest="${basedir}" />
-		-->
-		
-	</target>
 	
-	<target name="usage">
-		<antcall target="main_build.usage" />
 	</target>
 	
 	<target name="create.directories" depends="init">
@@ -126,8 +105,8 @@
 		<java fork="true" dir="${HOME}" jar="${HOME}/${APP_NAME}-cli.jar">
 			<arg value="deploy workflow processdefinition from resource config/workflow/processdefinitions/create_object_simple.bpmn20.xml" />
 		</java>
-		<taskdef name="mcr-execute" classname="org.mycore.buildtools.anttasks.MCRExecuteCommandTask" classpathref="APP_CLASSPATH" />
 		<!--
+		<taskdef name="mcr-execute" classname="org.mycore.buildtools.anttasks.MCRExecuteCommandTask" classpathref="APP_CLASSPATH" />
 		<mcr-execute>
 			deploy workflow processdefinition from resource /config/workflow/processdefinitions/create_object_simple.bpmn20.xml
        	</mcr-execute>
@@ -135,6 +114,7 @@
 	</target>
 
 	<target name="update.solr.config">
+		<mkdir  dir="${SOLR_HOME_DIR}" />
 		<get src="${SOLR_DEFAULT_CONFIG_URL}" dest="${SOLR_HOME_DIR}/solr-default-config.zip" />
 		<delete dir="${SOLR_HOME_DIR}/cores/${SOLR_CORE_ID}/conf" />
 		<mkdir  dir="${SOLR_HOME_DIR}/cores/${SOLR_CORE_ID}/conf" />
