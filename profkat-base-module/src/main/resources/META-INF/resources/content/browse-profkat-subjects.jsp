@@ -16,7 +16,7 @@
 			<h1><fmt:message key="Webpage.browse.title.subject" /></h1>
 			<mcr:includeWebContent file="browse_bkl_intro.html" />
 
-			<mcrb:classificationBrowser classification="cpr_class_cprbkl"
+			<mcrb:classificationBrowser classification="profkat_class_subjects"
 				count="true" hideemptyleaves="true" expand="false"
 				searchmask="~searchstart-classcpr_bkl"
 				searchrestriction="objectType:person" showdescription="true"

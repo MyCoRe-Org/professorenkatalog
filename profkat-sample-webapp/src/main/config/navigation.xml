@@ -44,14 +44,14 @@
 			</navitem>
 
 			<navitem id="browse" i18n="Nav.ClassificationsSearch" href="content/browsenode.jsp">
-				<navitem id="subject_prof" i18n="Nav.Browse.Profkat.Subject" href="content/browse-profkat-bkl.jsp">
+				<navitem id="subject_prof" i18n="Nav.Browse.Profkat.Subject" href="content/browse-profkat-subjects.jsp">
 					<refitem id="~searchstart-class_bkl-profkat" />
 					<navitem id="result" i18n="Nav.Browseresults" href="content/searchresult.jsp" hidden="true">
 						<refitem id="~searchresult-class_bkl-profkat" />
 						<navitem id="docdetail" i18n="Nav.DocumentDetails" href="content/docdetails.jsp" hidden="true" />
 					</navitem>
 				</navitem>
-				<navitem id="historigin" i18n="Nav.Browse.Profkat.Historigin" href="content/browse-profkat-histfac.jsp">
+				<navitem id="historigin" i18n="Nav.Browse.Profkat.Historigin" href="content/browse-profkat-institutions.jsp">
 					<refitem id="~searchstart-class_histfac-profkat" />
 					<navitem id="result" i18n="Nav.Browseresults" href="content/searchresult.jsp" hidden="true">
 						<refitem id="~searchresult-class_histfac-profkat" />

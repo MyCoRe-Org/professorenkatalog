@@ -16,7 +16,7 @@
 		<div class="ur-box ur-text">
 			<h1><fmt:message key="Webpage.browse.title.histfac" /></h1>
 		<mcr:includeWebContent file="browse_histfac_intro.html" />
-		<mcrb:classificationBrowser classification="cpr_class_histfak"
+		<mcrb:classificationBrowser classification="profkat_class_institutions"
 			count="true" hideemptyleaves="true"
 			searchmask="~searchstart-classcpr_histfac"
 			searchrestriction="objectType:person" showdescription="true"

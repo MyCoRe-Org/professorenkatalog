@@ -54,7 +54,7 @@
 				<xed:output i18n="OMD.CPR.typeM" />
 			</label>
 			<div class="col-sm-10">
-				<xed:repeat xpath="type[@classid='cpr_class_persontypes']">
+				<xed:repeat xpath="type[@classid='profkat_class_persontypes']">
 					<xed:cleanup-rule xpath="//box.type/type" relevant-if="@categid" />
 					<div class="form-group">
 						<div class="col-sm-10">
@@ -63,7 +63,7 @@
 									<option value="">
 										<xed:output i18n="Editor.Common.choose" />
 									</option>
-									<xed:include uri="xslStyle:items2options:classification:editor:-1:children:cpr_class_persontypes" />
+									<xed:include uri="xslStyle:items2options:classification:editor:-1:children:profkat_class_persontypes" />
 								</select>
 							</xed:bind>
 						</div>
@@ -191,10 +191,10 @@
 								<label class="col-sm-2 control-label input-sm" for="proftype">
 									<xed:output i18n="OMD.CPR.hint.profType" />
 								</label>
-								<xed:bind xpath="classification[@classid='cpr_class_professortypes']/@categid">
+								<xed:bind xpath="classification[@classid='profkat_class_proftypes']/@categid">
 									<div class="col-sm-10">
 										<select id="proftype" class="form-control">
-											<xed:include uri="xslStyle:items2options:classification:editor:-1:children:cpr_class_professortypes" />
+											<xed:include uri="xslStyle:items2options:classification:editor:-1:children:profkat_class_proftypes" />
 										</select>
 									</div>
 								</xed:bind>
@@ -367,10 +367,10 @@
 								</xed:bind>
 								</div>
 								<div class="row" style="margin-bottom:6px">					
-								<xed:bind xpath="classification[@classid='cpr_class_histfak']/@categid">
+								<xed:bind xpath="classification[@classid='profkat_class_institutions']/@categid">
 									<div class="col-sm-12">
 										<select id="proftype" class="form-control">
-											<xed:include uri="xslStyle:items2options:classification:editor:-1:children:cpr_class_histfak" />
+											<xed:include uri="xslStyle:items2options:classification:editor:-1:children:profkat_class_institutions" />
 										</select>
 									</div>
 								</xed:bind>
@@ -447,7 +447,7 @@
 				<xed:output i18n="OMD.CPR.subjectsM" />
 			</label>
 			<div class="col-sm-10">
-				<xed:repeat xpath="subjectclass[@classid='cpr_class_cprbkl']">
+				<xed:repeat xpath="subjectclass[@classid='profkat_class_subjects']">
 				<xed:cleanup-rule xpath="//box.subjectclass/subjectclass" relevant-if="@categid" />
 					<div class="form-group">
 						<div class="col-sm-10">
@@ -456,7 +456,7 @@
 									<option value="">
 										<xed:output i18n="Editor.Common.choose" />
 									</option>
-									<xed:include uri="xslStyle:items2options:classification:editor:-1:children:cpr_class_cprbkl" />
+									<xed:include uri="xslStyle:items2options:classification:editor:-1:children:profkat_class_subjects" />
 								</select>
 							</xed:bind>
 						</div>
