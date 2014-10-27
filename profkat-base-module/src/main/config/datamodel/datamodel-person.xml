@@ -163,10 +163,14 @@
 		<element name="servdates" minOccurs='0' maxOccurs='1'>
 			<mcrmetaiso8601date name="servdate" class="MCRMetaISO8601Date" minOccurs='1' maxOccurs='unbounded' />
 		</element>
-		    <!-- Service Flags (@type='creator'|'editor')-->
+		<!-- Service Flags (@type='creator'|'editor')-->
     	<element name="servflags" minOccurs='0' maxOccurs='1'>
       		<mcrmetalangtext name="servflag" class="MCRMetaLangText" minOccurs='1' maxOccurs='unbounded' length="256" />
     	</element>
+    	<!-- Service state classification -->
+    	<element name="servstates" minOccurs='0' maxOccurs='1'>
+			<mcrmetaclassification name="servstate" class="MCRMetaClassification" minOccurs='1' maxOccurs='1' />
+		</element>
     	<!-- Service ACLs -->
     	<element name="servacls" minOccurs='0' maxOccurs='1'>
       		<mcrmetaaccessrule name="servacl" class="MCRMetaAccessRule" minOccurs='1' maxOccurs='unbounded' length="512" />
