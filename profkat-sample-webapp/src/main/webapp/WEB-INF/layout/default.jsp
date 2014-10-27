@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="application/xhtml+xml; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="stripes" uri="http://stripes.sourceforge.net/stripes.tld" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -8,6 +8,7 @@
 <%@ taglib prefix="mcrdd" uri="http://www.mycore.org/jspdocportal/docdetails.tld"%>
 
 <stripes:layout-definition>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
 	<%-- Parameters: 
 	     heading1: The overall heading of the page, usually hidden by CSS
 	               (useful for screen readers) 
@@ -15,7 +16,7 @@
 	     layout: "1column", "2columns", "3columns" (=default)
 	     
 	 --%>
-	<!DOCTYPE html>
+
 	<c:if test="${empty layout}">
 		<c:set var="layout" value="3columns" />
 	</c:if>
@@ -25,8 +26,6 @@
 	<%-- set the current language --%>
 	<mcr:setLanguage var="lang" allowedLanguages="de" />
 	<fmt:setLocale value="${lang}" scope="request" />
-	<fmt:setBundle basename='messages' scope="request" />
-	<html>
 	<head>
 		<meta charset="UTF-8" />
 		<%--
@@ -40,15 +39,15 @@
 
 		<script src="${WebApplicationBaseURL}javascript/jspdocportal.js" type="text/javascript"></script>
 		 --%>
-		<link rel="shortcut icon" href="${WebApplicationBaseURL}images/favicon_profkat.ico">
-		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_reset.css">
-		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_layout.css">
-		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_content.css">
+		<link rel="shortcut icon" href="${WebApplicationBaseURL}images/favicon_profkat.ico" />
+		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_reset.css" />
+		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_layout.css" />
+		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_content.css" />
 		<stripes:layout-component name="html_header">
 			<%-- any additional HTML header content --%>
 		</stripes:layout-component>
 		
-		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_profkatsample.css">
+		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_profkatsample.css" />
 	</head>
 
 	<body>
@@ -64,7 +63,7 @@
 					<%--<div  class="separator" >|</div>
 						<div class="item">
 							<span style="padding-left:10px;padding-right:10px">
-								<mcr:outputLanguageSelector languages="de,en" separatorString="&nbsp;&nbsp;|&nbsp;&nbsp;" />
+								<mcr:outputLanguageSelector languages="de,en" separatorString="&#160;&#160;|&#160;&#160;" />
 							</span>
 						</div> 	--%>
 					<ul>
@@ -72,9 +71,9 @@
 						<li class="userinfo">
 							<mcr:session method="get" var="username" type="userID" />
 							<c:if test="${not (username eq 'gast' || username eq 'guest')}">
-								<span class="label"><fmt:message key="Webpage.user" />:&nbsp;</span>
+								<span class="label"><fmt:message key="Webpage.user" />: </span>
 								<span class="username">							 
-									<a href="${WebApplicationBaseURL}nav?path=~userdetail">${username}</a>
+									<a href="${WebApplicationBaseURL}nav?path=~login">${username}</a>
 								</span>
 								[<span class="action">
 									<a href="${WebApplicationBaseURL}nav?path=~logout">
@@ -108,7 +107,7 @@
 						<a href="http://www.mycore.org">
 							<img alt="powered by MyCoRe 2.2"
 								 src="${WebApplicationBaseURL}images/poweredByMyCoRe2_2lines.gif"
-							 	style="border:0;text-align:center;">
+							 	style="border:0;text-align:center;" />
 						</a>
 					</div>
 					<div class="main_navigation">
