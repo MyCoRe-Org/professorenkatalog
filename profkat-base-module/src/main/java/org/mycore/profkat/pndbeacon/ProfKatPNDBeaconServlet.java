@@ -5,6 +5,7 @@ import java.io.Writer;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.TimeZone;
 
 import javax.servlet.ServletException;
@@ -39,7 +40,7 @@ public class ProfKatPNDBeaconServlet extends MCRServlet {
 	private static final long serialVersionUID = -4640031382109677365L;
 	private static SimpleDateFormat DATEFORMAT;
 	static{
-		DATEFORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+		DATEFORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US);
 		DATEFORMAT.setTimeZone(TimeZone.getTimeZone("GMT+0"));
 	}
 	
@@ -59,7 +60,7 @@ public class ProfKatPNDBeaconServlet extends MCRServlet {
 	 * @throws IOException
 	 */
 	private void writeMetdata(Writer w, Date creation) throws IOException{
-		Calendar cal = Calendar.getInstance();
+		Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+0"), Locale.GERMANY);
 		cal.setTime(creation);
 		w.write("#FORMAT: PND-BEACON\n");
 		w.write("#VERSION: 0.1\n");
