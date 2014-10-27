@@ -126,7 +126,7 @@
 					</c:if>		
 				</mcr:outputNavigation>							
          	</div>
-         	<h1><img src="${WebApplicationBaseURL}images/logo_hat.png" style="margin:0px 24px" />Professorenkatalog - Beispielanwendung</h1>	
+         	<h1 style="color:#326432;"><img src="${WebApplicationBaseURL}images/logo_hat.png" style="margin:0px 24px" />Professorenkatalog - Beispielanwendung</h1>	
 		</div>
 		<div class="panel panel-default hidden-md hidden-lg">
 			  <div class="panel-heading" style="min-height:50px">
