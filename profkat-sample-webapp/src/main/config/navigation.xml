@@ -8,15 +8,7 @@
 		</navitem>
 	
 			<navitem id="indexsearch" i18n="Nav.Profkat.Index"
-				href="content/indexSearch.jsp?searchclass=professorum">
-				<refitem id="~searchstart-index_professorum" />
-				<navitem id="searchresult-person" i18n="Nav.Profkat.Index" href="content/searchresult.jsp" hidden="true">
-					<refitem id="~searchresult-index_person" />
-					<navitem id="docdetail" i18n="Nav.DocumentDetails" href="content/docdetails.jsp" hidden="true">
-						<refitem id="~searchdocdetails-index_person" />
-					</navitem>
-				</navitem>
-				<navitem id="docdetail" i18n="Nav.DocumentDetails" href="content/docdetails.jsp" hidden="true" />
+				href="indexbrowser.action?modus=profkat">
 			</navitem>
 
 			<navitem id="search" i18n="Nav.Search" href="content/search.jsp">
@@ -81,13 +73,10 @@
 		<navitem id="impressum" i18n="Nav.Impressum" href="content/impressum.jsp">
 				<refitem id="~impressum" />
 		</navitem>
-		<navitem id="login" i18n="Nav.Login" href="content/login.jsp" hidden="true">
+		<navitem id="login" i18n="Nav.Login" href="/login.action" hidden="true">
 			<refitem id="~login" />
-			<navitem id="showuser" i18n="Nav.UserDetails" href="content/docdetails.jsp?style=user">
-				<refitem id="~userdetail" />
-			</navitem>
 		</navitem>
-		<navitem id="logout" i18n="Nav.Logout" href="logout" hidden="true">
+		<navitem id="logout" i18n="Nav.Logout" href="/login.action?logout=true" hidden="true">
 			<refitem id="~logout" />
 		</navitem>
 		<navitem id="form-feedback" i18n="Nav.Feedback" href="content/feedback.jsp" hidden="true">
