@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mycoreclass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink"
+  xsi:noNamespaceSchemaLocation="MCRClassification.xsd" ID="profkat_class_epochs">
+  <label xml:lang="de" text="Epochen" description="Epochen" />
+  <categories>
+    <category ID="ro">
+      <label xml:lang="de" text="Epochen an der Universität Rostock" />
+      <category ID="ro_1419-1563">
+        <label xml:lang="de" text="1419-1563" description="von der Gründung bis zur Formula Concordia" />
+      </category>
+      <category ID="ro_1563-1827">
+        <label xml:lang="de" text="1563-1827" description="von der Formula Concordia bis zum Ende des Kompatronats" />
+      		<category ID="ro_bue_1760-1789">
+        		<label xml:lang="de" text="1760-1789 (Bützow)" description="Auszug nach Bützow" />
+      		</category>
+      </category>
+      <category ID="ro_1827-1918">
+        <label xml:lang="de" text="1827-1918" description="nach dem Kompatronat bis zum Ende des Ersten Weltkrieges" />
+      </category>
+      <category ID="ro_1918-1933">
+        <label xml:lang="de" text="1918-1933" description="Zeit der Weimarer Republik" />
+      </category>
+      <category ID="ro_1933-1945">
+        <label xml:lang="de" text="1933-1945" description="Zeit des Dritten Reiches" />
+      </category>
+      <category ID="ro_1945-1989">
+        <label xml:lang="de" text="1945-1989" description="DDR Zeit" />
+      </category>
+      <category ID="ro_1989-heute">
+        <label xml:lang="de" text="1989-heute" description="aktuelle Zeit" />
+      </category>
+    </category>
+  </categories>
+</mycoreclass>
