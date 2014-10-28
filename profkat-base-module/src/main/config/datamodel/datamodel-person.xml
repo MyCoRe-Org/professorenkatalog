@@ -156,6 +156,10 @@
 		<element name="box.type" minOccurs='0' maxOccurs='1'>
 			<mcrmetaclassification name="type" class="MCRMetaClassification" minOccurs='1' maxOccurs='unbounded' />
 		</element>
+		<!-- 73 - Epoche -->
+		<element name="box.epoch" minOccurs='0' maxOccurs='1'>
+			<mcrmetaclassification name="epoch" class="MCRMetaClassification" minOccurs='1' maxOccurs='unbounded' />
+		</element>
 	</metadata>
 	<!--  ====================================================================================== -->
 	<service>

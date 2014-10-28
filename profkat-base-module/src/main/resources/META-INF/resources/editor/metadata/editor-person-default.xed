@@ -79,6 +79,38 @@
 	</xed:bind>
 
 		<!-- Personentyp [ENDE]-->
+		
+		<!-- Eoche -->
+		<xed:bind xpath="box.epoch[@class='MCRMetaClassification']">
+			<div class="form-group">
+				<label class="col-sm-2 control-label" for="persontype">
+					<xed:output i18n="OMD.CPR.epoch" />
+				</label>
+				<div class="col-sm-10">
+					<xed:repeat xpath="epoch[@classid='profkat_class_epochs']">
+						<xed:cleanup-rule xpath="//box.epoch/epoch" relevant-if="@categid" />
+						<div class="form-group">
+							<div class="col-sm-10">
+								<xed:bind xpath="@categid">
+									<select id="epoch" class="form-control">
+										<option value="">
+											<xed:output i18n="Editor.Common.choose" />
+										</option>
+										<xed:include uri="xslStyle:items2options:classification:editor:-1:children:profkat_class_epochs" />
+									</select>
+								</xed:bind>
+							</div>
+							<div class="col-sm-2">
+								<div class="btn-group btn-group-sm pull-right">
+									<xed:controls />
+								</div>
+							</div>
+						</div>
+					</xed:repeat>
+				</div>
+			</div>
+		</xed:bind>
+		<!-- Epoche [ENDE]-->
 
 		<div class="form-group">
 			<label class="col-sm-2 control-label"><xed:output i18n="OMD.CPR.nameM" /></label>
