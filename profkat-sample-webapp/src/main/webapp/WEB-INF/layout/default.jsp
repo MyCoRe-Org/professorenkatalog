@@ -150,8 +150,8 @@
 						</div>
 						<div style="padding-top:32px;padding-bottom:32px; text-align: center;">
 							<a href="http://www.mycore.org">
-								<img alt="powered by MyCoRe 2.2"
-									 src="${WebApplicationBaseURL}images/poweredByMyCoRe2_2lines.gif"
+								<img alt="powered by MyCoRe"
+									 src="${WebApplicationBaseURL}images//mycore_logo_powered_129x34_knopf_hell.png"
 								 	style="border:0;text-align:center;" />
 							</a>
 						</div>
