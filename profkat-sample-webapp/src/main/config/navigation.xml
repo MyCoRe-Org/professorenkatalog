@@ -11,7 +11,7 @@
 				href="indexbrowser.action?modus=profkat">
 			</navitem>
 
-			<navitem id="search" i18n="Nav.Search" href="content/search.jsp">
+			<navitem id="search" i18n="Nav.Search" href="simpleSearch.action">
 				<navitem id="allmeta" i18n="Nav.SearchAll" href="content/searchmask-editor.jsp?editor=editor/searchmasks/SearchMask_AllMetadataFields.xml" hidden="true">
 					<refitem id="~searchstart-allmeta" />
 					<navitem id="searchresult-allmeta" i18n="Nav.Search" href="content/searchresult.jsp" hidden="true">
@@ -36,7 +36,6 @@
 
 				<navitem id="docdetail" i18n="Nav.DocumentDetails" href="content/docdetails.jsp" hidden="true">
 					<refitem id="~docdetail" />
-					<refitem id="~query" />
 					<navitem id="derivatedetails" i18n="Nav.DigitalisatDetails"
 						href="content/derivatedetails.jsp" hidden="true"> <refitem id="~derivatedetails" />
 					</navitem>
