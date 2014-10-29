@@ -121,20 +121,10 @@
 			<navitem id="professorum" i18n="Nav.Admin.Profkat"
 				href="admin/main.jsp?type=person" permission="administrate-person">
 				<navitem id="professorum" i18n="WF.professorum"
-					href="content/workflow/professorum/workflow.jsp" permission="administrate-person">
+					href="showWorkspace.action?mcrobjid_base=profkat_person" permission="administrate-person">
 					<refitem id="~workflow-professorum" />
-					<navitem id="professorumbegin" i18n="WF.professorum.begin" href="content/workflow/professorum/begin.jsp" hidden="true">
-						<refitem id="~workflow-professorum-begin" />
-					</navitem>
 					<navitem id="workflow-fileupload" i18n="Nav.WorfklowFileUpload" href="content/fileupload.jsp" hidden="true">
 						<refitem id="~workflow-fileupload" />
-					</navitem>
-					<navitem id="professorumsearch" i18n="Nav.Search" href="content/searchmask-editor.jsp?editor=editor/searchmasks/SearchMask_ProfessorumEdit.xml" hidden="true">
-						<refitem id="~searchstart-wfprofessorum" />
-						<navitem id="searchresult-wfprofessorum" i18n="Nav.Searchresults" href="content/searchresult.jsp" hidden="true">
-							<refitem id="~searchresult-wfprofessorum" />
-							<navitem id="docdetail" i18n="Nav.DocumentDetails" href="content/docdetails.jsp" hidden="true" />
-						</navitem>
 					</navitem>
 				</navitem>
 				<navitem id="process-professorum" i18n="Nav.Admin.Processes" href="admin/processes_list.jsp?workflowProcessType=professorum" permission="administrate-person">
