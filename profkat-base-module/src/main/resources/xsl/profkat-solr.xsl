@@ -33,7 +33,7 @@
     	<xsl:for-each select="box.faculty/faculty[last()]/classification">
     <field name="profkat_last_faculty_class"><xsl:value-of select="@classid" />:<xsl:value-of select="@categid" /></field>
     </xsl:for-each>
-    <field name="profkat_state_msg">OMD.CPR.states.<xsl:value-of select="box.state/state" /></field>
+    <field name="profkat_status_msg">OMD.CPR.states.<xsl:value-of select="box.status/status" /></field>
     
     <xsl:for-each select="box.identifier/identifier[@type='gnd' or @type='pnd']">
     	<field name="gnd_uri">http://d-nb.info/gnd/<xsl:value-of select="." /></field>
