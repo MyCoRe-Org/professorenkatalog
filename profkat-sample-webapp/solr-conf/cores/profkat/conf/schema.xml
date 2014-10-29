@@ -121,6 +121,7 @@
     <field name="modified" type="date" />
     <field name="createdby" type="string" />
     <field name="modifiedby" type="string" />
+    <field name="state" type="string" />
 
     <!-- parent handling -->
     <field name="parent" type="string" />
@@ -199,7 +200,7 @@
     <field name="profkat_period" type="string" multiValued="false" stored="true" />
     <field name="profkat_last_professorship" type="string" multiValued="false" stored="true" />
     <field name="profkat_last_faculty_class" type="string" multiValued="false" stored="true" />
-    <field name="profkat_state_msg" type="string" multiValued="false" stored="true" />
+    <field name="profkat_status_msg" type="string" multiValued="false" stored="true" />
     
     <field name="gnd_uri" type="string" multiValued="false" stored="true" />
  </fields>

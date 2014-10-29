@@ -796,8 +796,8 @@
 
 	<text id="Lstate" i18n="OMD.CPR.statesM" />
 	<panel id="Dstate">
-		<hidden var="metadata/box.state/@class" default="MCRMetaLangText" />
-		<cell col="1" row="1" var="metadata/box.state/state">
+		<hidden var="metadata/box.status/@class" default="MCRMetaLangText" />
+		<cell col="1" row="1" var="metadata/box.status/status">
 			<list id="STypeState" type="dropdown">
 				<item value="inprogress" i18n="OMD.CPR.states.inprogress" />
 				<item value="long" i18n="OMD.CPR.states.long" />

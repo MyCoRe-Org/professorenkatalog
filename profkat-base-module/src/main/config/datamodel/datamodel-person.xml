@@ -149,8 +149,8 @@
 			<mcrmetalangtext name="identifier" class="MCRMetaLangText" minOccurs='0' maxOccurs='5' length="128" />
 		</element>
 		<!-- 71 - (Status des Eintrages (in Bearbeitung, Lang-/Kurz-/Dokumenteintrag ...) -->
-		<element name="box.state" minOccurs='0' maxOccurs='1'>
-			<mcrmetalangtext name="state" class="MCRMetaLangText" minOccurs='0' maxOccurs='unbounded' length="1024" />
+		<element name="box.status" minOccurs='0' maxOccurs='1'>
+			<mcrmetalangtext name="status" class="MCRMetaLangText" minOccurs='0' maxOccurs='unbounded' length="1024" />
 		</element>
 		<!-- 72 - Personentyp Klassifikation -->
 		<element name="box.type" minOccurs='0' maxOccurs='1'>

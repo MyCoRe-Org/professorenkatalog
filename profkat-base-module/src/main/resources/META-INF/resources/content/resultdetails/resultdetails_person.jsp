@@ -78,7 +78,7 @@
 			</td>
 		</tr>
 	</x:if>
-	<x:set var="data4" select="$xml/mycoreobject/metadata/box.state/state" />
+	<x:set var="data4" select="$xml/mycoreobject/metadata/box.status/status" />
 	<x:if select="string-length($data4)>0">
 		<tr>
 			<th style="min-width:80px">

@@ -17,7 +17,7 @@
 	<mcr:receiveMcrObjAsJdom mcrid="${param.id}" varDom="mcrobj" fromWF="${param.fromWF}"/>
 	<c:if test="${not(param.print eq 'true')}">
 		<div  class="tabbar ur-embedded">
-			<c:set var="msgKeyStatus">OMD.CPR.states.<x:out select="$mcrobj//mycoreobject/metadata/box.state/state"/></c:set>
+			<c:set var="msgKeyStatus">OMD.CPR.states.<x:out select="$mcrobj//mycoreobject/metadata/box.staus/status"/></c:set>
 			<div class="pull-right" style="font-style: italic; color: #666666; padding-right:16px; padding-top:11px;"><fmt:message key="${msgKeyStatus}" /></div>
 			<ul id="tabs_on_page" class="nav nav-tabs">
 				<c:set var="tabtokens" value="data|article|documents" />

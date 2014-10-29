@@ -73,7 +73,7 @@
  
     <field name="profname"  type="name" source="objectMetadata" sortable="true" objects="person" xpath="/mycoreobject/metadata/box.surname/surname[1]" value="text()" />
     <field name="profsortname"  type="name" source="objectMetadata" sortable="true" objects="person" xpath="/mycoreobject/metadata" value="concat(string(./box.surname/surname[1]),', ',string(./box.firstname/firstname[1]))" addable="true"/>
-	<field name="profstates"  objects="person" sortable="true"  type="identifier" source="objectMetadata" xpath="/mycoreobject/metadata/box.state/state"  value="text()" />      
+	<field name="profstates"  objects="person" sortable="true"  type="identifier" source="objectMetadata" xpath="/mycoreobject/metadata/box.status/status"  value="text()" />      
 
     <field name="pnd"  objects="person" sortable="false"  type="identifier" source="objectMetadata" xpath="/mycoreobject/metadata/box.identifier/identifier[@type='pnd']" value="text()" addable="true"/>
 
