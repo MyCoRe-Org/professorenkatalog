@@ -13,7 +13,7 @@
 	</stripes:layout-component>
     <stripes:layout-component name="contents">
     	<div class="ur-box ur-text">
-			<h1><fmt:message key="Webpage.browse.title.subject" /></h1>
+			<h2><fmt:message key="Webpage.browse.title.subject" /></h2>
 			<mcr:includeWebContent file="browse_bkl_intro.html" />
 
 			<mcrb:classificationBrowser classification="profkat_class_subjects"
