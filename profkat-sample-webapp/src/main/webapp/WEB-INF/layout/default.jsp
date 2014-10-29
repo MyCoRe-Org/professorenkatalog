@@ -96,7 +96,7 @@
 
 		<div id="top" class="container ur-head hidden-xs hidden-sm" style="position:relative;">
 			<div class="navbar navbar-default ur-topnav hidden-xs hidden-sm">
-           		<mcr:outputNavigation id="top" mode="top" cssClass="nav navbar-nav navbar-right"> 
+           		<mcr:outputNavigation id="top" mode="top" cssClass="nav navbar-nav pull-right"> 
 					<%--<div  class="separator" >|</div>
 						<div class="item">
 							<span style="padding-left:10px;padding-right:10px">
