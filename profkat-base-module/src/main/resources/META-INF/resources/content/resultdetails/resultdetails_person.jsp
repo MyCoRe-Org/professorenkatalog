@@ -22,37 +22,28 @@
 			</h4>
 	</div>
 	<div class="panel-body">
+		<mcr:checkAccess var="modifyAllowed" permission="writedb" key="${param.id}" />
+ 		<c:if test="${modifyAllowed}">
+ 			<mcr:isObjectNotLocked var="bhasAccess" mcrObjectID="${param.id}" />
+ 			<c:choose>
+ 				<c:when test="${bhasAccess}">
+ 					<!--  Editbutton -->
+ 					<a class="btn btn-primary btn-lg pull-right" style="padding:6px" 
+						href="${WebApplicationBaseURL}startedit.action?mcrid=${param.id}" title="<fmt:message key="WF.common.object.EditObject" />">
+		   					<span class="glyphicon glyphicon-pencil"></span>
+		   			</a> 
+				</c:when>
+				<c:otherwise>
+					<button class="btn btn-default btn-lg pull-right" style="padding:6px" disabled="disabled" 
+           				title="<fmt:message key="WF.common.object.EditObjectIsLocked" />">
+		   				<span class="glyphicon glyphicon-ban-circle"></span>
+           			</button>
+				</c:otherwise>
+			</c:choose>         
+		</c:if>   
 	
 	
 <table style="border-spacing:4px;border-collapse:separate;font-size:100%">
-	<tr>
-		<th></th>
-		<td></td>
-		<td rowspan="10" style="text-align: right; padding-top:10px;">
-			
-			<br /><br />
-			 <mcr:checkAccess var="modifyAllowed" permission="writedb" key="${param.id}" />
-			 <c:if test="${modifyAllowed}">
-			 	<mcr:isObjectNotLocked var="bhasAccess" mcrObjectID="${param.id}" />
-			 	<c:choose>
-			 		<c:when test="${bhasAccess}">
-			 			<!--  Editbutton -->
-			 			<form method="get" action="${applicationScope.WebApplicationBaseURL}startedit.action" class="resort">                 
-							<input name="mcrid" value="${param.id}" type="hidden" />
-							<input title="<fmt:message key="WF.common.object.EditObject" />" border="0" 
-							       src="${applicationScope.WebApplicationBaseURL}images/workflow1.gif" type="image"  class="imagebutton" height="30px" />
-						</form> 
-					</c:when>
-					<c:otherwise>
-						<img title="<fmt:message key="WF.common.object.EditObjectIsLocked" />" border="0" 
-						     src="${applicationScope.WebApplicationBaseURL}images/workflow_locked.gif" height="30px" />
-					</c:otherwise>
-				</c:choose>         
-			</c:if>   
-		</td>
-	</tr>
- 
-
 	<x:set var="data2" select="$xml/mycoreobject/metadata/box.professorship/professorship[last()]/event" /> 
 	<x:if select="string-length($data2)>0">
 		<tr>

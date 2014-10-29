@@ -25,7 +25,7 @@
 	<stripes:layout-component name="contents">
 		<div class="ur-box">
 			<div class="ur-text">
-			<h1>${headline}</h1>
+			<h2>${headline}</h2>
 			<mcr:debugInfo />
 		</div>
 		<mcrb:searchresultBrowser varmcrid="mcrid" varurl="url" result ="${actionBean.result}" sortfields="profkat_idx_profkat modified">

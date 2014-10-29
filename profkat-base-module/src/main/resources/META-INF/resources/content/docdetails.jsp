@@ -70,55 +70,50 @@
 	 <stripes:layout-component name="right_side">
 		<div class="ur-box ur-box-bordered infobox" style="margin-bottom:32px; padding: 18px 6px 6px 6px;">
 			<mcrb:searchDetailBrowser mcrid="${mcrid}"/>
-			<div class="docdetails-toolbar">
-    			<c:if test="${empty param.print and !fn:contains(style,'user')}">
-     				<div class="docdetails-toolbar-item">
-		   				<a href="${WebApplicationBaseURL}content/print_details.jsp?id=${param.id}&amp;print=true&amp;fromWF=${param.fromWF}" target="_blank">
-	       					<img height="24px" src="${WebApplicationBaseURL}images/workflow_print.gif" border="0" title="<fmt:message key="WF.common.printdetails" />"  class="imagebutton"/>
+			
+			
+					<c:if test="${empty param.print and !fn:contains(style,'user')}">
+  						<a class="btn btn-default btn-lg" style="padding:6px" href="${WebApplicationBaseURL}content/print_details.jsp?id=${param.id}&amp;print=true&amp;fromWF=${param.fromWF}" target="_blank" title="<fmt:message key="WF.common.printdetails" />">
+	       					<span class="glyphicon glyphicon-print"></span>
 	       				</a>
-	       			</div>
-     			</c:if>
+					</c:if>
     
-     			<c:if test="${empty param.print}">
-     				<c:set var="url">${WebApplicationBaseURL}resolve/id/${param.id}</c:set>
-     					<div class="docdetails-toolbar-item">
-		     			<a target="_blank" href="${WebApplicationBaseURL}nav?path=~feedback&amp;prof_url=<%=java.net.URLEncoder.encode(pageContext.getAttribute("url").toString(), "ISO-8859-1")%>&amp;prof_name=<%=java.net.URLEncoder.encode(pageContext.getAttribute("prof_name").toString().replace("\n",""), "ISO-8859-1")%>">
-	    	    			<img height="24px" src="${WebApplicationBaseURL}images/feedback.gif" border="0" title="<fmt:message key="WF.professorum.feedback" />"  class="imagebutton"/>
+     				<c:if test="${empty param.print}">
+     					<c:set var="url">${WebApplicationBaseURL}resolve/id/${param.id}</c:set>
+		   				<a class="btn btn-default btn-lg" style="padding:6px" target="_blank" title="<fmt:message key="WF.professorum.feedback" />"
+		   				   href="${WebApplicationBaseURL}nav?path=~feedback&amp;prof_url=<%=java.net.URLEncoder.encode(pageContext.getAttribute("url").toString(), "ISO-8859-1")%>&amp;prof_name=<%=java.net.URLEncoder.encode(pageContext.getAttribute("prof_name").toString().replace("\n",""), "ISO-8859-1")%>">
+	    	    			<span class="glyphiconn glyphicon-envelope"></span>
 	        			</a>
-	         		</div>
-     			</c:if>
-     			<c:if test="${(not from)}" > 
-     				<mcr:checkAccess var="modifyAllowed" permission="writedb" key="${mcrid}" />
-     				<mcr:isObjectNotLocked var="bhasAccess" mcrObjectID="${mcrid}" />
-      				<c:if test="${modifyAllowed}">
-        				<c:choose>
-         					<c:when test="${bhasAccess}"> 
-		         				<!--  Editbutton -->
-								<div class="docdetails-toolbar-item">
-	    	     					<form method="get" action="${WebApplicationBaseURL}startedit.action" class="resort">                 
-	        	    					<input name="mcrid" value="${mcrid}" type="hidden"/>
-										<input title="<fmt:message key="WF.common.object.EditObject" />" src="${WebApplicationBaseURL}images/workflow1.gif" type="image"  class="imagebutton" height="24px" />
-	         						</form> 
-	         					</div>
-         					</c:when>
-         					<c:otherwise>
-           						<div class="docdetails-toolbar-item">  
-           							<img height="24px" title="<fmt:message key="WF.common.object.EditObjectIsLocked" />" border="0" src="${WebApplicationBaseURL}images/workflow_locked.gif" />
-           						</div>
+	         		</c:if>
+     				<c:if test="${(not from)}" > 
+     					<mcr:checkAccess var="modifyAllowed" permission="writedb" key="${mcrid}" />
+     					<mcr:isObjectNotLocked var="bhasAccess" mcrObjectID="${mcrid}" />
+      					<c:if test="${modifyAllowed}">
+        					<c:choose>
+         						<c:when test="${bhasAccess}"> 
+		         					<!--  Editbutton -->
+									<a class="btn btn-primary btn-lg" style="padding:6px" 
+									   href="${WebApplicationBaseURL}startedit.action?mcrid=${mcrid}" title="<fmt:message key="WF.common.object.EditObject" />">
+		   								<span class="glyphicon glyphicon-pencil"></span>
+		   							</a> 
+	         					</c:when>
+         						<c:otherwise>
+           							<button class="btn btn-default btn-lg" style="padding:6px" disabled="disabled" 
+           							        title="<fmt:message key="WF.common.object.EditObjectIsLocked" />">
+		   								<span class="glyphicon glyphicon-ban-circle"></span>
+           							</button>
          					</c:otherwise>
         				</c:choose>
         
-        				<!--  RTF Export -->
-        				<div class="docdetails-toolbar-item"> 
-        					<a href="${WebApplicationBaseURL}servlets/CPR2RTFServlet?id=${param.id}" target="_blank">
-          						<img height="24px" src="${WebApplicationBaseURL}images/workflow_rtf_export.gif" border="0" title="<fmt:message key="WF.common.rtfexport" />"  class="imagebutton" />
-           					</a>        
-         				</div>
-      				</c:if>      
+          				<!--  RTF Export -->
+           				<a class="btn btn-default btn-lg" style="padding:6px" href="${WebApplicationBaseURL}servlets/CPR2RTFServlet?id=${param.id}" target="_blank" 
+           					title="<fmt:message key="WF.common.rtfexport" />">
+        					<span class="glyphicon glyphicon-book"></span>
+        				</a>        
+        			</c:if>      
    				</c:if>
-   				<div style="clear:both;"></div>
 			</div>
-		</div>
+
 		
 		<x:if select="$linked/mycoreobject/structure/derobjects/derobject[@xlink:label='display_image']">
 			
