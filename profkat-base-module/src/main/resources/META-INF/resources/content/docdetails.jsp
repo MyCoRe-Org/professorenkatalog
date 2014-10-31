@@ -80,17 +80,17 @@
     
      				<c:if test="${empty param.print}">
      					<c:set var="url">${WebApplicationBaseURL}resolve/id/${param.id}</c:set>
-		   				<a class="btn btn-default btn-lg" style="padding:6px" target="_blank" title="<fmt:message key="WF.professorum.feedback" />"
+		   				<a class="btn btn-default btn-lg" style="padding:6px" target="_blank" title="<fmt:message key="Webpage.feedback" />"
 		   				   href="${WebApplicationBaseURL}nav?path=~feedback&amp;prof_url=<%=java.net.URLEncoder.encode(pageContext.getAttribute("url").toString(), "ISO-8859-1")%>&amp;prof_name=<%=java.net.URLEncoder.encode(pageContext.getAttribute("prof_name").toString().replace("\n",""), "ISO-8859-1")%>">
 	    	    			<span class="glyphiconn glyphicon-envelope"></span>
 	        			</a>
 	         		</c:if>
      				<c:if test="${(not from)}" > 
-     					<mcr:checkAccess var="modifyAllowed" permission="writedb" key="${mcrid}" />
-     					<mcr:isObjectNotLocked var="bhasAccess" mcrObjectID="${mcrid}" />
+     					<mcr:hasAccess var="modifyAllowed" permission="writedb" mcrid="${mcrid}" />
+     					<mcr:isLocked var="locked" mcrid="${mcrid}" />
       					<c:if test="${modifyAllowed}">
         					<c:choose>
-         						<c:when test="${bhasAccess}"> 
+         						<c:when test="${not locked}"> 
 		         					<!--  Editbutton -->
 									<a class="btn btn-primary btn-lg" style="padding:6px" 
 									   href="${WebApplicationBaseURL}startedit.action?mcrid=${mcrid}" title="<fmt:message key="WF.common.object.EditObject" />">

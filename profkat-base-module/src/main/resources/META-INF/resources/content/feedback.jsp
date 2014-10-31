@@ -5,7 +5,7 @@
 <%@ taglib prefix="mcr" uri="http://www.mycore.org/jspdocportal/base.tld" %>
 <%@ taglib prefix="stripes" uri="http://stripes.sourceforge.net/stripes.tld" %>
 
-<fmt:message var="pageTitle" key="WF.professorum.feedback" />
+<fmt:message var="pageTitle" key="Webpage.feedback" />
 <stripes:layout-render name="../WEB-INF/layout/default.jsp" pageTitle="${pageTitle}" layout="2columns">
     <stripes:layout-component name="contents">
 <c:set var="returnurl" value="${param.prof_url}" />

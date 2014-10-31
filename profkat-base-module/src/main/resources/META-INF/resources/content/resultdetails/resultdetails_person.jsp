@@ -22,11 +22,11 @@
 			</h4>
 	</div>
 	<div class="panel-body">
-		<mcr:checkAccess var="modifyAllowed" permission="writedb" key="${param.id}" />
+		<mcr:hasAccess var="modifyAllowed" permission="writedb" mcrid="${param.id}" />
  		<c:if test="${modifyAllowed}">
- 			<mcr:isObjectNotLocked var="bhasAccess" mcrObjectID="${param.id}" />
+ 			<mcr:isLocked var="locked" mcrid="${param.id}" />
  			<c:choose>
- 				<c:when test="${bhasAccess}">
+ 				<c:when test="${not locked}">
  					<!--  Editbutton -->
  					<a class="btn btn-primary btn-lg pull-right" style="padding:6px" 
 						href="${WebApplicationBaseURL}startedit.action?mcrid=${param.id}" title="<fmt:message key="WF.common.object.EditObject" />">
