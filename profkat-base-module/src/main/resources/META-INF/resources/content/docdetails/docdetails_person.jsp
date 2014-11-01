@@ -355,9 +355,9 @@
    		<mcrdd:item select="./service/servdates/servdate[@type='modifydate']" datePattern ="dd.MM.yyyy" var="modifydate" />
    		<mcrdd:outputitem select="." var="current">
    			<c:out value="${createdate}"/>,&#160;
-   			<x:out select="$current/service/servflags/servflag[@type='creator']"/>&#160;/&#160;
+   			<x:out select="$current/service/servflags/servflag[@type='createdby']"/>&#160;/&#160;
    			<c:out value="${modifydate}"/>,&#160;
-   			<x:out select="$current/service/servflags/servflag[@type='editor']"/>
+   			<x:out select="$current/service/servflags/servflag[@type='modifiedby']"/>
    		</mcrdd:outputitem>  
    	</mcrdd:row>
    	<%--
