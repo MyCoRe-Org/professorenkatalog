@@ -120,7 +120,7 @@
 		<navitem id="admin" i18n="Nav.AdminMenue" href="admin/main.jsp" permission="administrate-person">
 			<navitem id="professorum" i18n="Nav.Admin.Profkat"
 				href="admin/main.jsp?type=person" permission="administrate-person">
-				<navitem id="professorum" i18n="WF.professorum"
+				<navitem id="professorum" i18n="WF.workspace"
 					href="showWorkspace.action?mcrobjid_base=profkat_person" permission="administrate-person">
 					<refitem id="~workflow-professorum" />
 					<navitem id="workflow-fileupload" i18n="Nav.WorfklowFileUpload" href="content/fileupload.jsp" hidden="true">
