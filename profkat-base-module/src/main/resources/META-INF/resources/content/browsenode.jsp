@@ -14,7 +14,7 @@
         		<mcr:outputNavigation mode="toc" id="left"/>
         	</div>
         	<div style="padding-bottom: 50px;">
-            	<mcr:includeWebContent file="browsenode.html" />
+            	<mcr:includeWebcontent id="browsenode" file="browsenode.html" />
            	</div>
         </div>        
 	 </stripes:layout-component>

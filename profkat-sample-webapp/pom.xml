@@ -172,10 +172,6 @@
 							</excludes>
 						</resource>
 						<resource>
-							<directory>src/main/config/lang/webcontent</directory>
-							<targetPath>content/webcontent</targetPath>
-						</resource>
-						<resource>
 							<directory>src/main/config/hibernate</directory>
 							<targetPath>WEB-INF/classes</targetPath>
 							<excludes>

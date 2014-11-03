@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
+    <head>
+        <title>A Simple Page with CKEditor</title>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+   		<!-- Include all compiled plugins (below), or include individual files as needed -->
+   		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+   		<script src="ckeditor/ckeditor.js"></script>
+   		<script src="ckeditor/adapters/jquery.js"></script>
+        
+    </head>
+    <body>
+
+        <form>
+            <textarea name="editor1xyz" id="taedit_aktuelles" rows="10" cols="80">
+                This is my textarea to be replaced with CKEditor.
+            </textarea>
+            <script>
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                $(document).ready( function() {$('textarea#taedit_aktuelles').ckeditor(); });
+            </script>
+        </form>
+        
+        		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+   		
+    </body>
+</html>

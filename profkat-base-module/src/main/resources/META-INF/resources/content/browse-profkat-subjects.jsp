@@ -14,7 +14,7 @@
     <stripes:layout-component name="contents">
     	<div class="ur-box ur-text">
 			<h2><fmt:message key="Webpage.browse.title.subject" /></h2>
-			<mcr:includeWebContent file="browse_bkl_intro.html" />
+			<mcr:includeWebcontent id="browse_subject" file="browse_bkl_intro.html" />
 
 			<mcrb:classificationBrowser classification="profkat_class_subjects"
 				count="true" hideemptyleaves="true" expand="false"

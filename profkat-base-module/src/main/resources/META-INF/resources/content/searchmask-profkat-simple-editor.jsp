@@ -14,7 +14,7 @@
 					<mcr:includeEditor editorPath="editor/searchmasks/SearchMask_ProfkatSimple.xml"/>
     			</td>
     			<td valign="top">
-	 				<mcr:includeWebContent file="searchmask_simple_intro.html" />
+	 				<mcr:includeWebcontent id="search_simple" file="searchmask_simple_intro.html" />
 				</td>
  			</tr>  
 		</table>

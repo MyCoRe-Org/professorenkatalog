@@ -66,7 +66,10 @@
 		<script src="${WebApplicationBaseURL}javascript/jspdocportal.js" type="text/javascript"></script>
 		 --%>
 		
-		 <!-- Bootstrap -->
+		 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+   		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+   		<!-- Include all compiled plugins (below), or include individual files as needed -->
+   		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
 
 		<%--
@@ -82,6 +85,15 @@
     	<link type="text/css"  rel="stylesheet" href="${pageContext.request.contextPath}/themes/uni-rostock/css/uni-rostock_bootstrap.css" />
 		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/themes/cpr/css/cpr.css" />
 		 --%>
+		 
+		 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style_profkatsample.css" />
+		
+		
+		<mcr:hasAccess permission="administrate-webcontent" var="editWeb"/>
+		 <c:if test="${editWeb}">
+		 	<script src="${pageContext.request.contextPath}/ckeditor/ckeditor.js"></script>
+			<script src="${pageContext.request.contextPath}/ckeditor/adapters/jquery.js"></script>
+		 </c:if>
 		<stripes:layout-component name="html_header">
 			<%-- any additional HTML header content --%>
 		</stripes:layout-component>		
@@ -180,11 +192,6 @@
   				</div>
 			</div>
 		</div>
-
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-   		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-   		<!-- Include all compiled plugins (below), or include individual files as needed -->
-   		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	</body>
 </html>
 </stripes:layout-definition>

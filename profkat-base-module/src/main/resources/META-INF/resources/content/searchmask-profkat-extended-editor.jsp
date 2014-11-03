@@ -12,7 +12,7 @@
 			<mcr:includeEditor editorPath="editor/searchmasks/SearchMask_ProfkatExtended.xml"/>
 		</div>			
 		<div>
-			<mcr:includeWebContent file="searchmask_extended_intro.html" />
+			<mcr:includeWebcontent id="search_ext" file="searchmask_extended_intro.html" />
 		</div>	 	
     </stripes:layout-component>
 </stripes:layout-render>

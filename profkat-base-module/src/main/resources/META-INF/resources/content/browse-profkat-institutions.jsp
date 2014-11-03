@@ -15,7 +15,7 @@
     <stripes:layout-component name="contents">
 		<div class="ur-box ur-text">
 			<h2><fmt:message key="Webpage.browse.title.histfac" /></h2>
-		<mcr:includeWebContent file="browse_histfac_intro.html" />
+		<mcr:includeWebcontent id="browse_histfac" file="browse_histfac_intro.html" />
 		<mcrb:classificationBrowser classification="profkat_class_institutions"
 			count="true" hideemptyleaves="true"
 			searchmask="~searchstart-classcpr_histfac"

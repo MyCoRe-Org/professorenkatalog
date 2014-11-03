@@ -13,7 +13,7 @@
 	<stripes:layout-component name="contents">
 		<h2>${pageTitle}</h2>
 		<div>
-			<mcr:includeWebContent file="aktuelles.html" />
+			<mcr:includeWebcontent id="aktuelles" file="aktuelles.html" />
 		</div>
 	</stripes:layout-component>
 </stripes:layout-render>

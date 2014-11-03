@@ -26,6 +26,6 @@
 		<p><mcr:includeEditor editorPath="editor/searchmasks/SearchMask_AllMetadataFields.xml"/></p>
 
 		<p><mcr:outputNavigation expanded="false" mode="toc" id="left"/></p>
-		<div style="width:600px;"><mcr:includeWebContent file="search_introtext.html"/></div>
+		<div style="width:600px;"><mcr:includeWebcontent id="search_intro" file="search_introtext.html"/></div>
 	</stripes:layout-component>
 </stripes:layout-render>
