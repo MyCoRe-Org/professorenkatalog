@@ -19,7 +19,11 @@
       MCRObjectID: ${currentVariables.mcrObjectID}<br /><br />
 
      <button name="doEditObject-task_${currentTask.id}-${currentVariables.mcrObjectID}" value="" class="btn btn-default" type="submit">
-     	<span class="glyphicon glyphicon-pencil"></span> Objekt bearbeiten</button>
+     	<span class="glyphicon glyphicon-tag"></span> Metadaten bearbeiten
+     </button>
+     <button name="doEditDerivates-task_${currentTask.id}-${currentVariables.mcrObjectID}" value="" class="btn btn-default" type="submit">
+    	 <span class="glyphicon glyphicon-file"></span> Inhalte bearbeiten
+     </button>	
      	 <%--><c:import url="/content/workflow/editorButtons.jsp" /> --%>
 					</div>
 	  						<div class="panel-footer">
