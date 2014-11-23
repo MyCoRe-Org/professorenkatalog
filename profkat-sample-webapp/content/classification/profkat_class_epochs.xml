@@ -3,6 +3,9 @@
   xsi:noNamespaceSchemaLocation="MCRClassification.xsd" ID="profkat_class_epochs">
   <label xml:lang="de" text="Epochen" description="Epochen" />
   <categories>
+    <category ID="none">
+    	<label xml:lang="de" text="nicht zugewiesen" />
+    </category>
     <category ID="ro">
       <label xml:lang="de" text="Epochen an der Universität Rostock" />
       <category ID="ro_1419-1563">
