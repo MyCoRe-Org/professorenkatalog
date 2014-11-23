@@ -162,6 +162,7 @@
 					</archive>
 				</configuration>
 			</plugin>
+			<!-- 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
@@ -204,6 +205,58 @@
 							<dir>src/main/config/datamodel</dir>
 							<outputDir>${project.build.outputDirectory}</outputDir>
 							<stylesheet>${project.build.outputDirectory}/xsl/MCRMetadataSchema.xsl</stylesheet>
+							<fileMappers>
+								<fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
+									<targetExtension>.oldxsd</targetExtension>
+								</fileMapper>
+							</fileMappers>
+						</transformationSet>
+					</transformationSets>
+				</configuration>
+			</plugin>
+			 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>unpack</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>unpack</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>org.mycore.plugins</groupId>
+ 								    <artifactId>datamodel-plugin</artifactId>
+  									<version>0.5-SNAPSHOT</version>
+									<includes>datamodel2*.xsl</includes>
+									<excludes>datamodel2ext.xsl</excludes>
+									<outputDirectory>${project.build.outputDirectory}/xsl</outputDirectory>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>xml-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>transform</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<transformationSets>
+						<transformationSet>
+							<dir>src/main/datamodel/def</dir>
+							<outputDir>${project.build.outputDirectory}</outputDir>
+							<stylesheet>${project.build.outputDirectory}/xsl/datamodel2schema.xsl</stylesheet>
 							<fileMappers>
 								<fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
 									<targetExtension>.xsd</targetExtension>
