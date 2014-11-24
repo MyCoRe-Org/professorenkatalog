@@ -34,8 +34,6 @@
  		</c:otherwise> 
 	</c:choose>
 
-	<mcr:debugInfo />
-	
 	<mcr:receiveMcrObjAsJdom mcrid="${mcrid}" varDom="linked" fromWF="${from}"/>
 	<c:set var="prof_name">
 		<x:out select="$linked/mycoreobject/metadata/box.surname/surname" />,
@@ -61,6 +59,7 @@
 
 
 	<stripes:layout-component name="contents">
+		<mcr:debugInfo />
 		<jsp:include page="docdetails/docdetails_person.jsp">
    			<jsp:param name="id" value="${mcrid}" />
    			<jsp:param name="fromWF" value="${from}" />
