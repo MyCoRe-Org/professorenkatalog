@@ -16,7 +16,7 @@
   
   		<!--  ====================================================================================== -->
 		<!-- 20 - historische Institute  -->
-		<element name="institute" wrapper="box.institute" type="text" minOccurs='0' maxOccurs='unbounded' />
+		<element name="institute" wrapper="box.institute" type="xml" minOccurs='0' maxOccurs='unbounded' />
 		<!-- 21 - Fachgebiet  -->
 		<element name="fieldofstudy" wrapper="box.fieldofstudy" type="text" minOccurs='0' maxOccurs='unbounded' />	
 		<!-- 22 - Fachgebietsklassifikation -->

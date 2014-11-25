@@ -416,9 +416,9 @@
 		</div>
 	</xed:bind>	
 	<!-- Fakultät [ENDE] -->
+
 	<!--  Institute [START] -->
-	
-	<xed:bind xpath="box.institute[@class='MCRMetaLangText']">
+	<xed:bind xpath="box.institute[@class='MCRMetaXML']">
 		<div class="form-group">
 			<label class="col-sm-2 control-label" for="institute">
 				<xed:output i18n="OMD.CPR.institutes" />
@@ -427,9 +427,37 @@
 				<xed:repeat xpath="institute">
 					<div class="form-group">
 						<div class="col-sm-10">
-							<xed:bind xpath=".">
-								<input id="institute" type="text" class="form-control"   />
-							</xed:bind>
+							<div class="row" style="margin-bottom:6px"> 
+								<label class="col-sm-2 control-label input-sm" for="institute_time">
+									<xed:output i18n="OMD.CPR.hint.time" />
+								</label>
+								<xed:bind xpath="time">
+									<div class="col-sm-2">
+										<input id="institute_time" type="text" class="form-control input-sm"   />
+									</div>
+								</xed:bind>
+								
+								<label class="col-sm-2 control-label input-sm" for="institute_type">
+									<!-- <xed:output i18n="OMD.CPR.hint.type" /> -->
+								</label>
+								<xed:bind xpath="@type">
+									<div class="col-sm-6">
+										<!-- <select id="insitute_type" class="form-control input-sm">
+											<option value=""><xed:output i18n="Editor.Common.Empty" /></option>
+										</select> -->
+									</div>
+								</xed:bind>
+							</div>
+							<div class="row" style="margin-bottom:6px"> 	
+								<label class="col-sm-2 control-label input-sm" for="institute_text">
+									<xed:output i18n="OMD.CPR.hint.text" />
+								</label>
+								<xed:bind xpath="text">
+									<div class="col-sm-10">
+										<input type="text" id="institute_text" class="form-control input-sm" />
+									</div>
+								</xed:bind>
+							</div>
 						</div>
 						<div class="col-sm-2">
 							<div class="btn-group btn-group-sm pull-right">
@@ -441,8 +469,8 @@
 			</div>
 		</div>
 	</xed:bind>
-	<!--  Institute [ENDE] -->
-	
+	<!-- Institute [ENDE] -->		
+
 	<!-- Lehr- und Forschungsgebiet [START] -->
 	<xed:bind xpath="box.fieldofstudy[@class='MCRMetaLangText']">
 		<div class="form-group">
