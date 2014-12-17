@@ -5,7 +5,7 @@
   <artifactId>profkat-sample-webapp</artifactId>
   <name>Sample for Professorenkatalog</name>
   <description>Sample of a professorenkatalog</description>
-  <version>2014.07-SNAPSHOT</version>
+  <version>2015.01-SNAPSHOT</version>
   <packaging>war</packaging>
   
 	<properties>
