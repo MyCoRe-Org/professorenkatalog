@@ -230,7 +230,7 @@
 								<artifactItem>
 									<groupId>org.mycore.plugins</groupId>
  								    <artifactId>datamodel-plugin</artifactId>
-  									<version>0.5-SNAPSHOT</version>
+  									<version>0.6-SNAPSHOT</version>
 									<includes>datamodel2*.xsl</includes>
 									<excludes>datamodel2ext.xsl</excludes>
 									<outputDirectory>${project.build.outputDirectory}/xsl</outputDirectory>
