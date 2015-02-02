@@ -10,10 +10,10 @@
 	
 	<property name="SOLR_DEFAULT_CONFIG_URL" value="http://artifactory.mycore.de/libs-snapshots-local/org/mycore/solr/solr-home/4.8.1-SNAPSHOT/solr-home-4.8.1-20141014.165252-1.zip" />
 	<property name="SOLR_CORE_ID" value="profkat" />
-	<condition property="SOLR_HOME_DIR" value="/opt/solr" else="c:\workspaces\cpr\profkat-data\solr-home">
+	<condition property="SOLR_HOME_DIR" value="/opt/solr" else="c:\workspaces\profkat\data\solr-home">
 		<os family="unix" />
 	</condition>
-	<condition property="SOLR_CONF_DIR" value="/opt/profkat/projects/profkat-sample-webapp/solr-conf" else="C:\workspaces\cpr\projects\profkat-sample-webapp\solr-conf">
+	<condition property="SOLR_CONF_DIR" value="/opt/profkat/projects/profkat-sample-webapp/solr-conf" else="C:\workspaces\profkat\projects\profkat-sample-webapp\solr-conf">
 		<os family="unix" />
 	</condition>
 	
