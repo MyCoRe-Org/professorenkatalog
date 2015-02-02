@@ -23,7 +23,8 @@ Der Einsatz einer anderen Datenbank oder eines anderen Webapplication-Servers is
 </ul>
 
 <h2>Vorbereitung der Datenbank</h2>
-Lege folgende Datenbanken und Schemata an (am Beispiel von PostreSQL):
+Lege folgende Datenbanken und zwei Schemata an (am Beispiel von PostreSQL)
+<br> ein Schema für MyCoRe Daten und ein Schema für Activiti Workflow Engine
 <ul class="commandline">
 	<li>psql -U postgres</li>
 </ul>
@@ -35,51 +36,7 @@ Lege folgende Datenbanken und Schemata an (am Beispiel von PostreSQL):
 	<li>\q</li>
 </ul>
 
-<h2>SOLR-Installation</h2>
-<big>(SPÄTER ....nach unten verschieben!)</big><br />
-<p>SOLR sollte eine eigene Tomcat-Instanz spendiert werden, die unter einem eigenen Port 
-(Empfehlung: <code>8980</code> in <code>server.xml</code> konfigurieren) läuft.</p>
-<p>Die MyCoRe-Community stellt ein vorkonfiguriertes <code>SOLR.war</code> bereit, welches
-wir für den Professorenkatalog nutzen ...
-<a href="http://www.mycore.de/documentation/search/solr.html">siehe Anleitung in der MyCoRe Doku</a></p>
 
-<ul class="commandline">
-	<li>sudo mkdir /opt/solr</li>
-	<li>sudo mkdir /opt/solr/data</li>
-	<li>cd /opt/solr</li>
-	<li>sudo wget http://artifactory.mycore.de/libs-snapshots-local/org/mycore/solr/solr/4.8.1-SNAPSHOT/solr-4.8.1-20140625.135347-2.war</li>
-	<li>sudo chown tomcat7:tomcat7 /opt/solr -R </li>
-	<li> sudo vi /var/lib/tomcat7/conf/Catalina/localhost/solr.xml</li>
-</ul>
-<div class="textfile">
-&lt;Context docBase="/opt/solr/solr-4.8.1-20140625.135347-2.war" 
-         debug="0" crossContext="true" &gt;
-  &lt;Valve className="org.apache.catalina.valves.RemoteAddrValve" 
-         allow="127\.0\.0\.1|139\.30\.\d+\.\d+" /&gt;
-  &lt;Environment name="solr/home" type="java.lang.String" 
-               value="/opt/solr/data" overwrite="true"/&gt;
-&lt;/Context&gt;
-</div>
-
-<ul class="commandline">
-	<li>sudo vi /opt/solr/data/solr.xml</li>
-</ul>
-
-<div class="textfile">
-&lt;solr persistent="true" sharedLib="lib/**/*"&gt;
-    &lt;cores adminPath="/admin/cores" shareSchema="true"&gt;
-        &lt;core name="profkat" instanceDir="./cores/profkat" 
-              dataDir="./../../data/profkat" /&gt;
-    &lt;/cores&gt;
-&lt;/solr&gt;
-</div>
-
-<code>profkat-sample-webapp/build.xml</code>: <code>SOLR*</code>-Properties anpassen.
-<ul class="commandline">
-	<li>cd profkat-sample-webapp</li>
-	<li>ant update.solr.conf</li>
-</ul>
-Verbindung testen: <a href="http://localhost:8980/solr">http://localhost:8980/solr</a>
 
 
 <h2>Activiti-Workflowengine Installation</h2>
@@ -131,16 +88,59 @@ siehe <a href="profkat_developer.html#config_files">Profkat-Developer-Dokumentat
 	<li>mvn clean install</li>
 </ul>
 
-<h3>Update der SOLR-Konfiguration</h3>
+<h2>SOLR-Installation</h2>
+<p>SOLR sollte eine eigene Tomcat-Instanz spendiert werden, die unter einem eigenen Port 
+(Empfehlung: <code>8980</code> in <code>server.xml</code> konfigurieren) läuft.</p>
+<p>Die MyCoRe-Community stellt ein vorkonfiguriertes <code>SOLR.war</code> bereit, welches
+wir für den Professorenkatalog nutzen ...
+<a href="http://www.mycore.de/documentation/search/solr.html">siehe Anleitung in der MyCoRe Doku</a></p>
+
+<ul class="commandline">
+	<li>sudo mkdir /opt/solr</li>
+	<li>sudo mkdir /opt/solr/data</li>
+	<li>cd /opt/solr</li>
+	<li>sudo wget http://artifactory.mycore.de/libs-snapshots-local/org/mycore/solr/solr/4.8.1-SNAPSHOT/solr-4.8.1-20140625.135347-2.war</li>
+	<li>sudo chown tomcat7:tomcat7 /opt/solr -R </li>
+	<li> sudo vi /var/lib/tomcat7/conf/Catalina/localhost/solr.xml</li>
+</ul>
+<div class="textfile">
+&lt;Context docBase="/opt/solr/solr-4.8.1-20140625.135347-2.war" 
+         debug="0" crossContext="true" &gt;
+  &lt;Valve className="org.apache.catalina.valves.RemoteAddrValve" 
+         allow="127\.0\.0\.1|139\.30\.\d+\.\d+" /&gt;
+  &lt;Environment name="solr/home" type="java.lang.String" 
+               value="/opt/solr/data" overwrite="true"/&gt;
+&lt;/Context&gt;
+</div>
+
+<ul class="commandline">
+	<li>sudo vi /opt/solr/data/solr.xml</li>
+</ul>
+
+<div class="textfile">
+&lt;solr persistent="true" sharedLib="lib/**/*"&gt;
+    &lt;cores adminPath="/admin/cores" shareSchema="true"&gt;
+        &lt;core name="profkat" instanceDir="./cores/profkat" 
+              dataDir="./../../data/profkat" /&gt;
+    &lt;/cores&gt;
+&lt;/solr&gt;
+</div>
+
+<code>profkat-sample-webapp/build.xml</code>: <code>SOLR*</code>-Properties anpassen.
 <ul class="commandline">
 	<li>cd /opt/profkat/projects/profkat-sample-webapp</li>
 	<li>sudo -u tomcat7 ant update.solr.config</li>
 </ul>
+<ul>
+	<li>SOLR-Tomcat-Server starten </li>
+	<li>Verbindung testen: <a href="http://localhost:8980/solr">http://localhost:8980/solr</a></li>
+</ul>
 
-<h3>Initialisierung der Anwendung</h3>
+<h2>Initialisierung der Anwendung</h2>
 Anlegen der der Nutzer, Erstellen der Workflow, Klassifikationen
 <ul class="commandline">
 	<li>cd /opt/profkat/projects/profkat-sample-webapp</li>
+	<li>sudo -u tomcat7 ant create.directories</li>
 	<li>sudo -u tomcat7 ant create.users</li> 
 	<li>sudo -u tomcat7 ant create.class</li>
 	<li>sudo -u tomcat7 ant deploy.workflows</li>
