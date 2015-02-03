@@ -24,8 +24,9 @@
         <xs:element maxOccurs="1" minOccurs="0" type="xs:string" name="event" />
         <xs:element maxOccurs="1" minOccurs="0" name="classification">
     	  <xs:complexType>
-		    <xs:attribute name="type" type="xs:string" />
+		    <xs:attributeGroup ref="notInherited" />
             <xs:attributeGroup ref="MCRMetaClassification" />
+            <xs:attribute name="type" use="optional" type="xs:string" />
 	  	  </xs:complexType>
 	  	</xs:element>
       </xs:sequence>
