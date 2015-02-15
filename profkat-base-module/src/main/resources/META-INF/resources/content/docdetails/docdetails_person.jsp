@@ -306,11 +306,11 @@
    			</mcrdd:outputitem> 
    		</mcrdd:row> 
    		
-   		<mcrdd:row select="/mycoreobject/metadata/box.identifier/identifier[@type='pnd']" labelkey="OMD.CPR.onlineres" showInfo="true" >
-   			<mcrdd:item select="/mycoreobject/metadata/box.identifier/identifier[@type='pnd']" var="pnd" />
+   		<mcrdd:row select="/mycoreobject/metadata/box.identifier/identifier[@type='gnd']" labelkey="OMD.CPR.onlineres" showInfo="true" >
+   			<mcrdd:item select="/mycoreobject/metadata/box.identifier/identifier[@type='gnd']" var="pnd" />
    			<x:if select="string($pnd)='xxx'">
    				<mcrdd:outputitem select="." var="x">
-   					<fmt:message key="OMD.CPR.identifiers.nopnd" />
+   					<fmt:message key="OMD.CPR.identifiers.nognd" />
    				</mcrdd:outputitem>
    			</x:if>
    			<x:if select="string($pnd)!='xxx'">
@@ -328,7 +328,8 @@
 					/>
 					<br />
 					<fmt:message key="OMD.CPR.quoting.gnd">
-      					<fmt:param>http://cpr.uni-rostock.de/gnd/${pndString}</fmt:param>      			
+      					<c:url var="url">/gnd/${pndString}</c:url>
+      					<fmt:param>${url}</fmt:param>      			
       				</fmt:message>   				
     				</mcrdd:outputitem>
    			</x:if>                                             			   		 
@@ -386,9 +387,10 @@
    		<jsp:useBean id="now" class="java.util.Date" scope="page" />
    		<mcrdd:outputitem select="./@ID" var="current">
    			<%-- OMD.CPR.quoting.text=Eintrag von &quot;{0}&quot; im Rostocker Professorenkatalog, URL: <a href="{1}">{1}</a> (abgerufen am {2})  --%> 
+   			<c:url var="url">/metadata/<x:out select="string($current)"/></c:url>
    			<fmt:message key="OMD.CPR.quoting.text">
       			<fmt:param>${first}&#160;${last}</fmt:param>
-      			<fmt:param>http://cpr.uni-rostock.de/metadata/<x:out select="string($current)"/></fmt:param>
+      			<fmt:param>${url}</fmt:param>
       			<fmt:param><fmt:formatDate value="${now}" pattern="dd.MM.yyyy" /></fmt:param>
       		</fmt:message>      			
    		</mcrdd:outputitem>

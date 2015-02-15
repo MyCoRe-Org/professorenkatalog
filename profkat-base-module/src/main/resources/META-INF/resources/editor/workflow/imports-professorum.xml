@@ -783,7 +783,7 @@
 				<panel>
 					<cell col="1" row="1" anchor="NORTHWEST" var="@type">
 						<list type="dropdown">
-							<item value="pnd" i18n="OMD.CPR.identifiers.pnd" />
+							<item value="gnd" i18n="OMD.CPR.identifiers.gnd" />
 						</list>
 					</cell>
 					<cell col="2" row="1" anchor="NORTHWEST">
