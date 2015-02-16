@@ -34,12 +34,12 @@
 				<c:choose>
 					<c:when test="${fn:contains(location, 'rosdok')}">
 			    		<nobr>(<fmt:message key="OMD.CPR.link.internal" />
-			    			   <img src="${WebApplicationBaseURL}images/link_intern.gif"
+			    			   <img src="${WebApplicationBaseURL}images/link_intern.png"
 							alt="interner Link" />)</nobr>
 			     	</c:when>
 			        <c:otherwise>
 			    		<nobr> (<fmt:message key="OMD.CPR.link.external" />
-			    			   <img src="${WebApplicationBaseURL}images/link_extern.gif"
+			    			   <img src="${WebApplicationBaseURL}images/link_extern.png"
 							alt="externer Link" />)</nobr>
 			    	</c:otherwise>
 		      	</c:choose>
