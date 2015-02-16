@@ -5,9 +5,10 @@
 <%@ taglib uri="http://www.mycore.org/jspdocportal/base.tld" prefix="mcr"%>
 <%-- $data as xml element representing mcrlink object --%>
 
-<c:set var="email"><x:out select="$data/text()" /></c:set>
+<%--JSP Parameter: email --%>
+
 <div style="direction: rtl; unicode-bidi: bidi-override;">
-<% String email = pageContext.getAttribute("email").toString();
+<% String email = request.getParameter("email").toString();
    			email = email.replace("@", ")at(");
    			for(int i=email.length()-1;i>=0;i--){
    				out.write(email.substring(i,i+1));

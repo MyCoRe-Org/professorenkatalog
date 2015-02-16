@@ -146,15 +146,21 @@
    	       
    		<mcrdd:row select="/mycoreobject/metadata/box.email/email" labelkey="OMD.CPR.emails" showInfo="false" >
    			<mcrdd:outputitem select="." var="current">
-   				<x:set var="data" select="$current" scope="request" />
-   				<jsp:include page="fragments/email_pk.jsp" />
+   				<c:set var="email"><x:out select="$current/text()" /></c:set>
+   				<jsp:include page="fragments/email_pk.jsp">
+   					<jsp:param name="email" value="${email}" />
+   				</jsp:include>
    			</mcrdd:outputitem>   
    		</mcrdd:row>
     
    		<mcrdd:row select="/mycoreobject/metadata/box.homepage/homepage" labelkey="OMD.CPR.homepages" showInfo="true" >
    			<mcrdd:outputitem select="." var="current">
-   				<x:set var="data" select="$current" scope="request" />
-   				<jsp:include page="fragments/link_pk.jsp" />
+   				<c:set var="href"><x:out select="string($current/@*[local-name()='href' and namespace-uri()='http://www.w3.org/1999/xlink'])" /></c:set>
+   				<c:set var="title"><x:out select="string($current/@*[local-name()='title' and namespace-uri()='http://www.w3.org/1999/xlink'])" /></c:set>
+   				<jsp:include page="fragments/link_pk.jsp">
+   					<jsp:param name="href" value="${href}" />
+   					<jsp:param name="title" value="${title}" />
+   				</jsp:include>
    			</mcrdd:outputitem> 
    		</mcrdd:row>    
     
@@ -215,7 +221,7 @@
 						<jsp:attribute name="target">_blank</jsp:attribute>
 						<jsp:body>
 					   		<nobr> (<fmt:message key="OMD.CPR.link.external" />
-			    			   	<img src="${WebApplicationBaseURL}images/link_extern.gif"
+			    			   	<img src="${WebApplicationBaseURL}images/link_extern.png"
 							alt="Link" />)</nobr>
 						</jsp:body>	
 					</jsp:element>
@@ -276,9 +282,12 @@
    		<mcrdd:row select="/mycoreobject/metadata/box.publicationslink/publicationslink" 
    		       labelkey="OMD.CPR.bibliographicrefs" showInfo="true" >
    			<mcrdd:outputitem select="." var="current">
-   		   		<x:set var="data" select="$current" scope="request" />
-	   		   	<x:set var="doc" select="$doc" scope="request" />
-				<jsp:include page="fragments/link_pk.jsp" />
+   		   		<c:set var="href"><x:out select="string($current/@*[local-name()='href' and namespace-uri()='http://www.w3.org/1999/xlink'])" /></c:set>
+   				<c:set var="title"><x:out select="string($current/@*[local-name()='title' and namespace-uri()='http://www.w3.org/1999/xlink'])" /></c:set>
+   				<jsp:include page="fragments/link_pk.jsp">
+   					<jsp:param name="href" value="${href}" />
+   					<jsp:param name="title" value="${title}" />
+   				</jsp:include>
    			</mcrdd:outputitem> 
    		</mcrdd:row>  
  		
@@ -286,18 +295,27 @@
 
    		<mcrdd:row select="/mycoreobject/metadata/box.source/source" labelkey="OMD.CPR.sources" showInfo="true" >
    			<mcrdd:outputitem select="." var="current">
-   				<x:set var="data" select="$current" scope="request" />
-   				<jsp:include page="fragments/link_pk.jsp" />
+   				<c:set var="href"><x:out select="string($current/@*[local-name()='href' and namespace-uri()='http://www.w3.org/1999/xlink'])" /></c:set>
+   				<c:set var="title"><x:out select="string($current/@*[local-name()='title' and namespace-uri()='http://www.w3.org/1999/xlink'])" /></c:set>
+   				<jsp:include page="fragments/link_pk.jsp">
+   					<jsp:param name="href" value="${href}" />
+   					<jsp:param name="title" value="${title}" />
+   				</jsp:include>
    			</mcrdd:outputitem> 
    		</mcrdd:row>  
 
 		<mcrdd:row select="/mycoreobject/metadata/box.complexref/complexref|/mycoreobject/metadata/box.reference/reference" 
    		           labelkey="OMD.CPR.references" showInfo="true" >   
    			<mcrdd:outputitem select="." var="current">
-   		   		<x:set var="data" select="$current" scope="request" />
-   		   		<x:set var="doc" select="$doc" scope="request" />
+   		   		<x:set var="linkData" select="$current" scope="session" />
+   		   		<x:set var="doc" select="$doc" scope="session" />
    		   	   	<x:if select="local-name($current)='reference'">
-   					<jsp:include page="fragments/link_pk.jsp" />
+   					<c:set var="href"><x:out select="string($current/@*[local-name()='href' and namespace-uri()='http://www.w3.org/1999/xlink'])" /></c:set>
+   					<c:set var="title"><x:out select="string($current/@*[local-name()='title' and namespace-uri()='http://www.w3.org/1999/xlink'])" /></c:set>
+   					<jsp:include page="fragments/link_pk.jsp">
+   						<jsp:param name="href" value="${href}" />
+   						<jsp:param name="title" value="${title}" />
+   					</jsp:include>
    				</x:if>
    				<x:if select="local-name($current)='complexref'">
    					<c:set var="content"><x:out select="$current/text()" /></c:set>
@@ -354,11 +372,10 @@
    		<%-- 06.10.2006, editorCP  /  17.06.2009, editorCP --%>
    		<mcrdd:item select="./service/servdates/servdate[@type='createdate']" datePattern ="dd.MM.yyyy" var="createdate"/>
    		<mcrdd:item select="./service/servdates/servdate[@type='modifydate']" datePattern ="dd.MM.yyyy" var="modifydate" />
+   		<mcrdd:item select="./service/servflags/servflag[@type='createdBy']" var="createdBy"/>
+   		<mcrdd:item select="./service/servflags/servflag[@type='modifiedBy']" var="modifiedBy" />
    		<mcrdd:outputitem select="." var="current">
-   			<c:out value="${createdate}"/>,&#160;
-   			<x:out select="$current/service/servflags/servflag[@type='createdby']"/>&#160;/&#160;
-   			<c:out value="${modifydate}"/>,&#160;
-   			<x:out select="$current/service/servflags/servflag[@type='modifiedby']"/>
+   			${createdate},&#160;${createdBy}&#160;&#160;/&#160;&#160;${modifydate},&#160;${modifiedBy}
    		</mcrdd:outputitem>  
    	</mcrdd:row>
    	<%--
