@@ -327,8 +327,8 @@
 						replaceLabels="ubr_biblgr:Universitätsbibliographie Rostock|bibaug:Bibliotheca Augustana|dta:Deutsches Textarchiv|zbw:Pressemappe 20. Jahrhundert - Personenarchiv|ri_opac:Regesta Imperii OPAC|rektor:Rektoratsreden im 19. und 20. Jahrhundert|repfont_aut:Repertorium Geschichtsquellen des deutschen Mittelalters|gvk:Verbundkatalog des GBV|vd17:Verzeichnis der deutschen Drucke des 17.Jahrhunderts (VD17)|wikisource:Wikisource-Autorenseite"
 					/>
 					<br />
+					<c:url var="url" value="/gnd/${pndString}" />
 					<fmt:message key="OMD.CPR.quoting.gnd">
-      					<c:url var="url">/gnd/${pndString}</c:url>
       					<fmt:param>${url}</fmt:param>      			
       				</fmt:message>   				
     				</mcrdd:outputitem>
@@ -387,7 +387,8 @@
    		<jsp:useBean id="now" class="java.util.Date" scope="page" />
    		<mcrdd:outputitem select="./@ID" var="current">
    			<%-- OMD.CPR.quoting.text=Eintrag von &quot;{0}&quot; im Rostocker Professorenkatalog, URL: <a href="{1}">{1}</a> (abgerufen am {2})  --%> 
-   			<c:url var="url">/metadata/<x:out select="string($current)"/></c:url>
+   			<c:set var="currentID"><x:out select="string($current)"/></c:set>
+   			<c:url var="url" value="/metadata/${currentID}" />
    			<fmt:message key="OMD.CPR.quoting.text">
       			<fmt:param>${first}&#160;${last}</fmt:param>
       			<fmt:param>${url}</fmt:param>
