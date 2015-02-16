@@ -17,7 +17,7 @@
 	<mcr:receiveMcrObjAsJdom mcrid="${param.id}" varDom="mcrobj" fromWF="${param.fromWF}"/>
 	<c:if test="${not(param.print eq 'true')}">
 		<div  class="tabbar ur-embedded">
-			<c:set var="msgKeyStatus">OMD.CPR.states.<x:out select="$mcrobj//mycoreobject/metadata/box.staus/status"/></c:set>
+			<c:set var="msgKeyStatus">OMD.CPR.states.<x:out select="$mcrobj/mycoreobject/metadata/box.status/status"/></c:set>
 			<div class="pull-right" style="font-style: italic; color: #666666; padding-right:16px; padding-top:11px;"><fmt:message key="${msgKeyStatus}" /></div>
 			<ul id="tabs_on_page" class="nav nav-tabs">
 				<c:set var="tabtokens" value="data|article|documents" />
@@ -327,8 +327,8 @@
 						replaceLabels="ubr_biblgr:Universitätsbibliographie Rostock|bibaug:Bibliotheca Augustana|dta:Deutsches Textarchiv|zbw:Pressemappe 20. Jahrhundert - Personenarchiv|ri_opac:Regesta Imperii OPAC|rektor:Rektoratsreden im 19. und 20. Jahrhundert|repfont_aut:Repertorium Geschichtsquellen des deutschen Mittelalters|gvk:Verbundkatalog des GBV|vd17:Verzeichnis der deutschen Drucke des 17.Jahrhunderts (VD17)|wikisource:Wikisource-Autorenseite"
 					/>
 					<br />
-					<c:url var="url" value="/gnd/${pndString}" />
-					<fmt:message key="OMD.CPR.quoting.gnd">
+					<c:url var="url" value="${WebApplicationBaseURL}gnd/${pndString}" />
+					<fmt:message key="OMD.PROFKAT.quoting.gnd">
       					<fmt:param>${url}</fmt:param>      			
       				</fmt:message>   				
     				</mcrdd:outputitem>
@@ -388,8 +388,8 @@
    		<mcrdd:outputitem select="./@ID" var="current">
    			<%-- OMD.CPR.quoting.text=Eintrag von &quot;{0}&quot; im Rostocker Professorenkatalog, URL: <a href="{1}">{1}</a> (abgerufen am {2})  --%> 
    			<c:set var="currentID"><x:out select="string($current)"/></c:set>
-   			<c:url var="url" value="/metadata/${currentID}" />
-   			<fmt:message key="OMD.CPR.quoting.text">
+   			<c:url var="url" value="${WebApplicationBaseURL}resolve/id/${currentID}" />
+   			<fmt:message key="OMD.PROFKAT.quoting.text">
       			<fmt:param>${first}&#160;${last}</fmt:param>
       			<fmt:param>${url}</fmt:param>
       			<fmt:param><fmt:formatDate value="${now}" pattern="dd.MM.yyyy" /></fmt:param>
