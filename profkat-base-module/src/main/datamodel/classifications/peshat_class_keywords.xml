@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mycoreclass xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  ID="peshat_class_keywords" xsi:noNamespaceSchemaLocation="MCRClassification.xsd">
+  <label description="Keyword definitions" text="Peshat Keywords" xml:lang="de" /> 
+  <categories>
+    <category ID="kw_11">
+      <label text="Peshat" xml:lang="en" />
+      <label text="פשט" xml:lang="he" />
+      <category ID="kw_1">
+        <label text="Medicine" xml:lang="en" />
+        <label text="רפואה" xml:lang="he" />
+      </category>
+      <category ID="kw_3">
+        <label text="Linguistics" xml:lang="en" />
+        <label text="בלשנות" xml:lang="he" />
+		<category ID="kw_24">
+          <label text="Grammar" xml:lang="en" />
+          <label text="דקדוק" xml:lang="he" />
+        </category>
+      </category>
+      <category ID="kw_4">
+        <label text="Practical Philosophy" xml:lang="en" />
+        <label text="פילוסופיה מעשית" xml:lang="he" />
+        <category ID="kw_9">
+          <label text="Ethics" xml:lang="en" />
+          <label text="תורת המידות" xml:lang="he" />
+         </category>
+         <category ID="kw_10">
+          <label text="Politics" xml:lang="en" />
+          <label text="מדיניות" xml:lang="he" />
+         </category>
+      </category>
+      <category ID="kw_5">
+        <label text="Mathematics" xml:lang="en" />
+        <label text="מתמטיקה" xml:lang="he" />
+		<category ID="kw_14">
+          <label text="Music" xml:lang="en" />
+          <label text="מוזיקה" xml:lang="he" />
+        </category>
+		<category ID="kw_18">
+          <label text="Arithmetic" xml:lang="en" />
+          <label text="אריתמטיקה" xml:lang="he" />
+        </category>
+		<category ID="kw_20">
+          <label text="Optics" xml:lang="en" />
+          <label text="אופטיקה" xml:lang="he" />
+        </category>
+		<category ID="kw_21">
+          <label text="Astronomy" xml:lang="en" />
+          <label text="אסטרונומיה" xml:lang="he" />
+        </category>
+		<category ID="kw_25">
+          <label text="Geometry" xml:lang="en" />
+          <label text="גאומטריה" xml:lang="he" />
+        </category>	
+      </category>
+      <category ID="kw_6">
+        <label text="Theoretical Philosophy" xml:lang="en" />
+        <label text="פילוסופיה" xml:lang="he" />
+        <category ID="kw_2">
+          <label text="Logic" xml:lang="en" />
+          <label text="בלשנות" xml:lang="he" />
+        </category>
+        <category ID="kw_8">
+          <label text="Philosophy of Nature" xml:lang="en" />
+          <label text="פילוסופיה טבעית" xml:lang="he" />
+		  <category ID="kw_13">
+            <label text="Botany" xml:lang="en" />
+            <label text="בוטניקה" xml:lang="he" />
+          </category>
+		  <category ID="kw_15">
+            <label text="Psychology" xml:lang="en" />
+            <label text="פּסיכולוגיה" xml:lang="he" />
+          </category>
+		  <category ID="kw_16">
+            <label text="Meteorology" xml:lang="en" />
+            <label text="מטאורולוגיה" xml:lang="he" />
+          </category>
+		  <category ID="kw_17">
+            <label text="Physics" xml:lang="en" />
+            <label text="פיזיקה" xml:lang="he" />
+          </category>
+		  <category ID="kw_19">
+            <label text="Astrology" xml:lang="en" />
+            <label text="אסטרולוגיה" xml:lang="he" />
+          </category>
+		  <category ID="kw_22">
+            <label text="Mineralogy" xml:lang="en" />
+            <label text="מינרלוגיה" xml:lang="he" />
+          </category>
+		  <category ID="kw_23">
+            <label text="Biology/Zoology" xml:lang="en" />
+            <label text="ביולוגיה\זואולוגיה" xml:lang="he" />
+          </category>
+        </category>
+		<category ID="kw_12">
+          <label text="Metaphysics/Theology" xml:lang="en" />
+          <label text="מטאפיזיקה\פילוסופיית הדת" xml:lang="he" />
+        </category>
+      </category>
+      <category ID="kw_7">
+        <label text="Magic" xml:lang="en" />
+        <label text="מאגיה" xml:lang="he" />
+      </category>
+	   <category ID="kw_26">
+        <label text="Halakhah" xml:lang="en" />
+        <label text="הלכה" xml:lang="he" />
+      </category>
+	   <category ID="kw_27">
+        <label text="Kabbalah" xml:lang="en" />
+        <label text="קבלה" xml:lang="he" />
+      </category>
+    </category>   
+  </categories>
+</mycoreclass>
+

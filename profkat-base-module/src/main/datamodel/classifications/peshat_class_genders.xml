@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mycoreclass xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="MCRClassification.xsd" ID="peshat_class_genders">
+  <label xml:lang="en" text="Genders" />
+  <label xml:lang="he" text="" />
+  <categories>
+    <category ID="ge_1">
+      <label xml:lang="en" text="M" />
+	  <label xml:lang="he" text="" />
+    </category>
+    <category ID="ge_2">
+      <label xml:lang="en" text="F" />
+      <label xml:lang="he" text="" />
+    </category>
+    <category ID="ge_3">
+      <label xml:lang="en" text="M/F" />
+      <label xml:lang="he" text="" />
+    </category>
+  </categories>
+</mycoreclass>

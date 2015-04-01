@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mycoreclass xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="MCRClassification.xsd" ID="peshat_class_languages">
+  <label xml:lang="en" text="Languages" />
+  <label xml:lang="he" text="" />
+  <categories>
+    <category ID="le_1">
+      <label xml:lang="en" text="English" />
+	  <label xml:lang="he" text="" />
+    </category>
+    <category ID="le_2">
+      <label xml:lang="en" text="Hebrew" />
+      <label xml:lang="he" text="" />
+    </category>
+    <category ID="le_3">
+      <label xml:lang="en" text="German" />
+      <label xml:lang="he" text="" />
+    </category>
+	<category ID="le_4">
+      <label xml:lang="en" text="Latin" />
+      <label xml:lang="he" text="" />
+    </category>
+	<category ID="le_5">
+      <label xml:lang="en" text="Arabic" />
+      <label xml:lang="he" text="" />
+    </category>
+	<category ID="le_6">
+      <label xml:lang="en" text="Russian" />
+      <label xml:lang="he" text="רוסית" />
+    </category>
+	<category ID="le_7">
+      <label xml:lang="en" text="Greek" />
+      <label xml:lang="he" text="" />
+    </category>
+	<category ID="le_8">
+      <label xml:lang="en" text="Judeo-Arabic" />
+      <label xml:lang="he" text="" />
+    </category>
+	<category ID="le_9">
+      <label xml:lang="en" text="Modern Hebrew" />
+      <label xml:lang="he" text="" />
+    </category>
+	<category ID="le_10">
+      <label xml:lang="en" text="French" />
+      <label xml:lang="he" text="" />
+    </category>
+	<category ID="le_11">
+      <label xml:lang="en" text="Syriac" />
+      <label xml:lang="he" text="ארמית סורית" />
+    </category>
+  </categories>
+</mycoreclass>

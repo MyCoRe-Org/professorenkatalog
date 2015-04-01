@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mycoreclass xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="MCRClassification.xsd" ID="peshat_class_relation_types">
+  <label xml:lang="en" text="Relation types" />
+  <label xml:lang="x-table" text="Relation tables" />
+  <label xml:lang="x-inverse" text="Invers relations" />
+  <categories>
+    <category ID="rt_1">
+      <label xml:lang="en" text="synonym" />
+	  <label xml:lang="x-table" text="Related_Definitions" />
+	  <label xml:lang="x-inverse" text="synonym" />
+    </category>
+    <category ID="rt_2">
+      <label xml:lang="en" text="opposite term" />
+	  <label xml:lang="x-table" text="Related_Definitions" />
+	  <label xml:lang="x-inverse" text="opposite term" />
+    </category>
+    <category ID="rt_3">
+      <label xml:lang="en" text="related" />
+	  <label xml:lang="x-table" text="Related_Definitions" />
+	  <label xml:lang="x-inverse" text="related" />
+    </category>
+	<category ID="rt_4">
+      <label xml:lang="en" text="Original of" />
+	  <label xml:lang="x-table" text="Related_Quotations" />
+	  <label xml:lang="x-inverse" text="Translation of" />
+    </category>
+	<category ID="rt_5">
+      <label xml:lang="en" text="Translation of" />
+	  <label xml:lang="x-table" text="Related_Quotations" />
+	  <label xml:lang="x-inverse" text="Original of" />
+    </category>
+	<category ID="rt_6">
+      <label xml:lang="en" text="Variant quotation" />
+	  <label xml:lang="x-table" text="Related_Quotations" />
+	  <label xml:lang="x-inverse" text="Variant quotation" />
+    </category>
+	<category ID="rt_7">
+      <label xml:lang="en" text="Different translation of" />
+	  <label xml:lang="x-table" text="Related_Quotations" />
+	  <label xml:lang="x-inverse" text="Different translation of" />
+    </category>
+  </categories>
+</mycoreclass>

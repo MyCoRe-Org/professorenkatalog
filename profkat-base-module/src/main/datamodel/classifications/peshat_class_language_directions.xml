@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mycoreclass xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="MCRClassification.xsd" ID="peshat_class_language_directions">
+  <label xml:lang="en" text="Language directions" />
+  <categories>
+    <category ID="ld_1">
+      <label xml:lang="en" text="H" />
+    </category>
+    <category ID="ld_2">
+      <label xml:lang="en" text="E" />
+    </category>
+  </categories>
+</mycoreclass>

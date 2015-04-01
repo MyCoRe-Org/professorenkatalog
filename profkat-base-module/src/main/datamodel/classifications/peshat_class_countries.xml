@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mycoreclass xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="MCRClassification.xsd" ID="peshat_class_countries">
+  <label xml:lang="en" text="Countries" />
+  <label xml:lang="he" text="" />
+  <categories>
+    <category ID="co_9">
+      <label xml:lang="en" text="France" />
+	  <label xml:lang="he" text="" />
+    </category>
+    <category ID="co_10">
+      <label xml:lang="en" text="" />
+      <label xml:lang="he" text="" />
+    </category>
+    <category ID="co_12">
+      <label xml:lang="en" text="Provence" />
+      <label xml:lang="he" text="" />
+    </category>
+	<category ID="co_13">
+      <label xml:lang="en" text="Polish Lithuania" />
+      <label xml:lang="he" text="" />
+    </category>
+	<category ID="co_14">
+      <label xml:lang="en" text="Lower Silesia" />
+      <label xml:lang="he" text="" />
+    </category>
+	<category ID="co_15">
+      <label xml:lang="en" text="Spain" />
+      <label xml:lang="he" text="ספרד" />
+    </category>
+	<category ID="co_17">
+      <label xml:lang="en" text="Portugal" />
+      <label xml:lang="he" text="פורטוגל" />
+    </category>
+	<category ID="co_18">
+      <label xml:lang="en" text="Italy" />
+      <label xml:lang="he" text="איטליה" />
+    </category>
+	<category ID="co_19">
+      <label xml:lang="en" text="North Africa" />
+      <label xml:lang="he" text="צפון אפריקה" />
+    </category>
+	<category ID="co_20">
+      <label xml:lang="en" text="Palestine" />
+      <label xml:lang="he" text="ארץ ישראל" />
+    </category>
+	<category ID="co_21">
+      <label xml:lang="en" text="Germany" />
+      <label xml:lang="he" text="גרמניה" />
+    </category>
+	<category ID="co_22">
+      <label xml:lang="en" text="Crete" />
+      <label xml:lang="he" text="כרתים" />
+    </category>
+	<category ID="co_23">
+      <label xml:lang="en" text="Egypt" />
+      <label xml:lang="he" text="מצרים" />
+    </category>
+	<category ID="co_24">
+      <label xml:lang="en" text="South France" />
+      <label xml:lang="he" text="דרום צרפת" />
+    </category>
+	<category ID="co_25">
+      <label xml:lang="en" text="Syria" />
+      <label xml:lang="he" text="סוריה" />
+    </category>
+	<category ID="co_26">
+      <label xml:lang="en" text="Iraq" />
+      <label xml:lang="he" text="עראק" />
+    </category>
+	<category ID="co_27">
+      <label xml:lang="en" text="Morocco" />
+      <label xml:lang="he" text="מרוקו" />
+    </category>
+	<category ID="co_28">
+      <label xml:lang="en" text="Greece" />
+      <label xml:lang="he" text="יוון" />
+    </category>
+	<category ID="co_29">
+      <label xml:lang="en" text="Persia" />
+      <label xml:lang="he" text="פרס" />
+    </category>
+  </categories>
+</mycoreclass>

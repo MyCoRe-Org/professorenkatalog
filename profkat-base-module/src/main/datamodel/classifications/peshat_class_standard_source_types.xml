@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mycoreclass xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="MCRClassification.xsd" ID="peshat_class_standard_source_types">
+  <label xml:lang="en" text="Standard source types" />
+  <categories>
+    <category ID="st_1">
+      <label xml:lang="en" text="Primary" />
+    </category>
+    <category ID="st_2">
+      <label xml:lang="en" text="Secondary" />
+    </category>
+  </categories>
+</mycoreclass>
