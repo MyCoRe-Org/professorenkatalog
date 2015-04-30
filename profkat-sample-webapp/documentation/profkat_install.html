@@ -29,7 +29,7 @@ Lege folgende Datenbanken und zwei Schemata an (am Beispiel von PostreSQL)
 	<li>psql -U postgres</li>
 </ul>
 <ul class="commandline postgres">
-	<li>CREATE ROLE pkadmin LOGIN PASSWORD 'alleswirdgut' CREATEDB VALIID UNTIL 'infinity';</li>
+	<li>CREATE ROLE pkadmin LOGIN PASSWORD 'alleswirdgut' CREATEDB VALID UNTIL 'infinity';</li>
 	<li>CREATE DATABASE mycoredb WITH OWNER mcradmin ENCODING 'UTF8';</li>
 	<li>CREATE SCHEMA profkat AUTHORIZATION pkadmin;</li>
 	<li>CREATE SCHEMA profkat_activiti AUTHORIZATION pkadmin;</li>
@@ -41,7 +41,7 @@ Lege folgende Datenbanken und zwei Schemata an (am Beispiel von PostreSQL)
 
 <h2>Activiti-Workflowengine Installation</h2>
 <ul>
-	<li>ggf Schema <span class="variable">profkat_activiti</span> der PostgreSQL-Datenbank <span class="variable">mycoredb</span> anlegen (s.o.)</li>
+	<li>ggf Schema <span class="variable">profkat_activiti</span> in der PostgreSQL-Datenbank <span class="variable">mycoredb</span> anlegen (s.o.)</li>
 </ul>
 
 <h3>optional: Activiti-Explorer Webanwendung installieren</h3>	
@@ -99,7 +99,7 @@ wir für den Professorenkatalog nutzen ...
 	<li>sudo mkdir /opt/solr</li>
 	<li>sudo mkdir /opt/solr/data</li>
 	<li>cd /opt/solr</li>
-	<li>sudo wget http://artifactory.mycore.de/libs-snapshots-local/org/mycore/solr/solr/4.8.1-SNAPSHOT/solr-4.8.1-20140625.135347-2.war</li>
+	<li>sudo wget http://artifactory.mycore.de/libs-snapshots-local/org/mycore/solr/solr/4.8.1-SNAPSHOT/solr-4.8.1-20141031.092943-4.war</li>
 	<li>sudo chown tomcat7:tomcat7 /opt/solr -R </li>
 	<li> sudo vi /var/lib/tomcat7/conf/Catalina/localhost/solr.xml</li>
 </ul>
