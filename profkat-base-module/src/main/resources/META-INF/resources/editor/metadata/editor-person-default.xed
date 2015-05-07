@@ -606,6 +606,7 @@
 			<div class="col-sm-10">
 				<xed:bind xpath="birth">
 				<xed:cleanup-rule xpath="//box.birth/birth" relevant-if="string-length(text) &gt; 0" />
+				<xed:cleanup-rule xpath="//box.birth/birth/text" relevant-if="string-length(.) &gt; 0" />
 					<div class="form-group">
 						<div class="col-sm-10">
 							<div class="row" style="margin-bottom:6px"> 
@@ -670,6 +671,7 @@
 			<div class="col-sm-10">
 				<xed:bind xpath="death">
 				<xed:cleanup-rule xpath="//box.death/death" relevant-if="string-length(text) &gt; 0" />
+				<xed:cleanup-rule xpath="//box.death/death/text" relevant-if="string-length(.) &gt; 0" />
 					<div class="form-group">
 						<div class="col-sm-10">
 							<div class="row" style="margin-bottom:6px"> 
