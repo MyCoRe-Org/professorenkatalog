@@ -1,0 +1,1494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- method='post' to avoid charset problems !!! -->
+
+<xed:form xmlns:xed="http://www.mycore.de/xeditor" role="form" class="form-horizontal" accept-charset="UTF-8" method="post">
+    <div class="row">
+    <div class="alert alert-info col-sm-12">
+      <xed:output i18n="Editor.Common.headline" />
+   </div>
+   </div>
+   <xed:post-processor xsl="editor-person-postprocessor.xsl" />
+   <xed:cleanup-rule xpath="//*" relevant-if="true()" />
+   <xed:cleanup-rule xpath="//*[@class='MCRMetaHistoryEvent']/*/text" relevant-if="string-length(text()) &gt; 0" />
+   <xed:cleanup-rule xpath="/mycoreobject/metadata//*" relevant-if="@* or * or (string-length(text()) &gt; 0)" />
+   <xed:cleanup-rule xpath="/mycoreobject/metadata//*" relevant-if="@* or * or (string-length(text()) &gt; 0)" />
+   <xed:cleanup-rule xpath="//*[@class='MCRMetaXML']/*" relevant-if=".//*[@* or (string-length(text()) &gt; 0)]" />
+   <xed:cleanup-rule xpath="/mycoreobject/metadata/*" relevant-if=" ./*" />
+   
+    <xed:include uri="webapp:editor/metadata/includes-generic.xed" ref="in.out" />
+    <xed:bind xpath="/mycoreobject">
+      <xed:include uri="webapp:editor/metadata/includes-generic.xed" ref="mycore.common" />
+      <xed:bind xpath="metadata">
+    <xed:include uri="webapp:editor/metadata/includes-generic.xed" ref="failed-validation-messages" />
+    
+    
+    <!--Status -->
+    <xed:bind xpath="box.status[@class='MCRMetaLangText']">
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="status"><xed:output i18n="OMD.CPR.statesM" /></label>
+        <div class="col-sm-10">
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="row" style="margin-bottom:6px">
+                <div class="col-sm-12">
+                  <xed:bind xpath="status">
+                    <select id="status" class="form-control">
+                      <option value="inprogress"><xed:output i18n="OMD.CPR.states.inprogress" /></option>
+                      <option value="long"><xed:output i18n="OMD.CPR.states.long" /></option>
+                      <option value="short"><xed:output i18n="OMD.CPR.states.short" /></option>
+                      <option value="document"><xed:output i18n="OMD.CPR.states.document" /></option>
+                      <option value="other"><xed:output i18n="OMD.CPR.states.other" /></option>
+                    </select>
+                  </xed:bind>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </xed:bind>
+     <!-- Status [ENDE] -->
+    
+    <!-- Personentyp -->
+
+  <xed:bind xpath="box.type[@class='MCRMetaClassification']">
+    <div class="form-group">
+    
+      <label class="col-sm-2 control-label" for="persontype">
+        <xed:output i18n="OMD.CPR.typeM" />
+      </label>
+      <div class="col-sm-10">
+        <xed:repeat xpath="type[@classid='profkat_class_persontypes']">
+          <xed:cleanup-rule xpath="//box.type/type" relevant-if="@categid" />
+          <div class="form-group">
+            <div class="col-sm-10">
+              <xed:bind xpath="@categid">
+                <select id="persontype" class="form-control">
+                  <!-- <option value="">
+                    <xed:output i18n="Editor.Common.choose" />
+                  </option> -->
+                  <xed:include uri="xslStyle:items2options:classification:editor:-1:children:profkat_class_persontypes" />
+                </select>
+              </xed:bind>
+            </div>
+            <div class="col-sm-2">
+              <div class="btn-group btn-group-sm pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:bind>
+
+    <!-- Personentyp [ENDE]-->
+    
+    <!-- Eoche -->
+    <xed:bind xpath="box.epoch[@class='MCRMetaClassification']">
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="persontype">
+          <xed:output i18n="OMD.CPR.epoch" />
+        </label>
+        <div class="col-sm-10">
+          <xed:repeat xpath="epoch[@classid='profkat_class_epochs']">
+            <xed:cleanup-rule xpath="//box.epoch/epoch" relevant-if="@categid" />
+            <div class="form-group">
+              <div class="col-sm-10">
+                <xed:bind xpath="@categid">
+                  <select id="epoch" class="form-control">
+                    <xed:include uri="xslStyle:items2options:classification:editor:-1:children:profkat_class_epochs" />
+                  </select>
+                </xed:bind>
+              </div>
+              <div class="col-sm-2">
+                <div class="btn-group btn-group-sm pull-right">
+                  <xed:controls />
+                </div>
+              </div>
+            </div>
+          </xed:repeat>
+        </div>
+      </div>
+    </xed:bind>
+    <!-- Epoche [ENDE]-->
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label"><xed:output i18n="OMD.CPR.nameM" /></label>
+      <div class="col-sm-10">
+        <xed:bind xpath="box.surname[@class='MCRMetaLangText']">
+          <xed:repeat xpath="surname">
+            <div class="row" style="margin-bottom:6px"> 
+              <label class="col-sm-2 control-label input-sm" for="surname">
+                <xed:output i18n="OMD.CPR.hint.nameSurnameM" />
+              </label>
+              <div class="col-sm-8">
+                <input id="surname" type="text" class="form-control input-sm"   />
+              </div>
+              <div class="col-sm-2">
+                <div class="btn-group btn-group-sm pull-right">
+                  <xed:controls />
+                </div>
+              </div>
+            </div>
+          </xed:repeat> 
+        </xed:bind>
+        <xed:bind xpath="box.firstname[@class='MCRMetaLangText']">
+          <xed:repeat xpath="firstname">
+            <div class="row" style="margin-bottom:6px">
+              <label class="col-sm-2 control-label input-sm" for="firstname">
+                <xed:output i18n="OMD.CPR.hint.nameFirstnameM" />
+              </label>
+              <div class="col-sm-8">
+                <input id="firstname" type="text" class="form-control input-sm"   />
+              </div>
+              <div class="col-sm-2">
+                <div class="btn-group btn-group-sm pull-right">
+                  <xed:controls />
+                </div>
+              </div>
+            </div>
+          </xed:repeat> 
+        </xed:bind>
+        <xed:bind xpath="box.nameaffix[@class='MCRMetaLangText']">
+          <xed:repeat xpath="nameaffix">
+            <div class="row" style="margin-bottom:6px"> 
+              <label class="col-sm-2 control-label input-sm" for="nameaffix">
+                <xed:output i18n="OMD.CPR.nameaffixes" />
+              </label>
+              <div class="col-sm-8" style="margin-bottom:6px">
+                <input id="nameaffix" type="text" class="form-control input-sm"   />
+              </div>
+              <div class="col-sm-2">
+                <div class="btn-group btn-group-sm pull-right">
+                  <xed:controls />
+                </div>
+              </div>
+            </div>
+          </xed:repeat> 
+        </xed:bind>
+        <xed:bind xpath="box.academictitle[@class='MCRMetaLangText']">
+          <xed:bind xpath="academictitle">
+            <div class="row" style="margin-bottom:6px"> 
+              <label class="col-sm-2 control-label input-sm" for="academictitle">
+                <xed:output i18n="OMD.CPR.academictitles" />
+              </label>
+              <div class="col-sm-8" style="">
+                <input id="academictitle" type="text" class="form-control input-sm"   />
+              </div>
+            </div>
+          </xed:bind> 
+        </xed:bind>
+      </div>
+    </div>
+
+  <!-- Professorship [START]-->
+  <xed:bind xpath="box.professorship[@class='MCRMetaHistoryEvent']">
+    <div class="form-group">
+    
+      <label class="col-sm-2 control-label" for="persontype">
+        <xed:output i18n="OMD.CPR.professorshipsM" />
+      </label>
+      <div class="col-sm-10">
+        <xed:repeat xpath="professorship">
+          <xed:cleanup-rule xpath="//box.professorship/professorship" relevant-if="event" />
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="row" style="margin-bottom:6px"> 
+                <label class="col-sm-2 control-label input-sm" for="date_shown">
+                  <xed:output i18n="OMD.CPR.hint.dateShown" />
+                </label>
+                <xed:bind xpath="text[@xml:lang='de']">
+                <div class="col-sm-2">
+                  <input id="date_shown" type="text" class="form-control input-sm"   />
+                </div>
+                </xed:bind>
+                <label class="col-sm-2 control-label input-sm" for="date_shown">
+                  <xed:output i18n="OMD.CPR.hint.dateFrom" />
+                </label>
+                <xed:bind xpath="von">
+                  <div class="col-sm-2">
+                    <input id="date_from" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+                <label class="col-sm-2 control-label input-sm" for="date_shown">
+                  <xed:output i18n="OMD.CPR.hint.dateTo" />
+                </label>
+                <xed:bind xpath="bis">
+                  <div class="col-sm-2">
+                    <input id="date_shown" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+                </div>
+                <div class="row" style="margin-bottom:6px">         
+                <label class="col-sm-2 control-label input-sm" for="proftype">
+                  <xed:output i18n="OMD.CPR.hint.profType" />
+                </label>
+                <xed:bind xpath="classification[@classid='profkat_class_proftypes']/@categid">
+                  <div class="col-sm-10">
+                    <select id="proftype" class="form-control">
+                      <xed:include uri="xslStyle:items2options:classification:editor:-1:children:profkat_class_proftypes" />
+                    </select>
+                  </div>
+                </xed:bind>
+                </div>
+                <div class="row" style="margin-bottom:6px">
+                <xed:bind xpath="event">
+                  <div class="col-sm-10 col-sm-offset-2">
+                    <input id="event" type="text" class="form-control input-sm" />
+                  </div>
+                </xed:bind>
+                </div>
+                
+                <xed:bind xpath="text[2]">
+                  <div class="row" style="margin-bottom:6px">
+                  <xed:bind xpath="@xml:lang">
+                    <div class="col-sm-3">
+                      <select id="SProfTypeText2" class="form-control input-sm">
+                        <option value=""><xed:output i18n="Editor.Common.choose" /></option>
+                        <option value="x-chair"><xed:output i18n="OMD.CPR.hint.chairID" /></option>
+                        <option value="x-predec"><xed:output i18n="OMD.CPR.hint.predec" /></option>
+                        <option value="x-succ"><xed:output i18n="OMD.CPR.hint.succ" /></option>
+                  
+                      </select>
+                    </div>
+                  </xed:bind>
+                  <div class="col-sm-9">
+                    <input id="ProfTypeText2" type="text" class="form-control input-sm"   />
+                  </div>
+                  </div>  
+                </xed:bind>
+                
+                <xed:bind xpath="text[3]">
+                  <div class="row"  style="margin-bottom:6px">
+                  <xed:bind xpath="@xml:lang">
+                    <div class="col-sm-3">
+                      <select id="SProfTypeText3" class="form-control input-sm">
+                        <option value=""><xed:output i18n="Editor.Common.choose" /></option>
+                        <option value="x-chair"><xed:output i18n="OMD.CPR.hint.chairID" /></option>
+                        <option value="x-predec"><xed:output i18n="OMD.CPR.hint.predec" /></option>
+                        <option value="x-succ"><xed:output i18n="OMD.CPR.hint.succ" /></option>
+                      </select>
+                    </div>
+                  </xed:bind>
+                  <div class="col-sm-9">
+                    <input id="ProfTypeText3" type="text" class="form-control input-sm"   />
+                  </div>
+                  </div>
+                </xed:bind>
+                
+                <xed:bind xpath="text[4]">
+                  <div class="row" style="margin-bottom:6px">
+                  <xed:bind xpath="@xml:lang">
+                    <div class="col-sm-3">
+                      <select id="SProfTypeText4" class="form-control input-sm">
+                        <option value=""><xed:output i18n="Editor.Common.choose" /></option>
+                        <option value="x-chair"><xed:output i18n="OMD.CPR.hint.chairID" /></option>
+                        <option value="x-predec"><xed:output i18n="OMD.CPR.hint.predec" /></option>
+                        <option value="x-succ"><xed:output i18n="OMD.CPR.hint.succ" /></option>
+                  
+                      </select>
+                    </div>
+                  </xed:bind>
+                  <div class="col-sm-9">
+                    <input id="ProfTypeText4" type="text" class="form-control input-sm"   />
+                  </div>
+                  </div>
+                </xed:bind>
+              </div>
+          
+            <div class="col-sm-2">
+              <div class="btn-group btn-group-sm pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:bind>
+  <!-- Professorship [ENDE]-->
+  <!-- Zeitraum insgesamt [START] -->
+  <xed:bind xpath="box.period[@class='MCRMetaHistoryDate']">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="period">
+        <xed:output i18n="OMD.CPR.periodsM" />
+      </label>
+      <div class="col-sm-10">
+        <xed:repeat xpath="period">
+          <xed:cleanup-rule xpath="//box.period/period" relevant-if="text/text()" />
+          <xed:cleanup-rule xpath="//box.period" relevant-if="period" />
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="row" style="margin-bottom:6px"> 
+                <label class="col-sm-2 control-label input-sm" for="date_shown">
+                  <xed:output i18n="OMD.CPR.hint.dateShown" />
+                </label>
+                <xed:bind xpath="text[@xml:lang='de']">
+                <div class="col-sm-2">
+                  <input id="date_shown" type="text" class="form-control input-sm"   />
+                </div>
+                </xed:bind>
+                <label class="col-sm-2 control-label input-sm" for="date_shown">
+                  <xed:output i18n="OMD.CPR.hint.dateFrom" />
+                </label>
+                <xed:bind xpath="von">
+                  <div class="col-sm-2">
+                    <input id="date_from" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+                <label class="col-sm-2 control-label input-sm" for="date_shown">
+                  <xed:output i18n="OMD.CPR.hint.dateTo" />
+                </label>
+                <xed:bind xpath="bis">
+                  <div class="col-sm-2">
+                    <input id="date_shown" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+                </div>
+                
+            </div>
+            <div class="col-sm-2">
+              <div class="btn-group btn-group-sm pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:bind> 
+
+
+
+  <!-- Zeitraum insgesamt [ENDE] -->
+  
+  <!-- Fakultät [START] -->
+  <xed:bind xpath="box.faculty[@class='MCRMetaHistoryEvent']">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="faculty">
+        <xed:output i18n="OMD.CPR.facultiesM" />
+      </label>
+      <div class="col-sm-10">
+        <xed:repeat xpath="faculty">
+          <xed:cleanup-rule xpath="//box.faculty/faculty" relevant-if="text/text()" />
+          <xed:cleanup-rule xpath="//box.faculty" relevant-if="faculty" />
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="row" style="margin-bottom:6px"> 
+                <label class="col-sm-2 control-label input-sm" for="date_shown">
+                  <xed:output i18n="OMD.CPR.hint.dateShown" />
+                </label>
+                <xed:bind xpath="text[@xml:lang='de']">
+                <div class="col-sm-2">
+                  <input id="date_shown" type="text" class="form-control input-sm"   />
+                </div>
+                </xed:bind>
+                <label class="col-sm-2 control-label input-sm" for="date_shown">
+                  <xed:output i18n="OMD.CPR.hint.dateFrom" />
+                </label>
+                <xed:bind xpath="von">
+                  <div class="col-sm-2">
+                    <input id="date_from" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+                <label class="col-sm-2 control-label input-sm" for="date_shown">
+                  <xed:output i18n="OMD.CPR.hint.dateTo" />
+                </label>
+                <xed:bind xpath="bis">
+                  <div class="col-sm-2">
+                    <input id="date_shown" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+                </div>
+                <div class="row" style="margin-bottom:6px">         
+                <xed:bind xpath="classification[@classid='profkat_class_institutions']/@categid">
+                  <div class="col-sm-12">
+                    <select id="proftype" class="form-control">
+                      <xed:include uri="xslStyle:items2options:classification:editor:-1:children:profkat_class_institutions" />
+                    </select>
+                  </div>
+                </xed:bind>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="btn-group btn-group-sm pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:bind> 
+  <!-- Fakultät [ENDE] -->
+
+  <!--  Institute [START] -->
+  <xed:bind xpath="box.institute[@class='MCRMetaXML']">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="institute">
+        <xed:output i18n="OMD.CPR.institutes" />
+      </label>
+      <div class="col-sm-10">
+        <xed:repeat xpath="institute">
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="row" style="margin-bottom:6px"> 
+                <label class="col-sm-2 control-label input-sm" for="institute_time">
+                  <xed:output i18n="OMD.CPR.hint.time" />
+                </label>
+                <xed:bind xpath="time">
+                  <div class="col-sm-2">
+                    <input id="institute_time" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+                
+                <label class="col-sm-2 control-label input-sm" for="institute_type">
+                  <!-- <xed:output i18n="OMD.CPR.hint.type" /> -->
+                </label>
+                <xed:bind xpath="@type">
+                  <div class="col-sm-6">
+                    <!-- <select id="insitute_type" class="form-control input-sm">
+                      <option value=""><xed:output i18n="Editor.Common.Empty" /></option>
+                    </select> -->
+                  </div>
+                </xed:bind>
+              </div>
+              <div class="row" style="margin-bottom:6px">   
+                <label class="col-sm-2 control-label input-sm" for="institute_text">
+                  <xed:output i18n="OMD.CPR.hint.text" />
+                </label>
+                <xed:bind xpath="text">
+                  <div class="col-sm-10">
+                    <input type="text" id="institute_text" class="form-control input-sm" />
+                  </div>
+                </xed:bind>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="btn-group btn-group-sm pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:bind>
+  <!-- Institute [ENDE] -->   
+
+  <!-- Lehr- und Forschungsgebiet [START] -->
+  <xed:bind xpath="box.fieldofstudy[@class='MCRMetaLangText']">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="fieldofstudy">
+        <xed:output i18n="OMD.CPR.fieldofstudies" />
+      </label>
+      <div class="col-sm-10">
+        <xed:repeat xpath="fieldofstudy">
+          <div class="form-group">
+            <div class="col-sm-10">
+              <input id="fieldofstudy" type="text" class="form-control" />
+            </div>
+            <div class="col-sm-2">
+              <div class="btn-group btn-group-sm pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:bind>
+  <!-- Lehr und Forschungsgebiet [ENDE] -->
+  
+  <!--  Fachgebietsklassifikation [START] -->
+  <xed:bind xpath="box.subjectclass[@class='MCRMetaClassification']">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="subjectclass">
+        <xed:output i18n="OMD.CPR.subjectsM" />
+      </label>
+      <div class="col-sm-10">
+        <xed:repeat xpath="subjectclass[@classid='profkat_class_subjects']">
+        <xed:cleanup-rule xpath="//box.subjectclass/subjectclass" relevant-if="@categid" />
+          <div class="form-group">
+            <div class="col-sm-10">
+              <xed:bind xpath="@categid">
+                <select id="subjectclass" class="form-control">
+                  <option value="">
+                    <xed:output i18n="Editor.Common.choose" />
+                  </option>
+                  <xed:include uri="xslStyle:items2options:classification:editor:-1:children:profkat_class_subjects" />
+                </select>
+              </xed:bind>
+            </div>
+            <div class="col-sm-2">
+              <div class="btn-group btn-group-sm pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:bind>
+  <!-- Fachgebietsklassifikation [ENDE] -->
+  <!-- E-mail [START] -->
+  <xed:bind xpath="box.email[@class='MCRMetaLangText']">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="email">
+        <xed:output i18n="OMD.CPR.emails" />
+      </label>
+      <div class="col-sm-10">
+        <xed:bind xpath="email">
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="row" style="margin-bottom:6px"> 
+                <div class="col-sm-12">
+                  <input id="email" type="text" class="form-control input-sm"   />
+                </div>
+              </div>
+            </div>
+          </div>
+        </xed:bind>
+      </div>
+    </div>
+  </xed:bind> 
+  <!-- E-mail [ENDE] -->
+  
+  <!-- Homepage [START] -->
+  <xed:bind xpath="box.homepage[@class='MCRMetaLink']">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="homepage">
+        <xed:output i18n="OMD.CPR.homepages" />
+      </label>
+      <div class="col-sm-10">
+        <xed:repeat xpath="homepage">
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="row" style="margin-bottom:6px"> 
+                <label class="col-sm-2 control-label input-sm" for="homepage_url">
+                  <xed:output i18n="OMD.CPR.hint.linkurl" />
+                </label>
+                <xed:bind xpath="@xlink:href">
+                <div class="col-sm-10">
+                  <input id="homepage_url" type="text" class="form-control input-sm"   />
+                </div>
+                </xed:bind>
+              </div>
+                    <div class="row" style="margin-bottom:6px">
+                <label class="col-sm-2 control-label input-sm" for="homepage_title">
+                  <xed:output i18n="OMD.CPR.hint.linktitle" />
+                </label>
+                <xed:bind xpath="@xlink:title">
+                  <div class="col-sm-10">
+                    <input id="homepage_title" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="btn-group btn-group-sm pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:bind> 
+  <!-- Homepage [ENDE] -->
+  <!-- Geburt [START] -->
+  <xed:bind xpath="box.birth[@class='MCRMetaHistoryEvent']">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="birth">
+        <xed:output i18n="OMD.CPR.birthsM" />
+      </label>
+      <div class="col-sm-10">
+        <xed:bind xpath="birth">
+        <xed:cleanup-rule xpath="//box.birth/birth" relevant-if="string-length(text) &gt; 0" />
+        <xed:cleanup-rule xpath="//box.birth/birth/text" relevant-if="string-length(.) &gt; 0" />
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="row" style="margin-bottom:6px"> 
+                <label class="col-sm-2 control-label input-sm" for="date_shown">
+                  <xed:output i18n="OMD.CPR.hint.dateShown" />
+                </label>
+                <xed:bind xpath="text[@xml:lang='de']">
+                <div class="col-sm-2">
+                  <input id="date_shown" type="text" class="form-control input-sm"   />
+                </div>
+                </xed:bind>
+                <label class="col-sm-2 control-label input-sm" for="date_shown">
+                  <xed:output i18n="OMD.CPR.hint.dateFrom" />
+                </label>
+                <xed:bind xpath="von">
+                  <div class="col-sm-2">
+                    <input id="date_from" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+                <label class="col-sm-2 control-label input-sm" for="date_shown">
+                  <xed:output i18n="OMD.CPR.hint.dateTo" />
+                </label>
+                <xed:bind xpath="bis">
+                  <div class="col-sm-2">
+                    <input id="date_shown" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+                </div>
+                
+                <div class="row" style="margin-bottom:6px"> 
+                <label class="col-sm-2 control-label input-sm" for="place">
+                  <xed:output i18n="OMD.CPR.hint.place" />
+                </label>
+                <xed:bind xpath="event">
+                <div class="col-sm-4">
+                  <input id="place" type="text" class="form-control input-sm"   />
+                </div>
+                </xed:bind>
+                <label class="col-sm-2 control-label input-sm" for="birth_geoid">
+                  <xed:output i18n="OMD.CPR.hint.geoid" />
+                </label>
+                <xed:bind xpath="text[@xml:lang='x-geoid']">
+                  <div class="col-sm-4">
+                    <input id="birth_geoid" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+              </div>
+            </div>
+          </div>
+        </xed:bind>
+      </div>
+    </div>
+  </xed:bind> 
+  <!-- Geburt[ENDE] -->
+  
+  <!-- TOD [START] -->
+    <xed:bind xpath="box.death[@class='MCRMetaHistoryEvent']">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="birth">
+        <xed:output i18n="OMD.CPR.deaths" />
+      </label>
+      <div class="col-sm-10">
+        <xed:bind xpath="death">
+        <xed:cleanup-rule xpath="//box.death/death" relevant-if="string-length(text) &gt; 0" />
+        <xed:cleanup-rule xpath="//box.death/death/text" relevant-if="string-length(.) &gt; 0" />
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="row" style="margin-bottom:6px"> 
+                <label class="col-sm-2 control-label input-sm" for="date_shown">
+                  <xed:output i18n="OMD.CPR.hint.dateShown" />
+                </label>
+                <xed:bind xpath="text[@xml:lang='de']">
+                <div class="col-sm-2">
+                  <input id="date_shown" type="text" class="form-control input-sm"   />
+                </div>
+                </xed:bind>
+                <label class="col-sm-2 control-label input-sm" for="date_shown">
+                  <xed:output i18n="OMD.CPR.hint.dateFrom" />
+                </label>
+                <xed:bind xpath="von">
+                  <div class="col-sm-2">
+                    <input id="date_from" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+                <label class="col-sm-2 control-label input-sm" for="date_shown">
+                  <xed:output i18n="OMD.CPR.hint.dateTo" />
+                </label>
+                <xed:bind xpath="bis">
+                  <div class="col-sm-2">
+                    <input id="date_shown" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+                </div>
+                
+                <div class="row" style="margin-bottom:6px"> 
+                <label class="col-sm-2 control-label input-sm" for="place">
+                  <xed:output i18n="OMD.CPR.hint.place" />
+                </label>
+                <xed:bind xpath="event">
+                <div class="col-sm-4">
+                  <input id="place" type="text" class="form-control input-sm"   />
+                </div>
+                </xed:bind>
+                <label class="col-sm-2 control-label input-sm" for="death_geoid">
+                  <xed:output i18n="OMD.CPR.hint.geoid" />
+                </label>
+                <xed:bind xpath="text[@xml:lang='x-geoid']">
+                  <div class="col-sm-4">
+                    <input id="death_geoid" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+              </div>
+            </div>
+          </div>
+        </xed:bind>
+      </div>
+    </div>
+  </xed:bind> 
+  <!-- Tod [ENDE] -->
+  
+  <!--  Geschlecht [START] -->
+  <xed:bind xpath="box.sex[@class='MCRMetaLangText']">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="sex"><xed:output i18n="OMD.CPR.sexM" /></label>
+      <div class="col-sm-10">
+        <div class="form-group">
+          <div class="col-sm-10">
+            <div class="row" style="margin-bottom:6px">
+              <div class="col-sm-12">
+                <xed:bind xpath="sex">
+                  <select id="sex" class="form-control">
+                    <option value="male"><xed:output i18n="OMD.CPR.sex.male" /></option>
+                    <option value="female"><xed:output i18n="OMD.CPR.sex.female" /></option>
+                    <option value="unknown"><xed:output i18n="OMD.CPR.sex.unknown" /></option>
+                  </select>
+                </xed:bind>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </xed:bind> 
+  <!-- Geschlecht [ENDE] -->
+
+  <!-- Konfession [START] -->
+  <xed:bind xpath="box.confession[@class='MCRMetaLangText']">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="confession">
+        <xed:output i18n="OMD.CPR.confessions" />
+      </label>
+      <div class="col-sm-10">
+        <xed:bind xpath="confession">
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="row" style="margin-bottom:6px"> 
+                <div class="col-sm-12">
+                  <input id="confession" type="text" class="form-control input-sm" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </xed:bind>
+      </div>
+    </div>
+  </xed:bind> 
+  <!-- Konfession [ENDE] -->
+  <!-- Familie [START] -->
+  <xed:bind xpath="box.family[@class='MCRMetaXML']">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="family">
+        <xed:output i18n="OMD.CPR.family" />
+      </label>
+      <div class="col-sm-10">
+        <xed:repeat xpath="family">
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="row" style="margin-bottom:6px"> 
+                <label class="col-sm-2 control-label input-sm" for="family_type">
+                  <xed:output i18n="OMD.CPR.hint.type" />
+                </label>
+                <xed:bind xpath="@type">
+                  <div class="col-sm-2">
+                    <select id="family_type" class="form-control input-sm">
+                      <option value=""><xed:output i18n="Editor.Common.Empty" /></option>
+                      <option value="father"><xed:output i18n="OMD.CPR.family.father" /></option>
+                      <option value="mother"><xed:output i18n="OMD.CPR.family.mother" /></option>
+                      <option value="other"><xed:output i18n="OMD.CPR.family.other" /></option>
+                    </select>
+                  </div>
+                </xed:bind>
+                <label class="col-sm-2 control-label input-sm" for="family_name">
+                  <xed:output i18n="OMD.CPR.hint.name" />
+                </label>
+                <xed:bind xpath="name">
+                  <div class="col-sm-6">
+                    <input id="family_name" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+              </div>
+              <div class="row" style="margin-bottom:6px">
+                <label class="col-sm-2 control-label input-sm" for="family-profession">
+                  <xed:output i18n="OMD.CPR.hint.profession" />
+                </label>
+                <xed:bind xpath="profession">
+                  <div class="col-sm-4">
+                    <input id="family_profession" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+                <label class="col-sm-2 control-label input-sm" for="family_name_id">
+                  <xed:output i18n="OMD.CPR.hint.id" />
+                </label>
+                <xed:bind xpath="name/@id">
+                  <div class="col-sm-4">
+                    <input id="family_name_id" type="text" class="form-control input-sm" />
+                  </div>
+                </xed:bind>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="btn-group btn-group-sm pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:bind>
+  <!-- Familie [ENDE] -->
+  <!-- Kurzbiographie [START] -->
+  <xed:bind xpath="box.biographic[@class='MCRMetaXML']">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="biographic">
+        <xed:output i18n="OMD.CPR.biographics" />
+      </label>
+      <div class="col-sm-10">
+        <xed:repeat xpath="biographic">
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="row" style="margin-bottom:6px"> 
+                <label class="col-sm-2 control-label input-sm" for="biographic_time">
+                  <xed:output i18n="OMD.CPR.hint.time" />
+                </label>
+                <xed:bind xpath="time">
+                  <div class="col-sm-2">
+                    <input id="biographic_time" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+                
+                <label class="col-sm-2 control-label input-sm" for="biographic_type">
+                  <xed:output i18n="OMD.CPR.hint.type" />
+                </label>
+                <xed:bind xpath="@type">
+                  <div class="col-sm-6">
+                    <select id="biographic_type" class="form-control input-sm">
+                      <option value=""><xed:output i18n="Editor.Common.Empty" /></option>
+                      <option value="school"><xed:output i18n="OMD.CPR.biographic.school" /></option>
+                      <option value="studies"><xed:output i18n="OMD.CPR.biographic.studies" /></option>
+                      <option value="otherprofessorship"><xed:output i18n="OMD.CPR.biographic.otherprofessorship" /></option>
+                    </select>
+                  </div>
+                </xed:bind>
+              </div>
+              <div class="row" style="margin-bottom:6px">   
+                <label class="col-sm-2 control-label input-sm" for="biographic_text">
+                  <xed:output i18n="OMD.CPR.hint.text" />
+                </label>
+                <xed:bind xpath="text">
+                  <div class="col-sm-10">
+                    <textarea id="biographic_text" rows="2" class="form-control input-sm"> </textarea>
+                  </div>
+                </xed:bind>
+              </div>
+              <div class="row" style="margin-bottom:6px">
+                <label class="col-sm-2 control-label input-sm" for="family-profession">
+                  <xed:output i18n="OMD.CPR.hint.place_geoid" />
+                </label>
+                <xed:bind xpath="places">
+                  <div class="col-sm-10">
+                    <xed:repeat xpath="place">
+                    <div class="row" style="margin-bottom:6px"> 
+                      <xed:bind xpath=".">
+                        <div class="col-sm-4">
+                          <input id="place_name" type="text" class="form-control input-sm"   />
+                        </div>
+                      </xed:bind>
+                      <xed:bind xpath="@geoid">
+                        <div class="col-sm-6">
+                          <input id="place_geoid" type="text" class="form-control input-sm"   />
+                        </div>
+                      </xed:bind>
+                      <div class="col-sm-2" style="padding-left:6px">
+                        <div class="btn-group btn-group-xs pull-right">
+                          <xed:controls />
+                        </div>
+                      </div>
+                      </div>
+                    </xed:repeat>
+                  </div>
+                </xed:bind>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="btn-group btn-group-sm pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:bind>
+  <!-- Kurzbiographie [ENDE] -->
+  <!-- Akademische Abschlüsse [START] -->
+  <xed:bind xpath="box.academicdegree[@class='MCRMetaXML']">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="academicdegree">
+        <xed:output i18n="OMD.CPR.academicdegrees" />
+      </label>
+      <div class="col-sm-10">
+        <xed:repeat xpath="academicdegree">
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="row" style="margin-bottom:6px"> 
+                <label class="col-sm-2 control-label input-sm" for="academicdegree_time">
+                  <xed:output i18n="OMD.CPR.hint.time" />
+                </label>
+                <xed:bind xpath="time">
+                  <div class="col-sm-2">
+                    <input id="academicdegree_time" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+                
+                <label class="col-sm-2 control-label input-sm" for="academicdegree_type">
+                  <xed:output i18n="OMD.CPR.hint.type" />
+                </label>
+                <xed:bind xpath="@type">
+                  <div class="col-sm-6">
+                    <select id="academicdegree_type" class="form-control input-sm">
+                      <option value=""><xed:output i18n="Editor.Common.Empty" /></option>
+                      <option value="studies"><xed:output i18n="OMD.CPR.academicdegree.studies" /></option>
+                      <option value="promotion"><xed:output i18n="OMD.CPR.academicdegree.promotion" /></option>
+                      <option value="promotion_bis1800"><xed:output i18n="OMD.CPR.academicdegree.promotion_bis1800" /></option>
+                      <option value="habilitation"><xed:output i18n="OMD.CPR.academicdegree.habilitation" /></option>
+                      <option value="habilitation_bis1934"><xed:output i18n="OMD.CPR.academicdegree.habilitation_bis1934" /></option>
+                      <option value="other"><xed:output i18n="OMD.CPR.academicdegree.other" /></option>
+                    </select>
+                  </div>
+                </xed:bind>
+              </div>
+              <div class="row" style="margin-bottom:6px">   
+                <label class="col-sm-2 control-label input-sm" for="academicdegree_text">
+                  <xed:output i18n="OMD.CPR.hint.text" />
+                </label>
+                <xed:bind xpath="text">
+                  <div class="col-sm-10">
+                    <input type="text" id="academicdegree_text" class="form-control input-sm" />
+                  </div>
+                </xed:bind>
+              </div>
+              <div class="row" style="margin-bottom:6px">   
+                <label class="col-sm-2 control-label input-sm" for="academicdegree_work">
+                  <xed:output i18n="OMD.CPR.dissertationTitle" />
+                </label>
+                <xed:bind xpath="dissertation">
+                  <div class="col-sm-10">
+                    <textarea id="academicdegree_work" rows="2" class="form-control input-sm" />
+                  </div>
+                </xed:bind>
+              </div>
+              <div class="row" style="margin-bottom:6px">
+                <label class="col-sm-2 control-label input-sm" for="academicdegree_place_name">
+                  <xed:output i18n="OMD.CPR.hint.place_geoid" />
+                </label>
+                <xed:bind xpath="places">
+                  <div class="col-sm-10">
+                    <xed:repeat xpath="place">
+                    <div class="row" style="margin-bottom:6px"> 
+                      <xed:bind xpath=".">
+                        <div class="col-sm-4">
+                          <input id="academic_degree_place_name" type="text" class="form-control input-sm"   />
+                        </div>
+                      </xed:bind>
+                      <xed:bind xpath="@geoid">
+                        <div class="col-sm-6">
+                          <input id="place_geoid" type="text" class="form-control input-sm"   />
+                        </div>
+                      </xed:bind>
+                      <div class="col-sm-2" style="padding-left:6px">
+                        <div class="btn-group btn-group-xs pull-right">
+                          <xed:controls />
+                        </div>
+                      </div>
+                      </div>
+                    </xed:repeat>
+                  </div>
+                </xed:bind>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="btn-group btn-group-sm pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:bind>
+  <!-- Akademische Abschlüsse [ENDE] -->
+  
+  <!-- Akademische Selbstverwaltung [START] -->
+  <xed:bind xpath="box.adminfunction[@class='MCRMetaXML']">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="adminfunction">
+        <xed:output i18n="OMD.CPR.adminfunctions" />
+      </label>
+      <div class="col-sm-10">
+        <xed:repeat xpath="adminfunction">
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="row" style="margin-bottom:6px"> 
+                <label class="col-sm-2 control-label input-sm" for="academicdegree_time">
+                  <xed:output i18n="OMD.CPR.hint.time" />
+                </label>
+                <xed:bind xpath="time">
+                  <div class="col-sm-2">
+                    <input id="adminfunction_time" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+                
+                <label class="col-sm-2 control-label input-sm" for="academicdegree_type">
+                  <xed:output i18n="OMD.CPR.hint.type" />
+                </label>
+                <xed:bind xpath="@type">
+                  <div class="col-sm-6">
+                    <select id="adminfunction_type" class="form-control input-sm">
+                      <option value=""><xed:output i18n="Editor.Common.Empty" /></option>
+                      <option value="rektor"><xed:output i18n="OMD.CPR.adminfunction.rektor" /></option>
+                      <option value="dekan"><xed:output i18n="OMD.CPR.adminfunction.dekan" /></option>
+                      <option value="direktor"><xed:output i18n="OMD.CPR.adminfunction.direktor" /></option>
+                      <option value="prorektor"><xed:output i18n="OMD.CPR.adminfunction.prorektor" /></option>
+                      <option value="prodekan"><xed:output i18n="OMD.CPR.adminfunction.prodekan" /></option>
+                      <option value="stellvdirektor"><xed:output i18n="OMD.CPR.adminfunction.stellvdirektor" /></option>
+                      <option value="other"><xed:output i18n="OMD.CPR.adminfunction.other" /></option>
+                    </select>
+                  </div>
+                </xed:bind>
+              </div>
+              <div class="row" style="margin-bottom:6px">   
+                <label class="col-sm-2 control-label input-sm" for="academicdegree_text">
+                  <xed:output i18n="OMD.CPR.hint.text" />
+                </label>
+                <xed:bind xpath="text">
+                  <div class="col-sm-10">
+                    <input type="text" id="adminfunction_text" class="form-control input-sm" />
+                  </div>
+                </xed:bind>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="btn-group btn-group-sm pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:bind>
+  <!-- Akademische Selbstverwaltung [ENDE] -->
+
+  <!-- Funktionen [START] -->
+  <xed:bind xpath="box.otherfunction[@class='MCRMetaXML']">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="otherfunction">
+        <xed:output i18n="OMD.CPR.otherfunctions" />
+      </label>
+      <div class="col-sm-10">
+        <xed:repeat xpath="otherfunction">
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="row" style="margin-bottom:6px"> 
+                <label class="col-sm-2 control-label input-sm" for="otherfunction_time">
+                  <xed:output i18n="OMD.CPR.hint.time" />
+                </label>
+                <xed:bind xpath="time">
+                  <div class="col-sm-2">
+                    <input id="otherfunction_time" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+                
+                <label class="col-sm-2 control-label input-sm" for="otherfunction_type">
+                  <xed:output i18n="OMD.CPR.hint.type" />
+                </label>
+                <xed:bind xpath="@type">
+                  <div class="col-sm-6">
+                    <select id="otherfunction_type" class="form-control input-sm">
+                      <option value=""><xed:output i18n="Editor.Common.Empty" /></option>
+                    </select>
+                  </div>
+                </xed:bind>
+              </div>
+              <div class="row" style="margin-bottom:6px">   
+                <label class="col-sm-2 control-label input-sm" for="otherfunction_text">
+                  <xed:output i18n="OMD.CPR.hint.text" />
+                </label>
+                <xed:bind xpath="text">
+                  <div class="col-sm-10">
+                    <input type="text" id="otherfunction_text" class="form-control input-sm" />
+                  </div>
+                </xed:bind>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="btn-group btn-group-sm pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:bind>
+  <!-- Funktionen [ENDE] -->  
+
+  <!-- Wissenschaftliche Mitgliedschaften [START] -->
+  <xed:bind xpath="box.membership[@class='MCRMetaXML']">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="membership">
+        <xed:output i18n="OMD.CPR.memberships" />
+      </label>
+      <div class="col-sm-10">
+        <xed:repeat xpath="membership">
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="row" style="margin-bottom:6px"> 
+                <label class="col-sm-2 control-label input-sm" for="membership_time">
+                  <xed:output i18n="OMD.CPR.hint.time" />
+                </label>
+                <xed:bind xpath="time">
+                  <div class="col-sm-2">
+                    <input id="membership_time" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+                
+                <label class="col-sm-2 control-label input-sm" for="membership_type">
+                  <xed:output i18n="OMD.CPR.hint.type" />
+                </label>
+                <xed:bind xpath="@type">
+                  <div class="col-sm-6">
+                    <select id="membership_type" class="form-control input-sm">
+                      <option value=""><xed:output i18n="Editor.Common.Empty" /></option>
+                      <option value="party"><xed:output i18n="OMD.CPR.membership.party" /></option>
+                    </select>
+                  </div>
+                </xed:bind>
+              </div>
+              <div class="row" style="margin-bottom:6px">   
+                <label class="col-sm-2 control-label input-sm" for="membership_text">
+                  <xed:output i18n="OMD.CPR.hint.text" />
+                </label>
+                <xed:bind xpath="text">
+                  <div class="col-sm-10">
+                    <input type="text" id="membership_text" class="form-control input-sm" />
+                  </div>
+                </xed:bind>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="btn-group btn-group-sm pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:bind>
+  <!-- Wissenschaftliche Mitgliedschaften [ENDE] -->    
+
+  <!-- Ehrungen [START] -->
+  <xed:bind xpath="box.award[@class='MCRMetaXML']">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="award">
+        <xed:output i18n="OMD.CPR.awards" />
+      </label>
+      <div class="col-sm-10">
+        <xed:repeat xpath="award">
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="row" style="margin-bottom:6px"> 
+                <label class="col-sm-2 control-label input-sm" for="award_time">
+                  <xed:output i18n="OMD.CPR.hint.time" />
+                </label>
+                <xed:bind xpath="time">
+                  <div class="col-sm-2">
+                    <input id="award_time" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+                
+                <label class="col-sm-2 control-label input-sm" for="award_type">
+                  <xed:output i18n="OMD.CPR.hint.type" />
+                </label>
+                <xed:bind xpath="@type">
+                  <div class="col-sm-6">
+                    <select id="award_type" class="form-control input-sm">
+                      <option value=""><xed:output i18n="Editor.Common.Empty" /></option>
+                    </select>
+                  </div>
+                </xed:bind>
+              </div>
+              <div class="row" style="margin-bottom:6px">   
+                <label class="col-sm-2 control-label input-sm" for="award_text">
+                  <xed:output i18n="OMD.CPR.hint.text" />
+                </label>
+                <xed:bind xpath="text">
+                  <div class="col-sm-10">
+                    <input type="text" id="award_text" class="form-control input-sm" />
+                  </div>
+                </xed:bind>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="btn-group btn-group-sm pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:bind>
+  <!-- Ehrungen [ENDE] -->
+  <!--  Weitere Infos [START] -->
+  
+  <xed:bind xpath="box.otherinfo[@class='MCRMetaLangText']">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="otherinfo">
+        <xed:output i18n="OMD.CPR.otherinfos" />
+      </label>
+      <div class="col-sm-10">
+        <xed:repeat xpath="otherinfo">
+          <div class="form-group">
+            <div class="col-sm-10">
+              <xed:bind xpath=".">
+                <input id="otherinfo" type="text" class="form-control"   />
+              </xed:bind>
+            </div>
+            <div class="col-sm-2">
+              <div class="btn-group btn-group-sm pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:bind>
+  <!--  Weitere Infos [ENDE] -->
+  
+  <!--  Hauptwerke [START] -->
+  <xed:bind xpath="box.mainpublication[@class='MCRMetaLangText']">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="mainpublication">
+        <xed:output i18n="OMD.CPR.mainpublications" />
+      </label>
+      <div class="col-sm-10">
+        <xed:repeat xpath="mainpublication">
+          <div class="form-group">
+            <div class="col-sm-10">
+              <xed:bind xpath=".">
+                <input id="mainpublication" type="text" class="form-control"   />
+              </xed:bind>
+            </div>
+            <div class="col-sm-2">
+              <div class="btn-group btn-group-sm pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:bind>
+  <!--  Hauptwerke [ENDE] -->
+  
+  <!-- Nachweis von Publikationen [START] -->
+  <xed:bind xpath="box.publicationslink[@class='MCRMetaLink']">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="otherfunction">
+        <xed:output i18n="OMD.CPR.bibliographicrefs" />
+      </label>
+      <div class="col-sm-10">
+        <xed:repeat xpath="publicationslink">
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="row" style="margin-bottom:6px"> 
+                <label class="col-sm-2 control-label input-sm" for="publink_href">
+                  <xed:output i18n="OMD.CPR.hint.linkurl" />
+                </label>
+                <xed:bind xpath="@xlink:href">
+                  <div class="col-sm-10">
+                    <input id="publink_href" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+              </div>
+              <div class="row" style="margin-bottom:6px">   
+                <label class="col-sm-2 control-label input-sm" for="publink_title">
+                  <xed:output i18n="OMD.CPR.hint.linktitle" />
+                </label>
+                <xed:bind xpath="@xlink:title">
+                  <div class="col-sm-10">
+                    <input id="publink_title" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="btn-group btn-group-sm pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:bind>
+  <!-- Nachweis von Publikationen [ENDE] -->
+
+  <!-- Quellen [START] -->
+  <xed:bind xpath="box.source[@class='MCRMetaLink']">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="sources">
+        <xed:output i18n="OMD.CPR.sources" />
+      </label>
+      <div class="col-sm-10">
+        <xed:repeat xpath="source">
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="row" style="margin-bottom:6px"> 
+                <label class="col-sm-2 control-label input-sm" for="sources_href">
+                  <xed:output i18n="OMD.CPR.hint.linkurl" />
+                </label>
+                <xed:bind xpath="@xlink:href">
+                  <div class="col-sm-10">
+                    <input id="sources_href" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+              </div>
+              <div class="row" style="margin-bottom:6px">   
+                <label class="col-sm-2 control-label input-sm" for="sources_title">
+                  <xed:output i18n="OMD.CPR.hint.linktitle" />
+                </label>
+                <xed:bind xpath="@xlink:title">
+                  <div class="col-sm-10">
+                    <input id="sources_title" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="btn-group btn-group-sm pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:bind>
+  <!-- Quellen [ENDE] --> 
+  
+  <!-- weitere Literatur [START] -->
+  <xed:bind xpath="box.reference[@class='MCRMetaLink']">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="reference">
+        <xed:output i18n="OMD.CPR.references" />
+      </label>
+      <div class="col-sm-10">
+        <xed:repeat xpath="reference">
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="row" style="margin-bottom:6px"> 
+                <label class="col-sm-2 control-label input-sm" for="reference_href">
+                  <xed:output i18n="OMD.CPR.hint.linkurl" />
+                </label>
+                <xed:bind xpath="@xlink:href">
+                  <div class="col-sm-10">
+                    <input id="reference_href" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+              </div>
+              <div class="row" style="margin-bottom:6px">   
+                <label class="col-sm-2 control-label input-sm" for="reference_title">
+                  <xed:output i18n="OMD.CPR.hint.linktitle" />
+                </label>
+                <xed:bind xpath="@xlink:title">
+                  <div class="col-sm-10">
+                    <textarea id="reference_title" rows="2" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="btn-group btn-group-sm pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:bind>
+  <!-- weitere Literatur [ENDE] -->
+  <!--  Komplexe Velinkung [START] -->
+  <xed:bind xpath="box.complexref[@class='MCRMetaLangText']">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="complexref">
+        <xed:output i18n="OMD.CPR.complexrefs" />
+      </label>
+      <div class="col-sm-10">
+        <xed:repeat xpath="complexref">
+          <div class="form-group">
+            <div class="col-sm-10">
+              <xed:bind xpath=".">
+                <textarea id="complexref" rows="3" class="form-control" />
+              </xed:bind>
+            </div>
+            <div class="col-sm-2">
+              <div class="btn-group btn-group-sm pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:bind>
+  <!--  Komplexe Verlinkung [ENDE] -->
+  
+    <!-- Identifiers [START] -->
+  <xed:bind xpath="box.identifier[@class='MCRMetaLangText']">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="identifier">
+        <xed:output i18n="OMD.CPR.identifiersM" />
+      </label>
+      <div class="col-sm-10">
+        <xed:repeat xpath="identifier">
+        <xed:cleanup-rule xpath="//box.identifier/identifier" relevant-if="string-length(text()) &gt; 0" />
+          <div class="form-group">
+            <div class="col-sm-10">
+              <div class="row" style="margin-bottom:6px"> 
+                <xed:bind xpath="@type">
+                  <div class="col-sm-4">
+                    <select id="identifier_type" class="form-control input-sm">
+                      <option value="gnd"><xed:output i18n="OMD.CPR.identifiers.gnd" /></option>
+                    </select>
+                  </div>
+                </xed:bind>
+                <xed:bind xpath=".">
+                  <div class="col-sm-8">
+                    <input id="identifier_text" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="btn-group btn-group-sm pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:bind>
+  <!-- Identifiers [ENDE] -->
+  
+  
+    </xed:bind>
+      <xed:include uri="webapp:editor/metadata/includes-generic.xed" ref="cancel.submit" />
+    </xed:bind>
+</xed:form>
