@@ -3,43 +3,15 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.mycore.org/jspdocportal/navigation navigation.xsd">
 	<navigation id="left">
-		<navitem id="start" i18n="Nav.Start" href="content/index.jsp">
-			<refitem id="~start" />
-		</navitem>
+		<navitem id="start" i18n="Nav.Start" href="webpage.action?id=start" />
 	
 			<navitem id="indexsearch" i18n="Nav.Profkat.Index"
 				href="indexbrowser.action?modus=profkat">
 			</navitem>
 
-			<navitem id="search" i18n="Nav.Search" href="simpleSearch.action">
-				<navitem id="allmeta" i18n="Nav.SearchAll" href="content/searchmask-editor.jsp?editor=editor/searchmasks/SearchMask_AllMetadataFields.xml" hidden="true">
-					<refitem id="~searchstart-allmeta" />
-					<navitem id="searchresult-allmeta" i18n="Nav.Search" href="content/searchresult.jsp" hidden="true">
-						<refitem id="~searchresult-allmeta" />
-						<navitem id="docdetail" i18n="Nav.DocumentDetails" href="content/docdetails.jsp" hidden="true" />
-					</navitem>
-				</navitem>
-				<navitem id="simple" i18n="Nav.Search.Profkat.Simple" href="content/searchmask-profkat-simple-editor.jsp">
-					<refitem id="~searchstart-simple-profkat" />
-					<navitem id="searchresult-simple" i18n="Nav.Searchresults" href="content/searchresult.jsp" hidden="true">
-						<refitem id="~searchresult-simple-profkat" />
-						<navitem id="docdetail" i18n="Nav.DocumentDetails" href="content/docdetails.jsp" hidden="true" />
-					</navitem>
-				</navitem>
-				<navitem id="extended" i18n="Nav.Search.Profkat.Extended" href="content/searchmask-profkat-extended-editor.jsp">
-					<refitem id="~searchstart-extended-profkat" />
-					<navitem id="searchresult-extended-profkat" i18n="Nav.Searchresults" href="content/searchresult.jsp" hidden="true">
-						<refitem id="~searchresult-extended-profkat" />
-						<navitem id="docdetail" i18n="Nav.DocumentDetails" href="content/docdetails.jsp" hidden="true" />
-					</navitem>
-				</navitem>
-
-				<navitem id="docdetail" i18n="Nav.DocumentDetails" href="content/docdetails.jsp" hidden="true">
-					<refitem id="~docdetail" />
-					<navitem id="derivatedetails" i18n="Nav.DigitalisatDetails"
-						href="content/derivatedetails.jsp" hidden="true"> <refitem id="~derivatedetails" />
-					</navitem>
-				</navitem>
+			<navitem id="search" i18n="Nav.Search" href="search.action?mask=profkat-searchbox.xed">
+				<navitem id="simple" i18n="Nav.Search.Profkat.Simple" href="search.action?mask=profkat-simple.xed" />
+				<navitem id="extended" i18n="Nav.Search.Profkat.Extended" href="search.action?mask=profkat-extended.xed" />
 			</navitem>
 
 			<navitem id="browse" i18n="Nav.ClassificationsSearch" href="content/browsenode.jsp">
@@ -59,17 +31,17 @@
 				</navitem>
 			</navitem>
 			
-			<navitem id="aktuelles" i18n="Nav.Aktuelles" href="content/aktuelles.jsp">
+			<navitem id="aktuelles" i18n="Nav.Aktuelles" href="webpage.action?id=aktuelles">
 				<refitem id="~aktuelles" />
 			</navitem>
 	</navigation>
 
 	<navigation id="top">
-		<navitem id="start" i18n="Nav.Start" href="content/index.jsp">
+		<navitem id="start" i18n="Nav.Start" href="webpage.action?id=start">
 			<refitem id="~index" />
 		</navitem>
-		<navitem id="sitemap" i18n="Nav.Sitemap" href="content/sitemap.jsp" />
-		<navitem id="impressum" i18n="Nav.Impressum" href="content/impressum.jsp">
+		<navitem id="sitemap" i18n="Nav.Sitemap" href="webpage.action?id=sitemap" />
+		<navitem id="impressum" i18n="Nav.Impressum" href="webpage.action?id=impressum">
 				<refitem id="~impressum" />
 		</navitem>
 		<navitem id="login" i18n="Nav.Login" href="/login.action" hidden="true">

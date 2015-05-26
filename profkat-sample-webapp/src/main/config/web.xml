@@ -1,24 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
 
-  <display-name>Beispiel Professorenkatalog</display-name>
-  <description>Beispiel für einen Professorenkatalog</description>
+	<display-name>Beispiel Professorenkatalog</display-name>
+	<description>Beispiel für einen Professorenkatalog</description>
 
-  <servlet id="ProfKatPNDBeaconServlet">
-    <servlet-name>ProfKatPNDBeaconServlet</servlet-name>
-    <servlet-class>org.mycore.profkat.pndbeacon.ProfKatPNDBeaconServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ProfKatPNDBeaconServlet</servlet-name>
-    <url-pattern>/profkat_pnd_beacon.txt</url-pattern>
-  </servlet-mapping>
-    
-    <welcome-file-list>
-        <welcome-file>nav</welcome-file>
-        <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
-  
-
+	<servlet id="ProfKatPNDBeaconServlet">
+		<servlet-name>ProfKatPNDBeaconServlet</servlet-name>
+		<servlet-class>org.mycore.profkat.pndbeacon.ProfKatPNDBeaconServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ProfKatPNDBeaconServlet</servlet-name>
+		<url-pattern>/profkat_pnd_beacon.txt</url-pattern>
+	</servlet-mapping>
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>*</url-pattern>
+	</filter-mapping>
+	<welcome-file-list>
+		<welcome-file>nav</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
 </web-app>
