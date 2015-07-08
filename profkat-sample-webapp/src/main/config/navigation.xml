@@ -54,6 +54,10 @@
 			<refitem id="~feedback" />
 		</navitem>
 
+        <navitem id="docdetail" i18n="Nav.DocumentDetails" href="content/docdetails.jsp" hidden="true">
+          <refitem id="~docdetail" />
+        </navitem>
+  
 		<!-- hidden entries for editor include and previews -->
 		<navitem id="workflow-edit" i18n="Nav.WF.Edit" href="content/workflow-editor.jsp" hidden="true">
 			<refitem id="~workflow-edit" />
