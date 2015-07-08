@@ -195,13 +195,14 @@
 	<!-- ******************************************** -->
     <!-- * PROFKAT                                  * -->
     <!-- ******************************************** -->
-    <field name="profkat_idx_profkat" type="mcr_identifier" multiValued="false" stored="true" />
+    <field name="profkat_idx_headline" type="mcr_identifier" multiValued="false" stored="true" />
     <field name="profkat_idx_profkat_facet" type="string" multiValued="false" stored="true" />
     <field name="profkat_period" type="string" multiValued="false" stored="true" />
     <field name="profkat_last_professorship" type="string" multiValued="false" stored="true" />
     <field name="profkat_last_faculty_class" type="string" multiValued="false" stored="true" />
     <field name="profkat_status_msg" type="string" multiValued="false" stored="true" />
     
+    <field name="profkat_name" type="text_general" multiValued="true" stored="false" />
     <field name="gnd_uri" type="string" multiValued="false" stored="true" />
  </fields>
 
