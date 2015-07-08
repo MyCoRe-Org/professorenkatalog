@@ -16,7 +16,7 @@
   <xsl:template match="metadata">
     <xsl:apply-imports/>
     <xsl:variable name="headline" select="concat(box.surname/surname,', ', box.firstname/firstname[1])" />
-    <field name="profkat_idx_profkat">
+    <field name="profkat_idx_headline">
     	<xsl:value-of select="$headline" />
     </field>
     <field name="profkat_idx_profkat_facet">
