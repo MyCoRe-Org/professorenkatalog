@@ -67,26 +67,12 @@
 		 --%>
 		
 		 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-   		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+   		<script src="${WebApplicationBaseURL}webjars/jquery/1.11.3/jquery.min.js"></script>
    		<!-- Include all compiled plugins (below), or include individual files as needed -->
-   		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+   		<script src="${WebApplicationBaseURL}webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    	<link rel="stylesheet" href="${WebApplicationBaseURL}webjars/bootstrap/3.3.5/css/bootstrap.min.css" />
 
-		<%--
-    	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    	<!--[if lt IE 9]>
-      		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    	<![endif]-->
-		--%>
-		
-		<%--
-    	<link type="text/css"  rel="stylesheet" href="${pageContext.request.contextPath}/themes/uni-rostock/css/uni-rostock_bootstrap.css" />
-		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/themes/cpr/css/cpr.css" />
-		 --%>
-		 
-		 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style_profkatsample.css" />
+	    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style_profkatsample.css" />
 		
 		
 		<mcr:hasAccess permission="administrate-webcontent" var="editWeb"/>
