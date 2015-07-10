@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xed:template xmlns:xed="http://www.mycore.de/xeditor">
 
 	<!-- Professor Names -->
@@ -16,7 +16,85 @@
       </div>
     </xed:bind>
   </xed:template>
+  
+  <xed:template id="tools.grouping">
+   <div class="form-group">
+        <label class="col-sm-3 col-sm-offset-5 control-label input-sm" for="profname">
+          <xed:output i18n="Editor.Search.connect" />
+        </label>
+        <div class="col-sm-2">
+          <xed:bind xpath="@operator">
+            <select id="connect1" class="form-control">
+              <option value="and"><xed:output i18n="Editor.Search.and" /></option>
+              <option value="or"><xed:output i18n="Editor.Search.or" /></option>
+            </select>
+          </xed:bind>
+       </div>
+    </div>
+  </xed:template>
 
+  <xed:template id="searchfield.generic">
+    <xed:repeat xpath="condition">
+      <div class="form-group">
+        <div class="col-sm-3">
+          <xed:bind xpath="@field">
+            <select id="choose_field" class="form-control">
+              <option value="allMeta"><xed:output i18n="Editor.Search.metadata" /></option>
+              <option value="name"><xed:output i18n="OMD.CPR.name" /></option>
+              <option value="institute"><xed:output i18n="OMD.CPR.institutes" /></option>
+              <option value="area"><xed:output i18n="OMD.CPR.fieldofstudies" /></option>
+              <option value="proftype"><xed:output i18n="OMD.CPR.subjects" /></option>
+              <option value="birthplace"><xed:output i18n="OMD.CPR.birthplace" /></option>
+              <option value="deathplace"><xed:output i18n="OMD.CPR.deathplace" /></option>
+              <option value="confession"><xed:output i18n="OMD.CPR.confessions" /></option>
+              <option value="parentprofession"><xed:output  i18n="OMD.CPR.parentprofession" /></option>
+              <option value="biography"><xed:output i18n="OMD.CPR.biographics" /></option>
+              <option value="academicdegree"><xed:output i18n="OMD.CPR.academicdegrees" /></option>
+              <option value="acad_degree_study"><xed:output i18n="OMD.CPR.academicdegree.studies" /></option>
+              <option value="acad_degree_promo"><xed:output i18n="OMD.CPR.academicdegree.promotion" /></option>
+              <option value="acad_degree_habil"><xed:output i18n="OMD.CPR.academicdegree.habilitation" /> </option>             
+              <option  value="otherprofessorship"><xed:output i18n="OMD.CPR.otherprofessorships" /></option>
+              <option value="adminfunction"><xed:output i18n="OMD.CPR.adminfunctions" /></option>
+              <option value="otherfunction"><xed:output i18n="OMD.CPR.otherfunctions" /></option>
+              <option value="membership"><xed:output i18n="OMD.CPR.memberships" /></option>
+              <option value="award"><xed:output i18n="OMD.CPR.awards" /></option>
+              <option value="mainpublication"><xed:output i18n="OMD.CPR.mainpublications" /></option>
+              <option value="source"><xed:output i18n="OMD.CPR.sources" /></option>
+              <option value="reference"><xed:output i18n="OMD.CPR.references_short" /></option>
+              <option value="derivatelabel"><xed:output i18n="OMD.CPR.derivatelabel" /></option>   
+            </select>
+          </xed:bind>
+        </div>
+        <div class="col-sm-2">
+          <xed:bind xpath="@operator">
+            <select id="choose_field" class="form-control">
+              <option value="contains"><xed:output i18n="editor.search.contains" /></option>
+              <option value="like"><xed:output i18n="editor.search.like" /></option>
+              <option value="phrase"><xed:output i18n="editor.search.phrase"/></option>
+              <option value="=">=</option>
+              <option value="&gt;">&gt;</option>
+              <option value="&gt;=">&gt;=</option>
+              <option value="&lt;">&lt;</option>
+              <option value="&lt;=">&lt;=</option>
+            </select>
+          </xed:bind>
+        </div>
+        <div class="col-sm-5">
+          <xed:bind xpath="@value">
+            <input id="choose_value" class="form-control" />
+          </xed:bind>
+         </div>
+         <div class="col-sm-2">
+           <div class="btn-group btn-group-xs pull-right">
+             <xed:controls />
+           </div>
+        </div>
+      </div>
+    </xed:repeat>
+    <xed:include ref="tools.grouping" />
+  </xed:template>
+  
+  
 	<!-- Institutionensystematik -->
   <xed:template id="searchfield.institution">
     <div class="form-group">
@@ -37,7 +115,7 @@
               </xed:bind>
             </div>
             <div class="col-sm-3">
-              <div class="btn-group btn-group-sm pull-right">
+              <div class="btn-group btn-group-xs pull-right">
                 <xed:controls />
               </div>
             </div>
@@ -48,7 +126,7 @@
     </div>
   </xed:template>
 
-	<!-- Fachklassifikation -->
+  <!-- Fachklassifikation -->
   <xed:template id="searchfield.subject">
     <div class="form-group">
       <label class="col-sm-3 control-label input-sm" for="subjectclass">
@@ -68,7 +146,7 @@
               </xed:bind>
             </div>
             <div class="col-sm-3">
-              <div class="btn-group btn-group-sm pull-right">
+              <div class="btn-group btn-group-xs pull-right">
                 <xed:controls />
               </div>
             </div>
@@ -77,148 +155,255 @@
       </div>
     </div>
   </xed:template>
-
-
-	<!-- Art der Professur -->
-	<!-- <text id="LProfTypes"> <label i18n="Editor.Search.Label.ProfTypes" 
-		/> </text> <panel id="DProfTypes"> <hidden var="@operator" default="or" /> 
-		<cell row="1" col="1" anchor="NORTHWEST" var="/condition"> <repeater min="1" 
-		max="5"> <panel lines="off"> <hidden var="@field" default="class_proftypes" 
-		/> <hidden var="@operator" default="=" /> <cell col="1" row="1" anchor="NORTHWEST" 
-		var="@value"> <list id="CProfTypes" style="width:300px" type="dropdown"> 
-		<item value=""> <label i18n="Editor.Search.List.all" /> </item> <include 
-		uri="classification:editor:-1:children:profkat_class_professorshiptypes" 
-		cacheable="false" /> </list> </cell> </panel> </repeater> </cell> </panel> -->
-	<!-- Status des Eintrages -->
-	<!-- <text id="LProfStates"> <label i18n="Editor.Search.Label.ProfStates" 
-		/> </text> <panel id="DProfStates"> <hidden var="@operator" default="or" 
-		/> <cell row="1" col="1" anchor="NORTHWEST" var="/condition"> <repeater min="1" 
-		max="5"> <panel lines="off"> <hidden var="@field" default="profstates" /> 
-		<hidden var="@operator" default="=" /> <cell col="1" row="1" anchor="NORTHWEST" 
-		var="@value"> <list id="CProfStates" width="300px" type="dropdown"> <item 
-		value="" i18n="Editor.Common.choose" /> <item value="inprogress" i18n="OMD.CPR.states.inprogress" 
-		/> <item value="long" i18n="OMD.CPR.states.long" /> <item value="short" i18n="OMD.CPR.states.short" 
-		/> <item value="document" i18n="OMD.CPR.states.document" /> <item value="other" 
-		i18n="OMD.CPR.states.other" /> </list> </cell> </panel> </repeater> </cell> 
-		</panel> -->
+  
+  <!-- Art der Professur -->
+  <xed:template id="searchfield.proftypes">
+    <div class="form-group">
+      <label class="col-sm-3 control-label input-sm" for="subjectclass">
+        <xed:output i18n="Editor.Search.Label.ProfTypes" />
+      </label>
+      <div class="col-sm-9">
+        <xed:repeat xpath="condition3[@field='category.top'][@operator='=']">
+          <div class="row">
+            <div class="col-sm-9">
+              <xed:bind xpath="@value">
+                <select id="proftypes" class="form-control">
+                  <option value="">
+                    <xed:output i18n="Editor.Search.List.all" />
+                  </option>
+                  <xed:include uri="xslStyle:items2options:classification:editorComplete:-1:children:profkat_class_proftypes" />
+                </select>
+              </xed:bind>
+            </div>
+            <div class="col-sm-3">
+              <div class="btn-group btn-group-xs pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:template>
+  
+  
+   <!-- Art des Eintrages -->
+  <xed:template id="searchfield.profstates">
+    <div class="form-group">
+      <label class="col-sm-3 control-label input-sm" for="subjectclass">
+        <xed:output i18n="Editor.Search.Label.ProfStates" />
+      </label>
+      <div class="col-sm-9">
+        <xed:repeat xpath="condition4[@field='category.top'][@operator='=']">
+          <div class="row">
+            <div class="col-sm-9">
+              <xed:bind xpath="@value">
+                <select id="profstate" class="form-control">
+                  <option value=""><xed:output i18n="Editor.Search.List.all" /></option>
+                  <option value="inprogress"><xed:output i18n="OMD.CPR.states.inprogress" /></option>
+                  <option value="long"><xed:output i18n="OMD.CPR.states.long" /></option>
+                  <option value="short"><xed:output i18n="OMD.CPR.states.short" /></option>
+                  <option value="document"><xed:output i18n="OMD.CPR.states.document" /></option>
+                  <option value="other"><xed:output i18n="OMD.CPR.states.other" /></option>
+                </select>
+              </xed:bind>
+            </div>
+            <div class="col-sm-3">
+              <div class="btn-group btn-group-xs pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:template>
     
-  <!-- Zeitraumsuche über Professur -->
+  <!-- Zeitraumsuche Ã¼ber Professur -->
   <xed:template id="searchfield.proftime">
-    <xed:bind xpath="boolean[@operator='and']">
+  <xed:bind xpath="@operator" default="and" />
       <div class="form-group" style="margin-bottom:6px">
-        <label class="col-sm-3 control-label input-sm" for="allMeta">
+        <label class="col-sm-3 control-label input-sm">
           <xed:output i18n="Editor.Search.Label.Professortime" />
         </label>
         <div class="col-sm-9">
           <div class="row">
             <div class="col-sm-3 control-label input-sm">
-              <xed:output i18n="Editor.Search.Label.Professor.after" />
+              <xed:output i18n="Editor.Search.Label.Professortime.from" />
             </div>
-            <div class="col-sm-3">
-              <xed:bind xpath="condition[@field='proftype_ibis-proftype_ibis'][@operator='&gt;=']/@value">
-                 <input id="proftime_after" class="form-control" />
+            <div class="col-sm-2">
+              <xed:bind xpath="condition1/@field" default="proftime_from" />
+              <xed:bind xpath="condition1/@operator">
+                 <select id="proftime_from_op1" class="form-control">
+                   <option value="=">=</option>
+                   <option value="&gt;">&gt;</option>
+                   <option value="&gt;=">&gt;=</option>
+                   <option value="&lt;">&lt;</option>
+                   <option value="&lt;=">&lt;=</option>
+                </select>
               </xed:bind>
             </div>
-            <div class="col-sm-3 control-label input-sm">
-              <xed:output i18n="Editor.Search.Label.Professor.before" />
+            <div class="col-sm-2">
+              <xed:bind xpath="condition1/@value">
+                    <input id="proftime_from_val1" class="form-control" />
+              </xed:bind>
             </div>
-            <div class="col-sm-3">
-                        <xed:bind xpath="condition[@field='proftype_ivon-proftype_ivon'][@operator='&lt;=']/@value">
-                    <input id="proftime_before" class="form-control" />
+              <div class="col-sm-2 col-sm-offset-1">
+              <xed:bind xpath="condition2/@field" default="proftime_from" />
+              
+              <xed:bind xpath="condition2/@operator">
+                 <select id="proftime_from_op2" class="form-control">
+                   <option value="=">=</option>
+                   <option value="&gt;">&gt;</option>
+                   <option value="&gt;=">&gt;=</option>
+                   <option value="&lt;">&lt;</option>
+                   <option value="&lt;=">&lt;=</option>
+                </select>
+              </xed:bind>
+            </div>
+            <div class="col-sm-2">
+              <xed:bind xpath="condition2/@value">
+                    <input id="proftime_from_val2" class="form-control" />
               </xed:bind>
             </div>
           </div>
-        </div>
+          
+         <div class="row" style="margin-top:12px;">
+            <div class="col-sm-3 control-label input-sm">
+              <xed:output i18n="Editor.Search.Label.Professortime.to" />
+            </div>
+            <div class="col-sm-2">
+              <xed:bind xpath="condition3/@field" default="proftime_to" />
+              <xed:bind xpath="condition3/@operator">
+                 <select id="proftime_to_op1" class="form-control">
+                   <option value="=">=</option>
+                   <option value="&gt;">&gt;</option>
+                   <option value="&gt;=">&gt;=</option>
+                   <option value="&lt;">&lt;</option>
+                   <option value="&lt;=">&lt;=</option>
+                </select>
+              </xed:bind>
+            </div>
+            <div class="col-sm-2">
+              <xed:bind xpath="condition3/@value">
+                    <input id="proftime_to_val2" class="form-control" />
+              </xed:bind>
+            </div>
+              <div class="col-sm-2 col-sm-offset-1">
+              <xed:bind xpath="condition4/@field" default="proftime_to" />
+              <xed:bind xpath="condition4/@operator">
+                 <select id="proftime_to_op2" class="form-control">
+                   <option value="=">=</option>
+                   <option value="&gt;">&gt;</option>
+                   <option value="&gt;=">&gt;=</option>
+                   <option value="&lt;">&lt;</option>
+                   <option value="&lt;=">&lt;=</option>
+                </select>
+              </xed:bind>
+            </div>
+            <div class="col-sm-2">
+              <xed:bind xpath="condition4/@value">
+                    <input id="proftime_to_val2" class="form-control" />
+              </xed:bind>
+            </div>
+          </div>
+       </div>
       </div>
-    </xed:bind>
   </xed:template>
-
-  <!-- 
-  <text id="LProfessortime">
-    <label i18n="Editor.Search.Label.Professortime" />
-  </text>
-  <panel id="DProfessortime">
-    <hidden var="@operator" default="and" />
-    
-    <hidden var="condition2/@field" default="proftype_ivon-proftype_ivon" />
-    <hidden var="condition2/@operator" default="&lt;=" />
-    <hidden var="condition3/@field" default="proftype_ivon-proftype_ivon" />
-    <hidden var="condition4/@field" default="proftype_ibis-proftype_ibis" />
-    <cell row="1" col="1" anchor="NORTHWEST">
-      <text>
-        <label i18n="Editor.Search.label.Timespan" />
-      </text>
-    </cell>
-    <cell row="1" col="2" anchor="NORTH" ref="Lbetween" />
-    <cell row="1" col="3" anchor="NORTHWEST" ref="TFzeile10" var="condition1/@value" />
-    <cell row="1" col="4" anchor="NORTH" ref="LbetweenAnd" />
-    <cell row="1" col="5" anchor="NORTHWEST" ref="TFzeile10" var="condition2/@value" />
-    <cell row="2" col="1" anchor="NORTHWEST">
-      <text>
-        <label i18n="Editor.Search.Label.Professor.after" />
-      </text>
-    </cell>
-    <cell row="2" col="2" anchor="NORTHWEST" ref="list.operators.time" var="condition3/@operator" />
-    <cell row="2" col="3" anchor="NORTHWEST" ref="TFzeile10" var="condition3/@value" />
-    <cell row="3" col="1" anchor="NORTHWEST">
-      <text>
-        <label i18n="Editor.Search.Label.Professor.before" />
-      </text>
-    </cell>
-    <cell row="3" col="2" anchor="NORTHWEST" ref="list.operators.time" var="condition4/@operator" />
-    <cell row="3" col="3" anchor="NORTHWEST" ref="TFzeile10" var="condition4/@value" />
-  </panel>
-  -->
-	<!-- Zeitraumsuche über Lebenszeit -->
-	<!-- <text id="LLifetime"> <label i18n="Editor.Search.Label.Lifetime" /> 
-		</text> <panel id="DLifetime"> <hidden var="@operator" default="and" /> <hidden 
-		var="condition1/@field" default="lifetime_ibis-lifetime_ibis" /> <hidden 
-		var="condition1/@operator" default="=" /> <hidden var="condition2/@field" 
-		default="lifetime_ivon-lifetime_ivon" /> <hidden var="condition2/@operator" 
-		default="=" /> <hidden var="condition3/@field" default="lifetime_ivon-lifetime_ivon" 
-		/> <hidden var="condition4/@field" default="lifetime_ibis-lifetime_ibis" 
-		/> <cell row="1" col="1" anchor="NORTHWEST"> <text><label i18n="Editor.Search.label.Timespan" 
-		/></text> </cell> <cell row="1" col="2" anchor="NORTHWEST" ref="Lbetween" 
-		/> <cell row="1" col="3" anchor="NORTHWEST" ref="TFzeile10" var="condition1/@value" 
-		/> <cell row="1" col="4" anchor="NORTH" ref="LbetweenAnd" /> <cell row="1" 
-		col="5" anchor="NORTHWEST" ref="TFzeile10" var="condition2/@value" /> <cell 
-		row="2" col="1" anchor="NORTHWEST"> <text><label i18n="Editor.Search.Label.Life.born" 
-		/></text> </cell> <cell row="2" col="2" anchor="NORTHWEST" ref="list.operators.time" 
-		var="condition3/@operator" /> <cell row="2" col="3" anchor="NORTHWEST" ref="TFzeile10" 
-		var="condition3/@value" /> <cell row="3" col="1" anchor="NORTHWEST"> <text><label 
-		i18n="Editor.Search.Label.Life.died" /></text> </cell> <cell row="3" col="2" 
-		anchor="NORTHWEST" ref="list.operators.time" var="condition4/@operator" /> 
-		<cell row="3" col="3" anchor="NORTHWEST" ref="TFzeile10" var="condition4/@value" 
-		/> </panel> -->
-	<!-- Zeitraumsuche über Fakultätsangehörigkeit -->
-	<!-- <text id="LFacultytime"> <label i18n="Editor.Search.Label.Facultytime" 
-		/> </text> <panel id="DFacultytime"> <hidden var="@operator" default="and" 
-		/> <hidden var="condition1/@field" default="fac_ivon-fac_ibis" /> <hidden 
-		var="condition1/@operator" default="=" /> <hidden var="condition2/@field" 
-		default="fac_ivon-fac_ibis" /> <hidden var="condition2/@operator" default="=" 
-		/> <hidden var="condition3/@field" default="fac_ibis-fac_ivon" /> <hidden 
-		var="condition3/@operator" default="&gt;=" /> <hidden var="condition4/@field" 
-		default="fac_ibis-fac_ivon" /> <hidden var="condition4/@operator" default="&lt;=" 
-		/> <cell row="1" col="1" anchor="NORTHWEST" ref="Lbetween" /> <cell row="1" 
-		col="2" anchor="NORTHWEST" ref="TFzeile10" var="condition1/@value" /> <cell 
-		row="1" col="3" anchor="NORTHWEST" ref="LbetweenAnd" /> <cell row="1" col="4" 
-		anchor="NORTHWEST" ref="TFzeile10" var="condition2/@value" /> <cell row="2" 
-		col="1" anchor="NORTHWEST" ref="Lafter" /> <cell row="2" col="2" anchor="NORTHWEST" 
-		ref="TFzeile10" var="condition3/@value" /> <cell row="2" col="3" anchor="NORTHWEST" 
-		ref="Lbefore" /> <cell row="2" col="4" anchor="NORTHWEST" ref="TFzeile10" 
-		var="condition4/@value" /> </panel> -->
-	<!-- allgemeine Labels -->
-	<!-- <text id="Lbetween"> <label i18n="Editor.Search.Label.Time.between" 
-		/> </text> <text id="LbetweenAnd"> <label i18n="Editor.Search.Label.Time.betweenAnd" 
-		/> </text> <text id="Lafter"> <label i18n="Editor.Search.Label.Time.after" 
-		/> </text> <text id="Lbefore"> <label i18n="Editor.Search.Label.Time.before" 
-		/> </text> <list type="dropdown" id="list.operators.time" default="="> <item 
-		value="=" label="=" /> <item value="&gt;" label="&gt;" /> <item value="&gt;=" 
-		label="&gt;=" /> <item value="&lt;" label="&lt;" /> <item value="&lt;=" label="&lt;=" 
-		/> </list> -->
-
+  
+   <!-- Suche Ã¼ber Lebensdaten -->
+  <xed:template id="searchfield.lifetime">
+    <xed:bind xpath="@operator" default="and" />
+      <div class="form-group" style="margin-bottom:6px">
+        <label class="col-sm-3 control-label input-sm" for="allMeta">
+          <xed:output i18n="Editor.Search.Label.Lifetime.Data" />
+        </label>
+        <div class="col-sm-9">
+          <div class="row">
+            <div class="col-sm-3 control-label input-sm">
+              <xed:output i18n="Editor.Search.Label.Life.born" />
+            </div>
+            <div class="col-sm-2">
+            <xed:bind xpath="condition1/@field" default="lifetime_from" />
+            <xed:bind xpath="condition1/@operator">
+                 <select id="lifetime_born_op1" class="form-control">
+                   <option value="=">=</option>
+                   <option value="&gt;">&gt;</option>
+                   <option value="&gt;=">&gt;=</option>
+                   <option value="&lt;">&lt;</option>
+                   <option value="&lt;=">&lt;=</option>
+                </select>
+              </xed:bind>
+            </div>
+            <div class="col-sm-2">
+              <xed:bind xpath="condition1/@value">
+                    <input id="lifetime_born_val1" class="form-control" />
+              </xed:bind>
+            </div>
+              <div class="col-sm-2 col-sm-offset-1">
+              <xed:bind xpath="condition2/@field" default="lifetime_from" />
+              <xed:bind xpath="condition2/@operator">
+                 <select id="lifetime_born_op2" class="form-control">
+                   <option value="=">=</option>
+                   <option value="&gt;">&gt;</option>
+                   <option value="&gt;=">&gt;=</option>
+                   <option value="&lt;">&lt;</option>
+                   <option value="&lt;=">&lt;=</option>
+                </select>
+              </xed:bind>
+            </div>
+            <div class="col-sm-2">
+              <xed:bind xpath="condition2/@value">
+                    <input id="lifetime_born_val2" class="form-control" />
+              </xed:bind>
+            </div>
+          </div>
+          
+         <div class="row" style="margin-top:12px;">
+            <div class="col-sm-3 control-label input-sm">
+              <xed:output i18n="Editor.Search.Label.Life.died" />
+            </div>
+            <div class="col-sm-2">
+              <xed:bind xpath="condition3/@field" default="lifetime_to" />
+              <xed:bind xpath="condition3/@operator">
+                 <select id="lifetime_death_op1" class="form-control">
+                   <option value="=">=</option>
+                   <option value="&gt;">&gt;</option>
+                   <option value="&gt;=">&gt;=</option>
+                   <option value="&lt;">&lt;</option>
+                   <option value="&lt;=">&lt;=</option>
+                </select>
+              </xed:bind>
+            </div>
+            <div class="col-sm-2">
+              <xed:bind xpath="condition3/@value">
+                    <input id="lifetime_death_val1" class="form-control" />
+              </xed:bind>
+            </div>
+              <div class="col-sm-2 col-sm-offset-1">
+              <xed:bind xpath="condition4/@field" default="lifetime_to" />
+              <xed:bind xpath="condition4/@operator">
+                 <select id="lifetime_death_op2" class="form-control">
+                   <option value="=">=</option>
+                   <option value="&gt;">&gt;</option>
+                   <option value="&gt;=">&gt;=</option>
+                   <option value="&lt;">&lt;</option>
+                   <option value="&lt;=">&lt;=</option>
+                </select>
+              </xed:bind>
+            </div>
+            <div class="col-sm-2">
+              <xed:bind xpath="condition4/@value">
+                    <input id="lifetime_death_val2" class="form-control" />
+              </xed:bind>
+            </div>
+          </div>
+       </div>
+      </div>
+  </xed:template>
+  
   <xed:template id="searchfield.allMeta">
-    <xed:bind xpath="condition[@field='allMeta'][@operator='contains']">
+    <xed:bind xpath="condition5[@field='allMeta'][@operator='contains']">
       <div class="form-group" style="margin-bottom:6px">
         <label class="col-sm-3 control-label input-sm" for="allMeta">
           <xed:output i18n="Editor.Search.Label.AllMeta" />
