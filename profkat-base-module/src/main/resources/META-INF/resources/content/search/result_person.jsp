@@ -11,7 +11,7 @@
 <span class="badge pull-right">${mcrid}</span>
 
 <h4>
-	<a href="${WebApplicationBaseURL}resolve/id/${mcrid}">${resultDoc.getFieldValueMap()['profkat_idx_headline']}</a>
+	<a href="${WebApplicationBaseURL}resolve/id/${mcrid}">${resultDoc.getFieldValueMap()['profkat.idx_headline']}</a>
 </h4>
 <mcr:hasAccess var="modifyAllowed" permission="writedb" mcrid="${mcrid}" />
 	<c:if test="${modifyAllowed}">
@@ -36,24 +36,24 @@
 
 <table style="border-spacing: 4px; border-collapse: separate; font-size: 100%">
 	<tr>
-		<th style="min-width: 120px"><fmt:message key="Webpage.search.result.label.profkat_period" />:&#160;</th>
-		<td>${resultDoc.getFieldValueMap()['profkat_period']}</td>
+		<th style="min-width: 120px"><fmt:message key="Webpage.search.result.label.profkat.period" />:&#160;</th>
+		<td>${resultDoc.getFieldValueMap()['profkat.period']}</td>
 	</tr>
 	<tr>
-		<th style="min-width: 120px"><fmt:message key="Webpage.search.result.label.profkat_last_professorship" />:&#160;</th>
-		<td>${resultDoc.getFieldValueMap()['profkat_last_professorship']}</td>
+		<th style="min-width: 120px"><fmt:message key="Webpage.search.result.label.profkat.last_professorship" />:&#160;</th>
+		<td>${resultDoc.getFieldValueMap()['profkat.last_professorship']}</td>
 	</tr>
-	<c:if test="${not empty resultDoc.getFieldValueMap()['profkat_last_faculty_class']}">
+	<c:if test="${not empty resultDoc.getFieldValueMap()['profkat.last_faculty_class']}">
 		<tr>
-			<th style="min-width: 120px"><fmt:message key="Webpage.search.result.label.profkat_last_faculty_class" />:&#160;</th>
+			<th style="min-width: 120px"><fmt:message key="Webpage.search.result.label.profkat.last_faculty_class" />:&#160;</th>
 			<td><mcr:displayClassificationCategory lang="de"
-					classid="${fn:substringBefore(resultDoc.getFieldValueMap()['profkat_last_faculty_class'], ':')}"
-					categid="${fn:substringAfter(resultDoc.getFieldValueMap()['profkat_last_faculty_class'], ':')}" />
+					classid="${fn:substringBefore(resultDoc.getFieldValueMap()['profkat.last_faculty_class'], ':')}"
+					categid="${fn:substringAfter(resultDoc.getFieldValueMap()['profkat.last_faculty_class'], ':')}" />
 			</td>
 	</tr>
 	</c:if>
 	<tr>
-		<th style="min-width: 120px"><fmt:message key="Webpage.search.result.label.profkat_status_msg" />:&#160;</th>
-		<td><fmt:message key="${resultDoc.getFieldValueMap()['profkat_status_msg']}" /></td>
+		<th style="min-width: 120px"><fmt:message key="Webpage.search.result.label.profkat.status_msg" />:&#160;</th>
+		<td><fmt:message key="${resultDoc.getFieldValueMap()['profkat.status_msg']}" /></td>
 	</tr>
 </table>

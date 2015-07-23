@@ -3,7 +3,7 @@
 
 	<!-- Professor Names -->
   <xed:template id="searchfield.profname">
-    <xed:bind xpath="condition[@field='profkat_profname'][@operator='like']">
+    <xed:bind xpath="condition[@field='profkat.profname'][@operator='like']">
       <div class="form-group" style="margin-bottom:6px">
         <label class="col-sm-3 control-label input-sm" for="profname">
           <xed:output i18n="Editor.Search.Label.ProfNames" />
@@ -40,27 +40,27 @@
           <xed:bind xpath="@field">
             <select id="choose_field" class="form-control">
               <option value="allMeta"><xed:output i18n="Editor.Search.metadata" /></option>
-              <option value="name"><xed:output i18n="OMD.CPR.name" /></option>
-              <option value="institute"><xed:output i18n="OMD.CPR.institutes" /></option>
-              <option value="area"><xed:output i18n="OMD.CPR.fieldofstudies" /></option>
-              <option value="proftype"><xed:output i18n="OMD.CPR.subjects" /></option>
-              <option value="birthplace"><xed:output i18n="OMD.CPR.birthplace" /></option>
-              <option value="deathplace"><xed:output i18n="OMD.CPR.deathplace" /></option>
-              <option value="confession"><xed:output i18n="OMD.CPR.confessions" /></option>
-              <option value="parentprofession"><xed:output  i18n="OMD.CPR.parentprofession" /></option>
-              <option value="biography"><xed:output i18n="OMD.CPR.biographics" /></option>
-              <option value="academicdegree"><xed:output i18n="OMD.CPR.academicdegrees" /></option>
-              <option value="acad_degree_study"><xed:output i18n="OMD.CPR.academicdegree.studies" /></option>
-              <option value="acad_degree_promo"><xed:output i18n="OMD.CPR.academicdegree.promotion" /></option>
-              <option value="acad_degree_habil"><xed:output i18n="OMD.CPR.academicdegree.habilitation" /> </option>             
-              <option  value="otherprofessorship"><xed:output i18n="OMD.CPR.otherprofessorships" /></option>
-              <option value="adminfunction"><xed:output i18n="OMD.CPR.adminfunctions" /></option>
-              <option value="otherfunction"><xed:output i18n="OMD.CPR.otherfunctions" /></option>
-              <option value="membership"><xed:output i18n="OMD.CPR.memberships" /></option>
-              <option value="award"><xed:output i18n="OMD.CPR.awards" /></option>
-              <option value="mainpublication"><xed:output i18n="OMD.CPR.mainpublications" /></option>
-              <option value="source"><xed:output i18n="OMD.CPR.sources" /></option>
-              <option value="reference"><xed:output i18n="OMD.CPR.references_short" /></option>
+              <option value="profkat.name"><xed:output i18n="OMD.CPR.name" /></option>
+              <option value="profkat.institute"><xed:output i18n="OMD.CPR.institutes" /></option>
+              <option value="profkat.area"><xed:output i18n="OMD.CPR.fieldofstudies" /></option>
+              <option value="profkat.proftype"><xed:output i18n="OMD.CPR.subjects" /></option>
+              <option value="profkat.birthplace"><xed:output i18n="OMD.CPR.birthplace" /></option>
+              <option value="profkat.deathplace"><xed:output i18n="OMD.CPR.deathplace" /></option>
+              <option value="profkat.confession"><xed:output i18n="OMD.CPR.confessions" /></option>
+              <option value="profkat.parentprofession"><xed:output  i18n="OMD.CPR.parentprofession" /></option>
+              <option value="profkat.biography"><xed:output i18n="OMD.CPR.biographics" /></option>
+              <option value="profkat.academicdegree"><xed:output i18n="OMD.CPR.academicdegrees" /></option>
+              <option value="profkat.acad_degree_study"><xed:output i18n="OMD.CPR.academicdegree.studies" /></option>
+              <option value="profkat.acad_degree_promo"><xed:output i18n="OMD.CPR.academicdegree.promotion" /></option>
+              <option value="profkat.acad_degree_habil"><xed:output i18n="OMD.CPR.academicdegree.habilitation" /> </option>             
+              <option value="profkat.otherprofessorship"><xed:output i18n="OMD.CPR.otherprofessorships" /></option>
+              <option value="profkat.adminfunction"><xed:output i18n="OMD.CPR.adminfunctions" /></option>
+              <option value="profkat.otherfunction"><xed:output i18n="OMD.CPR.otherfunctions" /></option>
+              <option value="profkat.membership"><xed:output i18n="OMD.CPR.memberships" /></option>
+              <option value="profkat.award"><xed:output i18n="OMD.CPR.awards" /></option>
+              <option value="profkat.mainpublication"><xed:output i18n="OMD.CPR.mainpublications" /></option>
+              <option value="profkat.source"><xed:output i18n="OMD.CPR.sources" /></option>
+              <option value="profkat.reference"><xed:output i18n="OMD.CPR.references_short" /></option>
               <option value="derivatelabel"><xed:output i18n="OMD.CPR.derivatelabel" /></option>   
             </select>
           </xed:bind>
@@ -194,7 +194,7 @@
         <xed:output i18n="Editor.Search.Label.ProfStates" />
       </label>
       <div class="col-sm-9">
-        <xed:repeat xpath="condition4[@field='category.top'][@operator='=']">
+        <xed:repeat xpath="condition4[@field='profkat.profstate'][@operator='=']">
           <div class="row">
             <div class="col-sm-9">
               <xed:bind xpath="@value">
@@ -232,7 +232,7 @@
               <xed:output i18n="Editor.Search.Label.Professortime.from" />
             </div>
             <div class="col-sm-2">
-              <xed:bind xpath="condition1/@field" default="proftime_from" />
+              <xed:bind xpath="condition1/@field" default="profkat.proftime_from" />
               <xed:bind xpath="condition1/@operator">
                  <select id="proftime_from_op1" class="form-control">
                    <option value="=">=</option>
@@ -249,7 +249,7 @@
               </xed:bind>
             </div>
               <div class="col-sm-2 col-sm-offset-1">
-              <xed:bind xpath="condition2/@field" default="proftime_from" />
+              <xed:bind xpath="condition2/@field" default="profkat.proftime_from" />
               
               <xed:bind xpath="condition2/@operator">
                  <select id="proftime_from_op2" class="form-control">
@@ -273,7 +273,7 @@
               <xed:output i18n="Editor.Search.Label.Professortime.to" />
             </div>
             <div class="col-sm-2">
-              <xed:bind xpath="condition3/@field" default="proftime_to" />
+              <xed:bind xpath="condition3/@field" default="profkat.proftime_to" />
               <xed:bind xpath="condition3/@operator">
                  <select id="proftime_to_op1" class="form-control">
                    <option value="=">=</option>
@@ -290,7 +290,7 @@
               </xed:bind>
             </div>
               <div class="col-sm-2 col-sm-offset-1">
-              <xed:bind xpath="condition4/@field" default="proftime_to" />
+              <xed:bind xpath="condition4/@field" default="profkat.proftime_to" />
               <xed:bind xpath="condition4/@operator">
                  <select id="proftime_to_op2" class="form-control">
                    <option value="=">=</option>
@@ -315,7 +315,7 @@
   <xed:template id="searchfield.lifetime">
     <xed:bind xpath="@operator" default="and" />
       <div class="form-group" style="margin-bottom:6px">
-        <label class="col-sm-3 control-label input-sm" for="allMeta">
+        <label class="col-sm-3 control-label input-sm">
           <xed:output i18n="Editor.Search.Label.Lifetime.Data" />
         </label>
         <div class="col-sm-9">
@@ -324,7 +324,7 @@
               <xed:output i18n="Editor.Search.Label.Life.born" />
             </div>
             <div class="col-sm-2">
-            <xed:bind xpath="condition1/@field" default="lifetime_from" />
+            <xed:bind xpath="condition1/@field" default="profkat.lifetime_from" />
             <xed:bind xpath="condition1/@operator">
                  <select id="lifetime_born_op1" class="form-control">
                    <option value="=">=</option>
@@ -341,7 +341,7 @@
               </xed:bind>
             </div>
               <div class="col-sm-2 col-sm-offset-1">
-              <xed:bind xpath="condition2/@field" default="lifetime_from" />
+              <xed:bind xpath="condition2/@field" default="profkat.lifetime_from" />
               <xed:bind xpath="condition2/@operator">
                  <select id="lifetime_born_op2" class="form-control">
                    <option value="=">=</option>
@@ -364,7 +364,7 @@
               <xed:output i18n="Editor.Search.Label.Life.died" />
             </div>
             <div class="col-sm-2">
-              <xed:bind xpath="condition3/@field" default="lifetime_to" />
+              <xed:bind xpath="condition3/@field" default="profkat.lifetime_to" />
               <xed:bind xpath="condition3/@operator">
                  <select id="lifetime_death_op1" class="form-control">
                    <option value="=">=</option>
@@ -381,7 +381,7 @@
               </xed:bind>
             </div>
               <div class="col-sm-2 col-sm-offset-1">
-              <xed:bind xpath="condition4/@field" default="lifetime_to" />
+              <xed:bind xpath="condition4/@field" default="profkat.lifetime_to" />
               <xed:bind xpath="condition4/@operator">
                  <select id="lifetime_death_op2" class="form-control">
                    <option value="=">=</option>

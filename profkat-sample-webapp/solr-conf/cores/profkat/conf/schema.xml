@@ -190,20 +190,55 @@
     <copyField source="title_*" dest="title" />
     <!-- identifier (gnd, pnd, etc.) -->
     <dynamicField name="id.*" type="string" />
-
+    
+    <!-- ******************************************** -->
+    <!-- * JSPDocPortal                             * -->
+    <!-- ******************************************** -->
+    <field name="derivatelabel"      type="text_de" multiValued="true" stored="true" />
+    <field name="gnd_uri" type="string" multiValued="false" stored="true" />
 
 	<!-- ******************************************** -->
     <!-- * PROFKAT                                  * -->
     <!-- ******************************************** -->
-    <field name="profkat_idx_headline" type="mcr_identifier" multiValued="false" stored="true" />
-    <field name="profkat_idx_profkat_facet" type="string" multiValued="false" stored="true" />
-    <field name="profkat_period" type="string" multiValued="false" stored="true" />
-    <field name="profkat_last_professorship" type="string" multiValued="false" stored="true" />
-    <field name="profkat_last_faculty_class" type="string" multiValued="false" stored="true" />
-    <field name="profkat_status_msg" type="string" multiValued="false" stored="true" />
+    <field name="profkat.idx_headline" type="mcr_identifier" multiValued="false" stored="true" />
+    <field name="profkat.idx_profkat.facet" type="string" multiValued="false" stored="true" />
+    <field name="profkat.period" type="string" multiValued="false" stored="true" />
+    <field name="profkat.last_professorship" type="string" multiValued="false" stored="true" />
+    <field name="profkat.last_faculty_class" type="string" multiValued="false" stored="true" />
+    <field name="profkat.status_msg" type="string" multiValued="false" stored="true" />
     
-    <field name="profkat_name" type="text_general" multiValued="true" stored="false" />
-    <field name="gnd_uri" type="string" multiValued="false" stored="true" />
+    <field name="profkat.name" type="text_general" multiValued="true" stored="false" />
+
+    <field name="profkat.gnd" type="string" multiValued="false" stored="true" />
+    
+      <!-- searchfields.xml -->
+    <field name="profkat.institute"          type="text_de" multiValued="true"  stored="false" />
+    <field name="profkat.area"               type="text_de" multiValued="true"  stored="false" />
+    <field name="profkat.proftype"           type="text_de" multiValued="true"  stored="false" />
+    <field name="profkat.birthplace"         type="text_de" multiValued="true"  stored="false" />
+    <field name="profkat.deathplace"         type="text_de" multiValued="true"  stored="false" />
+    <field name="profkat.confession"         type="text_de" multiValued="true"  stored="false" />
+    <field name="profkat.parentprofession"   type="text_de" multiValued="true"  stored="false" />
+    <field name="profkat.biography"          type="text_de" multiValued="true"  stored="false" />
+    <field name="profkat.academicdegree"     type="text_de" multiValued="true"  stored="false" />
+    <field name="profkat.acad_degree_study"  type="text_de" multiValued="true"  stored="false" />
+    <field name="profkat.acad_degree_promo"  type="text_de" multiValued="true"  stored="false" />
+    <field name="profkat.acad_degree_habil"  type="text_de" multiValued="true"  stored="false" />
+    
+    <field name="profkat.otherprofessorship" type="text_de" multiValued="true"  stored="false" />
+    <field name="profkat.adminfunction"      type="text_de" multiValued="true"  stored="false" />
+    <field name="profkat.otherfunction"      type="text_de" multiValued="true"  stored="false" />
+    <field name="profkat.membership"         type="text_de" multiValued="true"  stored="false" />
+    <field name="profkat.award"              type="text_de" multiValued="true"  stored="false" />
+    <field name="profkat.mainpublication"    type="text_de" multiValued="true"  stored="false" />
+    <field name="profkat.source"             type="text_de" multiValued="true"  stored="false" />
+    <field name="profkat.reference"          type="text_de" multiValued="true"  stored="false" />
+    <field name="profkat.profstate"          type="string"  multiValued="false" stored="true" />
+  
+    <field name="profkat.proftime_from"      type="string"  multiValued="false" stored="false" />
+    <field name="profkat.proftime_to"        type="string"  multiValued="false" stored="false" />
+    <field name="profkat.lifetime_from"      type="string"  multiValued="false" stored="false" />
+    <field name="profkat.lifetime_to"        type="string"  multiValued="false" stored="false" />
  </fields>
 
 

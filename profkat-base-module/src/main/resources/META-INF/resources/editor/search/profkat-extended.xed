@@ -4,11 +4,12 @@
 	<!-- Professor Names -->
   <xed:template id="searchmask.root">
     
-    <xed:bind xpath="sortBy/field[@name='profkat_idx_headline']/@order" default="ascending" />
+    <xed:bind xpath="sortBy/field[@name='profkat.idx_headline']/@order" default="ascending" />
     <!-- !!! do not clean the top conditions element !!! -->
     <xed:cleanup-rule xpath="//*[starts-with(name(), 'condition')]" relevant-if="* or (string-length(@value) &gt; 0)" />
     <xed:cleanup-rule xpath="//boolean" relevant-if="*" />
     <xed:bind xpath="conditions[@format='xml']/boolean[@operator='and']">
+    <xed:bind xpath="condition[@field='objectType'][@operator='=']/@value" default="person" />
     <xed:bind xpath="condition[@field='allMeta'][@operator='like']/@value" default="*" />
       <div class="panel panel-default">
 				<!-- <div class="panel-heading"> <h3 class="panel-title"> <xed:output i18n="Webpage.editor.title.simple" /> </h3> </div> -->
