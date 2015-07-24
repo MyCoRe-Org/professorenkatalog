@@ -334,16 +334,76 @@
    			<x:if select="string($pnd)!='xxx'">
    				<mcrdd:outputitem select="." var="x">
    					<c:set var="pndString"><x:out select="string($pnd)" /></c:set>
-   					GND: <a href="http://d-nb.info/gnd/${pndString}" title="Eintrag in der Personennamendatei (PND)">${pndString}</a>
-					<mcrdd:pndbeacon pnd="${pndString}"
-						whitelist="reichka|archinform|biocist|bbkl|cmvw|reichstag|adbreg|gabio|poi_fmr|fembio|lagis|hls|rism|historicum|lemo|sandrart|odb|odnb|rag|repfont_per|adam|vkuka|volchr|lassalle_all|lwl|gesa|dewp|hafaspo|litirol|plnoe|regacad|vorleser|wwwddr|documenta|ps_usbk|pw_artcyclop|pw_basiswien|pw_discogs|pw_ifa|pw_kunstaspekte|pw_lexm|pw_mactut|pw_mgp|pw_musicbrainz|pw_nobel|pw_olgdw|pw_orden|pw_photonow|pw_rkd|pw_rwien|pw_sbo|pw_sikart|gistb|dingler|mat_hr|saebi|ads|ausfor|bbcyp|ariadne_fib2|sdi_lei|sozkla|leilei|litport|cpg848|mugi|mutopia|neerland|oschwb|pianosoc|lvr|wima|bmlo|adsfr|mat_adbk|aeik|badw|bbaw|ps_smmue|blo_lilla|bruemmer|dmv|dra_wr|esf|froebel|jenc1906|kaprbrd|kas_bvcdu|kas_person|leopoldina|mumi|nas_us|mfo_pc|saw_akt|saw_ehem|tripota|pacelli|preusker|cpl|rppd|baader_gelehrte|baader_schriftsteller|lipowsky_kuenstler|lipowsky_musiker|haw|zeno_eisler|zeno_mwfoto|zeno_mwkunst|zeno_pagel|zeno_schmidt"
-						replaceLabels="reichka:Akten der Reichskanzlei. Weimarer Republik|archinform:Architekturdatenbank archINFORM|biocist:Biographia Cisterciensis (BioCist)|bbkl:Biographisch-Bibliographisches Kirchenlexikon (BBKL)|cmvw:Carl Maria von Weber Gesamtausgabe (WeGA)|reichstag:Datenbank der deutschen Parlamentsabgeordneten|adbreg:Deutsche Biographie (ADB/NDB)|gabio:Dictionary of Georgian Biography|poi_fmr:Digitaler Portraitindex Frühe Neuzeit|fembio:FemBio Frauen-Biographieforschung|lagis:Hessische Biographie|hls:Historisches Lexikon der Schweiz (HLS)|rism:Internationales Quellenlexikon der Musik (RISM)|historicum:Klassiker der Geschichtswissenschaft|lemo:Lebendiges virtuelles Museum Online (LeMO)|sandrart:Sandrart: Teutsche Academie der Bau-, Bild- und Mahlerey-Künste. 1675-80|odb:Ostdeutsche Biographie (Kulturstiftung der deutschen Vertriebenen)|odnb:Oxford Dictionary of Biography|rag:Repertorium Academicum Germanicum (RAG)|repfont_per:Repertorium Geschichtsquellen des deutschen Mittelalters|vkuka:Virtuelles Kupferstichkabinett|volchr:Vorarlberg Chronik|lassalle_all:Lasalle – Briefe und Schriften"
+   				
+					GND: <a href="http://d-nb.info/gnd/${pndString}" title="Eintrag in der Personennamendatei (PND)">${pndString}</a>
+					<p class="profkat-beacon-result" title="http://d-nb.info/gnd/${pndString}"
+						data-profkat-beacon-whitelist='["reichka", "archinform", "biocist", "bbkl", "cmvw", "reichstag", "adbreg", "gabio", "poi_fmr", "fembio", "lagis", "hls", "rism", "historicum", "lemo", "sandrart", "odb", "odnb", "rag", "repfont_per", "adam", "vkuka", "volchr", "lassalle_all", "lwl", "gesa", "dewp", "hafaspo", "litirol", "plnoe", "regacad", "vorleser", "wwwddr", "documenta", "ps_usbk", "pw_artcyclop", "pw_basiswien", "pw_discogs", "pw_ifa", "pw_kunstaspekte", "pw_lexm", "pw_mactut", "pw_mgp", "pw_musicbrainz", "pw_nobel", "pw_olgdw", "pw_orden", "pw_photonow", "pw_rkd", "pw_rwien", "pw_sbo", "pw_sikart", "gistb", "dingler", "mat_hr", "saebi", "ads", "ausfor", "bbcyp", "ariadne_fib2", "sdi_lei", "sozkla", "leilei", "litport", "cpg848", "mugi", "mutopia", "neerland", "oschwb", "pianosoc", "lvr", "wima", "bmlo", "adsfr", "mat_adbk", "aeik", "badw", "bbaw", "ps_smmue", "blo_lilla", "bruemmer", "dmv", "dra_wr", "esf", "froebel", "jenc1906", "kaprbrd", "kas_bvcdu", "kas_person", "leopoldina", "mumi", "nas_us", "mfo_pc", "saw_akt", "saw_ehem", "tripota", "pacelli", "preusker", "cpl", "rppd", "baader_gelehrte", "baader_schriftsteller", "lipowsky_kuenstler", "lipowsky_musiker", "haw", "zeno_eisler", "zeno_mwfoto", "zeno_mwkunst", "zeno_pagel", "zeno_schmidt"]'
+						data-profkat-beacon-replaceLabels="reichka:Akten der Reichskanzlei. Weimarer Republik|archinform:Architekturdatenbank archINFORM|biocist:Biographia Cisterciensis (BioCist)|bbkl:Biographisch-Bibliographisches Kirchenlexikon (BBKL)|cmvw:Carl Maria von Weber Gesamtausgabe (WeGA)|reichstag:Datenbank der deutschen Parlamentsabgeordneten|adbreg:Deutsche Biographie (ADB/NDB)|gabio:Dictionary of Georgian Biography|poi_fmr:Digitaler Portraitindex Frühe Neuzeit|fembio:FemBio Frauen-Biographieforschung|lagis:Hessische Biographie|hls:Historisches Lexikon der Schweiz (HLS)|rism:Internationales Quellenlexikon der Musik (RISM)|historicum:Klassiker der Geschichtswissenschaft|lemo:Lebendiges virtuelles Museum Online (LeMO)|sandrart:Sandrart: Teutsche Academie der Bau-, Bild- und Mahlerey-Künste. 1675-80|odb:Ostdeutsche Biographie (Kulturstiftung der deutschen Vertriebenen)|odnb:Oxford Dictionary of Biography|rag:Repertorium Academicum Germanicum (RAG)|repfont_per:Repertorium Geschichtsquellen des deutschen Mittelalters|vkuka:Virtuelles Kupferstichkabinett|volchr:Vorarlberg Chronik|lassalle_all:Lasalle – Briefe und Schriften"
 					/>
 
-					<mcrdd:pndbeacon pnd="${pndString}"
-						whitelist="ubr_biblgr|bibaug|dta|zbw|ri_opac|rektor|repfont_aut|gvk|vd17|wikisource|kalliope|ecodices|gw|latlib|pw_arxiv|pw_imslp|pw_mvbib|pw_perlentaucher|slub|hvv_lz|hvv_zh|notendatenbank|commons|cpdl|kreusch|rulib|liberley|pgde|sophie|wortblume|zeno|bsb|oenlv|vd16|zdn|lbbw|elk-wue|fmfa"
-						replaceLabels="ubr_biblgr:Universitätsbibliographie Rostock|bibaug:Bibliotheca Augustana|dta:Deutsches Textarchiv|zbw:Pressemappe 20. Jahrhundert - Personenarchiv|ri_opac:Regesta Imperii OPAC|rektor:Rektoratsreden im 19. und 20. Jahrhundert|repfont_aut:Repertorium Geschichtsquellen des deutschen Mittelalters|gvk:Verbundkatalog des GBV|vd17:Verzeichnis der deutschen Drucke des 17.Jahrhunderts (VD17)|wikisource:Wikisource-Autorenseite"
+					<p class="profkat-beacon-result" title="http://d-nb.info/gnd/${pndString}"
+					   data-profkat-beacon-whitelist='["ubr_biblgr", "bibaug", "dta", "zbw", "ri_opac", "rektor", "repfont_aut", "gvk", "vd17", "wikisource", "kalliope", "ecodices", "gw", "latlib", "pw_arxiv", "pw_imslp", "pw_mvbib", "pw_perlentaucher", "slub", "hvv_lz", "hvv_zh", "notendatenbank", "commons", "cpdl", "kreusch", "rulib", "liberley", "pgde", "sophie", "wortblume", "zeno", "bsb", "oenlv", "vd16", "zdn", "lbbw", "elk-wue", "fmfa"]'
+					   data-profkat-beacon-replaceLabels="ubr_biblgr:Universitätsbibliographie Rostock|bibaug:Bibliotheca Augustana|dta:Deutsches Textarchiv|zbw:Pressemappe 20. Jahrhundert - Personenarchiv|ri_opac:Regesta Imperii OPAC|rektor:Rektoratsreden im 19. und 20. Jahrhundert|repfont_aut:Repertorium Geschichtsquellen des deutschen Mittelalters|gvk:Verbundkatalog des GBV|vd17:Verzeichnis der deutschen Drucke des 17.Jahrhunderts (VD17)|wikisource:Wikisource-Autorenseite"
 					/>
+					<script type="text/javascript">
+						// data retrieval from PND Beacon AKS via AJAX (asynchron)
+						//support for replaceLabels still needs to be done
+						$(document).ready(function(){
+							$("p.profkat-beacon-result").each(function(){
+								var p = $(this);
+								var ul = $("<ul></ul>");
+								var whitelist = null;
+								var blacklist = null;
+								try{
+									whitelist = $.parseJSON(p.attr("data-profkat-beacon-whitelist"));
+								}
+								catch(e){}
+								try{
+									blacklist = $.parseJSON(p.attr("data-profkat-beacon-blacklist"));
+								}
+								catch(e){}
+									
+								p.append(ul);
+								$.get("${WebApplicationBaseURL}profkat_beacon_data?gnd="+encodeURIComponent(p.attr("title")), function(data){
+									doc = $.parseHTML(data);
+									$(doc).find("li").each(function(pos){
+										var li=$(this);
+										var test = $(li).attr("id");
+										
+										//we need to delete the position number at the end of the id:
+										//RegEx for number at the end
+										//test = test.replace(/\d+$/, "")										
+										//it seems more safe to use the length of the position number (variable of the each-function) and do a substring()
+										var part = ""+(pos + 1);
+										test = test.substring(0, test.length-part.length);
+										
+										show = false;
+										if(whitelist!=null){
+											if($.inArray(test, whitelist)>=0){
+												show=true;											
+											}
+										}
+										if(blacklist!=null){
+											if($.inArray(test, blacklist)>=0){
+												show=false;											
+											}
+										}
+														
+										if(show){
+											$(li).attr("data-profkat-beacon-testid", test);
+											$(ul).append(li);
+										}
+									});
+								});
+				
+							})
+						});
+					</script>
+		
+					<p>
+					[GND-Link auf diese Seite: <a href="http://localhost:8080/profkat/gnd/118530380">http://localhost:8080/profkat/gnd/118530380</a>]   				
+    				</p>  					
+					</script>
 					<br />
 					<c:url var="url" value="${WebApplicationBaseURL}gnd/${pndString}" />
 					<fmt:message key="OMD.PROFKAT.quoting.gnd">

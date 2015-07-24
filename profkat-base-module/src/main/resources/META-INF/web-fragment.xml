@@ -12,6 +12,15 @@
         <before>
             <name>jspdocportal</name>
         </before>
-    </ordering> 
+    </ordering>
+    
+      <servlet id="ProfKatBeaconDataServlet">
+    <servlet-name>ProfKatBeaconDataServlet</servlet-name>
+    <servlet-class>org.mycore.profkat.pndbeacon.ProfKatBeaconDataServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProfKatBeaconDataServlet</servlet-name>
+    <url-pattern>/profkat_beacon_data</url-pattern>
+  </servlet-mapping> 
   
 </web-fragment>

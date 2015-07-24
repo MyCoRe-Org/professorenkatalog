@@ -41,8 +41,8 @@ import org.mycore.solr.MCRSolrClientFactory;
  * @version $Revision: 16201 $ $Date: 2009-11-23 14:08:54 +0100 (Mo, 23 Nov 2009) $
  * 
  */
-public class ProfKatPNDBeaconServlet extends MCRServlet {
-    private static Logger LOGGER = Logger.getLogger(ProfKatPNDBeaconServlet.class);
+public class ProfKatBeaconTxtServlet extends MCRServlet {
+    private static Logger LOGGER = Logger.getLogger(ProfKatBeaconTxtServlet.class);
 
     private static final long serialVersionUID = -4640031382109677365L;
 

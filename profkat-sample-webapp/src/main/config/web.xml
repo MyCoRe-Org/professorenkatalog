@@ -7,12 +7,12 @@
 	<display-name>Beispiel Professorenkatalog</display-name>
 	<description>Beispiel für einen Professorenkatalog</description>
 
-	<servlet id="ProfKatPNDBeaconServlet">
-		<servlet-name>ProfKatPNDBeaconServlet</servlet-name>
-		<servlet-class>org.mycore.profkat.pndbeacon.ProfKatPNDBeaconServlet</servlet-class>
+	<servlet id="ProfKatBeaconTxtServlet">
+		<servlet-name>ProfKatBeaconTxtServlet</servlet-name>
+		<servlet-class>org.mycore.profkat.pndbeacon.ProfKatBeaconTxtServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>ProfKatPNDBeaconServlet</servlet-name>
+		<servlet-name>ProfKatBeaconTxtServlet</servlet-name>
 		<url-pattern>/profkat_pnd_beacon.txt</url-pattern>
 	</servlet-mapping>
 	<filter>
