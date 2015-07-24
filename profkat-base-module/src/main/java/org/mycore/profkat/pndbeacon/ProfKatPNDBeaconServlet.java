@@ -1,10 +1,11 @@
 package org.mycore.profkat.pndbeacon;
 
 import java.io.IOException;
-import java.io.Writer;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -12,13 +13,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.hibernate.Transaction;
-import org.mycore.backend.hibernate.MCRHIBConnection;
+import org.apache.log4j.Logger;
+import org.apache.solr.client.solrj.SolrClient;
+import org.apache.solr.client.solrj.SolrQuery;
+import org.apache.solr.client.solrj.SolrQuery.ORDER;
+import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.common.SolrDocument;
+import org.apache.solr.common.SolrDocumentList;
+import org.mycore.common.config.MCRConfiguration;
 import org.mycore.frontend.servlets.MCRServlet;
-import org.mycore.services.fieldquery.MCRQuery;
-import org.mycore.services.fieldquery.MCRQueryParser;
-
-
+import org.mycore.solr.MCRSolrClientFactory;
 
 /**
  * This class generates a PND Beacon text file.
@@ -37,80 +42,86 @@ import org.mycore.services.fieldquery.MCRQueryParser;
  * 
  */
 public class ProfKatPNDBeaconServlet extends MCRServlet {
-	private static final long serialVersionUID = -4640031382109677365L;
-	private static SimpleDateFormat DATEFORMAT;
-	static{
-		DATEFORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US);
-		DATEFORMAT.setTimeZone(TimeZone.getTimeZone("GMT+0"));
-	}
-	
-	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		response.setContentType("text/plain; charset=UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		
-		writeMetdata(response.getWriter(), new Date());
-		writePNDs(response.getWriter());
-	}
+    private static Logger LOGGER = Logger.getLogger(ProfKatPNDBeaconServlet.class);
 
-	/**
-	 * writes the metadata for beacon pnd file
-	 * @param w - the Writer
-	 * @param creation - the Date of creation
-	 * @throws IOException
-	 */
-	private void writeMetdata(Writer w, Date creation) throws IOException{
-		Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+0"), Locale.GERMANY);
-		cal.setTime(creation);
-		w.write("#FORMAT: PND-BEACON\n");
-		w.write("#VERSION: 0.1\n");
-		w.write("#FEED: http://profkat.meine-einrichtung.de/profkat_pnd_beacon.txt\n");
-		w.write("#TARGET: http://profkat.meine-einrichtung.de/pnd/{ID}\n");
-		w.write("#PREFIX: http://d-nb.info/gnd/\n");
-		w.write("#NAME: Beispiel Professorenkatalog)\n");
-		w.write("#DESCRIPTION: Beispielanwendung für einen Professorenkatalog (im Aufbau).\n");
-		w.write("#CONTACT: AG Professorenkatalog <profkate@meine-einrichtung.de>\n");
-		w.write("#INSTITUTION: AG Professorenkatalog, Universität Musterstadt\n");
-		w.write("#ISIL: DE-xx\n");
-		w.write("#MESSAGE: Eintrag im Beispielprofessorenkatalog\n");
-		w.write("#UPDATE: will be rebuilt on every request\n");
-		
-		w.write("#TIMESTAMP: ");w.write(DATEFORMAT.format(cal.getTime()));w.write("\n");
-		cal.add(Calendar.DAY_OF_YEAR, 7);
-		w.write("#REVISIT: ");w.write(DATEFORMAT.format(cal.getTime()));w.write("\n");
-	}
-	
-	/**
-	 * executes a MyCoRe search for valid PND-Numbers and passes them to a writer
-	 * @param w the output writer
-	 * @throws IOException
-	 */
-	private void writePNDs(Writer w) throws IOException{
-		Transaction tx  = MCRHIBConnection.instance().getSession().beginTransaction();
-		try{
-			MCRQuery query = new MCRQuery((new MCRQueryParser()).parse("((pnd like *) and (not (pnd = \"xxx\")))"));
-			//TODO SOLR Migration
-			/*MCRResults result = MCRQueryManager.search(query);
-			for(int i=0;i<result.getNumHits();i++){
-				String pnd="";
-				String mcrID = result.getHit(i).getID();
-				MCRObject mcrObj = MCRMetadataManager.retrieveMCRObject(MCRObjectID.getInstance(mcrID));
-				MCRMetaElement mcrME = mcrObj.getMetadata().getMetadataElement("box.identifier");
-				if(mcrME!=null){
-					for(int j=0;j<mcrME.size();j++){
-						MCRMetaLangText mcrMLE = (MCRMetaLangText)mcrME.getElement(j);
-						if(mcrMLE.getType().equals("pnd")){
-							pnd = mcrMLE.getText();
-							break;
-						}
-					}
-				}
-				w.write(pnd+"\n");
-			}
-			*/
-		}
-		finally{
-			tx.commit();
-		}
-	}			
+    private static final long serialVersionUID = -4640031382109677365L;
+
+    private static SimpleDateFormat DATEFORMAT;
+    static {
+        DATEFORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US);
+        DATEFORMAT.setTimeZone(TimeZone.getTimeZone("GMT+0"));
+    }
+
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/plain; charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
+        writeMetdata(response.getWriter(), new Date());
+        response.getWriter().println();
+        writePNDs(response.getWriter());
+        response.getWriter().println();
+    }
+
+    /**
+     * writes the metadata for beacon pnd file
+     * @param w - the Writer
+     * @param creation - the Date of creation
+     * @throws IOException
+     */
+    private void writeMetdata(PrintWriter w, Date creation) throws IOException {
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+0"), Locale.GERMANY);
+        cal.setTime(creation);
+        String propPrefix = "MCR.Profkat.Beacon." + getServletConfig().getServletName() + ".";
+        MCRConfiguration mcrConfig = MCRConfiguration.instance();
+
+        w.println("#FORMAT: BEACON");
+        w.println("#VERSION: 0.1");
+        w.println("#PREFIX: http://d-nb.info/gnd/");
+
+        for (String field : new String[] { "TARGET", "FEED", "NAME", "DESCRIPTION", "CONTACT", "INSTITUTION", "ISIL",
+            "MESSAGE", "UPDATE" }) {
+            if (mcrConfig.getString(propPrefix + field, null) != null) {
+                w.println("#" + field + ": " + mcrConfig.getString(propPrefix + field.trim()));
+            }
+        }
+        w.println("#TIMESTAMP: " + DATEFORMAT.format(cal.getTime()));
+        if (mcrConfig.getInt(propPrefix + "REVISIT_days", -1) != -1) {
+            cal.add(Calendar.DAY_OF_YEAR,
+                mcrConfig.getInt(propPrefix + "REVISIT_days"));
+            w.println("#REVISIT: " + DATEFORMAT.format(cal.getTime()));
+        }
+    }
+
+    /**
+     * executes a MyCoRe search for valid PND-Numbers and passes them to a writer
+     * @param w the output writer
+     * @throws IOException
+     */
+    private void writePNDs(PrintWriter w) throws IOException {
+
+        //"gnd_uri": "http://d-nb.info/gnd/14075444X"
+        try {
+            SolrClient solrClient = MCRSolrClientFactory.getSolrClient();
+            SolrQuery solrQuery = new SolrQuery();
+            solrQuery.setQuery("gnd_uri:*");
+            solrQuery.setFields("gnd_uri"); 
+            solrQuery.setSort("gnd_uri", ORDER.asc);
+            solrQuery.setRows(Integer.MAX_VALUE);
+
+            QueryResponse solrResponse = solrClient.query(solrQuery);
+            SolrDocumentList solrResults = solrResponse.getResults();
+            Iterator<SolrDocument> it = solrResults.iterator();
+            while (it.hasNext()) {
+                SolrDocument doc = it.next();
+                String gnd = String.valueOf(doc.getFirstValue("gnd_uri"));
+                if (!gnd.equals("http://d-nb.info/gnd/xxx")) {
+                    w.println(gnd.substring(21));
+                }
+            }
+
+        } catch (SolrServerException e) {
+            LOGGER.error(e);
+        }
+    }
 }
