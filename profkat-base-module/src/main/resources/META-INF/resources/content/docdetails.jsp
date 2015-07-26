@@ -114,7 +114,7 @@
 			</div>
 
 		
-		<x:if select="$linked/mycoreobject/structure/derobjects/derobject[@xlink:label='display_image']">
+		<x:if select="$linked/mycoreobject/structure/derobjects/derobject[@xlink:title='display_image']">
 			
 			<div class="ur-box ur-box-bordered infobox">
 				<mcrb:derivateImageBrowser mcrid="${mcrid}" imageWidth="100%" labelContains="display_image" />
