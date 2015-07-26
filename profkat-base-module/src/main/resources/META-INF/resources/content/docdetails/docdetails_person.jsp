@@ -351,7 +351,7 @@
 						$(document).ready(function(){
 							$("p.profkat-beacon-result").each(function(){
 								var p = $(this);
-								var ul = $("<ul></ul>");
+								var ul = $("&lt;ul&gt;&lt;/ul&gt;");
 								var whitelist = null;
 								var blacklist = null;
 								try{
@@ -364,7 +364,9 @@
 								catch(e){}
 									
 								p.append(ul);
-								$.get("${WebApplicationBaseURL}profkat_beacon_data?gnd="+encodeURIComponent(p.attr("title")), function(data){
+								var url = "${WebApplicationBaseURL}profkat_beacon_data?gnd="+encodeURIComponent(p.attr("title")); 
+								$.get(url, function(data){
+									data = data.substr(data.search("&lt;html&gt;"));
 									doc = $.parseHTML(data);
 									$(doc).find("li").each(function(pos){
 										var li=$(this);
@@ -400,15 +402,12 @@
 						});
 					</script>
 		
-					<p>
-					[GND-Link auf diese Seite: <a href="http://localhost:8080/profkat/gnd/118530380">http://localhost:8080/profkat/gnd/118530380</a>]   				
-    				</p>  					
-					</script>
-					<br />
 					<c:url var="url" value="${WebApplicationBaseURL}gnd/${pndString}" />
-					<fmt:message key="OMD.PROFKAT.quoting.gnd">
-      					<fmt:param>${url}</fmt:param>      			
-      				</fmt:message>   				
+					<p>
+						<fmt:message key="OMD.PROFKAT.quoting.gnd">
+      						<fmt:param>${url}</fmt:param>
+      					</fmt:message>
+      				</p>   				
     				</mcrdd:outputitem>
    			</x:if>                                             			   		 
    		</mcrdd:row>   				
