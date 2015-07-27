@@ -54,7 +54,7 @@ public class ProfKatBeaconDataServlet extends MCRServlet {
 
                 try (BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"))) {
                     while ((line = br.readLine()) != null) {
-                        sw.append("\n").append(line);
+                    	sw.append("\n").append(line);
                     }
 
                 } catch (IOException e) {
@@ -62,12 +62,13 @@ public class ProfKatBeaconDataServlet extends MCRServlet {
                 }
 
                 String result = sw.toString();
-
+                result = result.substring(result.indexOf("<html>"));
+                
                 UBRBibliographie biblioApp = UBRBibliographie.getInstance();
                 if (biblioApp.getHitCount(gnd) > 0) {
                     int pos = countSubstringInString("<li id=", result);
                     String li = "<li id=\"" + UBR_BIBLIOGRAPHY_KEY + Integer.toString(pos + 1) + "\">" + "<a href=\""
-                        + biblioApp.getURL(gnd) + "\">" + biblioApp.getMessage(gnd) + "</a> </li>";
+                        + biblioApp.getURL(gnd).replace("&",  "&amp;") + "\">" + biblioApp.getMessage(gnd) + "</a> </li>";
 
                     result = result.replace("</ul>", li + "\n</ul>");
                 }

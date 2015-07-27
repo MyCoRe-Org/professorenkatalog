@@ -366,8 +366,8 @@
 								p.append(ul);
 								var url = "${WebApplicationBaseURL}profkat_beacon_data?gnd="+encodeURIComponent(p.attr("title")); 
 								$.get(url, function(data){
-									data = data.substr(data.search("&lt;html&gt;"));
-									doc = $.parseHTML(data);
+									var data = data.substr(data.search("&lt;html&gt;"));
+									var doc = $.parseXML(data);
 									$(doc).find("li").each(function(pos){
 										var li=$(this);
 										var test = $(li).attr("id");
