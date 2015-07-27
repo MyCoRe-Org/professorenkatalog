@@ -351,7 +351,7 @@
 						$(document).ready(function(){
 							$("p.profkat-beacon-result").each(function(){
 								var p = $(this);
-								var ul = $("&lt;ul&gt;&lt;/ul&gt;");
+								var ul = $('&lt;ul style=&quot;list-style-position:inside&quot;&gt;&lt;/ul&gt;');
 								var whitelist = null;
 								var blacklist = null;
 								try{
@@ -367,6 +367,7 @@
 								var url = "${WebApplicationBaseURL}profkat_beacon_data?gnd="+encodeURIComponent(p.attr("title")); 
 								$.get(url, function(data){
 									var data = data.substr(data.search("&lt;html&gt;"));
+									data = data.replace('&lt;html&gt;', '&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;');
 									var doc = $.parseXML(data);
 									$(doc).find("li").each(function(pos){
 										var li=$(this);
