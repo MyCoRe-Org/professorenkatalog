@@ -38,10 +38,29 @@
     		<xsl:otherwise><xsl:value-of select="substring($headline_normiert,1,2)" /></xsl:otherwise>
     	</xsl:choose>
     </field>
+    <xsl:variable name="lifetime_out">
+      <xsl:if test="box.birth/birth">
+      	* 
+      		<xsl:value-of select="box.birth/birth/text" />
+     		<xsl:if test="box.birth/birth/event">
+     			in <xsl:value-of select="box.birth/birth/event" />
+     		</xsl:if>
+      </xsl:if>
+      <xsl:if test="box.death/death">
+      	|† 
+      		<xsl:value-of select="box.death/death/text" />
+     		<xsl:if test="box.death/death/event">
+     			in <xsl:value-of select="box.death/death/event" />
+     		</xsl:if>
+      </xsl:if>
+    </xsl:variable>
+    <field name="profkat.lifetime">
+		<xsl:value-of select="normalize-space($lifetime_out)" />
+    </field>
     <field name="profkat.period"><xsl:value-of select="box.period/period/text" /></field>
     <field name="profkat.last_professorship"><xsl:value-of select="box.professorship/professorship[last()]/event" /></field>
-    	<xsl:for-each select="box.faculty/faculty[last()]/classification">
-    <field name="profkat.last_faculty_class"><xsl:value-of select="@classid" />:<xsl:value-of select="@categid" /></field>
+    <xsl:for-each select="box.faculty/faculty[last()]/classification">
+    	<field name="profkat.last_faculty_class"><xsl:value-of select="@classid" />:<xsl:value-of select="@categid" /></field>
     </xsl:for-each>
     <field name="profkat.status_msg">OMD.CPR.states.<xsl:value-of select="box.status/status" /></field>
     
