@@ -345,63 +345,8 @@
 					   data-profkat-beacon-whitelist='["ubr_biblgr", "bibaug", "dta", "zbw", "ri_opac", "rektor", "repfont_aut", "gvk", "vd17", "wikisource", "kalliope", "ecodices", "gw", "latlib", "pw_arxiv", "pw_imslp", "pw_mvbib", "pw_perlentaucher", "slub", "hvv_lz", "hvv_zh", "notendatenbank", "commons", "cpdl", "kreusch", "rulib", "liberley", "pgde", "sophie", "wortblume", "zeno", "bsb", "oenlv", "vd16", "zdn", "lbbw", "elk-wue", "fmfa"]'
 					   data-profkat-beacon-replaceLabels="ubr_biblgr:Universitätsbibliographie Rostock|bibaug:Bibliotheca Augustana|dta:Deutsches Textarchiv|zbw:Pressemappe 20. Jahrhundert - Personenarchiv|ri_opac:Regesta Imperii OPAC|rektor:Rektoratsreden im 19. und 20. Jahrhundert|repfont_aut:Repertorium Geschichtsquellen des deutschen Mittelalters|gvk:Verbundkatalog des GBV|vd17:Verzeichnis der deutschen Drucke des 17.Jahrhunderts (VD17)|wikisource:Wikisource-Autorenseite"
 					/>
-					<script type="text/javascript">
-						// data retrieval from PND Beacon AKS via AJAX (asynchron)
-						//support for replaceLabels still needs to be done
-						$(document).ready(function(){
-							$("p.profkat-beacon-result").each(function(){
-								var p = $(this);
-								var ul = $('&lt;ul style=&quot;list-style-position:inside&quot;&gt;&lt;/ul&gt;');
-								var whitelist = null;
-								var blacklist = null;
-								try{
-									whitelist = $.parseJSON(p.attr("data-profkat-beacon-whitelist"));
-								}
-								catch(e){}
-								try{
-									blacklist = $.parseJSON(p.attr("data-profkat-beacon-blacklist"));
-								}
-								catch(e){}
-									
-								p.append(ul);
-								var url = "${WebApplicationBaseURL}profkat_beacon_data?gnd="+encodeURIComponent(p.attr("title")); 
-								$.get(url, function(data){
-									var data = data.substr(data.search("&lt;html&gt;"));
-									data = data.replace('&lt;html&gt;', '&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;');
-									var doc = $.parseXML(data);
-									$(doc).find("li").each(function(pos){
-										var li=$(this);
-										var test = $(li).attr("id");
-										
-										//we need to delete the position number at the end of the id:
-										//RegEx for number at the end
-										//test = test.replace(/\d+$/, "")										
-										//it seems more safe to use the length of the position number (variable of the each-function) and do a substring()
-										var part = ""+(pos + 1);
-										test = test.substring(0, test.length-part.length);
-										
-										show = false;
-										if(whitelist!=null){
-											if($.inArray(test, whitelist)>=0){
-												show=true;											
-											}
-										}
-										if(blacklist!=null){
-											if($.inArray(test, blacklist)>=0){
-												show=false;											
-											}
-										}
-														
-										if(show){
-											$(li).attr("data-profkat-beacon-testid", test);
-											$(ul).append(li);
-										}
-									});
-								});
-				
-							})
-						});
-					</script>
+					<script type="text/javascript" src="${WebApplicationBaseURL}js/profkat_gndbeacon.js"></script>
+					
 		
 					<c:url var="url" value="${WebApplicationBaseURL}gnd/${pndString}" />
 					<p>

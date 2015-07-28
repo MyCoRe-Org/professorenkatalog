@@ -43,6 +43,7 @@
   		<meta charset="utf-8" />
     	<meta name="viewport" content="width=device-width, initial-scale=1" />
     	<meta name="author" content="Universitätsbibliothek Rostock" />
+    	<meta name="mcr:baseurl" content="${WebApplicationBaseURL}" />
 		
 		<link type="image/x-icon" rel="shortcut icon"  href="${pageContext.request.contextPath}/themes/cpr/images/icon_cpr.ico" />
 
