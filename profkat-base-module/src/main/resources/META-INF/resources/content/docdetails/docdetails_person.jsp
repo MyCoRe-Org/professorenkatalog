@@ -411,6 +411,9 @@
    			<%-- OMD.CPR.quoting.text=Eintrag von &quot;{0}&quot; im Rostocker Professorenkatalog, URL: <a href="{1}">{1}</a> (abgerufen am {2})  --%> 
    			<c:set var="currentID"><x:out select="string($current)"/></c:set>
    			<c:url var="url" value="${WebApplicationBaseURL}resolve/id/${currentID}" />
+   			<c:if test="${fn:startsWith(currentID, 'cpr_')}">
+   				<c:url var="url" value="http://purl.uni-rostock.de/cpr/${fn:substringAfter(currentID,'cpr_person_')}" />
+   			</c:if>
    			<fmt:message key="OMD.PROFKAT.quoting.text">
       			<fmt:param>${first}&#160;${last}</fmt:param>
       			<fmt:param>${url}</fmt:param>
