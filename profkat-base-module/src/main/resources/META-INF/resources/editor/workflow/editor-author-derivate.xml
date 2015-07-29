@@ -43,8 +43,9 @@
    		<panel id="DLabel">
    			<cell col="1" row="1" anchor="NORTHWEST" var="@label">
    				<list id="SDerivateLabel" type="dropdown" class="intern" >
-					<item value="display_none" i18n="OMD.derivatedisplay.display_none" />
-					<item value="display_image" i18n="OMD.derivatedisplay.display_image" />
+					<item value="display_none"      i18n="OMD.derivatedisplay.display_none" />
+					<item value="display_portrait"  i18n="OMD.derivatedisplay.display_portrait" />
+					<item value="display_signature" i18n="OMD.derivatedisplay.display_signature" />
 					<item value="display_biography" i18n="OMD.derivatedisplay.display_biography" />					
 				</list>
    			</cell>    

@@ -21,6 +21,15 @@
     <xsl:for-each select="/mycoreobject/structure/derobjects/derobject">
       <field name="derivatelabel"><xsl:value-of select="@xlink:label|@xlink:title" /></field>
     </xsl:for-each>
+     <xsl:for-each select="/mycoreobject/structure/derobjects/derobject[@xlink:title='display_portrait'][1]">
+            <xsl:variable name="derId" select="@xlink:href" />
+            <xsl:variable name="derXML" select="document(concat('mcrobject:',$derId))" />
+     	<xsl:for-each select="$derXML/mycorederivate/derivate/internals/internal">
+     		<xsl:if test="string-length(@maindoc)>0">
+     			<field name="cover_url">file/<xsl:value-of select="$derXML/mycorederivate/derivate/linkmetas/linkmeta/@xlink:href" />/<xsl:value-of select="$derXML/mycorederivate/@ID" />/<xsl:value-of select="@maindoc" /></field>
+     		</xsl:if>
+     	</xsl:for-each>
+     </xsl:for-each>
   </xsl:template>
 
   <xsl:template match="metadata">
@@ -72,7 +81,10 @@
     <xsl:for-each select="box.surname/surname | box.firstname/firstname | box.nameaffix/nameaffix">
       <field name="profkat.name"><xsl:value-of select="text()" /></field> 
     </xsl:for-each>
-    
+   
+               <xsl:for-each select="box.sex/sex">
+      <field name="profkat.sex"><xsl:value-of select="normalize-space(text())" /></field> 
+    </xsl:for-each> 
 
                <xsl:for-each select="box.institute/institute">
       <field name="profkat.institute"><xsl:value-of select="normalize-space(text())" /></field> 

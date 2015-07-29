@@ -114,10 +114,11 @@
 			</div>
 
 		
-		<x:if select="$linked/mycoreobject/structure/derobjects/derobject[@xlink:title='display_image']">
+		<x:if select="$linked/mycoreobject/structure/derobjects/derobject[@xlink:title='display_portrait' or @xlink:title='display_signature']">
 			
 			<div class="ur-box ur-box-bordered infobox">
-				<mcrb:derivateImageBrowser mcrid="${mcrid}" imageWidth="100%" labelContains="display_image" />
+				<mcrb:derivateImageBrowser mcrid="${mcrid}" imageWidth="100%" labelContains="display_portrait" />
+				<mcrb:derivateImageBrowser mcrid="${mcrid}" imageWidth="100%" labelContains="display_signature" />
 			</div>
 		</x:if>
 	</stripes:layout-component>

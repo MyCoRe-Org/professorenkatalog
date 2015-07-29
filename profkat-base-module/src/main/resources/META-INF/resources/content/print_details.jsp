@@ -103,9 +103,9 @@
  </td>
  <td>
  
-	<x:if select="$linked/mycoreobject/structure/derobjects/derobject[@xlink:label='display_image']">
+	<x:if select="$linked/mycoreobject/structure/derobjects/derobject[@xlink:title='display_portrait @xlink:title='display_portrait']">
 		<div class="base_box infobox">
-			<mcrb:derivateImageBrowser mcrid="${mcrid}" imageWidth="150" labelContains="display_image" />
+			<mcrb:derivateImageBrowser mcrid="${mcrid}" imageWidth="150" labelContains="display_portrait" />
 		</div>
 	</x:if>
 	
