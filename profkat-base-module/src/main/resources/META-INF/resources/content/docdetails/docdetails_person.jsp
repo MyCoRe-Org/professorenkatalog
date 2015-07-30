@@ -28,20 +28,20 @@
 					</c:if>
 					<c:if test="${current eq 'data'}">
 						<li class="${tabstyle}">
-							<a href="${WebApplicationBaseURL}nav?path=${param.path}&amp;id=${param.id}&amp;offset=${param.offset}&amp;resultid=${param.resultid}&amp;fromWF=${param.fromWF}&amp;tab=${current}"><fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
+							<a href="${WebApplicationBaseURL}resolve/id/${param.id}?offset=${param.offset}&amp;resultid=${param.resultid}&amp;fromWF=${param.fromWF}&amp;tab=${current}"><fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
 						</li>
 					</c:if>
 					<c:if test="${current eq 'article'}">
-						<x:if select="$mcrobj/mycoreobject/structure/derobjects/derobject[@xlink:label='display_biography']">
+						<x:if select="$mcrobj/mycoreobject/structure/derobjects/derobject[@xlink:title='display_biography']">
 							<li class="${tabstyle}">
-								<a href="${WebApplicationBaseURL}nav?path=${param.path}&amp;id=${param.id}&amp;offset=${param.offset}&amp;resultid=${param.resultid}&amp;fromWF=${param.fromWF}&amp;tab=${current}"><fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
+								<a href="${WebApplicationBaseURL}resolve/id/${param.id}?offset=${param.offset}&amp;resultid=${param.resultid}&amp;fromWF=${param.fromWF}&amp;tab=${current}"><fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
 							</li>
 						</x:if>		
 					</c:if>
 					<c:if test="${current eq 'documents'}">
 						<x:if select="$mcrobj/mycoreobject/structure/derobjects/derobject">
 							<li class="${tabstyle}">
-								<a href="${WebApplicationBaseURL}nav?path=${param.path}&amp;id=${param.id}&amp;offset=${param.offset}&amp;resultid=${param.resultid}&amp;fromWF=${param.fromWF}&amp;tab=${current}"><fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
+								<a href="${WebApplicationBaseURL}resolve/id/${param.id}?offset=${param.offset}&amp;resultid=${param.resultid}&amp;fromWF=${param.fromWF}&amp;tab=${current}"><fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
 							</li>
 						</x:if>		
 					</c:if>
@@ -383,24 +383,6 @@
    			${createdate},&#160;${createdBy}&#160;&#160;/&#160;&#160;${modifydate},&#160;${modifiedBy}
    		</mcrdd:outputitem>  
    	</mcrdd:row>
-   	<%--
-   	<mcrdd:row select="/mycoreobject" labelkey="OMD.CPR.link2page" showInfo="true" >
-   		<mcrdd:item select="/mycoreobject/metadata/box.identifier/identifier[@type='pnd']" var="pnd"/>
-   		<mcrdd:outputitem select="./@ID" var="current">
-   			<c:if test="${(not empty(pnd)) and (pnd ne 'xxx')}">
-   				<jsp:element name="a">
-   					<jsp:attribute name="href">http://cpr.uni-rostock.de/pnd/${pnd}</jsp:attribute>
-   					<jsp:body>http://cpr.uni-rostock.de/pnd/${pnd}</jsp:body>
-   				</jsp:element>
-   				</td></tr><tr><td class="docdetails-value">
-   			</c:if>
-   		    <jsp:element name="a">
-   		   		<jsp:attribute name="href">http://cpr.uni-rostock.de/metadata/<x:out select="string($current)"/></jsp:attribute>
-   		   		<jsp:body>http://cpr.uni-rostock.de/metadata/<x:out select="string($current)"/></jsp:body>
-   		    </jsp:element>
-   		</mcrdd:outputitem>
-   	</mcrdd:row>
-   	--%> 
    	
    	<mcrdd:row select="/mycoreobject" labelkey="OMD.CPR.quoting" showInfo="true" >
    		<mcrdd:item select="/mycoreobject/metadata/box.surname/surname" var="last"/>
