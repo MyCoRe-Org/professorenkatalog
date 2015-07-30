@@ -11,7 +11,7 @@
 <span class="badge pull-right">${mcrid}</span>
 
 <h4>
-	<a href="${WebApplicationBaseURL}resolve/id/${mcrid}">${resultDoc.getFieldValueMap()['profkat.idx_headline']}</a>
+	<a href="${WebApplicationBaseURL}resolve/id/${mcrid}">${resultDoc.getFieldValueMap()['profkat.idx_profname.headline']}</a>
 </h4>
 <mcr:hasAccess var="modifyAllowed" permission="writedb" mcrid="${mcrid}" />
 	<c:if test="${modifyAllowed}">
