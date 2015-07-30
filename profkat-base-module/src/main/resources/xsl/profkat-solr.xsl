@@ -35,10 +35,10 @@
   <xsl:template match="metadata">
     <xsl:apply-imports/>
     <xsl:variable name="headline" select="concat(box.surname/surname,', ', box.firstname/firstname[1])" />
-    <field name="profkat.idx_headline">
+    <field name="profkat.idx_profname.headline">
     	<xsl:value-of select="$headline" />
     </field>
-    <field name="profkat.idx_profkat.facet">
+    <field name="profkat.idx_profname.facet">
     	<!--  There is no replace in XSLT 1.0 !!! -->
     	<xsl:variable name="headline_normiert" select="mcrjsp:normalizeUmlauts($headline)" />
     	<xsl:choose>
