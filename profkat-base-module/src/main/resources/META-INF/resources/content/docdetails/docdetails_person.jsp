@@ -78,7 +78,7 @@
     	<c:set var="profshowinfo" value="true" />
     </x:if>
     
-    <mcrdd:row select="/mycoreobject/metadata/box.professorship/professorship" labelkey="${proflabelkey}" showInfo="${profshowinfo}" colWidths="95">
+    <mcrdd:row select="/mycoreobject/metadata/box.professorship/professorship" labelkey="${proflabelkey}" showInfo="${profshowinfo}" colWidths="100">
 		<mcrdd:item select="./text" styleName="docdetails-value-bold" />              
     	<mcrdd:item select="./event" styleName="docdetails-value-bold" />
     	<mcrdd:outputitem select="." var="x">
@@ -125,7 +125,7 @@
      <mcrdd:separator showLine="true" />
    	 
    	 <c:if test="${(tab eq 'data') or (param.print eq 'true')}">
- 		<mcrdd:row select="/mycoreobject/metadata/box.faculty/faculty" labelkey="OMD.CPR.faculties" showInfo="true" colWidths="95">
+ 		<mcrdd:row select="/mycoreobject/metadata/box.faculty/faculty" labelkey="OMD.CPR.faculties" showInfo="true" colWidths="100">
 	  		<mcrdd:item select="./text" />              
     		<mcrdd:classificationitem select="./classification" />  
     	</mcrdd:row>
@@ -173,7 +173,7 @@
    			<mcrdd:item select="." />  
    		</mcrdd:row> 
     
-		<mcrdd:row select="/mycoreobject/metadata/box.birth/birth|/mycoreobject/metadata/box.death/death" labelkey="OMD.CPR.lifetimes" showInfo="true" colWidths="95">
+		<mcrdd:row select="/mycoreobject/metadata/box.birth/birth|/mycoreobject/metadata/box.death/death" labelkey="OMD.CPR.lifetimes" showInfo="true" colWidths="100">
 		  	<mcrdd:outputitem select="." var="data">
    				<x:set var="date" select="string($data/text)" />
 				<x:set var="place" select="string($data/event)" />
@@ -230,12 +230,12 @@
    		</mcrdd:row> 
    	
    		<mcrdd:separator showLine="true" />	   
-      	<mcrdd:row select="/mycoreobject/metadata/box.biographic/biographic" labelkey="OMD.CPR.biographics" showInfo="true" colWidths="95">
+      	<mcrdd:row select="/mycoreobject/metadata/box.biographic/biographic" labelkey="OMD.CPR.biographics" showInfo="true" colWidths="100">
 	  		<mcrdd:item select="./time" />              
     		<mcrdd:item select="./text" />  
     	</mcrdd:row>
 
-  		<mcrdd:row select="/mycoreobject/metadata/box.academicdegree/academicdegree" labelkey="OMD.CPR.academicdegrees" showInfo="true" colWidths="95">
+  		<mcrdd:row select="/mycoreobject/metadata/box.academicdegree/academicdegree" labelkey="OMD.CPR.academicdegrees" showInfo="true" colWidths="100">
     		<mcrdd:item select="./@type" labelkeyPrefix="OMD.CPR.academicdegree.display."/>
     		<mcrdd:item select="./time" />              
  			<mcrdd:outputitem select="." var="xml">
@@ -248,22 +248,22 @@
 		
 		<mcrdd:separator showLine="true" />	
    	
-   		<mcrdd:row select="/mycoreobject/metadata/box.adminfunction/adminfunction" labelkey="OMD.CPR.adminfunctions" showInfo="true" colWidths="95">
+   		<mcrdd:row select="/mycoreobject/metadata/box.adminfunction/adminfunction" labelkey="OMD.CPR.adminfunctions" showInfo="true" colWidths="100">
 			<mcrdd:item select="./time" />              
     		<mcrdd:item select="./text" />  
     	</mcrdd:row>
 
-   		<mcrdd:row select="/mycoreobject/metadata/box.otherfunction/otherfunction" labelkey="OMD.CPR.otherfunctions" showInfo="true" colWidths="95">
+   		<mcrdd:row select="/mycoreobject/metadata/box.otherfunction/otherfunction" labelkey="OMD.CPR.otherfunctions" showInfo="true" colWidths="100">
 		  	<mcrdd:item select="./time" />              
     		<mcrdd:item select="./text" />  
     	</mcrdd:row>
     
-    	<mcrdd:row select="/mycoreobject/metadata/box.membership/membership[not(@type='party')]" labelkey="OMD.CPR.memberships" showInfo="true" colWidths="95">
+    	<mcrdd:row select="/mycoreobject/metadata/box.membership/membership[not(@type='party')]" labelkey="OMD.CPR.memberships" showInfo="true" colWidths="100">
 		  	<mcrdd:item select="./time" />              
     		<mcrdd:item select="./text" />  
     	</mcrdd:row>
 
-   		<mcrdd:row select="/mycoreobject/metadata/box.award/award" labelkey="OMD.CPR.awards" showInfo="true" colWidths="95">
+   		<mcrdd:row select="/mycoreobject/metadata/box.award/award" labelkey="OMD.CPR.awards" showInfo="true" colWidths="100">
 		  	<mcrdd:item select="./time" />              
     		<mcrdd:item select="./text" />  
     	</mcrdd:row>         
