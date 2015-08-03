@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xed:template xmlns:xed="http://www.mycore.de/xeditor">
+<!-- method='post' to avoid charset problems !!! -->
 
-	<!-- Professor Names -->
-  <xed:template id="searchmask.root">
-    
+<xed:form xmlns:xed="http://www.mycore.de/xeditor" role="form" class="form-horizontal" accept-charset="UTF-8" method="post">
+	<xed:bind xpath="query">
+	<xed:bind xpath="@mask" default="profkat-simple.xed" />
     <xed:bind xpath="sortBy/field[@name='profkat.idx_profname.headline']/@order" default="ascending" />
     <!-- !!! do not clean the top conditions element !!! -->
     <xed:cleanup-rule xpath="//*[starts-with(name(), 'condition')]" relevant-if="* or (string-length(@value) &gt; 0)" />
@@ -39,6 +39,6 @@
         </div>
       </div>
     </xed:bind>
-</xed:template>
-</xed:template>
+</xed:bind>
+</xed:form>
 
