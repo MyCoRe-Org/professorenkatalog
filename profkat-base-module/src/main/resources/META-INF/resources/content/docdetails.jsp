@@ -70,7 +70,9 @@
  	
 	 <stripes:layout-component name="right_side">
 		<div class="ur-box ur-box-bordered infobox" style="margin-bottom:32px; padding: 18px 6px 6px 6px;">
-			<mcrb:searchDetailBrowser mcrid="${mcrid}"/>
+
+			<search:result-navigator mcrid="${mcrid}" />
+			
 			<c:if test="${empty param.print and !fn:contains(style,'user')}">
   				<a class="btn btn-default btn-lg" style="padding:6px" href="${WebApplicationBaseURL}content/print_details.jsp?id=${param.id}&amp;print=true&amp;fromWF=${param.fromWF}" target="_blank" title="<fmt:message key="WF.common.printdetails" />">
 	       			<span class="glyphicon glyphicon-print"></span>
