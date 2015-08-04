@@ -5,7 +5,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="mcr" uri="http://www.mycore.org/jspdocportal/base.tld" %>
-<%@ taglib prefix="mcrb" uri="http://www.mycore.org/jspdocportal/browsing.tld" %>
 <%@ taglib prefix="mcrdd" uri="http://www.mycore.org/jspdocportal/docdetails.tld" %>
 <%@ taglib prefix="stripes" uri="http://stripes.sourceforge.net/stripes.tld" %>
 
@@ -93,8 +92,8 @@
 
 		<x:if select="$linked/mycoreobject/structure/derobjects/derobject[@xlink:title='display_portrait' or @xlink:title='display_signature']">
 			<div class="ur-box ur-box-bordered infobox">
-				<mcrb:derivateImageBrowser mcrid="${mcrid}" imageWidth="100%" labelContains="display_portrait" />
-				<mcrb:derivateImageBrowser mcrid="${mcrid}" imageWidth="100%" labelContains="display_signature" />
+				<search:derivate-image mcrid="${mcrid}" width="100%" labelContains="display_portrait" />
+				<search:derivate-image mcrid="${mcrid}" width="100%" labelContains="display_signature" />
 			</div>
 		</x:if>
 	</stripes:layout-component>
