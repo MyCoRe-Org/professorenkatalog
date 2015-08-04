@@ -9,9 +9,9 @@
 				href="indexbrowser.action?modus=profkat">
 			</navitem>
 
-			<navitem id="search" i18n="Nav.Search" href="search.action?mask=profkat-searchbox.xed">
-				<navitem id="simple" i18n="Nav.Search.Profkat.Simple" href="search.action?mask=profkat-simple.xed" />
-				<navitem id="extended" i18n="Nav.Search.Profkat.Extended" href="search.action?mask=profkat-extended.xed" />
+			<navitem id="search" i18n="Nav.Search" href="search/profkat-bar">
+				<navitem id="simple" i18n="Nav.Search.Profkat.Simple" href="search/profkat-simple" />
+				<navitem id="extended" i18n="Nav.Search.Profkat.Extended" href="search/profkat-extended" />
 			</navitem>
 
 			<navitem id="browse" i18n="Nav.ClassificationsSearch" href="content/browsenode.jsp">
