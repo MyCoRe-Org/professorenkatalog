@@ -196,7 +196,7 @@
     <!-- ******************************************** -->
     <field name="derivatelabel"      type="text_de" multiValued="true" stored="true" />
     <field name="gnd_uri" type="string" multiValued="false" stored="true" />
-    <field name="cover_image" type="string" multiValued="false" stored="true" />
+    <field name="cover_url" type="string" multiValued="false" stored="true" />
 
 	<!-- ******************************************** -->
     <!-- * PROFKAT                                  * -->
