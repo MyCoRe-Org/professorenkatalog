@@ -360,7 +360,7 @@
 	</c:if> 	
   	
 	<c:if test="${(tab eq 'article') or (param.print eq 'true')}">
-  		<mcrdd:row select="/mycoreobject/structure/derobjects/derobject[@xlink:label='display_biography']" labelkey="OMD.CPR.documents" showInfo="true" >
+  		<mcrdd:row select="/mycoreobject/structure/derobjects/derobject[@xlink:title='display_biography']" labelkey="OMD.CPR.documents" showInfo="true" >
   			<mcrdd:derivatecontent select="." width="100%" encoding="UTF-8" />
   		</mcrdd:row>	
 	</c:if>

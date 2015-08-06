@@ -103,7 +103,7 @@
  </td>
  <td>
  
-	<x:if select="$linked/mycoreobject/structure/derobjects/derobject[@xlink:title='display_portrait @xlink:title='display_portrait']">
+	<x:if select="$linked/mycoreobject/structure/derobjects/derobject[@xlink:title='display_portrait']">
 		<div class="base_box infobox">
 			<search:derivate-image mcrid="${mcrid}" width="100%" labelContains="display_portrait" />
 			<search:derivate-image mcrid="${mcrid}" width="100%" labelContains="display_signature" />
