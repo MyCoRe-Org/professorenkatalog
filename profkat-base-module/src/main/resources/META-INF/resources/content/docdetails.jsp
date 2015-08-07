@@ -81,7 +81,7 @@
      		<c:if test="${empty param.print}">
      			<c:set var="url">${WebApplicationBaseURL}resolve/id/${param.id}</c:set>
 		   		<a class="btn btn-default btn-lg" style="padding:6px" target="_blank" title="<fmt:message key="Webpage.feedback" />"
-		   		   href="${WebApplicationBaseURL}feedback.action?topicURL=<%=java.net.URLEncoder.encode(pageContext.getAttribute("url").toString(), "ISO-8859-1")%>&amp;topicHeader=<%=java.net.URLEncoder.encode(pageContext.getAttribute("prof_name").toString().replaceAll("\\s+"," "), "ISO-8859-1")%>">
+		   		   href="${WebApplicationBaseURL}feedback.action?topicURL=<%=java.net.URLEncoder.encode(pageContext.getAttribute("url").toString(), "UTF-8")%>&amp;topicHeader=<%=java.net.URLEncoder.encode(pageContext.getAttribute("prof_name").toString().replaceAll("\\s+"," "), "UTF-8")%>">
 	    			<span class="glyphicon glyphicon-envelope"></span>
 	        	</a>
 	         </c:if>
