@@ -15,10 +15,10 @@
 </c:if>
 <c:choose>
 	<c:when test="${location eq '#'}">
-		<c:out value="${descr}" />
+		<c:out value="${descr}" escapeXml="false" />
 	</c:when>
 	<c:otherwise>
-		<c:out value="${descr}" />
+		<c:out value="${descr}" escapeXml="false" />
 		<jsp:element name="a">	
 			<jsp:attribute name="href">
 				<c:out value="${location}" />
