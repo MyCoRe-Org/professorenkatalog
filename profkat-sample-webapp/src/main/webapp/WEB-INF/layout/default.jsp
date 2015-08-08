@@ -75,12 +75,6 @@
 
 	    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style_profkatsample.css" />
 		
-		
-		<mcr:hasAccess permission="administrate-webcontent" var="editWeb"/>
-		 <c:if test="${editWeb}">
-		 	<script src="${pageContext.request.contextPath}/ckeditor/ckeditor.js"></script>
-			<script src="${pageContext.request.contextPath}/ckeditor/adapters/jquery.js"></script>
-		 </c:if>
 		<stripes:layout-component name="html_header">
 			<%-- any additional HTML header content --%>
 		</stripes:layout-component>		
