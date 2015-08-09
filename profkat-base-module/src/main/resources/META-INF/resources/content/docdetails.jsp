@@ -72,6 +72,13 @@
 
 			<search:result-navigator mcrid="${mcrid}" />
 			
+			<c:if test="${empty param.print}">
+    	   		<a class="btn btn-default btn-lg pull-right" style="padding:6px;color:#BBBBBB;" target="_blank" title="<fmt:message key="Webpage.showXML" />"
+		   		   href="${WebApplicationBaseURL}api/v1/objects/${mcrid}">
+	    			<span class="glyphicon glyphicon-wrench"></span>
+	        	</a>
+	         </c:if>
+			
 			<c:if test="${empty param.print and !fn:contains(style,'user')}">
   				<a class="btn btn-default btn-lg" style="padding:6px" href="${WebApplicationBaseURL}content/print_details.jsp?id=${param.id}&amp;print=true&amp;fromWF=${param.fromWF}" target="_blank" title="<fmt:message key="WF.common.printdetails" />">
 	       			<span class="glyphicon glyphicon-print"></span>
