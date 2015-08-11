@@ -81,44 +81,48 @@
     <mcrdd:row select="/mycoreobject/metadata/box.professorship/professorship" labelkey="${proflabelkey}" showInfo="${profshowinfo}" colWidths="100">
 		<mcrdd:item select="./text" styleName="docdetails-value-bold" />              
     	<mcrdd:item select="./event" styleName="docdetails-value-bold" />
-    	<mcrdd:outputitem select="." var="x">
-    	    <x:forEach select="$x/text[@*[local-name() = 'lang']='x-predec']">
+    	<mcrdd:outputitem select="." var="this">
+    		<div style="text-align: right; white-space: nowrap; font-size:80%;">
+    		<x:forEach select="$this/text[@*[local-name() = 'lang']='x-predec']">
     	    	<c:set var="linkids" scope="request"><x:out select="./text()" /></c:set>
     			<c:forTokens items="${linkids}" delims=":;|" var="currentID" varStatus="status">
-					<c:if test="${fn:startsWith(currentID, 'cpr_')}">
+					<c:if test="${fn:contains(currentID, '_person_')}">
 						<mcr:receiveMcrObjAsJdom mcrid="${currentID}" varDom="linked" fromWF="false"/>
+   						<c:set var="doctitle"><fmt:message key="OMD.CPR.hint.predec"/></c:set>
    						<c:if test="${not empty linked}">
-   							<c:set var="doctitle"><fmt:message key="OMD.CPR.hint.predec"/>:&#160;</c:set>
+   							<c:set var="doctitle">${doctitle}:&#160;</c:set>
    							<c:set var="doctitle">${doctitle}<x:out select="$linked/metadata/box.surname/surname" />,&#160;</c:set>
     						<c:set var="doctitle">${doctitle}<x:out select="$linked/metadata/box.firstname/firstname" /></c:set>
 							<c:set var="affix"><x:out select="$linked/metadata/box.nameaffix/nameaffix" /></c:set>
 							<c:if test="${fn:length(affix)>2}"><c:set var="doctitle">${doctitle}&#160;(<c:out value="${affix}" />)</c:set></c:if>
-							<a href="${WebApplicationBaseURL}metadata/${currentID}">
-								<img src="${WebApplicationBaseURL}images/prof_predec.gif" border="0" title="${doctitle}" />  
-					   		</a>
 				   		</c:if>
+				   		<a href="${WebApplicationBaseURL}resolve/id/${currentID}" style="color:grey;margin-left:6px">
+							<span class="glyphicon glyphicon-backward" title="${doctitle}"></span>
+					   	</a>
 				   	</c:if>
 				</c:forTokens>
     		</x:forEach>
     				
-    		<x:forEach select="$x/text[@*[local-name() = 'lang']='x-succ']">
+    		<x:forEach select="$this/text[@*[local-name() = 'lang']='x-succ']">
     		   	<c:set var="linkids" scope="request"><x:out select="./text()" /></c:set>
     			<c:forTokens items="${linkids}" delims=":;|" var="currentID" varStatus="status">
-	  				<c:if test="${fn:startsWith(currentID, 'cpr_')}">
+	  				<c:if test="${fn:contains(currentID, '_person_')}">
 	  					<mcr:receiveMcrObjAsJdom mcrid="${currentID}" varDom="linked" fromWF="false"/>
+	  					<c:set var="doctitle"><fmt:message key="OMD.CPR.hint.succ"/></c:set>
    						<c:if test="${not empty linked}">
-   							<c:set var="doctitle"><fmt:message key="OMD.CPR.hint.succ"/>:&#160;</c:set>
+   							<c:set var="doctitle">${doctitle}:&#160;</c:set>
    							<c:set var="doctitle">${doctitle}<x:out select="$linked/metadata/box.surname/surname" />,&#160;</c:set>
          					<c:set var="doctitle">${doctitle}<x:out select="$linked/metadata/box.firstname/firstname" /></c:set>
 							<c:set var="affix"><x:out select="$linked/metadata/box.nameaffix/nameaffix" /></c:set>
 							<c:if test="${fn:length(affix)>2}"><c:set var="doctitle">${doctitle}&#160;(<c:out value="${affix}" />)</c:set></c:if>
-							<a href="${WebApplicationBaseURL}metadata/${currentID}">
-								<img src="${WebApplicationBaseURL}images/prof_succ.gif" border="0" title="${doctitle}" />  
-				   			</a>
 				   		</c:if>
+				   		<a href="${WebApplicationBaseURL}resolve/id/${currentID}" style="color:grey;margin-left:6px">
+							<span class="glyphicon glyphicon-forward" title="${doctitle}"></span> 
+					   	</a>
 				   	</c:if>
 				</c:forTokens>
     		</x:forEach>
+    		</div>
     	</mcrdd:outputitem>
    	</mcrdd:row>
      
@@ -232,7 +236,7 @@
    		<mcrdd:separator showLine="true" />	   
       	<mcrdd:row select="/mycoreobject/metadata/box.biographic/biographic" labelkey="OMD.CPR.biographics" showInfo="true" colWidths="100">
 	  		<mcrdd:item select="./time" />              
-    		<mcrdd:item select="./text" />  
+    		<mcrdd:item select="./text" escapeXml="false" />  
     	</mcrdd:row>
 
   		<mcrdd:row select="/mycoreobject/metadata/box.academicdegree/academicdegree" labelkey="OMD.CPR.academicdegrees" showInfo="true" colWidths="100">
@@ -250,32 +254,32 @@
    	
    		<mcrdd:row select="/mycoreobject/metadata/box.adminfunction/adminfunction" labelkey="OMD.CPR.adminfunctions" showInfo="true" colWidths="100">
 			<mcrdd:item select="./time" />              
-    		<mcrdd:item select="./text" />  
+    		<mcrdd:item select="./text" escapeXml="false" />  
     	</mcrdd:row>
 
    		<mcrdd:row select="/mycoreobject/metadata/box.otherfunction/otherfunction" labelkey="OMD.CPR.otherfunctions" showInfo="true" colWidths="100">
 		  	<mcrdd:item select="./time" />              
-    		<mcrdd:item select="./text" />  
+    		<mcrdd:item select="./text" escapeXml="false" />  
     	</mcrdd:row>
     
     	<mcrdd:row select="/mycoreobject/metadata/box.membership/membership[not(@type='party')]" labelkey="OMD.CPR.memberships" showInfo="true" colWidths="100">
 		  	<mcrdd:item select="./time" />              
-    		<mcrdd:item select="./text" />  
+    		<mcrdd:item select="./text" escapeXml="false" />  
     	</mcrdd:row>
 
    		<mcrdd:row select="/mycoreobject/metadata/box.award/award" labelkey="OMD.CPR.awards" showInfo="true" colWidths="100">
 		  	<mcrdd:item select="./time" />              
-    		<mcrdd:item select="./text" />  
+    		<mcrdd:item select="./text" escapeXml="false" />  
     	</mcrdd:row>         
 
    		<mcrdd:row select="/mycoreobject/metadata/box.otherinfo/otherinfo" labelkey="OMD.CPR.otherinfos" showInfo="true" >
-		  	<mcrdd:item select="." />  
+		  	<mcrdd:item select="." escapeXml="false" />  
     	</mcrdd:row>         
 
 		<mcrdd:separator showLine="true" />
 
    		<mcrdd:row select="/mycoreobject/metadata/box.mainpublication/mainpublication" labelkey="OMD.CPR.mainpublications" showInfo="true" >
-		  	<mcrdd:item select="." />  
+		  	<mcrdd:item select="." escapeXml="false"/>  
     	</mcrdd:row>         
         
           
