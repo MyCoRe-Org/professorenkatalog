@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.mycore.org/jspdocportal/navigation navigation.xsd">
 	<navigation id="left">
-		<navitem id="start" i18n="Nav.Start" href="webpage.action?id=start" />
+		<navitem id="start" i18n="Nav.Start" href="" />
 	
 			<navitem id="indexsearch" i18n="Nav.Profkat.Index"
 				href="indexbrowser.action?modus=profkat">
@@ -14,7 +14,7 @@
 				<navitem id="extended" i18n="Nav.Search.Profkat.Extended" href="search/profkat-extended" />
 			</navitem>
 
-			<navitem id="browse" i18n="Nav.ClassificationsSearch" href="webpage.action?main=browse">
+			<navitem id="browse" i18n="Nav.ClassificationsSearch" href="site/browse">
 				<navitem id="subject_prof" i18n="Nav.Browse.Profkat.Subject" href="content/browse-profkat-subjects.jsp">
 					<refitem id="~searchstart-class_bkl-profkat" />
 					<navitem id="result" i18n="Nav.Browseresults" href="content/searchresult.jsp" hidden="true">
@@ -31,23 +31,23 @@
 				</navitem>
 			</navitem>
 			
-			<navitem id="aktuelles" i18n="Nav.Aktuelles" href="webpage.action?id=aktuelles">
+			<navitem id="aktuelles" i18n="Nav.Aktuelles" href="site/aktuelles">
 				<refitem id="~aktuelles" />
 			</navitem>
 	</navigation>
 
 	<navigation id="top">
-		<navitem id="start" i18n="Nav.Start" href="webpage.action?id=start">
+		<navitem id="start" i18n="Nav.Start" href="">
 			<refitem id="~index" />
 		</navitem>
-		<navitem id="sitemap" i18n="Nav.Sitemap" href="webpage.action?id=sitemap" />
-		<navitem id="impressum" i18n="Nav.Impressum" href="webpage.action?id=impressum">
+		<navitem id="sitemap" i18n="Nav.Sitemap" href="site/sitemap" />
+		<navitem id="impressum" i18n="Nav.Impressum" href="site/impressum">
 				<refitem id="~impressum" />
 		</navitem>
-		<navitem id="login" i18n="Nav.Login" href="/login.action" hidden="true">
+		<navitem id="login" i18n="Nav.Login" href="login.action" hidden="true">
 			<refitem id="~login" />
 		</navitem>
-		<navitem id="logout" i18n="Nav.Logout" href="/login.action?logout=true" hidden="true">
+		<navitem id="logout" i18n="Nav.Logout" href="login.action?logout=true" hidden="true">
 			<refitem id="~logout" />
 		</navitem>
 		<navitem id="form-feedback" i18n="Nav.Feedback" href="content/feedback.jsp" hidden="true">
