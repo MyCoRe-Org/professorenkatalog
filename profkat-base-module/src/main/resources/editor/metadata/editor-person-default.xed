@@ -15,11 +15,11 @@
    <xed:cleanup-rule xpath="//*[@class='MCRMetaXML']/*" relevant-if=".//*[@* or (string-length(text()) &gt; 0)]" />
    <xed:cleanup-rule xpath="/mycoreobject/metadata/*" relevant-if=" ./*" />
    
-    <xed:include uri="webapp:editor/metadata/includes-generic.xed" ref="in.out" />
+    <xed:include uri="resource:editor/metadata/includes-generic.xed" ref="in.out" />
     <xed:bind xpath="/mycoreobject">
-      <xed:include uri="webapp:editor/metadata/includes-generic.xed" ref="mycore.common" />
+      <xed:include uri="resource:editor/metadata/includes-generic.xed" ref="mycore.common" />
       <xed:bind xpath="metadata">
-    <xed:include uri="webapp:editor/metadata/includes-generic.xed" ref="failed-validation-messages" />
+    <xed:include uri="resource:editor/metadata/includes-generic.xed" ref="failed-validation-messages" />
     
     
     <!--Status -->
@@ -1489,6 +1489,6 @@
   
   
     </xed:bind>
-      <xed:include uri="webapp:editor/metadata/includes-generic.xed" ref="cancel.submit" />
+      <xed:include uri="resource:editor/metadata/includes-generic.xed" ref="cancel.submit" />
     </xed:bind>
 </xed:form>

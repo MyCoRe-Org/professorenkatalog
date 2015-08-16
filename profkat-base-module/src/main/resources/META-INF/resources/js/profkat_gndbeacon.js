@@ -19,7 +19,7 @@
 								var url = $("meta[name='mcr:baseurl']").attr("content")+"profkat_beacon_data?gnd="+encodeURIComponent(p.attr("title")); 
 								$.get(url, function(data){
 									var data = data.substr(data.search("<html>"));
-									data = data.replace('<html>', '<html xmlns="http://www.w3.org/1999/xhtml">');
+									//data = data.replace('<html>', '<html xmlns="http://www.w3.org/1999/xhtml">');
 									var doc = $.parseXML(data);
 									$(doc).find("li").each(function(pos){
 										var li=$(this);
