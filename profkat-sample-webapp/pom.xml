@@ -1,7 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.mycore</groupId>
+  <parent>
+	<artifactId>mycore-parent</artifactId>
+	<groupId>org.mycore</groupId>
+    <version>25</version>
+  </parent>
   <artifactId>profkat-sample-webapp</artifactId>
   <name>Sample for Professorenkatalog</name>
   <description>Sample of a professorenkatalog</description>
@@ -111,7 +115,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.3.2</version>
         <configuration>
           <source>1.7</source>
           <target>1.7</target>
@@ -146,8 +149,8 @@
 
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
-        <version>2.1-beta-1</version>
         <configuration>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
           <archiveClasses>true</archiveClasses>
           <webResources>
             <resource>
@@ -195,7 +198,6 @@
       </plugin>
       <plugin>
         <artifactId>maven-antrun-plugin</artifactId>
-        <version>1.5</version>
         <executions>
           <execution>
             <phase>install</phase>
