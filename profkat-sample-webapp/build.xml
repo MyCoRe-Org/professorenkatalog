@@ -81,6 +81,13 @@
 		</java>
 	</target>
 
+	<target name="createa.configuration.directory" >
+		<java fork="true" dir="${HOME}" jar="${HOME}/${APP_NAME}-cli.jar">
+			<arg value="create configuration directory" />
+		</java>
+	</target>
+	
+	
 	<target name="update.solr.config">
 		<mkdir  dir="${SOLR_HOME_DIR}" />
 		<get src="${SOLR_DEFAULT_CONFIG_URL}" dest="${SOLR_HOME_DIR}/solr-default-config.zip" />
