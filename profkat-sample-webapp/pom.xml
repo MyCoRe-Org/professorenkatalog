@@ -14,7 +14,6 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <hibernate.version>4.3.4.Final</hibernate.version>
     <mcr.finalName>profkat-sample</mcr.finalName>
   </properties>
   <pluginRepositories>
