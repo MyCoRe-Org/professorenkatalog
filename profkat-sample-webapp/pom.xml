@@ -67,12 +67,14 @@
       <groupId>postgresql</groupId>
       <artifactId>postgresql</artifactId>
       <version>9.1-901.jdbc4</version>
+      <scope>runtime</scope>
     </dependency>
 
     <dependency>
       <groupId>org.mycore</groupId>
       <artifactId>profkat-base-module</artifactId>
       <version>${project.version}</version>
+      <scope>runtime</scope>
     </dependency>
 
     <dependency>
@@ -172,7 +174,7 @@
               </excludes>
             </resource>
             <resource>
-              <directory>src/main/config</directory>
+              <directory>src/main/resources/config</directory>
               <targetPath>WEB-INF</targetPath>
               <includes>
                 <include>web.xml</include>

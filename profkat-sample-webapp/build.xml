@@ -9,11 +9,14 @@
 	<property name="CONTENT_DIR" value="${basedir}/content" />
 	
 	<property name="SOLR_DEFAULT_CONFIG_URL" value="http://artifactory.mycore.de/libs-snapshots-local/org/mycore/solr/solr-home/4.8.1-SNAPSHOT/solr-home-4.8.1-20141031.092947-2.zip" />
-	<property name="SOLR_CORE_ID" value="profkat" />
-	<condition property="SOLR_HOME_DIR" value="/opt/solr" else="c:\workspaces\profkat\solr\data">
+	<property name="SOLR_CORE_ID" value="${APP_NAME}" />
+	<condition property="SOLR_HOME_DIR" value="/opt/solr" else="c:\workspaces\profkat\data\solr">
 		<os family="unix" />
 	</condition>
-	<condition property="SOLR_CONF_DIR" value="/opt/profkat/projects/profkat-sample-webapp/solr-conf" else="C:\workspaces\profkat\projects\profkat-sample-webapp\solr-conf">
+	<condition property="SOLR_CONF_DIR" value="/opt/profkat/projects/${APP_NAME}-webapp/solr-conf" else="C:\workspaces\profkat\projects\${APP_NAME}-webapp\solr-conf">
+		<os family="unix" />
+	</condition>
+	<condition property="MCR_DATA_DIR" value="/data/mycore-data/${APP_NAME}" else="c:\workspaces\profkat\data\${APP_NAME}">
 		<os family="unix" />
 	</condition>
 	
@@ -23,6 +26,7 @@
 	
 	<target name="create.directories" depends="init">
 		<java fork="true" dir="${HOME}" jar="${HOME}/${APP_NAME}-cli.jar">
+			<sysproperty key="MCR.AppName" value="${APP_NAME}"/>
 			<arg value="create directory ${MCR.Editor.FileUpload.TempStoragePath}
 				;; create directory ${MCR.LogDirectory}
 				;; create directory ${MCR.Save.FileSystem}
@@ -44,6 +48,7 @@
 	<target name="create.users" depends="init">
 		<mkdir dir="${basedir}/target/user_encrypted" />
 		<java fork="true" dir="${HOME}" jar="${HOME}/${APP_NAME}-cli.jar">
+			<sysproperty key="MCR.AppName" value="${APP_NAME}"/>
 			<arg value="update classification from file ${basedir}/content/user/mcr-roles.xml
 				;; load permissions data from file ${CONTENT_DIR}/user/permissions.xml
 	     	    ;; init superuser
@@ -65,6 +70,7 @@
 	
 	<target name="create.class" depends="init" >
 		<java fork="true" dir="${HOME}" jar="${HOME}/${APP_NAME}-cli.jar">
+			<sysproperty key="MCR.AppName" value="${APP_NAME}"/>
 			<arg value="update all classifications from directory ${CONTENT_DIR}/classification" />
 		</java>
 	<!--
@@ -77,31 +83,38 @@
 
 	<target name="deploy.workflows" >
 		<java fork="true" dir="${HOME}" jar="${HOME}/${APP_NAME}-cli.jar">
+			<sysproperty key="MCR.AppName" value="${APP_NAME}"/>
 			<arg value="deploy workflow processdefinition from resource config/workflow/processdefinitions/create_object_simple.bpmn20.xml" />
 		</java>
 	</target>
 
 	<target name="createa.configuration.directory" >
 		<java fork="true" dir="${HOME}" jar="${HOME}/${APP_NAME}-cli.jar">
+			<sysproperty key="MCR.AppName" value="${APP_NAME}"/>
 			<arg value="create configuration directory" />
 		</java>
 	</target>
 	
-	
 	<target name="update.solr.config">
-		<mkdir  dir="${SOLR_HOME_DIR}" />
-		<get src="${SOLR_DEFAULT_CONFIG_URL}" dest="${SOLR_HOME_DIR}/solr-default-config.zip" />
-		<delete dir="${SOLR_HOME_DIR}/cores/${SOLR_CORE_ID}/conf" />
-		<mkdir  dir="${SOLR_HOME_DIR}/cores/${SOLR_CORE_ID}/conf" />
-		<mkdir  dir="${SOLR_HOME_DIR}/data/${SOLR_CORE_ID}" />
-		<unzip src="${SOLR_HOME_DIR}/solr-default-config.zip" dest="${SOLR_HOME_DIR}/cores/${SOLR_CORE_ID}/conf">
-			<patternset>
-			        <include name="/solr/collection1/conf/**"/>
-			    </patternset>
-			<cutdirsmapper dirs="3"/>
-		</unzip>
-		<copy todir="${SOLR_HOME_DIR}/cores/${SOLR_CORE_ID}/conf" overwrite="true">
-			<fileset dir="${SOLR_CONF_DIR}/cores/${SOLR_CORE_ID}/conf" />
+			<mkdir  dir="${SOLR_HOME_DIR}" />
+			<get src="${SOLR_DEFAULT_CONFIG_URL}" dest="${SOLR_HOME_DIR}/solr-default-config.zip" />
+			<delete dir="${SOLR_HOME_DIR}/cores/${SOLR_CORE_ID}/conf" />
+			<mkdir  dir="${SOLR_HOME_DIR}/cores/${SOLR_CORE_ID}/conf" />
+			<mkdir  dir="${SOLR_HOME_DIR}/data/${SOLR_CORE_ID}" />
+			<unzip src="${SOLR_HOME_DIR}/solr-default-config.zip" dest="${SOLR_HOME_DIR}/cores/${SOLR_CORE_ID}/conf">
+				<patternset>
+				        <include name="solr/collection1/conf/**"/>
+				    </patternset> 
+				<cutdirsmapper dirs="3"/>
+			</unzip>
+			<copy todir="${SOLR_HOME_DIR}/cores/${SOLR_CORE_ID}/conf" overwrite="true">
+				<fileset dir="${SOLR_CONF_DIR}/cores/${SOLR_CORE_ID}/conf" />
+			</copy>
+		</target>
+	
+	<target name="deploy.data.dir" >
+		<copy todir="${MCR_DATA_DIR}" overwrite="true">
+					<fileset dir="${CONTENT_DIR}/mcr_datadir" />
 		</copy>
 	</target>
 	
