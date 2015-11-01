@@ -202,10 +202,8 @@
             <phase>install</phase>
             <configuration>
               <target>
-                <unzip src="${project.build.directory}/${project.build.finalName}.war" dest="${project.build.directory}/app/${mcr.finalName}">
-                </unzip>
-
-								<!-- create CLI jar -->
+                <unzip src="${project.build.directory}/${project.build.finalName}.war" dest="${project.build.directory}/app/${mcr.finalName}" />
+               	<!-- create CLI jar -->
                 <property name="build.compiler" value="extJavac" />
 
                 <path id="class-path">
