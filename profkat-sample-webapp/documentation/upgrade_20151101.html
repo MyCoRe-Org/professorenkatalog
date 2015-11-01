@@ -26,139 +26,38 @@
 	<li>werden ins <code>resources</code>-Verzeichnis verschoben, damit
 	    entfällt die Spezialbehandlung im Build-Prozess</li>
 	<li>verschiebe <code>/src/main/config/lang/messages_*.properties</code> nach
-	<code>/src/main/resources/messages*_*.properties</code>
+	<code>/src/main/resources/messages*_*.properties</code></li>
 	<li>verschiebe <code>/src/main/config/mycore.properties</code> nach
-	<code>/src/main/resources/mycore.properties</code>
+	<code>/src/main/resources/mycore.properties</code></li>
+	<li>verschiebe <code>/src/main/config/web.xml</code> nach
+	<code>/src/main/resources/config/web.xml</code></li>
+	<li>verschiebe <code>/src/main/config/navigation.xml</code> nach
+	<code>/src/main/resources/config/navigation.xml</code></li>
 </ul>
 
-<h2>Vorbereitung der Datenbank</h2>
-Lege folgende Datenbanken und zwei Schemata an (am Beispiel von PostreSQL)
-<br> ein Schema für MyCoRe Daten und ein Schema für Activiti Workflow Engine
-<ul class="commandline">
-	<li>psql -U postgres</li>
-</ul>
-<ul class="commandline postgres">
-	<li>CREATE ROLE pkadmin LOGIN PASSWORD 'alleswirdgut' CREATEDB VALID UNTIL 'infinity';</li>
-	<li>CREATE DATABASE mycoredb WITH OWNER mcradmin ENCODING 'UTF8';</li>
-	<li>CREATE SCHEMA profkat AUTHORIZATION pkadmin;</li>
-	<li>CREATE SCHEMA profkat_activiti AUTHORIZATION pkadmin;</li>
-	<li>\q</li>
-</ul>
-
-
-
-
-<h2>Activiti-Workflowengine Installation</h2>
+<h3>web.xml</h3>
 <ul>
-	<li>ggf Schema <span class="variable">profkat_activiti</span> in der PostgreSQL-Datenbank <span class="variable">mycoredb</span> anlegen (s.o.)</li>
+	<li>CHECK: Anwendungsname in &lt;diplay-name&gt;<br />
+		Dieser Name ist gleichzeitig der Name des Konfigurationsverzeichnisses im 
+		<code>$user.home</code>.
+	</li>
 </ul>
 
-<h3>optional: Activiti-Explorer Webanwendung installieren</h3>	
+<h3>hibernate.cfg.xml</h3>
 <ul>
-	<li>Datei von <a href="http://www.activiti.org">http://www.activiti.org</a> herunterladen und in Tomcat deployen</li>
-	<li><span class="filename">postgresql-9.1-901.jdbc4.jar</span> nach <span class="filename">WEB-INF/lib</span> kopieren
-	<li><span class="filename">activiti-standalone-context.xml</span> im Verzeichnis <span class="filename">WEB-INF</span> ersetzen.	
-</ul>
-
-<h2>Herunterladen und Kompilieren der MyCoRe Profkat Anwendung</h2>
-<h3>Projekt-Verzeichnis erstellen</h3>
-<ul class="commandline">
-	<li>sudo mkdir /opt/profkat</li>
+	<li>Löschen, wird automatisch im Konfig-Verzeichnis im <code>$user.home</code> erstellt und
+	    muss jetzt dort konfiguriert werden</li>
+	<li>siehe <a href="http://www.mycore.de/documentation/getting_started/mcr_properties.html#Konfigurationsverzeichnis">MyCoRe-Dokumentation</a>
+	</li>
 	
-	<li>sudo mkdir /opt/profkat/projects</li>
-	<li>sudo chown mcradmin:mcradmin /opt/profkat/projects</li>
-	<li>cd /opt/profkat/projects</li>
 </ul>
-<h3>Dateien auschecken</h3>
-<ul class="commandline">
-	<li>svn checkout http://server.mycore.de/svn/jspdocportal/trunk/jspdocportal-module/ jspdocportal-module</li>
-	<li>svn checkout http://server.mycore.de/svn/professorenkatalog/trunk/profkat-base-module/ profkat-base-module</li>
-	<li>svn checkout http://server.mycore.de/svn/professorenkatalog/trunk/profkat-sample-webapp/ profkat-sample-webapp</li>
-</ul>
-<h3>Konfiguration anpassen</h3>
-<h4>Datenverzeichnis erstellen</h4>
-<ul class="commandline">
-	<li>sudo mkdir /opt/profkat/data</li>
-	<li>sudo chown tomcat7:tomcat7 /opt/profkat/data</li>
-</ul>
-<h4>Konfigurationsdateien anpassen</h4>
-siehe <a href="profkat_developer.html#config_files">Profkat-Developer-Dokumentation</a>
-
-<h3>Kompilieren der Anwendung</h3>
-<ul class="commandline">
-	<li>cd /opt/profkat/projects/jspdocportal-module</li>
-	<li>svn update</li>
-	<li>mvn clean install</li>
-	<li>cd /opt/profkat/projects/profkat-base-module</li>
-	<li>svn update</li>
-	<li>mvn clean install</li>
-	<li>cd /opt/profkat/projects/profkat-sample-webapp</li>
-	<li>svn update</li>
-	<li>mvn clean install</li>
-</ul>
-
-<h2>SOLR-Installation</h2>
-<p>SOLR sollte eine eigene Tomcat-Instanz spendiert werden, die unter einem eigenen Port 
-(Empfehlung: <code>8980</code> in <code>server.xml</code> konfigurieren) läuft.</p>
-<p>Die MyCoRe-Community stellt ein vorkonfiguriertes <code>SOLR.war</code> bereit, welches
-wir für den Professorenkatalog nutzen ...
-<a href="http://www.mycore.de/documentation/search/solr.html">siehe Anleitung in der MyCoRe Doku</a></p>
-
-<ul class="commandline">
-	<li>sudo mkdir /opt/solr</li>
-	<li>sudo mkdir /opt/solr/data</li>
-	<li>cd /opt/solr</li>
-	<li>sudo wget http://artifactory.mycore.de/libs-snapshots-local/org/mycore/solr/solr/4.8.1-SNAPSHOT/solr-4.8.1-20141031.092943-4.war</li>
-	<li>sudo chown tomcat7:tomcat7 /opt/solr -R </li>
-	<li> sudo vi /var/lib/tomcat7/conf/Catalina/localhost/solr.xml</li>
-</ul>
-<div class="textfile">
-&lt;Context docBase="/opt/solr/solr-4.8.1-20140625.135347-2.war" 
-         debug="0" crossContext="true" &gt;
-  &lt;Valve className="org.apache.catalina.valves.RemoteAddrValve" 
-         allow="127\.0\.0\.1|139\.30\.\d+\.\d+" /&gt;
-  &lt;Environment name="solr/home" type="java.lang.String" 
-               value="/opt/solr/data" overwrite="true"/&gt;
-&lt;/Context&gt;
-</div>
-
-<ul class="commandline">
-	<li>sudo vi /opt/solr/data/solr.xml</li>
-</ul>
-
-<div class="textfile">
-&lt;solr persistent="true" sharedLib="lib/**/*"&gt;
-    &lt;cores adminPath="/admin/cores" shareSchema="true"&gt;
-        &lt;core name="profkat" instanceDir="./cores/profkat" 
-              dataDir="./../../data/profkat" /&gt;
-    &lt;/cores&gt;
-&lt;/solr&gt;
-</div>
-
-<code>profkat-sample-webapp/build.xml</code>: <code>SOLR*</code>-Properties anpassen.
-<ul class="commandline">
-	<li>cd /opt/profkat/projects/profkat-sample-webapp</li>
-	<li>sudo -u tomcat7 ant update.solr.config</li>
-</ul>
-<ul>
-	<li>SOLR-Tomcat-Server starten </li>
-	<li>Verbindung testen: <a href="http://localhost:8980/solr">http://localhost:8980/solr</a></li>
-</ul>
-
-<h2>Initialisierung der Anwendung</h2>
-Anlegen der der Nutzer, Erstellen der Workflow, Klassifikationen
-<ul class="commandline">
-	<li>cd /opt/profkat/projects/profkat-sample-webapp</li>
-	<li>sudo -u tomcat7 ant create.directories</li>
-	<li>sudo -u tomcat7 ant create.users</li> 
-	<li>sudo -u tomcat7 ant create.class</li>
-	<li>sudo -u tomcat7 ant deploy.workflows</li>
-</ul>
+	
 
 <h2>Start der MyCoRe-Kommandozeile</h2>
+<ul><li><code>MCR.AppName</code> Property setzen !!!</li></ul>
 <ul class="commandline">
 	<li>cd /opt/profkat/projects/profkat-sample-webapp/target/app</li>
-	<li>sudo -u tomcat7 java -jar -Xmx128m -jar profkat-sample-cli.jar</li>
+	<li>sudo -u tomcat7 java -jar -Xmx128m -DMCR.AppName=profkat-sample -jar profkat-sample-cli.jar</li>
 </ul>
 
 <h2>Deployen der Webanwendung</h2>
