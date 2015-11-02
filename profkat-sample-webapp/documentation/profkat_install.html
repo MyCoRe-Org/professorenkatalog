@@ -18,7 +18,7 @@ Der Einsatz einer anderen Datenbank oder eines anderen Webapplication-Servers is
 	<li>Webapplication-Server: Tomcat 7.0</li>
 	<li>Datenbank: PostgreSQL 9.1</li>
 	<li>Worfklow engine: Activiti 5.15.1</li>
-	<li>SOLR (von MycoRe bereitgestellt): 4.7.2</li> 
+	<li>SOLR (von MycoRe bereitgestellt): 4.10.4</li> 
 	<li>Build-Tools: Maven und SVN</li>
 </ul>
 
@@ -32,16 +32,16 @@ Lege folgende Datenbanken und zwei Schemata an (am Beispiel von PostreSQL)
 	<li>CREATE ROLE pkadmin LOGIN PASSWORD 'alleswirdgut' CREATEDB VALID UNTIL 'infinity';</li>
 	<li>CREATE DATABASE mycoredb WITH OWNER mcradmin ENCODING 'UTF8';</li>
 	<li>CREATE SCHEMA profkat AUTHORIZATION pkadmin;</li>
-	<li>CREATE SCHEMA profkat_activiti AUTHORIZATION pkadmin;</li>
 	<li>\q</li>
 </ul>
 
-
-
-
 <h2>Activiti-Workflowengine Installation</h2>
-<ul>
-	<li>ggf Schema <span class="variable">profkat_activiti</span> in der PostgreSQL-Datenbank <span class="variable">mycoredb</span> anlegen (s.o.)</li>
+<ul class="commandline">
+	<li>psql -U postgres</li>
+</ul>
+<ul class="commandline postgres">
+	<li>CREATE SCHEMA profkat_activiti AUTHORIZATION pkadmin;</li>
+	<li>\q</li>
 </ul>
 
 <h3>optional: Activiti-Explorer Webanwendung installieren</h3>	
