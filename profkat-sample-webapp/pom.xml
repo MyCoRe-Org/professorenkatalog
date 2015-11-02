@@ -155,25 +155,6 @@
               <targetPath>WEB-INF/classes</targetPath>
             </resource>
             <resource>
-              <directory>src/main/config</directory>
-              <targetPath>WEB-INF/classes</targetPath>
-              <includes>
-                <include>*.*</include>
-              </includes>
-              <excludes>
-                <exclude>web.xml</exclude>
-                <exclude>*.template</exclude>
-                <exclude>datamodel-*.xml</exclude>
-              </excludes>
-            </resource>
-            <resource>
-              <directory>src/main/config/hibernate</directory>
-              <targetPath>WEB-INF/classes</targetPath>
-              <excludes>
-                <exclude>*.template</exclude>
-              </excludes>
-            </resource>
-            <resource>
               <directory>src/main/resources/config</directory>
               <targetPath>WEB-INF</targetPath>
               <includes>
