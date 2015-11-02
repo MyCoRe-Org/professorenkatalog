@@ -99,12 +99,12 @@ wir für den Professorenkatalog nutzen ...
 	<li>sudo mkdir /opt/solr</li>
 	<li>sudo mkdir /opt/solr/data</li>
 	<li>cd /opt/solr</li>
-	<li>sudo wget http://artifactory.mycore.de/libs-snapshots-local/org/mycore/solr/solr/4.8.1-SNAPSHOT/solr-4.8.1-20141031.092943-4.war</li>
+	<li>sudo wget http://artifactory.mycore.de/libs-snapshots-local/org/mycore/solr/solr/4.10.4-SNAPSHOT/solr-4.10.4-20150727.132631-1.war</li>
 	<li>sudo chown tomcat7:tomcat7 /opt/solr -R </li>
 	<li> sudo vi /var/lib/tomcat7/conf/Catalina/localhost/solr.xml</li>
 </ul>
 <div class="textfile">
-&lt;Context docBase="/opt/solr/solr-4.8.1-20140625.135347-2.war" 
+&lt;Context docBase="/opt/solr/solr-home-4.10.4-20150727.132634-1.zip" 
          debug="0" crossContext="true" &gt;
   &lt;Valve className="org.apache.catalina.valves.RemoteAddrValve" 
          allow="127\.0\.0\.1|139\.30\.\d+\.\d+" /&gt;
@@ -120,13 +120,13 @@ wir für den Professorenkatalog nutzen ...
 <div class="textfile">
 &lt;solr persistent="true" sharedLib="lib/**/*"&gt;
     &lt;cores adminPath="/admin/cores" shareSchema="true"&gt;
-        &lt;core name="profkat" instanceDir="./cores/profkat" 
-              dataDir="./../../data/profkat" /&gt;
+        &lt;core name="profkat" instanceDir="./cores/profkat-sample" 
+              dataDir="./../../data/profkat-sample" /&gt;
     &lt;/cores&gt;
 &lt;/solr&gt;
 </div>
 
-<code>profkat-sample-webapp/build.xml</code>: <code>SOLR*</code>-Properties anpassen.
+<code>profkat-sample-webapp/build.xml</code>: <code>SOLR*</code> und <code>AppName</code>-Properties anpassen.
 <ul class="commandline">
 	<li>cd /opt/profkat/projects/profkat-sample-webapp</li>
 	<li>sudo -u tomcat7 ant update.solr.config</li>
@@ -137,7 +137,19 @@ wir für den Professorenkatalog nutzen ...
 </ul>
 
 <h2>Initialisierung der Anwendung</h2>
-Anlegen der der Nutzer, Erstellen der Workflow, Klassifikationen
+<h3>Anlegen des Konfigurations-Verzeichnisses</h3>
+<ul class="commandline">
+	<li>cd /opt/profkat/projects/profkat-sample-webapp</li>
+	<li>sudo -u tomcat7 ant create.configuration.directory</li>
+</ul>
+<h3>Hibernate-Konfiguration anpassen</h3>
+<ul>
+	<li>c:\Users\$USER\AppData\Local\MyCoRe\profkat-sample\hibernate.cfg.xml</li>
+	<li>\home\tomcat7\.mycore\profkat-sample\hibernate.cfg.xml</li>
+	<li>PostgresDB (mit Schema) konfigurieren</li> 
+</ul>
+
+<h3>Anlegen der der Nutzer, Erstellen der Workflow, Klassifikationen</h3>
 <ul class="commandline">
 	<li>cd /opt/profkat/projects/profkat-sample-webapp</li>
 	<li>sudo -u tomcat7 ant create.directories</li>
@@ -147,12 +159,15 @@ Anlegen der der Nutzer, Erstellen der Workflow, Klassifikationen
 </ul>
 
 <h2>Start der MyCoRe-Kommandozeile</h2>
+Geben Sie zum Testen das Kommando <code>help</code> ein.
 <ul class="commandline">
 	<li>cd /opt/profkat/projects/profkat-sample-webapp/target/app</li>
 	<li>sudo -u tomcat7 java -jar -Xmx128m -jar profkat-sample-cli.jar</li>
 </ul>
 
 <h2>Deployen der Webanwendung</h2>
-
+<ul>
+	<li>Kopiere
+</ul>
 </body>
 </html>
