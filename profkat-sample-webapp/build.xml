@@ -10,7 +10,7 @@
 	
 	<property name="SOLR_DEFAULT_CONFIG_URL" value="http://artifactory.mycore.de/libs-snapshots-local/org/mycore/solr/solr-home/4.8.1-SNAPSHOT/solr-home-4.8.1-20141031.092947-2.zip" />
 	<property name="SOLR_CORE_ID" value="${APP_NAME}" />
-	<condition property="SOLR_HOME_DIR" value="/opt/solr" else="c:\workspaces\profkat\data\solr">
+	<condition property="SOLR_HOME_DIR" value="/opt/solr" else="c:\workspaces\SOLR\solr-home">
 		<os family="unix" />
 	</condition>
 	<condition property="SOLR_CONF_DIR" value="/opt/profkat/projects/${APP_NAME}-webapp/solr-conf" else="C:\workspaces\profkat\projects\${APP_NAME}-webapp\solr-conf">
@@ -88,7 +88,7 @@
 		</java>
 	</target>
 
-	<target name="createa.configuration.directory" >
+	<target name="create.configuration.directory" >
 		<java fork="true" dir="${HOME}" jar="${HOME}/${APP_NAME}-cli.jar">
 			<sysproperty key="MCR.AppName" value="${APP_NAME}"/>
 			<arg value="create configuration directory" />
