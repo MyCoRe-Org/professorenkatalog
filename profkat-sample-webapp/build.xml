@@ -6,14 +6,14 @@
 <project name="Profkat Sample"  basedir=".">
 	<property name="APP_NAME" value="profkat-sample" />
 	<property name="CLI_HOME" value="${basedir}/profkat-sample-cli/target/appassembler" />
-	<property name="CONTENT_DIR" value="${basedir}/content" />
+	<property name="CONTENT_DIR" value="${basedir}/profkat-sample-cli/src/main/config" />
 	
 	<property name="SOLR_DEFAULT_CONFIG_URL" value="http://artifactory.mycore.de/libs-snapshots-local/org/mycore/solr/solr-home/4.10.4-SNAPSHOT/solr-home-4.10.4-20150727.132634-1.zip" />
 	<property name="SOLR_CORE_ID" value="${APP_NAME}" />
 	<condition property="SOLR_HOME_DIR" value="/opt/solr" else="c:\workspaces\SOLR">
 		<os family="unix" />
 	</condition>
-	<property name="SOLR_CONF_DIR" value="${basedir}/profkat-sample-cli/src\main/config/solr-conf" />
+	<property name="SOLR_CONF_DIR" value="${basedir}/profkat-sample-cli/src/main/config/solr-conf" />
 	<condition property="MCR_DATA_DIR" value="/data/mycore-data/${APP_NAME}" else="c:\workspaces\profkat\data\${APP_NAME}">
 		<os family="unix" />
 	</condition>
@@ -53,7 +53,7 @@
 		<mkdir dir="${basedir}/target/user_encrypted" />
 		<java fork="true" dir="${CLI_HOME}/lib" classpathref="CLI_CLASSPATH" classname="org.mycore.frontend.cli.MCRCommandLineInterface">
 			<sysproperty key="MCR.AppName" value="${APP_NAME}"/>
-			<arg value="update classification from file ${basedir}/content/user/mcr-roles.xml
+			<arg value="update classification from file ${CONTENT_DIR}/user/mcr-roles.xml
 				;; load permissions data from file ${CONTENT_DIR}/user/permissions.xml
 	     	    ;; init superuser
 		            
