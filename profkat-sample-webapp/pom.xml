@@ -1,22 +1,35 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.mycore</groupId>
-		<artifactId>mycore</artifactId>
-		<version>2015.05.0.1-SNAPSHOT</version>
-	</parent>
-
-  <artifactId>profkat-sample-webapp</artifactId>
-  <name>Sample for Professorenkatalog</name>
-  <description>Sample of a professorenkatalog</description>
-  <packaging>war</packaging>
-
+ <parent>
+    <artifactId>mycore-parent</artifactId>
+    <groupId>org.mycore</groupId>
+    <version>25</version>
+  </parent>
+  <groupId>org.mycore.profkat</groupId>
+  <artifactId>profkat-sample-parent</artifactId>
+  <version>2015.05.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>Profkat-Sample</name>
+  <description>A sample application for a register of professors (Professorenkatalog)</description>
+  <inceptionYear>2015</inceptionYear>
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <mcr.finalName>profkat-sample</mcr.finalName>
+    <java.target.version>1.7</java.target.version>
+    <mycore.version>2015.05.0.1-SNAPSHOT</mycore.version>
+    <jetty.version>9.3.5.v20151012</jetty.version>
+    <tomcat8.version>8.0.28</tomcat8.version>
+    <cargo.version>1.4.16</cargo.version>
+    <cargo.servlet.uriencoding>UTF-8</cargo.servlet.uriencoding>
+    <cargo.container.zipUrlInstaller.downloadDir>${settings.localRepository}/../cargo/containers</cargo.container.zipUrlInstaller.downloadDir>
+    <cargo.deployable.default.groupId>${project.groupId}</cargo.deployable.default.groupId>
+    <cargo.deployable.default.artifactId>${project.artifactId}</cargo.deployable.default.artifactId>
+    <cargo.deployable.default.context>/</cargo.deployable.default.context>
+    <cargo.servlet.port>8291</cargo.servlet.port>
+    <cargo.tomcat.ajp.port>8292</cargo.tomcat.ajp.port>
+    <cargo.debug.address>8295</cargo.debug.address>
+    <cargo.debug.suspend>n</cargo.debug.suspend>
+    <changelog.since>2015-04-01</changelog.since>
+    <site.suffix />
   </properties>
-  
   <pluginRepositories>
     <pluginRepository>
       <id>MyCoRe HQ</id>
@@ -55,164 +68,321 @@
       </snapshots>
     </repository>
   </repositories>
-
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <type>jar</type>
-      <scope>test</scope>
-      <optional>false</optional>
-    </dependency>
-    <dependency>
-      <groupId>postgresql</groupId>
-      <artifactId>postgresql</artifactId>
-      <version>9.1-901.jdbc4</version>
-      <scope>runtime</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.mycore</groupId>
-      <artifactId>profkat-base-module</artifactId>
-      <version>${project.version}</version>
-      <scope>runtime</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>javax.servlet.jsp</groupId>
-      <artifactId>jsp-api</artifactId>
-      <version>2.2</version>
-      <type>jar</type>
-      <scope>provided</scope>
-      <optional>false</optional>
-    </dependency>
-    <dependency>
-      <groupId>xalan</groupId>
-      <artifactId>xalan</artifactId>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>xerces</groupId>
-      <artifactId>xercesImpl</artifactId>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>bootstrap</artifactId>
-      <version>3.3.5</version>
-      <scope>runtime</scope>
-    </dependency>
-  </dependencies>
   <build>
-  	<finalName>${mcr.finalName}</finalName>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>license-maven-plugin</artifactId>
         <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
+          <verbose>false</verbose>
+          <addSvnKeyWords>true</addSvnKeyWords>
+          <licenseName>gpl_v3</licenseName>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
         <executions>
           <execution>
-            <id>copy-dependencies</id>
-            <phase>package</phase>
+            <id>download-licenses</id>
             <goals>
-              <goal>copy</goal>
+              <goal>update-project-license</goal>
             </goals>
-            <configuration>
-              <artifactItems>
-                <artifactItem>
-                  <groupId>javax.servlet</groupId>
-                  <artifactId>javax.servlet-api</artifactId>
-                  <version>3.0.1</version>
-                  <type>jar</type>
-                  <overWrite>true</overWrite>
-                </artifactItem>
-              </artifactItems>
-              <outputDirectory>${project.build.directory}/app/lib</outputDirectory>
-              <stripVersion>true</stripVersion>
-            </configuration>
+            <phase>process-sources</phase>
           </execution>
         </executions>
       </plugin>
-
       <plugin>
-        <artifactId>maven-war-plugin</artifactId>
+        <artifactId>maven-changes-plugin</artifactId>
         <configuration>
-          <failOnMissingWebXml>false</failOnMissingWebXml>
-          <archiveClasses>true</archiveClasses>
-          <webResources>
-            <resource>
-              <directory>src/main/resources</directory>
-              <targetPath>WEB-INF/classes</targetPath>
-            </resource>
-            <resource>
-              <directory>src/main/resources/config</directory>
-              <targetPath>WEB-INF</targetPath>
-              <includes>
-                <include>web.xml</include>
-              </includes>
-            </resource>
-          </webResources>
+          <issueManagementSystems>
+            <issueManagementSystem>JIRA</issueManagementSystem>
+          </issueManagementSystems>
+          <runOnlyAtExecutionRoot>true</runOnlyAtExecutionRoot>
+          <smtpPort implementation="java.lang.Integer">25</smtpPort>
+          <toAddresses>
+            <toAddress implementation="java.lang.String">mycore-user@lists.sourceforge.net</toAddress>
+          </toAddresses>
+          <mailSender>
+            <name>${changes.mailSender.name}</name>
+            <email>${changes.mailSender.email}</email>
+          </mailSender>
+          <template>announcement.vm</template>
+          <useJql>true</useJql>
+          <templateDirectory>src/changes</templateDirectory>
+              <!-- due to: http://jira.codehaus.org/browse/MCHANGES-333 -->
+          <maxEntries>1000</maxEntries>
+          <urlDownload>${project.url}/download.html</urlDownload>
         </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <executions>
-          <execution>
-            <phase>install</phase>
-            <configuration>
-              <target>
-                <unzip src="${project.build.directory}/${project.build.finalName}.war" dest="${project.build.directory}/app/${mcr.finalName}" />
-               	<!-- create CLI jar -->
-                <property name="build.compiler" value="extJavac" />
-
-                <path id="class-path">
-                  <fileset dir="${project.build.directory}/app">
-                    <include name="${mcr.finalName}/WEB-INF/lib/*.jar" />
-                  </fileset>
-                </path>
-                <mkdir dir="${project.build.directory}/classes" />
-                <copy todir="${project.build.directory}/classes">
-                  <fileset dir="${project.build.directory}/app/${mcr.finalName}/WEB-INF/classes" />
-                </copy>
-
-                <pathconvert property="cpProp" dirsep="/" pathsep=" " refid="class-path">
-                  <map from="${project.build.directory}/app/${mcr.finalName}" to="${mcr.finalName}" />
-                </pathconvert>
-
-                <manifest file="${project.build.directory}/MANIFEST.MF">
-                  <attribute name="Main-Class" value="org.mycore.frontend.cli.MCRCommandLineInterface" />
-                  <attribute name="Class-Path" value="${cpProp} lib/javax.servlet-api.jar" />
-                </manifest>
-                <jar jarfile="${project.build.directory}/app/${mcr.finalName}-cli.jar" basedir="${project.build.directory}/classes"
-                  manifest="${project.build.directory}/MANIFEST.MF" />
-
-              </target>
-            </configuration>
-            <goals>
-              <goal>run</goal>
-            </goals>
-          </execution>
-        </executions>
-        <dependencies>
-          <dependency>
-            <groupId>org.apache.ant</groupId>
-            <artifactId>ant</artifactId>
-            <version>1.8.0</version>
-          </dependency>
-        </dependencies>
       </plugin>
     </plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>license-maven-plugin</artifactId>
+          <version>1.8</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>2.10</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>2.5.5</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <version>1.4.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.cargo</groupId>
+          <artifactId>cargo-maven2-plugin</artifactId>
+          <version>${cargo.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.lesscss</groupId>
+          <artifactId>lesscss-maven-plugin</artifactId>
+          <version>1.7.0.1.1</version>
+        </plugin>
+        <plugin>
+          <groupId>pl.allegro</groupId>
+          <artifactId>grunt-maven-plugin</artifactId>
+          <version>1.5.0</version>
+        </plugin>
+        <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself. -->
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>license-maven-plugin</artifactId>
+                    <versionRange>[1.6,)</versionRange>
+                    <goals>
+                      <goal>update-project-license</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore />
+                  </action>
+                </pluginExecution>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <versionRange>[2.8,)</versionRange>
+                    <goals>
+                      <goal>copy</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore />
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
   </build>
+  <reporting>
+    <plugins>
+      <plugin>
+        <artifactId>maven-changelog-plugin</artifactId>
+        <configuration>
+          <issueLinkUrl>https://mycore.atlassian.net/browse/%ISSUE%</issueLinkUrl>
+          <type>date</type>
+          <dates>
+            <date implementation="java.lang.String">${changelog.since}</date>
+          </dates>
+          <dateFormat>yyyy-MM-dd</dateFormat>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-changes-plugin</artifactId>
+        <version>2.11</version>
+        <inherited>false</inherited>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>jira-report</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+        <configuration>
+          <onlyCurrentVersion>true</onlyCurrentVersion>
+          <useJql>true</useJql>
+          <columnNames>Type,Key,Summary,Assignee,Status,Resolution,Component</columnNames>
+          <sortColumnNames>Type,Component,Key DESC</sortColumnNames>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
+  <modules>
+    <module>profkat-sample-module</module>
+    <module>profkat-sample-webapp</module>
+    <module>profkat-sample-cli</module>
+  </modules>
+  <developers>
+    <developer>
+      <id>mcrsteph</id>
+      <name>Robert Stephan</name>
+      <organization>Universität Rostock, Universitätsbibliothek</organization>
+      <email>robert.stephan (at) uni-rostock.de</email>
+      <organizationUrl>http://www.ub.uni-rostock.de/ub/</organizationUrl>
+      <timezone>+1</timezone>
+      <roles>
+        <role>coordination</role>
+        <role>developer</role>
+      </roles>
+    </developer>
+  </developers>
+  <profiles>
+    <profile>
+      <id>release-profile</id>
+      <properties>
+        <site.suffix>-${project.version}</site.suffix>
+      </properties>
+    </profile>
+    <profile>
+      <id>jetty</id>
+      <activation>
+        <property>
+          <name>jetty</name>
+        </property>
+      </activation>
+      <properties>
+        <cargo.container>jetty9x</cargo.container>
+      </properties>
+      <build>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+              <groupId>org.codehaus.cargo</groupId>
+              <artifactId>cargo-maven2-plugin</artifactId>
+              <configuration>
+                <container>
+                  <containerId>${cargo.container}</containerId>
+                  <artifactInstaller>
+                    <groupId>org.eclipse.jetty</groupId>
+                    <artifactId>jetty-distribution</artifactId>
+                    <version>${jetty.version}</version>
+                  </artifactInstaller>
+                </container>
+                <configuration>
+                  <properties>
+                    <cargo.servlet.port>${cargo.servlet.port}</cargo.servlet.port>
+                  </properties>
+                  <xmlReplacements>
+                    <xmlReplacement>
+                      <file>etc/jetty-logging.xml</file>
+                      <xpathExpression>/Configure</xpathExpression>
+                      <value>&lt;!-- disabled --&gt;</value>
+                    </xmlReplacement>
+                  </xmlReplacements>
+                </configuration>
+              </configuration>
+            </plugin>
+          </plugins>
+        </pluginManagement>
+      </build>
+    </profile>
+    <profile>
+      <id>tomcat</id>
+      <activation>
+        <property>
+          <name>tomcat</name>
+        </property>
+      </activation>
+      <properties>
+        <cargo.container>tomcat${tomcat}x</cargo.container>
+      </properties>
+      <build>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+              <groupId>org.codehaus.cargo</groupId>
+              <artifactId>cargo-maven2-plugin</artifactId>
+              <configuration>
+                <container>
+                  <containerId>${cargo.container}</containerId>
+                  <zipUrlInstaller>
+                    <url>http://ftp.fau.de/apache/tomcat/tomcat-${tomcat}/v${tomcat.version}/bin/apache-tomcat-${tomcat.version}.tar.gz</url>
+                    <downloadDir>${cargo.container.zipUrlInstaller.downloadDir}</downloadDir>
+                  </zipUrlInstaller>
+                </container>
+                <home>${project.build.directory}/catalina-base</home>
+                <configuration>
+                  <properties>
+                    <cargo.servlet.port>${cargo.servlet.port}</cargo.servlet.port>
+                    <cargo.tomcat.ajp.port>${cargo.tomcat.ajp.port}</cargo.tomcat.ajp.port>
+                    <cargo.servlet.uriencoding>${cargo.servlet.uriencoding}</cargo.servlet.uriencoding>
+                  </properties>
+                </configuration>
+              </configuration>
+            </plugin>
+          </plugins>
+        </pluginManagement>
+      </build>
+    </profile>
+    <profile>
+      <id>tomcat8</id>
+      <activation>
+        <property>
+          <name>tomcat</name>
+          <value>8</value>
+        </property>
+      </activation>
+      <properties>
+        <tomcat.version>${tomcat8.version}</tomcat.version>
+      </properties>
+    </profile>
+  </profiles>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.mycore</groupId>
+        <artifactId>mycore</artifactId>
+        <version>${mycore.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.mycore</groupId>
+        <artifactId>mycore-meta</artifactId>
+        <version>${mycore.version}</version>
+        <type>pom</type>
+        <exclusions>
+          <exclusion>
+            <groupId>org.mycore</groupId>
+            <artifactId>mycore-broadcasting</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.mycore</groupId>
+            <artifactId>mycore-coma</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.mycore</groupId>
+            <artifactId>mycore-sword</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.apache.maven.scm</groupId>
+            <artifactId>maven-scm-provider-svnexe</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-bom</artifactId>
+        <version>2.3</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 </project>
