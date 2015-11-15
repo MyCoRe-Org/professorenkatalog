@@ -29,7 +29,7 @@
 	</target>
 	
 	<target name="create.directories" depends="init">
-		<java fork="true" dir="${CLI_HOME}" jar="${CLI_HOME}/${APP_NAME}-cli.jar">
+		<java fork="true" dir="${CLI_HOME}/lib" classpathref="CLI_CLASSPATH" classname="org.mycore.frontend.cli.MCRCommandLineInterface">
 			<sysproperty key="MCR.AppName" value="${APP_NAME}"/>
 			<arg value="create directory ${MCR.Editor.FileUpload.TempStoragePath}
 				;; create directory ${MCR.LogDirectory}
@@ -51,7 +51,7 @@
 
 	<target name="create.users" depends="init">
 		<mkdir dir="${basedir}/target/user_encrypted" />
-		<java fork="true" dir="${CLI_HOME}" jar="${CLI_HOME}/${APP_NAME}-cli.jar">
+		<java fork="true" dir="${CLI_HOME}/lib" classpathref="CLI_CLASSPATH" classname="org.mycore.frontend.cli.MCRCommandLineInterface">
 			<sysproperty key="MCR.AppName" value="${APP_NAME}"/>
 			<arg value="update classification from file ${basedir}/content/user/mcr-roles.xml
 				;; load permissions data from file ${CONTENT_DIR}/user/permissions.xml
@@ -73,7 +73,7 @@
 	</target>
 	
 	<target name="create.class" depends="init" >
-		<java fork="true" dir="${CLI_HOME}" jar="${CLI_HOME}/${APP_NAME}-cli.jar">
+		<java fork="true" dir="${CLI_HOME}/lib" classpathref="CLI_CLASSPATH" classname="org.mycore.frontend.cli.MCRCommandLineInterface">
 			<sysproperty key="MCR.AppName" value="${APP_NAME}"/>
 			<arg value="update all classifications from directory ${CONTENT_DIR}/classification" />
 		</java>
@@ -86,7 +86,7 @@
 	</target>
 
 	<target name="deploy.workflows" >
-		<java fork="true" dir="${CLI_HOME}" jar="${CLI_HOME}/${APP_NAME}-cli.jar">
+		<java fork="true" dir="${CLI_HOME}/lib" classpathref="CLI_CLASSPATH" classname="org.mycore.frontend.cli.MCRCommandLineInterface">
 			<sysproperty key="MCR.AppName" value="${APP_NAME}"/>
 			<arg value="deploy workflow processdefinition from resource config/workflow/processdefinitions/create_object_simple.bpmn20.xml" />
 		</java>
