@@ -381,8 +381,8 @@
    		<%-- 06.10.2006, editorCP  /  17.06.2009, editorCP --%>
    		<mcrdd:item select="./service/servdates/servdate[@type='createdate']" datePattern ="dd.MM.yyyy" var="createdate"/>
    		<mcrdd:item select="./service/servdates/servdate[@type='modifydate']" datePattern ="dd.MM.yyyy" var="modifydate" />
-   		<mcrdd:item select="./service/servflags/servflag[@type='createdBy']" var="createdBy"/>
-   		<mcrdd:item select="./service/servflags/servflag[@type='modifiedBy']" var="modifiedBy" />
+   		<mcrdd:item select="./service/servflags/servflag[@type='createdby']" var="createdBy"/>
+   		<mcrdd:item select="./service/servflags/servflag[@type='modifiedby']" var="modifiedBy" />
    		<mcrdd:outputitem select="." var="current">
    			${createdate},&#160;${createdBy}&#160;&#160;/&#160;&#160;${modifydate},&#160;${modifiedBy}
    		</mcrdd:outputitem>  
