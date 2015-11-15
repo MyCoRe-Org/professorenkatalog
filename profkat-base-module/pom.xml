@@ -6,6 +6,7 @@
     <groupId>org.mycore</groupId>
     <version>2015.05.0.1-SNAPSHOT</version>
   </parent>
+  <groupId>org.mycore.profkat</groupId>
   <artifactId>profkat-base-module</artifactId>
   <packaging>jar</packaging>
   <name>Professorenkatalog Base</name>
