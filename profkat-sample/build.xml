@@ -5,25 +5,25 @@
 <!-- =================================================================== -->
 <project name="Profkat Sample"  basedir=".">
 	<property name="APP_NAME" value="profkat-sample" />
-	<property name="CLI_HOME" value="${basedir}/profkat-sample-cli/target/appassembler" />
-	<property name="CONTENT_DIR" value="${basedir}/profkat-sample-cli/src/main/config" />
-	
 	<property name="SOLR_DEFAULT_CONFIG_URL" value="http://artifactory.mycore.de/libs-snapshots-local/org/mycore/solr/solr-home/4.10.4-SNAPSHOT/solr-home-4.10.4-20150727.132634-1.zip" />
 	<property name="SOLR_CORE_ID" value="${APP_NAME}" />
 	<condition property="SOLR_HOME_DIR" value="/opt/solr" else="c:\workspaces\SOLR">
 		<os family="unix" />
 	</condition>
-	<property name="SOLR_CONF_DIR" value="${basedir}/profkat-sample-cli/src/main/config/solr-conf" />
-	<condition property="MCR_DATA_DIR" value="/data/mycore-data/${APP_NAME}" else="c:\workspaces\profkat\data\${APP_NAME}">
+	<property name="SOLR_CONF_DIR" value="${basedir}/${APP_NAME}-cli/src/main/config/solr-conf" />
+		
+	<condition property="CLI_HOME" value="${basedir}/${APP_NAME}-cli" else="${basedir}/${APP_NAME}-cli/target/appassembler">
 		<os family="unix" />
 	</condition>
-	
+		
+	<property name="CONTENT_DIR" value="${CLI_HOME}/config" />
+		
 	<path id="CLI_CLASSPATH">
 		<fileset dir="${CLI_HOME}/lib">
 			<include name="**/*.jar"/>
 		</fileset>
 	</path>
-	
+
 	<target name="init">
 	
 	</target>
@@ -133,15 +133,12 @@
 			<fileset dir="${CONTENT_DIR}/mcr_datadir" />
 		</copy>
 	</target>
-	
 
 	<target name="zip4deployment">
-		<zip destfile="./target/${APP_NAME}_deploy.zip" >
-			<zipfileset dir="./target/app" prefix="target/app"  />
-			<zipfileset dir="./content" prefix="content" />
-		    <zipfileset file="./target/buildfile_application.xml" prefix="target"/>
-			<zipfileset file="build.xml" />
-		    <zipfileset file="./target/${APP_NAME}.war" />
-		</zip>
-	</target>
+			<zip destfile="./target/${APP_NAME}_deploy.zip" >
+				<zipfileset dir="./${APP_NAME}-cli/target/appassembler" prefix="${APP_NAME}-cli"  />
+		    	<zipfileset file="./${APP_NAME}-webapp/target/${APP_NAME}.war" />
+				<zipfileset file="build.xml" />
+			</zip>
+		</target>
 </project>

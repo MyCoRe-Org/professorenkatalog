@@ -21,6 +21,7 @@
     <acl-description.guests-and-submitters>guests and submitters</acl-description.guests-and-submitters>
   </properties>
   <build>
+    <finalName>${project.artifactId}</finalName>
     <plugins>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
