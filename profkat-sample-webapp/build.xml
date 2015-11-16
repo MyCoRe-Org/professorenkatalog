@@ -99,6 +99,13 @@
 		</java>
 	</target>
 	
+	<target name="repair.solr.index" >
+		<java fork="true" dir="${CLI_HOME}/lib" classpathref="CLI_CLASSPATH" classname="org.mycore.frontend.cli.MCRCommandLineInterface">
+			<sysproperty key="MCR.AppName" value="${APP_NAME}"/>
+			<arg value="repair metadata search of type person" />
+		</java>
+	</target>
+	
 	<target name="update.solr.config">
 			<mkdir  dir="${SOLR_HOME_DIR}" />
 			<get src="${SOLR_DEFAULT_CONFIG_URL}" dest="${SOLR_HOME_DIR}/solr-default-config.zip" />
