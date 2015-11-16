@@ -107,41 +107,41 @@
 	</target>
 	
 	<target name="update.solr.config">
-			<mkdir  dir="${SOLR_HOME_DIR}" />
-			<get src="${SOLR_DEFAULT_CONFIG_URL}" dest="${SOLR_HOME_DIR}/solr-default-config.zip" />
-			<delete dir="${SOLR_HOME_DIR}/data/${SOLR_CORE_ID}" />
-			<mkdir  dir="${SOLR_HOME_DIR}/data/${SOLR_CORE_ID}" />
-			<unzip src="${SOLR_HOME_DIR}/solr-default-config.zip" dest="${SOLR_HOME_DIR}/data/${SOLR_CORE_ID}/conf">
-				<patternset>
-				        <include name="solr/collection1/conf/**"/>
-				    </patternset> 
-				<cutdirsmapper dirs="3"/>
-			</unzip>
-			<unzip src="${SOLR_HOME_DIR}/solr-default-config.zip" dest="${SOLR_HOME_DIR}/data">
-				<patternset>
-					<include name="solr/*.*"/>
-				</patternset> 
-				<cutdirsmapper dirs="1"/>
-			</unzip>
-			<copy todir="${SOLR_HOME_DIR}/data/${SOLR_CORE_ID}" overwrite="true">
-				<fileset dir="${SOLR_CONF_DIR}/cores/${SOLR_CORE_ID}" />
-			</copy>
-		</target>
+		<mkdir  dir="${SOLR_HOME_DIR}" />
+		<get src="${SOLR_DEFAULT_CONFIG_URL}" dest="${SOLR_HOME_DIR}/solr-default-config.zip" />
+		<delete dir="${SOLR_HOME_DIR}/data/${SOLR_CORE_ID}" />
+		<mkdir  dir="${SOLR_HOME_DIR}/data/${SOLR_CORE_ID}" />
+		<unzip src="${SOLR_HOME_DIR}/solr-default-config.zip" dest="${SOLR_HOME_DIR}/data/${SOLR_CORE_ID}/conf">
+			<patternset>
+		        <include name="solr/collection1/conf/**"/>
+		    </patternset> 
+			<cutdirsmapper dirs="3"/>
+		</unzip>
+		<unzip src="${SOLR_HOME_DIR}/solr-default-config.zip" dest="${SOLR_HOME_DIR}/data">
+			<patternset>
+				<include name="solr/*.*"/>
+			</patternset> 
+			<cutdirsmapper dirs="1"/>
+		</unzip>
+		<copy todir="${SOLR_HOME_DIR}/data/${SOLR_CORE_ID}" overwrite="true">
+			<fileset dir="${SOLR_CONF_DIR}/cores/${SOLR_CORE_ID}" />
+		</copy>
+	</target>
 	
 	<target name="deploy.data.dir" >
 		<copy todir="${MCR_DATA_DIR}" overwrite="true">
-					<fileset dir="${CONTENT_DIR}/mcr_datadir" />
+			<fileset dir="${CONTENT_DIR}/mcr_datadir" />
 		</copy>
 	</target>
 	
 
 	<target name="zip4deployment">
-			<zip destfile="./target/${APP_NAME}_deploy.zip" >
-				<zipfileset dir="./target/app" prefix="target/app"  />
-				<zipfileset dir="./content" prefix="content" />
-			    <zipfileset file="./target/buildfile_application.xml" prefix="target"/>
-				<zipfileset file="build.xml" />
-			    <zipfileset file="./target/${APP_NAME}.war" />
-			</zip>
-		</target>
+		<zip destfile="./target/${APP_NAME}_deploy.zip" >
+			<zipfileset dir="./target/app" prefix="target/app"  />
+			<zipfileset dir="./content" prefix="content" />
+		    <zipfileset file="./target/buildfile_application.xml" prefix="target"/>
+			<zipfileset file="build.xml" />
+		    <zipfileset file="./target/${APP_NAME}.war" />
+		</zip>
+	</target>
 </project>
