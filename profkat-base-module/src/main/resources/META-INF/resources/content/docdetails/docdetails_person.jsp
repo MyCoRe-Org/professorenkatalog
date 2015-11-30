@@ -159,7 +159,7 @@
     
    		<mcrdd:row select="/mycoreobject/metadata/box.homepage/homepage" labelkey="OMD.CPR.homepages" showInfo="true" >
    			<mcrdd:outputitem select="." var="current">
-   				<c:set var="href"><x:out select="string($current/@*[local-name()='href' and namespace-uri()='http://www.w3.org/1999/xlink'])" /></c:set>
+   				<c:set var="href"><x:out select="string($current/@*[local-name()='href' and namespace-uri()='http://www.w3.org/1999/xlink'])" escapeXml="false" /></c:set>
    				<c:set var="title"><x:out select="string($current/@*[local-name()='title' and namespace-uri()='http://www.w3.org/1999/xlink'])" /></c:set>
    				<jsp:include page="fragments/link_pk.jsp">
    					<jsp:param name="href" value="${href}" />
@@ -286,7 +286,7 @@
    		<mcrdd:row select="/mycoreobject/metadata/box.publicationslink/publicationslink" 
    		       labelkey="OMD.CPR.bibliographicrefs" showInfo="true" >
    			<mcrdd:outputitem select="." var="current">
-   		   		<c:set var="href"><x:out select="string($current/@*[local-name()='href' and namespace-uri()='http://www.w3.org/1999/xlink'])" /></c:set>
+   		   		<c:set var="href"><x:out select="string($current/@*[local-name()='href' and namespace-uri()='http://www.w3.org/1999/xlink'])" escapeXml="false"/></c:set>
    				<c:set var="title"><x:out select="string($current/@*[local-name()='title' and namespace-uri()='http://www.w3.org/1999/xlink'])" /></c:set>
    				<jsp:include page="fragments/link_pk.jsp">
    					<jsp:param name="href" value="${href}" />
@@ -299,7 +299,7 @@
 
    		<mcrdd:row select="/mycoreobject/metadata/box.source/source" labelkey="OMD.CPR.sources" showInfo="true" >
    			<mcrdd:outputitem select="." var="current">
-   				<c:set var="href"><x:out select="string($current/@*[local-name()='href' and namespace-uri()='http://www.w3.org/1999/xlink'])" /></c:set>
+   				<c:set var="href"><x:out select="string($current/@*[local-name()='href' and namespace-uri()='http://www.w3.org/1999/xlink'])" escapeXml="false"/></c:set>
    				<c:set var="title"><x:out select="string($current/@*[local-name()='title' and namespace-uri()='http://www.w3.org/1999/xlink'])" /></c:set>
    				<jsp:include page="fragments/link_pk.jsp">
    					<jsp:param name="href" value="${href}" />
@@ -314,7 +314,7 @@
    		   		<x:set var="linkData" select="$current" scope="session" />
    		   		<x:set var="doc" select="$doc" scope="session" />
    		   	   	<x:if select="local-name($current)='reference'">
-   					<c:set var="href"><x:out select="string($current/@*[local-name()='href' and namespace-uri()='http://www.w3.org/1999/xlink'])" /></c:set>
+   					<c:set var="href"><x:out select="string($current/@*[local-name()='href' and namespace-uri()='http://www.w3.org/1999/xlink'])" escapeXml="false"/></c:set>
    					<c:set var="title"><x:out select="string($current/@*[local-name()='title' and namespace-uri()='http://www.w3.org/1999/xlink'])" /></c:set>
    					<jsp:include page="fragments/link_pk.jsp">
    						<jsp:param name="href" value="${href}" />
