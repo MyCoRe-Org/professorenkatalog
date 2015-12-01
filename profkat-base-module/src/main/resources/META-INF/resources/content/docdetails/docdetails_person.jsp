@@ -134,8 +134,12 @@
     		<mcrdd:classificationitem select="./classification" />  
     	</mcrdd:row>
     
-   		<mcrdd:row select="/mycoreobject/metadata/box.institute/institute" labelkey="OMD.CPR.institutes" showInfo="true" >
+    	<mcrdd:row select="/mycoreobject/metadata/box.institute/institute[not(./time)]" labelkey="OMD.CPR.institutes" showInfo="true" >
    			<mcrdd:item select="." />  
+   		</mcrdd:row>
+   		<mcrdd:row select="/mycoreobject/metadata/box.institute/institute[./time]" labelkey="OMD.CPR.institutes" showInfo="true" colWidths="100" >
+   			<mcrdd:item select="./time" />
+   			<mcrdd:item select="./text" />
    		</mcrdd:row>
    	
    		<mcrdd:row select="/mycoreobject/metadata/box.fieldofstudy/fieldofstudy" labelkey="OMD.CPR.fieldofstudies" showInfo="true" >
