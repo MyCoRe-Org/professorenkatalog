@@ -3,7 +3,7 @@
 
 	<!-- Professor Names -->
   <xed:template id="searchfield.profname">
-    <xed:bind xpath="condition[@field='profkat.profname'][@operator='like']">
+    <xed:bind xpath="condition[@field='profkat.name'][@operator='like']">
       <div class="form-group" style="margin-bottom:6px">
         <label class="col-sm-3 control-label input-sm" for="profname">
           <xed:output i18n="Editor.Search.Label.ProfNames" />
