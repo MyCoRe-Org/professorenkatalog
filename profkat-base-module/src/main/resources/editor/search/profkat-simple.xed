@@ -2,6 +2,7 @@
 <!-- method='post' to avoid charset problems !!! -->
 
 <xed:form xmlns:xed="http://www.mycore.de/xeditor" role="form" class="form-horizontal" accept-charset="UTF-8" method="post">
+	<input type="submit" xed:target="servlet" xed:href="/search/profkat-simple" style="position:absolute; left:-4000px; top:1px; " />
 	<xed:bind xpath="query">
 	<xed:bind xpath="@mask" default="profkat-simple" />
     <xed:bind xpath="sortBy/field[@name='profkat.idx_profname.headline']/@order" default="ascending" />
