@@ -239,8 +239,12 @@
   
     <field name="profkat.proftime_from"      type="string"  multiValued="false" stored="false" />
     <field name="profkat.proftime_to"        type="string"  multiValued="false" stored="false" />
+    <field name="profkat.proftime_ivon"      type="int"     multiValued="false" stored="false" />
+    <field name="profkat.proftime_ibis"      type="int"     multiValued="false" stored="false" />
     <field name="profkat.lifetime_from"      type="string"  multiValued="false" stored="false" />
     <field name="profkat.lifetime_to"        type="string"  multiValued="false" stored="false" />
+    
+    
  </fields>
 
 
