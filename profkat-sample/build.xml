@@ -5,7 +5,7 @@
 <!-- =================================================================== -->
 <project name="Profkat Sample"  basedir=".">
 	<property name="APP_NAME" value="profkat-sample" />
-	<property name="SOLR_DEFAULT_CONFIG_URL" value="http://artifactory.mycore.de/libs-snapshots-local/org/mycore/solr/solr-home/4.10.4-SNAPSHOT/solr-home-4.10.4-20150727.132634-1.zip" />
+	<property name="SOLR_DEFAULT_CONFIG_URL" value="http://artifactory.mycore.de/libs-releases/org/mycore/solr/solr-home/4.10.4/solr-home-4.10.4.zip" />
 	<property name="SOLR_CORE_ID" value="${APP_NAME}" />
 	<condition property="SOLR_HOME_DIR" value="/opt/solr" else="c:\workspaces\SOLR">
 		<os family="unix" />
