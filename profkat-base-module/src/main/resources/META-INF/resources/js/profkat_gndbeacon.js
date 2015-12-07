@@ -20,7 +20,7 @@
 								$.get(url, function(data){
 									var data = data.substr(data.search("<html>"));
 									//data = data.replace('<html>', '<html xmlns="http://www.w3.org/1999/xhtml">');
-									var doc = $.parseXML(data);
+									var doc = $.parseHTML(data);
 									$(doc).find("li").each(function(pos){
 										var li=$(this);
 										var test = $(li).attr("id");
