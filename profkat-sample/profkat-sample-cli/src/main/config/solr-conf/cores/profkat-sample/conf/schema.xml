@@ -118,7 +118,7 @@
     <field name="category.top" type="string" multiValued="true"/>
 
     <field name="created" type="date" />
-    <field name="modified" type="date" />
+    <field name="modified" type="date" multiValued="false" stored="true"/>
     <field name="createdby" type="string" />
     <field name="modifiedby" type="string" />
     <field name="state" type="string" />
@@ -239,8 +239,8 @@
   
     <field name="profkat.proftime_from"      type="string"  multiValued="false" stored="false" />
     <field name="profkat.proftime_to"        type="string"  multiValued="false" stored="false" />
-    <field name="profkat.proftime_ivon"      type="int"     multiValued="false" stored="false" />
-    <field name="profkat.proftime_ibis"      type="int"     multiValued="false" stored="false" />
+    <field name="profkat.proftime_ivon"      type="int"     multiValued="false" stored="true" />
+    <field name="profkat.proftime_ibis"      type="int"     multiValued="false" stored="true" />
     <field name="profkat.lifetime_from"      type="string"  multiValued="false" stored="false" />
     <field name="profkat.lifetime_to"        type="string"  multiValued="false" stored="false" />
     
