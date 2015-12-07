@@ -35,8 +35,13 @@
   <xsl:template match="metadata">
     <xsl:apply-imports/>
     <xsl:variable name="headline" select="concat(box.surname/surname,', ', box.firstname/firstname[1])" />
+    <xsl:variable name="affix">
+      <xsl:if test="box.nameaffix/nameaffix">
+        <xsl:value-of select="concat(' (',box.nameaffix/nameaffix,')')" />
+      </xsl:if>
+    </xsl:variable>
     <field name="profkat.idx_profname.headline">
-    	<xsl:value-of select="$headline" />
+    	<xsl:value-of select="normalize-space(concat($headline,$affix))" />
     </field>
     <field name="profkat.idx_profname.facet">
     	<!--  There is no replace in XSLT 1.0 !!! -->
@@ -171,11 +176,14 @@
     </xsl:for-each>
 
 <xsl:for-each select="box.period/period[1]">
-      <field name="profkat.proftime_from"><xsl:value-of select="substring(./von,1,10)" /></field> 
+      <field name="profkat.proftime_from"><xsl:value-of select="substring(./von,1,10)" /></field>
+      <field name="profkat.proftime_ivon"><xsl:value-of select="./ivon" /></field> 
     </xsl:for-each>
 
 <xsl:for-each select="box.period/period[last()]">
-      <field name="profkat.proftime_to"><xsl:value-of select="substring(./bis,1,10)" /></field> 
+      <field name="profkat.proftime_to"><xsl:value-of select="substring(./bis,1,10)" /></field>
+      <field name="profkat.proftime_ibis"><xsl:value-of select="./ibis" /></field>
+       
     </xsl:for-each>
 
 <xsl:for-each select="box.birth/birth">
