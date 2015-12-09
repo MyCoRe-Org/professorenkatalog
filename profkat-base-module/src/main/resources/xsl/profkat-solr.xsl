@@ -175,28 +175,22 @@
       <field name="profkat.profstate"><xsl:value-of select="text()" /></field> 
     </xsl:for-each>
 
-<xsl:for-each select="box.period/period[1]">
-      <field name="profkat.proftime_from"><xsl:value-of select="substring(./von,1,10)" /></field>
+  <xsl:for-each select="box.period/period[1]">
+      <field name="profkat.proftime_from"><xsl:value-of select="substring(./von,1,4)" /></field>
       <field name="profkat.proftime_ivon"><xsl:value-of select="./ivon" /></field> 
     </xsl:for-each>
 
-<xsl:for-each select="box.period/period[last()]">
-      <field name="profkat.proftime_to"><xsl:value-of select="substring(./bis,1,10)" /></field>
+  <xsl:for-each select="box.period/period[last()]">
+      <field name="profkat.proftime_to"><xsl:value-of select="substring(./bis,1,4)" /></field>
       <field name="profkat.proftime_ibis"><xsl:value-of select="./ibis" /></field>
-       
-    </xsl:for-each>
+  </xsl:for-each>
 
-<xsl:for-each select="box.birth/birth">
-      <field name="profkat.lifetime_from"><xsl:value-of select="substring(./von,1,10)" /></field> 
-    </xsl:for-each>
+  <xsl:for-each select="box.birth/birth">
+      <field name="profkat.lifetime_from"><xsl:value-of select="substring(./von,1,4)" /></field> 
+  </xsl:for-each>
 
-<xsl:for-each select="box.death/death">
-      <field name="profkat.lifetime_to"><xsl:value-of select="substring(./bis,1,10)" /></field> 
-    </xsl:for-each>
-    
-    
-             
-               
-       
+  <xsl:for-each select="box.death/death">
+      <field name="profkat.lifetime_to"><xsl:value-of select="substring(./bis,1,4)" /></field> 
+  </xsl:for-each>
   </xsl:template>
 </xsl:stylesheet>
