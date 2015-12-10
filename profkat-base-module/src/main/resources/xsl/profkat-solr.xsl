@@ -92,7 +92,7 @@
     </xsl:for-each> 
 
                <xsl:for-each select="box.institute/institute">
-      <field name="profkat.institute"><xsl:value-of select="normalize-space(text())" /></field> 
+      <field name="profkat.institute"><xsl:value-of select="concat(normalize-space(./time),' ',normalize-space(./text))" /></field> 
     </xsl:for-each>
     
               <xsl:for-each select="box.fieldofstudy/fieldofstudy">
