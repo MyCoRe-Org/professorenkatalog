@@ -953,7 +953,9 @@
                       <option value=""><xed:output i18n="Editor.Common.Empty" /></option>
                       <option value="studies"><xed:output i18n="OMD.CPR.academicdegree.studies" /></option>
                       <option value="promotion"><xed:output i18n="OMD.CPR.academicdegree.promotion" /></option>
-                      <option value="promotion_bis1800"><xed:output i18n="OMD.CPR.academicdegree.promotion_bis1800" /></option>
+                      <xed:if test="starts-with(/mycoreobject/@ID, 'cpr_')">
+                        <option value="promotion_bis1800"><xed:output i18n="OMD.CPR.academicdegree.promotion_bis1800" /></option>
+                      </xed:if>
                       <option value="habilitation"><xed:output i18n="OMD.CPR.academicdegree.habilitation" /></option>
                       <option value="habilitation_bis1934"><xed:output i18n="OMD.CPR.academicdegree.habilitation_bis1934" /></option>
                       <option value="other"><xed:output i18n="OMD.CPR.academicdegree.other" /></option>
