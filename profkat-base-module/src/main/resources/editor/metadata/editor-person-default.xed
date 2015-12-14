@@ -241,7 +241,6 @@
                   </div>
                 </xed:bind>
                 </div>
-                
                 <xed:bind xpath="text[2]">
                   <div class="row" style="margin-bottom:6px">
                   <xed:bind xpath="@xml:lang">
@@ -411,6 +410,13 @@
                     </select>
                   </div>
                 </xed:bind>
+                <xed:if test="starts-with(/mycoreobject/@ID, 'cpb_')">
+                  <xed:bind xpath="event">
+                	<div class="col-sm-12">
+                  	  <input id="faculty_event" type="text" class="form-control input-sm"   />
+               		</div>
+                  </xed:bin>
+                </xed:if>
               </div>
             </div>
             <div class="col-sm-2">
@@ -957,7 +963,9 @@
                         <option value="promotion_bis1800"><xed:output i18n="OMD.CPR.academicdegree.promotion_bis1800" /></option>
                       </xed:if>
                       <option value="habilitation"><xed:output i18n="OMD.CPR.academicdegree.habilitation" /></option>
-                      <option value="habilitation_bis1934"><xed:output i18n="OMD.CPR.academicdegree.habilitation_bis1934" /></option>
+                      <xed:if test="starts-with(/mycoreobject/@ID, 'cpr_') or starts-with(/mycoreobject/@ID, 'cphh_')">
+                     	 <option value="habilitation_bis1934"><xed:output i18n="OMD.CPR.academicdegree.habilitation_bis1934" /></option>
+                      </xed:if>
                       <option value="other"><xed:output i18n="OMD.CPR.academicdegree.other" /></option>
                     </select>
                   </div>
@@ -1050,13 +1058,24 @@
                 <xed:bind xpath="@type">
                   <div class="col-sm-6">
                     <select id="adminfunction_type" class="form-control input-sm">
-                      <option value=""><xed:output i18n="Editor.Common.Empty" /></option>
+                     <option value=""><xed:output i18n="Editor.Common.Empty" /></option>
+                     <xed:if test="starts-with(/mycoreobject/@ID, 'cpr_') or starts-with(/mycoreobject/@ID, 'cphh_')">
                       <option value="rektor"><xed:output i18n="OMD.CPR.adminfunction.rektor" /></option>
                       <option value="dekan"><xed:output i18n="OMD.CPR.adminfunction.dekan" /></option>
                       <option value="direktor"><xed:output i18n="OMD.CPR.adminfunction.direktor" /></option>
                       <option value="prorektor"><xed:output i18n="OMD.CPR.adminfunction.prorektor" /></option>
                       <option value="prodekan"><xed:output i18n="OMD.CPR.adminfunction.prodekan" /></option>
                       <option value="stellvdirektor"><xed:output i18n="OMD.CPR.adminfunction.stellvdirektor" /></option>
+                     </xed:if>
+                     <xed:if test="starts-with(/mycoreobject/@ID, 'cpb_')">
+                	 	<option value="direktor"><xed:output i18n="OMD.CPB.adminfunction.direktor" /></option>
+                        <option value="rektor"><xed:output i18n="OMD.CPB.adminfunction.rektor" /></option>
+                        <option value="praesident"><xed:output i18n="OMD.CPB.adminfunction.praesident" /></option>
+                        <option value="direktor_brh"><xed:output i18n="OMD.CPB.adminfunction.direktor_brh" /></option>
+                        <option value="direktor_ph"><xed:output i18n="OMD.CPB.adminfunction.direktor_ph" /></option>
+                        <option value="rektor_ph"><xed:output i18n="OMD.CPB.adminfunction.rektor_ph" /></option>
+                        <option value="dekan_ph"><xed:output i18n="OMD.CPB.adminfunction.dekan_ph" /></option>  
+                      </xed:if>
                       <option value="other"><xed:output i18n="OMD.CPR.adminfunction.other" /></option>
                     </select>
                   </div>
