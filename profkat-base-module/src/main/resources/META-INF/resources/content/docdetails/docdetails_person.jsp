@@ -131,7 +131,21 @@
    	 <c:if test="${(tab eq 'data') or (param.print eq 'true')}">
  		<mcrdd:row select="/mycoreobject/metadata/box.faculty/faculty" labelkey="OMD.CPR.faculties" showInfo="true" colWidths="100">
 	  		<mcrdd:item select="./text" />              
-    		<mcrdd:classificationitem select="./classification" />  
+    		<%--
+    		<mcrdd:classificationitem select="./classification" />
+    		<mcrdd:item select="./event" />
+    		--%>
+    		<mcrdd:outputitem select="./classification" var="out">
+    			<c:set var="classid"><x:out select="$out/@classid" /></c:set>
+    			<c:set var="categid"><x:out select="$out/@categid" /></c:set>
+    		 	<c:set var="classLabel"><mcr:displayClassificationCategory categid="${categid}" classid="${classid}" lang="de"/></c:set>
+    			<c:out value="${classLabel}" />
+    			<x:if select="$out/../event">
+    				<br />
+    				<x:out select="$out/../event" />
+    			</x:if>
+    		</mcrdd:outputitem>
+    		  
     	</mcrdd:row>
     
     	<mcrdd:row select="/mycoreobject/metadata/box.institute/institute[not(./time)]" labelkey="OMD.CPR.institutes" showInfo="true" >
