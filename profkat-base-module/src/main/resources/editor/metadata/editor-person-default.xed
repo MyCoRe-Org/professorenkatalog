@@ -1074,7 +1074,7 @@
                         <option value="rektor"><xed:output i18n="OMD.CPB.adminfunction.rektor" /></option>
                         <option value="prorektor"><xed:output i18n="OMD.CPB.adminfunction.prorektor" /></option>
                         <option value="praesident"><xed:output i18n="OMD.CPB.adminfunction.praesident" /></option>
-                        <option value="praesident"><xed:output i18n="OMD.CPB.adminfunction.vizepraesident"></option>
+                        <option value="vizepraesident"><xed:output i18n="OMD.CPB.adminfunction.vizepraesident" /></option>
                         <option value="direktor_brh"><xed:output i18n="OMD.CPB.adminfunction.direktor_brh" /></option>
                         <option value="direktor_ph"><xed:output i18n="OMD.CPB.adminfunction.direktor_ph" /></option>
                         <option value="rektor_ph"><xed:output i18n="OMD.CPB.adminfunction.rektor_ph" /></option>
