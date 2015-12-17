@@ -91,9 +91,9 @@
    						<c:set var="doctitle"><fmt:message key="OMD.CPR.hint.predec"/></c:set>
    						<c:if test="${not empty linked}">
    							<c:set var="doctitle">${doctitle}:&#160;</c:set>
-   							<c:set var="doctitle">${doctitle}<x:out select="$linked/metadata/box.surname/surname" />,&#160;</c:set>
-    						<c:set var="doctitle">${doctitle}<x:out select="$linked/metadata/box.firstname/firstname" /></c:set>
-							<c:set var="affix"><x:out select="$linked/metadata/box.nameaffix/nameaffix" /></c:set>
+   							<c:set var="doctitle">${doctitle}<x:out select="$linked/mycoreobject/metadata/box.surname/surname" />,&#160;</c:set>
+    						<c:set var="doctitle">${doctitle}<x:out select="$linked/mycoreobject/metadata/box.firstname/firstname" /></c:set>
+							<c:set var="affix"><x:out select="$linked/mycoreobject/metadata/box.nameaffix/nameaffix" /></c:set>
 							<c:if test="${fn:length(affix)>2}"><c:set var="doctitle">${doctitle}&#160;(<c:out value="${affix}" />)</c:set></c:if>
 				   		</c:if>
 				   		<a href="${WebApplicationBaseURL}resolve/id/${currentID}" style="color:grey;margin-left:6px">
@@ -111,9 +111,9 @@
 	  					<c:set var="doctitle"><fmt:message key="OMD.CPR.hint.succ"/></c:set>
    						<c:if test="${not empty linked}">
    							<c:set var="doctitle">${doctitle}:&#160;</c:set>
-   							<c:set var="doctitle">${doctitle}<x:out select="$linked/metadata/box.surname/surname" />,&#160;</c:set>
-         					<c:set var="doctitle">${doctitle}<x:out select="$linked/metadata/box.firstname/firstname" /></c:set>
-							<c:set var="affix"><x:out select="$linked/metadata/box.nameaffix/nameaffix" /></c:set>
+   							<c:set var="doctitle">${doctitle}<x:out select="$linked/mycoreobject/metadata/box.surname/surname" />,&#160;</c:set>
+         					<c:set var="doctitle">${doctitle}<x:out select="$linked/mycoreobject/metadata/box.firstname/firstname" /></c:set>
+							<c:set var="affix"><x:out select="$linked/metadata/mycoreobject/box.nameaffix/nameaffix" /></c:set>
 							<c:if test="${fn:length(affix)>2}"><c:set var="doctitle">${doctitle}&#160;(<c:out value="${affix}" />)</c:set></c:if>
 				   		</c:if>
 				   		<a href="${WebApplicationBaseURL}resolve/id/${currentID}" style="color:grey;margin-left:6px">
