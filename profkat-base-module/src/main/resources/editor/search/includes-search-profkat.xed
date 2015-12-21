@@ -40,28 +40,28 @@
           <xed:bind xpath="@field">
             <select id="choose_field" class="form-control">
               <option value="allMeta"><xed:output i18n="Editor.Search.metadata" /></option>
-              <option value="profkat.name"><xed:output i18n="OMD.CPR.name" /></option>
-              <option value="profkat.institute"><xed:output i18n="OMD.CPR.institutes" /></option>
-              <option value="profkat.area"><xed:output i18n="OMD.CPR.fieldofstudies" /></option>
-              <option value="profkat.proftype"><xed:output i18n="OMD.CPR.subjects" /></option>
-              <option value="profkat.birthplace"><xed:output i18n="OMD.CPR.birthplace" /></option>
-              <option value="profkat.deathplace"><xed:output i18n="OMD.CPR.deathplace" /></option>
-              <option value="profkat.confession"><xed:output i18n="OMD.CPR.confessions" /></option>
-              <option value="profkat.parentprofession"><xed:output  i18n="OMD.CPR.parentprofession" /></option>
-              <option value="profkat.biography"><xed:output i18n="OMD.CPR.biographics" /></option>
-              <option value="profkat.academicdegree"><xed:output i18n="OMD.CPR.academicdegrees" /></option>
-              <option value="profkat.acad_degree_study"><xed:output i18n="OMD.CPR.academicdegree.studies" /></option>
-              <option value="profkat.acad_degree_promo"><xed:output i18n="OMD.CPR.academicdegree.promotion" /></option>
-              <option value="profkat.acad_degree_habil"><xed:output i18n="OMD.CPR.academicdegree.habilitation" /> </option>             
-              <option value="profkat.otherprofessorship"><xed:output i18n="OMD.CPR.otherprofessorships" /></option>
-              <option value="profkat.adminfunction"><xed:output i18n="OMD.CPR.adminfunctions" /></option>
-              <option value="profkat.otherfunction"><xed:output i18n="OMD.CPR.otherfunctions" /></option>
-              <option value="profkat.membership"><xed:output i18n="OMD.CPR.memberships" /></option>
-              <option value="profkat.award"><xed:output i18n="OMD.CPR.awards" /></option>
-              <option value="profkat.mainpublication"><xed:output i18n="OMD.CPR.mainpublications" /></option>
-              <option value="profkat.source"><xed:output i18n="OMD.CPR.sources" /></option>
-              <option value="profkat.reference"><xed:output i18n="OMD.CPR.references_short" /></option>
-              <option value="derivatelabel"><xed:output i18n="OMD.CPR.derivatelabel" /></option>   
+              <option value="profkat.name"><xed:output i18n="OMD.profkat.name" /></option>
+              <option value="profkat.institute"><xed:output i18n="OMD.profkat.institutes" /></option>
+              <option value="profkat.area"><xed:output i18n="OMD.profkat.fieldofstudies" /></option>
+              <option value="profkat.proftype"><xed:output i18n="OMD.profkat.subjects" /></option>
+              <option value="profkat.birthplace"><xed:output i18n="OMD.profkat.birthplace" /></option>
+              <option value="profkat.deathplace"><xed:output i18n="OMD.profkat.deathplace" /></option>
+              <option value="profkat.confession"><xed:output i18n="OMD.profkat.confessions" /></option>
+              <option value="profkat.parentprofession"><xed:output  i18n="OMD.profkat.parentprofession" /></option>
+              <option value="profkat.biography"><xed:output i18n="OMD.profkat.biographics" /></option>
+              <option value="profkat.academicdegree"><xed:output i18n="OMD.profkat.academicdegrees" /></option>
+              <option value="profkat.acad_degree_study"><xed:output i18n="OMD.profkat.academicdegree.studies" /></option>
+              <option value="profkat.acad_degree_promo"><xed:output i18n="OMD.profkat.academicdegree.promotion" /></option>
+              <option value="profkat.acad_degree_habil"><xed:output i18n="OMD.profkat.academicdegree.habilitation" /> </option>             
+              <option value="profkat.otherprofessorship"><xed:output i18n="OMD.profkat.otherprofessorships" /></option>
+              <option value="profkat.adminfunction"><xed:output i18n="OMD.profkat.adminfunctions" /></option>
+              <option value="profkat.otherfunction"><xed:output i18n="OMD.profkat.otherfunctions" /></option>
+              <option value="profkat.membership"><xed:output i18n="OMD.profkat.memberships" /></option>
+              <option value="profkat.award"><xed:output i18n="OMD.profkat.awards" /></option>
+              <option value="profkat.mainpublication"><xed:output i18n="OMD.profkat.mainpublications" /></option>
+              <option value="profkat.source"><xed:output i18n="OMD.profkat.sources" /></option>
+              <option value="profkat.reference"><xed:output i18n="OMD.profkat.references_short" /></option>
+              <option value="derivatelabel"><xed:output i18n="OMD.profkat.derivatelabel" /></option>   
             </select>
           </xed:bind>
         </div>
@@ -200,11 +200,7 @@
               <xed:bind xpath="@value">
                 <select id="profstate" class="form-control">
                   <option value=""><xed:output i18n="Editor.Search.List.all" /></option>
-                  <option value="inprogress"><xed:output i18n="OMD.CPR.states.inprogress" /></option>
-                  <option value="long"><xed:output i18n="OMD.CPR.states.long" /></option>
-                  <option value="short"><xed:output i18n="OMD.CPR.states.short" /></option>
-                  <option value="document"><xed:output i18n="OMD.CPR.states.document" /></option>
-                  <option value="other"><xed:output i18n="OMD.CPR.states.other" /></option>
+                  <xed:include uri="props2options:OMD.profkat.state" />
                 </select>
               </xed:bind>
             </div>

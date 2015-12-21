@@ -17,7 +17,7 @@
 	<mcr:receiveMcrObjAsJdom mcrid="${param.id}" varDom="mcrobj" fromWF="${param.fromWF}"/>
 	<c:if test="${not(param.print eq 'true')}">
 		<div  class="tabbar ur-embedded">
-			<c:set var="msgKeyStatus">OMD.CPR.states.<x:out select="$mcrobj/mycoreobject/metadata/box.status/status"/></c:set>
+			<c:set var="msgKeyStatus">OMD.profkat.state.<x:out select="$mcrobj/mycoreobject/metadata/box.status/status"/></c:set>
 			<div class="pull-right" style="font-style: italic; color: #666666; padding-right:16px; padding-top:11px;"><fmt:message key="${msgKeyStatus}" /></div>
 			<ul id="tabs_on_page" class="nav nav-tabs">
 				<c:set var="tabtokens" value="data|article|documents" />
@@ -58,7 +58,7 @@
         <mcrdd:item select="/mycoreobject/metadata/box.firstname/firstname" var="first" />
         <mcrdd:item select="/mycoreobject/metadata/box.nameaffix/nameaffix" var="affix" />
         <mcrdd:item select="/mycoreobject/metadata/box.academictitle/academictitle" var="akadtitle" />
-		<mcrdd:item select="/mycoreobject/metadata/box.state/state" labelkeyPrefix="OMD.CPR.states." var="status"/>
+		<mcrdd:item select="/mycoreobject/metadata/box.state/state" labelkeyPrefix="OMD.profkat.state." var="status"/>
 		<c:set var="doctitle">${last},&#160;${first}</c:set>
 		
         <div>
@@ -74,7 +74,7 @@
     <c:set var="proflabelkey" value="" />
     <c:set var="profshowinfo" value="false" />
     <x:if select="$mcrobj/mycoreobject/metadata/box.type/type[@categid='ro_professor']">
-    	<c:set var="proflabelkey" value="OMD.CPR.professorships" />
+    	<c:set var="proflabelkey" value="OMD.profkat.professorships" />
     	<c:set var="profshowinfo" value="true" />
     </x:if>
     
@@ -88,7 +88,7 @@
     			<c:forTokens items="${linkids}" delims=":;|" var="currentID" varStatus="status">
 					<c:if test="${fn:contains(currentID, '_person_')}">
 						<mcr:receiveMcrObjAsJdom mcrid="${currentID}" varDom="linked" fromWF="false"/>
-   						<c:set var="doctitle"><fmt:message key="OMD.CPR.hint.predec"/></c:set>
+   						<c:set var="doctitle"><fmt:message key="OMD.profkat.hint.predec"/></c:set>
    						<c:if test="${not empty linked}">
    							<c:set var="doctitle">${doctitle}:&#160;</c:set>
    							<c:set var="doctitle">${doctitle}<x:out select="$linked/mycoreobject/metadata/box.surname/surname" />,&#160;</c:set>
@@ -108,7 +108,7 @@
     			<c:forTokens items="${linkids}" delims=":;|" var="currentID" varStatus="status">
 	  				<c:if test="${fn:contains(currentID, '_person_')}">
 	  					<mcr:receiveMcrObjAsJdom mcrid="${currentID}" varDom="linked" fromWF="false"/>
-	  					<c:set var="doctitle"><fmt:message key="OMD.CPR.hint.succ"/></c:set>
+	  					<c:set var="doctitle"><fmt:message key="OMD.profkat.hint.succ"/></c:set>
    						<c:if test="${not empty linked}">
    							<c:set var="doctitle">${doctitle}:&#160;</c:set>
    							<c:set var="doctitle">${doctitle}<x:out select="$linked/mycoreobject/metadata/box.surname/surname" />,&#160;</c:set>
@@ -129,7 +129,7 @@
      <mcrdd:separator showLine="true" />
    	 
    	 <c:if test="${(tab eq 'data') or (param.print eq 'true')}">
- 		<mcrdd:row select="/mycoreobject/metadata/box.faculty/faculty" labelkey="OMD.CPR.faculties" showInfo="true" colWidths="100">
+ 		<mcrdd:row select="/mycoreobject/metadata/box.faculty/faculty" labelkey="OMD.profkat.faculties" showInfo="true" colWidths="100">
 	  		<mcrdd:item select="./text" />              
     		<%--
     		<mcrdd:classificationitem select="./classification" />
@@ -148,25 +148,25 @@
     		  
     	</mcrdd:row>
     
-    	<mcrdd:row select="/mycoreobject/metadata/box.institute/institute[not(./time)]" labelkey="OMD.CPR.institutes" showInfo="true" >
+    	<mcrdd:row select="/mycoreobject/metadata/box.institute/institute[not(./time)]" labelkey="OMD.profkat.institutes" showInfo="true" >
    			<mcrdd:item select="." />  
    		</mcrdd:row>
-   		<mcrdd:row select="/mycoreobject/metadata/box.institute/institute[./time]" labelkey="OMD.CPR.institutes" showInfo="true" colWidths="100" >
+   		<mcrdd:row select="/mycoreobject/metadata/box.institute/institute[./time]" labelkey="OMD.profkat.institutes" showInfo="true" colWidths="100" >
    			<mcrdd:item select="./time" />
    			<mcrdd:item select="./text" />
    		</mcrdd:row>
    	
-   		<mcrdd:row select="/mycoreobject/metadata/box.fieldofstudy/fieldofstudy" labelkey="OMD.CPR.fieldofstudies" showInfo="true" >
+   		<mcrdd:row select="/mycoreobject/metadata/box.fieldofstudy/fieldofstudy" labelkey="OMD.profkat.fieldofstudies" showInfo="true" >
    			<mcrdd:item select="." />  
    		</mcrdd:row>
     
-    	<mcrdd:row select="/mycoreobject/metadata/box.subjectclass/subjectclass" labelkey="OMD.CPR.subjects" showInfo="true" >
+    	<mcrdd:row select="/mycoreobject/metadata/box.subjectclass/subjectclass" labelkey="OMD.profkat.subjects" showInfo="true" >
 	  		<mcrdd:classificationitem select="." />  
     	</mcrdd:row>
     
     	<mcrdd:separator showLine="true" />
    	       
-   		<mcrdd:row select="/mycoreobject/metadata/box.email/email" labelkey="OMD.CPR.emails" showInfo="false" >
+   		<mcrdd:row select="/mycoreobject/metadata/box.email/email" labelkey="OMD.profkat.emails" showInfo="false" >
    			<mcrdd:outputitem select="." var="current">
    				<c:set var="email"><x:out select="$current/text()" /></c:set>
    				<jsp:include page="fragments/email_pk.jsp">
@@ -175,7 +175,7 @@
    			</mcrdd:outputitem>   
    		</mcrdd:row>
     
-   		<mcrdd:row select="/mycoreobject/metadata/box.homepage/homepage" labelkey="OMD.CPR.homepages" showInfo="true" >
+   		<mcrdd:row select="/mycoreobject/metadata/box.homepage/homepage" labelkey="OMD.profkat.homepages" showInfo="true" >
    			<mcrdd:outputitem select="." var="current">
    				<c:set var="href"><x:out select="string($current/@*[local-name()='href' and namespace-uri()='http://www.w3.org/1999/xlink'])" escapeXml="false" /></c:set>
    				<c:set var="title"><x:out select="string($current/@*[local-name()='title' and namespace-uri()='http://www.w3.org/1999/xlink'])" /></c:set>
@@ -187,15 +187,15 @@
    		</mcrdd:row>    
     
     	<mcrdd:separator showLine="true"/>    
-       		<mcrdd:row select="/mycoreobject/metadata/box.surname/surname[position()>1]" labelkey="OMD.CPR.surnames" showInfo="true" >
+       		<mcrdd:row select="/mycoreobject/metadata/box.surname/surname[position()>1]" labelkey="OMD.profkat.surnames" showInfo="true" >
    			<mcrdd:item select="." />  
    		</mcrdd:row> 
 
-   		<mcrdd:row select="/mycoreobject/metadata/box.firstname/firstname[position()>1]" labelkey="OMD.CPR.firstnames" showInfo="false" >
+   		<mcrdd:row select="/mycoreobject/metadata/box.firstname/firstname[position()>1]" labelkey="OMD.profkat.firstnames" showInfo="false" >
    			<mcrdd:item select="." />  
    		</mcrdd:row> 
     
-		<mcrdd:row select="/mycoreobject/metadata/box.birth/birth|/mycoreobject/metadata/box.death/death" labelkey="OMD.CPR.lifetimes" showInfo="true" colWidths="100">
+		<mcrdd:row select="/mycoreobject/metadata/box.birth/birth|/mycoreobject/metadata/box.death/death" labelkey="OMD.profkat.lifetimes" showInfo="true" colWidths="100">
 		  	<mcrdd:outputitem select="." var="data">
    				<x:set var="date" select="string($data/text)" />
 				<x:set var="place" select="string($data/event)" />
@@ -219,12 +219,12 @@
    			</mcrdd:outputitem>   
     	</mcrdd:row>
    		
-   		<mcrdd:row select="/mycoreobject/metadata/box.confession/confession" labelkey="OMD.CPR.confessions" showInfo="false" >
+   		<mcrdd:row select="/mycoreobject/metadata/box.confession/confession" labelkey="OMD.profkat.confessions" showInfo="false" >
    			<mcrdd:item select="." />  
    		</mcrdd:row> 
    	
-   		<mcrdd:row select="/mycoreobject/metadata/box.family/family" labelkey="OMD.CPR.families" showInfo="true" >
-			<mcrdd:item select="./@type" labelkeyPrefix="OMD.CPR.family.display."/> 
+   		<mcrdd:row select="/mycoreobject/metadata/box.family/family" labelkey="OMD.profkat.families" showInfo="true" >
+			<mcrdd:item select="./@type" labelkeyPrefix="OMD.profkat.family."/> 
 			<mcrdd:outputitem select="." var="current">
  	  			<c:set var="name"><x:out select="$current/name" escapeXml="false" /></c:set>
 		 		<c:set var="profession"><x:out select="$current/profession" escapeXml="false"/></c:set>
@@ -242,7 +242,7 @@
 						</jsp:attribute>
 						<jsp:attribute name="target">_blank</jsp:attribute>
 						<jsp:body>
-					   		<nobr> (<fmt:message key="OMD.CPR.link.external" />
+					   		<nobr> (<fmt:message key="OMD.profkat.link.external" />
 			    			   	<img src="${WebApplicationBaseURL}images/link_extern.png"
 							alt="Link" />)</nobr>
 						</jsp:body>	
@@ -252,57 +252,57 @@
    		</mcrdd:row> 
    	
    		<mcrdd:separator showLine="true" />	   
-      	<mcrdd:row select="/mycoreobject/metadata/box.biographic/biographic" labelkey="OMD.CPR.biographics" showInfo="true" colWidths="100">
+      	<mcrdd:row select="/mycoreobject/metadata/box.biographic/biographic" labelkey="OMD.profkat.biographics" showInfo="true" colWidths="100">
 	  		<mcrdd:item select="./time" />              
     		<mcrdd:item select="./text" escapeXml="false" />  
     	</mcrdd:row>
 
-  		<mcrdd:row select="/mycoreobject/metadata/box.academicdegree/academicdegree" labelkey="OMD.CPR.academicdegrees" showInfo="true" colWidths="100">
-    		<mcrdd:item select="./@type" labelkeyPrefix="OMD.CPR.academicdegree.display."/>
+  		<mcrdd:row select="/mycoreobject/metadata/box.academicdegree/academicdegree" labelkey="OMD.profkat.academicdegrees" showInfo="true" colWidths="100">
+    		<mcrdd:item select="./@type" labelkeyPrefix="OMD.profkat.academicdegree.display."/>
     		<mcrdd:item select="./time" />              
  			<mcrdd:outputitem select="." var="xml">
    				<x:out select="$xml/text" />
    				<x:if select="$xml/dissertation">
-   					<br /><i><fmt:message key="OMD.CPR.dissertationTitle"/>:&#160;</i><x:out select="$xml/dissertation" escapeXml="false"/>
+   					<br /><i><fmt:message key="OMD.profkat.dissertationTitle"/>:&#160;</i><x:out select="$xml/dissertation" escapeXml="false"/>
    				</x:if>
    			</mcrdd:outputitem> 
     	</mcrdd:row>
 		
 		<mcrdd:separator showLine="true" />	
    	
-   		<mcrdd:row select="/mycoreobject/metadata/box.adminfunction/adminfunction" labelkey="OMD.CPR.adminfunctions" showInfo="true" colWidths="100">
+   		<mcrdd:row select="/mycoreobject/metadata/box.adminfunction/adminfunction" labelkey="OMD.profkat.adminfunctions" showInfo="true" colWidths="100">
 			<mcrdd:item select="./time" />              
     		<mcrdd:item select="./text" escapeXml="false" />  
     	</mcrdd:row>
 
-   		<mcrdd:row select="/mycoreobject/metadata/box.otherfunction/otherfunction" labelkey="OMD.CPR.otherfunctions" showInfo="true" colWidths="100">
+   		<mcrdd:row select="/mycoreobject/metadata/box.otherfunction/otherfunction" labelkey="OMD.profkat.otherfunctions" showInfo="true" colWidths="100">
 		  	<mcrdd:item select="./time" />              
     		<mcrdd:item select="./text" escapeXml="false" />  
     	</mcrdd:row>
     
-    	<mcrdd:row select="/mycoreobject/metadata/box.membership/membership[not(@type='party')]" labelkey="OMD.CPR.memberships" showInfo="true" colWidths="100">
+    	<mcrdd:row select="/mycoreobject/metadata/box.membership/membership[not(@type='party')]" labelkey="OMD.profkat.scientific_memberships" showInfo="true" colWidths="100">
 		  	<mcrdd:item select="./time" />              
     		<mcrdd:item select="./text" escapeXml="false" />  
     	</mcrdd:row>
 
-   		<mcrdd:row select="/mycoreobject/metadata/box.award/award" labelkey="OMD.CPR.awards" showInfo="true" colWidths="100">
+   		<mcrdd:row select="/mycoreobject/metadata/box.award/award" labelkey="OMD.profkat.awards" showInfo="true" colWidths="100">
 		  	<mcrdd:item select="./time" />              
     		<mcrdd:item select="./text" escapeXml="false" />  
     	</mcrdd:row>         
 
-   		<mcrdd:row select="/mycoreobject/metadata/box.otherinfo/otherinfo" labelkey="OMD.CPR.otherinfos" showInfo="true" >
+   		<mcrdd:row select="/mycoreobject/metadata/box.otherinfo/otherinfo" labelkey="OMD.profkat.otherinfos" showInfo="true" >
 		  	<mcrdd:item select="." escapeXml="false" />  
     	</mcrdd:row>         
 
 		<mcrdd:separator showLine="true" />
 
-   		<mcrdd:row select="/mycoreobject/metadata/box.mainpublication/mainpublication" labelkey="OMD.CPR.mainpublications" showInfo="true" >
+   		<mcrdd:row select="/mycoreobject/metadata/box.mainpublication/mainpublication" labelkey="OMD.profkat.mainpublications" showInfo="true" >
 		  	<mcrdd:item select="." escapeXml="false"/>  
     	</mcrdd:row>         
         
           
    		<mcrdd:row select="/mycoreobject/metadata/box.publicationslink/publicationslink" 
-   		       labelkey="OMD.CPR.bibliographicrefs" showInfo="true" >
+   		       labelkey="OMD.profkat.bibliographicrefs" showInfo="true" >
    			<mcrdd:outputitem select="." var="current">
    		   		<c:set var="href"><x:out select="string($current/@*[local-name()='href' and namespace-uri()='http://www.w3.org/1999/xlink'])" escapeXml="false"/></c:set>
    				<c:set var="title"><x:out select="string($current/@*[local-name()='title' and namespace-uri()='http://www.w3.org/1999/xlink'])" /></c:set>
@@ -315,7 +315,7 @@
  		
   		<mcrdd:separator showLine="true" />	
 
-   		<mcrdd:row select="/mycoreobject/metadata/box.source/source" labelkey="OMD.CPR.sources" showInfo="true" >
+   		<mcrdd:row select="/mycoreobject/metadata/box.source/source" labelkey="OMD.profkat.sources" showInfo="true" >
    			<mcrdd:outputitem select="." var="current">
    				<c:set var="href"><x:out select="string($current/@*[local-name()='href' and namespace-uri()='http://www.w3.org/1999/xlink'])" escapeXml="false"/></c:set>
    				<c:set var="title"><x:out select="string($current/@*[local-name()='title' and namespace-uri()='http://www.w3.org/1999/xlink'])" /></c:set>
@@ -327,7 +327,7 @@
    		</mcrdd:row>  
 
 		<mcrdd:row select="/mycoreobject/metadata/box.complexref/complexref|/mycoreobject/metadata/box.reference/reference" 
-   		           labelkey="OMD.CPR.references" showInfo="true" >   
+   		           labelkey="OMD.profkat.references" showInfo="true" >   
    			<mcrdd:outputitem select="." var="current">
    		   		<x:set var="linkData" select="$current" scope="session" />
    		   		<x:set var="doc" select="$doc" scope="session" />
@@ -346,11 +346,11 @@
    			</mcrdd:outputitem> 
    		</mcrdd:row> 
    		
-   		<mcrdd:row select="/mycoreobject/metadata/box.identifier/identifier[@type='gnd']" labelkey="OMD.CPR.onlineres" showInfo="true" >
+   		<mcrdd:row select="/mycoreobject/metadata/box.identifier/identifier[@type='gnd']" labelkey="OMD.profkat.onlineres" showInfo="true" >
    			<mcrdd:item select="/mycoreobject/metadata/box.identifier/identifier[@type='gnd']" var="pnd" />
    			<x:if select="string($pnd)='xxx'">
    				<mcrdd:outputitem select="." var="x">
-   					<fmt:message key="OMD.CPR.identifiers.nognd" />
+   					<fmt:message key="OMD.profkat.identifiers.nognd" />
    				</mcrdd:outputitem>
    			</x:if>
    			<x:if select="string($pnd)!='xxx'">
@@ -372,7 +372,7 @@
 		
 					<c:url var="url" value="${WebApplicationBaseURL}gnd/${pndString}" />
 					<p>
-						<fmt:message key="OMD.PROFKAT.quoting.gnd">
+						<fmt:message key="OMD.profkat.quoting.gnd">
       						<fmt:param>${url}</fmt:param>
       					</fmt:message>
       				</p>   				
@@ -382,20 +382,20 @@
 	</c:if> 	
   	
 	<c:if test="${(tab eq 'article') or (param.print eq 'true')}">
-  		<mcrdd:row select="/mycoreobject/structure/derobjects/derobject[@xlink:title='display_biography']" labelkey="OMD.CPR.documents" showInfo="true" >
+  		<mcrdd:row select="/mycoreobject/structure/derobjects/derobject[@xlink:title='display_biography']" labelkey="OMD.profkat.documents" showInfo="true" >
   			<mcrdd:derivatecontent select="." width="100%" encoding="UTF-8" />
   		</mcrdd:row>	
 	</c:if>
 
 	<c:if test="${(tab eq 'documents') or (param.print eq 'true')}">
-		<mcrdd:row select="/mycoreobject/structure/derobjects/derobject" labelkey="OMD.CPR.derobjects" showInfo="true" >
+		<mcrdd:row select="/mycoreobject/structure/derobjects/derobject" labelkey="OMD.profkat.derobjects" showInfo="true" >
 			<mcrdd:derivatelist select="." showsize="true" />
 	  	</mcrdd:row>
 	</c:if>	
   	
   	<mcrdd:separator showLine="true" />
     
-    <mcrdd:row select="/mycoreobject" labelkey="OMD.CPR.created_changed" showInfo="true" >
+    <mcrdd:row select="/mycoreobject" labelkey="OMD.profkat.created_changed" showInfo="true" >
    		<%-- 06.10.2006, editorCP  /  17.06.2009, editorCP --%>
    		<mcrdd:item select="./service/servdates/servdate[@type='createdate']" datePattern ="dd.MM.yyyy" var="createdate"/>
    		<mcrdd:item select="./service/servdates/servdate[@type='modifydate']" datePattern ="dd.MM.yyyy" var="modifydate" />
@@ -406,19 +406,19 @@
    		</mcrdd:outputitem>  
    	</mcrdd:row>
    	
-   	<mcrdd:row select="/mycoreobject" labelkey="OMD.CPR.quoting" showInfo="true" >
+   	<mcrdd:row select="/mycoreobject" labelkey="OMD.profkat.quoting" showInfo="true" >
    		<mcrdd:item select="/mycoreobject/metadata/box.surname/surname" var="last"/>
    		<mcrdd:item select="/mycoreobject/metadata/box.firstname/firstname" var="first" />
    		<mcrdd:item select="/mycoreobject/metadata/box.identifier/identifier[@type='pnd']" var="pnd"/>
    		<jsp:useBean id="now" class="java.util.Date" scope="page" />
    		<mcrdd:outputitem select="./@ID" var="current">
-   			<%-- OMD.CPR.quoting.text=Eintrag von &quot;{0}&quot; im Rostocker Professorenkatalog, URL: <a href="{1}">{1}</a> (abgerufen am {2})  --%> 
+   			<%-- OMD.profkat.quoting.text=Eintrag von &quot;{0}&quot; im Rostocker Professorenkatalog, URL: <a href="{1}">{1}</a> (abgerufen am {2})  --%> 
    			<c:set var="currentID"><x:out select="string($current)"/></c:set>
    			<c:url var="url" value="${WebApplicationBaseURL}resolve/id/${currentID}" />
    			<c:if test="${fn:startsWith(currentID, 'cpr_')}">
    				<c:url var="url" value="http://purl.uni-rostock.de/cpr/${fn:substringAfter(currentID,'cpr_person_')}" />
    			</c:if>
-   			<fmt:message key="OMD.PROFKAT.quoting.text">
+   			<fmt:message key="OMD.profkat.quoting.text">
       			<fmt:param>${first}&#160;${last}</fmt:param>
       			<fmt:param>${url}</fmt:param>
       			<fmt:param><fmt:formatDate value="${now}" pattern="dd.MM.yyyy" /></fmt:param>
