@@ -35,7 +35,7 @@
 		<!-- 31 - eMail -->
 		<element name="email" wrapper="box.email" type="text" minOccurs='0' maxOccurs='unbounded' />
 		<!-- 32 - Homepage-->
-		<element name="homepage"  wrapper="box.homepage" type="href" minOccurs='0' maxOccurs='1' />
+		<element name="homepage"  wrapper="box.homepage" type="href" minOccurs='0' maxOccurs='unbounded' />
 		
   		<!--  ====================================================================================== -->
 		<!-- 40 - Geburtstag / Geburtsort -->
