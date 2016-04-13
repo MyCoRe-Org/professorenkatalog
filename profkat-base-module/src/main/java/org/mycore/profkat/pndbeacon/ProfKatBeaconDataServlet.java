@@ -8,12 +8,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
-import org.mycore.profkat.pndbeacon.UBRBibliographie;
-import org.mycore.frontend.servlets.MCRServlet;
 
 /**
  * This class retrieves the data from PND-Beacon-Service an returns it
@@ -32,7 +31,7 @@ import org.mycore.frontend.servlets.MCRServlet;
  *          2009) $
  * 
  */
-public class ProfKatBeaconDataServlet extends MCRServlet {
+public class ProfKatBeaconDataServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private static Logger LOGGER = Logger.getLogger(ProfKatBeaconDataServlet.class);

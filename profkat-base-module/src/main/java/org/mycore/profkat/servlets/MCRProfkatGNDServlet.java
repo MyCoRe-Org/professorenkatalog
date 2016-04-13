@@ -23,9 +23,11 @@
 
 package org.mycore.profkat.servlets;
 
+import java.io.IOException;
 import java.util.Iterator;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -36,8 +38,6 @@ import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
-import org.mycore.frontend.servlets.MCRServlet;
-import org.mycore.frontend.servlets.MCRServletJob;
 import org.mycore.solr.MCRSolrClientFactory;
 import org.mycore.solr.MCRSolrUtils;
 
@@ -47,7 +47,7 @@ import org.mycore.solr.MCRSolrUtils;
  * 
  * @see org.mycore.frontend.servlets.MCRServlet
  */
-public class MCRProfkatGNDServlet extends MCRServlet {
+public class MCRProfkatGNDServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
@@ -68,10 +68,8 @@ public class MCRProfkatGNDServlet extends MCRServlet {
      * @param job
      *            the MCRServletJob instance
      */
-    public void doGetPost(MCRServletJob job) throws ServletException, Exception {
-        // the urn with information about the MCRObjectID
-        HttpServletRequest request = job.getRequest();
-        HttpServletResponse response = job.getResponse();
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LOGGER.debug("contextPath=" + request.getContextPath());
         LOGGER.debug("servletPath=" + request.getServletPath());
 

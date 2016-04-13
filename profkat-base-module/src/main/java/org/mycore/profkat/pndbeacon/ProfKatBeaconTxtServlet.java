@@ -10,6 +10,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -22,7 +23,6 @@ import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
 import org.mycore.common.config.MCRConfiguration;
-import org.mycore.frontend.servlets.MCRServlet;
 import org.mycore.solr.MCRSolrClientFactory;
 
 /**
@@ -41,7 +41,7 @@ import org.mycore.solr.MCRSolrClientFactory;
  * @version $Revision: 16201 $ $Date: 2009-11-23 14:08:54 +0100 (Mo, 23 Nov 2009) $
  * 
  */
-public class ProfKatBeaconTxtServlet extends MCRServlet {
+public class ProfKatBeaconTxtServlet extends HttpServlet {
     private static Logger LOGGER = Logger.getLogger(ProfKatBeaconTxtServlet.class);
 
     private static final long serialVersionUID = -4640031382109677365L;
