@@ -27,12 +27,12 @@
 			<jsp:body>
 				<c:choose>
 					<c:when test="${fn:contains(location, 'rosdok')}">
-			    		<nobr>(<fmt:message key="OMD.CPR.link.internal" />
+			    		<nobr>(<fmt:message key="OMD.profkat.link.internal" />
 			    			   <img src="${WebApplicationBaseURL}images/link_intern.png"
 							alt="interner Link" />)</nobr>
 			     	</c:when>
 			        <c:otherwise>
-			    		<nobr> (<fmt:message key="OMD.CPR.link.external" />
+			    		<nobr> (<fmt:message key="OMD.profkat.link.external" />
 			    			   <img src="${WebApplicationBaseURL}images/link_extern.png"
 							alt="externer Link" />)</nobr>
 			    	</c:otherwise>
