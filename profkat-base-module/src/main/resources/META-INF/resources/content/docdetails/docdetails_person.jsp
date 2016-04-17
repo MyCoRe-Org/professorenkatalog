@@ -86,27 +86,27 @@
     	<mcrdd:item select="./event" styleName="docdetails-value-bold" />
     	<%-- scheint lokal nicht zu funktionieren, läuft aber auf dem Server --%>
     	<mcrdd:outputitem select="./text[@xml:lang='x-predec']" var="this">
-    		<div style="text-align: right; white-space: nowrap; font-size:80%;">
-    		  	<c:set var="linkids" scope="request"><x:out select="this/text()" /></c:set>
+			  <div style="text-align: right; white-space: nowrap; font-size:80%;">
+    		   	<c:set var="linkids" scope="request"><x:out select="$this/text()" /></c:set>
     			<c:forTokens items="${linkids}" delims=":;|" var="currentID" varStatus="status">
-					<c:if test="${fn:contains(currentID, '_person_')}">
-						<mcr:receiveMcrObjAsJdom mcrid="${currentID}" varDom="linked" fromWF="false"/>
-   						<c:set var="doctitle"><fmt:message key="OMD.profkat.hint.predec"/></c:set>
+	  				<c:if test="${fn:contains(currentID, '_person_')}">
+	  					<mcr:receiveMcrObjAsJdom mcrid="${currentID}" varDom="linked" fromWF="false"/>
+	  					<c:set var="doctitle"><fmt:message key="OMD.profkat.hint.predec"/></c:set>
    						<c:if test="${not empty linked}">
    							<c:set var="doctitle">${doctitle}:&#160;</c:set>
    							<c:set var="doctitle">${doctitle}<x:out select="$linked/mycoreobject/metadata/box.surname/surname" />,&#160;</c:set>
-    						<c:set var="doctitle">${doctitle}<x:out select="$linked/mycoreobject/metadata/box.firstname/firstname" /></c:set>
+         					<c:set var="doctitle">${doctitle}<x:out select="$linked/mycoreobject/metadata/box.firstname/firstname" /></c:set>
 							<c:set var="affix"><x:out select="$linked/mycoreobject/metadata/box.nameaffix/nameaffix" /></c:set>
 							<c:if test="${fn:length(affix)>2}"><c:set var="doctitle">${doctitle}&#160;(<c:out value="${affix}" />)</c:set></c:if>
 				   		</c:if>
 				   		<a href="${WebApplicationBaseURL}resolve/id/${currentID}" style="color:grey;margin-left:6px">
-							<span class="glyphicon glyphicon-backward" title="${doctitle}"></span>
+							<span class="glyphicon glyphicon-backward" title="${doctitle}"></span> 
 					   	</a>
 				   	</c:if>
 				</c:forTokens>
-				</div>
-			</mcrdd:outputitem>
-    		<mcrdd:outputitem select="./text[@xml:lang='x-succ']" var="this">
+    		</div>
+		</mcrdd:outputitem>
+    	<mcrdd:outputitem select="./text[@xml:lang='x-succ']" var="this">
     		<div style="text-align: right; white-space: nowrap; font-size:80%;">
     		   	<c:set var="linkids" scope="request"><x:out select="$this/text()" /></c:set>
     			<c:forTokens items="${linkids}" delims=":;|" var="currentID" varStatus="status">
@@ -117,7 +117,7 @@
    							<c:set var="doctitle">${doctitle}:&#160;</c:set>
    							<c:set var="doctitle">${doctitle}<x:out select="$linked/mycoreobject/metadata/box.surname/surname" />,&#160;</c:set>
          					<c:set var="doctitle">${doctitle}<x:out select="$linked/mycoreobject/metadata/box.firstname/firstname" /></c:set>
-							<c:set var="affix"><x:out select="$linked/metadata/mycoreobject/box.nameaffix/nameaffix" /></c:set>
+							<c:set var="affix"><x:out select="$linked/mycoreobject/metadata/box.nameaffix/nameaffix" /></c:set>
 							<c:if test="${fn:length(affix)>2}"><c:set var="doctitle">${doctitle}&#160;(<c:out value="${affix}" />)</c:set></c:if>
 				   		</c:if>
 				   		<a href="${WebApplicationBaseURL}resolve/id/${currentID}" style="color:grey;margin-left:6px">
