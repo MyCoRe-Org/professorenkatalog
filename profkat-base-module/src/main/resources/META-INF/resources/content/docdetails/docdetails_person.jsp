@@ -28,20 +28,23 @@
 					</c:if>
 					<c:if test="${current eq 'data'}">
 						<li class="${tabstyle}">
-							<a href="${WebApplicationBaseURL}resolve/id/${param.id}?offset=${param.offset}&amp;resultid=${param.resultid}&amp;fromWF=${param.fromWF}&amp;tab=${current}"><fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
+							<a href="${WebApplicationBaseURL}resolve/id/${param.id}?offset=${param.offset}&amp;resultid=${param.resultid}&amp;fromWF=${param.fromWF}&amp;tab=${current}">
+								<span class="glyphicon glyphicon-user" style="color:#666666;"></span> <fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
 						</li>
 					</c:if>
 					<c:if test="${current eq 'article'}">
 						<x:if select="$mcrobj/mycoreobject/structure/derobjects/derobject[@xlink:title='display_biography']">
 							<li class="${tabstyle}">
-								<a href="${WebApplicationBaseURL}resolve/id/${param.id}?offset=${param.offset}&amp;resultid=${param.resultid}&amp;fromWF=${param.fromWF}&amp;tab=${current}"><fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
+								<a href="${WebApplicationBaseURL}resolve/id/${param.id}?offset=${param.offset}&amp;resultid=${param.resultid}&amp;fromWF=${param.fromWF}&amp;tab=${current}">
+									<span class="glyphicon glyphicon-book" style="color:#666666;"></span> <fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
 							</li>
 						</x:if>		
 					</c:if>
 					<c:if test="${current eq 'documents'}">
 						<x:if select="$mcrobj/mycoreobject/structure/derobjects/derobject">
 							<li class="${tabstyle}">
-								<a href="${WebApplicationBaseURL}resolve/id/${param.id}?offset=${param.offset}&amp;resultid=${param.resultid}&amp;fromWF=${param.fromWF}&amp;tab=${current}"><fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
+								<a href="${WebApplicationBaseURL}resolve/id/${param.id}?offset=${param.offset}&amp;resultid=${param.resultid}&amp;fromWF=${param.fromWF}&amp;tab=${current}">
+									<span class="glyphicon glyphicon-file" style="color:#666666;"></span> <fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
 							</li>
 						</x:if>		
 					</c:if>
@@ -81,10 +84,10 @@
     <mcrdd:row select="/mycoreobject/metadata/box.professorship/professorship" labelkey="${proflabelkey}" showInfo="${profshowinfo}" colWidths="100">
 		<mcrdd:item select="./text" styleName="docdetails-value-bold" />              
     	<mcrdd:item select="./event" styleName="docdetails-value-bold" />
-    	<mcrdd:outputitem select="." var="this">
+    	<%-- scheint lokal nicht zu funktionieren, läuft aber auf dem Server --%>
+    	<mcrdd:outputitem select="./text[@xml:lang='x-predec']" var="this">
     		<div style="text-align: right; white-space: nowrap; font-size:80%;">
-    		<x:forEach select="$this/text[@*[local-name() = 'lang']='x-predec']">
-    	    	<c:set var="linkids" scope="request"><x:out select="./text()" /></c:set>
+    		  	<c:set var="linkids" scope="request"><x:out select="this/text()" /></c:set>
     			<c:forTokens items="${linkids}" delims=":;|" var="currentID" varStatus="status">
 					<c:if test="${fn:contains(currentID, '_person_')}">
 						<mcr:receiveMcrObjAsJdom mcrid="${currentID}" varDom="linked" fromWF="false"/>
@@ -101,10 +104,11 @@
 					   	</a>
 				   	</c:if>
 				</c:forTokens>
-    		</x:forEach>
-    				
-    		<x:forEach select="$this/text[@*[local-name() = 'lang']='x-succ']">
-    		   	<c:set var="linkids" scope="request"><x:out select="./text()" /></c:set>
+				</div>
+			</mcrdd:outputitem>
+    		<mcrdd:outputitem select="./text[@xml:lang='x-succ']" var="this">
+    		<div style="text-align: right; white-space: nowrap; font-size:80%;">
+    		   	<c:set var="linkids" scope="request"><x:out select="$this/text()" /></c:set>
     			<c:forTokens items="${linkids}" delims=":;|" var="currentID" varStatus="status">
 	  				<c:if test="${fn:contains(currentID, '_person_')}">
 	  					<mcr:receiveMcrObjAsJdom mcrid="${currentID}" varDom="linked" fromWF="false"/>
@@ -121,7 +125,6 @@
 					   	</a>
 				   	</c:if>
 				</c:forTokens>
-    		</x:forEach>
     		</div>
     	</mcrdd:outputitem>
    	</mcrdd:row>
