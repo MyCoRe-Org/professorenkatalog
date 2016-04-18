@@ -206,7 +206,7 @@
     <field name="profkat.lifetime" type="string" multiValued="false" stored="true" />
     <field name="profkat.period" type="string" multiValued="false" stored="true" />
     <field name="profkat.last_professorship" type="string" multiValued="false" stored="true" />
-    <field name="profkat.last_faculty_class" type="string" multiValued="false" stored="true" />
+    <field name="profkat.last_faculty" type="string" multiValued="false" stored="true" />
     <field name="profkat.status_msg" type="string" multiValued="false" stored="true" />
     <field name="profkat.sex" type="string" multiValued="false" stored="true" />
     <field name="profkat.name" type="text_general" multiValued="true" stored="false" />
