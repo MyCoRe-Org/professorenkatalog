@@ -74,7 +74,9 @@
     <field name="profkat.period"><xsl:value-of select="box.period/period/text" /></field>
     <field name="profkat.last_professorship"><xsl:value-of select="box.professorship/professorship[last()]/event" /></field>
     <xsl:for-each select="box.faculty/faculty[last()]/classification">
-    	<field name="profkat.last_faculty_class"><xsl:value-of select="@classid" />:<xsl:value-of select="@categid" /></field>
+    	<field name="profkat.last_faculty">
+    		<xsl:value-of select="document(concat('classification:metadata:1:children:', @classid, ':', @categid))//category/label[@xml:lang='x-de-short']/@text" />
+        </field>
     </xsl:for-each>
     <field name="profkat.status_msg">OMD.profkat.state.<xsl:value-of select="box.status/status" /></field>
     
