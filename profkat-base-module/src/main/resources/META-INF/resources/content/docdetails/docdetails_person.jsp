@@ -18,7 +18,7 @@
 	<c:if test="${not(param.print eq 'true')}">
 		<div  class="tabbar ur-embedded">
 			<c:set var="msgKeyStatus">OMD.profkat.state.<x:out select="$mcrobj/mycoreobject/metadata/box.status/status"/></c:set>
-			<div class="pull-right" style="font-style: italic; color: #666666; padding-right:16px; padding-top:11px;"><fmt:message key="${msgKeyStatus}" /></div>
+			<div class="pull-right" style="font-style: italic; color: grey; padding-right:16px; padding-top:11px;"><fmt:message key="${msgKeyStatus}" /></div>
 			<ul id="tabs_on_page" class="nav nav-tabs">
 				<c:set var="tabtokens" value="data|article|documents" />
 				<c:forTokens items="${tabtokens}" delims="|" var="current" varStatus="status">
@@ -29,14 +29,14 @@
 					<c:if test="${current eq 'data'}">
 						<li class="${tabstyle}">
 							<a href="${WebApplicationBaseURL}resolve/id/${param.id}?offset=${param.offset}&amp;resultid=${param.resultid}&amp;fromWF=${param.fromWF}&amp;tab=${current}">
-								<span class="glyphicon glyphicon-user" style="color:#666666;"></span> <fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
+								<span class="glyphicon glyphicon-user" style="color:grey;"></span> <fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
 						</li>
 					</c:if>
 					<c:if test="${current eq 'article'}">
 						<x:if select="$mcrobj/mycoreobject/structure/derobjects/derobject[@xlink:title='display_biography']">
 							<li class="${tabstyle}">
 								<a href="${WebApplicationBaseURL}resolve/id/${param.id}?offset=${param.offset}&amp;resultid=${param.resultid}&amp;fromWF=${param.fromWF}&amp;tab=${current}">
-									<span class="glyphicon glyphicon-book" style="color:#666666;"></span> <fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
+									<span class="glyphicon glyphicon-book" style="color:grey;"></span> <fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
 							</li>
 						</x:if>		
 					</c:if>
@@ -141,7 +141,7 @@
     		<mcrdd:outputitem select="./classification" var="out">
     			<c:set var="classid"><x:out select="$out/@classid" /></c:set>
     			<c:set var="categid"><x:out select="$out/@categid" /></c:set>
-    		 	<c:set var="classLabel"><mcr:displayClassificationCategory categid="${categid}" classid="${classid}" lang="de"/></c:set>
+    		 	<c:set var="classLabel"><mcr:displayClassificationCategory categid="${categid}" classid="${classid}" lang="x-de-short"/></c:set>
     			<c:out value="${classLabel}" />
     			<x:if select="$out/../event">
     				<br />
