@@ -62,7 +62,7 @@ Lege folgende Datenbanken und zwei Schemata an (am Beispiel von PostreSQL)
 </ul>
 <h3>Dateien auschecken</h3>
 <ul class="commandline">
-	<li>svn checkout http://server.mycore.de/svn/jspdocportal/trunk/jspdocportal-module/ jspdocportal-module</li>
+	<li>svn checkout http://server.mycore.de/svn/jspdocportal/<span style="color:red;">branches/mycore-2015.05.0.x</span>/jspdocportal-module/ jspdocportal-module</li>
 	<li>svn checkout http://server.mycore.de/svn/professorenkatalog/trunk/profkat-base-module/ profkat-base-module</li>
 	<li>svn checkout http://server.mycore.de/svn/professorenkatalog/trunk/profkat-sample-webapp/ profkat-sample-webapp</li>
 </ul>
@@ -83,7 +83,7 @@ siehe <a href="profkat_developer.html#config_files">Profkat-Developer-Dokumentat
 	<li>cd /opt/profkat/projects/profkat-base-module</li>
 	<li>svn update</li>
 	<li>mvn clean install</li>
-	<li>cd /opt/profkat/projects/profkat-sample-webapp</li>
+	<li>cd /opt/profkat/projects/profkat-sample</li>
 	<li>svn update</li>
 	<li>mvn clean install</li>
 </ul>
@@ -149,9 +149,9 @@ wir für den Professorenkatalog nutzen ...
 	<li>PostgresDB (mit Schema) konfigurieren</li> 
 </ul>
 
-<h3>Hibernate-Konfiguration anpassen</h3>
+<h3>Activiti - Hibernate-Konfiguration anpassen</h3>
 <ul>
-	<li>c:\Users\$USER\AppData\Local\MyCoRe\profkat-sample\hibernate.cfg.xml</li>
+	<li>c:\Users\$USER\AppData\Local\MyCoRe\profkat-sample\activiti.cfg.xml</li>
 	<li>\home\tomcat7\.mycore\profkat-sample\hibernate.cfg.xml</li>
 	<li>PostgresDB (mit Schema) konfigurieren</li> 
 </ul>
@@ -168,13 +168,14 @@ wir für den Professorenkatalog nutzen ...
 <h2>Start der MyCoRe-Kommandozeile</h2>
 Geben Sie zum Testen das Kommando <code>help</code> ein.
 <ul class="commandline">
-	<li>cd /opt/profkat/projects/profkat-sample-webapp/target/app</li>
-	<li>sudo -u tomcat7 java -jar -Xmx128m -jar profkat-sample-cli.jar</li>
+	<li>cd /opt/profkat/projects/profkat-sample/profkat-sample-cli/target/appassembler/bin</li>
+	<li>sudo -u tomcat7 profkat-sample.bat</li>
 </ul>
 
 <h2>Deployen der Webanwendung</h2>
 <ul>
-	<li>Kopiere
+	<li><tt>Kopiere /opt/profkat/projects/profkat-sample/profkat-sample-webapp/target/profkat-sample.war</tt>
+	in das Tomcat-WEBAPP-Verzeichnis</li>
 </ul>
 </body>
 </html>
