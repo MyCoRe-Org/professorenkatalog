@@ -108,10 +108,10 @@
 	
 	<target name="update.solr.config">
 		<mkdir  dir="${SOLR_HOME_DIR}" />
-		<get src="${SOLR_DEFAULT_CONFIG_URL}" dest="${SOLR_HOME_DIR}/solr-default-config.zip" />
+		<get src="${SOLR_DEFAULT_CONFIG_URL}" dest="${SOLR_HOME_DIR}/data/solr-default-config.zip" />
 		<delete dir="${SOLR_HOME_DIR}/data/${SOLR_CORE_ID}" />
 		<mkdir  dir="${SOLR_HOME_DIR}/data/${SOLR_CORE_ID}" />
-		<unzip src="${SOLR_HOME_DIR}/solr-default-config.zip" dest="${SOLR_HOME_DIR}/data/${SOLR_CORE_ID}/conf">
+		<unzip src="${SOLR_HOME_DIR}/data/solr-default-config.zip" dest="${SOLR_HOME_DIR}/data/${SOLR_CORE_ID}/conf">
 			<patternset>
 		        <include name="solr/collection1/conf/**"/>
 		    </patternset> 
