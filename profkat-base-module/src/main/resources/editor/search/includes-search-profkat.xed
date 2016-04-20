@@ -42,8 +42,8 @@
               <option value="allMeta"><xed:output i18n="Editor.Search.metadata" /></option>
               <option value="profkat.name"><xed:output i18n="OMD.profkat.name" /></option>
               <option value="profkat.institute"><xed:output i18n="OMD.profkat.institutes" /></option>
-              <option value="profkat.area"><xed:output i18n="OMD.profkat.fieldofstudies" /></option>
-              <option value="profkat.proftype"><xed:output i18n="OMD.profkat.subjects" /></option>
+              <option value="profkat.profarea"><xed:output i18n="OMD.profkat.profarea" /></option>
+              <option value="profkat.field_of_studies"><xed:output i18n="OMD.profkat.fieldofstudies" /></option>
               <option value="profkat.birthplace"><xed:output i18n="OMD.profkat.birthplace" /></option>
               <option value="profkat.deathplace"><xed:output i18n="OMD.profkat.deathplace" /></option>
               <option value="profkat.confession"><xed:output i18n="OMD.profkat.confessions" /></option>
@@ -61,7 +61,7 @@
               <option value="profkat.mainpublication"><xed:output i18n="OMD.profkat.mainpublications" /></option>
               <option value="profkat.source"><xed:output i18n="OMD.profkat.sources" /></option>
               <option value="profkat.reference"><xed:output i18n="OMD.profkat.references_short" /></option>
-              <option value="derivatelabel"><xed:output i18n="OMD.profkat.derivatelabel" /></option>   
+              <option value="profkat.derivate_title"><xed:output i18n="OMD.profkat.derivatelabel" /></option>   
             </select>
           </xed:bind>
         </div>

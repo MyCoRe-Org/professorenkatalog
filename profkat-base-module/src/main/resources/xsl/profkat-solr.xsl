@@ -22,12 +22,19 @@
       <field name="derivatelabel"><xsl:value-of select="@xlink:label|@xlink:title" /></field>
     </xsl:for-each>
      <xsl:for-each select="/mycoreobject/structure/derobjects/derobject[@xlink:title='display_portrait'][1]">
-            <xsl:variable name="derId" select="@xlink:href" />
-            <xsl:variable name="derXML" select="document(concat('mcrobject:',$derId))" />
+        <xsl:variable name="derId" select="@xlink:href" />
+        <xsl:variable name="derXML" select="document(concat('mcrobject:',$derId))" />
      	<xsl:for-each select="$derXML/mycorederivate/derivate/internals/internal">
-     		<xsl:if test="string-length(@maindoc)>0">
+     		<xsl:if test="string-length(@maindoc)&gt;0">
      			<field name="cover_url">file/<xsl:value-of select="$derXML/mycorederivate/derivate/linkmetas/linkmeta/@xlink:href" />/<xsl:value-of select="$derXML/mycorederivate/@ID" />/<xsl:value-of select="@maindoc" /></field>
      		</xsl:if>
+     	</xsl:for-each>
+     </xsl:for-each>
+      <xsl:for-each select="/mycoreobject/structure/derobjects/derobject">
+        <xsl:variable name="derId" select="@xlink:href" />
+        <xsl:variable name="derXML" select="document(concat('mcrobject:',$derId))" />
+     	<xsl:for-each select="$derXML/mycorederivate/service/servflags/servflag[@type='title']">
+     			<field name="profkat.derivate_title"><xsl:value-of select="." /></field>
      	</xsl:for-each>
      </xsl:for-each>
   </xsl:template>
@@ -98,38 +105,49 @@
     </xsl:for-each>
     
               <xsl:for-each select="box.fieldofstudy/fieldofstudy">
-      <field name="profkat.area"><xsl:value-of select="normalize-space(text())" /></field> 
+      <field name="profkat.field_of_studies"><xsl:value-of select="normalize-space(text())" /></field> 
     </xsl:for-each>
       
-               <xsl:for-each select="box.professorship/professorship/event">
+    <xsl:for-each select="box.professorship/professorship/event">
       <field name="profkat.proftype"><xsl:value-of select="normalize-space(text())" /></field> 
     </xsl:for-each>
     
-              <xsl:for-each select="box.birth/birth/event">
+    <xsl:for-each select="box.professorship/professorship/classification">
+    	<field name="profkat.proftype">
+    		<xsl:value-of select="document(concat('classification:metadata:1:children:', @classid, ':', @categid))//category/label[@xml:lang='x-de-short']/@text" />
+        </field>
+    </xsl:for-each>
+    
+    
+    <xsl:for-each select="box.professorship/professorship/event">
+      <field name="profkat.profarea"><xsl:value-of select="normalize-space(text())" /></field> 
+    </xsl:for-each>
+    
+    <xsl:for-each select="box.birth/birth/event">
       <field name="profkat.birthplace"><xsl:value-of select="text()" /></field> 
     </xsl:for-each>
       
-              <xsl:for-each select="box.death/death/event">
+    <xsl:for-each select="box.death/death/event">
       <field name="profkat.deathplace"><xsl:value-of select="text()" /></field> 
     </xsl:for-each>
    
-              <xsl:for-each select="box.confession/confession">
+    <xsl:for-each select="box.confession/confession">
       <field name="profkat.confession"><xsl:value-of select="text()" /></field> 
     </xsl:for-each>
        
-             <xsl:for-each select="box.family/family[@type='father' or @type='mother']/profession">
+    <xsl:for-each select="box.family/family[@type='father' or @type='mother']/profession">
       <field name="profkat.parentprofession"><xsl:value-of select="normalize-space(text())" /></field> 
     </xsl:for-each>
          
-              <xsl:for-each select="box.biographic/biographic">
+    <xsl:for-each select="box.biographic/biographic">
       <field name="profkat.biography"><xsl:value-of select="concat(normalize-space(./time),' ',normalize-space(./text))" /></field> 
     </xsl:for-each>
             
-             <xsl:for-each select="box.academicdegree/academicdegree">
+    <xsl:for-each select="box.academicdegree/academicdegree">
       <field name="profkat.academicdegree"><xsl:value-of select="concat(normalize-space(./text/text()),' ',normalize-space(./event/text()))" /></field> 
     </xsl:for-each>
         
-              <xsl:for-each select="box.academicdegree/academicdegree[@type='studies']">
+    <xsl:for-each select="box.academicdegree/academicdegree[@type='studies']">
       <field name="profkat.acad_degree_study"><xsl:value-of select="concat(normalize-space(./time),' ',normalize-space(./text))" /></field> 
     </xsl:for-each>
 

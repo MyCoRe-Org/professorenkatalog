@@ -215,7 +215,8 @@
     
       <!-- searchfields.xml -->
     <field name="profkat.institute"          type="text_de" multiValued="true"  stored="false" />
-    <field name="profkat.area"               type="text_de" multiValued="true"  stored="false" />
+    <field name="profkat.profarea"           type="text_de" multiValued="true"  stored="false" />
+    <field name="profkat.field_of_studies"   type="text_de" multiValued="true"  stored="false" />
     <field name="profkat.proftype"           type="text_de" multiValued="true"  stored="false" />
     <field name="profkat.birthplace"         type="text_de" multiValued="true"  stored="false" />
     <field name="profkat.deathplace"         type="text_de" multiValued="true"  stored="false" />
@@ -244,6 +245,7 @@
     <field name="profkat.lifetime_from"      type="string"  multiValued="false" stored="false" />
     <field name="profkat.lifetime_to"        type="string"  multiValued="false" stored="false" />
     
+    <field name="profkat.derivate_title"     type="text_de" multiValued="true"  stored="false" />
     
  </fields>
 
