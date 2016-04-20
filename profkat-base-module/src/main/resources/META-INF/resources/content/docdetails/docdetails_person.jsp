@@ -353,7 +353,7 @@
    			<mcrdd:item select="/mycoreobject/metadata/box.identifier/identifier[@type='gnd']" var="pnd" />
    			<x:if select="string($pnd)='xxx'">
    				<mcrdd:outputitem select="." var="x">
-   					<fmt:message key="OMD.profkat.identifiers.nognd" />
+   					<fmt:message key="OMD.profkat.identifier.nognd" />
    				</mcrdd:outputitem>
    			</x:if>
    			<x:if select="string($pnd)!='xxx'">
