@@ -164,7 +164,11 @@
    		</mcrdd:row>
     
     	<mcrdd:row select="/mycoreobject/metadata/box.subjectclass/subjectclass" labelkey="OMD.profkat.subjects" showInfo="true" >
-	  		<mcrdd:classificationitem select="." />  
+	  		<mcrdd:outputitem select="." var="out">
+    			<c:set var="classid"><x:out select="$out/@classid" /></c:set>
+    			<c:set var="categid"><x:out select="$out/@categid" /></c:set>
+    		 	<mcr:displayClassificationCategory classid="${classid}" categid="${categid}" lang="de"/>
+    		</mcrdd:outputitem>
     	</mcrdd:row>
     
     	<mcrdd:separator showLine="true" />
