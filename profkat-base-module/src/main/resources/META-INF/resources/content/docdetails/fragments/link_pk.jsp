@@ -1,3 +1,4 @@
+<%@page import="org.mycore.common.config.MCRConfiguration"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/xml" prefix="x"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -6,6 +7,10 @@
 
 <%-- JSP-Parameter: href, title --%>
 
+<%
+	pageContext.setAttribute("wbisIPMap", MCRConfiguration.instance().getPropertiesMap("MCR.profkat.WBIS.user-ip."));
+%>
+
 <c:set var="WebApplicationBaseURL" value="${applicationScope.WebApplicationBaseURL}" />
 <c:set var="location">${param.href}</c:set>
 <c:set var="descr">${param.title}</c:set>
@@ -13,6 +18,16 @@
 <c:if test="${descr eq '#'}">
 	<c:set var="descr" value="" />
 </c:if>
+<%-- ADD WBIS user parameter from mycore.properties --%>
+<c:if test="${fn:contains(location, 'db.saur.de/WBIS')}">
+	<c:set var="location">#</c:set>
+	<c:forEach var="entry" items="${wbisIPMap}">
+  		<c:if test="${pageContext.request.localAddr.matches(entry.value)}">
+  			<c:set var="location">${param.href}&user=${fn:replace(entry.key,'MCR.profkat.WBIS.user-ip.','')}</c:set>
+  		</c:if>
+	</c:forEach>
+</c:if>
+
 <c:choose>
 	<c:when test="${location eq '#'}">
 		<c:out value="${descr}" escapeXml="false" />
