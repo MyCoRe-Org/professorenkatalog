@@ -78,7 +78,11 @@
     <field name="profkat.lifetime">
 		<xsl:value-of select="normalize-space($lifetime_out)" />
     </field>
-    <field name="profkat.period"><xsl:value-of select="box.period/period/text" /></field>
+    <field name="profkat.period">
+    	<xsl:apply-templates select="box.period/period/text" mode="concat">
+    		<xsl:with-param name="separator">, </xsl:with-param>
+        </xsl:apply-templates>
+    </field>
     <field name="profkat.last_professorship"><xsl:value-of select="box.professorship/professorship[last()]/event" /></field>
     <xsl:for-each select="box.faculty/faculty[last()]/classification">
     	<field name="profkat.last_faculty">
@@ -213,4 +217,13 @@
       <field name="profkat.lifetime_to"><xsl:value-of select="substring(./bis,1,4)" /></field> 
   </xsl:for-each>
   </xsl:template>
+  
+  <!-- joins the given nodelist - parameter separator will be used as separator char -->
+   <xsl:template match = "*" mode = "concat" >
+   		<xsl:param name = "separator" />
+   		<xsl:value-of select = "./text()" />
+        <xsl:if test = "not(position()=last())" >
+        	<xsl:value-of select = "$separator" />
+    	</xsl:if>
+ 	</xsl:template> 
 </xsl:stylesheet>
