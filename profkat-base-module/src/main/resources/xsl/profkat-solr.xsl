@@ -146,7 +146,11 @@
     <xsl:for-each select="box.biographic/biographic">
       <field name="profkat.biography"><xsl:value-of select="concat(normalize-space(./time),' ',normalize-space(./text))" /></field> 
     </xsl:for-each>
-            
+    
+    <xsl:for-each select="box.biographic/biographic[@type='school']">
+      <field name="profkat.school"><xsl:value-of select="concat(normalize-space(./time),' ',normalize-space(./text))" /></field> 
+    </xsl:for-each>
+          
     <xsl:for-each select="box.academicdegree/academicdegree">
       <field name="profkat.academicdegree"><xsl:value-of select="concat(normalize-space(./text/text()),' ',normalize-space(./event/text()))" /></field> 
     </xsl:for-each>

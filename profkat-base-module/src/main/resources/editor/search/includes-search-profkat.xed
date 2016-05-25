@@ -49,6 +49,7 @@
               <option value="profkat.confession"><xed:output i18n="OMD.profkat.confessions" /></option>
               <option value="profkat.parentprofession"><xed:output  i18n="OMD.profkat.parentprofession" /></option>
               <option value="profkat.biography"><xed:output i18n="OMD.profkat.biographics" /></option>
+              <option value="profkat.school"><xed:output i18n="OMD.profkat.schools" /></option>
               <option value="profkat.academicdegree"><xed:output i18n="OMD.profkat.academicdegrees" /></option>
               <option value="profkat.acad_degree_study"><xed:output i18n="OMD.profkat.academicdegree.studies" /></option>
               <option value="profkat.acad_degree_promo"><xed:output i18n="OMD.profkat.academicdegree.promotion" /></option>
