@@ -1225,7 +1225,61 @@
       </div>
     </div>
   </xed:bind>
-  <!-- Wissenschaftliche Mitgliedschaften [ENDE] -->    
+  <!-- Wissenschaftliche Mitgliedschaften [ENDE] -->
+  
+  <!-- Partei Mitgliedschaften [START] -->
+  <xed:bind xpath="box.partymember[@class='MCRMetaXML']">
+    <div class="form-group">
+      <label class="col-sm-2 control-label input-sm profkat-label" for="partymember">
+        <xed:output i18n="OMD.profkat.partymembers" />
+      </label>
+      <div class="col-sm-10">
+        <xed:repeat xpath="partymember">
+          <div class="row profkat-row profkat-row-1">
+            <div class="col-sm-10">
+              <div class="row profkat-row"> 
+                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="partymember_time">
+                  <xed:output i18n="OMD.profkat.hint.time" />
+                </label>
+                <xed:bind xpath="time">
+                  <div class="col-sm-2">
+                    <input id="partymember_time" type="text" class="form-control input-sm"   />
+                  </div>
+                </xed:bind>
+                
+                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="partymember_type">
+                  <xed:output i18n="OMD.profkat.hint.type" />
+                </label>
+                <xed:bind xpath="@type">
+                  <div class="col-sm-6">
+                    <select id="partymember_type" class="form-control input-sm">
+                      <xed:include uri="props2options:OMD.profkat.partymember" />
+                    </select>
+                  </div>
+                </xed:bind>
+              </div>
+              <div class="row profkat-row">   
+                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="partymember_text">
+                  <xed:output i18n="OMD.profkat.hint.text" />
+                </label>
+                <xed:bind xpath="text">
+                  <div class="col-sm-10">
+                    <input type="text" id="partymember_text" class="form-control input-sm" />
+                  </div>
+                </xed:bind>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="btn-group btn-group-sm pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:bind>
+  <!-- Partei Mitgliedschaften [ENDE] -->        
 
   <!-- Ehrungen [START] -->
   <xed:bind xpath="box.award[@class='MCRMetaXML']">
