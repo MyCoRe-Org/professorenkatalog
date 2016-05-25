@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- OLD Datamodel definition - !!! DO NOT USE !!! -->
 <configuration type="person">
 	<structure>
 		<!-- Object Children -->
@@ -112,11 +113,15 @@
 		<element name="box.membership" minOccurs='0' maxOccurs='1'>
 			<mcrmetaxml name="membership" class="MCRMetaXML" minOccurs='0' maxOccurs='unbounded' length="1024" />
 		</element>
-		<!-- 55 - Ehrungen / Auszeichnungen -->
+		<!-- 55 - Mitgliedschaften -->
+		<element name="box.partymember" minOccurs='0' maxOccurs='1'>
+			<mcrmetaxml name="partymember" class="MCRMetaXML" minOccurs='0' maxOccurs='unbounded' length="1024" />
+		</element>
+		<!-- 56 - Ehrungen / Auszeichnungen -->
 		<element name="box.award" minOccurs='0' maxOccurs='1'>
 			<mcrmetaxml name="award" class="MCRMetaXML" minOccurs='0' maxOccurs='unbounded' length="1024" />
 		</element>
-		<!-- 56 - Zusatzinformationen -->
+		<!-- 57 - Zusatzinformationen -->
 		<element name="box.otherinfo" minOccurs='0' maxOccurs='1'>
 			<mcrmetalangtext name="otherinfo" class="MCRMetaLangText" minOccurs='0' maxOccurs='unbounded' length="1024" />
 		</element>	

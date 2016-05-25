@@ -128,14 +128,21 @@
  	 			<xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="1" />
  	 		</xs:sequence>
 		</element>
-		<!-- 55 - Ehrungen / Auszeichnungen -->
+		<!-- 55 - Mitgliedschaften -->
+		<element name="partymember" wrapper="box.partymember" type="xml" minOccurs='0' maxOccurs='unbounded'>
+			<xs:sequence>
+ 	 			<xs:element name="time" type="xs:string" minOccurs="0" maxOccurs="1" />
+ 	 			<xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="1" />
+ 	 		</xs:sequence>
+		</element>
+		<!-- 56 - Ehrungen / Auszeichnungen -->
 		<element name="award" wrapper="box.award" type="xml" minOccurs='0' maxOccurs='unbounded'>
 			<xs:sequence>
  	 			<xs:element name="time" type="xs:string" minOccurs="0" maxOccurs="1" />
  	 			<xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="1" />
  	 		</xs:sequence>
 		</element>
-		<!-- 56 - Zusatzinformationen -->
+		<!-- 57 - Zusatzinformationen -->
 		<element name="otherinfo" wrapper="box.otherinfo" type="text" minOccurs='0' maxOccurs='unbounded' />
 		
 		<!--  ====================================================================================== -->
