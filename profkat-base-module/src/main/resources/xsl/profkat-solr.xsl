@@ -59,6 +59,7 @@
     		<xsl:otherwise><xsl:value-of select="substring($headline_normiert,1,2)" /></xsl:otherwise>
     	</xsl:choose>
     </field>
+  <xsl:if test="not(box.epoch/epoch[@categid='cpr.1945-1989']) and not(box.epoch/epoch[@categid='cpr.1989-heute'])">
     <xsl:variable name="lifetime_out">
       <xsl:if test="box.birth/birth">
       		<xsl:text>&lt;span style=&quot;display:inline-block;width:1em&quot;&gt;*&lt;/span&gt;</xsl:text> 
@@ -73,24 +74,26 @@
      		<xsl:if test="box.death/death/event">
      			in <xsl:value-of select="box.death/death/event" />
      		</xsl:if>
-      </xsl:if>
+       </xsl:if>
     </xsl:variable>
     <field name="profkat.lifetime">
 		<xsl:value-of select="normalize-space($lifetime_out)" />
     </field>
+  </xsl:if>
     <field name="profkat.period">
     	<xsl:apply-templates select="box.period/period/text" mode="concat">
     		<xsl:with-param name="separator">, </xsl:with-param>
         </xsl:apply-templates>
     </field>
     <field name="profkat.last_professorship"><xsl:value-of select="box.professorship/professorship[last()]/event" /></field>
-    <xsl:for-each select="box.faculty/faculty[last()]/classification">
+
+     <xsl:for-each select="box.faculty/faculty[last()]/classification">
     	<field name="profkat.last_faculty">
     		<xsl:value-of select="document(concat('classification:metadata:1:children:', @classid, ':', @categid))//category/label[@xml:lang='x-de-short']/@text" />
         </field>
     </xsl:for-each>
     <field name="profkat.status_msg">OMD.profkat.state.<xsl:value-of select="box.status/status" /></field>
-    
+    <field name="profkat.academictitle"><xsl:value-of select="box.academictitle/academictitle" /></field>
     <xsl:for-each select="box.identifier/identifier[@type='gnd' or @type='pnd']">
     	<field name="gnd_uri">http://d-nb.info/gnd/<xsl:value-of select="." /></field>
         <field name="profkat.gnd"><xsl:value-of select="." /></field>
