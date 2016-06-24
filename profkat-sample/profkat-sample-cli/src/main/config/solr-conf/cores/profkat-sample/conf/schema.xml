@@ -109,6 +109,7 @@
    <field name="_version_" type="long"/>
     <!-- kind of mcrobjectid, mcrderivateid, fileid -->
     <field name="id" type="string" required="true" />
+    <field name="objectKind" type="string" />
     <field name="objectType" type="string" />
     <field name="objectProject" type="string" />
     <field name="returnId" type="string" />
