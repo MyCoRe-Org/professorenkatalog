@@ -270,11 +270,12 @@
   		<mcrdd:row select="/mycoreobject/metadata/box.academicdegree/academicdegree" labelkey="OMD.profkat.academicdegrees" showInfo="true" colWidths="6em 4em">
     		<mcrdd:item select="./@type" labelkeyPrefix="OMD.profkat.academicdegree.display."/>
     		<mcrdd:item select="./time" />              
- 			<mcrdd:outputitem select="." var="xml">
-   				<x:out select="$xml/text" />
-   				<x:if select="$xml/dissertation">
-   					<br /><i><fmt:message key="OMD.profkat.dissertationTitle"/>:&#160;</i><x:out select="$xml/dissertation" escapeXml="false"/>
-   				</x:if>
+ 			<mcrdd:outputitem select="." var="current">
+   				<x:out select="$current/text" />
+   				<c:set var="diss"><x:out select="$current/dissertation" escapeXml="false" /></c:set>
+   				<c:if test="${fn:length(diss) gt 1}">
+   					<br /><i><fmt:message key="OMD.profkat.dissertationTitle"/>:&#160;</i><c:out value="${diss}" escapeXml="false"/>
+   				</c:if>
    			</mcrdd:outputitem> 
     	</mcrdd:row>
 		
