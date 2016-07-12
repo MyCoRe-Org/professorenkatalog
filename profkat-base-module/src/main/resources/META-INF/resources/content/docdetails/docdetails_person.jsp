@@ -28,14 +28,14 @@
 					</c:if>
 					<c:if test="${current eq 'data'}">
 						<li class="${tabstyle}">
-							<a href="${WebApplicationBaseURL}resolve/id/${param.id}?offset=${param.offset}&amp;resultid=${param.resultid}&amp;fromWF=${param.fromWF}&amp;tab=${current}">
+							<a href="${WebApplicationBaseURL}resolve/id/${param.id}?tab=${current}${empty param._search ? '' : '&_search='.concat(param._search)}${param.fromWF eq 'true' ? '&fromWF=true' : ''}">
 								<span class="glyphicon glyphicon-user docdetails-tabbar-icon"></span> <fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
 						</li>
 					</c:if>
 					<c:if test="${current eq 'article'}">
 						<x:if select="$mcrobj/mycoreobject/structure/derobjects/derobject[@xlink:title='display_biography']">
 							<li class="${tabstyle}">
-								<a href="${WebApplicationBaseURL}resolve/id/${param.id}?offset=${param.offset}&amp;resultid=${param.resultid}&amp;fromWF=${param.fromWF}&amp;tab=${current}">
+								<a href="${WebApplicationBaseURL}resolve/id/${param.id}?tab=${current}${empty param._search ? '' : '&_search='.concat(param._search)}${param.fromWF eq 'true' ? '&fromWF=true' : ''}">
 									<span class="glyphicon glyphicon-book docdetails-tabbar-icon"></span> <fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
 							</li>
 						</x:if>		
@@ -43,7 +43,7 @@
 					<c:if test="${current eq 'documents'}">
 						<x:if select="$mcrobj/mycoreobject/structure/derobjects/derobject">
 							<li class="${tabstyle}">
-								<a href="${WebApplicationBaseURL}resolve/id/${param.id}?offset=${param.offset}&amp;resultid=${param.resultid}&amp;fromWF=${param.fromWF}&amp;tab=${current}">
+								<a href="${WebApplicationBaseURL}resolve/id/${param.id}?tab=${current}${empty param._search ? '' : '&_search='.concat(param._search)}${param.fromWF eq 'true' ? '&fromWF=true' : ''}">
 									<span class="glyphicon glyphicon-file docdetails-tabbar-icon"></span> <fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
 							</li>
 						</x:if>		
