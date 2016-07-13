@@ -69,9 +69,9 @@
         <div class="col-sm-2">
           <xed:bind xpath="@operator">
             <select id="choose_field" class="form-control">
-              <option value="contains"><xed:output i18n="editor.search.contains" /></option>
-              <option value="like"><xed:output i18n="editor.search.like" /></option>
-              <option value="phrase"><xed:output i18n="editor.search.phrase"/></option>
+              <option value="contains"><xed:output i18n="Editor.Search.contains" /></option>
+              <option value="like"><xed:output i18n="Editor.Search.like" /></option>
+              <option value="phrase"><xed:output i18n="Editor.Search.phrase"/></option>
               <option value="=">=</option>
               <option value="&gt;">&gt;</option>
               <option value="&gt;=">&gt;=</option>
@@ -79,7 +79,7 @@
               <option value="&lt;=">&lt;=</option>
             </select>
           </xed:bind>
-        </div>
+       </div>
         <div class="col-sm-5">
           <xed:bind xpath="@value">
             <input id="choose_value" class="form-control" />

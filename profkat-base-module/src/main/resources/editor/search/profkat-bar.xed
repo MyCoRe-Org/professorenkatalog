@@ -22,7 +22,7 @@
             <div class="col-sm-offset-3 col-sm-9">
 						  <!-- xed:href="/servlets/MCRStoreMetadataServlet" -->
               <button type="submit" xed:target="servlet" xed:href="/search/profkat-bar" class="btn btn-primary">
-                <xed:output i18n="editor.search.search" />
+                <xed:output i18n="Editor.Search.search" />
               </button>
               <xed:if test="xed:call-java('org.mycore.common.xml.MCRXMLFunctions','isCurrentUserInRole','editprofessorum')">
                 <button type="submit" class="btn btn-default" xed:target="debug">
