@@ -175,7 +175,7 @@
     	</mcrdd:row>
     
     	<mcrdd:separator showLine="true" />
-   	       
+   	    <x:if select="not(starts-with(//mycoreobject/@ID,'cpb')">   
    		<mcrdd:row select="/mycoreobject/metadata/box.email/email" labelkey="OMD.profkat.emails" showInfo="false" >
    			<mcrdd:outputitem select="." var="current">
    				<c:set var="email"><x:out select="$current/text()" /></c:set>
@@ -184,6 +184,7 @@
    				</jsp:include>
    			</mcrdd:outputitem>   
    		</mcrdd:row>
+   		</x:if>
     
    		<mcrdd:row select="/mycoreobject/metadata/box.homepage/homepage" labelkey="OMD.profkat.homepages" showInfo="true" >
    			<mcrdd:outputitem select="." var="current">
@@ -411,8 +412,10 @@
    		<%-- 06.10.2006, editorCP  /  17.06.2009, editorCP --%>
    		<mcrdd:item select="./service/servdates/servdate[@type='createdate']" datePattern ="dd.MM.yyyy" var="createdate"/>
    		<mcrdd:item select="./service/servdates/servdate[@type='modifydate']" datePattern ="dd.MM.yyyy" var="modifydate" />
-   		<mcrdd:item select="./service/servflags/servflag[@type='createdby']" var="createdBy"/>
-   		<mcrdd:item select="./service/servflags/servflag[@type='modifiedby']" var="modifiedBy" />
+   		<x:if select="not(starts-with(//mycoreobject/@ID,'cpb')">
+   			<mcrdd:item select="./service/servflags/servflag[@type='createdby']" var="createdBy"/>
+   			<mcrdd:item select="./service/servflags/servflag[@type='modifiedby']" var="modifiedBy" />
+   		</x:if>
    		<mcrdd:outputitem select="." var="current">
    			${createdate},&#160;${createdBy}&#160;&#160;/&#160;&#160;${modifydate},&#160;${modifiedBy}
    		</mcrdd:outputitem>  
