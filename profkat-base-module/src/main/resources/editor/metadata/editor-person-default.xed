@@ -84,7 +84,7 @@
     <!-- Personentyp [ENDE]-->
     
     <!-- Epoche -->
-    <xed:if test="not(starts-with(//mycoreobject/@ID,'cpb')">
+    <xed:if test="not(starts-with(//mycoreobject/@ID,'cpb_'))">
     <xed:bind xpath="box.epoch[@class='MCRMetaClassification']">
     <div class="form-group">
         <label class="col-sm-2 control-label input-sm profkat-label" for="persontype">
@@ -557,7 +557,7 @@
   <!-- Lehr und Forschungsgebiet [ENDE] -->
   
   <!--  Fachgebietsklassifikation [START] -->
-  <xed:if test="not(starts-with(//mycoreobject/@ID,'cpb')">
+  <xed:if test="not(starts-with(//mycoreobject/@ID,'cpb_'))">
   <xed:bind xpath="box.subjectclass[@class='MCRMetaClassification']">
     <div class="form-group">
       <label class="col-sm-2 control-label input-sm profkat-label" for="subjectclass">
@@ -1531,7 +1531,7 @@
   </xed:bind>
   <!-- weitere Literatur [ENDE] -->
   <!--  Komplexe Velinkung [START] -->
-  <xed:if test="not(starts-with(//mycoreobject/@ID,'cpb')">
+  <xed:if test="not(starts-with(//mycoreobject/@ID,'cpb_'))">
   <xed:bind xpath="box.complexref[@class='MCRMetaLangText']">
     <div class="form-group">
       <label class="col-sm-2 control-label input-sm profkat-label" for="complexref">

@@ -175,7 +175,7 @@
     	</mcrdd:row>
     
     	<mcrdd:separator showLine="true" />
-   	    <x:if select="not(starts-with(//mycoreobject/@ID,'cpb')">   
+   	    <x:if select="not(starts-with($mcrobj/mycoreobject/@ID,'cpb_'))">   
    		<mcrdd:row select="/mycoreobject/metadata/box.email/email" labelkey="OMD.profkat.emails" showInfo="false" >
    			<mcrdd:outputitem select="." var="current">
    				<c:set var="email"><x:out select="$current/text()" /></c:set>
@@ -412,12 +412,12 @@
    		<%-- 06.10.2006, editorCP  /  17.06.2009, editorCP --%>
    		<mcrdd:item select="./service/servdates/servdate[@type='createdate']" datePattern ="dd.MM.yyyy" var="createdate"/>
    		<mcrdd:item select="./service/servdates/servdate[@type='modifydate']" datePattern ="dd.MM.yyyy" var="modifydate" />
-   		<x:if select="not(starts-with(//mycoreobject/@ID,'cpb')">
+   		<x:if select="not(starts-with($mcrobj/mycoreobject/@ID,'cpb_'))">
    			<mcrdd:item select="./service/servflags/servflag[@type='createdby']" var="createdBy"/>
    			<mcrdd:item select="./service/servflags/servflag[@type='modifiedby']" var="modifiedBy" />
    		</x:if>
    		<mcrdd:outputitem select="." var="current">
-   			${createdate},&#160;${createdBy}&#160;&#160;/&#160;&#160;${modifydate},&#160;${modifiedBy}
+   			${createdate}${empty createdBy ? '' : ',&#160;'.concat(createdBy)}&#160;&#160;/&#160;&#160;${modifydate}${empty modifiedBy ? '' : ',&#160;'.concat(modifiedBy)}
    		</mcrdd:outputitem>  
    	</mcrdd:row>
    	
