@@ -71,7 +71,7 @@
             <select id="choose_field" class="form-control">
               <option value="contains"><xed:output i18n="Editor.Search.contains" /></option>
               <option value="like"><xed:output i18n="Editor.Search.like" /></option>
-              <option value="phrase"><xed:output i18n="Editor.Search.phrase"/></option>
+              <option value="phrase"><xed:output i18n="Editor.Search.phrases"/></option>
               <option value="=">=</option>
               <option value="&gt;">&gt;</option>
               <option value="&gt;=">&gt;=</option>
