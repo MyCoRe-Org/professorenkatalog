@@ -27,7 +27,7 @@
     <!--Status -->
     <xed:bind xpath="box.status[@class='MCRMetaLangText']">
       <div class="form-group">
-        <label class="col-sm-2 control-label input-sm profkat-label" for="status"><xed:output i18n="OMD.profkat.statesM" /></label>
+        <label class="col-sm-2 control-label input-sm profkat-label" for="status"><xed:output i18n="OMD.profkat.states" /></label>
         <div class="col-sm-10">
           <div class="row profkat-row profkat-row-1">
             <div class="col-sm-10">
@@ -53,7 +53,7 @@
   <xed:bind xpath="box.type[@class='MCRMetaClassification']">
     <div class="form-group">
      <label class="col-sm-2 control-label input-sm profkat-label" for="persontype">
-        <xed:output i18n="OMD.profkat.typeM" />
+        <xed:output i18n="OMD.profkat.type" />
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="type[@classid='profkat_class_persontypes']">
@@ -119,14 +119,14 @@
 	<!-- Name -->
 	
       <div class="form-group">
-        <label class="col-sm-2 control-label input-sm profkat-label"><xed:output i18n="OMD.profkat.nameM" /></label>
+        <label class="col-sm-2 control-label input-sm profkat-label"><xed:output i18n="OMD.profkat.name" /></label>
         <div class="col-sm-10">
           <xed:bind xpath="box.surname[@class='MCRMetaLangText']">
             <div class="row"> 
               <div class="col-sm-10">
              	<div class="row profkat-row">
                   <label class="col-sm-2 control-label input-sm profkat-label-hint" for="surname">
-                    <xed:output i18n="OMD.profkat.hint.nameSurnameM" />
+                    <xed:output i18n="OMD.profkat.hint.nameSurname" />
                   </label>
                   <div class="col-sm-10">
                     <xed:repeat xpath="surname">
@@ -156,7 +156,7 @@
               <div class="col-sm-10">
                 <div class="row profkat-row">
                   <label class="col-sm-2 control-label input-sm profkat-label-hint" for="firstname">
-                    <xed:output i18n="OMD.profkat.hint.nameFirstnameM" />
+                    <xed:output i18n="OMD.profkat.hint.nameFirstname" />
                   </label>
                   <div class="col-sm-10">
                     <xed:repeat xpath="firstname">
@@ -245,7 +245,7 @@
    <xed:bind xpath="box.professorship[@class='MCRMetaHistoryEvent']">
      <div class="form-group">
        <label class="col-sm-2 control-label input-sm profkat-label" for="persontype">
-         <xed:output i18n="OMD.profkat.professorshipsM" />
+         <xed:output i18n="OMD.profkat.professorships" />
        </label>
        <div class="col-sm-10">
          <xed:repeat xpath="professorship">
@@ -356,7 +356,7 @@
   <xed:bind xpath="box.period[@class='MCRMetaHistoryDate']">
     <div class="form-group">
       <label class="col-sm-2 control-label input-sm profkat-label" for="period">
-        <xed:output i18n="OMD.profkat.periodsM" />
+        <xed:output i18n="OMD.profkat.periods" />
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="period">
@@ -407,7 +407,7 @@
   <xed:bind xpath="box.faculty[@class='MCRMetaHistoryEvent']">
     <div class="form-group">
       <label class="col-sm-2 control-label input-sm profkat-label" for="faculty">
-        <xed:output i18n="OMD.profkat.facultiesM" />
+        <xed:output i18n="OMD.profkat.faculties" />
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="faculty">
@@ -558,7 +558,7 @@
   <xed:bind xpath="box.subjectclass[@class='MCRMetaClassification']">
     <div class="form-group">
       <label class="col-sm-2 control-label input-sm profkat-label" for="subjectclass">
-        <xed:output i18n="OMD.profkat.subjectsM" />
+        <xed:output i18n="OMD.profkat.subjects" />
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="subjectclass[@classid='profkat_class_subjects']">
@@ -659,7 +659,7 @@
   <xed:bind xpath="box.birth[@class='MCRMetaHistoryEvent']">
     <div class="form-group">
       <label class="col-sm-2 control-label input-sm profkat-label" for="birth">
-        <xed:output i18n="OMD.profkat.birthsM" />
+        <xed:output i18n="OMD.profkat.births" />
       </label>
       <div class="col-sm-10">
         <xed:bind xpath="birth">
@@ -787,7 +787,7 @@
   <!--  Geschlecht [START] -->
   <xed:bind xpath="box.sex[@class='MCRMetaLangText']">
     <div class="form-group">
-      <label class="col-sm-2 control-label input-sm profkat-label" for="sex"><xed:output i18n="OMD.profkat.sexM" /></label>
+      <label class="col-sm-2 control-label input-sm profkat-label" for="sex"><xed:output i18n="OMD.profkat.sex" /></label>
       <div class="col-sm-10">
         <div class="row profkat-row profkat-row-1">
           <div class="col-sm-10">
@@ -1560,7 +1560,7 @@
   <xed:bind xpath="box.identifier[@class='MCRMetaLangText']">
     <div class="form-group">
       <label class="col-sm-2 control-label input-sm profkat-label" for="identifier">
-        <xed:output i18n="OMD.profkat.identifiersM" />
+        <xed:output i18n="OMD.profkat.identifiers" />
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="identifier">
