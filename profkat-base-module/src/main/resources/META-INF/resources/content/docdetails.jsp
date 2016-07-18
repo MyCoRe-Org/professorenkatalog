@@ -53,7 +53,7 @@
 	          content="Im Catalogus Professorum Rostochiensium (Rostocker Professorenkatalog) sollen alle an der Universität Rostock seit 1419 tätigen Professoren mit Angaben zur Person, zum wissenschaftlichen Profil und zu den Aktivitäten an der Rostocker Hochschule dokumentiert werden." />
 		<meta name="author" content="Forschungsstelle Universitätsgeschichte der Universität Rostock" />
 				<title>${prof_name} @ <fmt:message key="Webpage.title" /></title>
-		<link rel="canonical" href="${WebApplicationBaseURL}/resolve/id/${mcrid}" />
+		<link rel="canonical" href="${WebApplicationBaseURL}resolve/id/${mcrid}" />
 		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_docdetails_headlines.css" />
 		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_biogr_article.css" />		
  	</stripes:layout-component>
