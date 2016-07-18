@@ -15,12 +15,18 @@
 	<c:if test="${empty tab}"><c:set var="tab" value="data" /></c:if>
 	<mcrdd:setnamespace prefix="xlink" uri="http://www.w3.org/1999/xlink" />
 	<mcr:receiveMcrObjAsJdom mcrid="${param.id}" varDom="mcrobj" fromWF="${param.fromWF}"/>
+	
 	<c:if test="${not(param.print eq 'true')}">
 		<div  class="tabbar docdetails-tabbar ur-embedded">
+			<c:if test="${param.fromWF eq 'true'}">
+				<div class="alert alert-info" role="alert"><fmt:message key="WF.Preview" /></div>
+			</c:if>
 			<c:set var="msgKeyStatus">OMD.profkat.state.<x:out select="$mcrobj/mycoreobject/metadata/box.status/status"/></c:set>
 			<div class="docdetails-tabbar-info"><fmt:message key="${msgKeyStatus}" /></div>
+			<c:set var="tabtokens" value="data|article|documents" />
+				
 			<ul id="tabs_on_page" class="nav nav-tabs">
-				<c:set var="tabtokens" value="data|article|documents" />
+				
 				<c:forTokens items="${tabtokens}" delims="|" var="current" varStatus="status">
       				<c:set var="tabstyle" value="" /> 
 					<c:if test="${current eq tab}">
@@ -391,7 +397,7 @@
       				</p>   				
     				</mcrdd:outputitem>
    			</x:if>                                             			   		 
-   		</mcrdd:row>   				
+   		</mcrdd:row>	
 	</c:if> 	
   	
 	<c:if test="${(tab eq 'article') or (param.print eq 'true')}">
@@ -440,4 +446,7 @@
       		</fmt:message>      			
    		</mcrdd:outputitem>
    	</mcrdd:row>
+   	<c:if test="${param.fromWF eq 'true'}">
+		<div class="alert alert-info" style="margin-top:20px" role="alert"><fmt:message key="WF.Preview" /></div>
+	</c:if>	
   </mcrdd:docdetails>
