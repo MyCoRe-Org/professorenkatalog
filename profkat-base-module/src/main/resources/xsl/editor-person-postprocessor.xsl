@@ -24,6 +24,9 @@
         <xsl:if test="(string-length(text[@xml:lang='de']) = 9 and translate(text[@xml:lang='de'], '0123456789', '') = 'seit ')">
           <von>01.01.<xsl:value-of select="substring(text[@xml:lang='de'],1,4)" /> AD</von>
         </xsl:if>
+        <xsl:if test="(string-length(text[@xml:lang='de']) = 7 and translate(text[@xml:lang='de'], '0123456789', '') = 'ab ')">
+          <von>01.01.<xsl:value-of select="substring(text[@xml:lang='de'],1,4)" /> AD</von>
+        </xsl:if>
       </xsl:if>
       <xsl:copy-of select="ibis" />
       <xsl:copy-of select="bis" />
@@ -38,6 +41,9 @@
           <bis>31.12.<xsl:value-of select="substring(text[@xml:lang='de'],6,4)" /> AD</bis>
         </xsl:if>
         <xsl:if test="(string-length(text[@xml:lang='de']) = 9 and translate(text[@xml:lang='de'], '0123456789', '') = 'seit ')">
+          <bis>01.01.4000 AD</bis>
+        </xsl:if>
+        <xsl:if test="(string-length(text[@xml:lang='de']) = 7 and translate(text[@xml:lang='de'], '0123456789', '') = 'ab ')">
           <bis>01.01.4000 AD</bis>
         </xsl:if>
       </xsl:if>
