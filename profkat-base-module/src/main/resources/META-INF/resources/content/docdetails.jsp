@@ -69,36 +69,48 @@
  	
 	 <stripes:layout-component name="right_side">
 		<div class="ur-box ur-box-bordered infobox" style="margin-bottom:32px; padding: 18px 6px 6px 6px;">
-
 			<search:result-navigator mcrid="${mcrid}" />
 			
-			<c:if test="${empty param.print}">
-    	   		<a class="btn btn-default btn-lg pull-right" style="padding:6px;color:#BBBBBB;" target="_blank" title="<fmt:message key="Webpage.showXML" />"
-		   		   href="${WebApplicationBaseURL}api/v1/objects/${mcrid}">
-	    			<span class="glyphicon glyphicon-wrench"></span>
-	        	</a>
+			<div class="container-fluid">
+				<c:if test="${empty param.print}">
+					<div class="row" style="padding-bottom:6px">
+     					<c:set var="url">${WebApplicationBaseURL}resolve/id/${param.id}</c:set>
+		   				<a class="btn btn-default btn-sm col-xs-12" style="text-align:left;" target="_blank" title="<fmt:message key="Webpage.feedback" />"
+		   		   		   href="${WebApplicationBaseURL}feedback.action?topicURL=<%=java.net.URLEncoder.encode(pageContext.getAttribute("url").toString(), "UTF-8")%>&amp;topicHeader=<%=java.net.URLEncoder.encode(pageContext.getAttribute("prof_name").toString().replaceAll("\\s+"," "), "UTF-8")%>">
+	    					<span class="glyphicon glyphicon-comment"></span> <fmt:message key="Webpage.feedback.button"/>
+	    				</a>
+	         		</div>
+	         		<div class="row" style="padding-bottom:6px">
+	         				<a class="btn btn-default btn-sm col-xs-5" style="text-align:left;margin-right:6px" href="${WebApplicationBaseURL}content/print_details.jsp?id=${param.id}&amp;print=true&amp;fromWF=${param.fromWF}" target="_blank" title="<fmt:message key="WF.common.printdetails" />">
+	       						<span class="glyphicon glyphicon-print"></span> <fmt:message key="Webpage.print.button"/>
+	       					</a>
+	       		
+	       		
+	       				<c:if test="${(not from)}" >
+	       						<search:show-edit-button mcrid="${mcrid}" cssClass="btn btn-sm btn-primary col-xs-3" />  
+   						</c:if>
+   			
+		    	   		<button type="button" class="btn btn-default btn-sm pull-right hidden-xs" style="border:none;color:#DEDEDE;" 
+		    	   		        data-toggle="collapse" data-target="#hiddenTools" title="<fmt:message key="Webpage.tools.menu4experts" />"
+				   		   href="${WebApplicationBaseURL}api/v1/objects/${mcrid}">
+	    					<span class="glyphicon glyphicon-wrench"></span>
+	        			</a>
+	      			</div>
+	      			<div id="hiddenTools" class="collapse">
+	      				<div class="row" style="padding-bottom:6px">
+	      					<a class="btn btn-warning btn-sm" target="_blank" title="<fmt:message key="Webpage.tools.showXML" />"
+				   		   		href="${WebApplicationBaseURL}api/v1/objects/${mcrid}" rel="nofollow">XML</a>
+	        				<a class="btn btn-warning btn-sm" style="margin-left:6px" target="_blank" title="<fmt:message key="Webpage.tools.showSOLR" />"
+				   		   		href="${WebApplicationBaseURL}receive/${mcrid}?XSL.Style=solrdocument" rel="nofollow">SOLR</a>
+	      			</div>
+	      			</div>
 	         </c:if>
-			
-			<c:if test="${empty param.print and !fn:contains(style,'user')}">
-  				<a class="btn btn-default btn-lg" style="padding:6px" href="${WebApplicationBaseURL}content/print_details.jsp?id=${param.id}&amp;print=true&amp;fromWF=${param.fromWF}" target="_blank" title="<fmt:message key="WF.common.printdetails" />">
-	       			<span class="glyphicon glyphicon-print"></span>
-	       		</a>
-			</c:if>
-    
-     		<c:if test="${empty param.print}">
-     			<c:set var="url">${WebApplicationBaseURL}resolve/id/${param.id}</c:set>
-		   		<a class="btn btn-default btn-lg" style="padding:6px" target="_blank" title="<fmt:message key="Webpage.feedback" />"
-		   		   href="${WebApplicationBaseURL}feedback.action?topicURL=<%=java.net.URLEncoder.encode(pageContext.getAttribute("url").toString(), "UTF-8")%>&amp;topicHeader=<%=java.net.URLEncoder.encode(pageContext.getAttribute("prof_name").toString().replaceAll("\\s+"," "), "UTF-8")%>">
-	    			<span class="glyphicon glyphicon-envelope"></span>
-	        	</a>
-	         </c:if>
-     		<c:if test="${(not from)}" >
-     			<search:show-edit-button mcrid="${mcrid}" />  
-   			</c:if>
+
+   			</div>
 		</div>
 
 		<x:if select="$linked/mycoreobject/structure/derobjects/derobject[@xlink:title='display_portrait' or @xlink:title='display_signature']">
-			<div class="ur-box ur-box-bordered infobox">
+			<div class="ur-box ur-box-bordered infobox hidden-xs">
 				<search:derivate-image mcrid="${mcrid}" width="100%" labelContains="display_portrait" showFooter="true" protectDownload="true" />
 				<search:derivate-image mcrid="${mcrid}" width="100%" labelContains="display_signature" />
 			</div>
