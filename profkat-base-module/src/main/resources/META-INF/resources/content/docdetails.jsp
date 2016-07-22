@@ -112,7 +112,7 @@
 		<x:if select="$linked/mycoreobject/structure/derobjects/derobject[@xlink:title='display_portrait' or @xlink:title='display_signature']">
 			<div class="ir-box ir-box-bordered ir-infobox hidden-xs">
 				<search:derivate-image mcrid="${mcrid}" width="100%" labelContains="display_portrait" showFooter="true" protectDownload="true" />
-				<search:derivate-image mcrid="${mcrid}" width="100%" labelContains="display_signature" />
+				<search:derivate-image mcrid="${mcrid}" width="100%" labelContains="display_signature" protectDownload="true" />
 			</div>
 		</x:if>
 	</stripes:layout-component>

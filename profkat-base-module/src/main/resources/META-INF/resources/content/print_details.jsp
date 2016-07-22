@@ -76,14 +76,14 @@ body {
 					</c:choose>
 				</div>
 
-				<div class="col-xs-3">
+				<div class="col-xs-2">
 					<x:if
 						select="$linked/mycoreobject/structure/derobjects/derobject[@xlink:title='display_portrait']">
 						<div class="base_box infobox">
 							<search:derivate-image mcrid="${mcrid}" width="100%"
-								labelContains="display_portrait" />
+								showFooter="true" protectDownload="true" labelContains="display_portrait" />
 							<search:derivate-image mcrid="${mcrid}" width="100%"
-								labelContains="display_signature" />
+								 protectDownload="true" labelContains="display_signature" />
 						</div>
 					</x:if>
 				</div>
