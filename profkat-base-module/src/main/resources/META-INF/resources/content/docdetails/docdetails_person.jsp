@@ -17,7 +17,7 @@
 	<mcr:receiveMcrObjAsJdom mcrid="${param.id}" varDom="mcrobj" fromWF="${param.fromWF}"/>
 	
 	<c:if test="${not(param.print eq 'true')}">
-		<div  class="tabbar docdetails-tabbar ir-embedded">
+		<div  class="tabbar docdetails-tabbar">
 			<c:if test="${param.fromWF eq 'true'}">
 				<div class="alert alert-info" role="alert"><fmt:message key="WF.Preview" /></div>
 			</c:if>
@@ -76,7 +76,7 @@
         		<c:if test="${fn:length(affix)>2}">(${affix})</c:if>
        		</h2>
        	</div>
-       	<div class="docdetails-values">${akadtitle}</div>
+       	<div class="docdetails-values">${fn:length(akadtitle)>2 ? akadtitle : '&nbsp;'}</div>
     </mcrdd:header>
 
     <c:set var="proflabelkey" value="" />
