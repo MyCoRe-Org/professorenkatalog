@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- method='post' to avoid charset problems !!! -->
 
-<xed:form xmlns:xed="http://www.mycore.de/xeditor" role="form" class="form-horizontal" accept-charset="UTF-8" method="post">
+<xed:form xmlns:xed="http://www.mycore.de/xeditor" role="form" class="form-horizontal ir-editor-form" accept-charset="UTF-8" method="post">
     <div class="row">
-    <div class="alert alert-info col-sm-12">
+    <div class="alert alert-info ir-editor-alert">
       <xed:output i18n="Editor.Common.headline" />
    </div>
    </div>
@@ -27,12 +27,12 @@
     <!--Status -->
     <xed:bind xpath="box.status[@class='MCRMetaLangText']">
       <div class="form-group">
-        <label class="col-sm-2 control-label input-sm profkat-label" for="status"><xed:output i18n="OMD.profkat.states" /></label>
+        <label class="col-sm-2 control-label input-sm ir-editor-label" for="status"><xed:output i18n="OMD.profkat.states" /></label>
         <div class="col-sm-10">
-          <div class="row profkat-row profkat-row-1">
+          <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
-              <div class="row profkat-row">
-                <div class="col-sm-12">
+              <div class="row ir-editor-row">
+                <div class="col-sm-offset-2 col-sm-10">
                   <xed:bind xpath="status">
                     <select id="status" class="form-control input-sm">
                   	  <xed:include uri="props2options:OMD.profkat.state" />
@@ -52,16 +52,16 @@
 
   <xed:bind xpath="box.type[@class='MCRMetaClassification']">
     <div class="form-group">
-     <label class="col-sm-2 control-label input-sm profkat-label" for="persontype">
+     <label class="col-sm-2 control-label input-sm ir-editor-label" for="persontype">
         <xed:output i18n="OMD.profkat.type" />
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="type[@classid='profkat_class_persontypes']">
           <xed:cleanup-rule xpath="//box.type/type" relevant-if="@categid" />
-          <div class="row profkat-row profkat-row-1">
+          <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
-              <div class="row profkat-row">
-                <div class="col-sm-12">
+              <div class="row ir-editor-row">
+                <div class="col-sm-offset-2 col-sm-10">
                   <xed:bind xpath="@categid">
                     <select id="persontype" class="form-control input-sm">
                       <xed:include uri="xslStyle:items2options:classification:editor:-1:children:profkat_class_persontypes" />
@@ -87,16 +87,16 @@
     <xed:if test="not(starts-with(//mycoreobject/@ID,'cpb_'))">
     <xed:bind xpath="box.epoch[@class='MCRMetaClassification']">
     <div class="form-group">
-        <label class="col-sm-2 control-label input-sm profkat-label" for="persontype">
+        <label class="col-sm-2 control-label input-sm ir-editor-label" for="persontype">
           <xed:output i18n="OMD.profkat.epoch" />
         </label>
         <div class="col-sm-10">
           <xed:repeat xpath="epoch[@classid='profkat_class_epochs']">
             <xed:cleanup-rule xpath="//box.epoch/epoch" relevant-if="@categid" />
-            <div class="row profkat-row profkat-row-1">
+            <div class="row ir-editor-row ir-editor-row-1">
               <div class="col-sm-10">
-                <div class="row profkat-row">
-                  <div class="col-sm-12">
+                <div class="row ir-editor-row">
+                  <div class="col-sm-offset-2 col-sm-10">
                     <xed:bind xpath="@categid">
                       <select id="epoch" class="form-control input-sm">
                         <xed:include uri="xslStyle:items2options:classification:editor:-1:children:profkat_class_epochs" />
@@ -121,20 +121,20 @@
 	<!-- Name -->
 	
       <div class="form-group">
-        <label class="col-sm-2 control-label input-sm profkat-label"><xed:output i18n="OMD.profkat.name" /></label>
+        <label class="col-sm-2 control-label input-sm ir-editor-label"><xed:output i18n="OMD.profkat.name" /></label>
         <div class="col-sm-10">
           <xed:bind xpath="box.surname[@class='MCRMetaLangText']">
             <div class="row"> 
               <div class="col-sm-10">
-             	<div class="row profkat-row">
-                  <label class="col-sm-2 control-label input-sm profkat-label-hint" for="surname">
+             	<div class="row ir-editor-row">
+                  <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="surname">
                     <xed:output i18n="OMD.profkat.hint.nameSurname" />
                   </label>
                   <div class="col-sm-10">
                     <xed:repeat xpath="surname">
-                      <div class="row profkat-row profkat-row-1">
+                      <div class="row ir-editor-row ir-editor-row-1">
                         <div class="col-sm-9">
-                          <div class="row profkat-row">
+                          <div class="row ir-editor-row">
                             <div class="col-sm-12">
                           	  <input id="surname" type="text" class="form-control input-sm"   />
                           	</div>
@@ -154,17 +154,17 @@
             </div>
           </xed:bind>
           <xed:bind xpath="box.firstname[@class='MCRMetaLangText']">
-            <div class="row profkat-row"> 
+            <div class="row ir-editor-row"> 
               <div class="col-sm-10">
-                <div class="row profkat-row">
-                  <label class="col-sm-2 control-label input-sm profkat-label-hint" for="firstname">
+                <div class="row ir-editor-row">
+                  <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="firstname">
                     <xed:output i18n="OMD.profkat.hint.nameFirstname" />
                   </label>
                   <div class="col-sm-10">
                     <xed:repeat xpath="firstname">
-                      <div class="row profkat-row profkat-row-1">
+                      <div class="row ir-editor-row ir-editor-row-1">
                         <div class="col-sm-9">
-                          <div class="row profkat-row">
+                          <div class="row ir-editor-row">
                             <div class="col-sm-12">
               	              <input id="firstname" type="text" class="form-control input-sm"   />
               	            </div>
@@ -184,17 +184,17 @@
             </div> 
           </xed:bind>
           <xed:bind xpath="box.nameaffix[@class='MCRMetaLangText']">
-            <div class="row profkat-row">
+            <div class="row ir-editor-row">
               <div class="col-sm-10">
-                <div class="row profkat-row"> 
-                  <label class="col-sm-2 control-label input-sm profkat-label-hint" for="nameaffix">
+                <div class="row ir-editor-row"> 
+                  <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="nameaffix">
                     <xed:output i18n="OMD.profkat.nameaffixes" />
                   </label>
                   <div class="col-sm-10">
                     <xed:repeat xpath="nameaffix">
-                      <div class="row profkat-row profkat-row-1">
+                      <div class="row ir-editor-row ir-editor-row-1">
                         <div class="col-sm-9">
-                          <div class="row profkat-row">
+                          <div class="row ir-editor-row">
                             <div class="col-sm-12">
                               <input id="nameaffix" type="text" class="form-control input-sm"   />
                             </div>
@@ -214,17 +214,17 @@
            </div>      
           </xed:bind>
           <xed:bind xpath="box.academictitle[@class='MCRMetaLangText']">
-            <div class="row profkat-row">
+            <div class="row ir-editor-row">
               <div class="col-sm-10">
-                <div class="row profkat-row"> 
-                  <label class="col-sm-2 control-label input-sm profkat-label-hint" for="academictitle">
+                <div class="row ir-editor-row"> 
+                  <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="academictitle">
                     <xed:output i18n="OMD.profkat.academictitles" />
                   </label>
                   <div class="col-sm-10">
                     <xed:bind xpath="academictitle">
-                      <div class="row profkat-row profkat-row-1">
+                      <div class="row ir-editor-row ir-editor-row-1">
                         <div class="col-sm-9">
-                          <div class="row profkat-row">
+                          <div class="row ir-editor-row">
                             <div class="col-sm-12">
                               <input id="academictitle" type="text" class="form-control input-sm"   />
                             </div>
@@ -246,16 +246,16 @@
    <!-- Professorship [START]-->
    <xed:bind xpath="box.professorship[@class='MCRMetaHistoryEvent']">
      <div class="form-group">
-       <label class="col-sm-2 control-label input-sm profkat-label" for="persontype">
+       <label class="col-sm-2 control-label input-sm ir-editor-label" for="persontype">
          <xed:output i18n="OMD.profkat.professorships" />
        </label>
        <div class="col-sm-10">
          <xed:repeat xpath="professorship">
            <xed:cleanup-rule xpath="//box.professorship/professorship" relevant-if="event" />
-            <div class="row profkat-row profkat-row-1">
+            <div class="row ir-editor-row ir-editor-row-1">
               <div class="col-sm-10">
-                <div class="row profkat-row"> 
-                  <label class="col-sm-2 control-label input-sm profkat-label-hint" for="date_shown">
+                <div class="row ir-editor-row"> 
+                  <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="date_shown">
                     <xed:output i18n="OMD.profkat.hint.dateShown" />
                   </label>
                   <div class="col-sm-2">
@@ -263,7 +263,7 @@
                       <input id="date_shown" type="text" class="form-control input-sm"   />
                     </xed:bind>
                   </div>
-                  <label class="col-sm-2 control-label input-sm profkat-label-hint" for="date_shown">
+                  <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="date_shown">
                     <xed:output i18n="OMD.profkat.hint.dateFrom" />
                   </label>
                   <div class="col-sm-2">
@@ -271,7 +271,7 @@
                       <input id="date_from" type="text" class="form-control input-sm"   />
                     </xed:bind>
                   </div>
-                  <label class="col-sm-2 control-label input-sm profkat-label-hint" for="date_shown">
+                  <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="date_shown">
                     <xed:output i18n="OMD.profkat.hint.dateTo" />
                   </label>
                   <div class="col-sm-2">
@@ -280,8 +280,8 @@
                     </xed:bind>
                   </div>
                 </div>
-                <div class="row profkat-row">         
-                  <label class="col-sm-2 control-label input-sm profkat-label-hint" for="proftype">
+                <div class="row ir-editor-row">         
+                  <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="proftype">
                     <xed:output i18n="OMD.profkat.hint.profType" />
                   </label>
                   <div class="col-sm-10">
@@ -292,14 +292,14 @@
                     </xed:bind>
                   </div>
                 </div>
-                <div class="row profkat-row">
-                  <div class="col-sm-12">
+                <div class="row ir-editor-row">
+                  <div class="col-sm-offset-2 col-sm-10">
                     <xed:bind xpath="event">
                       <input id="event" type="text" class="form-control input-sm" />
                     </xed:bind>
                   </div>
                 </div>
-                <div class="row profkat-row">
+                <div class="row ir-editor-row">
                   <xed:bind xpath="text[2]">
                     <div class="col-sm-4 col-sm-offset-2">
                       <xed:bind xpath="@xml:lang">
@@ -313,7 +313,7 @@
                     </div>
                   </xed:bind>
                 </div>
-                <div class="row profkat-row">
+                <div class="row ir-editor-row">
                   <xed:bind xpath="text[3]">
                     <div class="col-sm-4 col-sm-offset-2">
                       <xed:bind xpath="@xml:lang">
@@ -327,7 +327,7 @@
                     </div>
                   </xed:bind>
                 </div>
-                <div class="row profkat-row">
+                <div class="row ir-editor-row">
                   <xed:bind xpath="text[4]">
                     <div class="col-sm-4 col-sm-offset-2">
                       <xed:bind xpath="@xml:lang">
@@ -357,17 +357,17 @@
   <!-- Zeitraum insgesamt [START] -->
   <xed:bind xpath="box.period[@class='MCRMetaHistoryDate']">
     <div class="form-group">
-      <label class="col-sm-2 control-label input-sm profkat-label" for="period">
+      <label class="col-sm-2 control-label input-sm ir-editor-label" for="period">
         <xed:output i18n="OMD.profkat.periods" />
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="period">
           <xed:cleanup-rule xpath="//box.period/period" relevant-if="text/text()" />
           <xed:cleanup-rule xpath="//box.period" relevant-if="period" />
-          <div class="row profkat-row profkat-row-1">
+          <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
-              <div class="row profkat-row"> 
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="date_shown">
+              <div class="row ir-editor-row"> 
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="date_shown">
                   <xed:output i18n="OMD.profkat.hint.dateShown" />
                 </label>
                 <xed:bind xpath="text[@xml:lang='de']">
@@ -375,7 +375,7 @@
                   <input id="date_shown" type="text" class="form-control input-sm"   />
                 </div>
                 </xed:bind>
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="date_shown">
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="date_shown">
                   <xed:output i18n="OMD.profkat.hint.dateFrom" />
                 </label>
                 <xed:bind xpath="von">
@@ -383,7 +383,7 @@
                     <input id="date_from" type="text" class="form-control input-sm"   />
                   </div>
                 </xed:bind>
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="date_shown">
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="date_shown">
                   <xed:output i18n="OMD.profkat.hint.dateTo" />
                 </label>
                 <xed:bind xpath="bis">
@@ -408,17 +408,17 @@
   <!-- Fakultät [START] -->
   <xed:bind xpath="box.faculty[@class='MCRMetaHistoryEvent']">
     <div class="form-group">
-      <label class="col-sm-2 control-label input-sm profkat-label" for="faculty">
+      <label class="col-sm-2 control-label input-sm ir-editor-label" for="faculty">
         <xed:output i18n="OMD.profkat.faculties" />
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="faculty">
           <xed:cleanup-rule xpath="//box.faculty/faculty" relevant-if="text/text()" />
           <xed:cleanup-rule xpath="//box.faculty" relevant-if="faculty" />
-          <div class="row profkat-row profkat-row-1">
+          <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
-              <div class="row profkat-row"> 
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="date_shown">
+              <div class="row ir-editor-row"> 
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="date_shown">
                   <xed:output i18n="OMD.profkat.hint.dateShown" />
                 </label>
                 <xed:bind xpath="text[@xml:lang='de']">
@@ -426,7 +426,7 @@
                   <input id="date_shown" type="text" class="form-control input-sm"   />
                 </div>
                 </xed:bind>
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="date_shown">
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="date_shown">
                   <xed:output i18n="OMD.profkat.hint.dateFrom" />
                 </label>
                 <xed:bind xpath="von">
@@ -434,7 +434,7 @@
                     <input id="date_from" type="text" class="form-control input-sm"   />
                   </div>
                 </xed:bind>
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="date_shown">
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="date_shown">
                   <xed:output i18n="OMD.profkat.hint.dateTo" />
                 </label>
                 <xed:bind xpath="bis">
@@ -443,9 +443,9 @@
                   </div>
                 </xed:bind>
                 </div>
-                <div class="row profkat-row">         
+                <div class="row ir-editor-row">         
                 <xed:bind xpath="classification[@classid='profkat_class_institutions']/@categid">
-                  <div class="col-sm-12">
+                  <div class="col-sm-offset-2 col-sm-10">
                     <select id="proftype" class="form-control input-sm">
                       <xed:include uri="xslStyle:items2options:classification:editor:-1:children:profkat_class_institutions" />
                     </select>
@@ -453,9 +453,9 @@
                 </xed:bind>
                 </div>
                 <xed:if test="starts-with(/mycoreobject/@ID, 'cpb_')">
-                  <div class="row profkat-row">
+                  <div class="row ir-editor-row">
                   <xed:bind xpath="event">
-                	<div class="col-sm-12">
+                	<div class="col-sm-offset-2 col-sm-10">
                   	  <input id="faculty_event" type="text" class="form-control input-sm"   />
                		</div>
                   </xed:bind>
@@ -477,15 +477,15 @@
   <!--  Institute [START] -->
   <xed:bind xpath="box.institute[@class='MCRMetaXML']">
     <div class="form-group">
-      <label class="col-sm-2 control-label input-sm profkat-label" for="institute">
+      <label class="col-sm-2 control-label input-sm ir-editor-label" for="institute">
         <xed:output i18n="OMD.profkat.institutes" />
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="institute">
-          <div class="row profkat-row profkat-row-1">
+          <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
-              <div class="row profkat-row"> 
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="institute_time">
+              <div class="row ir-editor-row"> 
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="institute_time">
                   <xed:output i18n="OMD.profkat.hint.time" />
                 </label>
                 <xed:bind xpath="time">
@@ -494,7 +494,7 @@
                   </div>
                 </xed:bind>
                 
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="institute_type">
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="institute_type">
                   <!-- <xed:output i18n="OMD.profkat.hint.type" /> -->
                 </label>
                 <xed:bind xpath="@type">
@@ -505,8 +505,8 @@
                   </div>
                 </xed:bind>
               </div>
-              <div class="row profkat-row">   
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="institute_text">
+              <div class="row ir-editor-row">   
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="institute_text">
                   <xed:output i18n="OMD.profkat.hint.text" />
                 </label>
                 <xed:bind xpath="text">
@@ -531,15 +531,15 @@
   <!-- Lehr- und Forschungsgebiet [START] -->
   <xed:bind xpath="box.fieldofstudy[@class='MCRMetaLangText']">
     <div class="form-group">
-      <label class="col-sm-2 control-label input-sm profkat-label" for="fieldofstudy">
+      <label class="col-sm-2 control-label input-sm ir-editor-label" for="fieldofstudy">
         <xed:output i18n="OMD.profkat.fieldofstudies" />
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="fieldofstudy">
-          <div class="row profkat-row profkat-row-1">
+          <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
-              <div class="row profkat-row">
-                <div class="col-sm-12">
+              <div class="row ir-editor-row">
+                <div class="col-sm-offset-2 col-sm-10">
                   <input id="fieldofstudy" type="text" class="form-control input-sm" />
                 </div>
               </div>
@@ -560,16 +560,16 @@
   <xed:if test="not(starts-with(//mycoreobject/@ID,'cpb_'))">
   <xed:bind xpath="box.subjectclass[@class='MCRMetaClassification']">
     <div class="form-group">
-      <label class="col-sm-2 control-label input-sm profkat-label" for="subjectclass">
+      <label class="col-sm-2 control-label input-sm ir-editor-label" for="subjectclass">
         <xed:output i18n="OMD.profkat.subjects" />
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="subjectclass[@classid='profkat_class_subjects']">
         <xed:cleanup-rule xpath="//box.subjectclass/subjectclass" relevant-if="@categid" />
-          <div class="row profkat-row profkat-row-1">
+          <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
-              <div class="row profkat-row">
-                <div class="col-sm-12">
+              <div class="row ir-editor-row">
+                <div class="col-sm-offset-2 col-sm-10">
                   <xed:bind xpath="@categid">
                     <select id="subjectclass" class="form-control input-sm">
                       <option value="">
@@ -596,15 +596,15 @@
   <!-- E-mail [START] -->
   <xed:bind xpath="box.email[@class='MCRMetaLangText']">
     <div class="form-group">
-      <label class="col-sm-2 control-label input-sm profkat-label" for="email">
+      <label class="col-sm-2 control-label input-sm ir-editor-label" for="email">
         <xed:output i18n="OMD.profkat.emails" />
       </label>
       <div class="col-sm-10">
         <xed:bind xpath="email">
-          <div class="row profkat-row profkat-row-1">
+          <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
-              <div class="row profkat-row"> 
-                <div class="col-sm-12">
+              <div class="row ir-editor-row"> 
+                <div class="col-sm-offset-2 col-sm-10">
                   <input id="email" type="text" class="form-control input-sm"   />
                 </div>
               </div>
@@ -619,15 +619,15 @@
   <!-- Homepage [START] -->
   <xed:bind xpath="box.homepage[@class='MCRMetaLink']">
     <div class="form-group">
-      <label class="col-sm-2 control-label input-sm profkat-label" for="homepage">
+      <label class="col-sm-2 control-label input-sm ir-editor-label" for="homepage">
         <xed:output i18n="OMD.profkat.homepages" />
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="homepage">
-          <div class="row profkat-row profkat-row-1">
+          <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
-              <div class="row profkat-row"> 
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="homepage_url">
+              <div class="row ir-editor-row"> 
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="homepage_url">
                   <xed:output i18n="OMD.profkat.hint.linkurl" />
                 </label>
                 <xed:bind xpath="@xlink:type" default="locator" />
@@ -637,8 +637,8 @@
                 </div>
                 </xed:bind>
               </div>
-                    <div class="row profkat-row">
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="homepage_title">
+                    <div class="row ir-editor-row">
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="homepage_title">
                   <xed:output i18n="OMD.profkat.hint.linktitle" />
                 </label>
                 <xed:bind xpath="@xlink:title">
@@ -662,17 +662,17 @@
   <!-- Geburt [START] -->
   <xed:bind xpath="box.birth[@class='MCRMetaHistoryEvent']">
     <div class="form-group">
-      <label class="col-sm-2 control-label input-sm profkat-label" for="birth">
+      <label class="col-sm-2 control-label input-sm ir-editor-label" for="birth">
         <xed:output i18n="OMD.profkat.births" />
       </label>
       <div class="col-sm-10">
         <xed:bind xpath="birth">
         <xed:cleanup-rule xpath="//box.birth/birth" relevant-if="string-length(text) &gt; 0" />
         <xed:cleanup-rule xpath="//box.birth/birth/text" relevant-if="string-length(.) &gt; 0" />
-          <div class="row profkat-row profkat-row-1">
+          <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
-              <div class="row profkat-row"> 
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="date_shown">
+              <div class="row ir-editor-row"> 
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="date_shown">
                   <xed:output i18n="OMD.profkat.hint.dateShown" />
                 </label>
                 <xed:bind xpath="text[@xml:lang='de']">
@@ -680,7 +680,7 @@
                   <input id="date_shown" type="text" class="form-control input-sm"   />
                 </div>
                 </xed:bind>
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="date_shown">
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="date_shown">
                   <xed:output i18n="OMD.profkat.hint.dateFrom" />
                 </label>
                 <xed:bind xpath="von">
@@ -688,7 +688,7 @@
                     <input id="date_from" type="text" class="form-control input-sm"   />
                   </div>
                 </xed:bind>
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="date_shown">
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="date_shown">
                   <xed:output i18n="OMD.profkat.hint.dateTo" />
                 </label>
                 <xed:bind xpath="bis">
@@ -698,8 +698,8 @@
                 </xed:bind>
                 </div>
                 
-                <div class="row profkat-row"> 
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="place">
+                <div class="row ir-editor-row"> 
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="place">
                   <xed:output i18n="OMD.profkat.hint.place" />
                 </label>
                 <xed:bind xpath="event">
@@ -707,7 +707,7 @@
                   <input id="place" type="text" class="form-control input-sm"   />
                 </div>
                 </xed:bind>
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="birth_geoid">
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="birth_geoid">
                   <xed:output i18n="OMD.profkat.hint.geoid" />
                 </label>
                 <xed:bind xpath="text[@xml:lang='x-geoid']">
@@ -727,17 +727,17 @@
   <!-- TOD [START] -->
     <xed:bind xpath="box.death[@class='MCRMetaHistoryEvent']">
     <div class="form-group">
-      <label class="col-sm-2 control-label input-sm profkat-label" for="birth">
+      <label class="col-sm-2 control-label input-sm ir-editor-label" for="birth">
         <xed:output i18n="OMD.profkat.deaths" />
       </label>
       <div class="col-sm-10">
         <xed:bind xpath="death">
         <xed:cleanup-rule xpath="//box.death/death" relevant-if="string-length(text) &gt; 0" />
         <xed:cleanup-rule xpath="//box.death/death/text" relevant-if="string-length(.) &gt; 0" />
-          <div class="row profkat-row profkat-row-1">
+          <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
-              <div class="row profkat-row"> 
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="date_shown">
+              <div class="row ir-editor-row"> 
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="date_shown">
                   <xed:output i18n="OMD.profkat.hint.dateShown" />
                 </label>
                 <xed:bind xpath="text[@xml:lang='de']">
@@ -745,7 +745,7 @@
                   <input id="date_shown" type="text" class="form-control input-sm"   />
                 </div>
                 </xed:bind>
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="date_shown">
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="date_shown">
                   <xed:output i18n="OMD.profkat.hint.dateFrom" />
                 </label>
                 <xed:bind xpath="von">
@@ -753,7 +753,7 @@
                     <input id="date_from" type="text" class="form-control input-sm"   />
                   </div>
                 </xed:bind>
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="date_shown">
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="date_shown">
                   <xed:output i18n="OMD.profkat.hint.dateTo" />
                 </label>
                 <xed:bind xpath="bis">
@@ -762,8 +762,8 @@
                   </div>
                 </xed:bind>
               </div>
-              <div class="row profkat-row"> 
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="place">
+              <div class="row ir-editor-row"> 
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="place">
                   <xed:output i18n="OMD.profkat.hint.place" />
                 </label>
                 <xed:bind xpath="event">
@@ -771,7 +771,7 @@
                   <input id="place" type="text" class="form-control input-sm"   />
                 </div>
                 </xed:bind>
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="death_geoid">
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="death_geoid">
                   <xed:output i18n="OMD.profkat.hint.geoid" />
                 </label>
                 <xed:bind xpath="text[@xml:lang='x-geoid']">
@@ -791,12 +791,12 @@
   <!--  Geschlecht [START] -->
   <xed:bind xpath="box.sex[@class='MCRMetaLangText']">
     <div class="form-group">
-      <label class="col-sm-2 control-label input-sm profkat-label" for="sex"><xed:output i18n="OMD.profkat.sex" /></label>
+      <label class="col-sm-2 control-label input-sm ir-editor-label" for="sex"><xed:output i18n="OMD.profkat.sex" /></label>
       <div class="col-sm-10">
-        <div class="row profkat-row profkat-row-1">
+        <div class="row ir-editor-row ir-editor-row-1">
           <div class="col-sm-10">
-            <div class="row profkat-row">
-              <div class="col-sm-12">
+            <div class="row ir-editor-row">
+              <div class="col-sm-offset-2 col-sm-10">
                 <xed:bind xpath="sex">
                   <select id="sex" class="form-control input-sm">
                     <xed:include uri="props2options:OMD.profkat.sex" />
@@ -814,15 +814,15 @@
   <!-- Konfession [START] -->
   <xed:bind xpath="box.confession[@class='MCRMetaLangText']">
     <div class="form-group">
-      <label class="col-sm-2 control-label input-sm profkat-label" for="confession">
+      <label class="col-sm-2 control-label input-sm ir-editor-label" for="confession">
         <xed:output i18n="OMD.profkat.confessions" />
       </label>
       <div class="col-sm-10">
         <xed:bind xpath="confession">
-          <div class="row profkat-row profkat-row-1">
+          <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
-              <div class="row profkat-row"> 
-                <div class="col-sm-12">
+              <div class="row ir-editor-row"> 
+                <div class="col-sm-offset-2 col-sm-10">
                   <input id="confession" type="text" class="form-control input-sm" />
                 </div>
               </div>
@@ -837,15 +837,15 @@
   <!-- Familie [START] -->
   <xed:bind xpath="box.family[@class='MCRMetaXML']">
     <div class="form-group">
-      <label class="col-sm-2 control-label input-sm profkat-label" for="family">
+      <label class="col-sm-2 control-label input-sm ir-editor-label" for="family">
         <xed:output i18n="OMD.profkat.families" />
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="family">
-          <div class="row profkat-row profkat-row-1">
+          <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
-              <div class="row profkat-row"> 
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="family_type">
+              <div class="row ir-editor-row"> 
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="family_type">
                   <xed:output i18n="OMD.profkat.hint.type" />
                 </label>
                 <xed:bind xpath="@type">
@@ -855,7 +855,7 @@
                     </select>
                   </div>
                 </xed:bind>
-                <label class="col-sm-1 control-label input-sm profkat-label-hint" for="family_name">
+                <label class="col-sm-1 control-label input-sm ir-editor-label-hint" for="family_name">
                   <xed:output i18n="OMD.profkat.hint.name" />
                 </label>
                 <xed:bind xpath="name">
@@ -864,8 +864,8 @@
                   </div>
                 </xed:bind>
               </div>
-              <div class="row profkat-row">
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="family-profession">
+              <div class="row ir-editor-row">
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="family-profession">
                   <xed:output i18n="OMD.profkat.hint.profession" />
                 </label>
                 <xed:bind xpath="profession">
@@ -873,7 +873,7 @@
                     <input id="family_profession" type="text" class="form-control input-sm"   />
                   </div>
                 </xed:bind>
-                <label class="col-sm-1 control-label input-sm profkat-label-hint" for="family_name_id">
+                <label class="col-sm-1 control-label input-sm ir-editor-label-hint" for="family_name_id">
                   <xed:output i18n="OMD.profkat.hint.id" />
                 </label>
                 <xed:bind xpath="name/@id">
@@ -899,15 +899,15 @@
   <!-- Kurzbiographie [START] -->
   <xed:bind xpath="box.biographic[@class='MCRMetaXML']">
     <div class="form-group">
-      <label class="col-sm-2 control-label input-sm profkat-label" for="biographic">
+      <label class="col-sm-2 control-label input-sm ir-editor-label" for="biographic">
         <xed:output i18n="OMD.profkat.biographics" />
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="biographic" min="5">
-          <div class="row profkat-row profkat-row-1">
+          <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
-              <div class="row profkat-row"> 
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="biographic_time">
+              <div class="row ir-editor-row"> 
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="biographic_time">
                   <xed:output i18n="OMD.profkat.hint.time" />
                 </label>
                 <xed:bind xpath="time">
@@ -916,7 +916,7 @@
                   </div>
                 </xed:bind>
                 
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="biographic_type">
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="biographic_type">
                   <xed:output i18n="OMD.profkat.hint.type" />
                 </label>
                 <xed:bind xpath="@type">
@@ -927,8 +927,8 @@
                   </div>
                 </xed:bind>
               </div>
-              <div class="row profkat-row">   
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="biographic_text">
+              <div class="row ir-editor-row">   
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="biographic_text">
                   <xed:output i18n="OMD.profkat.hint.text" />
                 </label>
                 <xed:bind xpath="text">
@@ -937,14 +937,14 @@
                   </div>
                 </xed:bind>
               </div>
-              <div class="row profkat-row">
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="family-profession">
+              <div class="row ir-editor-row">
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="family-profession">
                   <xed:output i18n="OMD.profkat.hint.place_geoid" />
                 </label>
                 <xed:bind xpath="places">
                   <div class="col-sm-10">
                     <xed:repeat xpath="place">
-                    <div class="row profkat-row"> 
+                    <div class="row ir-editor-row"> 
                       <xed:bind xpath=".">
                         <div class="col-sm-5">
                           <input id="place_name" type="text" class="form-control input-sm"   />
@@ -980,15 +980,15 @@
   <!-- Akademische Abschlüsse [START] -->
   <xed:bind xpath="box.academicdegree[@class='MCRMetaXML']">
     <div class="form-group">
-      <label class="col-sm-2 control-label input-sm profkat-label" for="academicdegree">
+      <label class="col-sm-2 control-label input-sm ir-editor-label" for="academicdegree">
         <xed:output i18n="OMD.profkat.academicdegrees" />
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="academicdegree">
-          <div class="row profkat-row profkat-row-1">
+          <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
-              <div class="row profkat-row"> 
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="academicdegree_time">
+              <div class="row ir-editor-row"> 
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="academicdegree_time">
                   <xed:output i18n="OMD.profkat.hint.time" />
                 </label>
                 <xed:bind xpath="time">
@@ -997,7 +997,7 @@
                   </div>
                 </xed:bind>
                 
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="academicdegree_type">
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="academicdegree_type">
                   <xed:output i18n="OMD.profkat.hint.type" />
                 </label>
                 <xed:bind xpath="@type">
@@ -1008,8 +1008,8 @@
                   </div>
                 </xed:bind>
               </div>
-              <div class="row profkat-row">   
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="academicdegree_text">
+              <div class="row ir-editor-row">   
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="academicdegree_text">
                   <xed:output i18n="OMD.profkat.hint.text" />
                 </label>
                 <xed:bind xpath="text">
@@ -1018,8 +1018,8 @@
                   </div>
                 </xed:bind>
               </div>
-              <div class="row profkat-row">   
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="academicdegree_work">
+              <div class="row ir-editor-row">   
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="academicdegree_work">
                   <xed:output i18n="OMD.profkat.dissertationTitle" />
                 </label>
                 <xed:bind xpath="dissertation">
@@ -1028,14 +1028,14 @@
                   </div>
                 </xed:bind>
               </div>
-              <div class="row profkat-row">
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="academicdegree_place_name">
+              <div class="row ir-editor-row">
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="academicdegree_place_name">
                   <xed:output i18n="OMD.profkat.hint.place_geoid" />
                 </label>
                 <xed:bind xpath="places">
                   <div class="col-sm-10">
                     <xed:repeat xpath="place">
-                    <div class="row profkat-row"> 
+                    <div class="row ir-editor-row"> 
                       <xed:bind xpath=".">
                         <div class="col-sm-5">
                           <input id="academic_degree_place_name" type="text" class="form-control input-sm"   />
@@ -1072,15 +1072,15 @@
   <!-- Akademische Selbstverwaltung [START] -->
   <xed:bind xpath="box.adminfunction[@class='MCRMetaXML']">
     <div class="form-group">
-      <label class="col-sm-2 control-label input-sm profkat-label" for="adminfunction">
+      <label class="col-sm-2 control-label input-sm ir-editor-label" for="adminfunction">
         <xed:output i18n="OMD.profkat.adminfunctions" />
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="adminfunction">
-          <div class="row profkat-row profkat-row-1">
+          <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
-              <div class="row profkat-row"> 
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="academicdegree_time">
+              <div class="row ir-editor-row"> 
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="academicdegree_time">
                   <xed:output i18n="OMD.profkat.hint.time" />
                 </label>
                 <xed:bind xpath="time">
@@ -1089,7 +1089,7 @@
                   </div>
                 </xed:bind>
                 
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="academicdegree_type">
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="academicdegree_type">
                   <xed:output i18n="OMD.profkat.hint.type" />
                 </label>
                 <xed:bind xpath="@type">
@@ -1100,8 +1100,8 @@
                   </div>
                 </xed:bind>
               </div>
-              <div class="row profkat-row">   
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="academicdegree_text">
+              <div class="row ir-editor-row">   
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="academicdegree_text">
                   <xed:output i18n="OMD.profkat.hint.text" />
                 </label>
                 <xed:bind xpath="text">
@@ -1126,15 +1126,15 @@
   <!-- Funktionen [START] -->
   <xed:bind xpath="box.otherfunction[@class='MCRMetaXML']">
     <div class="form-group">
-      <label class="col-sm-2 control-label input-sm profkat-label" for="otherfunction">
+      <label class="col-sm-2 control-label input-sm ir-editor-label" for="otherfunction">
         <xed:output i18n="OMD.profkat.otherfunctions" />
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="otherfunction">
-          <div class="row profkat-row profkat-row-1">
+          <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
-              <div class="row profkat-row"> 
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="otherfunction_time">
+              <div class="row ir-editor-row"> 
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="otherfunction_time">
                   <xed:output i18n="OMD.profkat.hint.time" />
                 </label>
                 <xed:bind xpath="time">
@@ -1143,7 +1143,7 @@
                   </div>
                 </xed:bind>
                 
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="otherfunction_type">
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="otherfunction_type">
                   <xed:output i18n="OMD.profkat.hint.type" />
                 </label>
                 <xed:bind xpath="@type">
@@ -1154,8 +1154,8 @@
                   </div>
                 </xed:bind>
               </div>
-              <div class="row profkat-row">   
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="otherfunction_text">
+              <div class="row ir-editor-row">   
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="otherfunction_text">
                   <xed:output i18n="OMD.profkat.hint.text" />
                 </label>
                 <xed:bind xpath="text">
@@ -1180,15 +1180,15 @@
   <!-- Wissenschaftliche Mitgliedschaften [START] -->
   <xed:bind xpath="box.membership[@class='MCRMetaXML']">
     <div class="form-group">
-      <label class="col-sm-2 control-label input-sm profkat-label" for="membership">
+      <label class="col-sm-2 control-label input-sm ir-editor-label" for="membership">
         <xed:output i18n="OMD.profkat.memberships" />
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="membership">
-          <div class="row profkat-row profkat-row-1">
+          <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
-              <div class="row profkat-row"> 
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="membership_time">
+              <div class="row ir-editor-row"> 
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="membership_time">
                   <xed:output i18n="OMD.profkat.hint.time" />
                 </label>
                 <xed:bind xpath="time">
@@ -1197,7 +1197,7 @@
                   </div>
                 </xed:bind>
                 
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="membership_type">
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="membership_type">
                   <xed:output i18n="OMD.profkat.hint.type" />
                 </label>
                 <xed:bind xpath="@type">
@@ -1208,8 +1208,8 @@
                   </div>
                 </xed:bind>
               </div>
-              <div class="row profkat-row">   
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="membership_text">
+              <div class="row ir-editor-row">   
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="membership_text">
                   <xed:output i18n="OMD.profkat.hint.text" />
                 </label>
                 <xed:bind xpath="text">
@@ -1234,15 +1234,15 @@
   <!-- Partei Mitgliedschaften [START] -->
   <xed:bind xpath="box.partymember[@class='MCRMetaXML']">
     <div class="form-group">
-      <label class="col-sm-2 control-label input-sm profkat-label" for="partymember">
+      <label class="col-sm-2 control-label input-sm ir-editor-label" for="partymember">
         <xed:output i18n="OMD.profkat.partymembers" />
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="partymember">
-          <div class="row profkat-row profkat-row-1">
+          <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
-              <div class="row profkat-row"> 
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="partymember_time">
+              <div class="row ir-editor-row"> 
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="partymember_time">
                   <xed:output i18n="OMD.profkat.hint.time" />
                 </label>
                 <xed:bind xpath="time">
@@ -1251,7 +1251,7 @@
                   </div>
                 </xed:bind>
                 
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="partymember_type">
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="partymember_type">
                   <xed:output i18n="OMD.profkat.hint.type" />
                 </label>
                 <xed:bind xpath="@type">
@@ -1262,8 +1262,8 @@
                   </div>
                 </xed:bind>
               </div>
-              <div class="row profkat-row">   
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="partymember_text">
+              <div class="row ir-editor-row">   
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="partymember_text">
                   <xed:output i18n="OMD.profkat.hint.text" />
                 </label>
                 <xed:bind xpath="text">
@@ -1288,15 +1288,15 @@
   <!-- Ehrungen [START] -->
   <xed:bind xpath="box.award[@class='MCRMetaXML']">
     <div class="form-group">
-      <label class="col-sm-2 control-label input-sm profkat-label" for="award">
+      <label class="col-sm-2 control-label input-sm ir-editor-label" for="award">
         <xed:output i18n="OMD.profkat.awards" />
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="award">
-          <div class="row profkat-row profkat-row-1">
+          <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
-              <div class="row profkat-row"> 
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="award_time">
+              <div class="row ir-editor-row"> 
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="award_time">
                   <xed:output i18n="OMD.profkat.hint.time" />
                 </label>
                 <xed:bind xpath="time">
@@ -1305,7 +1305,7 @@
                   </div>
                 </xed:bind>
                 
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="award_type">
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="award_type">
                   <xed:output i18n="OMD.profkat.hint.type" />
                 </label>
                 <xed:bind xpath="@type">
@@ -1316,8 +1316,8 @@
                   </div>
                 </xed:bind>
               </div>
-              <div class="row profkat-row">   
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="award_text">
+              <div class="row ir-editor-row">   
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="award_text">
                   <xed:output i18n="OMD.profkat.hint.text" />
                 </label>
                 <xed:bind xpath="text">
@@ -1342,15 +1342,15 @@
   
   <xed:bind xpath="box.otherinfo[@class='MCRMetaLangText']">
     <div class="form-group">
-      <label class="col-sm-2 control-label input-sm profkat-label" for="otherinfo">
+      <label class="col-sm-2 control-label input-sm ir-editor-label" for="otherinfo">
         <xed:output i18n="OMD.profkat.otherinfos" />
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="otherinfo">
-          <div class="row profkat-row profkat-row-1">
+          <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
-              <div class="row profkat-row">
-                <div class="col-sm-12">
+              <div class="row ir-editor-row">
+                <div class="col-sm-offset-2 col-sm-10">
                   <xed:bind xpath=".">
                    <input id="otherinfo" type="text" class="form-control input-sm"   />
                   </xed:bind>
@@ -1372,15 +1372,15 @@
   <!--  Hauptwerke [START] -->
   <xed:bind xpath="box.mainpublication[@class='MCRMetaLangText']">
     <div class="form-group">
-      <label class="col-sm-2 control-label input-sm profkat-label" for="mainpublication">
+      <label class="col-sm-2 control-label input-sm ir-editor-label" for="mainpublication">
         <xed:output i18n="OMD.profkat.mainpublications" />
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="mainpublication" min="5">
-          <div class="row profkat-row profkat-row-1">
+          <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
-              <div class="row profkat-row">
-                <div class="col-sm-12">
+              <div class="row ir-editor-row">
+                <div class="col-sm-offset-2 col-sm-10">
                   <xed:bind xpath=".">
                     <textarea id="mainpublication" rows="2" class="form-control input-sm"   />
                   </xed:bind>
@@ -1402,15 +1402,15 @@
   <!-- Nachweis von Publikationen [START] -->
   <xed:bind xpath="box.publicationslink[@class='MCRMetaLink']">
     <div class="form-group">
-      <label class="col-sm-2 control-label input-sm profkat-label" for="otherfunction">
+      <label class="col-sm-2 control-label input-sm ir-editor-label" for="otherfunction">
         <xed:output i18n="OMD.profkat.bibliographicrefs" />
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="publicationslink">
-          <div class="row profkat-row profkat-row-1">
+          <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
-              <div class="row profkat-row"> 
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="publink_href">
+              <div class="row ir-editor-row"> 
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="publink_href">
                   <xed:output i18n="OMD.profkat.hint.linkurl" />
                 </label>
                 <xed:bind xpath="@xlink:type" default="locator" />
@@ -1420,8 +1420,8 @@
                   </div>
                 </xed:bind>
               </div>
-              <div class="row profkat-row">   
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="publink_title">
+              <div class="row ir-editor-row">   
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="publink_title">
                   <xed:output i18n="OMD.profkat.hint.linktitle" />
                 </label>
                 <xed:bind xpath="@xlink:title">
@@ -1446,15 +1446,15 @@
   <!-- Quellen [START] -->
   <xed:bind xpath="box.source[@class='MCRMetaLink']">
     <div class="form-group">
-      <label class="col-sm-2 control-label input-sm profkat-label" for="sources">
+      <label class="col-sm-2 control-label input-sm ir-editor-label" for="sources">
         <xed:output i18n="OMD.profkat.sources" />
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="source">
-          <div class="row profkat-row profkat-row-1">
+          <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
-              <div class="row profkat-row"> 
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="sources_href">
+              <div class="row ir-editor-row"> 
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="sources_href">
                   <xed:output i18n="OMD.profkat.hint.linkurl" />
                 </label>
                 <xed:bind xpath="@xlink:type" default="locator" />
@@ -1464,8 +1464,8 @@
                   </div>
                 </xed:bind>
               </div>
-              <div class="row profkat-row">   
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="sources_title">
+              <div class="row ir-editor-row">   
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="sources_title">
                   <xed:output i18n="OMD.profkat.hint.linktitle" />
                 </label>
                 <xed:bind xpath="@xlink:title">
@@ -1490,15 +1490,15 @@
   <!-- weitere Literatur [START] -->
   <xed:bind xpath="box.reference[@class='MCRMetaLink']">
     <div class="form-group">
-      <label class="col-sm-2 control-label input-sm profkat-label" for="reference">
+      <label class="col-sm-2 control-label input-sm ir-editor-label" for="reference">
         <xed:output i18n="OMD.profkat.references" />
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="reference">
-          <div class="row profkat-row profkat-row-1">
+          <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
-              <div class="row profkat-row"> 
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="reference_href">
+              <div class="row ir-editor-row"> 
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="reference_href">
                   <xed:output i18n="OMD.profkat.hint.linkurl" />
                 </label>
                 <xed:bind xpath="@xlink:type" default="locator" />
@@ -1508,8 +1508,8 @@
                   </div>
                 </xed:bind>
               </div>
-              <div class="row profkat-row">   
-                <label class="col-sm-2 control-label input-sm profkat-label-hint" for="reference_title">
+              <div class="row ir-editor-row">   
+                <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="reference_title">
                   <xed:output i18n="OMD.profkat.hint.linktitle" />
                 </label>
                 <xed:bind xpath="@xlink:title">
@@ -1534,15 +1534,15 @@
   <xed:if test="not(starts-with(//mycoreobject/@ID,'cpb_'))">
   <xed:bind xpath="box.complexref[@class='MCRMetaLangText']">
     <div class="form-group">
-      <label class="col-sm-2 control-label input-sm profkat-label" for="complexref">
+      <label class="col-sm-2 control-label input-sm ir-editor-label" for="complexref">
         <xed:output i18n="OMD.profkat.complexrefs" />
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="complexref">
-          <div class="row profkat-row profkat-row-1">
+          <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
-              <div class="row profkat-row">
-                <div class="col-sm-12">
+              <div class="row ir-editor-row">
+                <div class="col-sm-offset-2 col-sm-10">
                   <xed:bind xpath=".">
                     <textarea id="complexref" rows="3" class="form-control input-sm" />
                   </xed:bind>
@@ -1565,24 +1565,24 @@
     <!-- Identifiers [START] -->
   <xed:bind xpath="box.identifier[@class='MCRMetaLangText']">
     <div class="form-group">
-      <label class="col-sm-2 control-label input-sm profkat-label" for="identifier">
+      <label class="col-sm-2 control-label input-sm ir-editor-label" for="identifier">
         <xed:output i18n="OMD.profkat.identifiers" />
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="identifier">
           <xed:cleanup-rule xpath="//box.identifier/identifier" relevant-if="string-length(text()) &gt; 0" />
-          <div class="row profkat-row profkat-row-1">
+          <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
-              <div class="row profkat-row"> 
+              <div class="row ir-editor-row"> 
                 <xed:bind xpath="@type">
-                  <div class="col-sm-2">
+                  <div class="col-sm-offset-2 col-sm-2">
                     <select id="identifier_type" class="form-control input-sm">
                       <xed:include uri="props2options:OMD.profkat.identifier" />
                     </select>
                   </div>
                 </xed:bind>
                 <xed:bind xpath=".">
-                  <div class="col-sm-10">
+                  <div class="col-sm-8">
                     <input id="identifier_text" type="text" class="form-control input-sm"   />
                   </div>
                 </xed:bind>
