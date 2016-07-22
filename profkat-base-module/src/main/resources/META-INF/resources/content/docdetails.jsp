@@ -68,7 +68,7 @@
  	</stripes:layout-component>
  	
 	 <stripes:layout-component name="right_side">
-		<div class="ur-box ur-box-bordered infobox" style="margin-bottom:32px; padding: 18px 6px 6px 6px;">
+		<div class="ir-box ir-box-bordered ir-infobox" style="margin-bottom:32px; padding: 18px 6px 6px 6px;">
 			<search:result-navigator mcrid="${mcrid}" />
 			
 			<div class="container-fluid">
@@ -110,7 +110,7 @@
 		</div>
 
 		<x:if select="$linked/mycoreobject/structure/derobjects/derobject[@xlink:title='display_portrait' or @xlink:title='display_signature']">
-			<div class="ur-box ur-box-bordered infobox hidden-xs">
+			<div class="ir-box ir-box-bordered ir-infobox hidden-xs">
 				<search:derivate-image mcrid="${mcrid}" width="100%" labelContains="display_portrait" showFooter="true" protectDownload="true" />
 				<search:derivate-image mcrid="${mcrid}" width="100%" labelContains="display_signature" />
 			</div>

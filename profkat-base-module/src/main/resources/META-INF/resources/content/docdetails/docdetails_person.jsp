@@ -17,7 +17,7 @@
 	<mcr:receiveMcrObjAsJdom mcrid="${param.id}" varDom="mcrobj" fromWF="${param.fromWF}"/>
 	
 	<c:if test="${not(param.print eq 'true')}">
-		<div  class="tabbar docdetails-tabbar ur-embedded">
+		<div  class="tabbar docdetails-tabbar ir-embedded">
 			<c:if test="${param.fromWF eq 'true'}">
 				<div class="alert alert-info" role="alert"><fmt:message key="WF.Preview" /></div>
 			</c:if>
