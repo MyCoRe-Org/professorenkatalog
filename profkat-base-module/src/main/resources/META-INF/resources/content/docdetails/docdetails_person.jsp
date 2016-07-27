@@ -407,6 +407,15 @@
 	</c:if>
 
 	<c:if test="${(tab eq 'documents') or (param.print eq 'true')}">
+		<x:if select="$mcrobj/mycoreobject/structure/derobjects/derobject">
+			<div class="docdetails-block">
+				<div class="well well-sm panel-copyright">
+					<div class="panel-body">
+  						<fmt:message key="OMD.derivate.copyright.notice" />
+	             </div>
+				</div>
+			</div>
+		</x:if>
 		<mcrdd:row select="/mycoreobject/structure/derobjects/derobject" labelkey="OMD.profkat.derobjects" showInfo="true" >
 			<mcrdd:derivatelist select="." showsize="true" />
 	  	</mcrdd:row>

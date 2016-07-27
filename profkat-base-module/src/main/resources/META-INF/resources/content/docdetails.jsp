@@ -46,13 +46,12 @@
 	<c:set var="layout_name">3columns</c:set>
 	<c:if test="${not empty param.print}"><c:set var="layout_name">1column</c:set></c:if>
 
- 
+ <c:set var="pageTitle">${prof_name} @ <fmt:message key="Webpage.title" /></c:set>
 <stripes:layout-render name="../WEB-INF/layout/default.jsp" pageTitle="${pageTitle}" layout="${layout_name}">
 	<stripes:layout-component name="html_header">
 		<meta name="description" lang="de"
 	          content="Im Catalogus Professorum Rostochiensium (Rostocker Professorenkatalog) sollen alle an der Universität Rostock seit 1419 tätigen Professoren mit Angaben zur Person, zum wissenschaftlichen Profil und zu den Aktivitäten an der Rostocker Hochschule dokumentiert werden." />
 		<meta name="author" content="Forschungsstelle Universitätsgeschichte der Universität Rostock" />
-				<title>${prof_name} @ <fmt:message key="Webpage.title" /></title>
 		<link rel="canonical" href="${WebApplicationBaseURL}resolve/id/${mcrid}" />
 		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_docdetails_headlines.css" />
 		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_biogr_article.css" />		
