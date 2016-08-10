@@ -475,6 +475,7 @@
   <!-- Fakultät [ENDE] -->
 
   <!--  Institute [START] -->
+  <xed:if test="not(starts-with(//mycoreobject/@ID,'cpb_'))">
   <xed:bind xpath="box.institute[@class='MCRMetaXML']">
     <div class="form-group">
       <label class="col-sm-2 control-label input-sm ir-editor-label" for="institute">
@@ -526,6 +527,7 @@
       </div>
     </div>
   </xed:bind>
+  </xed:if>
   <!-- Institute [ENDE] -->   
 
   <!-- Lehr- und Forschungsgebiet [START] -->
