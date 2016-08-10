@@ -19,7 +19,10 @@
 	<c:if test="${not(param.print eq 'true')}">
 		<div  class="tabbar docdetails-tabbar">
 			<c:if test="${param.fromWF eq 'true'}">
-				<div class="alert alert-info" role="alert"><fmt:message key="WF.Preview" /></div>
+				<div class="alert alert-info" style="margin-top:20px" role="alert">
+					<a class="btn btn-default btn-sm pull-right" href="${WebApplicationBaseURL}showWorkspace.action?mcrobjid_base=${fn:substringBefore(param.id, '_')}_${fn:substringBefore(fn:substringAfter(param.id, '_'), '_')}"><fmt:message key="WF.Preview.return" /></a>
+					<h4 style="margin:5px 0px"><fmt:message key="WF.Preview" /></h4>
+				</div>
 			</c:if>
 			<c:set var="msgKeyStatus">OMD.profkat.state.<x:out select="$mcrobj/mycoreobject/metadata/box.status/status"/></c:set>
 			<div class="docdetails-tabbar-info"><fmt:message key="${msgKeyStatus}" /></div>
@@ -456,6 +459,9 @@
    		</mcrdd:outputitem>
    	</mcrdd:row>
    	<c:if test="${param.fromWF eq 'true'}">
-		<div class="alert alert-info" style="margin-top:20px" role="alert"><fmt:message key="WF.Preview" /></div>
+		<div class="alert alert-info" style="margin-top:20px" role="alert">
+			<a class="btn btn-default btn-sm pull-right" href="${WebApplicationBaseURL}showWorkspace.action?mcrobjid_base=${fn:substringBefore(param.id, '_')}_${fn:substringBefore(fn:substringAfter(param.id, '_'), '_')}"><fmt:message key="WF.Preview.return" /></a>
+			<h4 style="margin:5px 0px"><fmt:message key="WF.Preview" /></h4>
+		</div>
 	</c:if>	
   </mcrdd:docdetails>
