@@ -46,7 +46,7 @@
 	<c:set var="layout_name">3columns</c:set>
 	<c:if test="${not empty param.print}"><c:set var="layout_name">1column</c:set></c:if>
 
- <c:set var="pageTitle">${prof_name} @ <fmt:message key="Webpage.title" /></c:set>
+ <c:set var="pageTitle">${prof_name}</c:set>
 <stripes:layout-render name="../WEB-INF/layout/default.jsp" pageTitle="${pageTitle}" layout="${layout_name}">
 	<stripes:layout-component name="html_header">
 		<meta name="description" lang="de"
