@@ -93,9 +93,9 @@
 		<mcrdd:item select="./text" styleName="docdetails-value-bold" />              
     	<mcrdd:item select="./event" styleName="docdetails-value-bold" />
     	<%-- scheint lokal nicht zu funktionieren, läuft aber auf dem Server --%>
-    	<mcrdd:outputitem select="./text[@xml:lang='x-predec']" var="this">
+    	<mcrdd:outputitem select="." var="this" styleName="docdetails-value profkat-prev-next">
 			  <div style="text-align: right; white-space: nowrap; font-size:80%;">
-    		   	<c:set var="linkids" scope="request"><x:out select="$this/text()" /></c:set>
+    		   	<c:set var="linkids" scope="request"><x:out select="$this/text[@xml:lang='x-predec']/text()" /></c:set>
     			<c:forTokens items="${linkids}" delims=":;|" var="currentID" varStatus="status">
 	  				<c:if test="${fn:contains(currentID, '_person_')}">
 	  					<mcr:receiveMcrObjAsJdom mcrid="${currentID}" varDom="linked" fromWF="false"/>
@@ -114,9 +114,9 @@
 				</c:forTokens>
     		</div>
 		</mcrdd:outputitem>
-    	<mcrdd:outputitem select="./text[@xml:lang='x-succ']" var="this">
+    	<mcrdd:outputitem select="." var="this" styleName="docdetails-value profkat-prev-next">
     		<div style="text-align: right; white-space: nowrap; font-size:80%;">
-    		   	<c:set var="linkids" scope="request"><x:out select="$this/text()" /></c:set>
+    		   	<c:set var="linkids" scope="request"><x:out select="$this/text[@xml:lang='x-succ']/text()" /></c:set>
     			<c:forTokens items="${linkids}" delims=":;|" var="currentID" varStatus="status">
 	  				<c:if test="${fn:contains(currentID, '_person_')}">
 	  					<mcr:receiveMcrObjAsJdom mcrid="${currentID}" varDom="linked" fromWF="false"/>

@@ -7,10 +7,10 @@
 
 <%--JSP Parameter: email --%>
 
-<div style="direction: rtl; unicode-bidi: bidi-override;">
+<span style="direction: rtl; unicode-bidi: bidi-override;text-align: left;">
 <% String email = request.getParameter("email").toString();
    			email = email.replace("@", ")at(");
    			for(int i=email.length()-1;i>=0;i--){
    				out.write(email.substring(i,i+1));
    			}%>
-</div>
+</span>

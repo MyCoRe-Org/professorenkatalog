@@ -86,7 +86,7 @@
 	       		
 	       		
 	       				<c:if test="${(not from)}" >
-	       						<search:show-edit-button mcrid="${mcrid}" cssClass="btn btn-sm btn-primary col-xs-3" />  
+	       						<search:show-edit-button mcrid="${mcrid}" cssClass="btn btn-sm btn-primary ir-edit-btn col-xs-3" />  
    						</c:if>
    			
 		    	   		<button type="button" class="btn btn-default btn-sm pull-right hidden-xs" style="border:none;color:#DEDEDE;" 
