@@ -36,8 +36,8 @@
 	<c:set var="WebApplicationBaseURL" value="${applicationScope.WebApplicationBaseURL}" />
 	<c:set var="path" value="${requestScope.path}" />
 	<%-- set the current language --%>
-	<mcr:setLanguage var="lang" allowedLanguages="de" />
-	<fmt:setLocale value="${lang}" scope="request" />
+	<mcr:setLanguage var="lang" allowedLanguages="de en" />
+	
   	<head>
   		<title>	${pageTitle} @ <fmt:message key="Webpage.title" /></title>
   		<meta charset="utf-8" />
