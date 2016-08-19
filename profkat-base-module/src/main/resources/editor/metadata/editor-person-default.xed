@@ -84,7 +84,6 @@
     <!-- Personentyp [ENDE]-->
     
     <!-- Epoche -->
-    <xed:if test="not(starts-with(//mycoreobject/@ID,'cpb_'))">
     <xed:bind xpath="box.epoch[@class='MCRMetaClassification']">
     <div class="form-group">
         <label class="col-sm-2 control-label input-sm ir-editor-label" for="persontype">
@@ -115,7 +114,6 @@
         </div>
       </div>
     </xed:bind>
-    </xed:if>
     <!-- Epoche [ENDE]-->
 
 	<!-- Name -->
