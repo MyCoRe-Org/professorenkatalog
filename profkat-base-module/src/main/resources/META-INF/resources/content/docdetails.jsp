@@ -90,10 +90,9 @@
    						</c:if>
    			
 		    	   		<button type="button" class="btn btn-default btn-sm pull-right hidden-xs" style="border:none;color:#DEDEDE;" 
-		    	   		        data-toggle="collapse" data-target="#hiddenTools" title="<fmt:message key="Webpage.tools.menu4experts" />"
-				   		   href="${WebApplicationBaseURL}api/v1/objects/${mcrid}">
+		    	   		        data-toggle="collapse" data-target="#hiddenTools" title="<fmt:message key="Webpage.tools.menu4experts" />">
 	    					<span class="glyphicon glyphicon-wrench"></span>
-	        			</a>
+	        			</button>
 	      			</div>
 	      			<div id="hiddenTools" class="collapse">
 	      				<div class="row" style="padding-bottom:6px">
