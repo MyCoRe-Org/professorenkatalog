@@ -11,8 +11,8 @@
    <xed:cleanup-rule xpath="//*" relevant-if="true()" />
    <xed:cleanup-rule xpath="//*[@class='MCRMetaHistoryEvent']/*/text" relevant-if="string-length(text()) &gt; 0" />
    <xed:cleanup-rule xpath="/mycoreobject/metadata//*" relevant-if="@* or * or (string-length(text()) &gt; 0)" />
-   <xed:cleanup-rule xpath="/mycoreobject/metadata//*" relevant-if="@* or * or (string-length(text()) &gt; 0)" />
    <xed:cleanup-rule xpath="//*[@class='MCRMetaXML']/*" relevant-if=".//*[@* or (string-length(text()) &gt; 0)]" />
+   <xed:cleanup-rule xpath="//*[@class='MCRMetaLangText']/*" relevant-if="string-length(text()) &gt; 0" />
    <xed:cleanup-rule xpath="//*[@class='MCRMetaLink']/*" relevant-if="string-length(@xlink:href) &gt; 0" />
    
    <xed:cleanup-rule xpath="/mycoreobject/metadata/*" relevant-if=" ./*" />
