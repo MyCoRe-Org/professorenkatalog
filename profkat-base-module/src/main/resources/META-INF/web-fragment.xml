@@ -29,4 +29,9 @@
     <servlet-name>MCRProfkatGNDServlet</servlet-name>
     <url-pattern>/gnd/*</url-pattern>
   </servlet-mapping>
+  <!-- Legacy Mapping -->
+  <servlet-mapping>
+    <servlet-name>MCRProfkatGNDServlet</servlet-name>
+    <url-pattern>/pnd/*</url-pattern>
+  </servlet-mapping>
 </web-fragment>
