@@ -6,7 +6,6 @@
 
   <xsl:template match="//*[@class='MCRMetaHistoryDate' or @class='MCRMetaHistoryEvent']/*">
     <xsl:copy>
-
       <xsl:copy-of select="text" />
       <xsl:copy-of select="calendar" />
       <xsl:copy-of select="ivon" />
@@ -51,4 +50,21 @@
       <xsl:copy-of select="classification" />
     </xsl:copy>
   </xsl:template>
+  <xsl:template match="//*[time or dissertation or places]">
+  	<xsl:copy>
+    	<xsl:copy-of select="@*" />
+    	<xsl:apply-templates select="time" />
+    	<xsl:apply-templates select="text" />
+    	<xsl:apply-templates select="dissertation" />
+    	<xsl:apply-templates select="places" />   
+  	</xsl:copy>
+  </xsl:template>
+  <xsl:template match="family">
+	<xsl:copy>
+    	<xsl:copy-of select="@*" />
+    	<xsl:apply-templates select="name" />
+    	<xsl:apply-templates select="profession" />
+	</xsl:copy>
+  </xsl:template>
+
 </xsl:stylesheet>
