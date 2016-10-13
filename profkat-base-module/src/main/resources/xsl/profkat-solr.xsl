@@ -103,15 +103,22 @@
       <field name="profkat.name"><xsl:value-of select="text()" /></field> 
     </xsl:for-each>
    
-               <xsl:for-each select="box.sex/sex">
+   <xsl:for-each select="box.sex/sex">
       <field name="profkat.sex"><xsl:value-of select="normalize-space(text())" /></field> 
-    </xsl:for-each> 
-
-               <xsl:for-each select="box.institute/institute">
+    </xsl:for-each>
+    
+    <xsl:for-each select="box.family/family">
+      <field name="profkat.family_type"><xsl:value-of select="@type" /></field> 
+      <field name="profkat.family_id"><xsl:value-of select="./name/@id" /></field>
+      <field name="profkat.family_name"><xsl:value-of select="./name" /></field>
+      <field name="profkat.family_profession"><xsl:value-of select="./profession" /></field>
+    </xsl:for-each>
+    
+    <xsl:for-each select="box.institute/institute">
       <field name="profkat.institute"><xsl:value-of select="concat(normalize-space(./time),' ',normalize-space(./text))" /></field> 
     </xsl:for-each>
     
-              <xsl:for-each select="box.fieldofstudy/fieldofstudy">
+    <xsl:for-each select="box.fieldofstudy/fieldofstudy">
       <field name="profkat.field_of_studies"><xsl:value-of select="normalize-space(text())" /></field> 
     </xsl:for-each>
       
