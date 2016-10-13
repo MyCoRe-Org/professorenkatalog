@@ -481,8 +481,10 @@
       </label>
       <div class="col-sm-10">
         <xed:repeat xpath="institute">
+         
           <div class="row ir-editor-row ir-editor-row-1">
             <div class="col-sm-10">
+             <xed:if test="not(starts-with(//mycoreobject/@ID,'cpr_'))">
               <div class="row ir-editor-row"> 
                 <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="institute_time">
                   <xed:output i18n="OMD.profkat.hint.time" />
@@ -504,6 +506,7 @@
                   </div>
                 </xed:bind>
               </div>
+              </xed:if>
               <div class="row ir-editor-row">   
                 <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="institute_text">
                   <xed:output i18n="OMD.profkat.hint.text" />
