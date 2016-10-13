@@ -187,6 +187,35 @@
     </div>
   </xed:template>
   
+    <xed:template id="searchfield.epochs">
+    <div class="form-group">
+      <label class="col-sm-3 control-label input-sm" for="epochs">
+        <xed:output i18n="Editor.Search.Label.Epochs" />
+      </label>
+      <div class="col-sm-9">
+        <xed:repeat xpath="condition4[@field='category.top'][@operator='=']">
+          <div class="row">
+            <div class="col-sm-9">
+              <xed:bind xpath="@value">
+                <select id="epochs" class="form-control">
+                  <option value="">
+                    <xed:output i18n="Editor.Search.List.all" />
+                  </option>
+                  <xed:include uri="xslStyle:items2options:classification:editorComplete:-1:children:profkat_class_epochs" />
+                </select>
+              </xed:bind>
+            </div>
+            <div class="col-sm-3">
+              <div class="btn-group btn-group-xs pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:template>
+  
   
    <!-- Art des Eintrages -->
   <xed:template id="searchfield.profstates">
@@ -195,7 +224,7 @@
         <xed:output i18n="Editor.Search.Label.ProfStates" />
       </label>
       <div class="col-sm-9">
-        <xed:repeat xpath="condition4[@field='profkat.profstate'][@operator='=']">
+        <xed:repeat xpath="condition5[@field='profkat.profstate'][@operator='=']">
           <div class="row">
             <div class="col-sm-9">
               <xed:bind xpath="@value">
