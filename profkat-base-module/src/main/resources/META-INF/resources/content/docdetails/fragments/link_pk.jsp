@@ -21,8 +21,10 @@
 <%-- ADD WBIS user parameter from mycore.properties --%>
 <c:if test="${fn:contains(location, 'db.saur.de/WBIS')}">
 	<c:set var="location">#</c:set>
+	<c:set var="ip">${header["X-FORWARDED-FOR"]}</c:set>
+	<c:if test="${empty ip}"><c:set var="ip">${pageContext.request.localAddr}</c:set></c:if>
 	<c:forEach var="entry" items="${wbisIPMap}">
-  		<c:if test="${pageContext.request.localAddr.matches(entry.value)}">
+  		<c:if test="${ip.matches(entry.value)}">
   			<c:set var="location">${param.href}&user=${fn:replace(entry.key,'MCR.profkat.WBIS.user-ip.','')}</c:set>
   		</c:if>
 	</c:forEach>
