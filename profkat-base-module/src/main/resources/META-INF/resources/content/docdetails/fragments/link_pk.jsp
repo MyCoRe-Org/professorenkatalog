@@ -23,6 +23,7 @@
 	<c:set var="location">#</c:set>
 	<c:set var="ip">${header["X-FORWARDED-FOR"]}</c:set>
 	<c:if test="${empty ip}"><c:set var="ip">${pageContext.request.localAddr}</c:set></c:if>
+	<!-- check IP: ${ip} -->
 	<c:forEach var="entry" items="${wbisIPMap}">
   		<c:if test="${ip.matches(entry.value)}">
   			<c:set var="location">${param.href}&user=${fn:replace(entry.key,'MCR.profkat.WBIS.user-ip.','')}</c:set>
