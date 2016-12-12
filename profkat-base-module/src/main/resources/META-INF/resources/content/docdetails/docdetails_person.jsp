@@ -153,7 +153,10 @@
     		<mcrdd:outputitem select="./classification" var="out">
     			<c:set var="classid"><x:out select="$out/@classid" /></c:set>
     			<c:set var="categid"><x:out select="$out/@categid" /></c:set>
-    		 	<c:set var="classLabel"><mcr:displayClassificationCategory categid="${categid}" classid="${classid}" lang="x-de-short"/></c:set>
+    			<c:set var="classLabel"><mcr:displayClassificationCategory categid="${categid}" classid="${classid}" lang="de"/></c:set>
+    			<x:if select="starts-with($mcrobj/mycoreobject/@ID,'cpr_'))">
+    		 		<c:set var="classLabel"><mcr:displayClassificationCategory categid="${categid}" classid="${classid}" lang="x-de-short"/></c:set>
+    		 	</x:if>
     			<c:out value="${classLabel}" />
     			<x:if select="$out/../event">
     				<br />
