@@ -88,9 +88,18 @@
     <field name="profkat.last_professorship"><xsl:value-of select="box.professorship/professorship[last()]/event" /></field>
 
      <xsl:for-each select="box.faculty/faculty[last()]/classification">
-    	<field name="profkat.last_faculty">
-    		<xsl:value-of select="document(concat('classification:metadata:1:children:', @classid, ':', @categid))//category/label[@xml:lang='x-de-short']/@text" />
-        </field>
+    	<xsl:choose>
+    		<xsl:when test="starts-with(/mycoreobject/@ID, 'cpr')">
+    			<field name="profkat.last_faculty">
+    				<xsl:value-of select="document(concat('classification:metadata:1:children:', @classid, ':', @categid))//category/label[@xml:lang='x-de-short']/@text" />
+        		</field>
+        	</xsl:when>
+        	<xsl:otherwise>
+        		<field name="profkat.last_faculty">
+    				<xsl:value-of select="document(concat('classification:metadata:1:children:', @classid, ':', @categid))//category/label[@xml:lang='de']/@text" />
+        		</field>
+        	</xsl:otherwise>
+    	</xsl:choose>
     </xsl:for-each>
     <field name="profkat.status_msg">OMD.profkat.state.<xsl:value-of select="box.status/status" /></field>
     <field name="profkat.academictitle"><xsl:value-of select="box.academictitle/academictitle" /></field>
@@ -127,9 +136,18 @@
     </xsl:for-each>
     
     <xsl:for-each select="box.professorship/professorship/classification">
-    	<field name="profkat.proftype">
-    		<xsl:value-of select="document(concat('classification:metadata:1:children:', @classid, ':', @categid))//category/label[@xml:lang='x-de-short']/@text" />
-        </field>
+    	<xsl:choose>
+       		<xsl:when test="starts-with(/mycoreobject/@ID, 'cpr')">
+    			<field name="profkat.proftype">
+    				<xsl:value-of select="document(concat('classification:metadata:1:children:', @classid, ':', @categid))//category/label[@xml:lang='x-de-short']/@text" />
+        		</field>
+        	</xsl:when>
+        	<xsl:otherwise>
+        		<field name="profkat.proftype">
+    				<xsl:value-of select="document(concat('classification:metadata:1:children:', @classid, ':', @categid))//category/label[@xml:lang='de']/@text" />
+        		</field>
+        	</xsl:otherwise>
+    	</xsl:choose>
     </xsl:for-each>
     
     
