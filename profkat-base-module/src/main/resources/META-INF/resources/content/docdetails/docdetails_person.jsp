@@ -413,7 +413,7 @@
 					<x:if select="starts-with($mcrobj/mycoreobject/@ID,'cpr_')">
    						<c:set var="otherpks">"hpk", </c:set>
    					</x:if>
-   					<x:if select="starts-with($mcrobj/mycoreobject/@ID,'cphh_')">
+   					<x:if select="starts-with($mcrobj/mycoreobject/@ID,'cph_')">
    						<c:set var="otherpks">"cpr", </c:set>
    					</x:if>
 					
