@@ -218,27 +218,53 @@
    			<mcrdd:item select="." />  
    		</mcrdd:row> 
     
-		<mcrdd:row select="/mycoreobject/metadata/box.birth/birth|/mycoreobject/metadata/box.death/death" labelkey="OMD.profkat.lifetimes" showInfo="true" colWidths="8em">
+		<mcrdd:row select="(/mycoreobject/metadata/box.birth/birth|/mycoreobject/metadata/box.death/death)[1]" labelkey="OMD.profkat.lifetimes" showInfo="true" colWidths="8em">
 		  	<mcrdd:outputitem select="." var="data">
-   				<x:set var="date" select="string($data/text)" />
-				<x:set var="place" select="string($data/event)" />
-				<x:set var="type" select="local-name($data)" />
-
+				<x:set var="birth_type" select="local-name($data/../../box.birth/birth)" />
+				<x:set var="birth_place" select="string($data/../../box.birth/birth/event)" />
+				<x:set var="birth_date" select="string($data/../../box.birth/birth/text)" />
+				
+				<x:set var="death_type" select="local-name($data/../../box.death/death)" />
+				<x:set var="death_place" select="string($data/../../box.death/death/event)" />
+				<x:set var="death_date" select="string($data/../../box.death/death/text)" />
+				<c:if test="${not empty birth_type}">
 				<nobr>
-					<c:if test="${type eq 'birth'}"> <fmt:message key="OMD.common.born" /> </c:if>
-					<c:if test="${type eq 'death'}"> <fmt:message key="OMD.common.died" /> </c:if>
+					<fmt:message key="OMD.common.born" />
+					<c:if test="${(not empty birth_date) and (birth_date ne'#')}">
+						<c:if test="${fn:contains(birth_date, '.')}">
+							<fmt:message key="OMD.common.at" />
+						</c:if>
+						<c:out value="${birth_date}" />
+					</c:if> 
+					<c:if test="${(not empty birth_place) and (birth_place ne '#')}">
+						<fmt:message key="OMD.common.in" />
+						<c:out value="${birth_place}" />
+					</c:if>
+				</nobr>
+				</c:if>
+				
+				<c:if test="${(not empty birth_type) and (not empty death_type)}">
+					</td></tr>
+					<tr><td class="docdetails-value">
+				</c:if>   				
+				
+				
+				<c:if test="${not empty death_type}">
+				<nobr>
+					<fmt:message key="OMD.common.died" />
 	
-					<c:if test="${(not empty date)}">
+					<c:if test="${(not empty death_date) and (death_date ne '#')}">
 						<c:if test="${fn:contains(date, '.')}">
 							<fmt:message key="OMD.common.at" />
 						</c:if>
-						<c:out value="${date}" />
+						<c:out value="${death_date}" />
 					</c:if> 
-					<c:if test="${(not empty place)}">
+					<c:if test="${(not empty death_place) and (death_place ne '#')}">
 						<fmt:message key="OMD.common.in" />
-						<c:out value="${place}" />
+						<c:out value="${death_place}" />
 					</c:if>
-				</nobr>
+				</nobr>			
+				</c:if>
    			</mcrdd:outputitem>   
     	</mcrdd:row>
    		
