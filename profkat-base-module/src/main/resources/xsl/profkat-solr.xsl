@@ -62,16 +62,20 @@
   <xsl:if test="not(box.epoch/epoch[@categid='cpr.1945-1989']) and not(box.epoch/epoch[@categid='cpr.1989-heute'])">
     <xsl:variable name="lifetime_out">
       <xsl:if test="box.birth/birth">
-      		<xsl:text>&lt;span style=&quot;display:inline-block;width:1em&quot;&gt;*&lt;/span&gt;</xsl:text> 
-      		<xsl:value-of select="box.birth/birth/text" />
-     		<xsl:if test="box.birth/birth/event">
+      		<xsl:text>&lt;span style=&quot;display:inline-block;width:1em&quot;&gt;*&lt;/span&gt;</xsl:text>
+      		<xsl:if test="not(box.birth/birth/text = '#')">
+      		   <xsl:value-of select="box.birth/birth/text" />
+      		</xsl:if>
+     		<xsl:if test="box.birth/birth/event and not(box.birth/birth/event = '#')">
      			in <xsl:value-of select="box.birth/birth/event" />
      		</xsl:if>
       </xsl:if>
       <xsl:if test="box.death/death">
       	    <xsl:text>&lt;br /&gt;&lt;span style=&quot;display:inline-block;width:1em&quot;&gt;†&lt;/span&gt;</xsl:text>
-      		<xsl:value-of select="box.death/death/text" />
-     		<xsl:if test="box.death/death/event">
+      		<xsl:if test="not(box.death/death/text = '#')">
+      			<xsl:value-of select="box.death/death/text" />
+      		</xsl:if>
+     		<xsl:if test="box.death/death/event and not(box.death/death/event = '#')">
      			in <xsl:value-of select="box.death/death/event" />
      		</xsl:if>
        </xsl:if>
