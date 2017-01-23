@@ -22,8 +22,16 @@
 <c:if test="${fn:contains(location, 'db.saur.de/WBIS')}">
 	<c:set var="location">#</c:set>
 	<c:set var="ip">${header["X-FORWARDED-FOR"]}</c:set>
+	<c:if test="${empty ip}"><c:set var="ip">${requestScope["JK_REMOTE_ADDR"]}</c:set></c:if>
+	<c:if test="${empty ip}"><c:set var="ip">${pageContext.request.remoteAddr}</c:set></c:if>
 	<c:if test="${empty ip}"><c:set var="ip">${pageContext.request.localAddr}</c:set></c:if>
-	<!-- check IP: ${ip} -->
+
+	<!-- IPCHECK: ${ip}
+		 HTTP-Header ("X-FORWARDED-FOR"): ${header["X-FORWARDED-FOR"]}
+		 Request-Attribute ("JK_REMOTE_ADDR"): ${requestScope["JK_REMOTE_ADDR"]}
+		 Request-RemoteAddress: ${pageContext.request.remoteAddr}
+		 Request-LocalAddress: ${pageContext.request.localAddr}
+	 -->
 	<c:forEach var="entry" items="${wbisIPMap}">
   		<c:if test="${ip.matches(entry.value)}">
   			<c:set var="location">${param.href}&user=${fn:replace(entry.key,'MCR.profkat.WBIS.user-ip.','')}</c:set>
