@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="org.apache.log4j.Logger" %>
 <%@ page import="java.net.URLEncoder" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -49,9 +50,12 @@
  <c:set var="pageTitle">${prof_name}</c:set>
 <stripes:layout-render name="../WEB-INF/layout/default.jsp" pageTitle="${pageTitle}" layout="${layout_name}">
 	<stripes:layout-component name="html_header">
-		<meta name="description" lang="de"
-	          content="Im Catalogus Professorum Rostochiensium (Rostocker Professorenkatalog) sollen alle an der Universität Rostock seit 1419 tätigen Professoren mit Angaben zur Person, zum wissenschaftlichen Profil und zu den Aktivitäten an der Rostocker Hochschule dokumentiert werden." />
-		<meta name="author" content="Forschungsstelle Universitätsgeschichte der Universität Rostock" />
+		<mcr:receiveMcrObjAsJdom mcrid="${mcrid}" varDom="mcrobj" fromWF="false" />
+		<c:import charEncoding="UTF-8" var="stylesheet" url="/WEB-INF/xsl/person2html_header_description.xsl" />
+		<c:set var="description">
+			<x:transform xml="${mcrobj}" xslt="${stylesheet}" />
+      	</c:set>
+    	<meta name="description" lang="de" content="${fn:trim(description)}" />
 		<link rel="canonical" href="${WebApplicationBaseURL}resolve/id/${mcrid}" />
 		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_docdetails_headlines.css" />
 		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_biogr_article.css" />		
