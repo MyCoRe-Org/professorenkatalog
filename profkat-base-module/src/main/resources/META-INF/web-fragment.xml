@@ -20,19 +20,5 @@
     <servlet-name>ProfKatBeaconDataServlet</servlet-name>
     <url-pattern>/profkat_beacon_data</url-pattern>
   </servlet-mapping>
-
-  <!-- deprecated - new catalogues should noot use this servlet, use "/resolve/gnd/{gnd-nr} instead -->
-  <servlet>
-    <servlet-name>MCRProfkatGNDServlet</servlet-name>
-    <servlet-class>org.mycore.profkat.servlets.MCRProfkatGNDServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>MCRProfkatGNDServlet</servlet-name>
-    <url-pattern>/gnd/*</url-pattern>
-  </servlet-mapping>
-  <!-- Legacy Mapping -->
-  <servlet-mapping>
-    <servlet-name>MCRProfkatGNDServlet</servlet-name>
-    <url-pattern>/pnd/*</url-pattern>
-  </servlet-mapping>
 </web-fragment>
+  
