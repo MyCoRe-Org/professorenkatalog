@@ -429,7 +429,7 @@
 					<script type="text/javascript" src="${WebApplicationBaseURL}js/profkat_gndbeacon.js"></script>
 					
 		
-					<c:url var="url" value="${WebApplicationBaseURL}gnd/${pndString}" />
+					<c:url var="url" value="${WebApplicationBaseURL}resolve/gnd/${pndString}" />
 					<p>
 						<fmt:message key="OMD.profkat.quoting.gnd">
       						<fmt:param>${url}</fmt:param>

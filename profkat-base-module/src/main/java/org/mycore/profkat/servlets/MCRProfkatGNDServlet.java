@@ -38,6 +38,7 @@ import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
+import org.mycore.frontend.MCRFrontendUtil;
 import org.mycore.solr.MCRSolrClientFactory;
 import org.mycore.solr.MCRSolrUtils;
 
@@ -96,7 +97,9 @@ public class MCRProfkatGNDServlet extends HttpServlet {
             if (it.hasNext()) {
                 SolrDocument doc = it.next();
                 String id = String.valueOf(doc.getFirstValue("id"));
-                getServletContext().getRequestDispatcher("/resolve/id/" + id).forward(request, response);
+                response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
+                response.setHeader("Location", MCRFrontendUtil.getBaseURL()+"/resolve/id/" + id);
+                //getServletContext().getRequestDispatcher("/resolve/id/" + id).forward(request, response);
             }
 
         } catch (SolrServerException e) {
