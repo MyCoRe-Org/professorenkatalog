@@ -84,7 +84,7 @@
 	    				</a>
 	         		</div>
 	         		<div class="row" style="padding-bottom:6px">
-	         				<a class="btn btn-default btn-sm col-xs-5" style="text-align:left;margin-right:6px" href="${WebApplicationBaseURL}content/print_details.jsp?id=${param.id}&amp;print=true&amp;fromWF=${param.fromWF}" target="_blank" title="<fmt:message key="WF.common.printdetails" />">
+	         				<a class="btn btn-default btn-sm col-xs-5 hidden-sm hidden-xs" style="text-align:left;margin-right:6px" href="${WebApplicationBaseURL}content/print_details.jsp?id=${param.id}&amp;print=true&amp;fromWF=${param.fromWF}" target="_blank" title="<fmt:message key="WF.common.printdetails" />">
 	       						<span class="glyphicon glyphicon-print"></span> <fmt:message key="Webpage.print.button"/>
 	       					</a>
 	       		
@@ -93,7 +93,7 @@
 	       						<search:show-edit-button mcrid="${mcrid}" cssClass="btn btn-sm btn-primary ir-edit-btn col-xs-3" />  
    						</c:if>
    			
-		    	   		<button type="button" class="btn btn-default btn-sm pull-right hidden-xs" style="border:none;color:#DEDEDE;" 
+		    	   		<button type="button" class="btn btn-default btn-sm pull-right hidden-sm hidden-xs" style="border:none;color:#DEDEDE;" 
 		    	   		        data-toggle="collapse" data-target="#hiddenTools" title="<fmt:message key="Webpage.tools.menu4experts" />">
 	    					<span class="glyphicon glyphicon-wrench"></span>
 	        			</button>
@@ -112,7 +112,7 @@
 		</div>
 
 		<x:if select="$linked/mycoreobject/structure/derobjects/derobject[@xlink:title='display_portrait' or @xlink:title='display_signature']">
-			<div class="docdetails-infobox ur-box ur-box-bordered ur-infobox hidden-xs">
+			<div class="docdetails-infobox ur-box ur-box-bordered ur-infobox hidden-xs" style="max-width:33%; margin-left:auto;margin-right:auto">
 				<search:derivate-image mcrid="${mcrid}" width="100%" labelContains="display_portrait" showFooter="true" protectDownload="true" />
 				<search:derivate-image mcrid="${mcrid}" width="100%" labelContains="display_signature" protectDownload="true" />
 			</div>
