@@ -244,6 +244,36 @@
       </div>
     </div>
   </xed:template>
+   
+   
+   <!-- Art des Eintrages -->
+  <xed:template id="searchfield.sex">
+    <div class="form-group">
+      <label class="col-sm-3 control-label input-sm" for="subjectclass">
+        <xed:output i18n="Editor.Search.Label.Sex" />
+      </label>
+      <div class="col-sm-9">
+        <xed:repeat xpath="condition6[@field='profkat.sex'][@operator='=']">
+          <div class="row">
+            <div class="col-sm-9">
+              <xed:bind xpath="@value">
+                <select id="profstate" class="form-control">
+                  <option value=""><xed:output i18n="Editor.Search.List.all" /></option>
+                    <xed:include uri="props2options:OMD.profkat.sex" />
+                </select>
+              </xed:bind>
+            </div>
+            <div class="col-sm-3">
+              <div class="btn-group btn-group-xs pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:template>
+
     
   <!-- Zeitraumsuche über Professur -->
   <xed:template id="searchfield.proftime">

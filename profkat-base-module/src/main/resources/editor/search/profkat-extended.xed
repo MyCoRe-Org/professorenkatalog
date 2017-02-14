@@ -31,12 +31,14 @@
         </div>
         <div class="panel-body" style="border-top:1px solid lightgrey;">
           <xed:bind xpath="boolean14">
+            <xed:include uri="resource:editor/search/includes-search-profkat.xed" ref="searchfield.sex" />
             <xed:include uri="resource:editor/search/includes-search-profkat.xed" ref="searchfield.institution" />
             <xed:include uri="resource:editor/search/includes-search-profkat.xed" ref="searchfield.subject" />
             <xed:include uri="resource:editor/search/includes-search-profkat.xed" ref="searchfield.proftypes" />
-            <xed:include uri="resource:editor/search/includes-search-profkat.xed" ref="searchfield.epochs" />
-            <xed:include uri="resource:editor/search/includes-search-profkat.xed" ref="searchfield.profstates" />
-   
+            <xed:if test="$MCR.SWF.Project.ID != 'cph'">
+            	<xed:include uri="resource:editor/search/includes-search-profkat.xed" ref="searchfield.epochs" />
+            	<xed:include uri="resource:editor/search/includes-search-profkat.xed" ref="searchfield.profstates" />
+   			</xed:if>
             <xed:include uri="resource:editor/search/includes-search-profkat.xed" ref="tools.grouping" />
           </xed:bind> 
         </div>
