@@ -254,7 +254,7 @@
 					<fmt:message key="OMD.common.died" />
 	
 					<c:if test="${(not empty death_date) and (death_date ne '#')}">
-						<c:if test="${fn:contains(date, '.')}">
+						<c:if test="${fn:contains(death_date, '.')}">
 							<fmt:message key="OMD.common.at" />
 						</c:if>
 						<c:out value="${death_date}" />
