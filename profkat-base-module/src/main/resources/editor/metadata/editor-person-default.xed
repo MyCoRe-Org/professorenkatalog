@@ -1586,7 +1586,7 @@
                 </xed:bind>
                 <xed:bind xpath=".">
                   <div class="col-sm-8">
-                    <input id="identifier_text" type="text" class="form-control input-sm"   />
+                    <input id="identifier_text" type="text" class="form-control input-sm mcr-gnd-field"   />
                   </div>
                 </xed:bind>
               </div>
@@ -1607,4 +1607,16 @@
     </xed:bind>
       <xed:include uri="resource:editor/metadata/includes-generic.xed" ref="cancel.submit" />
     </xed:bind>
+    <script>
+      $(document).ready(function() {
+        $.getScript( 'javascript/xed-check-gnd.js', function() {
+          $('.mcr-gnd-field').on('click change', function(){
+              checkGND(this);
+          });
+          $('.mcr-gnd-field').each( function(){
+              checkGND(this);
+          });
+        });
+      });
+    </script>
 </xed:form>
