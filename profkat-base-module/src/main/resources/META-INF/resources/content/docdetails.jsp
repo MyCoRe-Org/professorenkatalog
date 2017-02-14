@@ -112,7 +112,7 @@
 		</div>
 
 		<x:if select="$linked/mycoreobject/structure/derobjects/derobject[@xlink:title='display_portrait' or @xlink:title='display_signature']">
-			<div class="docdetails-infobox ur-box ur-box-bordered ur-infobox hidden-xs" style="max-width:33%; margin-left:auto;margin-right:auto">
+			<div class="docdetails-infobox ur-box ur-box-bordered ur-infobox hidden-xs" style="margin-left:auto;margin-right:auto">
 				<search:derivate-image mcrid="${mcrid}" width="100%" labelContains="display_portrait" showFooter="true" protectDownload="true" />
 				<search:derivate-image mcrid="${mcrid}" width="100%" labelContains="display_signature" protectDownload="true" />
 			</div>
