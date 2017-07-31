@@ -15,8 +15,8 @@
 Für den Betrieb und die Installation des Professorenkatalogs wird folgende Software empfohlen.
 Der Einsatz einer anderen Datenbank oder eines anderen Webapplication-Servers ist möglich:
 <ul>
-	<li>Webapplication-Server: Tomcat 7.0</li>
-	<li>Datenbank: PostgreSQL 9.1</li>
+	<li>Webapplication-Server: Tomcat 8.0</li>
+	<li>Datenbank: PostgreSQL 9.5</li>
 	<li>Worfklow engine: Activiti 5.15.1</li>
 	<li>SOLR (von MycoRe bereitgestellt): 4.10.4</li> 
 	<li>Build-Tools: Maven und SVN</li>
@@ -30,14 +30,15 @@ Lege folgende Datenbanken und zwei Schemata an (am Beispiel von PostreSQL)
 </ul>
 <ul class="commandline postgres">
 	<li>CREATE ROLE pkadmin LOGIN PASSWORD 'alleswirdgut' CREATEDB VALID UNTIL 'infinity';</li>
-	<li>CREATE DATABASE mycoredb WITH OWNER mcradmin ENCODING 'UTF8';</li>
+	<li>CREATE DATABASE mycoredb WITH OWNER pkadmin ENCODING 'UTF8';</li>
+	<li>\c mycoredb</li>
 	<li>CREATE SCHEMA profkat AUTHORIZATION pkadmin;</li>
 	<li>\q</li>
 </ul>
 
 <h2>Activiti-Workflowengine Installation</h2>
 <ul class="commandline">
-	<li>psql -U postgres</li>
+	<li>psql -U postgres -d mycoredb</li>
 </ul>
 <ul class="commandline postgres">
 	<li>CREATE SCHEMA profkat_activiti AUTHORIZATION pkadmin;</li>
