@@ -1,0 +1,174 @@
+<objecttype name="person" isChild="false" isParent="false" hasDerivates="true" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:mods="http://www.loc.gov/mods/v3" xsi:noNamespaceSchemaLocation="datamodel.xsd">
+  <metadata>
+  		<!-- 10 - Nachname-->
+		<element name="surname" wrapper="box.surname" type="text" minOccurs='1' maxOccurs='unbounded' />
+		<!-- 11 - Vorname -->
+		<element name="firstname" wrapper="box.firstname" type="text" minOccurs='0' maxOccurs='unbounded' />
+		 <!-- 12 - Namenszusatz -->
+		<element name="nameaffix" wrapper="box.nameaffix" type="text" minOccurs='0' maxOccurs='unbounded' />
+		<!-- 13 - Titel -->
+		<element name="academictitle" wrapper="box.academictitle" type="text" minOccurs='0' maxOccurs='unbounded' />
+		<!-- 14 - Professuren (honorar,habil,Priv,..)-->
+		<element name="professorship" wrapper="box.professorship" type="historyevent" minOccurs='0' maxOccurs='unbounded' />
+		<!-- 15 - Zeit in Rostock (gesamt) -->
+		<element name="period" wrapper="box.period" type="historydate" minOccurs='0' maxOccurs='unbounded' />
+  
+  		<!--  ====================================================================================== -->
+		<!-- 20 - historische Institute  -->
+		<element name="institute" wrapper="box.institute" type="xml" minOccurs='0' maxOccurs='unbounded'>
+			<xs:sequence>
+ 	 			<xs:element name="time" type="xs:string" minOccurs="0" maxOccurs="1" />
+ 	 			<xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="1" />
+ 	 		</xs:sequence>
+		</element>
+		<!-- 21 - Fachgebiet  -->
+		<element name="fieldofstudy" wrapper="box.fieldofstudy" type="text" minOccurs='0' maxOccurs='unbounded' />	
+		<!-- 22 - Fachgebietsklassifikation -->
+		<element name="subjectclass" wrapper="box.subjectclass" type="classification" minOccurs='0' maxOccurs='unbounded'>
+			<classification id="profkat_class_subjects" />
+		</element>
+		<!-- 23 - Fakultät (Zeitraum + Systematik) -->
+		<element name="faculty"  wrapper="box.faculty" type="historyevent" minOccurs='0' maxOccurs="unbounded" />
+	
+		<!--  ====================================================================================== -->
+		<!-- 31 - eMail -->
+		<element name="email" wrapper="box.email" type="text" minOccurs='0' maxOccurs='unbounded' />
+		<!-- 32 - Homepage-->
+		<element name="homepage"  wrapper="box.homepage" type="href" minOccurs='0' maxOccurs='unbounded' />
+		
+  		<!--  ====================================================================================== -->
+		<!-- 40 - Geburtstag / Geburtsort -->
+		<element name="birth" wrapper="box.birth" type="historyevent" minOccurs='0' maxOccurs="1" />
+		<!-- 41 - Sterbetag / Sterbeort -->
+		<element name="death" wrapper="box.death" type="historyevent" minOccurs='0' maxOccurs='1' />
+		<!-- 42 - Geschlecht  -->
+		<element name="sex" wrapper="box.sex" type="text" minOccurs='0' maxOccurs='1' />
+		<!-- 43 - Konfession  -->
+		<element name="confession" wrapper="box.confession" type="text" minOccurs='0' maxOccurs='unbounded' />
+		<!-- 44 - Familie -->
+		<element name="family" wrapper="box.family" type="xml" minOccurs='0' maxOccurs='unbounded'>
+			<xs:sequence>
+				<xs:element name="name" minOccurs="0" maxOccurs="1" >
+					<xs:complexType>
+    					<xs:simpleContent>
+      						<xs:extension base="xs:string">
+        						<xs:attribute name="id" type="xs:string" />
+      						</xs:extension>
+    					</xs:simpleContent>
+  					</xs:complexType>
+ 	 			</xs:element>
+ 	 			<xs:element name="profession" type="xs:string" minOccurs="0" maxOccurs="1" />
+ 	 		</xs:sequence>
+        </element>
+  		<!--  ====================================================================================== -->
+		<!-- 50 - Kurzlebenslauf, Stichpunkte    -->
+		<element name="biographic" wrapper="box.biographic" type="xml" minOccurs='0' maxOccurs='unbounded'>
+			<xs:sequence>
+				<xs:element name="time" type="xs:string" minOccurs="0" maxOccurs="1" />
+				<xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="1" />
+				<xs:element name="places" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="place" minOccurs="1" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:string">
+											<xs:attribute name="geoid" type="xs:string" />
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</element>
+		<!-- 51 - Akademische Abschlüsse -->
+		<element name="academicdegree" wrapper="box.academicdegree" type="xml" minOccurs='0' maxOccurs='unbounded'>
+			<xs:sequence>
+				<xs:element name="time" type="xs:string" minOccurs="0" maxOccurs="1" />
+				<xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="1" />
+				<xs:element name="dissertation" type="xs:string" minOccurs="0" maxOccurs="1" />
+				<xs:element name="places" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="place" minOccurs="1" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:string">
+											<xs:attribute name="geoid" type="xs:string" />
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</element>
+		<!-- 52 - Funktion in der akademischen selbstverwaltung  Funktion -->
+		<element name="adminfunction" wrapper="box.adminfunction" type="xml" minOccurs='0' maxOccurs="unbounded">
+			<xs:sequence>
+ 	 			<xs:element name="time" type="xs:string" minOccurs="0" maxOccurs="1" />
+ 	 			<xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="1" />
+ 	 		</xs:sequence>
+		</element>
+		<!-- 53 - weitere Funktionen -->
+		<element name="otherfunction" wrapper="box.otherfunction" type="xml" minOccurs='0'  maxOccurs='unbounded'>
+			<xs:sequence>
+ 	 			<xs:element name="time" type="xs:string" minOccurs="0" maxOccurs="1" />
+ 	 			<xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="1" />
+ 	 		</xs:sequence>
+		</element>
+		<!-- 54 - Mitgliedschaften -->
+		<element name="membership" wrapper="box.membership" type="xml" minOccurs='0' maxOccurs='unbounded'>
+			<xs:sequence>
+ 	 			<xs:element name="time" type="xs:string" minOccurs="0" maxOccurs="1" />
+ 	 			<xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="1" />
+ 	 		</xs:sequence>
+		</element>
+		<!-- 55 - Mitgliedschaften -->
+		<element name="partymember" wrapper="box.partymember" type="xml" minOccurs='0' maxOccurs='unbounded'>
+			<xs:sequence>
+ 	 			<xs:element name="time" type="xs:string" minOccurs="0" maxOccurs="1" />
+ 	 			<xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="1" />
+ 	 		</xs:sequence>
+		</element>
+		<!-- 56 - Ehrungen / Auszeichnungen -->
+		<element name="award" wrapper="box.award" type="xml" minOccurs='0' maxOccurs='unbounded'>
+			<xs:sequence>
+ 	 			<xs:element name="time" type="xs:string" minOccurs="0" maxOccurs="1" />
+ 	 			<xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="1" />
+ 	 		</xs:sequence>
+		</element>
+		<!-- 57 - Zusatzinformationen -->
+		<element name="otherinfo" wrapper="box.otherinfo" type="text" minOccurs='0' maxOccurs='unbounded' />
+		
+		<!--  ====================================================================================== -->
+		<!-- 60 - main works -->
+		<element name="mainpublication" wrapper="box.mainpublication" type="text" minOccurs='0' maxOccurs='unbounded' />
+		<!-- 61 -  Link zu Webseiten mit Literaturverzeichnissen) -->
+		<element name="publicationslink" wrapper="box.publicationslink" type="href" minOccurs='0' maxOccurs='unbounded' />
+		<!-- 62 - sonstige Quellen -->
+		<element name="source" wrapper="box.source" type="href" minOccurs='0' maxOccurs='unbounded' />
+		<!-- 63 -  Quellen: Literatur references (Angaben aus, weitere Literatur) -->
+		<element name="reference" wrapper="box.reference" type="href" minOccurs='0' maxOccurs='unbounded' />
+		<!-- 64 -  Komplexe Linkstrukturen (zur Zeit verwendet für Etwas-Personenregister) -->
+		<element name="complexref" wrapper="box.complexref" type="text" minOccurs='0' maxOccurs='unbounded' />
+		  
+		<!--  ====================================================================================== -->
+		<!-- 70  other Identifiers (z.B. PND, GBV, ...) -->
+		<element name="identifier" wrapper="box.identifier" type="text" style="small" minOccurs="0" maxOccurs="5" />
+		<!-- 71 - (Status des Eintrages (in Bearbeitung, Lang-/Kurz-/Dokumenteintrag ...) -->
+		<element name="status" wrapper="box.status" type="text" style="small" minOccurs="0" maxOccurs="unbounded" />
+		<!-- 72 - Personentyp Klassifikation -->
+		<element name="type" wrapper="box.type" type="classification" style="select" minOccurs="1">
+			<classification id="profkat_class_proftypes" />
+		</element>
+		<!-- 73 - Epoche -->
+		<element name="epoch" wrapper="box.epoch" type="classification" style="select" minOccurs="1">
+			<classification id="profkat_class_epochs" />
+		</element>
+  </metadata>
+</objecttype>

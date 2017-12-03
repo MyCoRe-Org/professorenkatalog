@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xed:template xmlns:xed="http://www.mycore.de/xeditor">
+
+	<!-- Professor Names -->
+  <xed:template id="searchfield.profname">
+    <xed:bind xpath="condition[@field='profkat.name'][@operator='like']">
+      <div class="form-group" style="margin-bottom:6px">
+        <label class="col-sm-3 control-label input-sm" for="profname">
+          <xed:output i18n="Editor.Search.Label.ProfNames" />
+        </label>
+        <div class="col-sm-9">
+          <xed:bind xpath="@value">
+            <input id="profname" type="text" class="form-control input-sm" />
+          </xed:bind>
+        </div>
+      </div>
+    </xed:bind>
+  </xed:template>
+  
+  <xed:template id="tools.grouping">
+   <div class="form-group">
+        <label class="col-sm-3 col-sm-offset-5 control-label input-sm" for="profname">
+          <xed:output i18n="Editor.Search.connect" />
+        </label>
+        <div class="col-sm-2">
+          <xed:bind xpath="@operator">
+            <select id="connect1" class="form-control">
+              <option value="and"><xed:output i18n="Editor.Search.and" /></option>
+              <option value="or"><xed:output i18n="Editor.Search.or" /></option>
+            </select>
+          </xed:bind>
+       </div>
+    </div>
+  </xed:template>
+
+  <xed:template id="searchfield.generic">
+    <xed:repeat xpath="condition">
+      <div class="form-group">
+        <div class="col-sm-3">
+          <xed:bind xpath="@field">
+            <select id="choose_field" class="form-control">
+              <option value="allMeta"><xed:output i18n="Editor.Search.metadata" /></option>
+              <option value="profkat.name"><xed:output i18n="OMD.profkat.name" /></option>
+              <option value="profkat.institute"><xed:output i18n="OMD.profkat.institutes" /></option>
+              <option value="profkat.profarea"><xed:output i18n="OMD.profkat.profarea" /></option>
+              <option value="profkat.field_of_studies"><xed:output i18n="OMD.profkat.fieldofstudies" /></option>
+              <option value="profkat.birthplace"><xed:output i18n="OMD.profkat.birthplace" /></option>
+              <option value="profkat.deathplace"><xed:output i18n="OMD.profkat.deathplace" /></option>
+              <option value="profkat.confession"><xed:output i18n="OMD.profkat.confessions" /></option>
+              <option value="profkat.parentprofession"><xed:output  i18n="OMD.profkat.parentprofession" /></option>
+              <option value="profkat.biography"><xed:output i18n="OMD.profkat.biographics" /></option>
+              <option value="profkat.school"><xed:output i18n="OMD.profkat.schools" /></option>
+              <option value="profkat.academicdegree"><xed:output i18n="OMD.profkat.academicdegrees" /></option>
+              <option value="profkat.acad_degree_study"><xed:output i18n="OMD.profkat.academicdegree.studies" /></option>
+              <option value="profkat.acad_degree_promo"><xed:output i18n="OMD.profkat.academicdegree.promotion" /></option>
+              <option value="profkat.acad_degree_habil"><xed:output i18n="OMD.profkat.academicdegree.habilitation" /> </option>             
+              <option value="profkat.otherprofessorship"><xed:output i18n="OMD.profkat.otherprofessorships" /></option>
+              <option value="profkat.adminfunction"><xed:output i18n="OMD.profkat.adminfunctions" /></option>
+              <option value="profkat.otherfunction"><xed:output i18n="OMD.profkat.otherfunctions" /></option>
+              <option value="profkat.membership"><xed:output i18n="OMD.profkat.memberships" /></option>
+              <option value="profkat.award"><xed:output i18n="OMD.profkat.awards" /></option>
+              <option value="profkat.mainpublication"><xed:output i18n="OMD.profkat.mainpublications" /></option>
+              <option value="profkat.source"><xed:output i18n="OMD.profkat.sources" /></option>
+              <option value="profkat.reference"><xed:output i18n="OMD.profkat.references_short" /></option>
+              <option value="profkat.derivate_title"><xed:output i18n="OMD.profkat.derivatelabel" /></option>   
+            </select>
+          </xed:bind>
+        </div>
+        <div class="col-sm-2">
+          <xed:bind xpath="@operator">
+            <select id="choose_field" class="form-control">
+              <option value="contains"><xed:output i18n="Editor.Search.contains" /></option>
+              <option value="like"><xed:output i18n="Editor.Search.like" /></option>
+              <option value="phrase"><xed:output i18n="Editor.Search.phrases"/></option>
+              <option value="=">=</option>
+              <option value="&gt;">&gt;</option>
+              <option value="&gt;=">&gt;=</option>
+              <option value="&lt;">&lt;</option>
+              <option value="&lt;=">&lt;=</option>
+            </select>
+          </xed:bind>
+       </div>
+        <div class="col-sm-5">
+          <xed:bind xpath="@value">
+            <input id="choose_value" class="form-control" />
+          </xed:bind>
+         </div>
+         <div class="col-sm-2">
+           <div class="btn-group btn-group-xs pull-right">
+             <xed:controls />
+           </div>
+        </div>
+      </div>
+    </xed:repeat>
+    <xed:include ref="tools.grouping" />
+  </xed:template>
+  
+  
+	<!-- Institutionensystematik -->
+  <xed:template id="searchfield.institution">
+    <div class="form-group">
+      <label class="col-sm-3 control-label input-sm" for="institutionclass">
+        <xed:output i18n="Editor.Search.Label.Institution" />
+      </label>
+      <div class="col-sm-9">
+        <xed:repeat xpath="condition1[@field='category.top'][@operator='=']">
+           <div class="row">
+            <div class="col-sm-9">
+              <xed:bind xpath="@value">
+                <select id="institutionclass" class="form-control">
+                  <option value="">
+                    <xed:output i18n="Editor.Search.List.all" />
+                  </option>
+                  <xed:include uri="xslStyle:items2options:classification:editorComplete:-1:children:profkat_class_institutions" />
+                </select>
+              </xed:bind>
+            </div>
+            <div class="col-sm-3">
+              <div class="btn-group btn-group-xs pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:template>
+
+  <!-- Fachklassifikation -->
+  <xed:template id="searchfield.subject">
+    <div class="form-group">
+      <label class="col-sm-3 control-label input-sm" for="subjectclass">
+        <xed:output i18n="Editor.Search.Label.SubjectProf" />
+      </label>
+      <div class="col-sm-9">
+        <xed:repeat xpath="condition2[@field='category.top'][@operator='=']">
+          <div class="row">
+            <div class="col-sm-9">
+              <xed:bind xpath="@value">
+                <select id="subjectclass" class="form-control">
+                  <option value="">
+                    <xed:output i18n="Editor.Search.List.all" />
+                  </option>
+                  <xed:include uri="xslStyle:items2options:classification:editorComplete:-1:children:profkat_class_subjects" />
+                </select>
+              </xed:bind>
+            </div>
+            <div class="col-sm-3">
+              <div class="btn-group btn-group-xs pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:template>
+  
+  <!-- Art der Professur -->
+  <xed:template id="searchfield.proftypes">
+    <div class="form-group">
+      <label class="col-sm-3 control-label input-sm" for="subjectclass">
+        <xed:output i18n="Editor.Search.Label.ProfTypes" />
+      </label>
+      <div class="col-sm-9">
+        <xed:repeat xpath="condition3[@field='category.top'][@operator='=']">
+          <div class="row">
+            <div class="col-sm-9">
+              <xed:bind xpath="@value">
+                <select id="proftypes" class="form-control">
+                  <option value="">
+                    <xed:output i18n="Editor.Search.List.all" />
+                  </option>
+                  <xed:include uri="xslStyle:items2options:classification:editorComplete:-1:children:profkat_class_proftypes" />
+                </select>
+              </xed:bind>
+            </div>
+            <div class="col-sm-3">
+              <div class="btn-group btn-group-xs pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:template>
+  
+    <xed:template id="searchfield.epochs">
+    <div class="form-group">
+      <label class="col-sm-3 control-label input-sm" for="epochs">
+        <xed:output i18n="Editor.Search.Label.Epochs" />
+      </label>
+      <div class="col-sm-9">
+        <xed:repeat xpath="condition4[@field='category.top'][@operator='=']">
+          <div class="row">
+            <div class="col-sm-9">
+              <xed:bind xpath="@value">
+                <select id="epochs" class="form-control">
+                  <option value="">
+                    <xed:output i18n="Editor.Search.List.all" />
+                  </option>
+                  <xed:include uri="xslStyle:items2options:classification:editorComplete:-1:children:profkat_class_epochs" />
+                </select>
+              </xed:bind>
+            </div>
+            <div class="col-sm-3">
+              <div class="btn-group btn-group-xs pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:template>
+  
+  
+   <!-- Art des Eintrages -->
+  <xed:template id="searchfield.profstates">
+    <div class="form-group">
+      <label class="col-sm-3 control-label input-sm" for="subjectclass">
+        <xed:output i18n="Editor.Search.Label.ProfStates" />
+      </label>
+      <div class="col-sm-9">
+        <xed:repeat xpath="condition5[@field='profkat.profstate'][@operator='=']">
+          <div class="row">
+            <div class="col-sm-9">
+              <xed:bind xpath="@value">
+                <select id="profstate" class="form-control">
+                  <option value=""><xed:output i18n="Editor.Search.List.all" /></option>
+                  <xed:include uri="props2options:OMD.profkat.state" />
+                </select>
+              </xed:bind>
+            </div>
+            <div class="col-sm-3">
+              <div class="btn-group btn-group-xs pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:template>
+   
+   
+   <!-- Art des Eintrages -->
+  <xed:template id="searchfield.sex">
+    <div class="form-group">
+      <label class="col-sm-3 control-label input-sm" for="subjectclass">
+        <xed:output i18n="Editor.Search.Label.Sex" />
+      </label>
+      <div class="col-sm-9">
+        <xed:repeat xpath="condition6[@field='profkat.sex'][@operator='=']">
+          <div class="row">
+            <div class="col-sm-9">
+              <xed:bind xpath="@value">
+                <select id="profstate" class="form-control">
+                  <option value=""><xed:output i18n="Editor.Search.List.all" /></option>
+                    <xed:include uri="props2options:OMD.profkat.sex" />
+                </select>
+              </xed:bind>
+            </div>
+            <div class="col-sm-3">
+              <div class="btn-group btn-group-xs pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:template>
+
+    
+  <!-- Zeitraumsuche über Professur -->
+  <xed:template id="searchfield.proftime">
+  <xed:bind xpath="@operator" default="and" />
+      <div class="form-group" style="margin-bottom:6px">
+        <label class="col-sm-3 control-label input-sm">
+          <xed:output i18n="Editor.Search.Label.Professortime" />
+        </label>
+        <div class="col-sm-9">
+          <div class="row">
+            <div class="col-sm-3 control-label input-sm">
+              <xed:output i18n="Editor.Search.Label.Professortime.from" />
+            </div>
+            <div class="col-sm-2">
+              <xed:bind xpath="condition1/@field" default="profkat.proftime_from" />
+              <xed:bind xpath="condition1/@operator">
+                 <select id="proftime_from_op1" class="form-control">
+                   <option value="=">=</option>
+                   <option value="&gt;">&gt;</option>
+                   <option value="&gt;=">&gt;=</option>
+                   <option value="&lt;">&lt;</option>
+                   <option value="&lt;=">&lt;=</option>
+                </select>
+              </xed:bind>
+            </div>
+            <div class="col-sm-2">
+              <xed:bind xpath="condition1/@value">
+                    <input id="proftime_from_val1" class="form-control" />
+              </xed:bind>
+            </div>
+              <div class="col-sm-2 col-sm-offset-1">
+              <xed:bind xpath="condition2/@field" default="profkat.proftime_from" />
+              
+              <xed:bind xpath="condition2/@operator">
+                 <select id="proftime_from_op2" class="form-control">
+                   <option value="=">=</option>
+                   <option value="&gt;">&gt;</option>
+                   <option value="&gt;=">&gt;=</option>
+                   <option value="&lt;">&lt;</option>
+                   <option value="&lt;=">&lt;=</option>
+                </select>
+              </xed:bind>
+            </div>
+            <div class="col-sm-2">
+              <xed:bind xpath="condition2/@value">
+                    <input id="proftime_from_val2" class="form-control" />
+              </xed:bind>
+            </div>
+          </div>
+          
+         <div class="row" style="margin-top:12px;">
+            <div class="col-sm-3 control-label input-sm">
+              <xed:output i18n="Editor.Search.Label.Professortime.to" />
+            </div>
+            <div class="col-sm-2">
+              <xed:bind xpath="condition3/@field" default="profkat.proftime_to" />
+              <xed:bind xpath="condition3/@operator">
+                 <select id="proftime_to_op1" class="form-control">
+                   <option value="=">=</option>
+                   <option value="&gt;">&gt;</option>
+                   <option value="&gt;=">&gt;=</option>
+                   <option value="&lt;">&lt;</option>
+                   <option value="&lt;=">&lt;=</option>
+                </select>
+              </xed:bind>
+            </div>
+            <div class="col-sm-2">
+              <xed:bind xpath="condition3/@value">
+                    <input id="proftime_to_val2" class="form-control" />
+              </xed:bind>
+            </div>
+              <div class="col-sm-2 col-sm-offset-1">
+              <xed:bind xpath="condition4/@field" default="profkat.proftime_to" />
+              <xed:bind xpath="condition4/@operator">
+                 <select id="proftime_to_op2" class="form-control">
+                   <option value="=">=</option>
+                   <option value="&gt;">&gt;</option>
+                   <option value="&gt;=">&gt;=</option>
+                   <option value="&lt;">&lt;</option>
+                   <option value="&lt;=">&lt;=</option>
+                </select>
+              </xed:bind>
+            </div>
+            <div class="col-sm-2">
+              <xed:bind xpath="condition4/@value">
+                    <input id="proftime_to_val2" class="form-control" />
+              </xed:bind>
+            </div>
+          </div>
+       </div>
+      </div>
+  </xed:template>
+  
+   <!-- Suche über Lebensdaten -->
+  <xed:template id="searchfield.lifetime">
+    <xed:bind xpath="@operator" default="and" />
+      <div class="form-group" style="margin-bottom:6px">
+        <label class="col-sm-3 control-label input-sm">
+          <xed:output i18n="Editor.Search.Label.Lifetime.Data" />
+        </label>
+        <div class="col-sm-9">
+          <div class="row">
+            <div class="col-sm-3 control-label input-sm">
+              <xed:output i18n="Editor.Search.Label.Life.born" />
+            </div>
+            <div class="col-sm-2">
+            <xed:bind xpath="condition1/@field" default="profkat.lifetime_from" />
+            <xed:bind xpath="condition1/@operator">
+                 <select id="lifetime_born_op1" class="form-control">
+                   <option value="=">=</option>
+                   <option value="&gt;">&gt;</option>
+                   <option value="&gt;=">&gt;=</option>
+                   <option value="&lt;">&lt;</option>
+                   <option value="&lt;=">&lt;=</option>
+                </select>
+              </xed:bind>
+            </div>
+            <div class="col-sm-2">
+              <xed:bind xpath="condition1/@value">
+                    <input id="lifetime_born_val1" class="form-control" />
+              </xed:bind>
+            </div>
+              <div class="col-sm-2 col-sm-offset-1">
+              <xed:bind xpath="condition2/@field" default="profkat.lifetime_from" />
+              <xed:bind xpath="condition2/@operator">
+                 <select id="lifetime_born_op2" class="form-control">
+                   <option value="=">=</option>
+                   <option value="&gt;">&gt;</option>
+                   <option value="&gt;=">&gt;=</option>
+                   <option value="&lt;">&lt;</option>
+                   <option value="&lt;=">&lt;=</option>
+                </select>
+              </xed:bind>
+            </div>
+            <div class="col-sm-2">
+              <xed:bind xpath="condition2/@value">
+                    <input id="lifetime_born_val2" class="form-control" />
+              </xed:bind>
+            </div>
+          </div>
+          
+         <div class="row" style="margin-top:12px;">
+            <div class="col-sm-3 control-label input-sm">
+              <xed:output i18n="Editor.Search.Label.Life.died" />
+            </div>
+            <div class="col-sm-2">
+              <xed:bind xpath="condition3/@field" default="profkat.lifetime_to" />
+              <xed:bind xpath="condition3/@operator">
+                 <select id="lifetime_death_op1" class="form-control">
+                   <option value="=">=</option>
+                   <option value="&gt;">&gt;</option>
+                   <option value="&gt;=">&gt;=</option>
+                   <option value="&lt;">&lt;</option>
+                   <option value="&lt;=">&lt;=</option>
+                </select>
+              </xed:bind>
+            </div>
+            <div class="col-sm-2">
+              <xed:bind xpath="condition3/@value">
+                    <input id="lifetime_death_val1" class="form-control" />
+              </xed:bind>
+            </div>
+              <div class="col-sm-2 col-sm-offset-1">
+              <xed:bind xpath="condition4/@field" default="profkat.lifetime_to" />
+              <xed:bind xpath="condition4/@operator">
+                 <select id="lifetime_death_op2" class="form-control">
+                   <option value="=">=</option>
+                   <option value="&gt;">&gt;</option>
+                   <option value="&gt;=">&gt;=</option>
+                   <option value="&lt;">&lt;</option>
+                   <option value="&lt;=">&lt;=</option>
+                </select>
+              </xed:bind>
+            </div>
+            <div class="col-sm-2">
+              <xed:bind xpath="condition4/@value">
+                    <input id="lifetime_death_val2" class="form-control" />
+              </xed:bind>
+            </div>
+          </div>
+       </div>
+      </div>
+  </xed:template>
+  
+  <xed:template id="searchfield.allMeta">
+    <xed:bind xpath="condition5[@field='allMeta'][@operator='contains']">
+      <div class="form-group" style="margin-bottom:6px">
+        <label class="col-sm-3 control-label input-sm" for="allMeta">
+          <xed:output i18n="Editor.Search.Label.AllMeta" />
+        </label>
+        <div class="col-sm-9">
+          <xed:bind xpath="@value">
+            <input id="allMeta" type="text" class="form-control input-sm" />
+          </xed:bind>
+        </div>
+      </div>
+    </xed:bind>
+  </xed:template>
+</xed:template>
