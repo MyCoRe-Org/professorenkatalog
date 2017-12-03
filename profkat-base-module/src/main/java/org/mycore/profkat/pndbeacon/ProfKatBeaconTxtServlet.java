@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrQuery.ORDER;
@@ -42,7 +44,7 @@ import org.mycore.solr.MCRSolrClientFactory;
  * 
  */
 public class ProfKatBeaconTxtServlet extends HttpServlet {
-    private static Logger LOGGER = Logger.getLogger(ProfKatBeaconTxtServlet.class);
+    private static Logger LOGGER = LogManager.getLogger(ProfKatBeaconTxtServlet.class);
 
     private static final long serialVersionUID = -4640031382109677365L;
 

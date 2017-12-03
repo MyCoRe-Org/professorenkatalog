@@ -7,7 +7,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.TreeMap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 public class UBRBibliographie {
     private static final String BEACON_URL = "http://web10.ub.uni-rostock.de/lsf/ubhro_bibliographie_pnd_beacon.txt";
@@ -75,7 +75,7 @@ public class UBRBibliographie {
                 biblioPNDBeaconEtag = urlConnection.getHeaderField("ETag");
                 nextCheckInMS = now + 15 * 60 * 1000; // next check in 15 min 
             } catch (Exception e) {
-                Logger.getLogger("unibliographie.jsp").error(e.getMessage(), e);
+                LogManager.getLogger("unibliographie.jsp").error(e.getMessage(), e);
             }
         }
 

@@ -12,7 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 
 /**
  * This class retrieves the data from PND-Beacon-Service an returns it
@@ -34,7 +37,7 @@ import org.apache.log4j.Logger;
 public class ProfKatBeaconDataServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private static Logger LOGGER = Logger.getLogger(ProfKatBeaconDataServlet.class);
+	private static Logger LOGGER = LogManager.getLogger(ProfKatBeaconDataServlet.class);
 
 	private static String BEACON_FINDBUCH_BASEURL = "http://beacon.findbuch.de/seealso/pnd-aks?format=redirect&id=";
 
