@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="org.apache.log4j.Logger" %>
+<%@ page import="org.apache.logging.log4j.LogManager" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -105,7 +105,7 @@
 <c:if test="${e!=null}">
 An error occured, hava a look in the logFiles!
 <% 
-  Logger.getLogger("deviatedetails.jsp").error("error", (Throwable) pageContext.getAttribute("e"));   
+  LogManager.getLogger("deviatedetails.jsp").error("error", (Throwable) pageContext.getAttribute("e"));   
 %>
 </c:if>
 	</stripes:layout-component>
