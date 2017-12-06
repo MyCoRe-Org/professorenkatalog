@@ -1,8 +1,8 @@
 package org.mycore.activiti.workflows.create_object_simple.person;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
+import java.nio.file.Path;
 
 import org.jdom2.Document;
 import org.jdom2.input.SAXBuilder;
@@ -46,9 +46,10 @@ public class MCRWorkflowMgrPerson extends MCRAbstractWorkflowMgr implements MCRW
 	 */
 	@Override
 	public String validate(MCRObjectID mcrObjID){
-		File wfFile = new File(MCRActivitiUtils.getWorkflowDirectory(mcrObjID), mcrObjID.toString() + ".xml");
+		Path wfFile = MCRActivitiUtils.getWorkflowObjectFile(mcrObjID);
 		try {
-			MCRObject mcrWFObj = new MCRObject(wfFile.toURI());
+			@SuppressWarnings("unused")
+            MCRObject mcrWFObj = new MCRObject(wfFile.toUri());
 		}
 		catch(SAXParseException e){
 			return "XML Error: "+e.getMessage();
