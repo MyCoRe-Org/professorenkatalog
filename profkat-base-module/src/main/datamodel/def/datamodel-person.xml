@@ -7,11 +7,13 @@
 		<element name="firstname" wrapper="box.firstname" type="text" minOccurs="0" maxOccurs="unbounded" />
 		 <!-- 12 - Namenszusatz -->
 		<element name="nameaffix" wrapper="box.nameaffix" type="text" minOccurs="0" maxOccurs="unbounded" />
-		<!-- 13 - Titel -->
+		<!-- 13 - Namensvarianten -->
+		<element name="variantname" wrapper="box.variantname" type="text" minOccurs="0" maxOccurs="unbounded" />
+		<!-- 14 - Titel -->
 		<element name="academictitle" wrapper="box.academictitle" type="text" minOccurs="0" maxOccurs="unbounded" />
-		<!-- 14 - Professuren (honorar,habil,Priv,..)-->
+		<!-- 15 - Professuren (honorar,habil,Priv,..)-->
 		<element name="professorship" wrapper="box.professorship" type="historyevent" minOccurs="0" maxOccurs="unbounded" />
-		<!-- 15 - Zeit in Rostock (gesamt) -->
+		<!-- 16 - Zeit in Rostock (gesamt) -->
 		<element name="period" wrapper="box.period" type="historydate" minOccurs="0" maxOccurs="unbounded" />
   
   		<!--  ====================================================================================== -->
