@@ -211,6 +211,37 @@
              <div class="col-sm-2"></div>
            </div>      
           </xed:bind>
+          <xed:bind xpath="box.variantname[@class='MCRMetaLangText']">
+            <div class="row ir-editor-row">
+              <div class="col-sm-10">
+                <div class="row ir-editor-row"> 
+                  <label class="col-sm-2 control-label input-sm ir-editor-label-hint" for="variantname">
+                    <xed:output i18n="OMD.profkat.variantnames" />
+                  </label>
+                  <div class="col-sm-10">
+                    <xed:repeat xpath="variantname">
+                      <div class="row ir-editor-row ir-editor-row-1">
+                        <div class="col-sm-9">
+                          <div class="row ir-editor-row">
+                            <div class="col-sm-12">
+                              <input id="variantname" type="text" class="form-control input-sm"   />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-3">
+                          <div class="btn-group btn-group-xs pull-right">
+                            <xed:controls />
+                          </div>
+                        </div>
+                      </div>
+                    </xed:repeat>
+                  </div>
+                </div>
+              </div>
+             <div class="col-sm-2"></div>
+           </div>      
+          </xed:bind>
+          
           <xed:bind xpath="box.academictitle[@class='MCRMetaLangText']">
             <div class="row ir-editor-row">
               <div class="col-sm-10">

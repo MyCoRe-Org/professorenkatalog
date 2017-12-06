@@ -112,7 +112,7 @@
         <field name="profkat.gnd"><xsl:value-of select="." /></field>
     </xsl:for-each>
   
-    <xsl:for-each select="box.surname/surname | box.firstname/firstname | box.nameaffix/nameaffix">
+    <xsl:for-each select="box.surname/surname | box.firstname/firstname | box.nameaffix/nameaffix  | box.variantname/variantname">
       <field name="profkat.name"><xsl:value-of select="text()" /></field> 
     </xsl:for-each>
    

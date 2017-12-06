@@ -21,7 +21,7 @@
 		<div  class="tabbar docdetails-tabbar">
 			<c:if test="${param.fromWF eq 'true'}">
 				<div class="alert alert-info" style="margin-top:20px" role="alert">
-					<a class="btn btn-default btn-sm pull-right" href="${WebApplicationBaseURL}showWorkspace.action?mcrobjid_base=${fn:substringBefore(param.id, '_')}_${fn:substringBefore(fn:substringAfter(param.id, '_'), '_')}"><fmt:message key="WF.Preview.return" /></a>
+					<a class="btn btn-default btn-sm pull-right" href="${WebApplicationBaseURL}showWorkspace.action?mcr_base=${fn:substringBefore(param.id, '_')}_${fn:substringBefore(fn:substringAfter(param.id, '_'), '_')}"><fmt:message key="WF.Preview.return" /></a>
 					<h4 style="margin:5px 0px"><fmt:message key="WF.Preview" /></h4>
 				</div>
 			</c:if>
@@ -211,7 +211,7 @@
    		</mcrdd:row>    
     
     	<mcrdd:separator showLine="true"/>    
-       		<mcrdd:row select="/mycoreobject/metadata/box.surname/surname[position()>1]" labelkey="OMD.profkat.surnames" showInfo="true" >
+       		<mcrdd:row select="/mycoreobject/metadata/box.surname/surname[position()>1] | /mycoreobject/metadata/box.variantname/variantname" labelkey="OMD.profkat.variantnames" showInfo="true" >
    			<mcrdd:item select="." />  
    		</mcrdd:row> 
 
@@ -331,7 +331,12 @@
     		<mcrdd:item select="./text" escapeXml="false" />  
     	</mcrdd:row>
     
-    	<mcrdd:row select="/mycoreobject/metadata/box.membership/membership[not(@type='party')]" labelkey="OMD.profkat.scientific_memberships" showInfo="true" colWidths="8em">
+    	<mcrdd:row select="/mycoreobject/metadata/box.membership/membership[@type='scientific']" labelkey="OMD.profkat.scientific_memberships" showInfo="true" colWidths="8em">
+		  	<mcrdd:item select="./time" />              
+    		<mcrdd:item select="./text" escapeXml="false" />  
+    	</mcrdd:row>
+    	
+    	<mcrdd:row select="/mycoreobject/metadata/box.membership/membership[not(@type='party') and not(@type='scientific')]" labelkey="OMD.profkat.other_memberships" showInfo="true" colWidths="8em">
 		  	<mcrdd:item select="./time" />              
     		<mcrdd:item select="./text" escapeXml="false" />  
     	</mcrdd:row>
@@ -501,7 +506,7 @@
    	</mcrdd:row>
    	<c:if test="${param.fromWF eq 'true'}">
 		<div class="alert alert-info" style="margin-top:20px" role="alert">
-			<a class="btn btn-default btn-sm pull-right" href="${WebApplicationBaseURL}showWorkspace.action?mcrobjid_base=${fn:substringBefore(param.id, '_')}_${fn:substringBefore(fn:substringAfter(param.id, '_'), '_')}"><fmt:message key="WF.Preview.return" /></a>
+			<a class="btn btn-default btn-sm pull-right" href="${WebApplicationBaseURL}showWorkspace.action?mcr_base=${fn:substringBefore(param.id, '_')}_${fn:substringBefore(fn:substringAfter(param.id, '_'), '_')}"><fmt:message key="WF.Preview.return" /></a>
 			<h4 style="margin:5px 0px"><fmt:message key="WF.Preview" /></h4>
 		</div>
 	</c:if>	
