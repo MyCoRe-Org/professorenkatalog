@@ -119,7 +119,7 @@
     <field name="category.top" type="string" multiValued="true"/>
 
     <field name="created" type="date" />
-    <field name="modified" type="date" multiValued="false" stored="true"/>
+    <field name="modified" type="date" />
     <field name="createdby" type="string" />
     <field name="modifiedby" type="string" />
     <field name="state" type="string" />
@@ -205,6 +205,7 @@
     <field name="profkat.idx_profname.headline" type="mcr_identifier" multiValued="false" stored="true" />
     <field name="profkat.idx_profname.facet" type="string" multiValued="false" stored="true" />
     <field name="profkat.lifetime" type="string" multiValued="false" stored="true" />
+    <field name="profkat.academictitle" type="string" multiValued="false" stored="true" />
     <field name="profkat.period" type="string" multiValued="false" stored="true" />
     <field name="profkat.last_professorship" type="string" multiValued="false" stored="true" />
     <field name="profkat.last_faculty" type="string" multiValued="false" stored="true" />
@@ -224,6 +225,7 @@
     <field name="profkat.confession"         type="text_de" multiValued="true"  stored="false" />
     <field name="profkat.parentprofession"   type="text_de" multiValued="true"  stored="false" />
     <field name="profkat.biography"          type="text_de" multiValued="true"  stored="false" />
+    <field name="profkat.school"             type="text_de" multiValued="true"  stored="false" />
     <field name="profkat.academicdegree"     type="text_de" multiValued="true"  stored="false" />
     <field name="profkat.acad_degree_study"  type="text_de" multiValued="true"  stored="false" />
     <field name="profkat.acad_degree_promo"  type="text_de" multiValued="true"  stored="false" />
@@ -238,16 +240,21 @@
     <field name="profkat.source"             type="text_de" multiValued="true"  stored="false" />
     <field name="profkat.reference"          type="text_de" multiValued="true"  stored="false" />
     <field name="profkat.profstate"          type="string"  multiValued="false" stored="true" />
-  
+    
+    <field name="profkat.family_type"        type="string"  multiValued="true" stored="true" />
+    <field name="profkat.family_id"          type="string"  multiValued="true" stored="true" />
+    <field name="profkat.family_name"        type="text_de" multiValued="true"  stored="false" />
+    <field name="profkat.family_profession"  type="text_de" multiValued="true"  stored="false" />
+    
     <field name="profkat.proftime_from"      type="string"  multiValued="false" stored="false" />
     <field name="profkat.proftime_to"        type="string"  multiValued="false" stored="false" />
-    <field name="profkat.proftime_ivon"      type="int"     multiValued="false" stored="true" />
-    <field name="profkat.proftime_ibis"      type="int"     multiValued="false" stored="true" />
+    <field name="profkat.proftime_ivon"      type="int"  multiValued="false" stored="false" />
+    <field name="profkat.proftime_ibis"      type="int"  multiValued="false" stored="false" />
+    
     <field name="profkat.lifetime_from"      type="string"  multiValued="false" stored="false" />
     <field name="profkat.lifetime_to"        type="string"  multiValued="false" stored="false" />
     
     <field name="profkat.derivate_title"     type="text_de" multiValued="true"  stored="false" />
-    
  </fields>
 
 
