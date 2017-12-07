@@ -1,117 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
- <parent>
-    <artifactId>mycore-parent</artifactId>
+  <parent>
     <groupId>org.mycore</groupId>
-    <version>25</version>
+    <artifactId>mycore</artifactId>
+    <version>2017.06.0.1-SNAPSHOT</version>
   </parent>
   <groupId>org.mycore.profkat</groupId>
   <artifactId>profkat-sample-parent</artifactId>
-  <version>2015.05.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>Profkat-Sample</name>
-  <description>A sample application for a register of professors (Professorenkatalog)</description>
-  <inceptionYear>2015</inceptionYear>
+  <name>Beispiel-Professorenkatalog</name>
+  <description>Beispiel Professorenkatalog</description>
+  <inceptionYear>2017</inceptionYear>
   <properties>
-    <java.target.version>1.7</java.target.version>
-    <mycore.version>2015.05.0.1-SNAPSHOT</mycore.version>
-    <jetty.version>9.3.5.v20151012</jetty.version>
-    <tomcat8.version>8.0.28</tomcat8.version>
-    <cargo.version>1.4.16</cargo.version>
-    <cargo.servlet.uriencoding>UTF-8</cargo.servlet.uriencoding>
     <cargo.container.zipUrlInstaller.downloadDir>${settings.localRepository}/../cargo/containers</cargo.container.zipUrlInstaller.downloadDir>
-    <cargo.deployable.default.groupId>${project.groupId}</cargo.deployable.default.groupId>
-    <cargo.deployable.default.artifactId>${project.artifactId}</cargo.deployable.default.artifactId>
-    <cargo.deployable.default.context>/</cargo.deployable.default.context>
-    <cargo.servlet.port>8291</cargo.servlet.port>
-    <cargo.tomcat.ajp.port>8292</cargo.tomcat.ajp.port>
     <cargo.debug.address>8295</cargo.debug.address>
     <cargo.debug.suspend>n</cargo.debug.suspend>
+    <cargo.deployable.default.artifactId>${project.artifactId}</cargo.deployable.default.artifactId>
+    <cargo.deployable.default.context>/</cargo.deployable.default.context>
+    <cargo.deployable.default.groupId>${project.groupId}</cargo.deployable.default.groupId>
+    <cargo.servlet.port>8291</cargo.servlet.port>
+    <cargo.servlet.uriencoding>UTF-8</cargo.servlet.uriencoding>
+    <cargo.tomcat.ajp.port>8292</cargo.tomcat.ajp.port>
+    <cargo.version>1.4.16</cargo.version>
     <changelog.since>2015-04-01</changelog.since>
+    <jetty.version>9.3.5.v20151012</jetty.version>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <mycore.version>2017.06.0.1-SNAPSHOT</mycore.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <site.suffix />
+    <tomcat8.version>8.0.28</tomcat8.version>
   </properties>
-  <pluginRepositories>
-    <pluginRepository>
-      <id>MyCoRe HQ</id>
-      <url>http://artifactory.mycore.de/mycore-releases</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </pluginRepository>
-    <pluginRepository>
-      <id>MyCoRe HQ Snapshots</id>
-      <url>http://artifactory.mycore.de/mycore-snapshots</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </pluginRepository>
-  </pluginRepositories>
-  <repositories>
-    <repository>
-      <id>MyCoRe HQ</id>
-      <url>http://artifactory.mycore.de/mycore-releases</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-    <repository>
-      <id>MyCoRe HQ Snapshots</id>
-      <url>http://artifactory.mycore.de/mycore-snapshots</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
   <build>
-    <plugins>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>license-maven-plugin</artifactId>
-        <configuration>
-          <verbose>false</verbose>
-          <addSvnKeyWords>true</addSvnKeyWords>
-          <licenseName>gpl_v3</licenseName>
-        </configuration>
-        <executions>
-          <execution>
-            <id>download-licenses</id>
-            <goals>
-              <goal>update-project-license</goal>
-            </goals>
-            <phase>process-sources</phase>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <artifactId>maven-changes-plugin</artifactId>
-        <configuration>
-          <issueManagementSystems>
-            <issueManagementSystem>JIRA</issueManagementSystem>
-          </issueManagementSystems>
-          <runOnlyAtExecutionRoot>true</runOnlyAtExecutionRoot>
-          <smtpPort implementation="java.lang.Integer">25</smtpPort>
-          <toAddresses>
-            <toAddress implementation="java.lang.String">mycore-user@lists.sourceforge.net</toAddress>
-          </toAddresses>
-          <mailSender>
-            <name>${changes.mailSender.name}</name>
-            <email>${changes.mailSender.email}</email>
-          </mailSender>
-          <template>announcement.vm</template>
-          <useJql>true</useJql>
-          <templateDirectory>src/changes</templateDirectory>
-              <!-- due to: http://jira.codehaus.org/browse/MCHANGES-333 -->
-          <maxEntries>1000</maxEntries>
-          <urlDownload>${project.url}/download.html</urlDownload>
-        </configuration>
-      </plugin>
-    </plugins>
     <pluginManagement>
       <plugins>
         <plugin>
@@ -189,6 +110,49 @@
         </plugin>
       </plugins>
     </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>license-maven-plugin</artifactId>
+        <configuration>
+          <verbose>false</verbose>
+          <addSvnKeyWords>true</addSvnKeyWords>
+          <licenseName>gpl_v3</licenseName>
+        </configuration>
+        <executions>
+          <execution>
+            <id>download-licenses</id>
+            <goals>
+              <goal>update-project-license</goal>
+            </goals>
+            <phase>process-sources</phase>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-changes-plugin</artifactId>
+        <configuration>
+          <issueManagementSystems>
+            <issueManagementSystem>JIRA</issueManagementSystem>
+          </issueManagementSystems>
+          <runOnlyAtExecutionRoot>true</runOnlyAtExecutionRoot>
+          <smtpPort implementation="java.lang.Integer">25</smtpPort>
+          <toAddresses>
+            <toAddress implementation="java.lang.String">mycore-user@lists.sourceforge.net</toAddress>
+          </toAddresses>
+          <mailSender>
+            <name>${changes.mailSender.name}</name>
+            <email>${changes.mailSender.email}</email>
+          </mailSender>
+          <template>announcement.vm</template>
+          <useJql>true</useJql>
+          <templateDirectory>src/changes</templateDirectory>
+          <!-- due to: http://jira.codehaus.org/browse/MCHANGES-333 -->
+          <maxEntries>1000</maxEntries>
+          <urlDownload>${project.url}/download.html</urlDownload>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
   <reporting>
     <plugins>
@@ -207,6 +171,12 @@
         <artifactId>maven-changes-plugin</artifactId>
         <version>2.11</version>
         <inherited>false</inherited>
+        <configuration>
+          <onlyCurrentVersion>true</onlyCurrentVersion>
+          <useJql>true</useJql>
+          <columnNames>Type,Key,Summary,Assignee,Status,Resolution,Component</columnNames>
+          <sortColumnNames>Type,Component,Key DESC</sortColumnNames>
+        </configuration>
         <reportSets>
           <reportSet>
             <reports>
@@ -214,34 +184,47 @@
             </reports>
           </reportSet>
         </reportSets>
-        <configuration>
-          <onlyCurrentVersion>true</onlyCurrentVersion>
-          <useJql>true</useJql>
-          <columnNames>Type,Key,Summary,Assignee,Status,Resolution,Component</columnNames>
-          <sortColumnNames>Type,Component,Key DESC</sortColumnNames>
-        </configuration>
       </plugin>
     </plugins>
   </reporting>
-  <modules>
-    <module>profkat-sample-module</module>
-    <module>profkat-sample-webapp</module>
-    <module>profkat-sample-cli</module>
-  </modules>
-  <developers>
-    <developer>
-      <id>mcrsteph</id>
-      <name>Robert Stephan</name>
-      <organization>Universität Rostock, Universitätsbibliothek</organization>
-      <email>robert.stephan (at) uni-rostock.de</email>
-      <organizationUrl>http://www.ub.uni-rostock.de/ub/</organizationUrl>
-      <timezone>+1</timezone>
-      <roles>
-        <role>coordination</role>
-        <role>developer</role>
-      </roles>
-    </developer>
-  </developers>
+  <repositories>
+    <repository>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>MyCoRe HQ</id>
+      <url>http://artifactory.mycore.de/mycore-releases</url>
+    </repository>
+    <repository>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <id>MyCoRe HQ Snapshots</id>
+      <url>http://artifactory.mycore.de/mycore-snapshots</url>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>MyCoRe HQ</id>
+      <url>http://artifactory.mycore.de/mycore-releases</url>
+    </pluginRepository>
+    <pluginRepository>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <id>MyCoRe HQ Snapshots</id>
+      <url>http://artifactory.mycore.de/mycore-snapshots</url>
+    </pluginRepository>
+  </pluginRepositories>
   <profiles>
     <profile>
       <id>release-profile</id>
@@ -343,8 +326,47 @@
       </properties>
     </profile>
   </profiles>
+
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>javax.servlet.jsp</groupId>
+        <artifactId>jsp-api</artifactId>
+        <version>2.2</version>
+        <type>jar</type>
+      </dependency>
+      <dependency>
+        <groupId>org.mycore.profkat</groupId>
+        <artifactId>profkat-base-module</artifactId>
+        <version>${mycore.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.mycore.profkat</groupId>
+        <artifactId>profkat-sample-module</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.webjars</groupId>
+        <artifactId>bootstrap</artifactId>
+        <version>3.3.5</version>
+      </dependency>
+      <dependency>
+        <groupId>org.webjars</groupId>
+        <artifactId>font-awesome</artifactId>
+        <version>4.2.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.webjars</groupId>
+        <artifactId>jquery</artifactId>
+        <version>1.11.3</version>
+      </dependency>
+      <dependency>
+        <groupId>org.webjars</groupId>
+        <artifactId>jquery-migrate</artifactId>
+        <version>1.2.1</version>
+      </dependency>
+
+      <!--
       <dependency>
         <groupId>org.mycore</groupId>
         <artifactId>mycore</artifactId>
@@ -383,6 +405,27 @@
         <scope>import</scope>
         <type>pom</type>
       </dependency>
+        -->
     </dependencies>
   </dependencyManagement>
+  <developers>
+    <developer>
+      <id>mcrsteph</id>
+      <name>Robert Stephan</name>
+      <email>robert.stephan (at) uni-rostock.de</email>
+      <organization>Universität Rostock, Universitätsbibliothek</organization>
+      <organizationUrl>http://www.ub.uni-rostock.de/ub/</organizationUrl>
+      <roles>
+        <role>coordination</role>
+        <role>developer</role>
+      </roles>
+      <timezone>+1</timezone>
+    </developer>
+  </developers>
+  <modules>
+    <module>profkat-sample-module</module>
+    <module>profkat-sample-webapp</module>
+    <module>profkat-sample-cli</module>
+  </modules>
+
 </project>
