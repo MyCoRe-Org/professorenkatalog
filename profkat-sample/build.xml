@@ -64,8 +64,8 @@
 				;; encrypt passwords in user xml file ${CONTENT_DIR}/user/user_administrator.xml to file ${basedir}/target/user_encrypted/user_administrator.xml
 				;; update user from file ${basedir}/target/user_encrypted/user_administrator.xml	
 					
-				;; encrypt passwords in user xml file ${CONTENT_DIR}/user/user_editorCP.xml to file ${basedir}/target/user_encrypted/user_editorCP.xml
-				;; update user from file ${basedir}/target/user_encrypted/user_editorCP.xml
+				;; encrypt passwords in user xml file ${CONTENT_DIR}/user/user_editorPK.xml to file ${basedir}/target/user_encrypted/user_editorPK.xml
+				;; update user from file ${basedir}/target/user_encrypted/user_editorPK.xml
 				
 				;; encrypt passwords in user xml file ${CONTENT_DIR}/user/user_editorWeb.xml to file ${basedir}/target/user_encrypted/user_editorWeb.xml
 				;; update user from file ${basedir}/target/user_encrypted/user_editorWeb.xml
