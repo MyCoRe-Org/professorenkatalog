@@ -30,6 +30,7 @@
   <cores adminPath="/admin/cores" shareSchema="true">
     <!-- solr administration-interface for docportal core    -->
     <!-- http://<host>/<webapp-name-if-any>/docportal/admin/ -->
+    <core name="cpr" instanceDir="./cores/cpr" dataDir="./../../data/cpr" />
     <core name="profkat" instanceDir="./cores/profkat" dataDir="./../../data/profkat" />
   </cores>
 </solr>
