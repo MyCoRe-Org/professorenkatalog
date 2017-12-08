@@ -130,7 +130,7 @@
  	 			<xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="1" />
  	 		</xs:sequence>
 		</element>
-		<!-- 55 - Mitgliedschaften -->
+		<!-- 55 - Partei Mitgliedschaften -->
 		<element name="partymember" wrapper="box.partymember" type="xml" minOccurs="0" maxOccurs="unbounded">
 			<xs:sequence>
  	 			<xs:element name="time" type="xs:string" minOccurs="0" maxOccurs="1" />
@@ -172,5 +172,8 @@
 		<element name="epoch" wrapper="box.epoch" type="classification" style="select" minOccurs="0">
 			<classification id="profkat_class_epochs" />
 		</element>
+		<!-- 81 - Interne Informationen -->
+		<element name="internalinfo" wrapper="box.internalinfo" type="text" minOccurs="0" maxOccurs="unbounded" />
+		
   </metadata>
 </objecttype>

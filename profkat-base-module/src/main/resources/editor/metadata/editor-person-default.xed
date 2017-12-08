@@ -1634,6 +1634,36 @@
   </xed:bind>
   <!-- Identifiers [ENDE] -->
   
+   <!--  InternalInfos [START] -->
+  <xed:bind xpath="box.internalinfo[@class='MCRMetaLangText']">
+    <div class="form-group">
+      <label class="col-sm-2 control-label input-sm ir-editor-label" for="internalinfo">
+        <xed:output i18n="OMD.profkat.internalinfos" />
+      </label>
+      <div class="col-sm-10">
+        <xed:repeat xpath="internalinfo">
+          <div class="row ir-editor-row ir-editor-row-1">
+            <div class="col-sm-10">
+              <div class="row ir-editor-row">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <xed:bind xpath=".">
+                    <textarea id="internalinfo" rows="3" class="form-control input-sm" />
+                  </xed:bind>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="btn-group btn-group-sm pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:bind>
+  <!--  Internal Infos [ENDE] -->
+  
   
     </xed:bind>
       <xed:include uri="resource:editor/metadata/includes-generic.xed" ref="cancel.submit" />
