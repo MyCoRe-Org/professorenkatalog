@@ -19,14 +19,14 @@
   
   <xed:template id="tools.grouping">
    <div class="form-group">
-        <label class="col-sm-3 col-sm-offset-5 control-label input-sm" for="profname">
+        <label class="col-sm-3 col-sm-offset-7 control-label input-sm" for="profname">
           <xed:output i18n="Editor.Search.connect" />
         </label>
         <div class="col-sm-2">
           <xed:bind xpath="@operator">
             <select id="connect1" class="form-control">
-              <option value="and"><xed:output i18n="Editor.Search.and" /></option>
-              <option value="or"><xed:output i18n="Editor.Search.or" /></option>
+              <option value="and"><xed:output i18n="Editor.Search.connect.and" /></option>
+              <option value="or"><xed:output i18n="Editor.Search.connect.or" /></option>
             </select>
           </xed:bind>
        </div>
