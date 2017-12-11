@@ -160,10 +160,15 @@
 							<mcr:outputNavigation id="left" mode="breadcrumbs" cssClass="breadcrumb ur-breadcrumb" />	
 						</div>
 					</div>
+					<%!-- the name of the component will be switched from 'contents'
+					      to 'main_part' in the near future. 
+					      Please update your JSP files, if necessary --%>
 
 					<stripes:layout-component name="contents">
 						<%--<div>This is the main page ...</div>--%>
 					</stripes:layout-component>
+					<stripes:layout-component name="main_part">
+           		    </stripes:layout-component>
   				</div>
   				
   				<div class="${class_right_side}">
