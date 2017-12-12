@@ -50,9 +50,8 @@
 <stripes:layout-render name="../WEB-INF/layout/default.jsp" pageTitle="${pageTitle}" layout="${layout_name}">
 	<stripes:layout-component name="html_header">
 		<mcr:receiveMcrObjAsJdom mcrid="${mcrid}" varDom="mcrobj" fromWF="false" />
-		<c:import charEncoding="UTF-8" var="stylesheet" url="/WEB-INF/xsl/person2html_header_description.xsl" />
 		<c:set var="description">
-			<x:transform xml="${mcrobj}" xslt="${stylesheet}" />
+			<mcr:transformXSL xml="${mcrobj}" xslt="xsl/docdetails/person2html_header_description.xsl" />
       	</c:set>
     	<meta name="description" lang="de" content="${fn:trim(description)}" />
 		<link rel="canonical" href="${WebApplicationBaseURL}resolve/id/${mcrid}" />
