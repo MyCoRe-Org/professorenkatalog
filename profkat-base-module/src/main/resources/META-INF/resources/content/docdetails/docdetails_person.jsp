@@ -462,7 +462,7 @@
 				</div>
 			</div>
 		</x:if>
-		<mcrdd:row select="/mycoreobject/structure/derobjects/derobject" labelkey="OMD.profkat.derobjects" showInfo="true" >
+		<mcrdd:row select="/mycoreobject/structure/derobjects[./derobject]" labelkey="OMD.profkat.derobjects" showInfo="true" >
 			<x:forEach var="x" select="$doc/mycoreobject/structure/derobjects/derobject/@xlink:href">
 	 			 <c:set var="id"><x:out select="$x" /></c:set>
  				 <search:derivate-list derid="${id}" showSize="true" />
