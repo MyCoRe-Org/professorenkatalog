@@ -1,16 +1,6 @@
-<%@page import="org.apache.logging.log4j.LogManager"%>
-<%@page import="org.mycore.backend.hibernate.MCRHIBConnection"%>
-<%@page import="org.mycore.common.MCRException"%>
-<%@page import="org.hibernate.Transaction"%>
+<%@page import="org.mycore.frontend.jsp.MCRHibernateTransactionWrapper"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
-<%@ page import="java.util.*"%>
-<%--
-     Make the JSTL-core and the JSTL-fmt taglibs available
-     within this page. JSTL is the Java Standard Tag Library,
-     which defines a set of commonly used elements
-     The prefix to be used for core-tags is "c"
-     The prefix to be used for fmt-tags is "fmt"
---%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -52,8 +42,7 @@ body {
 </head>
 <body bgcolor="#FFFFFF">
 	<%
-		Transaction tx = MCRHIBConnection.instance().getSession().beginTransaction();
-		try {
+	try (MCRHibernateTransactionWrapper mtw = new MCRHibernateTransactionWrapper()) {
 	%>
 	<mcr:receiveMcrObjAsJdom mcrid="${mcrid}" varDom="linked"
 		fromWF="${from}" />
@@ -93,13 +82,6 @@ body {
 
 
 	<%
-		} catch (MCRException e) {
-			LogManager.getLogger(this.getClass()).error(e);
-			pageContext.getOut().append(e.getMessage());
-		} finally {
-			if (!tx.wasCommitted()) {
-				tx.commit();
-			}
 		}
 	%>
 </body>
