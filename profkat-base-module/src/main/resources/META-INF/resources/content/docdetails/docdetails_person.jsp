@@ -413,7 +413,7 @@
    				<mcrdd:outputitem select="." var="x">
    					<c:set var="pndString"><x:out select="string($pnd)" /></c:set>
    					<div class="pull-right"><a class="btn btn-xs pull-right" href="${WebApplicationBaseURL}profkat_beacon_data?gnd=${pndString}" title="PND Beacon Dataservice Result"><span class="glyphicon glyphicon-inbox" style="color:#EFEFEF;"></span></a></div>
-					GND: <a href="http://d-nb.info/gnd/${pndString}" title="Eintrag in der Personennamendatei (PND)">${pndString}</a>
+					GND: <a target="beacon_result" href="http://d-nb.info/gnd/${pndString}" title="Eintrag in der Personennamendatei (PND)">${pndString}</a>
 					
 					<c:set var="otherpks"></c:set>
 					<x:if select="starts-with($mcrobj/mycoreobject/@ID,'cpr_')">
