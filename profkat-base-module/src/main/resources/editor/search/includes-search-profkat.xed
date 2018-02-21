@@ -10,7 +10,7 @@
         </label>
         <div class="col-sm-9">
           <xed:bind xpath="@value">
-            <input id="profname" type="text" class="form-control input-sm" />
+            <input id="profkat.name" type="text" class="form-control input-sm" />
           </xed:bind>
         </div>
       </div>
