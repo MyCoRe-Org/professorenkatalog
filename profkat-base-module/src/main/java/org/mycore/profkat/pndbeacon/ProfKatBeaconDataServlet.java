@@ -58,6 +58,7 @@ public class ProfKatBeaconDataServlet extends HttpServlet {
 
 				try (BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"))) {
 					while ((line = br.readLine()) != null) {
+					    line = line.replaceAll("<a href",  "<a target=\"beacon_result\" href");
 						sw.append("\n").append(line);
 					}
 
@@ -73,7 +74,7 @@ public class ProfKatBeaconDataServlet extends HttpServlet {
 					if (biblioApp.getHitCount(gnd) > 0) {
 						int pos = countSubstringInString("<li id=", result);
 						String li = "<li id=\"" + UBR_BIBLIOGRAPHY_KEY + Integer.toString(pos + 1) + "\">"
-								+ "<a href=\"" + biblioApp.getURL(gnd).replace("&", "&amp;") + "\">"
+								+ "<a target=\"beacon_result\" href=\"" + biblioApp.getURL(gnd).replace("&", "&amp;") + "\">"
 								+ biblioApp.getMessage(gnd) + "</a> </li>";
 
 						result = result.replace("</ul>", li + "\n</ul>");
