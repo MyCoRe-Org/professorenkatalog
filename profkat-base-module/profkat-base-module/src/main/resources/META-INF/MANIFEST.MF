@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+MCR-Application-Module: Professorenkatalog Basic Application Module
+MCR-Artifact-Id: profkat-base-module
+Priority: 61

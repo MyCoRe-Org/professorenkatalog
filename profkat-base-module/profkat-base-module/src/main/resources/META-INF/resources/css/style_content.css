@@ -1,0 +1,132 @@
+/* =================================================================== */
+/* style_content.css                                                   */
+/* $Revision: 1.18 $ $Date: 2005/02/10 11:55:03 $                      */
+/* =================================================================== */
+
+div.cpr, p.cpr{
+	text-align: justify;
+}
+/* =================================================================== */
+/* User INFO, usually displayed in top navigation                      */
+/* =================================================================== */
+div.userinfo span.label, div.userinfo span.action {
+	font-weight: bold;
+}
+
+/* =================================================================== */
+/* Editor forms (see editor.xsl and org.mycore.frontend.editor.*       */
+/* =================================================================== */
+
+form.editor, div.editor {
+	background-color:#EEEEEE;
+	padding: 8px;
+	border:1px solid #666666; 
+}
+table.editorPanel {  
+	margin:8px;
+}
+.editorTextfield {
+	border: 1px solid #336EAD; 
+}
+.editorCell {
+	padding:4px;
+}
+.editorPMUD > input{
+	position:relative;
+        top: 4px;
+}
+
+
+/*
+td.editorHeadline              { color:#9A5B11; background-color:rgb(245, 255, 255);
+								 font-weight:bold; font-family:Verdana,Arial,Helvetica,SansSerif; 
+                                 font-size:12px; padding:3px; padding-bottom:10px;
+								 border-bottom:1px solid #7791ac }
+td.editorValidationMessage     { color:#9A5B11; background-color:#FDEDDB; padding:3px; }
+td.editorCellWithPanelLinesOff { }
+td.editorCellWithPanelLinesOn  { border-left:1px solid #7791ac }
+td.editorCellWithCompLinesOff  { padding:3px; }
+td.editorCellWithCompLinesOn   { padding:3px; border-left:1px solid #7791ac }
+td.editorCellValidationFailed  { padding:3px; border:2px solid #FF0000 }
+table.editorPanel              { }
+td.editorRepeaterButton        { padding-right:3px; padding-bottom:3px }
+.editorText                    { font-size:11px; font-family:Verdana,Arial,Helvetica,SansSerif; line-height:16px }
+.editorHint                    { font-size:10px; font-style:italic; font-family:Verdana,Arial,Helvetica,SansSerif; line-height:16px; text-align:left;}
+td.editorHLine                 { border-top:1px solid #7791ac; border-left:1px solid rgb(128, 197, 221) }
+.editorButton                  { border-style:thin; color:#9A5B11; background-color:#FDEDDB; 
+                                 font-weight:bold; font-family:Verdana,Arial,Helvetica,SansSerif; 
+                                 font-size:10px; letter-spacing:1px }
+*/
+
+/* =================================================================== */
+/* TaskList                     					                   */
+/* =================================================================== */
+
+div.task {
+	background-color:#E6EDF5;
+	padding:12px;
+	margin-bottom:24px;
+	border:1px solid #004A99;
+}
+div.task h4 {
+	padding-top:0px;
+}
+
+table.tasklistObject{
+	background-color: #B3C9E0;
+    margin: 8px 8px 8px 8px;
+       
+    border-width: 1px;
+    border-style: solid;
+    border-color: #14516E;
+}
+
+table.tasklistObject td{
+	padding:4px;
+}
+table.tasklistObject td.tasklistTitle{
+	font-weight: bold;
+}
+
+table.tasklistDerivate{
+	background-color: #80A5CC;
+	margin-bottom:12px !important;  
+	
+}
+
+table.tasklistDerivate th{
+	padding-left:8px;
+	font-weight: bold;
+	vertical-align: middle;
+	border:none;
+}
+
+table.tasklistDerivate tr td{
+	padding:4px;
+	vertical-align: middle;
+	color: #000000;
+	font-weight: normal;
+	
+}
+table.tasklistDerivate tr td a{
+	padding-left:12px;	
+} 
+table.tasklistDerivate tr td a:link, 
+table.tasklistDerivate tr td a:visited,
+table.tasklistDerivate tr td a:focus, 
+table.tasklistDerivate tr td a:active{
+	font-weight:normal !important;		
+	color: #da1f3d;
+}
+
+div.process {
+	background-color:#E6E6E6;
+	padding:12px;
+	margin-bottom:16px;
+	border:1px solid #004A99;
+}
+
+div.textblock2{
+	margin-top:12px;
+}
+
