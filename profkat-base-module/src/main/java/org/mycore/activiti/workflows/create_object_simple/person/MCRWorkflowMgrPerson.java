@@ -25,7 +25,7 @@ public class MCRWorkflowMgrPerson extends MCRAbstractWorkflowMgr implements MCRW
 
 	
 	@Override
-	public MCRObjectMetadata getDefaultMetadata() {
+	public MCRObjectMetadata getDefaultMetadata(String mcrBase) {
 		SAXBuilder sax = new SAXBuilder();
 		try{
 		  Document doc = sax.build(new StringReader(DEFAULT_METADATA_XML));
