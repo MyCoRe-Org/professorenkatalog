@@ -104,7 +104,7 @@ public class ProfKatBeaconTxtServlet extends HttpServlet {
 
         //"gnd_uri": "http://d-nb.info/gnd/14075444X"
         try {
-            SolrClient solrClient = MCRSolrClientFactory.getSolrClient();
+            SolrClient solrClient = MCRSolrClientFactory.getMainSolrClient();
             SolrQuery solrQuery = new SolrQuery();
             solrQuery.setQuery("gnd_uri:*");
             solrQuery.setFields("gnd_uri"); 

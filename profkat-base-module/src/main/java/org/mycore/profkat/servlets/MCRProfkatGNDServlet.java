@@ -87,7 +87,7 @@ public class MCRProfkatGNDServlet extends HttpServlet {
 
         //"gnd_uri": "http://d-nb.info/gnd/14075444X"
         try {
-            SolrClient solrClient = MCRSolrClientFactory.getSolrClient();
+            SolrClient solrClient = MCRSolrClientFactory.getMainSolrClient();
             SolrQuery solrQuery = new SolrQuery();
             solrQuery.setQuery("gnd_uri:"+MCRSolrUtils.escapeSearchValue("http://d-nb.info/gnd/" + gnd));
 

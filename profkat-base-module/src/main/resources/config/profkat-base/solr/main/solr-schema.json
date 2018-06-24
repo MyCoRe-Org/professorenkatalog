@@ -1,0 +1,272 @@
+ [
+   { "add-field": {
+        "name":"profkat.acad_degree_habil",
+        "type":"text_de",
+        "multiValued":true,
+        "stored":false
+   }},
+  {"add-field": {
+        "name":"profkat.acad_degree_promo",
+        "type":"text_de",
+        "multiValued":true,
+        "stored":false
+   }},
+  {"add-field": {
+        "name":"profkat.acad_degree_study",
+        "type":"text_de",
+        "multiValued":true,
+        "stored":false
+   }},
+  {"add-field": {
+        "name":"profkat.academicdegree",
+        "type":"text_de",
+        "multiValued":true,
+        "stored":false
+   }},
+  {"add-field": {
+        "name":"profkat.academictitle",
+        "type":"string",
+        "multiValued":false,
+        "stored":true
+   }},
+  {"add-field": {
+        "name":"profkat.adminfunction",
+        "type":"text_de",
+        "multiValued":true,
+        "stored":false
+   }},
+  {"add-field": {
+        "name":"profkat.award",
+        "type":"text_de",
+        "multiValued":true,
+        "stored":false
+   }},
+  {"add-field": {
+        "name":"profkat.biography",
+        "type":"text_de",
+        "multiValued":true,
+        "stored":false
+   }},
+  {"add-field": {
+        "name":"profkat.birthplace",
+        "type":"text_de",
+        "multiValued":true,
+        "stored":false
+   }},
+  {"add-field": {
+        "name":"profkat.confession",
+        "type":"text_de",
+        "multiValued":true,
+        "stored":false
+   }},
+  {"add-field": {
+        "name":"profkat.deathplace",
+        "type":"text_de",
+        "multiValued":true,
+        "stored":false
+   }},
+  {"add-field": {
+        "name":"profkat.derivate_title",
+        "type":"text_de",
+        "multiValued":true,
+        "stored":false
+   }},
+  {"add-field": {
+        "name":"profkat.family_id",
+        "type":"string",
+        "multiValued":true,
+        "stored":true
+   }},
+  {"add-field": {
+        "name":"profkat.family_name",
+        "type":"text_de",
+        "multiValued":true,
+        "stored":false
+   }},
+  {"add-field": {
+        "name":"profkat.family_profession",
+        "type":"text_de",
+        "multiValued":true,
+        "stored":false
+   }},
+  {"add-field": {
+        "name":"profkat.family_type",
+        "type":"string",
+        "multiValued":true,
+        "stored":true
+  }},
+  {"add-field": {
+        "name":"profkat.field_of_studies",
+        "type":"text_de",
+        "multiValued":true,
+        "stored":false
+  }},
+  {"add-field": {
+        "name":"profkat.gnd",
+        "type":"string",
+        "multiValued":false,
+        "stored":true
+  }},
+  {"add-field": {
+        "name":"profkat.idx_profname.facet",
+        "type":"string",
+        "multiValued":false,
+        "stored":true
+  }},
+  {"add-field": {
+        "name":"profkat.idx_profname.headline",
+        "type":"mcr_identifier",
+        "multiValued":false,
+        "stored":true
+  }},
+  {"add-field": {
+        "name":"profkat.institute",
+        "type":"text_de",
+        "multiValued":true,
+        "stored":false
+  }},
+  {"add-field": {
+        "name":"profkat.last_faculty",
+        "type":"string",
+        "multiValued":false,
+        "stored":true
+  }},
+  {"add-field": {
+        "name":"profkat.last_professorship",
+        "type":"string",
+        "multiValued":false,
+        "stored":true
+  }},
+  {"add-field": {
+        "name":"profkat.lifetime",
+        "type":"string",
+        "multiValued":false,
+        "stored":true
+  }},
+  {"add-field": {
+        "name":"profkat.lifetime_from",
+        "type":"string",
+        "multiValued":false,
+        "stored":false
+  }},
+  {"add-field": {
+        "name":"profkat.lifetime_to",
+        "type":"string",
+        "multiValued":false,
+        "stored":false
+  }},
+  {"add-field": {
+        "name":"profkat.mainpublication",
+        "type":"text_de",
+        "multiValued":true,
+        "stored":false
+  }},
+  {"add-field": {
+        "name":"profkat.membership",
+        "type":"text_de",
+        "multiValued":true,
+        "stored":false
+  }},
+  {"add-field": {
+        "name":"profkat.name",
+        "type":"text_general",
+        "multiValued":true,
+        "stored":false
+  }},
+  {"add-field": {
+        "name":"profkat.otherfunction",
+        "type":"text_de",
+        "multiValued":true,
+        "stored":false
+  }},
+  {"add-field": {
+        "name":"profkat.otherprofessorship",
+        "type":"text_de",
+        "multiValued":true,
+        "stored":false
+  }},
+  {"add-field": {
+        "name":"profkat.parentprofession",
+        "type":"text_de",
+        "multiValued":true,
+        "stored":false
+  }},
+  {"add-field": {
+        "name":"profkat.period",
+        "type":"string",
+        "multiValued":false,
+        "stored":true
+  }},
+  {"add-field": {
+        "name":"profkat.profarea",
+        "type":"text_de",
+        "multiValued":true,
+        "stored":false
+  }},
+  {"add-field": {
+        "name":"profkat.profstate",
+        "type":"string",
+        "multiValued":false,
+        "stored":true
+  }},
+  {"add-field": {
+        "name":"profkat.proftime_from",
+        "type":"string",
+        "multiValued":false,
+        "stored":false
+  }},
+  {"add-field": {
+        "name":"profkat.proftime_ibis",
+        "type":"long",
+        "multiValued":false,
+        "stored":false
+  }},
+  {"add-field": {
+        "name":"profkat.proftime_ivon",
+        "type":"long",
+        "multiValued":false,
+        "stored":false
+  }},
+  {"add-field": {
+        "name":"profkat.proftime_to",
+        "type":"string",
+        "multiValued":false,
+        "stored":false
+  }},
+  {"add-field": {
+        "name":"profkat.proftype",
+        "type":"text_de",
+        "multiValued":true,
+        "stored":false
+  }},
+  {"add-field": {
+        "name":"profkat.reference",
+        "type":"text_de",
+        "multiValued":true,
+        "stored":false
+  }},
+  {"add-field": {
+        "name":"profkat.school",
+        "type":"text_de",
+        "multiValued":true,
+        "stored":false
+  }},
+  {"add-field": {
+        "name":"profkat.sex",
+        "type":"string",
+        "multiValued":false,
+        "stored":true
+  }},
+  {"add-field": {
+        "name":"profkat.source",
+        "type":"text_de",
+        "multiValued":true,
+        "stored":false
+  }},
+  {"add-field": {
+        "name":"profkat.status_msg",
+        "type":"string",
+        "multiValued":false,
+        "stored":true
+   }}
+ ]
