@@ -217,13 +217,13 @@
   }},
   {"add-field": {
         "name":"profkat.proftime_ibis",
-        "type":"long",
+        "type":"plong",
         "multiValued":false,
         "stored":false
   }},
   {"add-field": {
         "name":"profkat.proftime_ivon",
-        "type":"long",
+        "type":"plong",
         "multiValued":false,
         "stored":false
   }},
