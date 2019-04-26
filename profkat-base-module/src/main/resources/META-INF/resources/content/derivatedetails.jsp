@@ -9,7 +9,7 @@
 
 <fmt:message var="pageTitle" key="Nav.DigitalisatDetails" /> 
 <stripes:layout-render name="../WEB-INF/layout/default.jsp" pageTitle = "${pageTitle}">
-	<stripes:layout-component name="contents">
+	<stripes:layout-component name="main_part">
 <c:catch var="e">
 
 <c:set var="WebApplicationBaseURL" value="${applicationScope.WebApplicationBaseURL}" />

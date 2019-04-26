@@ -10,7 +10,7 @@
 %>
 <fmt:message var="pageTitle" key="Webpage.error.Error" />
 <stripes:layout-render name="../WEB-INF/layout/default.jsp" pageTitle="${pageTitle}">
-    <stripes:layout-component name="contents">	
+    <stripes:layout-component name="main_part">	
 		<h2><span style="color:red">Fehler:<br /></span>Für die GND-Nummer: ${param.gnd} wurde kein Datensatz gefunden</h2>
 		<div>
 			<p>

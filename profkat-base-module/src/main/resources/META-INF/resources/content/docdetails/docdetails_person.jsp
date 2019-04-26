@@ -455,10 +455,10 @@
 	<c:if test="${(tab eq 'documents') or (param.print eq 'true')}">
 		<x:if select="$mcrobj/mycoreobject/structure/derobjects/derobject">
 			<div class="docdetails-block">
-				<div class="well well-sm panel-copyright">
-					<div class="panel-body">
+				<div class="card card-sm panel-copyright">
+					<div class="card-body">
   						<fmt:message key="OMD.derivate.copyright.notice" />
-	             </div>
+	               </div>
 				</div>
 			</div>
 		</x:if>

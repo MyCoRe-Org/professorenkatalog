@@ -48,7 +48,7 @@
 
  <c:set var="pageTitle">${prof_name}</c:set>
 <stripes:layout-render name="../WEB-INF/layout/default.jsp" pageTitle="${pageTitle}" layout="${layout_name}">
-	<stripes:layout-component name="html_header">
+	<stripes:layout-component name="html_head">
 		<mcr:receiveMcrObjAsJdom mcrid="${mcrid}" varDom="mcrobj" fromWF="false" />
 		<c:set var="description">
 			<mcr:transformXSL xml="${mcrobj}" xslt="xsl/docdetails/person2html_header_description.xsl" />
@@ -60,15 +60,13 @@
  	</stripes:layout-component>
 
 
-	<stripes:layout-component name="contents">
+	<stripes:layout-component name="main_part">
 		<mcr:debugInfo />
 		<jsp:include page="docdetails/docdetails_person.jsp">
    			<jsp:param name="id" value="${mcrid}" />
    			<jsp:param name="fromWF" value="${from}" />
    		</jsp:include>
- 	</stripes:layout-component>
- 	
-	 <stripes:layout-component name="right_side">
+
 		<div class="docdetails-infobox ur-box ur-box-bordered ur-infobox" style="margin-bottom:32px; padding: 18px 6px 6px 6px;">
 			<search:result-navigator mcrid="${mcrid}" />
 			
