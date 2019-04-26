@@ -15,21 +15,21 @@
 	<c:set var="tab" value="${param.tab}" />
 	<c:if test="${empty tab}"><c:set var="tab" value="data" /></c:if>
 	<mcrdd:setnamespace prefix="xlink" uri="http://www.w3.org/1999/xlink" />
-	<mcr:receiveMcrObjAsJdom mcrid="${param.id}" varDom="mcrobj" fromWF="${param.fromWF}"/>
+	<mcr:retrieveObject mcrid="${param.id}" varDOM="mcrobj" cache="true" fromWorkflow="${param.fromWF}" />
 	
 	<c:if test="${not(param.print eq 'true')}">
-		<div  class="tabbar docdetails-tabbar">
+		<div  class="tabbar docdetails-tabbar" style="position:relative">
 			<c:if test="${param.fromWF eq 'true'}">
 				<div class="alert alert-info" style="margin-top:20px" role="alert">
-					<a class="btn btn-default btn-sm pull-right" href="${WebApplicationBaseURL}showWorkspace.action?mcr_base=${fn:substringBefore(param.id, '_')}_${fn:substringBefore(fn:substringAfter(param.id, '_'), '_')}"><fmt:message key="WF.Preview.return" /></a>
+					<a class="btn btn-default btn-sm float-right" href="${WebApplicationBaseURL}showWorkspace.action?mcr_base=${fn:substringBefore(param.id, '_')}_${fn:substringBefore(fn:substringAfter(param.id, '_'), '_')}"><fmt:message key="WF.Preview.return" /></a>
 					<h4 style="margin:5px 0px"><fmt:message key="WF.Preview" /></h4>
 				</div>
 			</c:if>
 			<c:set var="msgKeyStatus">OMD.profkat.state.<x:out select="$mcrobj/mycoreobject/metadata/box.status/status"/></c:set>
-			<div class="docdetails-tabbar-info"><fmt:message key="${msgKeyStatus}" /></div>
+			
 			<c:set var="tabtokens" value="data|article|documents" />
-				
-			<ul id="tabs_on_page" class="nav nav-tabs">
+			<ul id="tabs_on_page" class="nav nav-tabs" style="position:relative">
+			 
 				
 				<c:forTokens items="${tabtokens}" delims="|" var="current" varStatus="status">
       				<c:set var="tabstyle" value="" /> 
@@ -37,29 +37,33 @@
 						<c:set var="tabstyle" value="active" />
 					</c:if>
 					<c:if test="${current eq 'data'}">
-						<li class="${tabstyle}">
-							<a href="${WebApplicationBaseURL}resolve/id/${param.id}?tab=${current}${empty param._search ? '' : '&_search='.concat(param._search)}${param.fromWF eq 'true' ? '&fromWF=true' : ''}">
-								<span class="glyphicon glyphicon-user docdetails-tabbar-icon"></span> <fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
+						<li class="nav-item">
+							<a class="nav-link ${tabstyle}" href="${WebApplicationBaseURL}resolve/id/${param.id}?tab=${current}${empty param._search ? '' : '&_search='.concat(param._search)}${param.fromWF eq 'true' ? '&fromWF=true' : ''}">
+								<i class="fas fa-user docdetails-tabbar-icon"></i>
+								<fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
 						</li>
 					</c:if>
 					<c:if test="${current eq 'article'}">
 						<x:if select="$mcrobj/mycoreobject/structure/derobjects/derobject[@xlink:title='display_biography']">
-							<li class="${tabstyle}">
-								<a href="${WebApplicationBaseURL}resolve/id/${param.id}?tab=${current}${empty param._search ? '' : '&_search='.concat(param._search)}${param.fromWF eq 'true' ? '&fromWF=true' : ''}">
-									<span class="glyphicon glyphicon-book docdetails-tabbar-icon"></span> <fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
+							<li class="nav-item">
+								<a class="nav-link ${tabstyle}" href="${WebApplicationBaseURL}resolve/id/${param.id}?tab=${current}${empty param._search ? '' : '&_search='.concat(param._search)}${param.fromWF eq 'true' ? '&fromWF=true' : ''}">
+									<i class="fas fa-book docdetails-tabbar-icon"></i>
+									<fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
 							</li>
 						</x:if>		
 					</c:if>
 					<c:if test="${current eq 'documents'}">
 						<x:if select="$mcrobj/mycoreobject/structure/derobjects/derobject">
-							<li class="${tabstyle}">
-								<a href="${WebApplicationBaseURL}resolve/id/${param.id}?tab=${current}${empty param._search ? '' : '&_search='.concat(param._search)}${param.fromWF eq 'true' ? '&fromWF=true' : ''}">
-									<span class="glyphicon glyphicon-file docdetails-tabbar-icon"></span> <fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
+							<li class="nav-item">
+								<a class="nav-link ${tabstyle}" href="${WebApplicationBaseURL}resolve/id/${param.id}?tab=${current}${empty param._search ? '' : '&_search='.concat(param._search)}${param.fromWF eq 'true' ? '&fromWF=true' : ''}">
+									<i class="far fa-file docdetails-tabbar-icon"></i>
+									<fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
 							</li>
 						</x:if>		
 					</c:if>
 				</c:forTokens>				
 			</ul>
+			<div class="docdetails-tabbar-info" style="position:absolute; top:5px; right:15px"><fmt:message key="${msgKeyStatus}" /></div>
 		</div>
 	</c:if>
 	<%--Tab bar (end) --%>
@@ -99,8 +103,8 @@
     		   	<c:set var="linkids" scope="request"><x:out select="$this/text[@xml:lang='x-predec']/text()" /></c:set>
     			<c:forTokens items="${linkids}" delims=":;|" var="currentID" varStatus="status">
 	  				<c:if test="${fn:contains(currentID, '_person_')}">
-	  					<mcr:receiveMcrObjAsJdom mcrid="${currentID}" varDom="linked" fromWF="false"/>
-	  					<c:set var="doctitle"><fmt:message key="OMD.profkat.hint.predec"/></c:set>
+	  				    <mcr:retrieveObject mcrid="${currentID}" varDOM="linked" cache="true" fromWorkflow="false" />
+						<c:set var="doctitle"><fmt:message key="OMD.profkat.hint.predec"/></c:set>
    						<c:if test="${not empty linked}">
    							<c:set var="doctitle">${doctitle}:&#160;</c:set>
    							<c:set var="doctitle">${doctitle}<x:out select="$linked/mycoreobject/metadata/box.surname/surname" />,&#160;</c:set>
@@ -109,7 +113,7 @@
 							<c:if test="${fn:length(affix)>2}"><c:set var="doctitle">${doctitle}&#160;(<c:out value="${affix}" />)</c:set></c:if>
 				   		</c:if>
 				   		<a href="${WebApplicationBaseURL}resolve/id/${currentID}" style="color:grey;margin-left:6px">
-							<span class="glyphicon glyphicon-backward" title="${doctitle}"></span> 
+							<i class="fas fa-backward" title="${doctitle}"></i>
 					   	</a>
 				   	</c:if>
 				</c:forTokens>
@@ -120,7 +124,7 @@
     		   	<c:set var="linkids" scope="request"><x:out select="$this/text[@xml:lang='x-succ']/text()" /></c:set>
     			<c:forTokens items="${linkids}" delims=":;|" var="currentID" varStatus="status">
 	  				<c:if test="${fn:contains(currentID, '_person_')}">
-	  					<mcr:receiveMcrObjAsJdom mcrid="${currentID}" varDom="linked" fromWF="false"/>
+	  	    			<mcr:retrieveObject mcrid="${currentID}" varDOM="linked" cache="true" fromWorkflow="false" />
 	  					<c:set var="doctitle"><fmt:message key="OMD.profkat.hint.succ"/></c:set>
    						<c:if test="${not empty linked}">
    							<c:set var="doctitle">${doctitle}:&#160;</c:set>
@@ -130,7 +134,7 @@
 							<c:if test="${fn:length(affix)>2}"><c:set var="doctitle">${doctitle}&#160;(<c:out value="${affix}" />)</c:set></c:if>
 				   		</c:if>
 				   		<a href="${WebApplicationBaseURL}resolve/id/${currentID}" style="color:grey;margin-left:6px">
-							<span class="glyphicon glyphicon-forward" title="${doctitle}"></span> 
+							<i class="fas fa-forward" title="${doctitle}"></i>
 					   	</a>
 				   	</c:if>
 				</c:forTokens>
@@ -412,7 +416,7 @@
    			<x:if select="string($pnd)!='xxx'">
    				<mcrdd:outputitem select="." var="x">
    					<c:set var="pndString"><x:out select="string($pnd)" /></c:set>
-   					<div class="pull-right"><a class="btn btn-xs pull-right" href="${WebApplicationBaseURL}profkat_beacon_data?gnd=${pndString}" title="PND Beacon Dataservice Result"><span class="glyphicon glyphicon-inbox" style="color:#EFEFEF;"></span></a></div>
+   					<div class="float-right"><a class="btn btn-xs float-right" href="${WebApplicationBaseURL}profkat_beacon_data?gnd=${pndString}" title="PND Beacon Dataservice Result"><i class="fas fa-paperclip" style="color:#EFEFEF;"></i></a></div>
 					GND: <a target="beacon_result" href="http://d-nb.info/gnd/${pndString}" title="Eintrag in der Personennamendatei (PND)">${pndString}</a>
 					
 					<c:set var="otherpks"></c:set>
@@ -506,7 +510,7 @@
    	</mcrdd:row>
    	<c:if test="${param.fromWF eq 'true'}">
 		<div class="alert alert-info" style="margin-top:20px" role="alert">
-			<a class="btn btn-default btn-sm pull-right" href="${WebApplicationBaseURL}showWorkspace.action?mcr_base=${fn:substringBefore(param.id, '_')}_${fn:substringBefore(fn:substringAfter(param.id, '_'), '_')}"><fmt:message key="WF.Preview.return" /></a>
+			<a class="btn btn-default btn-sm float-right" href="${WebApplicationBaseURL}showWorkspace.action?mcr_base=${fn:substringBefore(param.id, '_')}_${fn:substringBefore(fn:substringAfter(param.id, '_'), '_')}"><fmt:message key="WF.Preview.return" /></a>
 			<h4 style="margin:5px 0px"><fmt:message key="WF.Preview" /></h4>
 		</div>
 	</c:if>	

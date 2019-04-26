@@ -35,7 +35,7 @@
  		</c:otherwise> 
 	</c:choose>
 
-	<mcr:receiveMcrObjAsJdom mcrid="${mcrid}" varDom="linked" fromWF="${from}"/>
+    <mcr:retrieveObject mcrid="${mcrid}" varDOM="linked" cache="true" fromWorkflow="${from}" />
 	<c:set var="prof_name">
 		<x:out select="$linked/mycoreobject/metadata/box.surname/surname" />,
     	<x:out select="$linked/mycoreobject/metadata/box.firstname/firstname" />
@@ -49,7 +49,7 @@
  <c:set var="pageTitle">${prof_name}</c:set>
 <stripes:layout-render name="../WEB-INF/layout/default.jsp" pageTitle="${pageTitle}" layout="${layout_name}">
 	<stripes:layout-component name="html_head">
-		<mcr:receiveMcrObjAsJdom mcrid="${mcrid}" varDom="mcrobj" fromWF="false" />
+	    <mcr:retrieveObject mcrid="${mcrid}" varDOM="mcrobj" cache="true" fromWorkflow="false" />
 		<c:set var="description">
 			<mcr:transformXSL xml="${mcrobj}" xslt="xsl/docdetails/person2html_header_description.xsl" />
       	</c:set>
@@ -89,7 +89,7 @@
 	       						<search:show-edit-button mcrid="${mcrid}" cssClass="btn btn-sm btn-primary ir-edit-btn col-xs-3" />  
    						</c:if>
    			
-		    	   		<button type="button" class="btn btn-default btn-sm pull-right hidden-sm hidden-xs" style="border:none;color:#DEDEDE;" 
+		    	   		<button type="button" class="btn btn-default btn-sm float-right hidden-sm hidden-xs" style="border:none;color:#DEDEDE;" 
 		    	   		        data-toggle="collapse" data-target="#hiddenTools" title="<fmt:message key="Webpage.tools.menu4experts" />">
 	    					<span class="glyphicon glyphicon-wrench"></span>
 	        			</button>

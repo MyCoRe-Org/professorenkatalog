@@ -44,9 +44,7 @@ body {
 	<%
 	try (MCRHibernateTransactionWrapper mtw = new MCRHibernateTransactionWrapper()) {
 	%>
-	<mcr:receiveMcrObjAsJdom mcrid="${mcrid}" varDom="linked"
-		fromWF="${from}" />
-
+	 <mcr:retrieveObject mcrid="${mcrid}" varDOM="linked" cache="true" fromWorkflow="${from}" />
 	<div class="base_content text">
 
 		<c:set var="mcrid" value="${param.id}" />
