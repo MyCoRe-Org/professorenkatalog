@@ -61,27 +61,31 @@
 
 
 	<stripes:layout-component name="main_part">
+     <div class="row">
+        <div class="col">
 		<mcr:debugInfo />
 		<jsp:include page="docdetails/docdetails_person.jsp">
    			<jsp:param name="id" value="${mcrid}" />
    			<jsp:param name="fromWF" value="${from}" />
    		</jsp:include>
+		</div>
+        <div class="col-3">
 
 		<div class="docdetails-infobox ur-box ur-box-bordered ur-infobox" style="margin-bottom:32px; padding: 18px 6px 6px 6px;">
 			<search:result-navigator mcrid="${mcrid}" />
 			
-			<div class="container-fluid">
+			<div class="container">
 				<c:if test="${empty param.print}">
 					<div class="row" style="padding-bottom:6px">
      					<c:set var="url">${WebApplicationBaseURL}resolve/id/${param.id}</c:set>
-		   				<a class="btn btn-default btn-sm col-xs-12" style="text-align:left;" target="_blank" title="<fmt:message key="Webpage.feedback" />"
+		   				<a class="btn btn-outline-secondary btn-sm col-12" style="text-align:left;" target="_blank" title="<fmt:message key="Webpage.feedback" />"
 		   		   		   href="${WebApplicationBaseURL}feedback.action?topicURL=<%=java.net.URLEncoder.encode(pageContext.getAttribute("url").toString(), "UTF-8")%>&amp;topicHeader=<%=java.net.URLEncoder.encode(pageContext.getAttribute("prof_name").toString().replaceAll("\\s+"," "), "UTF-8")%>">
-	    					<span class="glyphicon glyphicon-comment"></span> <fmt:message key="Webpage.feedback.button"/>
+	    					<i class="far fa-comments"></i> <fmt:message key="Webpage.feedback.button"/>
 	    				</a>
 	         		</div>
 	         		<div class="row" style="padding-bottom:6px">
-	         				<a class="btn btn-default btn-sm col-xs-5 hidden-sm hidden-xs" style="text-align:left;margin-right:6px" href="${WebApplicationBaseURL}content/print_details.jsp?id=${param.id}&amp;print=true&amp;fromWF=${param.fromWF}" target="_blank" title="<fmt:message key="WF.common.printdetails" />">
-	       						<span class="glyphicon glyphicon-print"></span> <fmt:message key="Webpage.print.button"/>
+	         				<a class="btn btn-outline-secondary btn-sm col-5 hidden-sm hidden-xs" style="text-align:left;margin-right:6px" href="${WebApplicationBaseURL}content/print_details.jsp?id=${param.id}&amp;print=true&amp;fromWF=${param.fromWF}" target="_blank" title="<fmt:message key="WF.common.printdetails" />">
+	       						<i class="fas fa-print"></i> <fmt:message key="Webpage.print.button"/>
 	       					</a>
 	       		
 	       		
@@ -113,5 +117,8 @@
 				<search:derivate-image mcrid="${mcrid}" width="100%" labelContains="display_signature" protectDownload="true" />
 			</div>
 		</x:if>
+		        
+        </div>
+      </div>
 	</stripes:layout-component>
 </stripes:layout-render>
