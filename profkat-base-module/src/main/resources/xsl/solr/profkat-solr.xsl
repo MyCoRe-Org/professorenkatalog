@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:xlink="http://www.w3.org/1999/xlink"
-  xmlns:xalan="http://xml.apache.org/xalan" 
-  xmlns:mcrxsl="xalan://org.mycore.common.xml.MCRXMLFunctions"   
-  xmlns:encoder="xalan://java.net.URLEncoder"
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:mods="http://www.loc.gov/mods/v3"
+  xmlns:mcrxml="xalan://org.mycore.common.xml.MCRXMLFunctions"
   xmlns:mcrjsp="xalan://org.mycore.frontend.jsp.MCRJSPUtils"
-  exclude-result-prefixes="mcrxsl mcrjsp xlink encoder">
-  <xsl:import href="xslImport:solr-document:profkat-solr.xsl" />
+  xmlns:xlink="http://www.w3.org/1999/xlink" exclude-result-prefixes="mods xlink">
+  <xsl:import href="xslImport:solr-document:solr/profkat-solr.xsl" />
 
   <xsl:template match="mycoreobject">
-    <xsl:param name="foo" />
     <xsl:apply-imports />
-    <!-- fields from mycore-mods -->
-    <xsl:apply-templates select="metadata"/>
+
+     <xsl:apply-templates select="metadata"/>
     <field name="hasFiles">
       <xsl:value-of select="count(structure/derobjects/derobject)&gt;0" />
     </field>
@@ -26,7 +22,7 @@
         <xsl:variable name="derXML" select="document(concat('mcrobject:',$derId))" />
      	<xsl:for-each select="$derXML/mycorederivate/derivate/internals/internal">
      		<xsl:if test="string-length(@maindoc)&gt;0">
-     			<field name="cover_url">file/<xsl:value-of select="$derXML/mycorederivate/derivate/linkmetas/linkmeta/@xlink:href" />/<xsl:value-of select="$derXML/mycorederivate/@ID" />/<xsl:value-of select="@maindoc" /></field>
+     			<field name="ir.cover_url">file/<xsl:value-of select="$derXML/mycorederivate/derivate/linkmetas/linkmeta/@xlink:href" />/<xsl:value-of select="$derXML/mycorederivate/@ID" />/<xsl:value-of select="@maindoc" /></field>
      		</xsl:if>
      	</xsl:for-each>
      </xsl:for-each>
@@ -261,5 +257,6 @@
         <xsl:if test = "not(position()=last())" >
         	<xsl:value-of select = "$separator" />
     	</xsl:if>
- 	</xsl:template> 
+   </xsl:template> 
+
 </xsl:stylesheet>

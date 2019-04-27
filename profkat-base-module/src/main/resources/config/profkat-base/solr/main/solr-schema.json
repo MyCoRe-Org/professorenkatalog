@@ -268,5 +268,11 @@
         "type":"string",
         "multiValued":false,
         "stored":true
-   }}
+   }},
+   {"add-field": {
+		"name": "ir.cover_url",
+		"type": "string",
+		"multiValued": false,
+		"stored": true
+	}}
  ]
