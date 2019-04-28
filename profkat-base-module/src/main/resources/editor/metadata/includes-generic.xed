@@ -40,10 +40,10 @@
 	</div>
     <div class="form-group">
       <div class="col-md-offset-3 col-md-6">
-        <button type="submit" class="btn btn-default" xed:target="debug">
+        <button type="submit" class="btn btn-light" xed:target="debug">
        		<xed:output i18n="Editor.Common.button.debug" />
         </button>
-        <button type="submit" class="btn btn-default" xed:target="cancel">
+        <button type="submit" class="btn btn-secondary" xed:target="cancel">
           <xed:output i18n="Editor.Common.button.cancel" />
         </button>                                                                    
         <button type="submit" class="btn btn-primary" xed:target="servlet" xed:href="/servlets/MCRStoreMetadataServlet">
