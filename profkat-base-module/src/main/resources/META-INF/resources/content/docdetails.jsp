@@ -61,6 +61,7 @@
 
 
 	<stripes:layout-component name="main_part">
+	<div class="docdetails">
      <div class="row">
         <div class="col">
 		<mcr:debugInfo />
@@ -119,6 +120,7 @@
 		</x:if>
 		        
         </div>
+      </div>
       </div>
 	</stripes:layout-component>
 </stripes:layout-render>

@@ -4,7 +4,7 @@
 	<!-- Professor Names -->
   <xed:template id="searchfield.profname">
     <xed:bind xpath="condition[@field='profkat.name'][@operator='like']">
-      <div class="form-group" style="margin-bottom:6px">
+      <div class="form-row ir-editor-row" style="margin-bottom:6px">
         <label class="col-sm-3 control-label input-sm" for="profname">
           <xed:output i18n="Editor.Search.Label.ProfNames" />
         </label>
@@ -18,8 +18,8 @@
   </xed:template>
   
   <xed:template id="tools.grouping">
-   <div class="form-group">
-        <label class="col-sm-3 col-sm-offset-7 control-label input-sm" for="profname">
+   <div class="form-row ir-editor-row">
+        <label class="col-sm-3 offset-sm-7 control-label input-sm" for="profname">
           <xed:output i18n="Editor.Search.connect" />
         </label>
         <div class="col-sm-2">
@@ -35,7 +35,7 @@
 
   <xed:template id="searchfield.generic">
     <xed:repeat xpath="condition">
-      <div class="form-group">
+      <div class="form-row ir-editor-row">
         <div class="col-sm-3">
           <xed:bind xpath="@field">
             <select id="choose_field" class="form-control">
@@ -98,7 +98,7 @@
   
 	<!-- Institutionensystematik -->
   <xed:template id="searchfield.institution">
-    <div class="form-group">
+    <div class="form-row ir-editor-row">
       <label class="col-sm-3 control-label input-sm" for="institutionclass">
         <xed:output i18n="Editor.Search.Label.Institution" />
       </label>
@@ -129,7 +129,7 @@
 
   <!-- Fachklassifikation -->
   <xed:template id="searchfield.subject">
-    <div class="form-group">
+    <div class="form-row ir-editor-row">
       <label class="col-sm-3 control-label input-sm" for="subjectclass">
         <xed:output i18n="Editor.Search.Label.SubjectProf" />
       </label>
@@ -159,13 +159,13 @@
   
   <!-- Art der Professur -->
   <xed:template id="searchfield.proftypes">
-    <div class="form-group">
+    <div class="form-row">
       <label class="col-sm-3 control-label input-sm" for="subjectclass">
         <xed:output i18n="Editor.Search.Label.ProfTypes" />
       </label>
       <div class="col-sm-9">
         <xed:repeat xpath="condition3[@field='category.top'][@operator='=']">
-          <div class="row">
+          <div class="row ir-editor-row">
             <div class="col-sm-9">
               <xed:bind xpath="@value">
                 <select id="proftypes" class="form-control">
@@ -188,7 +188,7 @@
   </xed:template>
   
     <xed:template id="searchfield.epochs">
-    <div class="form-group">
+    <div class="form-row ir-editor-row">
       <label class="col-sm-3 control-label input-sm" for="epochs">
         <xed:output i18n="Editor.Search.Label.Epochs" />
       </label>
@@ -219,7 +219,7 @@
   
    <!-- Art des Eintrages -->
   <xed:template id="searchfield.profstates">
-    <div class="form-group">
+    <div class="form-row ir-editor-row">
       <label class="col-sm-3 control-label input-sm" for="subjectclass">
         <xed:output i18n="Editor.Search.Label.ProfStates" />
       </label>
@@ -248,7 +248,7 @@
    
    <!-- Art des Eintrages -->
   <xed:template id="searchfield.sex">
-    <div class="form-group">
+    <div class="form-row ir-editor-row">
       <label class="col-sm-3 control-label input-sm" for="subjectclass">
         <xed:output i18n="Editor.Search.Label.Sex" />
       </label>
@@ -278,7 +278,7 @@
   <!-- Zeitraumsuche über Professur -->
   <xed:template id="searchfield.proftime">
   <xed:bind xpath="@operator" default="and" />
-      <div class="form-group" style="margin-bottom:6px">
+      <div class="form-row ir-editor-row" style="margin-bottom:6px">
         <label class="col-sm-3 control-label input-sm">
           <xed:output i18n="Editor.Search.Label.Professortime" />
         </label>
@@ -304,7 +304,7 @@
                     <input id="proftime_from_val1" class="form-control" />
               </xed:bind>
             </div>
-              <div class="col-sm-2 col-sm-offset-1">
+              <div class="col-sm-2 offset-sm-1">
               <xed:bind xpath="condition2/@field" default="profkat.proftime_from" />
               
               <xed:bind xpath="condition2/@operator">
@@ -345,7 +345,7 @@
                     <input id="proftime_to_val2" class="form-control" />
               </xed:bind>
             </div>
-              <div class="col-sm-2 col-sm-offset-1">
+              <div class="col-sm-2 offset-sm-1">
               <xed:bind xpath="condition4/@field" default="profkat.proftime_to" />
               <xed:bind xpath="condition4/@operator">
                  <select id="proftime_to_op2" class="form-control">
@@ -370,12 +370,12 @@
    <!-- Suche über Lebensdaten -->
   <xed:template id="searchfield.lifetime">
     <xed:bind xpath="@operator" default="and" />
-      <div class="form-group" style="margin-bottom:6px">
+      <div class="form-row ir-editor-row" style="margin-bottom:6px">
         <label class="col-sm-3 control-label input-sm">
           <xed:output i18n="Editor.Search.Label.Lifetime.Data" />
         </label>
         <div class="col-sm-9">
-          <div class="row">
+          <div class="form-row">
             <div class="col-sm-3 control-label input-sm">
               <xed:output i18n="Editor.Search.Label.Life.born" />
             </div>
@@ -396,7 +396,7 @@
                     <input id="lifetime_born_val1" class="form-control" />
               </xed:bind>
             </div>
-              <div class="col-sm-2 col-sm-offset-1">
+              <div class="col-sm-2 offset-sm-1">
               <xed:bind xpath="condition2/@field" default="profkat.lifetime_from" />
               <xed:bind xpath="condition2/@operator">
                  <select id="lifetime_born_op2" class="form-control">
@@ -415,7 +415,7 @@
             </div>
           </div>
           
-         <div class="row" style="margin-top:12px;">
+         <div class="form-row" style="margin-top:12px;">
             <div class="col-sm-3 control-label input-sm">
               <xed:output i18n="Editor.Search.Label.Life.died" />
             </div>
@@ -436,7 +436,7 @@
                     <input id="lifetime_death_val1" class="form-control" />
               </xed:bind>
             </div>
-              <div class="col-sm-2 col-sm-offset-1">
+              <div class="col-sm-2 offset-sm-1">
               <xed:bind xpath="condition4/@field" default="profkat.lifetime_to" />
               <xed:bind xpath="condition4/@operator">
                  <select id="lifetime_death_op2" class="form-control">
@@ -460,7 +460,7 @@
   
   <xed:template id="searchfield.allMeta">
     <xed:bind xpath="condition5[@field='allMeta'][@operator='contains']">
-      <div class="form-group" style="margin-bottom:6px">
+      <div class="form-row ir-editor-row" style="margin-bottom:6px">
         <label class="col-sm-3 control-label input-sm" for="allMeta">
           <xed:output i18n="Editor.Search.Label.AllMeta" />
         </label>
