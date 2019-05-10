@@ -84,7 +84,7 @@
         		<c:if test="${fn:length(affix)>2}">(${affix})</c:if>
        		</h2>
        	</div>
-       	<div class="docdetails-values">${fn:length(akadtitle)>2 ? akadtitle : '&nbsp;'}</div>
+       	<div class="docdetails-value pk-docdetails-academictitle">${fn:length(akadtitle)>2 ? akadtitle : '&nbsp;'}</div>
     </mcrdd:header>
 
     <c:set var="proflabelkey" value="" />
@@ -141,6 +141,12 @@
     		</div>
     	</mcrdd:outputitem>
    	</mcrdd:row>
+   	<%--Wunsch aus Braunschweig --%>
+   	<x:if select="$mcrobj/mycoreobject/metadata/box.professorship/professorship/text[@xml:lang='x-predec' or @xml:lang='x-succ']">
+   		<div class="pk-docdetails-hint text-right text-nowrap">
+   			<fmt:message key="OMD.profkat.professorships.predec_succ"/>
+   		</div>
+   	</x:if>
      
      <mcrdd:separator showLine="true" />
      <mcrdd:separator showLine="true" />
@@ -311,7 +317,7 @@
     		<mcrdd:item select="./text" escapeXml="false" />  
     	</mcrdd:row>
 
-  		<mcrdd:row select="/mycoreobject/metadata/box.academicdegree/academicdegree" labelkey="OMD.profkat.academicdegrees" showInfo="true" colWidths="8em 4em">
+  		<mcrdd:row select="/mycoreobject/metadata/box.academicdegree/academicdegree" labelkey="OMD.profkat.academicdegrees" showInfo="true" colWidths="8em 6em">
     		<mcrdd:item select="./@type" labelkeyPrefix="OMD.profkat.academicdegree.display."/>
     		<mcrdd:item select="./time" />              
  			<mcrdd:outputitem select="." var="current">
