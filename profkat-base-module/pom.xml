@@ -3,11 +3,12 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.mycore</groupId>
-    <artifactId>mycore</artifactId>
-    <version>2019.06.1-SNAPSHOT</version>
+    <artifactId>mycore-application-starter</artifactId>
+    <version>2019.06.3-SNAPSHOT</version>
   </parent>
   <groupId>org.mycore.profkat</groupId>
   <artifactId>profkat-base-module</artifactId>
+  <version>2019.06-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>Professorenkatalog Base</name>
   <description>generic code for professorenkatalog</description>
