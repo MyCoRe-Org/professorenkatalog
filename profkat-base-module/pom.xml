@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.mycore</groupId>
     <artifactId>mycore</artifactId>
-    <version>2018.06.0.4-SNAPSHOT</version>
+    <version>2019.06.1-SNAPSHOT</version>
   </parent>
   <groupId>org.mycore.profkat</groupId>
   <artifactId>profkat-base-module</artifactId>
@@ -14,8 +14,8 @@
   <properties>
     <forbiddenapis.skip>true</forbiddenapis.skip>
     <manifest.priority>61</manifest.priority>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <build>
