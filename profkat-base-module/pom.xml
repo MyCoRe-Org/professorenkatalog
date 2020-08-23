@@ -65,10 +65,75 @@
           </archive>
         </configuration>
       </plugin>
-     <plugin>
-	    <groupId>org.mycore.plugins</groupId>
-	    <artifactId>datamodel-plugin</artifactId>
-	  </plugin>
+      <!--  unclear how to handle extensions -->
+      <!-- 
+ 	  <plugin>
+        <groupId>org.mycore.plugins</groupId>
+        <artifactId>datamodel-plugin</artifactId>
+        <configuration>
+        	<schemaDirectory></schemaDirectory>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>schema</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      -->
+      <!-- doing the datamodel creation manually ... -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>unpack</id>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <phase>generate-resources</phase>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>org.mycore.plugins</groupId>
+                  <artifactId>datamodel-plugin</artifactId>
+                  <version>0.7</version>
+                  <includes>datamodel2*.xsl</includes>
+                  <excludes>datamodel2ext.xsl</excludes>
+                  <outputDirectory>${project.build.outputDirectory}/xsl</outputDirectory>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>xml-maven-plugin</artifactId>
+        <configuration>
+          <transformationSets>
+            <transformationSet>
+              <dir>src/main/datamodel/def</dir>
+              <outputDir>${project.build.outputDirectory}</outputDir>
+              <stylesheet>${project.build.outputDirectory}/xsl/datamodel2schema.xsl</stylesheet>
+              <fileMappers>
+                <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
+                  <targetExtension>.xsd</targetExtension>
+                </fileMapper>
+              </fileMappers>
+            </transformationSet>
+          </transformationSets>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>transform</goal>
+            </goals>
+            <phase>compile</phase>
+          </execution>
+        </executions>
+      </plugin>
 	 </plugins>
      <pluginManagement>
      	<plugins>
