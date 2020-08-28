@@ -96,13 +96,13 @@
    			
 		    	   		<button type="button" class="btn btn-default btn-sm float-right hidden-sm hidden-xs" style="border:none;color:#DEDEDE;" 
 		    	   		        data-toggle="collapse" data-target="#hiddenTools" title="<fmt:message key="Webpage.tools.menu4experts" />">
-	    					<span class="glyphicon glyphicon-wrench"></span>
+	    					<i class="fas fa-tools"></i>
 	        			</button>
 	      			</div>
 	      			<div id="hiddenTools" class="collapse">
 	      				<div class="row" style="padding-bottom:6px">
 	      					<a class="btn btn-warning btn-sm" target="_blank" title="<fmt:message key="Webpage.tools.showXML" />"
-				   		   		href="${WebApplicationBaseURL}api/v1/objects/${mcrid}" rel="nofollow">XML</a>
+				   		   		href="${WebApplicationBaseURL}api/v2/objects/${mcrid}" rel="nofollow">XML</a>
 	        				<a class="btn btn-warning btn-sm" style="margin-left:6px" target="_blank" title="<fmt:message key="Webpage.tools.showSOLR" />"
 				   		   		href="${WebApplicationBaseURL}receive/${mcrid}?XSL.Style=solrdocument" rel="nofollow">SOLR</a>
 	      			</div>
