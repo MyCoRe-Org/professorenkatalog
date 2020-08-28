@@ -161,15 +161,15 @@
 		  
 		<!--  ====================================================================================== -->
 		<!-- 70  other Identifiers (z.B. PND, GBV, ...) -->
-		<element name="identifier" wrapper="box.identifier" type="text" style="small" minOccurs="0" maxOccurs="5" />
+		<element name="identifier" wrapper="box.identifier" type="text" style="small" minOccurs="0" maxOccurs="unbounded" />
 		<!-- 71 - (Status des Eintrages (in Bearbeitung, Lang-/Kurz-/Dokumenteintrag ...) -->
 		<element name="status" wrapper="box.status" type="text" style="small" minOccurs="0" maxOccurs="unbounded" />
 		<!-- 72 - Personentyp Klassifikation -->
-		<element name="type" wrapper="box.type" type="classification" style="select" minOccurs="0">
+		<element name="type" wrapper="box.type" type="classification" style="select" minOccurs="0" maxOccurs="unbounded">
 			<classification id="profkat_class_proftypes" />
 		</element>
 		<!-- 73 - Epoche -->
-		<element name="epoch" wrapper="box.epoch" type="classification" style="select" minOccurs="0">
+		<element name="epoch" wrapper="box.epoch" type="classification" style="select" minOccurs="0" maxOccurs="unbounded">
 			<classification id="profkat_class_epochs" />
 		</element>
 		<!-- 81 - Interne Informationen -->
