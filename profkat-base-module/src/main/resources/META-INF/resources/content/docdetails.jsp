@@ -78,18 +78,21 @@
 			<div class="container">
 				<c:if test="${empty param.print}">
 					<div class="row" style="padding-bottom:6px">
+					<div class="col">
      					<c:set var="url">${WebApplicationBaseURL}resolve/id/${param.id}</c:set>
 		   				<a class="btn btn-outline-secondary btn-sm col-12" style="text-align:left;" target="_blank" title="<fmt:message key="Webpage.feedback" />"
 		   		   		   href="${WebApplicationBaseURL}feedback.action?topicURL=<%=java.net.URLEncoder.encode(pageContext.getAttribute("url").toString(), "UTF-8")%>&amp;topicHeader=<%=java.net.URLEncoder.encode(pageContext.getAttribute("prof_name").toString().replaceAll("\\s+"," "), "UTF-8")%>">
 	    					<i class="far fa-comments"></i> <fmt:message key="Webpage.feedback.button"/>
 	    				</a>
 	         		</div>
+	         		</div>
 	         		<div class="row" style="padding-bottom:6px">
-	         				<a class="btn btn-outline-secondary btn-sm col-5 hidden-sm hidden-xs" style="text-align:left;margin-right:6px" href="${WebApplicationBaseURL}content/print_details.jsp?id=${param.id}&amp;print=true&amp;fromWF=${param.fromWF}" target="_blank" title="<fmt:message key="WF.common.printdetails" />">
+	         		<div class="col">
+	         				<a class="btn btn-outline-secondary btn-sm hidden-sm hidden-xs" style="text-align:left;margin-right:6px" href="${WebApplicationBaseURL}content/print_details.jsp?id=${param.id}&amp;print=true&amp;fromWF=${param.fromWF}" target="_blank" title="<fmt:message key="WF.common.printdetails" />">
 	       						<i class="fas fa-print"></i> <fmt:message key="Webpage.print.button"/>
 	       					</a>
-	       		
-	       		
+	       		    </div>
+	       		    <div class="col">
 	       				<c:if test="${(not from)}" >
 	       						<search:show-edit-button mcrid="${mcrid}" cssClass="btn btn-sm btn-primary ir-edit-btn col-xs-3" />  
    						</c:if>
@@ -98,6 +101,7 @@
 		    	   		        data-toggle="collapse" data-target="#hiddenTools" title="<fmt:message key="Webpage.tools.menu4experts" />">
 	    					<i class="fas fa-tools"></i>
 	        			</button>
+	        			</div>
 	      			</div>
 	      			<div id="hiddenTools" class="collapse">
 	      				<div class="row" style="padding-bottom:6px">
@@ -112,10 +116,10 @@
    			</div>
 		</div>
 
-		<x:if select="$linked/mycoreobject/structure/derobjects/derobject[@xlink:title='display_portrait' or @xlink:title='display_signature']">
+		<x:if select="$linked/mycoreobject/structure/derobjects/derobject[classification/@categid='display_portrait' or classification/@categid='display_signature']">
 			<div class="docdetails-infobox ur-box ur-box-bordered ur-infobox hidden-xs" style="margin-left:auto;margin-right:auto">
-				<search:derivate-image mcrid="${mcrid}" width="100%" labelContains="display_portrait" showFooter="true" protectDownload="true" />
-				<search:derivate-image mcrid="${mcrid}" width="100%" labelContains="display_signature" protectDownload="true" />
+				<search:derivate-image mcrobj="${mcrobj}" width="100%" category="display_portrait" showFooter="true" protectDownload="true" />
+				<search:derivate-image mcrobj="${mcrobj}" width="100%" category="display_signature" protectDownload="true" />
 			</div>
 		</x:if>
 		        
