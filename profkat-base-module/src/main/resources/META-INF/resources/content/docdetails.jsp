@@ -74,8 +74,6 @@
 
 		<div class="docdetails-infobox ur-box ur-box-bordered ur-infobox" style="margin-bottom:32px; padding: 18px 6px 6px 6px;">
 			<search:result-navigator mcrid="${mcrid}" />
-			
-			<div class="container">
 				<c:if test="${empty param.print}">
 					<div class="row" style="padding-bottom:6px">
 					<div class="col">
@@ -105,15 +103,15 @@
 	      			</div>
 	      			<div id="hiddenTools" class="collapse">
 	      				<div class="row" style="padding-bottom:6px">
+	      				  <div class="col">
 	      					<a class="btn btn-warning btn-sm" target="_blank" title="<fmt:message key="Webpage.tools.showXML" />"
 				   		   		href="${WebApplicationBaseURL}api/v2/objects/${mcrid}" rel="nofollow">XML</a>
 	        				<a class="btn btn-warning btn-sm" style="margin-left:6px" target="_blank" title="<fmt:message key="Webpage.tools.showSOLR" />"
 				   		   		href="${WebApplicationBaseURL}receive/${mcrid}?XSL.Style=solrdocument" rel="nofollow">SOLR</a>
-	      			</div>
+				   		  </div>
+	      			   </div>
 	      			</div>
 	         </c:if>
-
-   			</div>
 		</div>
 
 		<x:if select="$linked/mycoreobject/structure/derobjects/derobject[classification/@categid='display_portrait' or classification/@categid='display_signature']">
