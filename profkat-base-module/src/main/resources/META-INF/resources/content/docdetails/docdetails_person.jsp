@@ -143,7 +143,7 @@
    	</mcrdd:row>
    	<%--Wunsch aus Braunschweig --%>
    	<x:if select="$mcrobj/mycoreobject/metadata/box.professorship/professorship/text[@xml:lang='x-predec' or @xml:lang='x-succ']">
-   		<div class="pk-docdetails-hint text-right text-nowrap">
+   		<div class="pk-docdetails-hint docdetails-label text-right text-nowrap">
    			<fmt:message key="OMD.profkat.professorships.predec_succ"/>
    		</div>
    	</x:if>
