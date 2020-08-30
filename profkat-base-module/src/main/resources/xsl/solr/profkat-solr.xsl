@@ -8,30 +8,19 @@
   <xsl:template match="mycoreobject">
     <xsl:apply-imports />
 
-     <xsl:apply-templates select="metadata"/>
-    <field name="hasFiles">
-      <xsl:value-of select="count(structure/derobjects/derobject)&gt;0" />
-    </field>
+    <xsl:apply-templates select="metadata"/>
     
-    <!-- online type of derivate -->
-    <xsl:for-each select="/mycoreobject/structure/derobjects/derobject">
-      <field name="derivatelabel"><xsl:value-of select="@xlink:label|@xlink:title" /></field>
+    <!-- derivate/ maindoc information -->
+    <xsl:for-each select="structure/derobjects/derobject">
+      <xsl:if test="./title">
+     	<field name="profkat.derivate_title"><xsl:value-of select="./title[1]" /></field>
+      </xsl:if>
     </xsl:for-each>
-     <xsl:for-each select="/mycoreobject/structure/derobjects/derobject[@xlink:title='display_portrait'][1]">
-        <xsl:variable name="derId" select="@xlink:href" />
-        <xsl:variable name="derXML" select="document(concat('mcrobject:',$derId))" />
-     	<xsl:for-each select="$derXML/mycorederivate/derivate/internals/internal">
-     		<xsl:if test="string-length(@maindoc)&gt;0">
-     			<field name="ir.cover_url">file/<xsl:value-of select="$derXML/mycorederivate/derivate/linkmetas/linkmeta/@xlink:href" />/<xsl:value-of select="$derXML/mycorederivate/@ID" />/<xsl:value-of select="@maindoc" /></field>
-     		</xsl:if>
-     	</xsl:for-each>
-     </xsl:for-each>
-      <xsl:for-each select="/mycoreobject/structure/derobjects/derobject">
-        <xsl:variable name="derId" select="@xlink:href" />
-        <xsl:variable name="derXML" select="document(concat('mcrobject:',$derId))" />
-     	<xsl:for-each select="$derXML/mycorederivate/service/servflags/servflag[@type='title']">
-     			<field name="profkat.derivate_title"><xsl:value-of select="." /></field>
-     	</xsl:for-each>
+     <xsl:for-each select="structure/derobjects/derobject[./classification/@categid='display_portrait'][1]">
+        <!-- <xsl:variable name="derXML" select="document(concat('mcrobject:',$derId))" /> -->
+     	<xsl:if test="./maindoc">
+     		<field name="ir.cover_url">file/<xsl:value-of select="../../../@ID" />/<xsl:value-of select="@xlink:href" />/<xsl:value-of select="./maindoc" /></field>
+     	</xsl:if>
      </xsl:for-each>
   </xsl:template>
 
