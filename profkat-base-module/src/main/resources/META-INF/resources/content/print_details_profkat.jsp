@@ -18,8 +18,6 @@
 </c:set>
 <c:set var="from" value="${param.from}" />
 
-<mcr:setLanguage var="lang" allowedLanguages="de" />
-
 <html>
 <head>
 <title>Print Details</title>
@@ -65,10 +63,8 @@ body {
 					<x:if
 						select="$linked/mycoreobject/structure/derobjects/derobject[@xlink:title='display_portrait']">
 						<div class="base_box infobox">
-							<search:derivate-image mcrid="${mcrid}" width="100%"
-								showFooter="true" protectDownload="true" labelContains="display_portrait" />
-							<search:derivate-image mcrid="${mcrid}" width="100%"
-								 protectDownload="true" labelContains="display_signature" />
+							<search:derivate-image mcrobj="${mcrid}" width="100%" showFooter="true" category="display_portrait" />
+							<search:derivate-image mcrobj="${mcrid}" width="100%" category="display_signature" />
 						</div>
 					</x:if>
 				</div>
