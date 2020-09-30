@@ -14,9 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
-
+import org.apache.logging.log4j.Logger;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrQuery.ORDER;
@@ -24,7 +23,7 @@ import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
-import org.mycore.common.config.MCRConfiguration;
+import org.mycore.common.config.MCRConfiguration2;
 import org.mycore.solr.MCRSolrClientFactory;
 
 /**
@@ -75,7 +74,6 @@ public class ProfKatBeaconTxtServlet extends HttpServlet {
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+0"), Locale.GERMANY);
         cal.setTime(creation);
         String propPrefix = "MCR.Profkat.Beacon." + getServletConfig().getServletName() + ".";
-        MCRConfiguration mcrConfig = MCRConfiguration.instance();
 
         w.println("#FORMAT: BEACON");
         w.println("#VERSION: 0.1");
@@ -83,14 +81,14 @@ public class ProfKatBeaconTxtServlet extends HttpServlet {
 
         for (String field : new String[] { "TARGET", "FEED", "NAME", "DESCRIPTION", "CONTACT", "INSTITUTION", "ISIL",
             "MESSAGE", "UPDATE" }) {
-            if (mcrConfig.getString(propPrefix + field, null) != null) {
-                w.println("#" + field + ": " + mcrConfig.getString(propPrefix + field.trim()));
+            if (MCRConfiguration2.getString(propPrefix + field.trim()).isPresent()) {
+                w.println("#" + field + ": " + MCRConfiguration2.getString(propPrefix + field.trim()).get());
             }
         }
         w.println("#TIMESTAMP: " + DATEFORMAT.format(cal.getTime()));
-        if (mcrConfig.getInt(propPrefix + "REVISIT_days", -1) != -1) {
+        if (MCRConfiguration2.getInt(propPrefix + "REVISIT_days").orElse(-1) != -1) {
             cal.add(Calendar.DAY_OF_YEAR,
-                mcrConfig.getInt(propPrefix + "REVISIT_days"));
+                MCRConfiguration2.getInt(propPrefix + "REVISIT_days").get());
             w.println("#REVISIT: " + DATEFORMAT.format(cal.getTime()));
         }
     }
