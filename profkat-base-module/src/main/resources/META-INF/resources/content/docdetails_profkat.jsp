@@ -49,6 +49,7 @@
  <c:set var="pageTitle">${prof_name}</c:set>
 <stripes:layout-render name="../WEB-INF/layout/default.jsp" pageTitle="${pageTitle}" layout="${layout_name}">
 	<stripes:layout-component name="html_head">
+	    <!-- View: docdetails-profkat.jsp -->
 	    <mcr:retrieveObject mcrid="${mcrid}" varDOM="mcrobj" cache="true" fromWorkflow="false" />
 		<c:set var="description">
 			<mcr:transformXSL xml="${mcrobj}" xslt="xsl/docdetails/person2html_header_description.xsl" />
