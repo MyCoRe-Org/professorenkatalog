@@ -18,13 +18,15 @@
 	<mcr:retrieveObject mcrid="${param.id}" varDOM="mcrobj" cache="true" fromWorkflow="${param.fromWF}" />
 	
 	<c:if test="${not(param.print eq 'true')}">
-		<div  class="tabbar docdetails-tabbar" style="position:relative">
-			<c:if test="${param.fromWF eq 'true'}">
+		<c:if test="${param.fromWF eq 'true'}">
 				<div class="alert alert-info" style="margin-top:20px" role="alert">
-					<a class="btn btn-default btn-sm float-right" href="${WebApplicationBaseURL}showWorkspace.action?mcr_base=${fn:substringBefore(param.id, '_')}_${fn:substringBefore(fn:substringAfter(param.id, '_'), '_')}"><fmt:message key="WF.Preview.return" /></a>
-					<h4 style="margin:5px 0px"><fmt:message key="WF.Preview" /></h4>
+					<h4 style="margin:5px 0px">
+						<a class="btn btn-secondary btn-sm float-right" href="${WebApplicationBaseURL}showWorkspace.action?mode=profkat"><fmt:message key="WF.Preview.return" /></a>
+						<fmt:message key="WF.Preview" />
+					</h4>
 				</div>
-			</c:if>
+		</c:if>
+		<div  class="tabbar docdetails-tabbar" style="position:relative">
 			<c:set var="msgKeyStatus">OMD.profkat.state.<x:out select="$mcrobj/mycoreobject/metadata/box.status/status"/></c:set>
 			
 			<c:set var="tabtokens" value="data|article|documents" />
@@ -516,8 +518,10 @@
    	</mcrdd:row>
    	<c:if test="${param.fromWF eq 'true'}">
 		<div class="alert alert-info" style="margin-top:20px" role="alert">
-			<a class="btn btn-default btn-sm float-right" href="${WebApplicationBaseURL}showWorkspace.action?mcr_base=${fn:substringBefore(param.id, '_')}_${fn:substringBefore(fn:substringAfter(param.id, '_'), '_')}"><fmt:message key="WF.Preview.return" /></a>
-			<h4 style="margin:5px 0px"><fmt:message key="WF.Preview" /></h4>
+			<h4 style="margin:5px 0px">
+				<a class="btn btn-secondary btn-sm float-right" href="${WebApplicationBaseURL}showWorkspace.action?mode=profkat"><fmt:message key="WF.Preview.return" /></a>
+				<fmt:message key="WF.Preview" />
+			</h4>
 		</div>
 	</c:if>	
   </mcrdd:docdetails>
