@@ -114,8 +114,7 @@
 	      			</div>
 	         </c:if>
 		</div>
-
-		<x:if select="$linked/mycoreobject/structure/derobjects/derobject[classification/@categid='display_portrait' or classification/@categid='display_signature']">
+		<x:if select="$mcrobj/mycoreobject/structure/derobjects/derobject[classification/@categid='display_portrait' or classification/@categid='display_signature']">
 			<div class="docdetails-infobox ur-box ur-box-bordered ur-infobox hidden-xs" style="margin-left:auto;margin-right:auto">
 				<search:derivate-image mcrobj="${mcrobj}" width="100%" category="display_portrait" showFooter="true" protectDownload="true" />
 				<search:derivate-image mcrobj="${mcrobj}" width="100%" category="display_signature" protectDownload="true" />
