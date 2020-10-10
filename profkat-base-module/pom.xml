@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.mycore</groupId>
     <artifactId>mycore-application-starter</artifactId>
-    <version>2020.06.0-SNAPSHOT</version>
+    <version>2020.06.1-SNAPSHOT</version>
   </parent>
   <groupId>org.mycore.profkat</groupId>
   <artifactId>profkat-base-module</artifactId>
@@ -51,7 +52,7 @@
     </resources>
 
     <!-- needed to execute maven-xml-plugin -->
-     <plugins>
+    <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
@@ -118,7 +119,8 @@
               <outputDir>${project.build.outputDirectory}</outputDir>
               <stylesheet>${project.build.outputDirectory}/xsl/datamodel2schema.xsl</stylesheet>
               <fileMappers>
-                <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
+                <fileMapper
+                  implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
                   <targetExtension>.xsd</targetExtension>
                 </fileMapper>
               </fileMappers>
@@ -134,40 +136,40 @@
           </execution>
         </executions>
       </plugin>
-	 </plugins>
-     <pluginManagement>
-     	<plugins>
+    </plugins>
+    <pluginManagement>
+      <plugins>
      		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-     		<plugin>
-     			<groupId>org.eclipse.m2e</groupId>
-     			<artifactId>lifecycle-mapping</artifactId>
-     			<version>1.0.0</version>
-     			<configuration>
-     				<lifecycleMappingMetadata>
-     					<pluginExecutions>
-     						<pluginExecution>
-     							<pluginExecutionFilter>
-     								<groupId>
-     									org.mycore.plugins
-     								</groupId>
-     								<artifactId>
-     									datamodel-plugin
-     								</artifactId>
-     								<versionRange>[0.7,)</versionRange>
-     								<goals>
-     									<goal>schema</goal>
-     								</goals>
-     							</pluginExecutionFilter>
-     							<action>
-     								<ignore></ignore>
-     							</action>
-     						</pluginExecution>
-     					</pluginExecutions>
-     				</lifecycleMappingMetadata>
-     			</configuration>
-     		</plugin>
-     	</plugins>
-     </pluginManagement>
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>
+                      org.mycore.plugins
+                    </groupId>
+                    <artifactId>
+                      datamodel-plugin
+                    </artifactId>
+                    <versionRange>[0.7,)</versionRange>
+                    <goals>
+                      <goal>schema</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore></ignore>
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
   </build>
   <dependencies>
     <dependency>
@@ -209,4 +211,24 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+  <repositories>
+    <repository>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>central</id>
+      <name>Central Repository</name>
+      <url>https://repo.maven.apache.org/maven2</url>
+    </repository>
+    <repository>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </repository>
+  </repositories>
 </project>
