@@ -33,9 +33,11 @@
           <xed:bind xpath="boolean14">
             <xed:include uri="resource:editor/search/includes-search-profkat.xed" ref="searchfield.sex" />
             <xed:include uri="resource:editor/search/includes-search-profkat.xed" ref="searchfield.institution" />
-            <xed:include uri="resource:editor/search/includes-search-profkat.xed" ref="searchfield.subject" />
-            <xed:include uri="resource:editor/search/includes-search-profkat.xed" ref="searchfield.proftypes" />
-            <xed:if test="$MCR.SWF.Project.ID != 'cph'">
+            <xed:if test="$MCR.SWF.Project.ID != 'cpb'">
+            	<xed:include uri="resource:editor/search/includes-search-profkat.xed" ref="searchfield.subject" />
+            	<xed:include uri="resource:editor/search/includes-search-profkat.xed" ref="searchfield.proftypes" />
+            </xed:if>
+            <xed:if test="$MCR.SWF.Project.ID == 'cpr'">
             	<xed:include uri="resource:editor/search/includes-search-profkat.xed" ref="searchfield.epochs" />
             	<xed:include uri="resource:editor/search/includes-search-profkat.xed" ref="searchfield.profstates" />
    			</xed:if>
