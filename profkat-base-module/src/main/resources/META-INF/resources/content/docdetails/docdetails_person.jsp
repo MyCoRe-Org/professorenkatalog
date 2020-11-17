@@ -65,7 +65,11 @@
 					</c:if>
 				</c:forTokens>				
 			</ul>
-			<div class="docdetails-tabbar-info" style="position:absolute; top:5px; right:15px"><fmt:message key="${msgKeyStatus}" /></div>
+			<div class="docdetails-tabbar-info" style="position:absolute; top:5px; right:15px">
+				<x:if select="not(starts-with($mcrobj/mycoreobject/@ID,'cpb_'))">
+					<fmt:message key="${msgKeyStatus}" />
+				</x:if>
+			</div>
 		</div>
 	</c:if>
 	<%--Tab bar (end) --%>
