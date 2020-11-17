@@ -10,7 +10,7 @@
   <artifactId>professorenkatalog-parent</artifactId>
   <version>2020.06-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>JSPDocportal</name>
+  <name>MyCoRe Professorenkatalog</name>
   <description>Professorenkatalog based on MyCoRe JSPDocportal</description>
   <inceptionYear>2004</inceptionYear>
  
