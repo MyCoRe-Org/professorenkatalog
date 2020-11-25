@@ -22,19 +22,13 @@
 <head>
 <title>Print Details</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="${WebApplicationBaseURL}webjars/jquery/1.11.3/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="${WebApplicationBaseURL}webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="${WebApplicationBaseURL}webjars/bootstrap/3.3.5/css/bootstrap.min.css" />
-<link type="text/css" rel="stylesheet"	href="${WebApplicationBaseURL}themes/uni-rostock/css/uni-rostock_bootstrap.css" />
-<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}themes/cpr/css/cpr.css" />
 <link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_docdetails_headlines.css" />
 <link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_biogr_article.css" />
-</head>
+
 <style type="text/css">
 body {
-	background: white;
+	font-family: Arial, Helvetica, sans-serif;
+	background:  white;
 }
 </style>
 </head>
