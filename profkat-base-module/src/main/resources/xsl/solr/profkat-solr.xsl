@@ -41,7 +41,9 @@
     	<xsl:choose>
     		<xsl:when test="starts-with($headline_normiert, 'Sch')"><xsl:value-of select="substring($headline_normiert,1,4)" /></xsl:when>
     		<xsl:when test="starts-with($headline_normiert, 'St')"><xsl:value-of select="substring($headline_normiert,1,3)" /></xsl:when>
-    		<xsl:otherwise><xsl:value-of select="substring($headline_normiert,1,2)" /></xsl:otherwise>
+    		<xsl:otherwise>
+              <xsl:value-of select="concat(translate(substring($headline_normiert,1,1),'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVXYZ'),substring($headline_normiert,2,1))" />
+            </xsl:otherwise>
     	</xsl:choose>
     </field>
   <xsl:if test="not(box.epoch/epoch[@categid='cpr.1945-1989']) and not(box.epoch/epoch[@categid='cpr.1989-heute'])">
