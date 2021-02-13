@@ -9,43 +9,47 @@
       <xsl:copy-of select="text" />
       <xsl:copy-of select="calendar" />
       <xsl:copy-of select="ivon" />
-      <xsl:copy-of select="von" />
-      <xsl:if test="not(von)">
-        <xsl:if test="(string-length(text[@xml:lang='de']) = 4 and translate(text[@xml:lang='de'], '0123456789', '') = '')">
+      <xsl:choose>
+        <xsl:when test="(string-length(text[@xml:lang='de']) = 4 and translate(text[@xml:lang='de'], '0123456789', '') = '')">
           <von><xsl:value-of select="text[@xml:lang='de']" />-01-01 AD</von>
-        </xsl:if>
-        <xsl:if test="(string-length(text[@xml:lang='de']) = 10 and translate(text[@xml:lang='de'], '0123456789', '') = '..')">
-          <von><xsl:value-of select="text[@xml:lang='de']" /> AD</von>
-        </xsl:if>
-        <xsl:if test="(string-length(text[@xml:lang='de']) = 9 and translate(text[@xml:lang='de'], '0123456789', '') = '-')">
+        </xsl:when>
+        <xsl:when test="(string-length(text[@xml:lang='de']) = 10 and translate(text[@xml:lang='de'], '0123456789', '') = '..')">
+          <von><xsl:value-of select="substring(text[@xml:lang='de'],7,4)" />-<xsl:value-of select="substring(text[@xml:lang='de'],4,2)" />-<xsl:value-of select="substring(text[@xml:lang='de'],1,2)" /> AD</von>
+        </xsl:when>
+        <xsl:when test="(string-length(text[@xml:lang='de']) = 9 and translate(text[@xml:lang='de'], '0123456789', '') = '-')">
           <von><xsl:value-of select="substring(text[@xml:lang='de'],1,4)" />-01-01 AD</von>
-        </xsl:if>
-        <xsl:if test="(string-length(text[@xml:lang='de']) = 9 and translate(text[@xml:lang='de'], '0123456789', '') = 'seit ')">
+        </xsl:when>
+        <xsl:when test="(string-length(text[@xml:lang='de']) = 9 and translate(text[@xml:lang='de'], '0123456789', '') = 'seit ')">
           <von><xsl:value-of select="substring(text[@xml:lang='de'],6,4)" />-01-01 AD</von>
-        </xsl:if>
-        <xsl:if test="(string-length(text[@xml:lang='de']) = 7 and translate(text[@xml:lang='de'], '0123456789', '') = 'ab ')">
+        </xsl:when>
+        <xsl:when test="(string-length(text[@xml:lang='de']) = 7 and translate(text[@xml:lang='de'], '0123456789', '') = 'ab ')">
           <von><xsl:value-of select="substring(text[@xml:lang='de'],4,4)" />-01-01 AD</von>
-        </xsl:if>
-      </xsl:if>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:copy-of select="von" />  
+        </xsl:otherwise>
+      </xsl:choose>
       <xsl:copy-of select="ibis" />
-      <xsl:copy-of select="bis" />
-      <xsl:if test="not(bis)">
-        <xsl:if test="(string-length(text[@xml:lang='de']) = 4 and translate(text[@xml:lang='de'], '0123456789', '') = '')">
+      <xsl:choose>
+        <xsl:when test="(string-length(text[@xml:lang='de']) = 4 and translate(text[@xml:lang='de'], '0123456789', '') = '')">
           <bis><xsl:value-of select="text[@xml:lang='de']" />-12-31 AD</bis>
-        </xsl:if>
-        <xsl:if test="(string-length(text[@xml:lang='de']) = 10 and translate(text[@xml:lang='de'], '0123456789', '') = '..')">
-          <bis><xsl:value-of select="text[@xml:lang='de']" /> AD</bis>
-        </xsl:if>
-        <xsl:if test="(string-length(text[@xml:lang='de']) = 9 and translate(text[@xml:lang='de'], '0123456789', '') = '-')">
+        </xsl:when>
+        <xsl:when test="(string-length(text[@xml:lang='de']) = 10 and translate(text[@xml:lang='de'], '0123456789', '') = '..')">
+          <bis><xsl:value-of select="substring(text[@xml:lang='de'],7,4)" />-<xsl:value-of select="substring(text[@xml:lang='de'],4,2)" />-<xsl:value-of select="substring(text[@xml:lang='de'],1,2)" /> AD</bis>
+        </xsl:when>
+        <xsl:when test="(string-length(text[@xml:lang='de']) = 9 and translate(text[@xml:lang='de'], '0123456789', '') = '-')">
           <bis><xsl:value-of select="substring(text[@xml:lang='de'],6,4)" />-12-31 AD</bis>
-        </xsl:if>
-        <xsl:if test="(string-length(text[@xml:lang='de']) = 9 and translate(text[@xml:lang='de'], '0123456789', '') = 'seit ')">
+        </xsl:when>
+        <xsl:when test="(string-length(text[@xml:lang='de']) = 9 and translate(text[@xml:lang='de'], '0123456789', '') = 'seit ')">
           <bis>4000-01-01 AD</bis>
-        </xsl:if>
-        <xsl:if test="(string-length(text[@xml:lang='de']) = 7 and translate(text[@xml:lang='de'], '0123456789', '') = 'ab ')">
+        </xsl:when>
+        <xsl:when test="(string-length(text[@xml:lang='de']) = 7 and translate(text[@xml:lang='de'], '0123456789', '') = 'ab ')">
           <bis>4000-01-01 AD</bis>
-        </xsl:if>
-      </xsl:if>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:copy-of select="bis" />  
+        </xsl:otherwise>
+      </xsl:choose>
       <xsl:copy-of select="event" />
       <xsl:copy-of select="classification" />
     </xsl:copy>
