@@ -66,9 +66,7 @@
 				</c:forTokens>				
 			</ul>
 			<div class="docdetails-tabbar-info" style="position:absolute; top:5px; right:15px">
-				<x:if select="not(starts-with($mcrobj/mycoreobject/@ID,'cpb_'))">
 					<fmt:message key="${msgKeyStatus}" />
-				</x:if>
 			</div>
 		</div>
 	</c:if>
@@ -459,7 +457,26 @@
       				</p>   				
     				</mcrdd:outputitem>
    			</x:if>                                             			   		 
-   		</mcrdd:row>	
+   		</mcrdd:row>
+   		<mcrdd:row select="/mycoreobject/metadata/box.epoch/epoch | /mycoreobject/metadata/box.type/type" 
+   		           labelkey="OMD.profkat.classification" showInfo="true"  colWidths="8em">
+   		    <mcrdd:outputitem select="." var="current">
+   		       <x:if select="local-name($current)='epoch'">
+   		       	<fmt:message key="OMD.profkat.epoch" />:
+   		       </x:if>
+   		       <x:if select="local-name($current)='type'">
+   		       	<fmt:message key="OMD.profkat.type" />:
+   		       </x:if>
+   			</mcrdd:outputitem> 
+   		              
+   			<mcrdd:outputitem select="." var="current">
+   				<x:if select="local-name($current)='epoch' or local-name($current)='type'">
+   			    	<c:set var="classid"><x:out select="$current/@classid" /></c:set>
+    				<c:set var="categid"><x:out select="$current/@categid" /></c:set>
+   					<mcr:displayClassificationCategory categid="${categid}" classid="${classid}" lang="de"/>
+   				</x:if>
+   		   </mcrdd:outputitem>
+   		</mcrdd:row> 	
 	</c:if> 	
   	
 	<c:if test="${(tab eq 'article') or (param.print eq 'true')}">
