@@ -519,10 +519,10 @@
    		</mcrdd:outputitem>  
    	</mcrdd:row>
    	
+   	<x:if select="not(starts-with($mcrobj/mycoreobject/@ID,'cpb_'))">
    	<mcrdd:row select="/mycoreobject" labelkey="OMD.profkat.quoting" showInfo="true" >
    		<mcrdd:item select="/mycoreobject/metadata/box.surname/surname" var="last"/>
    		<mcrdd:item select="/mycoreobject/metadata/box.firstname/firstname" var="first" />
-   		<mcrdd:item select="/mycoreobject/metadata/box.identifier/identifier[@type='pnd']" var="pnd"/>
    		<jsp:useBean id="now" class="java.util.Date" scope="page" />
    		<mcrdd:outputitem select="./@ID" var="current">
    			<%-- OMD.profkat.quoting.text=Eintrag von &quot;{0}&quot; im Rostocker Professorenkatalog, URL: <a href="{1}">{1}</a> (abgerufen am {2})  --%> 
@@ -534,10 +534,13 @@
    			<fmt:message key="OMD.profkat.quoting.text">
       			<fmt:param>${first}&#160;${last}</fmt:param>
       			<fmt:param>${url}</fmt:param>
+      			<fmt:param>${url}</fmt:param>
       			<fmt:param><fmt:formatDate value="${now}" pattern="dd.MM.yyyy" /></fmt:param>
       		</fmt:message>      			
    		</mcrdd:outputitem>
    	</mcrdd:row>
+   	</x:if>
+   	
    	<c:if test="${param.fromWF eq 'true'}">
 		<div class="alert alert-info" style="margin-top:20px" role="alert">
 			<h4 style="margin:5px 0px">

@@ -64,34 +64,57 @@
 	<stripes:layout-component name="main_part">
 	<div class="docdetails">
      <div class="row">
-        <div class="col">
+        <div id="docdetails-main" class="col">
 		<mcr:debugInfo />
 		<jsp:include page="docdetails/docdetails_person.jsp">
    			<jsp:param name="id" value="${mcrid}" />
    			<jsp:param name="fromWF" value="${from}" />
    		</jsp:include>
 		</div>
-        <div class="col-3">
-
-		<div class="docdetails-infobox ur-box ur-box-bordered ur-infobox" style="margin-bottom:32px; padding: 18px 6px 6px 6px;">
+        <div id="docdetails-right" class="col-3">
+		<div class="docdetails-infobox" style="margin-bottom:32px;">
+		    <div class="row">
+		    <div class="col">
 			<search:result-navigator mcrid="${mcrid}" />
-				<c:if test="${empty param.print}">
-					<div class="row" style="padding-bottom:6px">
+			</div>
+			</div>
+			
+	       <x:if select="starts-with($mcrobj/mycoreobject/@ID,'cpb_')">
+	         <div class="row">
+		       <div class="col">
+			     <div id="citation" class="container ir-box ir-box-emph py-2">
+  			       <div class="docdetails-label mt-0"><small><b><fmt:message key="OMD.profkat.quoting"/>:</b></small></div>
+			         <c:set var="last"><x:out select="$mcrobj/mycoreobject/metadata/box.surname/surname" /></c:set>		
+			         <c:set var="first"><x:out select="$mcrobj/mycoreobject/metadata/box.firstname/firstname" /></c:set>
+			         <jsp:useBean id="now" class="java.util.Date" scope="page" />
+			         <c:set var="currentID"><x:out select="$mcrobj/mycoreobject/@ID" /></c:set>
+   			         <c:url var="url" value="${WebApplicationBaseURL}resolve/id/${currentID}" />
+   			         <fmt:message key="OMD.profkat.quoting.text">
+      			       <fmt:param>${first}&#160;${last}</fmt:param>
+      			       <fmt:param>${url}</fmt:param>
+      			       <fmt:param>${fn:replace(url,'/resolve/', ' /resolve/')}</fmt:param>
+      			       <fmt:param><fmt:formatDate value="${now}" pattern="dd.MM.yyyy" /></fmt:param>
+      		         </fmt:message>      			
+			       </div>
+			     </div>
+			   </div>
+			</x:if>
+			
+		     <c:if test="${empty param.print}">
+					<div class="row mb-3">
 					<div class="col">
      					<c:set var="url">${WebApplicationBaseURL}resolve/id/${param.id}</c:set>
-		   				<a class="btn btn-outline-secondary btn-sm col-12" style="text-align:left;" target="_blank" title="<fmt:message key="Webpage.feedback" />"
+		   				<a class="btn btn-outline-secondary btn-sm w-100" style="text-align:left;" target="_blank" title="<fmt:message key="Webpage.feedback" />"
 		   		   		   href="${WebApplicationBaseURL}feedback.action?topicURL=<%=java.net.URLEncoder.encode(pageContext.getAttribute("url").toString(), "UTF-8")%>&amp;topicHeader=<%=java.net.URLEncoder.encode(pageContext.getAttribute("prof_name").toString().replaceAll("\\s+"," "), "UTF-8")%>">
 	    					<i class="far fa-comments"></i> <fmt:message key="Webpage.feedback.button"/>
 	    				</a>
 	         		</div>
 	         		</div>
-	         		<div class="row" style="padding-bottom:6px">
+	         		<div class="row mb-3">
 	         		<div class="col">
 	         				<a class="btn btn-outline-secondary btn-sm hidden-sm hidden-xs" style="text-align:left;margin-right:6px" href="${WebApplicationBaseURL}content/print_details_profkat.jsp?id=${param.id}&amp;print=true&amp;fromWF=${param.fromWF}" target="_blank" title="<fmt:message key="WF.common.printdetails" />">
 	       						<i class="fas fa-print"></i> <fmt:message key="Webpage.print.button"/>
 	       					</a>
-	       		    </div>
-	       		    <div class="col">
 	       				<c:if test="${(not from)}" >
 	       						<search:show-edit-button mcrid="${mcrid}" cssClass="btn btn-sm btn-primary ir-edit-btn col-xs-3" />  
    						</c:if>
@@ -102,6 +125,8 @@
 	        			</button>
 	        			</div>
 	      			</div>
+	         		<div class="row mb-3">
+	         		<div class="col">
 	      			<div id="hiddenTools" class="collapse">
 	      				<div class="row" style="padding-bottom:6px">
 	      				  <div class="col">
@@ -111,13 +136,21 @@
 				   		   		href="${WebApplicationBaseURL}receive/${mcrid}?XSL.Style=solrdocument" rel="nofollow">SOLR</a>
 				   		  </div>
 	      			   </div>
+	      			   </div>
+	      			</div>
 	      			</div>
 	         </c:if>
 		</div>
 		<x:if select="$mcrobj/mycoreobject/structure/derobjects/derobject[classification/@categid='display_portrait' or classification/@categid='display_signature']">
-			<div class="docdetails-infobox ur-box ur-box-bordered ur-infobox hidden-xs" style="margin-left:auto;margin-right:auto">
+			
+			<div class="docdetails-infobox hidden-xs" style="margin-left:auto;margin-right:auto">
+			 		<div class="row mb-3">
+	       		    <div class="col">
+	       	
 				<search:derivate-image mcrobj="${mcrobj}" width="100%" category="display_portrait" showFooter="true" protectDownload="true" />
 				<search:derivate-image mcrobj="${mcrobj}" width="100%" category="display_signature" protectDownload="true" />
+				</div>
+				</div>
 			</div>
 		</x:if>
 		        
