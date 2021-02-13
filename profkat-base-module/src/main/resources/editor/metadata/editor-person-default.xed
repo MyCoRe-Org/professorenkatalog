@@ -593,7 +593,6 @@
   <!-- Lehr und Forschungsgebiet [ENDE] -->
   
   <!--  Fachgebietsklassifikation [START] -->
-  <xed:if test="not(starts-with(//mycoreobject/@ID,'cpb_'))">
   <xed:bind xpath="box.subjectclass[@class='MCRMetaClassification']">
     <div class="form-group row">
       <label class="col-sm-2 col-form-label input-sm ir-editor-label" for="subjectclass">
@@ -627,7 +626,7 @@
       </div>
     </div>
   </xed:bind>
-  </xed:if>
+
   <!-- Fachgebietsklassifikation [ENDE] -->
   <!-- E-mail [START] -->
   <xed:bind xpath="box.email[@class='MCRMetaLangText']">
