@@ -366,10 +366,11 @@
 
 		<mcrdd:separator showLine="true" />
 
-   		<mcrdd:row select="/mycoreobject/metadata/box.mainpublication/mainpublication" labelkey="OMD.profkat.mainpublications" showInfo="true" >
-		  	<mcrdd:item select="." escapeXml="false"/>  
-    	</mcrdd:row>         
-        
+		<x:if select="not(starts-with($mcrobj/mycoreobject/@ID,'cpb_'))">
+   			<mcrdd:row select="/mycoreobject/metadata/box.mainpublication/mainpublication" labelkey="OMD.profkat.mainpublications" showInfo="true" >
+		  		<mcrdd:item select="." escapeXml="false"/>
+    		</mcrdd:row>
+        </x:if>
           
    		<mcrdd:row select="/mycoreobject/metadata/box.publicationslink/publicationslink" 
    		       labelkey="OMD.profkat.bibliographicrefs" showInfo="true" >
