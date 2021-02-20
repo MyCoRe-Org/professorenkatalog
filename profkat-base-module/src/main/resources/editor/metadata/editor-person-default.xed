@@ -2,12 +2,16 @@
 <!-- method='post' to avoid charset problems !!! -->
 
 <xed:form xmlns:xed="http://www.mycore.de/xeditor" role="form" class="form-horizontal ir-editor-form" accept-charset="UTF-8" method="post">
+<!--Ausblenden von Bereichen über xed:if, z.B.:
+    <xed:if test="not(starts-with(/mycoreobject/@ID,'cpb_'))">
+-->    
+
     <div class="row">
     	<div class="col">
-    	<div class="alert alert-info ir-editor-alert">
+    	  <div class="alert alert-info ir-editor-alert">
       		<xed:output i18n="Editor.Common.headline" />
-  		</div>
-   	</div>
+  	  	  </div>
+   	   </div>
    </div>
    <xed:post-processor xsl="editor-person-postprocessor.xsl" />
    <xed:cleanup-rule xpath="//*" relevant-if="true()" />
@@ -506,7 +510,7 @@
   <!-- Fakultät [ENDE] -->
 
   <!--  Institute [START] -->
-  <xed:if test="not(starts-with(//mycoreobject/@ID,'cpb_'))">
+  
   <xed:bind xpath="box.institute[@class='MCRMetaXML']">
     <div class="form-group row">
       <label class="col-sm-2 col-form-label input-sm ir-editor-label" for="institute">
@@ -561,8 +565,7 @@
       </div>
     </div>
   </xed:bind>
-  </xed:if>
-  <!-- Institute [ENDE] -->   
+    <!-- Institute [ENDE] -->   
 
   <!-- Lehr- und Forschungsgebiet [START] -->
   <xed:bind xpath="box.fieldofstudy[@class='MCRMetaLangText']">
