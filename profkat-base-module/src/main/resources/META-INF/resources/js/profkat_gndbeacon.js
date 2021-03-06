@@ -1,7 +1,8 @@
 						// data retrieval from PND Beacon AKS via AJAX (asynchron)
 						//support for replaceLabels still needs to be done
+						//Selector: "div with class profkat-beacon-result that has a title attribute" 
 						$(document).ready(function(){
-							$("p.profkat-beacon-result").each(function(){
+							$("div.profkat-beacon-result[title]").each(function(){
 								var p = $(this);
 								var ul = $('<ul style="list-style-position:inside"></ul>');
 								var whitelist = null;
