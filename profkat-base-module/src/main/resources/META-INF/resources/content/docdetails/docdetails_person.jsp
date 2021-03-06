@@ -358,7 +358,12 @@
    		<mcrdd:row select="/mycoreobject/metadata/box.award/award" labelkey="OMD.profkat.awards" showInfo="true" colWidths="8em">
 		  	<mcrdd:item select="./time" />              
     		<mcrdd:item select="./text" escapeXml="false" />  
-    	</mcrdd:row>         
+    	</mcrdd:row>
+    	
+    	<mcrdd:row select="/mycoreobject/metadata/box.partymember/partymember" labelkey="OMD.profkat.partymembers" showInfo="true" colWidths="8em">
+		  	<mcrdd:item select="./time" />              
+    		<mcrdd:item select="./text" escapeXml="false" />  
+    	</mcrdd:row>
 
    		<mcrdd:row select="/mycoreobject/metadata/box.otherinfo/otherinfo" labelkey="OMD.profkat.otherinfos" showInfo="true" >
 		  	<mcrdd:item select="." escapeXml="false" />  
