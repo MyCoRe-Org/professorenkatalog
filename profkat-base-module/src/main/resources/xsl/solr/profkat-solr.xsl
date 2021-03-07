@@ -5,10 +5,20 @@
   xmlns:xlink="http://www.w3.org/1999/xlink" exclude-result-prefixes="mods xlink">
   <xsl:import href="xslImport:solr-document:solr/profkat-solr.xsl" />
 
+  <xsl:param name="WebApplicationBaseURL" />
   <xsl:template match="mycoreobject">
     <xsl:apply-imports />
 
     <xsl:apply-templates select="metadata"/>
+    
+    <xsl:choose>
+      <xsl:when test="starts-with(./@ID, 'cpr_')">
+         <field name="purl">http://purl.uni-rostock.de/cpr/<xsl:value-of select="substring(./@ID, 11)" /></field>
+      </xsl:when>
+      <xsl:otherwise>
+          <field name="purl"><xsl:value-of select="concat($WebApplicationBaseURL, 'resolve/id/', ./@ID)" /></field>
+      </xsl:otherwise>
+    </xsl:choose>
     
     <!-- derivate/ maindoc information -->
     <xsl:for-each select="structure/derobjects/derobject">
