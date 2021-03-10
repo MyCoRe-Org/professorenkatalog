@@ -490,19 +490,16 @@
     				</mcrdd:outputitem>
    			</x:if>                                             			   		 
    		</mcrdd:row>
-   		<mcrdd:row select="/mycoreobject/metadata/box.epoch/epoch | /mycoreobject/metadata/box.type/type" 
+   		<mcrdd:row select="/mycoreobject/metadata/box.epoch/epoch" 
    		           labelkey="OMD.profkat.classification" showInfo="true"  colWidths="8em">
    		    <mcrdd:outputitem select="." var="current">
    		       <x:if select="local-name($current)='epoch'">
    		       	<fmt:message key="OMD.profkat.epoch" />:
    		       </x:if>
-   		       <x:if select="local-name($current)='type'">
-   		       	<fmt:message key="OMD.profkat.type" />:
-   		       </x:if>
    			</mcrdd:outputitem> 
    		              
    			<mcrdd:outputitem select="." var="current">
-   				<x:if select="local-name($current)='epoch' or local-name($current)='type'">
+   				<x:if select="local-name($current)='epoch'">
    			    	<c:set var="classid"><x:out select="$current/@classid" /></c:set>
     				<c:set var="categid"><x:out select="$current/@categid" /></c:set>
    					<mcr:displayClassificationCategory categid="${categid}" classid="${classid}" lang="de"/>
