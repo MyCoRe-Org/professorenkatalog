@@ -455,10 +455,10 @@
 					<script type="text/javascript" src="${WebApplicationBaseURL}js/profkat_gndbeacon.js"></script>
 					
 					<x:if select="starts-with($mcrobj/mycoreobject/@ID,'cpb_')">
-					<div id="digibib_bs_link" class="profkat-beacon-result d-none">
+					<div id="digibib_bs_link" class="profkat-beacon-result d-none" data-gnd="${pndString}">
 					  <ul style="list-style-position:inside">
 					    <li>
-					      <a target="beacon_result" href="https://publikationsserver.tu-braunschweig.de//servlets/solr/find?condQuery=${pndString}">
+					      <a target="beacon_result" href="https://publikationsserver.tu-braunschweig.de/servlets/solr/find?condQuery=${pndString}">
 					        <span id="digibib_bs_link_numfound" ></span> <fmt:message key="OMD.profkat.cpb.documents_in_digibib" />
 					      </a>
 					    </li>
@@ -468,7 +468,7 @@
 					<script type="text/javascript">
 					  $.ajax({
 						  type : "GET",
-						  url : "https://publikationsserver.tu-braunschweig.de/api/v1/search?q=allMeta%3D131743759&wt=json&json.wrf=?",
+						  url : "https://publikationsserver.tu-braunschweig.de/api/v1/search?q=allMeta%3D"+$('#digibib_bs_link').attr('data-gnd') +"&wt=json&json.wrf=?",
 						  dataType : "jsonp",
 						  success : function(data) {
 							  var c = data.response.numFound;
