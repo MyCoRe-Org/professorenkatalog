@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib uri="http://www.mycore.org/jspdocportal/base.tld" prefix="mcr"%>
 
-<%-- JSP-Parameter: href, title --%>
+<%-- JSP-Parameter: href, title, mcrid --%>
 
 <%
 	pageContext.setAttribute("wbisIPMap", MCRConfiguration.instance().getPropertiesMap("MCR.profkat.WBIS.user-ip."));
@@ -14,6 +14,7 @@
 <c:set var="WebApplicationBaseURL" value="${applicationScope.WebApplicationBaseURL}" />
 <c:set var="location">${param.href}</c:set>
 <c:set var="descr">${param.title}</c:set>
+<c:set var="mcrid">${param.mcrid}</c:set>
 
 <c:if test="${descr eq '#'}">
 	<c:set var="descr" value="" />
@@ -40,6 +41,17 @@
 <c:choose>
 	<c:when test="${location eq '#'}">
 		<c:out value="${descr}" escapeXml="false" />
+	</c:when>
+	<c:when test="${fn:startsWith(mcrid, 'cpb_')}">
+		<jsp:element name="a">	
+			<jsp:attribute name="href">
+				<c:out value="${location}" />
+			</jsp:attribute>
+			<jsp:attribute name="target">_blank</jsp:attribute>
+			<jsp:body>
+			   <c:out value="${descr}" escapeXml="false" />
+			</jsp:body>	
+		</jsp:element>
 	</c:when>
 	<c:otherwise>
 		<c:out value="${descr}" escapeXml="false" />

@@ -220,6 +220,7 @@
    				<jsp:include page="fragments/link_pk.jsp">
    					<jsp:param name="href" value="${href}" />
    					<jsp:param name="title" value="${title}" />
+   					<jsp:param name="mcrid" value="${param.id}" />
    				</jsp:include>
    			</mcrdd:outputitem> 
    		</mcrdd:row>    
@@ -293,13 +294,43 @@
  	  			<c:set var="name"><x:out select="$current/name" escapeXml="false" /></c:set>
 		 		<c:set var="profession"><x:out select="$current/profession" escapeXml="false"/></c:set>
 		 		<c:set var="url"><x:out select="$current/name/@id" escapeXml="false"/></c:set>
-				<c:if test="${fn:length(name) gt 1}">
-					<c:out value="${name}" escapeXml="false" /><c:if test="${fn:length(profession) gt 1}">,&#160;</c:if>
-				</c:if>
-				<c:if test="${fn:length(profession) gt 1}">
-					<c:out value="${profession}" escapeXml="false" />
-				</c:if>
-				<c:if test="${fn:length(url) gt 1}">
+
+				<c:choose>
+				  <c:when test="${fn:length(url) <= 1}">
+					<c:if test="${fn:length(name) gt 1}">
+					  <c:out value="${name}" escapeXml="false" />
+					  <c:if test="${fn:length(profession) gt 1}">,&#160;</c:if>
+				    </c:if>
+				    <c:if test="${fn:length(profession) gt 1}">
+					  <c:out value="${profession}" escapeXml="false" />
+				    </c:if>
+				  </c:when>
+				    
+				   <c:when test="${fn:startsWith(param.id, 'cpb_')}">
+				   	<jsp:element name="a">	
+						<jsp:attribute name="href">
+							<c:out value="${url}" />
+						</jsp:attribute>
+						<jsp:attribute name="target">_blank</jsp:attribute>
+						<jsp:body>
+				         <c:if test="${fn:length(name) gt 1}">
+					       <c:out value="${name}" escapeXml="false" />
+					       <c:if test="${fn:length(profession) gt 1}">,&#160;</c:if>
+				         </c:if>
+				         <c:if test="${fn:length(profession) gt 1}">
+					        <c:out value="${profession}" escapeXml="false" />
+				         </c:if>
+				       </jsp:body>	
+					</jsp:element>
+				   </c:when>
+				   <c:otherwise>
+				    <c:if test="${fn:length(name) gt 1}">
+					  <c:out value="${name}" escapeXml="false" />
+					  <c:if test="${fn:length(profession) gt 1}">,&#160;</c:if>
+				    </c:if>
+				    <c:if test="${fn:length(profession) gt 1}">
+					  <c:out value="${profession}" escapeXml="false" />
+				    </c:if>
 					<jsp:element name="a">	
 						<jsp:attribute name="href">
 							<c:out value="${url}" />
@@ -311,7 +342,8 @@
 							alt="Link" />)</nobr>
 						</jsp:body>	
 					</jsp:element>
-				</c:if>
+				  </c:otherwise>
+				  </c:choose>
    			</mcrdd:outputitem>
    		</mcrdd:row> 
    	
@@ -385,6 +417,7 @@
    				<jsp:include page="fragments/link_pk.jsp">
    					<jsp:param name="href" value="${href}" />
    					<jsp:param name="title" value="${title}" />
+   					<jsp:param name="mcrid" value="${param.id}" />
    				</jsp:include>
    			</mcrdd:outputitem> 
    		</mcrdd:row>  
@@ -398,6 +431,7 @@
    				<jsp:include page="fragments/link_pk.jsp">
    					<jsp:param name="href" value="${href}" />
    					<jsp:param name="title" value="${title}" />
+   					<jsp:param name="mcrid" value="${param.id}" />
    				</jsp:include>
    			</mcrdd:outputitem> 
    		</mcrdd:row>  
@@ -413,6 +447,7 @@
    					<jsp:include page="fragments/link_pk.jsp">
    						<jsp:param name="href" value="${href}" />
    						<jsp:param name="title" value="${title}" />
+   						<jsp:param name="mcrid" value="${param.id}" />
    					</jsp:include>
    				</x:if>
    				<x:if select="local-name($current)='complexref'">
