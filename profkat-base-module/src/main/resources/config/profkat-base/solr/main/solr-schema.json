@@ -48,10 +48,16 @@
         "stored":false
    }},
   {"add-field": {
+        "name":"profkat.birthdate",
+        "type":"text_de",
+        "multiValued":false,
+        "stored":true
+   }},
+   {"add-field": {
         "name":"profkat.birthplace",
         "type":"text_de",
-        "multiValued":true,
-        "stored":false
+        "multiValued":false,
+        "stored":true
    }},
   {"add-field": {
         "name":"profkat.confession",
@@ -59,11 +65,17 @@
         "multiValued":true,
         "stored":false
    }},
+     {"add-field": {
+        "name":"profkat.deathdate",
+        "type":"text_de",
+        "multiValued":false,
+        "stored":true
+   }},
   {"add-field": {
         "name":"profkat.deathplace",
         "type":"text_de",
-        "multiValued":true,
-        "stored":false
+        "multiValued":false,
+        "stored":true
    }},
   {"add-field": {
         "name":"profkat.derivate_title",

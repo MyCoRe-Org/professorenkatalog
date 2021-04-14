@@ -244,10 +244,12 @@
 
   <xsl:for-each select="box.birth/birth">
       <field name="profkat.lifetime_from"><xsl:value-of select="substring(./von,1,4)" /></field> 
+      <field name="profkat.birthdate"><xsl:value-of select="./von" /></field> 
   </xsl:for-each>
 
   <xsl:for-each select="box.death/death">
-      <field name="profkat.lifetime_to"><xsl:value-of select="substring(./bis,1,4)" /></field> 
+      <field name="profkat.lifetime_to"><xsl:value-of select="substring(./bis,1,4)" /></field>
+       <field name="profkat.deathdate"><xsl:value-of select="./bis" /></field> 
   </xsl:for-each>
   </xsl:template>
   
