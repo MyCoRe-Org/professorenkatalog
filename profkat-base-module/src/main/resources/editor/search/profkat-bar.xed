@@ -3,7 +3,7 @@
 
 <xed:form xmlns:xed="http://www.mycore.de/xeditor" role="form" class="form-horizontal" accept-charset="UTF-8" method="post">
 	<xed:bind xpath="query">
-	<xed:bind xpath="@mask" default="profkat-bar" />
+	<xed:bind xpath="@mask" default="profkat-extended" />
     
     <xed:bind xpath="sortBy/field[@name='profkat.idx_profname.headline']/@order" default="ascending" />
     <!-- !!! do not clean the top conditions element !!! -->
