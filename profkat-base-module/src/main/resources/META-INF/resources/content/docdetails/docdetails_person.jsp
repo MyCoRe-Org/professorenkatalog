@@ -11,7 +11,7 @@
 <%-- Parameter: fromWF - from Workflow or database --%>
 
 
-	<%--Tab bar (begin) --%>	
+	<%--Tab bar (begin) --%>
 	<c:set var="tab" value="${param.tab}" />
 	<c:if test="${empty tab}"><c:set var="tab" value="data" /></c:if>
 	<mcrdd:setnamespace prefix="xlink" uri="http://www.w3.org/1999/xlink" />
@@ -61,9 +61,9 @@
 									<i class="far fa-file docdetails-tabbar-icon"></i>
 									<fmt:message key="Webpage.docdetails.tabs.${current}"/></a>
 							</li>
-						</x:if>		
+						</x:if>
 					</c:if>
-				</c:forTokens>				
+				</c:forTokens>
 			</ul>
 			<div class="docdetails-tabbar-info" style="position:absolute; top:5px; right:15px">
 					<fmt:message key="${msgKeyStatus}" />
@@ -295,15 +295,21 @@
 		 		<c:set var="profession"><x:out select="$current/profession" escapeXml="false"/></c:set>
 		 		<c:set var="url"><x:out select="$current/name/@id" escapeXml="false"/></c:set>
 
+               
 				<c:choose>
+        
 				  <c:when test="${fn:length(url) <= 1}">
+                    <c:set var="output" value="" />
 					<c:if test="${fn:length(name) gt 1}">
-					  <c:out value="${name}" escapeXml="false" />
-					  <c:if test="${fn:length(profession) gt 1}">,&#160;</c:if>
+					  <c:set var="output" value="${name}" />
+					  <c:if test="${fn:length(profession) gt 1}">
+                          <c:set var="output" value="${output},&#160;" />
+                      </c:if>
 				    </c:if>
 				    <c:if test="${fn:length(profession) gt 1}">
-					  <c:out value="${profession}" escapeXml="false" />
+					  <c:set var="output" value="${output}${profession}" /> 
 				    </c:if>
+                    <c:out value="${output}" escapeXml="false" />
 				  </c:when>
 				    
 				   <c:when test="${fn:startsWith(param.id, 'cpb_')}">
@@ -313,24 +319,32 @@
 						</jsp:attribute>
 						<jsp:attribute name="target">_blank</jsp:attribute>
 						<jsp:body>
-				         <c:if test="${fn:length(name) gt 1}">
-					       <c:out value="${name}" escapeXml="false" />
-					       <c:if test="${fn:length(profession) gt 1}">,&#160;</c:if>
-				         </c:if>
-				         <c:if test="${fn:length(profession) gt 1}">
-					        <c:out value="${profession}" escapeXml="false" />
-				         </c:if>
-				       </jsp:body>	
+				          <c:set var="output" value="" />
+					      <c:if test="${fn:length(name) gt 1}">
+					        <c:set var="output" value="${name}" />
+					        <c:if test="${fn:length(profession) gt 1}">
+                              <c:set var="output" value="${output},&#160;" />
+                            </c:if>
+				          </c:if>
+				          <c:if test="${fn:length(profession) gt 1}">
+					        <c:set var="output" value="${output}${profession}" /> 
+				          </c:if>
+                          <c:out value="${output}" escapeXml="false" />
+				        </jsp:body>	
 					</jsp:element>
 				   </c:when>
 				   <c:otherwise>
-				    <c:if test="${fn:length(name) gt 1}">
-					  <c:out value="${name}" escapeXml="false" />
-					  <c:if test="${fn:length(profession) gt 1}">,&#160;</c:if>
+				    <c:set var="output" value="" />
+					<c:if test="${fn:length(name) gt 1}">
+					  <c:set var="output" value="${name}" />
+					  <c:if test="${fn:length(profession) gt 1}">
+                          <c:set var="output" value="${output},&#160;" />
+                      </c:if>
 				    </c:if>
 				    <c:if test="${fn:length(profession) gt 1}">
-					  <c:out value="${profession}" escapeXml="false" />
+					  <c:set var="output" value="${output}${profession}" /> 
 				    </c:if>
+                    <c:out value="${output}" escapeXml="false" />
 					<jsp:element name="a">	
 						<jsp:attribute name="href">
 							<c:out value="${url}" />
