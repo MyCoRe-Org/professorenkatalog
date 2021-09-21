@@ -539,6 +539,7 @@
     				</mcrdd:outputitem>
    			</x:if>                                             			   		 
    		</mcrdd:row>
+        <x:if select="not(starts-with($mcrobj/mycoreobject/@ID,'cpb_'))">   
    		<mcrdd:row select="/mycoreobject/metadata/box.epoch/epoch" 
    		           labelkey="OMD.profkat.classification" showInfo="true"  colWidths="8em">
    		    <mcrdd:outputitem select="." var="current">
@@ -554,7 +555,8 @@
    					<mcr:displayClassificationCategory categid="${categid}" classid="${classid}" lang="de"/>
    				</x:if>
    		   </mcrdd:outputitem>
-   		</mcrdd:row> 	
+   		</mcrdd:row>
+        </x:if> 	
 	</c:if> 	
   	
 	<c:if test="${(tab eq 'article') or (param.print eq 'true')}">
