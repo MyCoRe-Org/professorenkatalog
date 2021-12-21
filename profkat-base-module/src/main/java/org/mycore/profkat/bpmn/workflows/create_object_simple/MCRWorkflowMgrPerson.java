@@ -1,4 +1,4 @@
-package org.mycore.activiti.workflows.create_object_simple.person;
+package org.mycore.profkat.bpmn.workflows.create_object_simple;
 
 import java.io.IOException;
 import java.nio.file.Path;
