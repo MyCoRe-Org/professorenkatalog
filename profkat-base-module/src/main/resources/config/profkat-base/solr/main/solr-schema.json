@@ -286,5 +286,11 @@
 		"type": "string",
 		"multiValued": false,
 		"stored": true
-	}}
+	}},
+	{"add-field": {
+	   	"name":"gnd_uri",
+       	"type":"string",
+       	"multiValued":false,
+      	"stored":true
+    }}
  ]
