@@ -6,7 +6,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="mcr" uri="http://www.mycore.org/jspdocportal/base.tld" %>
 <%@ taglib prefix="mcrdd" uri="http://www.mycore.org/jspdocportal/docdetails.tld" %>
-<%@ taglib prefix="stripes" uri="http://stripes.sourceforge.net/stripes.tld" %>
 
 <%@ taglib prefix="search" tagdir="/WEB-INF/tags/search"%>
 
@@ -14,7 +13,7 @@
 	<c:set var="mcrid">
    		<c:choose>
       		<c:when test="${!empty requestScope.id}">${requestScope.id}</c:when>
-      		<c:otherwise>${param.id}</c:otherwise>
+      		<c:otherwise>${it.id}</c:otherwise>
    		</c:choose>
 	</c:set>
 	<c:set var="from"  value="${param.fromWF}" /> 
@@ -47,22 +46,29 @@
 	<c:if test="${not empty param.print}"><c:set var="layout_name">1column</c:set></c:if>
 
  <c:set var="pageTitle">${prof_name}</c:set>
-<stripes:layout-render name="../WEB-INF/layout/default.jsp" pageTitle="${pageTitle}" layout="${layout_name}">
-	<stripes:layout-component name="html_head">
+ <mcr:retrieveObject mcrid="${mcrid}" varDOM="mcrobj" cache="true" fromWorkflow="false" />
+ 
+ 
+<!doctype html>
+<html>
+<head>
+  <%@ include file="fragments/html_head.jspf" %>
+  <%--ggf. Metatags ergänzen <mcr:transformXSL dom="${doc}" xslt="xsl/docdetails/metatags_html.xsl" /> --%>
 	    <!-- View: docdetails-profkat.jsp -->
-	    <mcr:retrieveObject mcrid="${mcrid}" varDOM="mcrobj" cache="true" fromWorkflow="false" />
+	    
 		<c:set var="description">
-			<mcr:transformXSL xml="${mcrobj}" xslt="xsl/docdetails/person2html_header_description.xsl" />
+			<mcr:transformXSL dom="${mcrobj}" xslt="xsl/docdetails/person2html_header_description.xsl" />
       	</c:set>
     	<meta name="description" lang="de" content="${fn:trim(description)}" />
 		<link rel="canonical" href="${WebApplicationBaseURL}resolve/id/${mcrid}" />
 		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_docdetails_headlines.css" />
 		<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_biogr_article.css" />		
- 	</stripes:layout-component>
 
-
-	<stripes:layout-component name="main_part">
-	<div class="docdetails">
+</head>
+<body>
+  <%@ include file="fragments/header.jspf" %>
+  <div id="docdetails" class="container">
+      
      <div class="row">
         <div id="docdetails-main" class="col">
 		<mcr:debugInfo />
@@ -103,7 +109,7 @@
 		     <c:if test="${empty param.print}">
 					<div class="row mb-3">
 					<div class="col">
-     					<c:set var="url">${WebApplicationBaseURL}resolve/id/${param.id}</c:set>
+     					<c:set var="url">${WebApplicationBaseURL}resolve/id/${it.id}</c:set>
 		   				<a class="btn btn-outline-secondary btn-sm w-100" style="text-align:left;" target="_blank" title="<fmt:message key="Webpage.feedback" />"
 		   		   		   href="${WebApplicationBaseURL}feedback.action?topicURL=<%=java.net.URLEncoder.encode(pageContext.getAttribute("url").toString(), "UTF-8")%>&amp;topicHeader=<%=java.net.URLEncoder.encode(pageContext.getAttribute("prof_name").toString().replaceAll("\\s+"," "), "UTF-8")%>">
 	    					<i class="far fa-comments"></i> <fmt:message key="Webpage.feedback.button"/>
@@ -112,11 +118,11 @@
 	         		</div>
 	         		<div class="row mb-3">
 	         		<div class="col">
-	         				<a class="btn btn-outline-secondary btn-sm hidden-sm hidden-xs" style="text-align:left;margin-right:6px" href="${WebApplicationBaseURL}content/print_details_profkat.jsp?id=${param.id}&amp;print=true&amp;fromWF=${param.fromWF}" target="_blank" title="<fmt:message key="WF.common.printdetails" />">
+	         				<a class="btn btn-outline-secondary btn-sm hidden-sm hidden-xs" style="text-align:left;margin-right:6px" href="${WebApplicationBaseURL}content/print_details_profkat.jsp?id=${it.id}&amp;print=true&amp;fromWF=${param.fromWF}" target="_blank" title="<fmt:message key="WF.common.printdetails" />">
 	       						<i class="fas fa-print"></i> <fmt:message key="Webpage.print.button"/>
 	       					</a>
 	       				<c:if test="${(not from)}" >
-	       						<search:show-edit-button mcrid="${mcrid}" cssClass="btn btn-sm btn-primary ir-edit-btn col-xs-3" />  
+                                <mcr:showEditMenu mcrid="${mcrid}" cssClass="text-right pb-3" /> 
    						</c:if>
    			
 		    	   		<button type="button" class="btn btn-default btn-sm float-right hidden-sm hidden-xs" style="border:none;color:#DEDEDE;" 
@@ -157,5 +163,6 @@
         </div>
       </div>
       </div>
-	</stripes:layout-component>
-</stripes:layout-render>
+<%@ include file="fragments/footer.jspf" %>
+</body>
+</html>

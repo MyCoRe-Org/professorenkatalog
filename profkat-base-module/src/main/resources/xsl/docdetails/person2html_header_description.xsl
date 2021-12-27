@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:xalan="http://xml.apache.org/xalan"
-  xmlns:encoder="xalan://java.net.URLEncoder"
-  xmlns:i18n="xalan://org.mycore.services.i18n.MCRTranslation"
-  exclude-result-prefixes="xsl xalan i18n">
+<xsl:stylesheet version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:mcri18n="http://www.mycore.de/xslt/i18n"
+  exclude-result-prefixes="xsl mcri18n">
 	<xsl:output method="text" encoding="UTF-8" />
+  
+    <xsl:import href="resource:xsl/functions/i18n.xsl" />
+  
 	<xsl:template match="metadata">
 		<xsl:variable name="output">
 		<xsl:value-of select="box.academictitle/academictitle" /> 
@@ -51,7 +52,8 @@
     / zuletzt als
     <xsl:value-of select="box.professorship/professorship[last()]/event" />
     <xsl:variable name="status_out">OMD.profkat.state.<xsl:value-of select="box.status/status" /></xsl:variable>
-    [<xsl:value-of select="i18n:translate($status_out)" />]
+    [<xsl:value-of select="mcri18n:translate($status_out)" />]
+    
     </xsl:variable>
     	<xsl:value-of select="normalize-space($output)" />
 	</xsl:template>

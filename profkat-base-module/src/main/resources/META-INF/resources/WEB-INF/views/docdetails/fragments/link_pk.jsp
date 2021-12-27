@@ -1,4 +1,4 @@
-<%@page import="org.mycore.common.config.MCRConfiguration"%>
+<%@page import="org.mycore.common.config.MCRConfiguration2"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/xml" prefix="x"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -8,7 +8,7 @@
 <%-- JSP-Parameter: href, title, mcrid --%>
 
 <%
-	pageContext.setAttribute("wbisIPMap", MCRConfiguration.instance().getPropertiesMap("MCR.profkat.WBIS.user-ip."));
+	pageContext.setAttribute("wbisIPMap", MCRConfiguration2.getSubPropertiesMap("MCR.profkat.WBIS.user-ip."));
 %>
 
 <c:set var="WebApplicationBaseURL" value="${applicationScope.WebApplicationBaseURL}" />
