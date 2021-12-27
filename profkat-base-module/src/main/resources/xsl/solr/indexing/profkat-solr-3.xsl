@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:mods="http://www.loc.gov/mods/v3"
-  xmlns:mcrxml="xalan://org.mycore.common.xml.MCRXMLFunctions"
-  xmlns:mcrjsp="xalan://org.mycore.frontend.jsp.MCRJSPUtils"
-  xmlns:xlink="http://www.w3.org/1999/xlink" exclude-result-prefixes="mods xlink">
-  <xsl:import href="xslImport:solr-document:solr/profkat-solr.xsl" />
-
+<xsl:stylesheet version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:fn="http://www.w3.org/2005/xpath-functions"
+  xmlns:xlink="http://www.w3.org/1999/xlink" 
+  exclude-result-prefixes="fn xlink">
+  <xsl:import href="xslImport:solr-document-3:solr/indexing/profkat-solr-3.xsl" />
+  
   <xsl:param name="WebApplicationBaseURL" />
   <xsl:template match="mycoreobject">
     <xsl:apply-imports />
@@ -36,24 +36,24 @@
 
   <xsl:template match="metadata">
     <xsl:apply-imports/>
-    <xsl:variable name="headline" select="concat(box.surname/surname,', ', box.firstname/firstname[1])" />
+    <xsl:variable name="headline" select="concat(box.surname/surname[1],', ', box.firstname/firstname[1])" />
     <xsl:variable name="affix">
       <xsl:if test="box.nameaffix/nameaffix">
         <xsl:value-of select="concat(' (',box.nameaffix/nameaffix,')')" />
       </xsl:if>
     </xsl:variable>
     <field name="profkat.idx_profname.headline">
-    	<xsl:value-of select="normalize-space(concat($headline,$affix))" />
+      <xsl:value-of select="normalize-space(concat($headline,$affix))" />
     </field>
     <field name="profkat.idx_profname.facet">
-    	<!--  There is no replace in XSLT 1.0 !!! -->
-    	<xsl:variable name="headline_normiert" select="mcrjsp:normalizeUmlauts($headline)" />
+      <!-- eventuel in stringutils.xsl verschieben -->	
+      <xsl:variable name="headline_normiert" select="fn:replace(fn:replace(fn:replace(fn:replace(fn:replace(fn:replace(fn:replace(fn:replace($headline, 'ä', 'ae'), 'Ä', 'AE'), 'ö', 'oe'), 'Ö', 'OE'), 'ü', 'ue'), 'Ü', 'UE'), 'ß', 'ss'), 'ẞ', 'SS')" />
     	<xsl:choose>
-    		<xsl:when test="starts-with($headline_normiert, 'Sch')"><xsl:value-of select="substring($headline_normiert,1,4)" /></xsl:when>
-    		<xsl:when test="starts-with($headline_normiert, 'St')"><xsl:value-of select="substring($headline_normiert,1,3)" /></xsl:when>
-    		<xsl:otherwise>
-              <xsl:value-of select="concat(translate(substring($headline_normiert,1,1),'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVXYZ'),substring($headline_normiert,2,1))" />
-            </xsl:otherwise>
+    	  <xsl:when test="starts-with($headline_normiert, 'Sch')"><xsl:value-of select="substring($headline_normiert,1,4)" /></xsl:when>
+    	  <xsl:when test="starts-with($headline_normiert, 'St')"><xsl:value-of select="substring($headline_normiert,1,3)" /></xsl:when>
+    	  <xsl:otherwise>
+            <xsl:value-of select="concat(translate(substring($headline_normiert,1,1),'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVXYZ'),substring($headline_normiert,2,1))" />
+          </xsl:otherwise>
     	</xsl:choose>
     </field>
   <xsl:if test="not(box.epoch/epoch[@categid='cpr.1945-1989']) and not(box.epoch/epoch[@categid='cpr.1989-heute'])">
