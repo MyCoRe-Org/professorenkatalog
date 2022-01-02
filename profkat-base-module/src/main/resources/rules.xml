@@ -1,0 +1,102 @@
+<or>
+  <!-- Administratoren dürfen alles -->
+  <and>
+    <role>admin</role>
+  </and>
+  <!-- Die METADATEN im Status "published" darf JEDER LESEN -->
+  <and>
+    <action>read</action>
+    <target>metadata</target>
+    <status>published</status>
+  </and>
+  <!-- Die METADATEN im Status "published" darf JEDER 'Previewen' (Berechtigung für Vorschaubilder) -->
+  <and>
+    <action>preview</action>
+    <target>metadata</target>
+    <status>published</status>
+  </and>
+  <!-- Die METADATEN im Status "new" | "review" | "..." dürfen "editoren" LESEN -->
+  <and>
+    <action>read</action>
+    <target>metadata</target>
+    <role>edit</role>
+  </and>
+  <!-- Die DERIVATE im Status "published" darf jeder LESEN -->
+  <and>
+    <action>read</action>
+    <target>files</target>
+    <status>published</status>
+  </and>
+  <!-- allgemeine EDIT-RULE - TODO: Granularer machen!!! -->
+  <and>
+    <or>
+      <action>read</action>
+      <action>write</action>
+      <action>delete</action>
+    </or>
+    <role>edit</role>
+  </and>
+
+  <!-- ==================================================================================================== -->
+  <!-- Workflow -->
+  <and>
+    <action>create-person</action>
+    <or>
+      <role>admingroup</role>
+      <role>restapi</role>
+      <role>wf_edit_person</role>
+    </or>
+  </and>
+  <and>
+    <or>
+      <action>edit</action>
+    </or>
+    <or>
+      <role>admingroup</role>
+      <role>edit</role>
+      <role>restapi</role>
+    </or>
+  </and>
+
+  <and>
+    <action>administrate-webcontent</action>
+    <or>
+      <role>admingroup</role>
+      <role>adminwebcontent</role>
+    </or>
+  </and>
+
+  <!-- REST-API -->
+  <and>
+    <action>read</action>
+    <id>restapi:/</id>
+  </and>
+  <!-- Es muss zusätzlich Regeln für jeden REST-API Pfad geben
+       /objects /classifications /... -->
+  <and>
+    <action>read</action>
+    <regex>restapi:/.+</regex>
+  </and>
+
+ <!-- 
+  <and>
+    <action>write</action>
+    <or>
+      <id>restapi:/</id>
+      <id>restapi:/objects</id>
+    </or>
+    <or>
+      <ip></ip> <!- localhost ->
+      <ip>139.30.48.0/255.255.255.0</ip>
+    </or>
+    <role>restapi</role>
+  </and>
+ -->
+  
+  <!-- Role für SOLR - Prüfen auf Startseite "latest_docs" -->
+  <and>
+    <target>solr</target>
+    <action>read</action>
+    <id>solr:/select</id>
+  </and>
+</or>
