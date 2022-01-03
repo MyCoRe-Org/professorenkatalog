@@ -44,7 +44,7 @@
     <or>
       <role>admingroup</role>
       <role>restapi</role>
-      <role>wf_edit_person</role>
+      <role>wf_edit_profkat-person</role>
     </or>
   </and>
   <and>
