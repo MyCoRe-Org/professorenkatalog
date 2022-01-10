@@ -15,8 +15,83 @@
   <xsl:param name="WebApplicationBaseURL"></xsl:param>
 
   <xsl:template match="/mycoreobject">
-  
-  
+    <div class="row">
+      <div id="docdetails-header" class="col">
+        <xsl:variable name="last" select="./metadata/box.surname/surname" />
+        <xsl:variable name="first" select="./metadata/box.firstname/firstname[1]" />
+        <xsl:variable name="affix" select="./metadata/box.nameaffix/nameaffix" />
+        <xsl:variable name="akadtitle" select="./metadata/box.academictitle/academictitle" />
+        
+        <h2>
+          {$last},&#160;{$first}
+          <xsl:if test="fn:string-length(affix)>1">({$affix})</xsl:if>
+        </h2>
+        <div id="docdetails-academictitle" class="docdetails-block">
+          {if (fn:string-length($akadtitle)>2) then $akadtitle else '&#160;'}
+        </div>
+     
+        <xsl:call-template name="dd_block">
+          <xsl:with-param name="key" select="'professorships'"/>
+          <xsl:with-param name="showInfo" select="false()"/>
+          <xsl:with-param name="css_class" select="'col2 font-weight-bold w-100'"/>
+          <xsl:with-param name="items">
+            <xsl:for-each select="/mycoreobject/metadata/box.professorship/professorship">
+              <tr>
+                <td>{./text[@xml:lang='de']}</td>
+                <td>{./event}</td>
+                <td class="profkat-prev-next">
+                  <div style="text-align: right; white-space: nowrap; font-size:80%;">
+                   <!-- TODO Trennzeichen bei mehreren Vorgängern / Nachfolgern prüfen alter Code: delims=":;|" -->
+                    <xsl:for-each select="tokenize(./text[@xml:lang='x-predec']/text(),'\|')">
+                      <xsl:if test="contains(., '_person_')">
+                        <xsl:variable name="linked" select="document(concat('mcrobject:',.))" />
+                        <xsl:if test="$linked">
+                            <xsl:variable name="doctitle">
+                              {mcri18n:translate('OMD.profkat.hint.predec')}:
+                              {$linked/mycoreobject/metadata/box.surname/surname[1]},&#160;
+                              {$linked/mycoreobject/metadata/box.firstname/firstname[1]}
+                              {if(string-length($linked/mycoreobject/metadata/box.nameaffix/nameaffix)>1) 
+                                 then ($linked/mycoreobject/metadata/box.nameaffix/nameaffix[1])
+                                 else ()}
+                            </xsl:variable>
+                            <a href="{$WebApplicationBaseURL}resolve/id/{.}" style="color:grey;margin-left:6px">
+                               <i class="fas fa-backward" title="{normalize-space($doctitle)}"></i>
+                             </a>
+                        </xsl:if>
+                      </xsl:if>
+                   </xsl:for-each>
+
+                  <xsl:for-each select="tokenize(./text[@xml:lang='x-succ']/text(),'\|')">
+                    <xsl:if test="contains(., '_person_')">
+                      <xsl:variable name="linked" select="document(concat('mcrobject:',.))" />
+                      <xsl:if test="$linked">
+                        <xsl:variable name="doctitle">
+                          {mcri18n:translate('OMD.profkat.hint.succ')}:
+                          {$linked/mycoreobject/metadata/box.surname/surname[1]},&#160;
+                          {$linked/mycoreobject/metadata/box.firstname/firstname[1]}
+                          {if(string-length($linked/mycoreobject/metadata/box.nameaffix/nameaffix)>1) 
+                           then ($linked/mycoreobject/metadata/box.nameaffix/nameaffix[1])
+                           else ()}
+                        </xsl:variable>
+                        <a href="{$WebApplicationBaseURL}resolve/id/{.}" style="color:grey;margin-left:6px">
+                          <i class="fas fa-forward" title="{normalize-space($doctitle)}"></i>
+                        </a>
+                      </xsl:if>
+                    </xsl:if>
+                  </xsl:for-each>
+                </div>
+              </td>
+            </tr>
+          </xsl:for-each>
+        </xsl:with-param>
+        </xsl:call-template>
+        <xsl:if test="/mycoreobject/metadata/box.professorship/professorship/text[@xml:lang='x-succ' or @xml:lang='x-predec']">
+          <div class="pk-docdetails-hint docdetails-label text-right text-nowrap">
+            {mcri18n:translate('OMD.profkat.professorships.predec_succ')}
+          </div>
+        </xsl:if> 
+      </div>
+    </div>
   </xsl:template>
 
 </xsl:stylesheet>

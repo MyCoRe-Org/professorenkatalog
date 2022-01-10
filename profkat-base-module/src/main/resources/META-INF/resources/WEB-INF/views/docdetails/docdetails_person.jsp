@@ -16,10 +16,10 @@
 	<c:if test="${empty tab}"><c:set var="tab" value="data" /></c:if>
 	<mcrdd:setnamespace prefix="xlink" uri="http://www.w3.org/1999/xlink" />
 	<mcr:retrieveObject mcrid="${param.id}" varDOM="mcrobj" cache="true" fromWorkflow="${param.fromWF}" />
-	
+    
     <mcr:transformXSL dom="${mcrobj}" xslt="xsl/profkat/docdetails/header.xsl" />
 	
-	<c:if test="${not(param.print eq 'true')}">
+    <c:if test="${not(param.print eq 'true')}">
 		<c:if test="${param.fromWF eq 'true'}">
 				<div class="alert alert-info" style="margin-top:20px" role="alert">
 					<h4 style="margin:5px 0px">
@@ -73,7 +73,7 @@
 		</div>
 	</c:if>
 	<%--Tab bar (end) --%>
-
+  
   
    <c:if test="${(tab eq 'data') or (param.print eq 'true')}">
      <mcr:transformXSL dom="${mcrobj}" xslt="xsl/profkat/docdetails/metadata.xsl" />
@@ -81,90 +81,7 @@
 
 <mcrdd:docdetails mcrID="${param.id}" lang="de" fromWorkflow="${param.fromWF}" var="doc" outputStyle="headlines"> 
 	<mcrdd:setnamespace prefix="xlink" uri="http://www.w3.org/1999/xlink" />
-	<mcrdd:header>
-	    <mcrdd:item select="/mycoreobject/metadata/box.surname/surname" var="last"/>
-        <mcrdd:item select="/mycoreobject/metadata/box.firstname/firstname" var="first" />
-        <mcrdd:item select="/mycoreobject/metadata/box.nameaffix/nameaffix" var="affix" />
-        <mcrdd:item select="/mycoreobject/metadata/box.academictitle/academictitle" var="akadtitle" />
-		<mcrdd:item select="/mycoreobject/metadata/box.state/state" labelkeyPrefix="OMD.profkat.state." var="status"/>
-		<c:set var="doctitle">${last},&#160;${first}</c:set>
-		
-        <div>
-			<h2>
-				<c:out value="${doctitle}" escapeXml="false" />
-        		<c:if test="${fn:length(affix)>2}">(${affix})</c:if>
-       		</h2>
-       	</div>
-       	<div class="docdetails-value pk-docdetails-academictitle">${fn:length(akadtitle)>2 ? akadtitle : '&nbsp;'}</div>
-    </mcrdd:header>
-
-    <c:set var="proflabelkey" value="" />
-    <c:set var="profshowinfo" value="false" />
-    <x:if select="$mcrobj/mycoreobject/metadata/box.type/type[@categid='ro_professor']">
-    	<c:set var="proflabelkey" value="OMD.profkat.professorships" />
-    	<c:set var="profshowinfo" value="true" />
-    </x:if>
-    
-    <mcrdd:row select="/mycoreobject/metadata/box.professorship/professorship" labelkey="${proflabelkey}" showInfo="${profshowinfo}" colWidths="8em">
-		<mcrdd:item select="./text" styleName="docdetails-value-bold" />              
-    	<mcrdd:item select="./event" styleName="docdetails-value-bold" />
-    	<%-- scheint lokal nicht zu funktionieren, läuft aber auf dem Server --%>
-    	<mcrdd:outputitem select="." var="this" styleName="docdetails-value profkat-prev-next">
-			  <div style="text-align: right; white-space: nowrap; font-size:80%;">
-    		   	<c:set var="linkids" scope="request"><x:out select="$this/text[@xml:lang='x-predec']/text()" /></c:set>
-    			<c:forTokens items="${linkids}" delims=":;|" var="currentID" varStatus="status">
-	  				<c:if test="${fn:contains(currentID, '_person_')}">
-	  				    <mcr:retrieveObject mcrid="${currentID}" varDOM="linked" cache="true" fromWorkflow="false" />
-						<c:set var="doctitle"><fmt:message key="OMD.profkat.hint.predec"/></c:set>
-   						<c:if test="${not empty linked}">
-   							<c:set var="doctitle">${doctitle}:&#160;</c:set>
-   							<c:set var="doctitle">${doctitle}<x:out select="$linked/mycoreobject/metadata/box.surname/surname" />,&#160;</c:set>
-         					<c:set var="doctitle">${doctitle}<x:out select="$linked/mycoreobject/metadata/box.firstname/firstname" /></c:set>
-							<c:set var="affix"><x:out select="$linked/mycoreobject/metadata/box.nameaffix/nameaffix" /></c:set>
-							<c:if test="${fn:length(affix)>2}"><c:set var="doctitle">${doctitle}&#160;(<c:out value="${affix}" />)</c:set></c:if>
-				   		</c:if>
-				   		<a href="${WebApplicationBaseURL}resolve/id/${currentID}" style="color:grey;margin-left:6px">
-							<i class="fas fa-backward" title="${doctitle}"></i>
-					   	</a>
-				   	</c:if>
-				</c:forTokens>
-    		</div>
-		</mcrdd:outputitem>
-    	<mcrdd:outputitem select="." var="this" styleName="docdetails-value profkat-prev-next">
-    		<div style="text-align: right; white-space: nowrap; font-size:80%;">
-    		   	<c:set var="linkids" scope="request"><x:out select="$this/text[@xml:lang='x-succ']/text()" /></c:set>
-    			<c:forTokens items="${linkids}" delims=":;|" var="currentID" varStatus="status">
-	  				<c:if test="${fn:contains(currentID, '_person_')}">
-	  	    			<mcr:retrieveObject mcrid="${currentID}" varDOM="linked" cache="true" fromWorkflow="false" />
-	  					<c:set var="doctitle"><fmt:message key="OMD.profkat.hint.succ"/></c:set>
-   						<c:if test="${not empty linked}">
-   							<c:set var="doctitle">${doctitle}:&#160;</c:set>
-   							<c:set var="doctitle">${doctitle}<x:out select="$linked/mycoreobject/metadata/box.surname/surname" />,&#160;</c:set>
-         					<c:set var="doctitle">${doctitle}<x:out select="$linked/mycoreobject/metadata/box.firstname/firstname" /></c:set>
-							<c:set var="affix"><x:out select="$linked/mycoreobject/metadata/box.nameaffix/nameaffix" /></c:set>
-							<c:if test="${fn:length(affix)>2}"><c:set var="doctitle">${doctitle}&#160;(<c:out value="${affix}" />)</c:set></c:if>
-				   		</c:if>
-				   		<a href="${WebApplicationBaseURL}resolve/id/${currentID}" style="color:grey;margin-left:6px">
-							<i class="fas fa-forward" title="${doctitle}"></i>
-					   	</a>
-				   	</c:if>
-				</c:forTokens>
-    		</div>
-    	</mcrdd:outputitem>
-   	</mcrdd:row>
-   	<%--Wunsch aus Braunschweig --%>
-   	<x:if select="$mcrobj/mycoreobject/metadata/box.professorship/professorship/text[@xml:lang='x-predec' or @xml:lang='x-succ']">
-   		<div class="pk-docdetails-hint docdetails-label text-right text-nowrap">
-   			<fmt:message key="OMD.profkat.professorships.predec_succ"/>
-   		</div>
-   	</x:if>
-     
-     <mcrdd:separator showLine="true" />
-     <mcrdd:separator showLine="true" />
-     <mcrdd:separator showLine="true" />
-     <mcrdd:separator showLine="true" />
-     
-   	 
+	 
    	 <c:if test="${(tab eq 'data') or (param.print eq 'true')}">
  		<mcrdd:row select="/mycoreobject/metadata/box.faculty/faculty" labelkey="OMD.profkat.faculties" showInfo="true" colWidths="8em">
 	  		<mcrdd:item select="./text" />              
@@ -209,6 +126,7 @@
     	</mcrdd:row>
     
     	<mcrdd:separator showLine="true" />
+      
    	    <x:if select="not(starts-with($mcrobj/mycoreobject/@ID,'cpb_'))">   
    		<mcrdd:row select="/mycoreobject/metadata/box.email/email" labelkey="OMD.profkat.emails" showInfo="false" >
    			<mcrdd:outputitem select="." var="current">

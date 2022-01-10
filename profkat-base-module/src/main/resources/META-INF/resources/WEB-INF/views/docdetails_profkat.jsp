@@ -70,7 +70,7 @@
   <div id="docdetails" class="container">
       
      <div class="row">
-        <div id="docdetails-main" class="col">
+        <div id="docdetails-main" class="col docdetails">
 		<mcr:debugInfo />
 		<jsp:include page="docdetails/docdetails_person.jsp">
    			<jsp:param name="id" value="${mcrid}" />
