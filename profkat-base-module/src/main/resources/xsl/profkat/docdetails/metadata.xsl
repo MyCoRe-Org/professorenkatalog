@@ -12,6 +12,7 @@
   <xsl:import href="resource:xsl/functions/i18n.xsl" />
   <xsl:import href="resource:xsl/functions/classification.xsl" />
   <xsl:import href="resource:xsl/docdetails/docdetails.xsl" />
+  <xsl:import href="resource:xsl/profkat/docdetails/profkat_util.xsl" />
   
   <xsl:output method="html" indent="yes" standalone="no" encoding="UTF-8"/>
 
@@ -73,7 +74,7 @@
         <xsl:if test="./metadata/box.fieldofstudy">
           <xsl:call-template name="dd_block">
             <xsl:with-param name="key" select="'fieldofstudy'"/>
-            <xsl:with-param name="labelkey" select="'OMD.profkat.fieldofstudy'"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.fieldofstudies'"/>
             <xsl:with-param name="items">
               <xsl:for-each select="/mycoreobject/metadata/box.fieldofstudy/fieldofstudy">
                 <tr>
