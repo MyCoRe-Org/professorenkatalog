@@ -99,9 +99,50 @@
          </xsl:call-template>
        </xsl:if>
        
-       <xsl:call-template name="dd_separator" />
+      <xsl:call-template name="dd_separator" />
        
-        
+      <xsl:if test="./metadata/box.email/email and not(project='cpb')">
+       <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'emails'"/>
+            <xsl:with-param name="showInfo" select="false()"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.emails'"/>
+            <xsl:with-param name="items">
+            <xsl:for-each select="/mycoreobject/metadata/box.email/email">
+               <tr>
+                 <td>
+                   <xsl:variable name="email" select="." />
+                   <span style="direction: rtl; unicode-bidi: bidi-override;text-align: left;">
+                      {codepoints-to-string(reverse(string-to-codepoints(replace($email, '@', ')at('))))}
+                   </span>
+                 </td>
+               </tr>
+             </xsl:for-each> 
+           </xsl:with-param>
+         </xsl:call-template>
+      </xsl:if>
+     
+        <xsl:if test="./metadata/box.homepage/homepage">
+          <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'homepage'"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.homepages'"/>
+            <xsl:with-param name="items">
+              <xsl:for-each select="/mycoreobject/metadata/box.homepage/homepage">
+                <tr>
+                  <td>
+                    <xsl:call-template name="pk_link">
+                      <xsl:with-param name="href" select="./@xlink:href" />
+                      <xsl:with-param name="title" select="./@xlink:title" />
+                      <xsl:with-param name="project" select="$project"  />
+                    </xsl:call-template>
+                  </td>
+                </tr>
+              </xsl:for-each> 
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>     
+     
+        <xsl:call-template name="dd_separator" />  
+       
       </div>
     </div>
        

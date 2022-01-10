@@ -83,32 +83,6 @@
 	<mcrdd:setnamespace prefix="xlink" uri="http://www.w3.org/1999/xlink" />
 	 
    	 <c:if test="${(tab eq 'data') or (param.print eq 'true')}">
-      
-   	    <x:if select="not(starts-with($mcrobj/mycoreobject/@ID,'cpb_'))">   
-   		<mcrdd:row select="/mycoreobject/metadata/box.email/email" labelkey="OMD.profkat.emails" showInfo="false" >
-   			<mcrdd:outputitem select="." var="current">
-   				<c:set var="email"><x:out select="$current/text()" /></c:set>
-   				<jsp:include page="fragments/email_pk.jsp">
-   					<jsp:param name="email" value="${email}" />
-   				</jsp:include>
-   			</mcrdd:outputitem>   
-   		</mcrdd:row>
-   		</x:if>
-    
-   		<mcrdd:row select="/mycoreobject/metadata/box.homepage/homepage" labelkey="OMD.profkat.homepages" showInfo="true" >
-   			<mcrdd:outputitem select="." var="current">
-   				<c:set var="href"><x:out select="string($current/@*[local-name()='href' and namespace-uri()='http://www.w3.org/1999/xlink'])" escapeXml="false" /></c:set>
-   				<c:set var="title"><x:out select="string($current/@*[local-name()='title' and namespace-uri()='http://www.w3.org/1999/xlink'])" /></c:set>
-   				<jsp:include page="fragments/link_pk.jsp">
-   					<jsp:param name="href" value="${href}" />
-   					<jsp:param name="title" value="${title}" />
-   					<jsp:param name="mcrid" value="${param.id}" />
-   				</jsp:include>
-   			</mcrdd:outputitem> 
-   		</mcrdd:row>    
-    
-    	<mcrdd:separator showLine="true"/>    
-    	
         <mcrdd:row select="/mycoreobject/metadata/box.surname/surname[position()>1] | /mycoreobject/metadata/box.variantname/variantname" labelkey="OMD.profkat.variantnames" showInfo="true" >
    			<mcrdd:item select="." />  
    		</mcrdd:row> 
