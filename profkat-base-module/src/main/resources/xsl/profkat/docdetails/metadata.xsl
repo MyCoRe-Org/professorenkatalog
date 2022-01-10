@@ -141,8 +141,157 @@
           </xsl:call-template>
         </xsl:if>     
      
-        <xsl:call-template name="dd_separator" />  
+        <xsl:call-template name="dd_separator" />
+        
+        <xsl:if test="./metadata/box.surname/surname[position()>1] | ./metadata/box.variantname/variantname">
+          <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'variantnames'"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.variantnames'"/>
+            <xsl:with-param name="items">
+              <xsl:for-each select="/mycoreobject/metadata/box.surname/surname[position()>1] | /mycoreobject/metadata/box.variantname/variantname">
+                <tr>
+                  <td>{.}</td>
+                </tr>
+              </xsl:for-each> 
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>  
        
+        <xsl:if test="./metadata/box.firstname/firstname[position()>1]">
+          <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'variantnames'"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.firstnames'"/>
+            <xsl:with-param name="showInfo" select="false()"/>
+            <xsl:with-param name="items">
+              <xsl:for-each select="./metadata/box.firstname/firstname[position()>1]">
+                <tr>
+                  <td>{.}</td>
+                </tr>
+              </xsl:for-each> 
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+        
+       <xsl:if test="./metadata/box.birth/birth|/mycoreobject/metadata/box.death/death">
+          <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'birth_death'"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.lifetimes'"/>
+            <xsl:with-param name="items">
+              <xsl:for-each select="(./metadata/box.birth/birth|./metadata/box.death/death)[1]">
+                <xsl:variable name="birth_type" select="local-name(./../../box.birth/birth)" />
+                <xsl:variable name="birth_place" select="string(./../../box.birth/birth/event)" />
+                <xsl:variable name="birth_date" select="string(./../../box.birth/birth/text)" />
+                <xsl:variable name="death_type" select="local-name(./../../box.death/death)" />
+                <xsl:variable name="death_place" select="string(./../../box.death/death/event)" />
+                <xsl:variable name="death_date" select="string(./../../box.death/death/text)" />
+                <xsl:if test="$birth_type">
+                  <tr>
+                    <td>{mcri18n:translate('OMD.common.born')}
+                      <xsl:if test="$birth_date and not($birth_date = '#')">
+                        <xsl:if test="contains($birth_date, '.')">
+                          {mcri18n:translate('OMD.common.at')}
+                        </xsl:if>  
+                        {$birth_date}
+                      </xsl:if>
+                      <xsl:if test="$birth_place and not($birth_place = '#')">
+                        {mcri18n:translate('OMD.common.in')}
+                        {$birth_place}
+                      </xsl:if>
+                    </td>
+                  </tr>
+                </xsl:if>
+                <xsl:if test="$death_type">
+                  <tr>
+                    <td>
+                      {mcri18n:translate('OMD.common.died')}
+                      <xsl:if test="$death_date and not($death_date = '#')">
+                        <xsl:if test="contains($death_date, '.')">
+                           {mcri18n:translate('OMD.common.at')}
+                        </xsl:if>
+                        {$death_date}
+                      </xsl:if>
+                      <xsl:if test="$death_place and not($death_place = '#')">
+                        {mcri18n:translate('OMD.common.in')}
+                        {$death_place}
+                      </xsl:if>
+                    </td>
+                  </tr>
+                </xsl:if>
+              </xsl:for-each> 
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+        
+        <xsl:if test="./metadata/box.confession/confession">
+          <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'confession'"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.confessions'"/>
+            <xsl:with-param name="showInfo" select="false()"/>
+            <xsl:with-param name="items">
+              <xsl:for-each select="./metadata/box.confession/confession">
+                <tr>
+                  <td>{.}</td>
+                </tr>
+              </xsl:for-each> 
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+        
+        <xsl:if test="./metadata/box.family/family">
+          <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'family'"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.families'"/>
+            <xsl:with-param name="css_class" select="'col2'"/>
+            <xsl:with-param name="items">
+              <xsl:for-each select="./metadata/box.family/family">
+                <tr>
+                  <td>{mcri18n:translate(concat('OMD.profkat.family.',./@type))}:</td>
+                  <td>
+                    <xsl:variable name="name" select="./name/text()" />
+                    <xsl:variable name="profession" select="./profession" />
+                    <xsl:variable name="url" select="./name/@id"/>
+                    <xsl:variable name="output">
+                         <xsl:if test="string-length($name) &gt; 1">
+                           {$name}
+                         </xsl:if>
+                        <xsl:if test="string-length($profession) &gt; 1">
+                          ,&#160;
+                          {$profession}
+                      </xsl:if>
+                    </xsl:variable>
+                    
+                    <xsl:choose>
+                      <xsl:when test="string-length($url) &lt;=1">
+                        <xsl:variable name="output">
+                          <xsl:if test="string-length($name) &gt; 1">
+                             {$name}
+                          </xsl:if>
+                          <xsl:if test="string-length($profession) &gt; 1">
+                             ,&#160;
+                             {$profession}
+                          </xsl:if>
+                        </xsl:variable>
+                        <xsl:value-of select="normalize-space($output)" disable-output-escaping="true" />
+                      </xsl:when>
+                      <xsl:when test="$project='cpb'">
+                        <a href="{$url}" target="_blank">
+                          <xsl:value-of select="normalize-space($output)" disable-output-escaping="true" />
+                        </a>
+                      </xsl:when>
+                      <xsl:otherwise>
+                        <xsl:value-of select="normalize-space($output)" disable-output-escaping="true" />
+                        <a href="{$url}" target="_blank">
+                          <nobr> ({mcri18n:translate('OMD.profkat.link.external')}
+                                 <img src="${WebApplicationBaseURL}images/link_extern.png" alt="Link" />)</nobr>
+                       </a>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                  </td>
+                </tr>
+              </xsl:for-each> 
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
       </div>
     </div>
        
