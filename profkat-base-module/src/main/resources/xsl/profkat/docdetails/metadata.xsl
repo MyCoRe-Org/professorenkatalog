@@ -20,8 +20,90 @@
   <xsl:param name="DefaultLang" />
 
   <xsl:template match="/mycoreobject">
-  
-         
+    <xsl:variable name="project" select="substring-before(@ID, '_')" />
+    <div class="row">
+      <div id="docdetails-data" class="col">
+        <xsl:if test="./metadata/box.faculty">
+          <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'faculties'"/>
+            <xsl:with-param name="css_class" select="'col2'"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.faculties'"/>
+            <xsl:with-param name="items">
+              <xsl:for-each select="/mycoreobject/metadata/box.faculty/faculty">
+                <tr>
+                  <td>{./text}</td>
+                  <td>
+                    <xsl:choose>
+                      <xsl:when test="$project='cpr'">
+                        <xsl:value-of select="document(concat('classification:metadata:0:children:',classification/@classid,':', classification/@categid))//category/label[@xml:lang='x-de-short']/@text" />
+                      </xsl:when>
+                      <xsl:otherwise>
+                       <xsl:value-of select="mcrclass:current-label-text(./classification)" />
+                      </xsl:otherwise>
+                    </xsl:choose>
+                    <xsl:if test="./event">
+                      <br />
+                      {./event}
+                    </xsl:if>  
+                  </td>
+                </tr>
+              </xsl:for-each> 
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+        
+        <xsl:if test="./metadata/box.institute">
+          <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'institutes'"/>
+            <xsl:with-param name="css_class" select="if (./institute/time) then ('col2') else ('col1')"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.institutes'"/>
+            <xsl:with-param name="items">
+              <xsl:for-each select="/mycoreobject/metadata/box.institute/institute">
+                <tr>
+                  <xsl:if test="./time">
+                    <td>{./time}</td>
+                  </xsl:if>
+                  <td>{./text}</td>
+                </tr>
+              </xsl:for-each> 
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+        
+        <xsl:if test="./metadata/box.fieldofstudy">
+          <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'fieldofstudy'"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.fieldofstudy'"/>
+            <xsl:with-param name="items">
+              <xsl:for-each select="/mycoreobject/metadata/box.fieldofstudy/fieldofstudy">
+                <tr>
+                    <td>{.}</td>
+                </tr>
+              </xsl:for-each> 
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+        
+       <xsl:if test="./metadata/box.subjectclass">
+          <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'subjects'"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.subjects'"/>
+            <xsl:with-param name="items">
+            <xsl:for-each select="/mycoreobject/metadata/box.subjectclass/subjectclass">
+               <tr>
+                 <td><xsl:value-of select="mcrclass:current-label-text(.)" /></td>
+               </tr>
+             </xsl:for-each> 
+           </xsl:with-param>
+         </xsl:call-template>
+       </xsl:if>
+       
+       <xsl:call-template name="dd_separator" />
+       
+        
+      </div>
+    </div>
+       
   </xsl:template>
 
 </xsl:stylesheet>

@@ -83,49 +83,6 @@
 	<mcrdd:setnamespace prefix="xlink" uri="http://www.w3.org/1999/xlink" />
 	 
    	 <c:if test="${(tab eq 'data') or (param.print eq 'true')}">
- 		<mcrdd:row select="/mycoreobject/metadata/box.faculty/faculty" labelkey="OMD.profkat.faculties" showInfo="true" colWidths="8em">
-	  		<mcrdd:item select="./text" />              
-    		<%--
-    		<mcrdd:classificationitem select="./classification" />
-    		<mcrdd:item select="./event" />
-    		--%>
-    		<mcrdd:outputitem select="./classification" var="out">
-    			<c:set var="classid"><x:out select="$out/@classid" /></c:set>
-    			<c:set var="categid"><x:out select="$out/@categid" /></c:set>
-    			<c:set var="classLabel"><mcr:displayCategory categid="${categid}" classid="${classid}" lang="de"/></c:set>
-    			<x:if select="starts-with($mcrobj/mycoreobject/@ID,'cpr_')">
-    		 		<c:set var="classLabel"><mcr:displayCategory categid="${categid}" classid="${classid}" lang="x-de-short"/></c:set>
-    		 	</x:if>
-    			<c:out value="${classLabel}" />
-    			<x:if select="$out/../event">
-    				<br />
-    				<x:out select="$out/../event" />
-    			</x:if>
-    		</mcrdd:outputitem>
-    		  
-    	</mcrdd:row>
-    
-    	<mcrdd:row select="/mycoreobject/metadata/box.institute/institute[not(./time)]" labelkey="OMD.profkat.institutes" showInfo="true" >
-   			<mcrdd:item select="." />  
-   		</mcrdd:row>
-   		<mcrdd:row select="/mycoreobject/metadata/box.institute/institute[./time]" labelkey="OMD.profkat.institutes" showInfo="true" colWidths="8em" >
-   			<mcrdd:item select="./time" />
-   			<mcrdd:item select="./text" />
-   		</mcrdd:row>
-   	
-   		<mcrdd:row select="/mycoreobject/metadata/box.fieldofstudy/fieldofstudy" labelkey="OMD.profkat.fieldofstudies" showInfo="true" >
-   			<mcrdd:item select="." />  
-   		</mcrdd:row>
-    
-    	<mcrdd:row select="/mycoreobject/metadata/box.subjectclass/subjectclass" labelkey="OMD.profkat.subjects" showInfo="true" >
-	  		<mcrdd:outputitem select="." var="out">
-    			<c:set var="classid"><x:out select="$out/@classid" /></c:set>
-    			<c:set var="categid"><x:out select="$out/@categid" /></c:set>
-    		 	<mcr:displayCategory classid="${classid}" categid="${categid}" lang="de"/>
-    		</mcrdd:outputitem>
-    	</mcrdd:row>
-    
-    	<mcrdd:separator showLine="true" />
       
    	    <x:if select="not(starts-with($mcrobj/mycoreobject/@ID,'cpb_'))">   
    		<mcrdd:row select="/mycoreobject/metadata/box.email/email" labelkey="OMD.profkat.emails" showInfo="false" >
@@ -151,7 +108,8 @@
    		</mcrdd:row>    
     
     	<mcrdd:separator showLine="true"/>    
-       		<mcrdd:row select="/mycoreobject/metadata/box.surname/surname[position()>1] | /mycoreobject/metadata/box.variantname/variantname" labelkey="OMD.profkat.variantnames" showInfo="true" >
+    	
+        <mcrdd:row select="/mycoreobject/metadata/box.surname/surname[position()>1] | /mycoreobject/metadata/box.variantname/variantname" labelkey="OMD.profkat.variantnames" showInfo="true" >
    			<mcrdd:item select="." />  
    		</mcrdd:row> 
 

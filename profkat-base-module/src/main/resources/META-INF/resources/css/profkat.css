@@ -1,0 +1,24 @@
+div.docdetails-image div{
+	max-width:250px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+/* global docdetails for profkat -> own file */
+.docdetails-info{
+	display: block;
+    float: left;
+   min-width: 2em;
+}
+
+.docdetails-table-div{
+	margin-left:3em;
+}
+
+.docdetails-table.col2 tr > td:nth-child(1){
+	width:8em;
+}
+
+.docdetails-separator + .docdetails-separator {
+	display:none;
+}
