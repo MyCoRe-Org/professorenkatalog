@@ -17,6 +17,8 @@
 	<mcrdd:setnamespace prefix="xlink" uri="http://www.w3.org/1999/xlink" />
 	<mcr:retrieveObject mcrid="${param.id}" varDOM="mcrobj" cache="true" fromWorkflow="${param.fromWF}" />
 	
+    <mcr:transformXSL dom="${mcrobj}" xslt="xsl/profkat/docdetails/header.xsl" />
+	
 	<c:if test="${not(param.print eq 'true')}">
 		<c:if test="${param.fromWF eq 'true'}">
 				<div class="alert alert-info" style="margin-top:20px" role="alert">
@@ -71,6 +73,11 @@
 		</div>
 	</c:if>
 	<%--Tab bar (end) --%>
+
+  
+   <c:if test="${(tab eq 'data') or (param.print eq 'true')}">
+     <mcr:transformXSL dom="${mcrobj}" xslt="xsl/profkat/docdetails/metadata.xsl" />
+   </c:if>
 
 <mcrdd:docdetails mcrID="${param.id}" lang="de" fromWorkflow="${param.fromWF}" var="doc" outputStyle="headlines"> 
 	<mcrdd:setnamespace prefix="xlink" uri="http://www.w3.org/1999/xlink" />
