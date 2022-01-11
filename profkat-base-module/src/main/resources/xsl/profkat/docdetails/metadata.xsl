@@ -62,7 +62,7 @@
               <xsl:for-each select="/mycoreobject/metadata/box.institute/institute">
                 <tr>
                   <xsl:if test="./time">
-                    <td>{./time}</td>
+                    <td><xsl:if test="not(./time='#')">{./time}</xsl:if></td>
                   </xsl:if>
                   <td>{./text}</td>
                 </tr>
@@ -303,7 +303,7 @@
             <xsl:with-param name="items">
               <xsl:for-each select="./metadata/box.biographic/biographic">
                 <tr>
-                  <td>{./time}</td>
+                  <td><xsl:if test="not(./time='#')">{./time}</xsl:if></td>
                   <td><xsl:value-of select="./text" disable-output-escaping="true" /></td>
                 </tr>
               </xsl:for-each> 
@@ -320,7 +320,7 @@
               <xsl:for-each select="./metadata/box.academicdegree/academicdegree">
                 <tr>
                   <td>{mcri18n:translate(concat('OMD.profkat.academicdegree.display.', ./@type))}</td>
-                  <td>{./time}</td>
+                  <td><xsl:if test="not(./time='#')">{./time}</xsl:if></td>
                   <td>
                     <xsl:value-of select="./text" disable-output-escaping="true" />
                     <xsl:if test="./dissertation and string-length(./dissertation) &gt; 1">
@@ -346,7 +346,7 @@
             <xsl:with-param name="items">
               <xsl:for-each select="./metadata/box.adminfunction/adminfunction">
                 <tr>
-                  <td>{./time}</td>
+                  <td><xsl:if test="not(./time='#')">{./time}</xsl:if></td>
                   <td><xsl:value-of select="./text" disable-output-escaping="true" /></td>
                 </tr>
               </xsl:for-each> 
@@ -362,7 +362,7 @@
             <xsl:with-param name="items">
               <xsl:for-each select="./metadata/box.otherfunction/otherfunction">
                 <tr>
-                  <td>{./time}</td>
+                  <td><xsl:if test="not(./time='#')">{./time}</xsl:if></td>
                   <td><xsl:value-of select="./text" disable-output-escaping="true" /></td>
                 </tr>
               </xsl:for-each> 
@@ -378,7 +378,7 @@
             <xsl:with-param name="items">
               <xsl:for-each select="./metadata/box.membership/membership[@type='scientific']">
                 <tr>
-                  <td>{./time}</td>
+                  <td><xsl:if test="not(./time='#')">{./time}</xsl:if></td>
                   <td><xsl:value-of select="./text" disable-output-escaping="true" /></td>
                 </tr>
               </xsl:for-each> 
@@ -394,7 +394,7 @@
             <xsl:with-param name="items">
               <xsl:for-each select="./metadata/box.membership/membership[not(@type='party') and not(@type='scientific')]">
                 <tr>
-                  <td>{./time}</td>
+                  <td><xsl:if test="not(./time='#')">{./time}</xsl:if></td>
                   <td><xsl:value-of select="./text" disable-output-escaping="true" /></td>
                 </tr>
               </xsl:for-each> 
@@ -410,7 +410,7 @@
             <xsl:with-param name="items">
               <xsl:for-each select="./metadata/box.award/award">
                 <tr>
-                  <td>{./time}</td>
+                  <td><xsl:if test="not(./time='#')">{./time}</xsl:if></td>
                   <td><xsl:value-of select="./text" disable-output-escaping="true" /></td>
                 </tr>
               </xsl:for-each> 
@@ -426,7 +426,7 @@
             <xsl:with-param name="items">
               <xsl:for-each select="./metadata/box.partymember/partymember">
                 <tr>
-                  <td>{./time}</td>
+                  <td><xsl:if test="not(./time='#')">{./time}</xsl:if></td>
                   <td><xsl:value-of select="./text" disable-output-escaping="true" /></td>
                 </tr>
               </xsl:for-each> 
