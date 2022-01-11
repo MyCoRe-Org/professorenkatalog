@@ -84,61 +84,7 @@
 	 
    	 <c:if test="${(tab eq 'data') or (param.print eq 'true')}">
    	
-   		<mcrdd:separator showLine="true" />	   
-      	<mcrdd:row select="/mycoreobject/metadata/box.biographic/biographic" labelkey="OMD.profkat.biographics" showInfo="true" colWidths="8em">
-	  		<mcrdd:item select="./time" />              
-    		<mcrdd:item select="./text" escapeXml="false" />  
-    	</mcrdd:row>
 
-  		<mcrdd:row select="/mycoreobject/metadata/box.academicdegree/academicdegree" labelkey="OMD.profkat.academicdegrees" showInfo="true" colWidths="8em 6em">
-    		<mcrdd:item select="./@type" labelkeyPrefix="OMD.profkat.academicdegree.display."/>
-    		<mcrdd:item select="./time" />              
- 			<mcrdd:outputitem select="." var="current">
-   				<x:out select="$current/text" />
-   				<c:set var="diss"><x:out select="$current/dissertation" escapeXml="false" /></c:set>
-   				<c:if test="${fn:length(diss) gt 1}">
-   					<br /><i><fmt:message key="OMD.profkat.dissertationTitle"/>:&#160;</i><c:out value="${diss}" escapeXml="false"/>
-   				</c:if>
-   			</mcrdd:outputitem> 
-    	</mcrdd:row>
-		
-		<mcrdd:separator showLine="true" />	
-   	
-   		<mcrdd:row select="/mycoreobject/metadata/box.adminfunction/adminfunction" labelkey="OMD.profkat.adminfunctions" showInfo="true" colWidths="8em">
-			<mcrdd:item select="./time" />              
-    		<mcrdd:item select="./text" escapeXml="false" />  
-    	</mcrdd:row>
-
-   		<mcrdd:row select="/mycoreobject/metadata/box.otherfunction/otherfunction" labelkey="OMD.profkat.otherfunctions" showInfo="true" colWidths="8em">
-		  	<mcrdd:item select="./time" />              
-    		<mcrdd:item select="./text" escapeXml="false" />  
-    	</mcrdd:row>
-    
-    	<mcrdd:row select="/mycoreobject/metadata/box.membership/membership[@type='scientific']" labelkey="OMD.profkat.scientific_memberships" showInfo="true" colWidths="8em">
-		  	<mcrdd:item select="./time" />              
-    		<mcrdd:item select="./text" escapeXml="false" />  
-    	</mcrdd:row>
-    	
-    	<mcrdd:row select="/mycoreobject/metadata/box.membership/membership[not(@type='party') and not(@type='scientific')]" labelkey="OMD.profkat.other_memberships" showInfo="true" colWidths="8em">
-		  	<mcrdd:item select="./time" />              
-    		<mcrdd:item select="./text" escapeXml="false" />  
-    	</mcrdd:row>
-
-   		<mcrdd:row select="/mycoreobject/metadata/box.award/award" labelkey="OMD.profkat.awards" showInfo="true" colWidths="8em">
-		  	<mcrdd:item select="./time" />              
-    		<mcrdd:item select="./text" escapeXml="false" />  
-    	</mcrdd:row>
-    	
-    	<mcrdd:row select="/mycoreobject/metadata/box.partymember/partymember" labelkey="OMD.profkat.partymembers" showInfo="true" colWidths="8em">
-		  	<mcrdd:item select="./time" />              
-    		<mcrdd:item select="./text" escapeXml="false" />  
-    	</mcrdd:row>
-
-   		<mcrdd:row select="/mycoreobject/metadata/box.otherinfo/otherinfo" labelkey="OMD.profkat.otherinfos" showInfo="true" >
-		  	<mcrdd:item select="." escapeXml="false" />  
-    	</mcrdd:row>         
-
-		<mcrdd:separator showLine="true" />
 
 		<x:if select="not(starts-with($mcrobj/mycoreobject/@ID,'cpb_'))">
    			<mcrdd:row select="/mycoreobject/metadata/box.mainpublication/mainpublication" labelkey="OMD.profkat.mainpublications" showInfo="true" >

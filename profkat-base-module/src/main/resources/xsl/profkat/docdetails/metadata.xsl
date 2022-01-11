@@ -292,6 +292,164 @@
             </xsl:with-param>
           </xsl:call-template>
         </xsl:if>
+        
+        <xsl:call-template name="dd_separator" />
+        
+        <xsl:if test="./metadata/box.biographic/biographic">
+          <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'biographic'"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.biographics'"/>
+            <xsl:with-param name="css_class" select="'col2'"/>
+            <xsl:with-param name="items">
+              <xsl:for-each select="./metadata/box.biographic/biographic">
+                <tr>
+                  <td>{./time}</td>
+                  <td><xsl:value-of select="./text" disable-output-escaping="true" /></td>
+                </tr>
+              </xsl:for-each> 
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+        
+        <xsl:if test="./metadata/box.academicdegree/academicdegree">
+          <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'biographic'"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.academicdegrees'"/>
+            <xsl:with-param name="css_class" select="'col3'"/>
+            <xsl:with-param name="items">
+              <xsl:for-each select="./metadata/box.academicdegree/academicdegree">
+                <tr>
+                  <td>{mcri18n:translate(concat('OMD.profkat.academicdegree.display.', ./@type))}</td>
+                  <td>{./time}</td>
+                  <td>
+                    <xsl:value-of select="./text" disable-output-escaping="true" />
+                    <xsl:if test="./dissertation and string-length(./dissertation) &gt; 1">
+                      <br />
+                      <i>
+                        {mcri18n:translate('OMD.profkat.dissertationTitle')}:&#160;</i>
+                        <xsl:value-of select="./dissertation" disable-output-escaping="true" />
+                    </xsl:if>
+                  </td>
+                </tr>
+              </xsl:for-each> 
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+      
+        <xsl:call-template name="dd_separator" />
+      
+        <xsl:if test="./metadata/box.adminfunction/adminfunction">
+          <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'adminfunction'"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.adminfunctions'"/>
+            <xsl:with-param name="css_class" select="'col2'"/>
+            <xsl:with-param name="items">
+              <xsl:for-each select="./metadata/box.adminfunction/adminfunction">
+                <tr>
+                  <td>{./time}</td>
+                  <td><xsl:value-of select="./text" disable-output-escaping="true" /></td>
+                </tr>
+              </xsl:for-each> 
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+
+        <xsl:if test="./metadata/box.otherfunction/otherfunction">
+          <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'otherfunction'"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.otherfunctions'"/>
+            <xsl:with-param name="css_class" select="'col2'"/>
+            <xsl:with-param name="items">
+              <xsl:for-each select="./metadata/box.otherfunction/otherfunction">
+                <tr>
+                  <td>{./time}</td>
+                  <td><xsl:value-of select="./text" disable-output-escaping="true" /></td>
+                </tr>
+              </xsl:for-each> 
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+            
+        <xsl:if test="./metadata/box.membership/membership[@type='scientific']">
+          <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'scientific_membership'"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.scientific_memberships'"/>
+            <xsl:with-param name="css_class" select="'col2'"/>
+            <xsl:with-param name="items">
+              <xsl:for-each select="./metadata/box.membership/membership[@type='scientific']">
+                <tr>
+                  <td>{./time}</td>
+                  <td><xsl:value-of select="./text" disable-output-escaping="true" /></td>
+                </tr>
+              </xsl:for-each> 
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+        
+        <xsl:if test="./metadata/box.membership/membership[not(@type='party') and not(@type='scientific')]">
+          <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'other_membership'"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.other_memberships'"/>
+            <xsl:with-param name="css_class" select="'col2'"/>
+            <xsl:with-param name="items">
+              <xsl:for-each select="./metadata/box.membership/membership[not(@type='party') and not(@type='scientific')]">
+                <tr>
+                  <td>{./time}</td>
+                  <td><xsl:value-of select="./text" disable-output-escaping="true" /></td>
+                </tr>
+              </xsl:for-each> 
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+
+        <xsl:if test="./metadata/box.award/award">
+          <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'award'"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.awards'"/>
+            <xsl:with-param name="css_class" select="'col2'"/>
+            <xsl:with-param name="items">
+              <xsl:for-each select="./metadata/box.award/award">
+                <tr>
+                  <td>{./time}</td>
+                  <td><xsl:value-of select="./text" disable-output-escaping="true" /></td>
+                </tr>
+              </xsl:for-each> 
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+        
+        <xsl:if test="./metadata/box.partymember/partymember">
+          <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'partymember'"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.partymembers'"/>
+            <xsl:with-param name="css_class" select="'col2'"/>
+            <xsl:with-param name="items">
+              <xsl:for-each select="./metadata/box.partymember/partymember">
+                <tr>
+                  <td>{./time}</td>
+                  <td><xsl:value-of select="./text" disable-output-escaping="true" /></td>
+                </tr>
+              </xsl:for-each> 
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+        
+        <xsl:if test="./metadata/box.otherinfo/otherinfo">
+          <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'otherinfo'"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.otherinfos'"/>
+            <xsl:with-param name="items">
+              <xsl:for-each select="./metadata/box.otherinfo/otherinfo">
+                <tr>
+                  <td><xsl:value-of select="." disable-output-escaping="true" /></td>
+                </tr>
+              </xsl:for-each> 
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+        
+        <xsl:call-template name="dd_separator" />
+        
       </div>
     </div>
        

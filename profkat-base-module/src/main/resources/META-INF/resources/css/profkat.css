@@ -15,8 +15,20 @@ div.docdetails-image div{
 	margin-left:3em;
 }
 
+.docdetails-table tr > td{
+	vertical-align: top;
+}
+
 .docdetails-table.col2 tr > td:nth-child(1){
 	width:8em;
+}
+
+.docdetails-table.col3 tr > td:nth-child(1){
+	width:8em;
+}
+
+.docdetails-table.col3 tr > td:nth-child(2){
+	width:6em;
 }
 
 .docdetails-separator + .docdetails-separator {
