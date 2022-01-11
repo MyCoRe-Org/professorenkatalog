@@ -450,6 +450,102 @@
         
         <xsl:call-template name="dd_separator" />
         
+        <xsl:if test="./metadata/box.mainpublication/mainpublication and not($project='cpb')">
+          <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'mainpublication'"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.mainpublications'"/>
+            <xsl:with-param name="items">
+              <xsl:for-each select="./metadata/box.mainpublication/mainpublication">
+                <tr>
+                  <td><xsl:value-of select="." disable-output-escaping="true" /></td>
+                </tr>
+              </xsl:for-each> 
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+        
+        <xsl:if test="./metadata/box.publicationslink/publicationslink">
+          <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'bibliographicref'"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.bibliographicrefs'"/>
+            <xsl:with-param name="items">
+              <xsl:for-each select="./metadata/box.publicationslink/publicationslink">
+                <tr>
+                  <td>
+                    <xsl:call-template name="pk_link">
+                      <xsl:with-param name="href" select="./@xlink:href" />
+                      <xsl:with-param name="title" select="./@xlink:title" />
+                      <xsl:with-param name="project" select="$project"  />
+                    </xsl:call-template>
+                  </td>
+                </tr>
+              </xsl:for-each> 
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+        
+       <xsl:call-template name="dd_separator" /> 
+
+       <xsl:if test="./metadata/box.source/source">
+          <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'source'"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.sources'"/>
+            <xsl:with-param name="items">
+              <xsl:for-each select="./metadata/box.source/source">
+                <tr>
+                  <td>
+                    <xsl:call-template name="pk_link">
+                      <xsl:with-param name="href" select="./@xlink:href" />
+                      <xsl:with-param name="title" select="./@xlink:title" />
+                      <xsl:with-param name="project" select="$project"  />
+                    </xsl:call-template>
+                  </td>
+                </tr>
+              </xsl:for-each> 
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+        
+        <xsl:if test="./metadata/box.complexref/complexref|./metadata/box.reference/reference">
+          <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'references'"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.references'"/>
+            <xsl:with-param name="items">
+              <xsl:for-each select="./metadata/box.reference/reference">
+                <tr>
+                  <td>
+                    <xsl:call-template name="pk_link">
+                      <xsl:with-param name="href" select="./@xlink:href" />
+                      <xsl:with-param name="title" select="./@xlink:title" />
+                      <xsl:with-param name="project" select="$project"  />
+                    </xsl:call-template>
+                  </td>
+                </tr>
+              </xsl:for-each>
+              
+              <xsl:for-each select="./metadata/box.complexref/complexref">
+                <tr>
+                  <td>
+                    <xsl:variable name="doc" select="document(concat('data:text/xml,',.))" />
+                    <xsl:for-each select="$doc/register/werk">
+                      <xsl:if test="position()>1"> <br /> </xsl:if>
+                      {./@titel} -
+                      <xsl:for-each select="./band">
+                        <xsl:if test="position()>1">; </xsl:if>
+                        {./@titel}:
+                        <xsl:variable name="band" select="." />
+                        <xsl:for-each select="tokenize(./@seiten, ' ')">
+                          <a href="https://rosdok.uni-rostock.de/resolve/id/{$band/@docid}/image/page/{tokenize(.,'-')[1]}">S. {.}</a>{if(position()!=last()) then (', ') else ()} 
+                        </xsl:for-each>
+                      </xsl:for-each>
+                    </xsl:for-each>
+                  </td>
+                </tr>
+              </xsl:for-each>
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+
       </div>
     </div>
        

@@ -83,63 +83,6 @@
 	<mcrdd:setnamespace prefix="xlink" uri="http://www.w3.org/1999/xlink" />
 	 
    	 <c:if test="${(tab eq 'data') or (param.print eq 'true')}">
-   	
-
-
-		<x:if select="not(starts-with($mcrobj/mycoreobject/@ID,'cpb_'))">
-   			<mcrdd:row select="/mycoreobject/metadata/box.mainpublication/mainpublication" labelkey="OMD.profkat.mainpublications" showInfo="true" >
-		  		<mcrdd:item select="." escapeXml="false"/>
-    		</mcrdd:row>
-        </x:if>
-          
-   		<mcrdd:row select="/mycoreobject/metadata/box.publicationslink/publicationslink" 
-   		       labelkey="OMD.profkat.bibliographicrefs" showInfo="true" >
-   			<mcrdd:outputitem select="." var="current">
-   		   		<c:set var="href"><x:out select="string($current/@*[local-name()='href' and namespace-uri()='http://www.w3.org/1999/xlink'])" escapeXml="false"/></c:set>
-   				<c:set var="title"><x:out select="string($current/@*[local-name()='title' and namespace-uri()='http://www.w3.org/1999/xlink'])" /></c:set>
-   				<jsp:include page="fragments/link_pk.jsp">
-   					<jsp:param name="href" value="${href}" />
-   					<jsp:param name="title" value="${title}" />
-   					<jsp:param name="mcrid" value="${param.id}" />
-   				</jsp:include>
-   			</mcrdd:outputitem> 
-   		</mcrdd:row>  
- 		
-  		<mcrdd:separator showLine="true" />	
-
-   		<mcrdd:row select="/mycoreobject/metadata/box.source/source" labelkey="OMD.profkat.sources" showInfo="true" >
-   			<mcrdd:outputitem select="." var="current">
-   				<c:set var="href"><x:out select="string($current/@*[local-name()='href' and namespace-uri()='http://www.w3.org/1999/xlink'])" escapeXml="false"/></c:set>
-   				<c:set var="title"><x:out select="string($current/@*[local-name()='title' and namespace-uri()='http://www.w3.org/1999/xlink'])" /></c:set>
-   				<jsp:include page="fragments/link_pk.jsp">
-   					<jsp:param name="href" value="${href}" />
-   					<jsp:param name="title" value="${title}" />
-   					<jsp:param name="mcrid" value="${param.id}" />
-   				</jsp:include>
-   			</mcrdd:outputitem> 
-   		</mcrdd:row>  
-
-		<mcrdd:row select="/mycoreobject/metadata/box.complexref/complexref|/mycoreobject/metadata/box.reference/reference" 
-   		           labelkey="OMD.profkat.references" showInfo="true" >   
-   			<mcrdd:outputitem select="." var="current">
-   		   		<x:set var="linkData" select="$current" scope="session" />
-   		   		<x:set var="doc" select="$doc" scope="session" />
-   		   	   	<x:if select="local-name($current)='reference'">
-   					<c:set var="href"><x:out select="string($current/@*[local-name()='href' and namespace-uri()='http://www.w3.org/1999/xlink'])" escapeXml="false"/></c:set>
-   					<c:set var="title"><x:out select="string($current/@*[local-name()='title' and namespace-uri()='http://www.w3.org/1999/xlink'])" /></c:set>
-   					<jsp:include page="fragments/link_pk.jsp">
-   						<jsp:param name="href" value="${href}" />
-   						<jsp:param name="title" value="${title}" />
-   						<jsp:param name="mcrid" value="${param.id}" />
-   					</jsp:include>
-   				</x:if>
-   				<x:if select="local-name($current)='complexref'">
-   					<c:set var="content"><x:out select="$current/text()" /></c:set>
-   					<mcrdd:complexref content="${content}" />
-   				</x:if>
-   			</mcrdd:outputitem> 
-   		</mcrdd:row> 
-   		
    		<mcrdd:row select="/mycoreobject/metadata/box.identifier/identifier[@type='gnd']" labelkey="OMD.profkat.onlineres" showInfo="true" >
    			<mcrdd:item select="/mycoreobject/metadata/box.identifier/identifier[@type='gnd']" var="pnd" />
    			<x:if select="string($pnd)='xxx'">
