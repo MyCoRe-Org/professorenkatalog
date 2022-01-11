@@ -83,74 +83,7 @@
 	<mcrdd:setnamespace prefix="xlink" uri="http://www.w3.org/1999/xlink" />
 	 
    	 <c:if test="${(tab eq 'data') or (param.print eq 'true')}">
-   		<mcrdd:row select="/mycoreobject/metadata/box.identifier/identifier[@type='gnd']" labelkey="OMD.profkat.onlineres" showInfo="true" >
-   			<mcrdd:item select="/mycoreobject/metadata/box.identifier/identifier[@type='gnd']" var="pnd" />
-   			<x:if select="string($pnd)='xxx'">
-   				<mcrdd:outputitem select="." var="x">
-   					<fmt:message key="OMD.profkat.identifier.nognd" />
-   				</mcrdd:outputitem>
-   			</x:if>
-   			<x:if select="string($pnd)!='xxx'">
-   				<mcrdd:outputitem select="." var="x">
-   					<c:set var="pndString"><x:out select="string($pnd)" /></c:set>
-   					<div class="float-right"><a class="btn btn-xs float-right" href="${WebApplicationBaseURL}profkat_beacon_data?gnd=${pndString}" title="PND Beacon Dataservice Result"><i class="fas fa-paperclip" style="color:#EFEFEF;"></i></a></div>
-					GND: <a target="beacon_result" href="http://d-nb.info/gnd/${pndString}" title="Eintrag in der Personennamendatei (PND)">${pndString}</a>
-					
-					<c:set var="otherpks"></c:set>
-					<x:if select="starts-with($mcrobj/mycoreobject/@ID,'cpr_')">
-   						<c:set var="otherpks">"hpk", </c:set>
-   					</x:if>
-   					<x:if select="starts-with($mcrobj/mycoreobject/@ID,'cph_')">
-   						<c:set var="otherpks">"cpr", </c:set>
-   					</x:if>
-					
-					<div class="profkat-beacon-result" title="http://d-nb.info/gnd/${pndString}"
-						data-profkat-beacon-whitelist='[${otherpks} "dewp@pd", "mat_hr", "cphel", "cpmz", "reichka", "archinform", "cphal@hk", "biocist", "bbkl", "cmvw", "reichstag", "adbreg", "gabio", "poi_fmr", "fembio", "leopoldina@hk", "lagis", "hls", "rism", "historicum", "lemo", "sandrart", "odb", "odnb", "rag", "repfont_per", "adam", "vkuka", "volchr", "lassalle_all", "lwl", "gesa", "dewp", "hafaspo", "litirol", "plnoe", "regacad", "vorleser", "wwwddr", "documenta", "ps_usbk", "pw_artcyclop", "pw_basiswien", "pw_discogs", "pw_ifa", "pw_kunstaspekte", "pw_lexm", "pw_mactut", "pw_mgp", "pw_musicbrainz", "pw_nobel", "pw_olgdw", "pw_orden", "pw_photonow", "pw_rkd", "pw_rwien", "pw_sbo", "pw_sikart", "gistb", "dingler", "saebi", "ads", "ausfor", "bbcyp", "ariadne_fib2", "sdi_lei", "sozkla", "leilei", "litport", "cpg848", "mugi", "mutopia", "neerland", "oschwb", "pianosoc", "lvr", "wima", "bmlo", "adsfr", "mat_adbk", "aeik", "badw", "bbaw", "ps_smmue", "blo_lilla", "bruemmer", "dmv", "dra_wr", "esf", "froebel", "jenc1906", "kaprbrd", "kas_bvcdu", "kas_person", "leopoldina", "mumi", "nas_us", "mfo_pc", "saw_akt", "saw_ehem", "tripota", "pacelli", "preusker", "cpl", "rppd", "baader_gelehrte", "baader_schriftsteller", "lipowsky_kuenstler", "lipowsky_musiker", "haw", "zeno_eisler", "zeno_mwfoto", "zeno_mwkunst", "zeno_pagel", "zeno_schmidt"]'
-						data-profkat-beacon-replaceLabels="reichka:Akten der Reichskanzlei. Weimarer Republik|archinform:Architekturdatenbank archINFORM|biocist:Biographia Cisterciensis (BioCist)|bbkl:Biographisch-Bibliographisches Kirchenlexikon (BBKL)|cmvw:Carl Maria von Weber Gesamtausgabe (WeGA)|reichstag:Datenbank der deutschen Parlamentsabgeordneten|adbreg:Deutsche Biographie (ADB/NDB)|gabio:Dictionary of Georgian Biography|poi_fmr:Digitaler Portraitindex Frühe Neuzeit|fembio:FemBio Frauen-Biographieforschung|lagis:Hessische Biographie|hls:Historisches Lexikon der Schweiz (HLS)|rism:Internationales Quellenlexikon der Musik (RISM)|historicum:Klassiker der Geschichtswissenschaft|lemo:Lebendiges virtuelles Museum Online (LeMO)|sandrart:Sandrart: Teutsche Academie der Bau-, Bild- und Mahlerey-Künste. 1675-80|odb:Ostdeutsche Biographie (Kulturstiftung der deutschen Vertriebenen)|odnb:Oxford Dictionary of Biography|rag:Repertorium Academicum Germanicum (RAG)|repfont_per:Repertorium Geschichtsquellen des deutschen Mittelalters|vkuka:Virtuelles Kupferstichkabinett|volchr:Vorarlberg Chronik|lassalle_all:Lasalle – Briefe und Schriften"
-					></div>
 
-					<div class="profkat-beacon-result" title="http://d-nb.info/gnd/${pndString}"
-					   data-profkat-beacon-whitelist='["ubr_biblgr", "bibaug", "dta", "zbw", "ri_opac", "rektor", "repfont_aut", "gvk", "vd17", "wikisource", "kalliope", "ecodices", "gw", "latlib", "pw_arxiv", "pw_imslp", "pw_mvbib", "pw_perlentaucher", "slub", "hvv_lz", "hvv_zh", "notendatenbank", "commons", "cpdl", "kreusch", "rulib", "liberley", "pgde", "sophie", "wortblume", "zeno", "bsb", "oenlv", "vd16", "zdn", "lbbw", "elk-wue", "fmfa"]'
-					   data-profkat-beacon-replaceLabels="ubr_biblgr:Universitätsbibliographie Rostock|bibaug:Bibliotheca Augustana|dta:Deutsches Textarchiv|zbw:Pressemappe 20. Jahrhundert - Personenarchiv|ri_opac:Regesta Imperii OPAC|rektor:Rektoratsreden im 19. und 20. Jahrhundert|repfont_aut:Repertorium Geschichtsquellen des deutschen Mittelalters|gvk:Verbundkatalog des GBV|vd17:Verzeichnis der deutschen Drucke des 17.Jahrhunderts (VD17)|wikisource:Wikisource-Autorenseite"
-					></div>
-					<script type="text/javascript" src="${WebApplicationBaseURL}js/profkat_gndbeacon.js"></script>
-					
-					<x:if select="starts-with($mcrobj/mycoreobject/@ID,'cpb_')">
-					<div id="digibib_bs_link" class="profkat-beacon-result d-none" data-gnd="${pndString}">
-					  <ul style="list-style-position:inside">
-					    <li>
-					      <a target="beacon_result" href="https://publikationsserver.tu-braunschweig.de/servlets/solr/find?condQuery=${pndString}">
-					        <span id="digibib_bs_link_numfound" ></span> <fmt:message key="OMD.profkat.cpb.documents_in_digibib" />
-					      </a>
-					    </li>
-					  </ul>
-					</div>
-
-					<script type="text/javascript">
-					  $.ajax({
-						  type : "GET",
-						  url : "https://publikationsserver.tu-braunschweig.de/api/v1/search?q=allMeta%3D"+$('#digibib_bs_link').attr('data-gnd') +"&wt=json&json.wrf=?",
-						  dataType : "jsonp",
-						  success : function(data) {
-							  var c = data.response.numFound;
-							  if(c>0){
-						  		$('#digibib_bs_link_numfound').text(c);
-						  		$('#digibib_bs_link').removeClass('d-none');
-							  }
-							  
-						  }});
-					</script>
-					</x:if>
-					
-					<c:url var="url" value="${WebApplicationBaseURL}resolve/gnd/${pndString}" />
-					<p>
-						<fmt:message key="OMD.profkat.quoting.gnd">
-      						<fmt:param>${url}</fmt:param>
-      					</fmt:message>
-      				</p>   				
-    				</mcrdd:outputitem>
-   			</x:if>                                             			   		 
-   		</mcrdd:row>
         <x:if select="not(starts-with($mcrobj/mycoreobject/@ID,'cpb_'))">   
    		<mcrdd:row select="/mycoreobject/metadata/box.epoch/epoch" 
    		           labelkey="OMD.profkat.classification" showInfo="true"  colWidths="8em">
