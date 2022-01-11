@@ -600,7 +600,7 @@
                        </script>
                      </xsl:if>
                      <xsl:variable name="quotUrl" select="concat($WebApplicationBaseURL,'resolve/gnd/',$pnd)" />
-                     <p>[ {mcri18n:translate('OMD.profkat.quoting.gnd')}: <a href="{$quotUrl}">{$quotUrl}</a> ]</p>
+                     <p><xsl:copy-of select="parse-xml(concat('&lt;xml&gt;',mcri18n:translate-with-params('OMD.profkat.quoting.gnd', ($quotUrl)),'&lt;/xml&gt;'))"  /></p>
                     </xsl:if>
                   </td>
                 </tr>
@@ -608,8 +608,67 @@
             </xsl:with-param>
           </xsl:call-template>
         </xsl:if>
-      
-
+        
+        <xsl:if test="./metadata/box.epoch/epoch and not($project='cpb')">
+          <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'epoch'"/>
+            <xsl:with-param name="css_class" select="'col2'"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.classification'"/>
+            <xsl:with-param name="items">
+              <xsl:for-each select="./metadata/box.epoch/epoch">
+                <tr>
+                  <td>
+                    <xsl:if test="local-name(.)='epoch'">
+                      {mcri18n:translate('OMD.profkat.epoch')}
+                     </xsl:if>
+                  </td>
+                  <td>
+                      <xsl:value-of select="mcrclass:current-label-text(.)" />
+                  </td>
+                </tr>
+              </xsl:for-each> 
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+        
+        <xsl:call-template name="dd_separator" />
+        
+        <xsl:if test=".">
+          <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'created_changed'"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.created_changed'"/>
+            <xsl:with-param name="items">
+                <tr>
+                  <td>
+                    {format-dateTime(./service/servdates/servdate[@type='createdate'], '[D,2].[M,2].[Y]')}{
+                     if(not($project='cpb')) then (concat(', ', ./service/servflags/servflag[@type='createdby'])) else()}
+                     /
+                    {format-dateTime(./service/servdates/servdate[@type='modifydate'], '[D,2].[M,2].[Y]')}{
+                    if(not($project='cpb')) then (concat(', ', ./service/servflags/servflag[@type='modifiedby'])) else()}
+                  </td>
+                </tr>
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+        
+        <xsl:if test=". and not($project='cpb')">
+          <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'quoting'"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.quoting'"/>
+            <xsl:with-param name="items">
+                <tr>
+                  <td>
+                    <xsl:variable name="name">{./metadata/box.firstname/firstname[1]} {.//metadata/box.surname/surname[1]}</xsl:variable>
+                    <xsl:variable name="url">{if ($project='cpr') 
+                                              then (concat('http://purl.uni-rostock.de/cpr/', substring-after(./@ID, 'cpr_person_') )) 
+                                              else (concat($WebApplicationBaseURL,'resolve/id/',./@ID))}</xsl:variable>
+                    <xsl:variable name="date" select="format-date(current-date(), '[D,2].[M,2].[Y]')" />  
+                    <xsl:copy-of select="parse-xml(concat('&lt;xml&gt;',mcri18n:translate-with-params('OMD.profkat.quoting.text', ($name, $url,  $date)),'&lt;/xml&gt;'))" />
+                  </td>
+                </tr>
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
       </div>
     </div>
        
