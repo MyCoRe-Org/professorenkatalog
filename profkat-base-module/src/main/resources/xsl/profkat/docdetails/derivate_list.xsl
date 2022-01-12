@@ -46,7 +46,8 @@
                             <xsl:when test="ends-with(lower-case(./maindoc), '_sig.jpg')">fas fa-file-signature</xsl:when>
                             <xsl:when test="ends-with(lower-case(./maindoc), '_pic.jpg')">fas fa-portrait</xsl:when>
                             <xsl:when test="ends-with(lower-case(./maindoc), '.jpg') or ends-with(lower-case(./maindoc), '.jpeg')">fas fa-file-image</xsl:when>
-                            <xsl:otherwise>fa fa-file-o</xsl:otherwise>
+                            <xsl:when test="ends-with(lower-case(./maindoc), '.htm') or ends-with(lower-case(./maindoc), '.html') or ends-with(lower-case(./maindoc), '.xml')">fas fa-file-code</xsl:when>
+                            <xsl:otherwise>fa fa-file</xsl:otherwise>
                           </xsl:choose>
                         </xsl:variable>
                         <i class="{$fontAwesomeName}"></i>
