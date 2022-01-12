@@ -139,6 +139,15 @@
      <mcr:transformXSL dom="${mcrobj}" xslt="xsl/profkat/docdetails/metadata.xsl" />
    </c:if>
 
+   <c:if test="${(tab eq 'documents') or (param.print eq 'true')}">
+     <div class="card card-sm panel-copyright">
+       <div class="card-body">
+         <fmt:message key="OMD.derivate.copyright.notice" />
+       </div>
+     </div>
+     <mcr:transformXSL dom="${mcrobj}" xslt="xsl/profkat/docdetails/derivate_list.xsl" />
+   </c:if>
+
 <mcrdd:docdetails mcrID="${mcrid}" lang="de" fromWorkflow="${from}" var="doc" outputStyle="headlines"> 
 	<mcrdd:setnamespace prefix="xlink" uri="http://www.w3.org/1999/xlink" />
 	 
@@ -146,30 +155,14 @@
   	
 	<c:if test="${(tab eq 'article') or (param.print eq 'true')}">
   		<mcrdd:row select="/mycoreobject/structure/derobjects/derobject[@xlink:title='display_biography']" labelkey="OMD.profkat.documents" showInfo="true" >
+           
+           siehe ggf. https://www.data2type.de/xml-xslt-xslfo/xslt/xslt-und-xpath-referenz/alphabetische-liste/unparsed-text/
+           
   			<mcrdd:derivatecontent select="." width="100%" encoding="UTF-8" />
   		</mcrdd:row>	
 	</c:if>
 
-	<c:if test="${(tab eq 'documents') or (param.print eq 'true')}">
-		<x:if select="$mcrobj/mycoreobject/structure/derobjects/derobject">
-			<div class="docdetails-block">
-				<div class="card card-sm panel-copyright">
-					<div class="card-body">
-  						<fmt:message key="OMD.derivate.copyright.notice" />
-	               </div>
-				</div>
-			</div>
-		</x:if>
-		<mcrdd:row select="/mycoreobject/structure/derobjects[./derobject]" labelkey="OMD.profkat.derobjects" showInfo="true" >
-			<x:forEach var="x" select="$doc/mycoreobject/structure/derobjects/derobject/@xlink:href">
-	 			 <c:set var="id"><x:out select="$x" /></c:set>
- 				 <search:derivate-list derid="${id}" showSize="true" />
- 		  </x:forEach>
-	  	</mcrdd:row>
-	</c:if>	
-  	
-  	<mcrdd:separator showLine="true" />
-    
+  </mcrdd:docdetails>
  
    	
    	<c:if test="${from eq 'true'}">
@@ -180,7 +173,7 @@
 			</h4>
 		</div>
 	</c:if>	
-  </mcrdd:docdetails>
+
         </div>
         
         

@@ -15,7 +15,8 @@ div.docdetails-image div{
 	margin-left:3em;
 }
 
-.docdetails-table tr > td{
+.docdetails-table tr > td,
+.docdetails-table tr > th{
 	vertical-align: top;
 }
 
@@ -29,6 +30,18 @@ div.docdetails-image div{
 
 .docdetails-table.col3 tr > td:nth-child(2){
 	width:6em;
+}
+
+.docdetails-table.col_derivates tr > th:nth-child(1){
+	width:15em;
+}
+
+.docdetails-table.col_derivates tr > td.icon{
+	width: 1.5em;
+    font-size: 2.4em;
+    vertical-align: middle;
+    padding-bottom:0.5em;
+    padding-left:1em;
 }
 
 .docdetails-separator + .docdetails-separator {
