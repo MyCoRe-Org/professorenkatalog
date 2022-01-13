@@ -282,7 +282,7 @@
                         <xsl:value-of select="normalize-space($output)" disable-output-escaping="true" />
                         <a href="{$url}" target="_blank">
                           <nobr> ({mcri18n:translate('OMD.profkat.link.external')}
-                                 <img src="${WebApplicationBaseURL}images/link_extern.png" alt="Link" />)</nobr>
+                                 <img src="{$WebApplicationBaseURL}images/link_extern.png" alt="Link" />)</nobr>
                        </a>
                       </xsl:otherwise>
                     </xsl:choose>
@@ -529,7 +529,7 @@
                     <xsl:variable name="doc" select="document(concat('data:text/xml,',.))" />
                     <xsl:for-each select="$doc/register/werk">
                       <xsl:if test="position()>1"> <br /> </xsl:if>
-                      {./@titel} -
+                      {./@titel} {if (string-length(./band/@title)>0) then ('-') else ()}
                       <xsl:for-each select="./band">
                         <xsl:if test="position()>1">; </xsl:if>
                         {./@titel}:
