@@ -43,6 +43,16 @@ div.docdetails-image div{
 	padding: 0 0.5em 0.5em 0.5em;
 }
 
+.docdetails-tabbar{
+	margin-top:2em;
+}
 .docdetails-separator + .docdetails-separator {
 	display:none;
+}
+span.docdetails-citation{
+	float:right;
+	padding-top:1em;
+	font-style:italic;
+	width: 66%;
+    text-align: right;
 }
