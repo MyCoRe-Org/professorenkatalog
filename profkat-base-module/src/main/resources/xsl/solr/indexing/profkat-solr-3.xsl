@@ -26,12 +26,20 @@
      	<field name="profkat.derivate_title"><xsl:value-of select="./title[1]" /></field>
       </xsl:if>
     </xsl:for-each>
-     <xsl:for-each select="structure/derobjects/derobject[./classification/@categid='display_portrait'][1]">
-        <!-- <xsl:variable name="derXML" select="document(concat('mcrobject:',$derId))" /> -->
-     	<xsl:if test="./maindoc">
+     <xsl:choose>
+       <xsl:when test="structure/derobjects/derobject[./classification/@categid='display_portrait'][1]">
+         <xsl:for-each select="structure/derobjects/derobject[./classification/@categid='display_portrait'][1]">
+          <!-- <xsl:variable name="derXML" select="document(concat('mcrobject:',$derId))" /> -->
+     	  <xsl:if test="./maindoc">
      		<field name="ir.cover_url">file/<xsl:value-of select="../../../@ID" />/<xsl:value-of select="@xlink:href" />/<xsl:value-of select="./maindoc" /></field>
-     	</xsl:if>
-     </xsl:for-each>
+          </xsl:if>
+        </xsl:for-each>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:variable name="sex" select="metadata/box.sex/sex" />
+        <field name="ir.cover_url"><xsl:value-of select="concat('images/cover/default_',$sex,'.png')" /></field>
+      </xsl:otherwise>  
+     </xsl:choose>
   </xsl:template>
 
   <xsl:template match="metadata">
