@@ -325,8 +325,8 @@
                     <xsl:value-of select="./text" disable-output-escaping="true" />
                     <xsl:if test="./dissertation and string-length(./dissertation) &gt; 1">
                       <br />
-                      <i>
-                        {mcri18n:translate('OMD.profkat.dissertationTitle')}:&#160;</i>
+                      <span class="docdetails-label">
+                        {mcri18n:translate('OMD.profkat.dissertationTitle')}:&#160;</span>
                         <xsl:value-of select="./dissertation" disable-output-escaping="true" />
                     </xsl:if>
                   </td>
