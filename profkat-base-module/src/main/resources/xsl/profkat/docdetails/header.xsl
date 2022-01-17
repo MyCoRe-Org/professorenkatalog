@@ -17,9 +17,9 @@
   <xsl:template match="/mycoreobject">
     <div class="row">
       <div id="docdetails-header" class="col">
-        <xsl:variable name="last" select="./metadata/box.surname/surname" />
+        <xsl:variable name="last" select="./metadata/box.surname/surname[1]" />
         <xsl:variable name="first" select="./metadata/box.firstname/firstname[1]" />
-        <xsl:variable name="affix" select="./metadata/box.nameaffix/nameaffix" />
+        <xsl:variable name="affix" select="./metadata/box.nameaffix/nameaffix[1]" />
         <xsl:variable name="akadtitle" select="./metadata/box.academictitle/academictitle" />
         
         <h2>
