@@ -38,9 +38,9 @@
             <xed:include uri="resource:editor/search/includes-search-profkat.xed" ref="searchfield.institution" />
             <xed:if test="$MCR.SWF.Project.ID != 'cpb'">
             	<xed:include uri="resource:editor/search/includes-search-profkat.xed" ref="searchfield.subject" />
-            	<xed:include uri="resource:editor/search/includes-search-profkat.xed" ref="searchfield.proftypes" />
             </xed:if>
-            <xed:if test="($MCR.SWF.Project.ID = 'cpr') or ($MCR.SWF.Project.ID = 'cpb')">
+            <xed:include uri="resource:editor/search/includes-search-profkat.xed" ref="searchfield.proftypes" />
+            <xed:if test="($MCR.SWF.Project.ID = 'cpr')">
             	<xed:include uri="resource:editor/search/includes-search-profkat.xed" ref="searchfield.epochs" />
             </xed:if>
             <xed:if test="($MCR.SWF.Project.ID = 'cpr')">
