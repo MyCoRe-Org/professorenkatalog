@@ -651,6 +651,8 @@
           </xsl:call-template>
         </xsl:if>
         
+        <!-- RS: jetzt Zitierweise jetzt Rechts, mit Hamburg abstimmen dann Block löschen -->
+        <!-- 
         <xsl:if test=". and not($project='cpb')">
           <xsl:call-template name="dd_block">
             <xsl:with-param name="key" select="'quoting'"/>
@@ -663,12 +665,13 @@
                                               then (concat('http://purl.uni-rostock.de/cpr/', substring-after(./@ID, 'cpr_person_') )) 
                                               else (concat($WebApplicationBaseURL,'resolve/id/',./@ID))}</xsl:variable>
                     <xsl:variable name="date" select="format-date(current-date(), '[D,2].[M,2].[Y]')" />  
-                    <xsl:copy-of select="parse-xml(concat('&lt;xml&gt;',mcri18n:translate-with-params('OMD.profkat.quoting.text', ($name, $url,  $date)),'&lt;/xml&gt;'))" />
+                    <xsl:copy-of select="parse-xml(concat('&lt;xml&gt;',mcri18n:translate-with-params('OMD.profkat.quoting.text', ($name, $url, $url,  $date)),'&lt;/xml&gt;'))" />
                   </td>
                 </tr>
             </xsl:with-param>
           </xsl:call-template>
         </xsl:if>
+        -->
       </div>
     </div>
        

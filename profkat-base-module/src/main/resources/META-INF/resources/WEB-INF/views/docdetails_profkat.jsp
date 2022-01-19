@@ -140,26 +140,32 @@
 		  </div>
         </div>
         
-        <x:if select="starts-with($mcrobj/mycoreobject/@ID,'cpb_')">
+        
           <div class="row">
             <div class="col">
-			  <div id="citation" class="container ir-box ir-box-emph py-2">
-  			    <div class="docdetails-label mt-0"><small><b><fmt:message key="OMD.profkat.quoting"/>:</b></small></div>
+			  <div id="citation" class="container ir-box ir-box-emph py-2 profkat-citation">
+  			    <h5><fmt:message key="OMD.profkat.quoting"/>:</h5>
 			    <c:set var="last"><x:out select="$mcrobj/mycoreobject/metadata/box.surname/surname" /></c:set>		
 			    <c:set var="first"><x:out select="$mcrobj/mycoreobject/metadata/box.firstname/firstname" /></c:set>
 			    <jsp:useBean id="now" class="java.util.Date" scope="page" />
-			    <c:set var="currentID"><x:out select="$mcrobj/mycoreobject/@ID" /></c:set>
-   			    <c:url var="url" value="${WebApplicationBaseURL}resolve/id/${currentID}" />
+                <c:choose>
+                  <c:when test="${fn:startsWith(mcrid, 'cpr_')}">
+                    <c:url var="url" value="http://purl.uni-rostock.de/cpr/${fn:substringAfter(mcrid, 'cpr_person_')}" />
+                  </c:when>
+                  <c:otherwise>
+   			        <c:url var="url" value="${WebApplicationBaseURL}resolve/id/${mcrid}" />
+                  </c:otherwise>
+                </c:choose>
    			    <fmt:message key="OMD.profkat.quoting.text">
       			  <fmt:param>${first}&#160;${last}</fmt:param>
       			  <fmt:param>${url}</fmt:param>
       			  <fmt:param>${fn:replace(url,'/resolve/', ' /resolve/')}</fmt:param>
       			  <fmt:param><fmt:formatDate value="${now}" pattern="dd.MM.yyyy" /></fmt:param>
-      		    </fmt:message>      			
+      		    </fmt:message>
 			  </div>
 			</div>
 		  </div>
-		</x:if>
+		
 			
         <c:if test="${empty param.print}">
           <div class="row mb-3">
