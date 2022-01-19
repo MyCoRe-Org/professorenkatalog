@@ -49,7 +49,6 @@
     </c:set>
     <meta name="description" lang="de" content="${fn:trim(description)}" />
     <link rel="canonical" href="${WebApplicationBaseURL}resolve/id/${mcrid}" />
-	<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_biogr_article.css" />		
   </head>
   <body>
     <%@ include file="fragments/header.jspf" %>

@@ -22,7 +22,6 @@
 <head>
 <title>Print Details</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link type="text/css" rel="stylesheet" href="${WebApplicationBaseURL}css/style_biogr_article.css" />
 
 <style type="text/css">
 body {
