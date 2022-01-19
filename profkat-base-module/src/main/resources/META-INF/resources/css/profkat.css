@@ -1,3 +1,11 @@
+
+.indexbrowser-btn{
+      min-width: 1.5em;
+      margin-top:0.40em;
+      padding-left:0.40em;
+      padding-right:0.40em;
+}
+
 div.docdetails-image div{
 	max-width:250px;
 	margin-left:auto;
