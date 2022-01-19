@@ -57,7 +57,6 @@
     <div id="docdetails" class="container">
       <div class="row">
         <div id="docdetails-main" class="col docdetails">
-		<mcr:debugInfo />
 
         <mcr:transformXSL dom="${mcrobj}" xslt="xsl/profkat/docdetails/header.xsl" />
 	
