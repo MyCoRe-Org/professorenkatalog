@@ -86,8 +86,8 @@
         </xsl:with-param>
         </xsl:call-template>
         <xsl:if test="/mycoreobject/metadata/box.professorship/professorship/text[@xml:lang='x-succ' or @xml:lang='x-predec']">
-          <div class="pk-docdetails-hint docdetails-label text-right text-nowrap">
-            {mcri18n:translate('OMD.profkat.professorships.predec_succ')}
+          <div id="docdetails-label-predec_succ" class="text-right text-nowrap">
+            <span class="docdetails-label">{mcri18n:translate('OMD.profkat.professorships.predec_succ')}</span>
           </div>
         </xsl:if> 
       </div>
