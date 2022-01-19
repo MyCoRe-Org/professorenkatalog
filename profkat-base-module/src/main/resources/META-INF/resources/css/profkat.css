@@ -3,7 +3,7 @@
 /* =================================================================== */
 
 /* ------------------------------------------------------------------- */
-/* Docdetails                                                          */
+/* Indexbrowser                                                        */
 /* ------------------------------------------------------------------- */
 
 .indexbrowser-btn{
@@ -107,13 +107,6 @@ div.docdetails-separator hr {
 .docdetails-separator + .docdetails-separator {
 	display:none;
 }
-span.docdetails-citation{
-	float:right;
-	padding-top:1em;
-	font-style:italic;
-	width: 66%;
-    text-align: right;
-}
 
 div.docdetails-label {
 	white-space:nowrap;
@@ -122,7 +115,6 @@ div.docdetails-label {
 	margin-left:2em;
 	margin-bottom:0.2em;
 }
-
 
 div.docdetails-image{
 	padding-top:12px;
@@ -139,4 +131,56 @@ div.docdetails-image img{
 }
 div.docdetails-image-footer{
 	font-size:0.8em;
+}
+
+span.docdetails-citation{
+	float:right;
+	padding-top:1em;
+	font-style:italic;
+	width: 66%;
+    text-align: right;
+}
+
+/* ------------------------------------------------------------------- */
+/* CSS für biographische Artikel                                       */
+/* ------------------------------------------------------------------- */
+
+div.article{
+	text-align:justify;
+	font-family:Verdana,Arial,sans-serif;
+	font-size:11pt;
+	line-height:150%;
+}
+
+div.article blockquote{
+	line-height:110%;
+	font-size:10pt;
+}
+	
+div.article h1{
+	text-align:center;
+	font-size:14pt;
+	font-weight:bold;
+}
+
+div.article h2{
+	text-align:center;
+	font-size:11pt;
+	font-weight:bold;
+}
+
+div.article div.author{
+	margin-top:30px;
+	text-align:right;
+	font-style:italic;
+}
+
+div.article div.footnotes{
+	line-height:110%;
+	margin-top:40px;
+	font-size:8pt;
+}
+div.article div.list{
+	text-align:left;
+	font-size:10pt;
 }

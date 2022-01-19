@@ -24,7 +24,7 @@
 
   <xsl:template match="/mycoreobject">
     <div class="row">
-      <div id="docdetails-content" class="col">
+      <div class="col docdetails-content">
         <xsl:if test="./structure/derobjects/derobject">
           <xsl:call-template name="dd_block">
             <xsl:with-param name="key" select="'derobject_content'"/>
@@ -40,7 +40,7 @@
                       <a href="{$url}" target="_blank" title="{mcri18n:translate('OMD.showLargerImage')}" alt="{mcri18n:translate('OMD.showLargerImage')}">
                        <img src="{$url}" width="100%" />
                       </a>
-                      <span class="docdetails-citation">{./title}</span>
+                      <span class="docdetails-content-citation">{./title}</span>
                     </xsl:if>
                     <xsl:if test="ends-with(lower-case(./maindoc), '.html') or ends-with(lower-case(./maindoc), '.htm')">
                       <xsl:variable name="text" select="document($url)"/>
