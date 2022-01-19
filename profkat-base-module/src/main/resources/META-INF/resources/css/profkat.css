@@ -1,3 +1,10 @@
+/* =================================================================== */
+/* generic CSS for Profkat                                             */
+/* =================================================================== */
+
+/* ------------------------------------------------------------------- */
+/* Docdetails                                                          */
+/* ------------------------------------------------------------------- */
 
 .indexbrowser-btn{
       min-width: 1.5em;
@@ -5,6 +12,30 @@
       padding-left:0.40em;
       padding-right:0.40em;
 }
+
+
+/* =================================================================== */
+/* Docdetails                                                          */
+/* =================================================================== */
+
+div.docdetails-tabbar-info{
+	font-style: italic; 
+	color: grey; 
+	padding-right:1em; padding-top:.8em;
+	float:right !important;
+}
+	
+div.docdetails-header {
+
+	vertical-align: bottom;
+	margin-bottom:.4em;
+	min-height:1em;
+}
+
+div.docdetails-block{
+	margin-top:1em;
+}
+
 
 div.docdetails-image div{
 	max-width:250px;
@@ -18,6 +49,16 @@ div.docdetails-image div{
     float: left;
    min-width: 2em;
 }
+
+.docdetails-info-btn{
+	border:none;
+	padding:0px;
+}
+
+div.docdetails-infobox a {
+	color:black;
+}
+
 
 .docdetails-table-div{
 	margin-left:3em;
@@ -54,6 +95,15 @@ div.docdetails-image div{
 .docdetails-tabbar{
 	margin-top:2em;
 }
+
+div.docdetails-separator {
+	margin-top:.8em;
+}
+div.docdetails-separator hr {
+	border-bottom: 1px solid #565656;
+	height: 1px;	
+}
+
 .docdetails-separator + .docdetails-separator {
 	display:none;
 }
@@ -63,4 +113,30 @@ span.docdetails-citation{
 	font-style:italic;
 	width: 66%;
     text-align: right;
+}
+
+div.docdetails-label {
+	white-space:nowrap;
+	color:#565656;
+	font-family: Verdana,Arial,sans-serif;
+	margin-left:2em;
+	margin-bottom:0.2em;
+}
+
+
+div.docdetails-image{
+	padding-top:12px;
+	padding-bottom:12px;
+	padding-left:6px;
+	padding-right:6px;
+}
+
+div.docdetails-image img{
+	display: block;
+	margin-top: 12px;
+	margin-left: auto;
+	margin-right: auto;
+}
+div.docdetails-image-footer{
+	font-size:0.8em;
 }
