@@ -6,10 +6,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="mcr" uri="http://www.mycore.org/jspdocportal/base.tld"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="mcrdd" uri="http://www.mycore.org/jspdocportal/docdetails.tld"%>
+<%@ taglib prefix="mcr" uri="http://www.mycore.org/jspdocportal/base.tld" %>
 <%@ taglib prefix="search" tagdir="/WEB-INF/tags/search"%>
 
-<mcrdd:setnamespace prefix="xlink" uri="http://www.w3.org/1999/xlink" />
+<mcr:setNamespace prefix="xlink" uri="http://www.w3.org/1999/xlink" />
 <c:set var="mcrid">
 	<c:choose>
 		<c:when test="${!empty requestScope.id}">${requestScope.id}</c:when>
