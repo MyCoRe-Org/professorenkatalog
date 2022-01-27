@@ -156,7 +156,7 @@
    			    <fmt:message key="OMD.profkat.quoting.text">
       			  <fmt:param>${first}&#160;${last}</fmt:param>
       			  <fmt:param>${url}</fmt:param>
-      			  <fmt:param>${fn:replace(url,'/resolve/', ' /resolve/')}</fmt:param>
+      			  <fmt:param>${fn:replace(fn:replace(url,'/resolve/', ' /resolve/'),'/cpr', ' /cpr')}</fmt:param>
       			  <fmt:param><fmt:formatDate value="${now}" pattern="dd.MM.yyyy" /></fmt:param>
       		    </fmt:message>
 			  </div>
