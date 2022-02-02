@@ -52,7 +52,7 @@
   </head>
   <body>
     <%@ include file="fragments/header.jspf" %>
-    
+    <div id="content_area">
     <div id="docdetails" class="container">
       <div class="row">
         <div id="docdetails-main" class="col docdetails">
@@ -219,6 +219,7 @@
 	      </x:if>
         </div>
       </div>
+    </div>
     </div>
     <%@ include file="fragments/footer.jspf" %>
   </body>
