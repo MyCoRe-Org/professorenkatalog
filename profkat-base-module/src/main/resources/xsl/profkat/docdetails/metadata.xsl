@@ -101,7 +101,7 @@
        
       <xsl:call-template name="dd_separator" />
        
-      <xsl:if test="./metadata/box.email/email and not(project='cpb')">
+      <xsl:if test="./metadata/box.email/email and not($project='cpb')">
        <xsl:call-template name="dd_block">
             <xsl:with-param name="key" select="'emails'"/>
             <xsl:with-param name="showInfo" select="false()"/>
