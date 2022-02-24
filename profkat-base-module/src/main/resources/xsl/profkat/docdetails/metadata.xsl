@@ -55,8 +55,8 @@
         
         <xsl:if test="./metadata/box.institute">
           <xsl:call-template name="dd_block">
-            <xsl:with-param name="key" select="'institutes'"/>
-            <xsl:with-param name="css_class" select="if (./institute/time) then ('col2') else ('col1')"/>
+            <xsl:with-param name="key" select="'institute'"/>
+            <xsl:with-param name="css_class" select="if (./metadata/box.institute/institute/time) then ('col2') else ('col1')"/>
             <xsl:with-param name="labelkey" select="'OMD.profkat.institutes'"/>
             <xsl:with-param name="items">
               <xsl:for-each select="/mycoreobject/metadata/box.institute/institute">
