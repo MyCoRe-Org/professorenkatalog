@@ -313,7 +313,7 @@
         
         <xsl:if test="./metadata/box.academicdegree/academicdegree">
           <xsl:call-template name="dd_block">
-            <xsl:with-param name="key" select="'biographic'"/>
+            <xsl:with-param name="key" select="'academicdegree'"/>
             <xsl:with-param name="labelkey" select="'OMD.profkat.academicdegrees'"/>
             <xsl:with-param name="css_class" select="'col3'"/>
             <xsl:with-param name="items">
