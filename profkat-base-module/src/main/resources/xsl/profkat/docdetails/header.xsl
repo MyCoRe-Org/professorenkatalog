@@ -44,8 +44,9 @@
                    <!-- TODO Trennzeichen bei mehreren Vorgängern / Nachfolgern prüfen alter Code: delims=":;|" -->
                     <xsl:for-each select="tokenize(./text[@xml:lang='x-predec']/text(),'\|')">
                       <xsl:if test="contains(., '_person_')">
-                        <xsl:variable name="linked" select="document(concat('mcrobject:',.))" />
-                        <xsl:if test="$linked">
+                        <xsl:try>
+                          <xsl:variable name="linked" select="document(concat('mcrobject:',.))" />
+                          <xsl:if test="$linked">
                             <xsl:variable name="doctitle">
                               {mcri18n:translate('OMD.profkat.hint.predec')}:
                               {$linked/mycoreobject/metadata/box.surname/surname[1]},&#160;
@@ -55,29 +56,36 @@
                                  else ()}
                             </xsl:variable>
                             <a href="{$WebApplicationBaseURL}resolve/id/{.}" style="color:grey;margin-left:6px">
-                               <i class="fas fa-backward" title="{normalize-space($doctitle)}"></i>
-                             </a>
-                        </xsl:if>
+                              <i class="fas fa-backward" title="{normalize-space($doctitle)}"></i>
+                            </a>
+                          </xsl:if>
+                          <xsl:catch errors="*">
+                          </xsl:catch>
+                        </xsl:try>
                       </xsl:if>
-                   </xsl:for-each>
+                    </xsl:for-each>
 
-                  <xsl:for-each select="tokenize(./text[@xml:lang='x-succ']/text(),'\|')">
-                    <xsl:if test="contains(., '_person_')">
-                      <xsl:variable name="linked" select="document(concat('mcrobject:',.))" />
-                      <xsl:if test="$linked">
-                        <xsl:variable name="doctitle">
-                          {mcri18n:translate('OMD.profkat.hint.succ')}:
-                          {$linked/mycoreobject/metadata/box.surname/surname[1]},&#160;
-                          {$linked/mycoreobject/metadata/box.firstname/firstname[1]}
-                          {if(string-length($linked/mycoreobject/metadata/box.nameaffix/nameaffix)>1) 
-                           then ($linked/mycoreobject/metadata/box.nameaffix/nameaffix[1])
-                           else ()}
-                        </xsl:variable>
-                        <a href="{$WebApplicationBaseURL}resolve/id/{.}" style="color:grey;margin-left:6px">
-                          <i class="fas fa-forward" title="{normalize-space($doctitle)}"></i>
-                        </a>
+                    <xsl:for-each select="tokenize(./text[@xml:lang='x-succ']/text(),'\|')">
+                      <xsl:if test="contains(., '_person_')">
+                        <xsl:try>
+                          <xsl:variable name="linked" select="document(concat('mcrobject:',.))" />
+                          <xsl:if test="$linked">
+                            <xsl:variable name="doctitle">
+                              {mcri18n:translate('OMD.profkat.hint.succ')}:
+                              {$linked/mycoreobject/metadata/box.surname/surname[1]},&#160;
+                              {$linked/mycoreobject/metadata/box.firstname/firstname[1]}
+                              {if(string-length($linked/mycoreobject/metadata/box.nameaffix/nameaffix)>1) 
+                                 then ($linked/mycoreobject/metadata/box.nameaffix/nameaffix[1])
+                                 else ()}
+                            </xsl:variable>
+                            <a href="{$WebApplicationBaseURL}resolve/id/{.}" style="color:grey;margin-left:6px">
+                              <i class="fas fa-forward" title="{normalize-space($doctitle)}"></i>
+                            </a>
+                          </xsl:if>
+                          <xsl:catch errors="*">
+                          </xsl:catch>
+                        </xsl:try>
                       </xsl:if>
-                    </xsl:if>
                   </xsl:for-each>
                 </div>
               </td>
