@@ -7,27 +7,27 @@
 		<category ID="display_none">
 			<label xml:lang="de" text="keine Anzeige" />
 			<label xml:lang="en" text="not displayed" />
-            <label xml:lang="x-usedfor" text="profkat" />
+            <label xml:lang="x-usedfor" text="wf_edit_profkat" />
 		</category>
 		<category ID="display_portrait">
 			<label xml:lang="de" text="als Portrait anzeigen" />
 			<label xml:lang="en" text="show as portrait" />
-            <label xml:lang="x-usedfor" text="profkat" />
+            <label xml:lang="x-usedfor" text="wf_edit_profkat" />
 		</category>
 		<category ID="display_signature">
 			<label xml:lang="de" text="als Unterschrift anzeigen" />
 			<label xml:lang="en" text="show as signature" />
-            <label xml:lang="x-usedfor" text="profkat" />
+            <label xml:lang="x-usedfor" text="wf_edit_profkat" />
 		</category>
 		<category ID="display_biography">
 			<label xml:lang="de" text="als Biogr. Artikel anzeigen" />
 			<label xml:lang="en" text="show as biographic article" />
-            <label xml:lang="x-usedfor" text="profkat" />
+            <label xml:lang="x-usedfor" text="wf_edit_profkat" />
 		</category>
         <category ID="other">
             <label xml:lang="de" text="Verschiedenes" />
             <label xml:lang="en" text="other" />
-            <label xml:lang="x-usedfor" text="profkat" />
+            <label xml:lang="x-usedfor" text="wf_edit_profkat" />
         </category>
 	</categories>
 </mycoreclass>
