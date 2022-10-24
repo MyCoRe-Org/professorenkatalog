@@ -14,19 +14,10 @@
     </c:choose>
   </c:set>
   <c:set var="fromWF"  value="${param.fromWF}" /> 
-  <c:set var="debug" value="${param.debug}" />
   <c:if test="${empty fromWF}">
     <c:set var="fromWF" value="false" />
   </c:if>	
-  <c:choose>
-   <c:when test="${fromWF}" >
-     <c:set var="layout" value="preview" />
- 	</c:when>
- 	<c:otherwise>
-      <c:set var="layout" value="normal" />
- 	</c:otherwise> 
-  </c:choose>
-  
+   
   <mcr:retrieveObject mcrid="${mcrid}" varDOM="mcrobj" cache="true" fromWorkflow="${fromWF}" />
   <c:set var="prof_name">
     <x:out select="$mcrobj/mycoreobject/metadata/box.surname/surname" />,
@@ -34,10 +25,7 @@
     <c:set var="affix"><x:out select="$mcrobj/mycoreobject/metadata/box.nameaffix/nameaffix" /></c:set>
 	<c:if test="${fn:length(affix)>2}">(<c:out value="${affix}" />)</c:if>
   </c:set>
-  
-  <c:set var="layout_name">3columns</c:set>
-  <c:if test="${not empty param.print}"><c:set var="layout_name">1column</c:set></c:if>
-  <c:set var="pageTitle">${prof_name}</c:set>
+  <c:set var="pageTitle">${prof_name}</c:set> <%-- variable used in html_head.jspf --%>
 
 <!doctype html>
 <html>
@@ -59,7 +47,6 @@
 
         <mcr:transformXSL dom="${mcrobj}" xslt="xsl/profkat/docdetails/header.xsl" />
 	
-        <c:if test="${not(param.print eq 'true')}">
 		  <c:if test="${fromWF eq 'true'}">
             <div class="alert alert-info" style="margin-top:20px" role="alert">
 			  <h4 style="margin:5px 0px">
@@ -100,14 +87,14 @@
 			  <fmt:message key="${msgKeyStatus}" />
 			</div>
 		  </div>
-	   </c:if>
+
 	  <%--Tab bar (end) --%>
   
-       <c:if test="${(tab eq 'data') or (param.print eq 'true')}">
+       <c:if test="${(tab eq 'data')}">
          <mcr:transformXSL dom="${mcrobj}" xslt="xsl/profkat/docdetails/metadata.xsl" />
        </c:if>
 
-       <c:if test="${(tab eq 'documents') or (param.print eq 'true')}">
+       <c:if test="${(tab eq 'documents')}">
          <div class="card card-sm panel-copyright">
            <div class="card-body">
              <fmt:message key="OMD.derivate.copyright.notice" />
@@ -116,7 +103,7 @@
          <mcr:transformXSL dom="${mcrobj}" xslt="xsl/profkat/docdetails/derivate_list.xsl" />
        </c:if>
 
-       <c:if test="${(tab eq 'article') or (param.print eq 'true')}">
+       <c:if test="${(tab eq 'article')}">
          <mcr:transformXSL dom="${mcrobj}" xslt="xsl/profkat/docdetails/derivate_content.xsl" />
        </c:if>
        
@@ -136,35 +123,14 @@
 			 <search:result-navigator mcrid="${mcrid}" />
 		  </div>
         </div>
+        <div class="row">
+          <div class="col">
+            <jsp:include page="includes/citation_profkat.jsp">  
+              <jsp:param name="mcrobj" value="${mcrobj}" />  
+            </jsp:include>
+	      </div>
+        </div>
         
-        
-          <div class="row">
-            <div class="col">
-			  <div id="citation" class="container ir-box ir-box-emph py-2 profkat-citation">
-  			    <h5><fmt:message key="OMD.profkat.quoting"/>:</h5>
-			    <c:set var="last"><x:out select="$mcrobj/mycoreobject/metadata/box.surname/surname" /></c:set>		
-			    <c:set var="first"><x:out select="$mcrobj/mycoreobject/metadata/box.firstname/firstname" /></c:set>
-			    <jsp:useBean id="now" class="java.util.Date" scope="page" />
-                <c:choose>
-                  <c:when test="${fn:startsWith(mcrid, 'cpr_')}">
-                    <c:url var="url" value="http://purl.uni-rostock.de/cpr/${fn:substringAfter(mcrid, 'cpr_person_')}" />
-                  </c:when>
-                  <c:otherwise>
-   			        <c:url var="url" value="${WebApplicationBaseURL}resolve/id/${mcrid}" />
-                  </c:otherwise>
-                </c:choose>
-   			    <fmt:message key="OMD.profkat.quoting.text">
-      			  <fmt:param>${first}&#160;${last}</fmt:param>
-      			  <fmt:param>${url}</fmt:param>
-      			  <fmt:param>${fn:replace(fn:replace(url,'/resolve/', ' /resolve/'),'/cpr', ' /cpr')}</fmt:param>
-      			  <fmt:param><fmt:formatDate value="${now}" pattern="dd.MM.yyyy" /></fmt:param>
-      		    </fmt:message>
-			  </div>
-			</div>
-		  </div>
-		
-			
-        <c:if test="${empty param.print}">
           <div class="row mb-3">
             <div class="col">
               <c:set var="url">${WebApplicationBaseURL}resolve/id/${it.id}</c:set>
@@ -176,7 +142,7 @@
 	      </div>
 	      <div class="row mb-3">
             <div class="col">
-              <a class="btn btn-outline-secondary btn-sm hidden-sm hidden-xs" style="text-align:left;margin-right:6px" href="${WebApplicationBaseURL}content/print_details_profkat.jsp?id=${it.id}&amp;print=true&amp;fromWF=${fromWF}" target="_blank" title="<fmt:message key="WF.common.printdetails" />">
+              <a class="btn btn-outline-secondary btn-sm hidden-sm hidden-xs" style="text-align:left;margin-right:6px" href="${WebApplicationBaseURL}resolve/id/${it.id}/print" target="_blank" title="<fmt:message key="WF.common.printdetails" />">
                 <i class="fas fa-print"></i> <fmt:message key="Webpage.print.button"/>
               </a>
               <c:if test="${(not fromWF)}" >
@@ -204,7 +170,7 @@
 	          </div>
 	      	</div>
 	      </div>
-	    </c:if>
+
       </div>
 		
           <x:if select="$mcrobj/mycoreobject/structure/derobjects/derobject[classification/@categid='display_portrait' or classification/@categid='display_signature']">
