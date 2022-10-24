@@ -250,27 +250,14 @@
                     <xsl:variable name="name" select="./name/text()" />
                     <xsl:variable name="profession" select="./profession" />
                     <xsl:variable name="url" select="./name/@id"/>
-                    <xsl:variable name="output">
-                         <xsl:if test="string-length($name) &gt; 1">
-                           {$name}
-                         </xsl:if>
-                        <xsl:if test="string-length($profession) &gt; 1">
-                          ,&#160;
-                          {$profession}
-                      </xsl:if>
+                    <xsl:variable name="output" select="string-join((
+                         (if (string-length($name) &gt; 1) then ($name) else ()),
+                         (if (string-length($profession) &gt; 1) then ($profession) else ())
+                      ), ',&#160;')">
                     </xsl:variable>
                     
                     <xsl:choose>
                       <xsl:when test="string-length($url) &lt;=1">
-                        <xsl:variable name="output">
-                          <xsl:if test="string-length($name) &gt; 1">
-                             {$name}
-                          </xsl:if>
-                          <xsl:if test="string-length($profession) &gt; 1">
-                             ,&#160;
-                             {$profession}
-                          </xsl:if>
-                        </xsl:variable>
                         <xsl:value-of select="normalize-space($output)" disable-output-escaping="true" />
                       </xsl:when>
                       <xsl:when test="$project='cpb'">
