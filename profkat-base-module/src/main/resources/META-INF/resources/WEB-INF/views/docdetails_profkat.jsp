@@ -56,20 +56,18 @@
                 </h4>
               </div>
             </c:if>
-            <c:set var="tab" value="${empty param.tab ? 'data' : param.tab}" />
             <c:set var="msgKeyStatus">OMD.profkat.state.<x:out select="$mcrobj/mycoreobject/metadata/box.status/status"/></c:set>
             <div  class="tabbar docdetails-tabbar" style="position:relative">
-              <ul id="tabs_on_page" class="nav nav-tabs" style="position:relative">
-                <c:set var="tabstyle" value="${current eq tab ? 'active' : ''}" />
-                <li class="nav-item">
-                  <a class="nav-link ${tab eq 'data' ? 'active' : ''}" href="${WebApplicationBaseURL}resolve/id/${mcrid}?tab=data${empty param._search ? '' : '&_search='.concat(param._search)}${fromWF eq 'true' ? '&fromWF=true' : ''}">
+              <ul id="tabs_on_page" class="nav nav-tabs profkat-details-tabs" style="position:relative">
+                <li class="nav-item" role="presentation">
+                  <a id="nav_tab_data" class="nav-link active" data-toggle="tab" data-target="#nav_content_data" href="#tab_data">
                     <i class="fas fa-user docdetails-tabbar-icon"></i>
                     <fmt:message key="Webpage.docdetails.tabs.data"/>
                   </a>
                 </li>
                 <x:if select="$mcrobj/mycoreobject/structure/derobjects/derobject[classification/@categid='display_biography']">
-                  <li class="nav-item">
-                    <a class="nav-link ${tab eq 'article' ? 'active' :''}" href="${WebApplicationBaseURL}resolve/id/${mcrid}?tab=article${empty param._search ? '' : '&_search='.concat(param._search)}${fromWF eq 'true' ? '&fromWF=true' : ''}">
+                  <li class="nav-item" role="presentation">
+                    <a id="nav_tab_article" class="nav-link" data-toggle="tab" data-target="#nav_content_article" href="#tab_article">
                       <i class="fas fa-book docdetails-tabbar-icon"></i>
                       <fmt:message key="Webpage.docdetails.tabs.article"/>
                     </a>
@@ -77,7 +75,7 @@
                 </x:if>
                 <x:if select="$mcrobj/mycoreobject/structure/derobjects/derobject">
                   <li class="nav-item">
-                    <a class="nav-link ${tab eq 'documents' ? 'active' :''}" href="${WebApplicationBaseURL}resolve/id/${mcrid}?tab=documents${empty param._search ? '' : '&_search='.concat(param._search)}${fromWF eq 'true' ? '&fromWF=true' : ''}">
+                    <a id="nav_tab_documents" class="nav-link" data-toggle="tab" data-target="#nav_content_documents" href="#tab_documents">
                       <i class="far fa-file docdetails-tabbar-icon"></i>
                       <fmt:message key="Webpage.docdetails.tabs.documents"/></a>
                   </li>
@@ -88,20 +86,23 @@
               </div>
             </div>
             <%--Tab bar (end) --%>
-            <c:if test="${(tab eq 'data')}">
-              <mcr:transformXSL dom="${mcrobj}" xslt="xsl/profkat/docdetails/metadata.xsl" />
-            </c:if>
-            <c:if test="${(tab eq 'documents')}">
-              <div class="card card-sm profkat-card-copyright">
-                <div class="card-body">
-                  <fmt:message key="OMD.derivate.copyright.notice" />
-                </div>
+            
+            <div id="nav_content_root" class="tab-content mt-3">
+              <div id="nav_content_data" class="tab-pane active" data-parent="#nav_content_root">
+                <mcr:transformXSL dom="${mcrobj}" xslt="xsl/profkat/docdetails/metadata.xsl" />
               </div>
-              <mcr:transformXSL dom="${mcrobj}" xslt="xsl/profkat/docdetails/derivate_list.xsl" />
-            </c:if>
-            <c:if test="${(tab eq 'article')}">
-              <mcr:transformXSL dom="${mcrobj}" xslt="xsl/profkat/docdetails/derivate_content.xsl" />
-            </c:if>
+              <div id="nav_content_documents" class="tab-pane" data-parent="#nav_content_root">
+                <div class="card card-sm profkat-card-copyright">
+                  <div class="card-body">
+                    <fmt:message key="OMD.derivate.copyright.notice" />
+                  </div>
+                </div>
+                <mcr:transformXSL dom="${mcrobj}" xslt="xsl/profkat/docdetails/derivate_list.xsl" />
+              </div>
+              <div id="nav_content_article" class="tab-pane" data-parent="#nav_content_root">
+                <mcr:transformXSL dom="${mcrobj}" xslt="xsl/profkat/docdetails/derivate_content.xsl" />
+              </div>
+            </div>
             <c:if test="${fromWF eq 'true'}">
               <div class="alert alert-info" style="margin-top:20px" role="alert">
                 <h4 style="margin:5px 0px">
@@ -112,7 +113,16 @@
                 </h4>
               </div>
             </c:if>
+            <script type="text/javascript">
+              $(function() {
+                var hash = window.location.hash;
+                if(hash.startsWith('#tab_')){
+                  $('#nav_'+hash.substr(1)).tab('show');
+                }
+              });
+            </script>
           </div>
+          
           <div id="docdetails-right" class="col-3">
             <div class="docdetails-infobox" style="margin-bottom:32px;">
               <div class="row">
