@@ -90,7 +90,7 @@
             <x:if select="$mcrobj/mycoreobject/structure/derobjects/derobject">
               <hr class="border border-primary" />
               <h3><fmt:message key="Webpage.docdetails.tabs.documents"/></h3>
-              <div class="card card-sm panel-copyright">
+              <div class="card card-sm profkat-card-copyright">
                 <div class="card-body">
                   <fmt:message key="OMD.derivate.copyright.notice" />
                 </div>

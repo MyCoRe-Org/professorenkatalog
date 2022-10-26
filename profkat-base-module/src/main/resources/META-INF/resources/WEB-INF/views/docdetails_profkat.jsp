@@ -91,7 +91,7 @@
               <mcr:transformXSL dom="${mcrobj}" xslt="xsl/profkat/docdetails/metadata.xsl" />
             </c:if>
             <c:if test="${(tab eq 'documents')}">
-              <div class="card card-sm panel-copyright">
+              <div class="card card-sm profkat-card-copyright">
                 <div class="card-body">
                   <fmt:message key="OMD.derivate.copyright.notice" />
                 </div>
