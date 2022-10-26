@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.net.URLEncoder" %>
+<%@ page import="org.apache.commons.lang3.StringUtils "%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -25,7 +26,7 @@
   <c:set var="affix"><x:out select="$mcrobj/mycoreobject/metadata/box.nameaffix/nameaffix" /></c:set>
   <c:if test="${fn:length(affix)>2}">(<c:out value="${affix}" />)</c:if>
 </c:set>
-<c:set var="pageTitle">${prof_name}</c:set> <%-- variable used in html_head.jspf --%>
+<c:set var="pageTitle"><%= StringUtils.normalizeSpace(pageContext.getAttribute("prof_name").toString()) %></c:set> <%-- variable used in html_head.jspf --%>
 
 <!doctype html>
 <html>
