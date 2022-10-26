@@ -185,3 +185,13 @@ div.article div.list{
 	text-align:left;
 	font-size:10pt;
 }
+
+.profkat-editor-metadata .ir-editor-label-hint{
+	font-size:85%;
+}
+
+.profkat-editor-metadata .profkat-input-date-technical{
+	font-size: .8rem;
+	padding: .35rem;
+	font-family: Monospace;
+}
