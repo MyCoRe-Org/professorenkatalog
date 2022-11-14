@@ -70,6 +70,11 @@ div.docdetails-infobox a {
 	vertical-align: top;
 }
 
+.docdetails-table tr:not(:first-child) td,
+.docdetails-table tr:not(:first-child) th{
+	padding-top:0.33em;
+}
+
 .docdetails-table.col2 tr > td:nth-child(1){
 	width:8em;
 }
