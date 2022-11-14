@@ -100,12 +100,12 @@
     	<xsl:choose>
     		<xsl:when test="starts-with(/mycoreobject/@ID, 'cpr')">
     			<field name="profkat.last_faculty">
-    				<xsl:value-of select="document(concat('classification:metadata:1:children:', @classid, ':', @categid))//category/label[@xml:lang='x-de-short']/@text" />
+    				<xsl:value-of select="document(concat('classification:metadata:0:children:', @classid, ':', @categid))//category/label[@xml:lang='x-de-short']/@text" />
         		</field>
         	</xsl:when>
         	<xsl:otherwise>
         		<field name="profkat.last_faculty">
-    				<xsl:value-of select="document(concat('classification:metadata:1:children:', @classid, ':', @categid))//category/label[@xml:lang='de']/@text" />
+    				<xsl:value-of select="document(concat('classification:metadata:0:children:', @classid, ':', @categid))//category/label[@xml:lang='de']/@text" />
         		</field>
         	</xsl:otherwise>
     	</xsl:choose>
@@ -148,12 +148,12 @@
     	<xsl:choose>
        		<xsl:when test="starts-with(/mycoreobject/@ID, 'cpr')">
     			<field name="profkat.proftype">
-    				<xsl:value-of select="document(concat('classification:metadata:1:children:', @classid, ':', @categid))//category/label[@xml:lang='x-de-short']/@text" />
+    				<xsl:value-of select="document(concat('classification:metadata:0:children:', @classid, ':', @categid))//category/label[@xml:lang='x-de-short']/@text" />
         		</field>
         	</xsl:when>
         	<xsl:otherwise>
         		<field name="profkat.proftype">
-    				<xsl:value-of select="document(concat('classification:metadata:1:children:', @classid, ':', @categid))//category/label[@xml:lang='de']/@text" />
+    				<xsl:value-of select="document(concat('classification:metadata:0:children:', @classid, ':', @categid))//category/label[@xml:lang='de']/@text" />
         		</field>
         	</xsl:otherwise>
     	</xsl:choose>
