@@ -48,10 +48,15 @@
   </head>
   <body>
     <%@ include file="fragments/header.jspf" %>
-    <div id="content_area ir-print">
+    <div id="content_area" class="ir-print">
       <div id="docdetails" class="container">
         <div class="row">
           <div id="docdetails-main" class="col-9 docdetails">
+           <div class="docdetails-infobox" style="margin-bottom:32px;">
+              <jsp:include page="includes/citation_profkat.jsp">
+                <jsp:param name="mcrobj" value="${mcrobj}" />
+              </jsp:include>
+            </div>
             <mcr:transformXSL dom="${mcrobj}" xslt="xsl/profkat/docdetails/header.xsl" />
             <c:if test="${fromWF eq 'true'}">
               <div class="alert alert-info" style="margin-top:20px" role="alert">
@@ -60,16 +65,10 @@
                 </h4>
               </div>
             </c:if>
-            <div class="docdetails-infobox" style="margin-top:32px;">
-              <jsp:include page="includes/citation_profkat.jsp">
-                <jsp:param name="mcrobj" value="${mcrobj}" />
-              </jsp:include>
-            </div>
           </div>
           <x:if select="$mcrobj/mycoreobject/structure/derobjects/derobject[classification/@categid='display_portrait' or classification/@categid='display_signature']">
             <div id="docdetails-portrait" class="col-3 docdetails">
               <search:derivate-image mcrobj="${mcrobj}" width="100%" category="display_portrait" showFooter="true" protectDownload="true" />
-              <search:derivate-image mcrobj="${mcrobj}" width="100%" category="display_signature" protectDownload="true" />
             </div>
           </x:if>
         </div>
