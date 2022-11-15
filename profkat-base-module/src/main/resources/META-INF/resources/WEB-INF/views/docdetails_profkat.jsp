@@ -168,7 +168,7 @@
                         <a class="btn btn-warning btn-sm" target="_blank" title="<fmt:message key="Webpage.tools.showXML" />"
                            href="${WebApplicationBaseURL}api/v2/objects/${mcrid}" rel="nofollow">XML</a>
                         <a class="btn btn-warning btn-sm" style="margin-left:6px" target="_blank" title="<fmt:message key="Webpage.tools.showSOLR" />"
-                           href="${WebApplicationBaseURL}receive/${mcrid}?XSL.Style=solrdocument" rel="nofollow">SOLR</a>
+                           href="${WebApplicationBaseURL}receive/${mcrid}?XSL.Style=solrdocument-3" rel="nofollow">SOLR</a>
                       </div>
                     </div>
                   </div>
