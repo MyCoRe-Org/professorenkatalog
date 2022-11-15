@@ -291,7 +291,7 @@
               <xsl:for-each select="./metadata/box.biographic/biographic">
                 <tr>
                   <td><xsl:if test="not(./time='#')">{./time}</xsl:if></td>
-                  <td><xsl:value-of select="./text" disable-output-escaping="true" /></td>
+                  <td><xsl:value-of select="./text" /></td>
                 </tr>
               </xsl:for-each> 
             </xsl:with-param>
@@ -309,12 +309,12 @@
                   <td>{mcri18n:translate(concat('OMD.profkat.academicdegree.display.', ./@type))}</td>
                   <td><xsl:if test="not(./time='#')">{./time}</xsl:if></td>
                   <td>
-                    <xsl:value-of select="./text" disable-output-escaping="true" />
+                    <xsl:value-of select="./text" />
                     <xsl:if test="./dissertation and string-length(./dissertation) &gt; 1">
                       <br />
                       <span class="docdetails-label">
                         {mcri18n:translate('OMD.profkat.dissertationTitle')}:&#160;</span>
-                        <xsl:value-of select="./dissertation" disable-output-escaping="true" />
+                        <xsl:value-of select="./dissertation" />
                     </xsl:if>
                   </td>
                 </tr>
@@ -334,7 +334,7 @@
               <xsl:for-each select="./metadata/box.adminfunction/adminfunction">
                 <tr>
                   <td><xsl:if test="not(./time='#')">{./time}</xsl:if></td>
-                  <td><xsl:value-of select="./text" disable-output-escaping="true" /></td>
+                  <td><xsl:value-of select="./text" /></td>
                 </tr>
               </xsl:for-each> 
             </xsl:with-param>
@@ -350,7 +350,7 @@
               <xsl:for-each select="./metadata/box.otherfunction/otherfunction">
                 <tr>
                   <td><xsl:if test="not(./time='#')">{./time}</xsl:if></td>
-                  <td><xsl:value-of select="./text" disable-output-escaping="true" /></td>
+                  <td><xsl:value-of select="./text" /></td>
                 </tr>
               </xsl:for-each> 
             </xsl:with-param>
@@ -366,7 +366,7 @@
               <xsl:for-each select="./metadata/box.membership/membership[@type='scientific']">
                 <tr>
                   <td><xsl:if test="not(./time='#')">{./time}</xsl:if></td>
-                  <td><xsl:value-of select="./text" disable-output-escaping="true" /></td>
+                  <td><xsl:value-of select="./text" /></td>
                 </tr>
               </xsl:for-each> 
             </xsl:with-param>
@@ -382,7 +382,7 @@
               <xsl:for-each select="./metadata/box.membership/membership[not(@type='party') and not(@type='scientific')]">
                 <tr>
                   <td><xsl:if test="not(./time='#')">{./time}</xsl:if></td>
-                  <td><xsl:value-of select="./text" disable-output-escaping="true" /></td>
+                  <td><xsl:value-of select="./text" /></td>
                 </tr>
               </xsl:for-each> 
             </xsl:with-param>
@@ -398,7 +398,7 @@
               <xsl:for-each select="./metadata/box.award/award">
                 <tr>
                   <td><xsl:if test="not(./time='#')">{./time}</xsl:if></td>
-                  <td><xsl:value-of select="./text" disable-output-escaping="true" /></td>
+                  <td><xsl:value-of select="./text" /></td>
                 </tr>
               </xsl:for-each> 
             </xsl:with-param>
@@ -414,7 +414,7 @@
               <xsl:for-each select="./metadata/box.partymember/partymember">
                 <tr>
                   <td><xsl:if test="not(./time='#')">{./time}</xsl:if></td>
-                  <td><xsl:value-of select="./text" disable-output-escaping="true" /></td>
+                  <td><xsl:value-of select="./text" /></td>
                 </tr>
               </xsl:for-each> 
             </xsl:with-param>
@@ -428,7 +428,7 @@
             <xsl:with-param name="items">
               <xsl:for-each select="./metadata/box.otherinfo/otherinfo">
                 <tr>
-                  <td><xsl:value-of select="." disable-output-escaping="true" /></td>
+                  <td><xsl:value-of select="." /></td>
                 </tr>
               </xsl:for-each> 
             </xsl:with-param>
@@ -444,7 +444,7 @@
             <xsl:with-param name="items">
               <xsl:for-each select="./metadata/box.mainpublication/mainpublication">
                 <tr>
-                  <td><xsl:value-of select="." disable-output-escaping="true" /></td>
+                  <td><xsl:value-of select="." /></td>
                 </tr>
               </xsl:for-each> 
             </xsl:with-param>
@@ -587,7 +587,7 @@
                        </script>
                      </xsl:if>
                      <xsl:variable name="quotUrl" select="concat($WebApplicationBaseURL,'resolve/gnd/',$pnd)" />
-                     <p><xsl:copy-of select="parse-xml(concat('&lt;xml&gt;',mcri18n:translate-with-params('OMD.profkat.quoting.gnd', ($quotUrl)),'&lt;/xml&gt;'))"  /></p>
+                     <p><xsl:copy-of select="parse-xml(concat('&lt;html&gt;',mcri18n:translate-with-params('OMD.profkat.quoting.gnd', ($quotUrl)),'&lt;/html&gt;'))"  /></p>
                     </xsl:if>
                   </td>
                 </tr>
@@ -661,7 +661,7 @@
         -->
       </div>
     </div>
-       
+
   </xsl:template>
 
 </xsl:stylesheet>
