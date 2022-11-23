@@ -45,6 +45,11 @@ import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * This servlet opens retrieves the object for the given GND and opens the docdetails view
+ * !!!! This is only for legacy URLs !!!!
+ * (currently the old URLs are used in the Wikipedia CPR template)
+ * 
+ * Other (newer) catalogs should NOT use this servlet, but "/resolve/gnd/{gnd-nr} instead -->
+ * 
  * @author Robert Stephan
  * 
  * @see org.mycore.frontend.servlets.MCRServlet
