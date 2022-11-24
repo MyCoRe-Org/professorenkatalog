@@ -49,7 +49,7 @@
             <c:if test="${fromWF eq 'true'}">
               <div class="alert alert-info" style="margin-top:20px" role="alert">
                 <h4 style="margin:5px 0px">
-                  <a class="btn btn-secondary btn-sm float-right" href="${WebApplicationBaseURL}showWorkspace.action?mode=profkat">
+                  <a class="btn btn-secondary btn-sm float-right" href="${WebApplicationBaseURL}do/workspace/tasks#${param.anchor}">
                     <fmt:message key="WF.Preview.return" />
                   </a>
                   <fmt:message key="WF.Preview" />
@@ -106,7 +106,7 @@
             <c:if test="${fromWF eq 'true'}">
               <div class="alert alert-info" style="margin-top:20px" role="alert">
                 <h4 style="margin:5px 0px">
-                  <a class="btn btn-secondary btn-sm float-right" href="${WebApplicationBaseURL}showWorkspace.action?mode=profkat">
+                  <a class="btn btn-secondary btn-sm float-right" href="${WebApplicationBaseURL}do/workspace/tasks#${param.anchor}">
                     <fmt:message key="WF.Preview.return" />
                   </a>
                   <fmt:message key="WF.Preview" />
