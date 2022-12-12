@@ -66,6 +66,14 @@
     </or>
   </and>
 
+  <and>
+    <action>use-xeditor-debug</action>
+    <or>
+      <role>edit</role>
+      <role>admingroup</role>
+    </or>
+  </and>
+
   <!-- REST-API -->
   <and>
     <action>read</action>
