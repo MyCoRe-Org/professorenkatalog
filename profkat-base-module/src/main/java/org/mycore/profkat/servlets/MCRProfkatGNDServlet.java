@@ -63,7 +63,7 @@ public class MCRProfkatGNDServlet extends HttpServlet {
     /**
      * The initalization of the servlet.
      * 
-     * @see javax.servlet.GenericServlet#init()
+     * @see jakarta.servlet.GenericServlet#init()
      */
     public void init() throws ServletException {
         super.init();
@@ -72,8 +72,8 @@ public class MCRProfkatGNDServlet extends HttpServlet {
     /**
      * The method replace the default form MCRSearchServlet and redirect the
      * 
-     * @param job
-     *            the MCRServletJob instance
+     * @param request - the HttpServletRequest instance
+     * @param response - the HttpServletResponse instance
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

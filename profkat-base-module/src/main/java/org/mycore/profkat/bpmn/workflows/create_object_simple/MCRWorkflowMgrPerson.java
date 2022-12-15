@@ -10,10 +10,16 @@ import org.mycore.jspdocportal.common.bpmn.workflows.create_object_simple.MCRAbs
 import org.mycore.jspdocportal.common.bpmn.workflows.create_object_simple.MCRWorkflowMgr;
 import org.xml.sax.SAXParseException;
 
+/**
+ * WorkflowManager implementation for Profkat person objects
+ * 
+ * @author Robert Stephan
+ *
+ */
 public class MCRWorkflowMgrPerson extends MCRAbstractWorkflowMgr implements MCRWorkflowMgr{
 	/**
 	 * 
-	 * @param mcrObjID
+	 * @param mcrObjID - the MyCoRe object ID of the person
 	 * @return null if correct, errormessage otherwise
 	 */
 	@Override

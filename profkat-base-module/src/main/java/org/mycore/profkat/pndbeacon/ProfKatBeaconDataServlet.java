@@ -88,6 +88,13 @@ public class ProfKatBeaconDataServlet extends HttpServlet {
 		}
 	}
 
+	/**
+	 * returns the count of occurrences of a substring in a string
+	 * 
+	 * @param substring - the substring that should be searched
+	 * @param string - the sting in which the substring should be searched in
+	 * @return count of substring in string
+	 */
 	public static int countSubstringInString(String substring, String string) {
 		return (string.length() - string.replace(substring, "").length()) / substring.length();
 	}

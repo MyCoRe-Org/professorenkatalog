@@ -9,6 +9,12 @@ import java.util.TreeMap;
 
 import org.apache.logging.log4j.LogManager;
 
+/**
+ * Utility class to proccess the beacon file for Rostock University Bibliography
+ * 
+ * @author Robert Stephan
+ *
+ */
 public class UBRBibliographie {
     private static final String BEACON_URL = "http://web10.ub.uni-rostock.de/lsf/ubhro_bibliographie_pnd_beacon.txt";
 
@@ -20,7 +26,11 @@ public class UBRBibliographie {
 
     private long nextCheckInMS = -1;
 
-    //Singleton Pattern
+    /**
+     * return the singleton instance of this class
+     * 
+     * @return the instance
+     */
     public static synchronized UBRBibliographie getInstance() {
         if (instance == null) {
             instance = new UBRBibliographie();
@@ -28,6 +38,9 @@ public class UBRBibliographie {
         return instance;
     }
 
+    /**
+     * creates a default bibliography object
+     */
     public UBRBibliographie() {
         biblioPNDBeaconEtag = "";
         biblioPNDMap = new TreeMap<String, Integer>();
@@ -89,7 +102,7 @@ public class UBRBibliographie {
 
     /**
      * returns the message which could be displayed as link 
-     * @param pnd the PND number
+     * @param pnd - the PND number
      * @return the message
      */
     public String getMessage(String pnd) {
@@ -103,8 +116,8 @@ public class UBRBibliographie {
 
     /**
      * returns the Request URL for catalog
-     * @param pnd
-     * @return
+     * @param pnd - the PND number
+     * @return the URL to Rostock University Bibliography
      */
     public String getURL(String pnd) {
         return "http://katalog.ub.uni-rostock.de/DB=4/CMD?ACT=SRCHA&SRT=YOP&IKT=8029&TRM=" + pnd;
