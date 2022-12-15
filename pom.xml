@@ -13,23 +13,7 @@
   <name>MyCoRe Professorenkatalog</name>
   <description>Professorenkatalog based on MyCoRe JSPDocportal</description>
   <inceptionYear>2004</inceptionYear>
- 
-  <modules>
-    <module>profkat-base-module</module>
-  </modules>
-  
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.mycore.jspdocportal</groupId>
-        <artifactId>jspdocportal-bom</artifactId>
-        <version>2022.06-SNAPSHOT</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-  
+
   <repositories>
     <repository>
       <snapshots>
@@ -50,5 +34,21 @@
       <url>https://oss.sonatype.org/content/repositories/snapshots</url>
     </repository>
   </repositories>
-
+ 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.mycore.jspdocportal</groupId>
+        <artifactId>jspdocportal-bom</artifactId>
+        <version>2022.06-SNAPSHOT</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  
+  <modules>
+    <module>profkat-base-module</module>
+  </modules>
+  
 </project>
