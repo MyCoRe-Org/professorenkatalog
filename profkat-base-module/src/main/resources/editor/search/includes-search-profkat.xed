@@ -86,7 +86,7 @@
           </xed:bind>
          </div>
          <div class="col-sm-2">
-           <div class="btn-group btn-group-xs pull-right">
+           <div class="btn-group btn-group-sm pull-right">
              <xed:controls />
            </div>
         </div>
@@ -116,7 +116,7 @@
               </xed:bind>
             </div>
             <div class="col-sm-3">
-              <div class="btn-group btn-group-xs pull-right">
+              <div class="btn-group btn-group-sm pull-right">
                 <xed:controls />
               </div>
             </div>
@@ -147,7 +147,7 @@
               </xed:bind>
             </div>
             <div class="col-sm-3">
-              <div class="btn-group btn-group-xs pull-right">
+              <div class="btn-group btn-group-sm pull-right">
                 <xed:controls />
               </div>
             </div>
@@ -177,7 +177,7 @@
               </xed:bind>
             </div>
             <div class="col-sm-3">
-              <div class="btn-group btn-group-xs pull-right">
+              <div class="btn-group btn-group-sm pull-right">
                 <xed:controls />
               </div>
             </div>
@@ -206,7 +206,7 @@
               </xed:bind>
             </div>
             <div class="col-sm-3">
-              <div class="btn-group btn-group-xs pull-right">
+              <div class="btn-group btn-group-sm pull-right">
                 <xed:controls />
               </div>
             </div>
@@ -235,7 +235,7 @@
               </xed:bind>
             </div>
             <div class="col-sm-3">
-              <div class="btn-group btn-group-xs pull-right">
+              <div class="btn-group btn-group-sm pull-right">
                 <xed:controls />
               </div>
             </div>
@@ -264,7 +264,7 @@
               </xed:bind>
             </div>
             <div class="col-sm-3">
-              <div class="btn-group btn-group-xs pull-right">
+              <div class="btn-group btn-group-sm pull-right">
                 <xed:controls />
               </div>
             </div>
