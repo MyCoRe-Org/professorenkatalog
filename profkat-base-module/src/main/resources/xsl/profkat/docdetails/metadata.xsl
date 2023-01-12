@@ -579,8 +579,8 @@
                            success : function(data) {{
                              var c = data.response.numFound;
                              if(c>0){{
-                               $$('#digibib_bs_link_numfound').text(c);
-                               $$('#digibib_bs_link').removeClass('d-none');
+                               $('#digibib_bs_link_numfound').text(c);
+                               $('#digibib_bs_link').removeClass('d-none');
                              }}
                            }}
                          }});
