@@ -114,7 +114,8 @@ div.docdetails-separator hr {
 	display:none;
 }
 
-div.docdetails-label {
+span.docdetails-label,
+span.docdetails-sublabel {
 	white-space:nowrap;
 	color:#565656;
 	font-family: Verdana,Arial,sans-serif;
