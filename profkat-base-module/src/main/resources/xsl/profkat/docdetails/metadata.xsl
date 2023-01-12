@@ -565,7 +565,7 @@
                        <div id="digibib_bs_link" class="profkat-beacon-result d-none" data-gnd="{$pnd}">
                          <ul style="list-style-position:inside">
                            <li>
-                             <a target="beacon_result" href="https://publikationsserver.tu-braunschweig.de/servlets/solr/find?condQuery={$pnd}">
+                             <a target="beacon_result" href="https://leopard.tu-braunschweig.de/servlets/solr/find?condQuery={$pnd}">
                                <span id="digibib_bs_link_numfound" ></span> {mcri18n:translate('OMD.profkat.cpb.documents_in_digibib')}
                              </a>
                            </li>
