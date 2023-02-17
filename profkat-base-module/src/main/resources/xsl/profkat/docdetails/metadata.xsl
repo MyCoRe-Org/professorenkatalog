@@ -180,10 +180,10 @@
               <xsl:for-each select="(./metadata/box.birth/birth|./metadata/box.death/death)[1]">
                 <xsl:variable name="birth_type" select="local-name(./../../box.birth/birth)" />
                 <xsl:variable name="birth_place" select="string(./../../box.birth/birth/event)" />
-                <xsl:variable name="birth_date" select="string(./../../box.birth/birth/text)" />
+                <xsl:variable name="birth_date" select="string(./../../box.birth/birth/text[@xml:lang='de'])" />
                 <xsl:variable name="death_type" select="local-name(./../../box.death/death)" />
                 <xsl:variable name="death_place" select="string(./../../box.death/death/event)" />
-                <xsl:variable name="death_date" select="string(./../../box.death/death/text)" />
+                <xsl:variable name="death_date" select="string(./../../box.death/death/text[@xml:lang='de'])" />
                 <xsl:if test="$birth_type">
                   <tr>
                     <td>{mcri18n:translate('OMD.common.born')}
