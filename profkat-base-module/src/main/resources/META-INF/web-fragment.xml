@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-fragment metadata-complete="true" version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-fragment_3_0.xsd">  
+<web-fragment version="5.0" xmlns="https://jakarta.ee/xml/ns/jakartaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-fragment_5_0.xsd">
   <!-- @metadata-complete -> do not process annotations -->
-  <name>profkatbase</name>
-  <display-name>Professorenkatalog Base</display-name>
-  <description></description>
 
+  <name>profkat_base</name>
   <ordering>
-    <before>
-      <name>jspdocportal</name>
-    </before>
+    <after>
+      <name>jspdocportal_common</name>
+    </after>
   </ordering>
 
   <servlet id="ProfKatBeaconDataServlet">
