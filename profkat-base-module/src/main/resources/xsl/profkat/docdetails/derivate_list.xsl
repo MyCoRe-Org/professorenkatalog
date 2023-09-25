@@ -56,12 +56,14 @@
                         <xsl:variable name="fulltext_url">{$WebApplicationBaseURL}file/{/mycoreobject/@ID}/{./@xlink:href}/{./maindoc/text()}</xsl:variable>
                         <a href="{$fulltext_url}" target="_blank">{./maindoc}</a>
                         <br />
-                        <span class="small d-inline-block" style="width:9em">({mcrstring:pretty-filesize(./maindoc_size)})</span> 
-                        <a class="small d-inline-block" style="width:9em" 
-                           download="{./maindoc}.md5" onclick="event.stopPropagation();"
-                           href="data:text/plain;charset=US-ASCII,{encode-for-uri(concat(./maindoc_md5,'  ', ./maindoc))}">
-                          <i class="fas fa-download"></i> MD5
-                        </a>
+                        <xsl:if test="./maindoc_size">
+                          <span class="small d-inline-block" style="width:9em">({mcrstring:pretty-filesize(./maindoc_size)})</span> 
+                          <a class="small d-inline-block" style="width:9em"
+                             download="{./maindoc}.md5" onclick="event.stopPropagation();"
+                             href="data:text/plain;charset=US-ASCII,{encode-for-uri(concat(./maindoc_md5,'  ', ./maindoc))}">
+                            <i class="fas fa-download"></i> MD5
+                          </a>
+                        </xsl:if>
                         <span class="small d-inline-block">
                           (<xsl:value-of select="document(concat('classification:metadata:0:children:',classification/@classid,':', classification/@categid))//category/label[@xml:lang='de']/@text" />)
                         </span>
