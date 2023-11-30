@@ -13,7 +13,7 @@
     
     <xsl:choose>
       <xsl:when test="starts-with(./@ID, 'cpr_')">
-         <field name="purl">http://purl.uni-rostock.de/cpr/<xsl:value-of select="substring(./@ID, 11)" /></field>
+         <field name="purl">https://purl.uni-rostock.de/cpr/<xsl:value-of select="substring-after(./@ID, 'cpr_person_')" /></field>
       </xsl:when>
       <xsl:otherwise>
           <field name="purl"><xsl:value-of select="concat($WebApplicationBaseURL, 'resolve/id/', ./@ID)" /></field>

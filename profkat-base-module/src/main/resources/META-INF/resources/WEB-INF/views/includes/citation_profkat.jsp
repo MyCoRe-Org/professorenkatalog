@@ -14,7 +14,7 @@
   <jsp:useBean id="now" class="java.util.Date" scope="page" />
   <c:choose>
     <c:when test="${fn:startsWith(mcrid, 'cpr_')}">
-      <c:url var="url" value="http://purl.uni-rostock.de/cpr/${fn:substringAfter(mcrid, 'cpr_person_')}" />
+      <c:url var="url" value="https://purl.uni-rostock.de/cpr/${fn:substringAfter(mcrid, 'cpr_person_')}" />
     </c:when>
     <c:otherwise>
       <c:url var="url" value="${WebApplicationBaseURL}resolve/id/${mcrid}" />

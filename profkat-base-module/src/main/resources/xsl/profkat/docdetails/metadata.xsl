@@ -649,7 +649,7 @@
                   <td>
                     <xsl:variable name="name">{./metadata/box.firstname/firstname[1]} {.//metadata/box.surname/surname[1]}</xsl:variable>
                     <xsl:variable name="url">{if ($project='cpr') 
-                                              then (concat('http://purl.uni-rostock.de/cpr/', substring-after(./@ID, 'cpr_person_') )) 
+                                              then (concat('https://purl.uni-rostock.de/cpr/', substring-after(./@ID, 'cpr_person_') )) 
                                               else (concat($WebApplicationBaseURL,'resolve/id/',./@ID))}</xsl:variable>
                     <xsl:variable name="date" select="format-date(current-date(), '[D,2].[M,2].[Y]')" />  
                     <xsl:copy-of select="parse-xml(concat('&lt;xml&gt;',mcri18n:translate-with-params('OMD.profkat.quoting.text', ($name, $url, $url,  $date)),'&lt;/xml&gt;'))" />
