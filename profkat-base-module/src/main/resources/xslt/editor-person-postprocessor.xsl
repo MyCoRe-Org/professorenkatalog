@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:mcrxsl="xalan://org.mycore.common.xml.MCRXMLFunctions"
-  exclude-result-prefixes="mcrxsl">
+<xsl:stylesheet version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <xsl:include href="copynodes.xsl" />
+  <xsl:mode on-no-match="shallow-copy" />
 
   <xsl:template match="//*[@class='MCRMetaHistoryDate' or @class='MCRMetaHistoryEvent']/*">
     <xsl:copy>
