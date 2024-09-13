@@ -3,6 +3,7 @@ package org.mycore.profkat.pndbeacon;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.TreeMap;
@@ -57,7 +58,7 @@ public class UBRBibliographie {
         if (now > nextCheckInMS) {
             try {
                 //retrieve PND-IDs and their number of occurence from pnd beacon file and store them in local map
-                URL url = new URL(BEACON_URL);
+                URL url = URI.create(BEACON_URL).toURL();
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestProperty("If-None-Match", biblioPNDBeaconEtag);
 

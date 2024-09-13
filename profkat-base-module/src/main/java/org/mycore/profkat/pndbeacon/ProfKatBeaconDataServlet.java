@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 
 import org.apache.logging.log4j.LogManager;
@@ -53,7 +54,7 @@ public class ProfKatBeaconDataServlet extends HttpServlet {
 		if (gnd != null) {
 			gnd = gnd.replace("http://d-nb.info/gnd/", "");
 			try {
-				URL url = new URL(BEACON_FINDBUCH_BASEURL + gnd);
+				URL url =  URI.create(BEACON_FINDBUCH_BASEURL + gnd).toURL();
 				String line = null;
 
 				try (BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"))) {

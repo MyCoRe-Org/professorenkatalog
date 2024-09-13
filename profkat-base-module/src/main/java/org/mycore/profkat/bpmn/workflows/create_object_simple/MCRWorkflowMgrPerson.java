@@ -3,12 +3,12 @@ package org.mycore.profkat.bpmn.workflows.create_object_simple;
 import java.io.IOException;
 import java.nio.file.Path;
 
+import org.jdom2.JDOMException;
 import org.mycore.datamodel.metadata.MCRObject;
 import org.mycore.datamodel.metadata.MCRObjectID;
 import org.mycore.jspdocportal.common.bpmn.MCRBPMNUtils;
 import org.mycore.jspdocportal.common.bpmn.workflows.create_object_simple.MCRAbstractWorkflowMgr;
 import org.mycore.jspdocportal.common.bpmn.workflows.create_object_simple.MCRWorkflowMgr;
-import org.xml.sax.SAXParseException;
 
 /**
  * WorkflowManager implementation for Profkat person objects
@@ -29,7 +29,7 @@ public class MCRWorkflowMgrPerson extends MCRAbstractWorkflowMgr implements MCRW
 			@SuppressWarnings("unused")
             MCRObject mcrWFObj = new MCRObject(wfFile.toUri());
 		}
-		catch(SAXParseException e){
+		catch(JDOMException e){
 			return "XML Error: "+e.getMessage();
 		}
 		catch(IOException e){
