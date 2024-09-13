@@ -39,9 +39,9 @@
 <html>
   <head>
     <%@ include file="fragments/html_head.jspf" %>
-    <%--ggf. Metatags ergänzen <mcr:transformXSL dom="${doc}" xslt="xsl/docdetails/metatags_html.xsl" /> --%>
+    <%--ggf. Metatags ergänzen <mcr:transformXSL dom="${doc}" xslt="xslt/docdetails/metatags_html.xsl" /> --%>
     <c:set var="description">
-      <mcr:transformXSL dom="${mcrobj}" xslt="xsl/docdetails/person2html_header_description.xsl" />
+      <mcr:transformXSL dom="${mcrobj}" xslt="xslt/docdetails/person2html_header_description.xsl" />
     </c:set>
     <meta name="description" lang="de" content="${fn:trim(description)}" />
     <link rel="canonical" href="${WebApplicationBaseURL}resolve/id/${mcrid}" />
@@ -57,7 +57,7 @@
                 <jsp:param name="mcrobj" value="${mcrobj}" />
               </jsp:include>
             </div>
-            <mcr:transformXSL dom="${mcrobj}" xslt="xsl/profkat/docdetails/header.xsl" />
+            <mcr:transformXSL dom="${mcrobj}" xslt="xslt/profkat/docdetails/header.xsl" />
             <c:if test="${fromWF eq 'true'}">
               <div class="alert alert-info" style="margin-top:20px" role="alert">
                 <h4 style="margin:5px 0px">
@@ -80,11 +80,11 @@
               (<fmt:message key="${msgKeyStatus}" />)
             </div>
             <h3><fmt:message key="Webpage.docdetails.tabs.data"/></h3>
-            <mcr:transformXSL dom="${mcrobj}" xslt="xsl/profkat/docdetails/metadata.xsl" />
+            <mcr:transformXSL dom="${mcrobj}" xslt="xslt/profkat/docdetails/metadata.xsl" />
             <x:if select="$mcrobj/mycoreobject/structure/derobjects/derobject[classification/@categid='display_biography']">
               <hr class="border border-primary" />
               <h3><fmt:message key="Webpage.docdetails.tabs.article"/></h3>
-              <mcr:transformXSL dom="${mcrobj}" xslt="xsl/profkat/docdetails/derivate_content.xsl" />
+              <mcr:transformXSL dom="${mcrobj}" xslt="xslt/profkat/docdetails/derivate_content.xsl" />
             </x:if>
             <x:if select="$mcrobj/mycoreobject/structure/derobjects/derobject">
               <hr class="border border-primary" />
@@ -94,7 +94,7 @@
                   <fmt:message key="OMD.derivate.copyright.notice" />
                 </div>
               </div>
-              <mcr:transformXSL dom="${mcrobj}" xslt="xsl/profkat/docdetails/derivate_list.xsl" />
+              <mcr:transformXSL dom="${mcrobj}" xslt="xslt/profkat/docdetails/derivate_list.xsl" />
             </x:if>
           </div>
         </div>

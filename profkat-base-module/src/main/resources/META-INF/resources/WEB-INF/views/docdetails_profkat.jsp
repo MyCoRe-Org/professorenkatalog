@@ -32,9 +32,9 @@
 <html>
   <head>
     <%@ include file="fragments/html_head.jspf" %>
-    <%--ggf. Metatags ergänzen <mcr:transformXSL dom="${doc}" xslt="xsl/docdetails/metatags_html.xsl" /> --%>
+    <%--ggf. Metatags ergänzen <mcr:transformXSL dom="${doc}" xslt="xslt/docdetails/metatags_html.xsl" /> --%>
     <c:set var="description">
-      <mcr:transformXSL dom="${mcrobj}" xslt="xsl/docdetails/person2html_header_description.xsl" />
+      <mcr:transformXSL dom="${mcrobj}" xslt="xslt/docdetails/person2html_header_description.xsl" />
     </c:set>
     <meta name="description" lang="de" content="${fn:trim(description)}" />
     <link rel="canonical" href="${WebApplicationBaseURL}resolve/id/${mcrid}" />
@@ -45,7 +45,7 @@
       <div id="docdetails" class="container">
         <div class="row">
           <div id="docdetails-main" class="col docdetails">
-            <mcr:transformXSL dom="${mcrobj}" xslt="xsl/profkat/docdetails/header.xsl" />
+            <mcr:transformXSL dom="${mcrobj}" xslt="xslt/profkat/docdetails/header.xsl" />
             <c:if test="${fromWF eq 'true'}">
               <div class="alert alert-info" style="margin-top:20px" role="alert">
                 <h4 style="margin:5px 0px">
@@ -89,7 +89,7 @@
             
             <div id="nav_content_root" class="tab-content mt-3">
               <div id="nav_content_data" class="tab-pane active" data-parent="#nav_content_root">
-                <mcr:transformXSL dom="${mcrobj}" xslt="xsl/profkat/docdetails/metadata.xsl" />
+                <mcr:transformXSL dom="${mcrobj}" xslt="xslt/profkat/docdetails/metadata.xsl" />
               </div>
               <div id="nav_content_documents" class="tab-pane" data-parent="#nav_content_root">
                 <div class="card card-sm profkat-card-copyright">
@@ -97,10 +97,10 @@
                     <fmt:message key="OMD.derivate.copyright.notice" />
                   </div>
                 </div>
-                <mcr:transformXSL dom="${mcrobj}" xslt="xsl/profkat/docdetails/derivate_list.xsl" />
+                <mcr:transformXSL dom="${mcrobj}" xslt="xslt/profkat/docdetails/derivate_list.xsl" />
               </div>
               <div id="nav_content_article" class="tab-pane" data-parent="#nav_content_root">
-                <mcr:transformXSL dom="${mcrobj}" xslt="xsl/profkat/docdetails/derivate_content.xsl" />
+                <mcr:transformXSL dom="${mcrobj}" xslt="xslt/profkat/docdetails/derivate_content.xsl" />
               </div>
             </div>
             <c:if test="${fromWF eq 'true'}">
