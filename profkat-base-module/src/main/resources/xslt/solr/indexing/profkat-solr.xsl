@@ -3,7 +3,7 @@
   xmlns:fn="http://www.w3.org/2005/xpath-functions"
   xmlns:xlink="http://www.w3.org/1999/xlink" 
   exclude-result-prefixes="fn xlink">
-  <xsl:import href="xslImport:solr-document-3:solr/indexing/profkat-solr-3.xsl" />
+  <xsl:import href="xslImport:solr-document:solr/indexing/profkat-solr.xsl" />
   
   <xsl:param name="WebApplicationBaseURL" />
   <xsl:template match="mycoreobject">
