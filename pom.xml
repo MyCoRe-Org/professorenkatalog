@@ -8,10 +8,10 @@
   </parent>
   <groupId>org.mycore.professorenkatalog</groupId>
   <artifactId>professorenkatalog-parent</artifactId>
-  <version>2022.06-SNAPSHOT</version>
+  <version>2024.06-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>MyCoRe Professorenkatalog</name>
-  <description>Professorenkatalog based on MyCoRe JSPDocportal</description>
+  <description>Professorenkatalog based on MyCoRe and JSPDocportal</description>
   <inceptionYear>2004</inceptionYear>
 
   <repositories>
@@ -40,7 +40,7 @@
       <dependency>
         <groupId>org.mycore.jspdocportal</groupId>
         <artifactId>jspdocportal-bom</artifactId>
-        <version>2022.06-SNAPSHOT</version>
+        <version>2024.06-SNAPSHOT</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
