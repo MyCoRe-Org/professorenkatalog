@@ -19,7 +19,7 @@ import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
 import org.mycore.common.config.MCRConfiguration2;
-import org.mycore.solr.MCRSolrClientFactory;
+import org.mycore.solr.MCRSolrCoreManager;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -102,7 +102,7 @@ public class ProfKatBeaconTxtServlet extends HttpServlet {
 
         //"gnd_uri": "http://d-nb.info/gnd/14075444X"
         try {
-            SolrClient solrClient = MCRSolrClientFactory.getMainSolrClient();
+            SolrClient solrClient = MCRSolrCoreManager.getMainSolrClient();
             SolrQuery solrQuery = new SolrQuery();
             solrQuery.setQuery("gnd_uri:*");
             solrQuery.setFields("gnd_uri"); 
