@@ -10,11 +10,11 @@
   
   exclude-result-prefixes="xlink mcri18n mcracl fn"
   expand-text="yes">
-  <xsl:import href="resource:xsl/functions/i18n.xsl" />
-  <xsl:import href="resource:xsl/functions/classification.xsl" />
-  <xsl:import href="resource:xsl/functions/acl.xsl" />
-  <xsl:import href="resource:xsl/docdetails/docdetails.xsl" />
-  <xsl:import href="resource:xsl/functions/stringutils.xsl" />
+  <xsl:import href="resource:xslt/functions/i18n.xsl" />
+  <xsl:import href="resource:xslt/functions/classification.xsl" />
+  <xsl:import href="resource:xslt/functions/acl.xsl" />
+  <xsl:import href="resource:xslt/docdetails/docdetails.xsl" />
+  <xsl:import href="resource:xslt/functions/stringutils.xsl" />
   
   <xsl:output method="html" indent="yes" standalone="no" encoding="UTF-8"/>
 

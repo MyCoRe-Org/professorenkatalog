@@ -4,7 +4,7 @@
   exclude-result-prefixes="xsl mcri18n">
     <xsl:output method="text" encoding="UTF-8" />
     
-    <xsl:import href="resource:xsl/functions/i18n.xsl" />
+    <xsl:import href="resource:xslt/functions/i18n.xsl" />
     
     <xsl:template match="metadata">
       <xsl:variable name="output">

@@ -9,8 +9,8 @@
   exclude-result-prefixes="xlink mcri18n mcracl fn"
   expand-text="yes">
   
-  <xsl:import href="resource:xsl/functions/i18n.xsl" />
-  <xsl:import href="resource:xsl/docdetails/docdetails.xsl" />
+  <xsl:import href="resource:xslt/functions/i18n.xsl" />
+  <xsl:import href="resource:xslt/docdetails/docdetails.xsl" />
   <xsl:output method="html" indent="yes" standalone="no" encoding="UTF-8"/>
 
   <xsl:param name="WebApplicationBaseURL"></xsl:param>

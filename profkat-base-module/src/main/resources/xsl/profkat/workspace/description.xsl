@@ -8,7 +8,7 @@
   exclude-result-prefixes="mods xlink mcri18n mcracl"
   expand-text="yes">
  
-  <xsl:import href="resource:xsl/functions/i18n.xsl" />
+  <xsl:import href="resource:xslt/functions/i18n.xsl" />
   <xsl:output method="html" indent="yes" standalone="no" encoding="UTF-8"/>
 
   <xsl:param name="WebApplicationBaseURL"></xsl:param>

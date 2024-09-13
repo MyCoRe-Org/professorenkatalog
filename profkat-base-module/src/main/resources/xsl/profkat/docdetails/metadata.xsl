@@ -9,10 +9,10 @@
   
   exclude-result-prefixes="xlink mcri18n mcracl fn"
   expand-text="yes">
-  <xsl:import href="resource:xsl/functions/i18n.xsl" />
-  <xsl:import href="resource:xsl/functions/classification.xsl" />
-  <xsl:import href="resource:xsl/docdetails/docdetails.xsl" />
-  <xsl:import href="resource:xsl/profkat/docdetails/profkat_util.xsl" />
+  <xsl:import href="resource:xslt/functions/i18n.xsl" />
+  <xsl:import href="resource:xslt/functions/classification.xsl" />
+  <xsl:import href="resource:xslt/docdetails/docdetails.xsl" />
+  <xsl:import href="resource:xslt/profkat/docdetails/profkat_util.xsl" />
   
   <xsl:output method="html" indent="yes" standalone="no" encoding="UTF-8"/>
 
