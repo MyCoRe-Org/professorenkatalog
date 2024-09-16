@@ -36,16 +36,6 @@
           <exclude>datamodel-*.xml</exclude>
         </excludes>
       </resource>
-      <resource>
-        <targetPath>META-INF/webcontent</targetPath>
-        <directory>src/main/resources/config/lang/webcontent</directory>
-      </resource>
-      <resource>
-        <directory>src/main/resources/config/hibernate</directory>
-        <excludes>
-          <exclude>*.template</exclude>
-        </excludes>
-      </resource>
     </resources>
 
     <!-- needed to execute maven-xml-plugin -->
