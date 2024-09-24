@@ -48,6 +48,14 @@
     </or>
   </and>
   <and>
+    <action>create-derivate</action>
+    <or>
+      <role>admingroup</role>
+      <role>restapi</role>
+      <role>wf_edit_profkat-person</role>
+    </or>
+  </and>
+  <and>
     <or>
       <action>edit</action>
     </or>
