@@ -15,6 +15,7 @@ import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrQuery.ORDER;
 import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.solr.client.solrj.request.QueryRequest;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
@@ -25,6 +26,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.mycore.solr.auth.MCRSolrAuthenticationLevel;
+import org.mycore.solr.auth.MCRSolrAuthenticationManager;
 
 /**
  * This class generates a PND Beacon text file.
@@ -109,7 +112,10 @@ public class ProfKatBeaconTxtServlet extends HttpServlet {
             solrQuery.setSort("gnd_uri", ORDER.asc);
             solrQuery.setRows(Integer.MAX_VALUE);
 
-            QueryResponse solrResponse = solrClient.query(solrQuery);
+            QueryRequest queryRequest = new QueryRequest(solrQuery);
+            MCRSolrAuthenticationManager.getInstance().applyAuthentication(queryRequest,
+                MCRSolrAuthenticationLevel.SEARCH);
+            QueryResponse solrResponse = queryRequest.process(solrClient);
             SolrDocumentList solrResults = solrResponse.getResults();
             Iterator<SolrDocument> it = solrResults.iterator();
             while (it.hasNext()) {
