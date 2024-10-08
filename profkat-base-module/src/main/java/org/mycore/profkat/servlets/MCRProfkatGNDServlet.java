@@ -31,6 +31,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.solr.client.solrj.request.QueryRequest;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
@@ -42,16 +43,18 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.mycore.solr.auth.MCRSolrAuthenticationLevel;
+import org.mycore.solr.auth.MCRSolrAuthenticationManager;
 
 /**
  * This servlet opens retrieves the object for the given GND and opens the docdetails view
  * !!!! This is only for legacy URLs !!!!
  * (currently the old URLs are used in the Wikipedia CPR template)
- * 
+ *
  * Other (newer) catalogs should NOT use this servlet, but "/resolve/gnd/{gnd-nr} instead -->
- * 
+ *
  * @author Robert Stephan
- * 
+ *
  * @see org.mycore.frontend.servlets.MCRServlet
  */
 public class MCRProfkatGNDServlet extends HttpServlet {
@@ -62,7 +65,7 @@ public class MCRProfkatGNDServlet extends HttpServlet {
 
     /**
      * The initalization of the servlet.
-     * 
+     *
      * @see jakarta.servlet.GenericServlet#init()
      */
     public void init() throws ServletException {
@@ -71,7 +74,7 @@ public class MCRProfkatGNDServlet extends HttpServlet {
 
     /**
      * The method replace the default form MCRSearchServlet and redirect the
-     * 
+     *
      * @param request - the HttpServletRequest instance
      * @param response - the HttpServletResponse instance
      */
@@ -96,7 +99,10 @@ public class MCRProfkatGNDServlet extends HttpServlet {
             SolrQuery solrQuery = new SolrQuery();
             solrQuery.setQuery("gnd_uri:"+MCRSolrUtils.escapeSearchValue("http://d-nb.info/gnd/" + gnd));
 
-            QueryResponse solrResponse = solrClient.query(solrQuery);
+            QueryRequest queryRequest = new QueryRequest(solrQuery);
+            MCRSolrAuthenticationManager.getInstance().applyAuthentication(queryRequest,
+                    MCRSolrAuthenticationLevel.SEARCH);
+            QueryResponse solrResponse = queryRequest.process(solrClient);
             SolrDocumentList solrResults = solrResponse.getResults();
 
             Iterator<SolrDocument> it = solrResults.iterator();
