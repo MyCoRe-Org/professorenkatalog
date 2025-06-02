@@ -1,0 +1,44 @@
+# This workflow will build a package using Maven 
+# and then publish it to Sonatype Central.
+# For more information see:
+#   https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path
+#   https://medium.com/@clarkbw/environment-variables-for-maven-settings-8280d8a809f9
+#
+# Notes:
+#  - The server-id must match the configuration value <publishingServerId> 
+#    of central-publishing-maven plugin in pom.xml
+name: Maven Snapshot deploy
+
+on:
+  push:
+    branches:
+      - 'main'
+      - 'mycore-2024.06.x'
+      - 'mycore-2023.06.x'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21 and Maven Settings
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          # Maven Distribution Server (step creates .m2/settings.xml)
+          server-id: 'sonatype-central'
+          server-username: SONATYPE_USERNAME
+          server-password: SONATYPE_TOKEN
+
+      - name: Publish to Sontatype Central with Apache Maven
+        env:
+          SONATYPE_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          SONATYPE_TOKEN:  ${{ secrets.OSSRH_TOKEN }}
+        run: mvn --batch-mode deploy -P deploy-to-sonatype
