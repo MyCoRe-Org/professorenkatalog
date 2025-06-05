@@ -37,7 +37,12 @@
           <xsl:with-param name="items">
             <xsl:for-each select="/mycoreobject/metadata/box.professorship/professorship">
               <tr>
-                <td>{./text[@xml:lang='de']}</td>
+                <td>
+                  <xsl:variable name="prof_time" select="./text[@xml:lang='de']" />
+                  <xsl:if test="$prof_time and not($prof_time = '#')">
+                    {$prof_time}  
+                  </xsl:if>
+                </td>
                 <td>{./event}</td>
                 <td class="profkat-prev-next">
                   <div style="text-align: right; white-space: nowrap; font-size:80%;">

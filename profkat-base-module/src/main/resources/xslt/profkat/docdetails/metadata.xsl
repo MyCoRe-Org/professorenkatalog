@@ -32,7 +32,12 @@
             <xsl:with-param name="items">
               <xsl:for-each select="/mycoreobject/metadata/box.faculty/faculty">
                 <tr>
-                  <td>{./text}</td>
+                  <td>
+                    <xsl:variable name="facul_time" select="./text[@xml:lang='de']" />
+                    <xsl:if test="$facul_time and not($facul_time = '#')">
+                      {$facul_time}  
+                    </xsl:if>
+                  </td>
                   <td>
                     <xsl:choose>
                       <xsl:when test="$project='cpr'">
