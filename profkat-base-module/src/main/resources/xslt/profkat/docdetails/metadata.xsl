@@ -533,7 +533,44 @@
           </xsl:call-template>
         </xsl:if>
         
-       <xsl:if test="./metadata/box.identifier/identifier[@type='gnd']">
+        <xsl:if test="./metadata/box.identifier/identifier[@type!='nognd']">
+          <xsl:call-template name="dd_block">
+            <xsl:with-param name="key" select="'identifier'"/>
+            <xsl:with-param name="labelkey" select="'OMD.profkat.identifier'"/>
+            <xsl:with-param name="css_class" select="'col2'"/>
+            <xsl:with-param name="items">
+              <xsl:for-each select="./metadata/box.identifier/identifier[@type!='nognd']">
+                <tr>
+                  <td>{mcri18n:translate(concat('OMD.profkat.identifier.',./@type))}:</td>
+                  <td>
+                    <xsl:choose>
+                      <xsl:when test="@type='gnd'">
+                        <a href="https://explore.gnd.network/gnd/{text()}" target="_blank">
+                          <xsl:value-of select="text()" disable-output-escaping="true" />
+                        </a>
+                      </xsl:when>
+                      <xsl:when test="@type='viaf'">
+                        <a href="https://viaf.org/viaf/{text()}" target="_blank">
+                          <xsl:value-of select="text()" disable-output-escaping="true" />
+                        </a>
+                      </xsl:when>
+                      <xsl:when test="@type='orcid'">
+                        <a href="https://orcid.org/{text()}" target="_blank">
+                          <xsl:value-of select="text()" disable-output-escaping="true" />
+                        </a>
+                      </xsl:when>
+                      <xsl:otherwise>                      
+                        <xsl:value-of select="text()" disable-output-escaping="true" />
+                      </xsl:otherwise>
+                    </xsl:choose>
+                  </td>
+                </tr>
+              </xsl:for-each> 
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+        
+        <xsl:if test="./metadata/box.identifier/identifier[@type='gnd']">
           <xsl:call-template name="dd_block">
             <xsl:with-param name="key" select="'onlineres'"/>
             <xsl:with-param name="labelkey" select="'OMD.profkat.onlineres'"/>
