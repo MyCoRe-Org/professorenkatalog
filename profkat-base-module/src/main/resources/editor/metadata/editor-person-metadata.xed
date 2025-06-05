@@ -1516,7 +1516,7 @@
                 </label>
                 <xed:bind xpath="@xlink:title">
                   <div class="col-sm-10">
-                    <input id="sources_title" type="text" class="form-control input-sm"   />
+                    <textarea id="sources_title" rows="2" class="form-control input-sm"   />
                   </div>
                 </xed:bind>
               </div>
