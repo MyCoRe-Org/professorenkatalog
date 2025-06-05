@@ -20,7 +20,7 @@
         <xsl:variable name="last" select="./metadata/box.surname/surname[1]" />
         <xsl:variable name="first" select="./metadata/box.firstname/firstname[1]" />
         <xsl:variable name="affix" select="./metadata/box.nameaffix/nameaffix[1]" />
-        <xsl:variable name="akadtitle" select="./metadata/box.academictitle/academictitle" />
+        <xsl:variable name="akadtitle" select="string-join(./metadata/box.academictitle/academictitle, ', ')" />
         
         <h2>
           {$last},&#160;{$first}
