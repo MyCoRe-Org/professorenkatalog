@@ -1411,37 +1411,6 @@
     </div>
   </xed:bind>
   <!-- Ehrungen [ENDE] -->
-  <!--  Weitere Infos [START] -->
-  
-  <xed:bind xpath="box.otherinfo[@class='MCRMetaLangText']">
-    <div class="form-group row">
-      <label class="col-sm-2 col-form-label input-sm ir-editor-label" for="otherinfo">
-        <xed:output i18n="OMD.profkat.otherinfos" />
-      </label>
-      <div class="col-sm-10">
-        <xed:repeat xpath="otherinfo">
-          <div class="row ir-editor-row ir-editor-row-1">
-            <div class="col-sm-10">
-              <div class="row ir-editor-row">
-                <div class="offset-sm-2 col-sm-10">
-                  <xed:bind xpath=".">
-                   <input id="otherinfo" type="text" class="form-control input-sm"   />
-                  </xed:bind>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-2">
-              <div class="btn-group btn-group-sm pull-right">
-                <xed:controls />
-              </div>
-            </div>
-          </div>
-        </xed:repeat>
-      </div>
-    </div>
-  </xed:bind>
-  <!--  Weitere Infos [ENDE] -->
-  
   <!--  Hauptwerke [START] -->
   <xed:bind xpath="box.mainpublication[@class='MCRMetaLangText']">
     <div class="form-group row">
@@ -1672,6 +1641,37 @@
     </div>
   </xed:bind>
   <!-- Identifiers [ENDE] -->
+  
+  <!--  Weitere Infos [START] -->
+  
+  <xed:bind xpath="box.otherinfo[@class='MCRMetaLangText']">
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label input-sm ir-editor-label" for="otherinfo">
+        <xed:output i18n="OMD.profkat.otherinfos" />
+      </label>
+      <div class="col-sm-10">
+        <xed:repeat xpath="otherinfo">
+          <div class="row ir-editor-row ir-editor-row-1">
+            <div class="col-sm-10">
+              <div class="row ir-editor-row">
+                <div class="offset-sm-2 col-sm-10">
+                  <xed:bind xpath=".">
+                   <input id="otherinfo" type="text" class="form-control input-sm"   />
+                  </xed:bind>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="btn-group btn-group-sm pull-right">
+                <xed:controls />
+              </div>
+            </div>
+          </div>
+        </xed:repeat>
+      </div>
+    </div>
+  </xed:bind>
+  <!--  Weitere Infos [ENDE] -->
   
    <!--  InternalInfos [START] -->
   <xed:bind xpath="box.internalinfo[@class='MCRMetaLangText']">
