@@ -32,7 +32,10 @@
 		</element>
 		<!-- 23 - Fakultät (Zeitraum + Systematik) -->
 		<element name="faculty"  wrapper="box.faculty" type="historyevent" minOccurs="0" maxOccurs="unbounded" />
-	
+	    <!-- 24 - Klassifikation zu Art des Ausscheidens -->
+        <element name="departure" wrapper="box.departure" type="classification" style="select" minOccurs="0" maxOccurs="unbounded">
+          <classification id="profkat_class_departuretypes" />
+        </element>
 		<!--  ====================================================================================== -->
 		<!-- 31 - eMail -->
 		<element name="email" wrapper="box.email" type="text" minOccurs="0" maxOccurs="unbounded" />

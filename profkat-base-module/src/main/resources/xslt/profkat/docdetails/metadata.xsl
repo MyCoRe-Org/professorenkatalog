@@ -99,7 +99,21 @@
          </xsl:call-template>
        </xsl:if>
        
-      <xsl:call-template name="dd_separator" />
+       <xsl:if test="./metadata/box.departure">
+         <xsl:call-template name="dd_block">
+           <xsl:with-param name="key" select="'departure'"/>
+           <xsl:with-param name="labelkey" select="'OMD.profkat.departure'"/>
+           <xsl:with-param name="items">
+             <xsl:for-each select="/mycoreobject/metadata/box.departure/departure">
+               <tr>
+                 <td><xsl:value-of select="mcrclass:current-label-text(.)" /></td>
+               </tr>
+             </xsl:for-each> 
+           </xsl:with-param>
+         </xsl:call-template>
+       </xsl:if>
+       
+       <xsl:call-template name="dd_separator" />
        
       <xsl:if test="./metadata/box.email/email and not($project='cpb')">
        <xsl:call-template name="dd_block">
