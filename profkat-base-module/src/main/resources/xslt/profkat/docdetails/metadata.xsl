@@ -618,17 +618,22 @@
                          </ul>
                        </div>
                        <script type="text/javascript">
-                         $.ajax({{
-                           type : "GET",
-                           url : "https://publikationsserver.tu-braunschweig.de/api/v1/search?q=allMeta%3D"+$('#digibib_bs_link').attr('data-gnd') +"&amp;wt=json&amp;json.wrf=?",
-                           dataType : "jsonp",
-                           success : function(data) {{
-                             var c = data.response.numFound;
-                             if(c>0){{
-                               $('#digibib_bs_link_numfound').text(c);
-                               $('#digibib_bs_link').removeClass('d-none');
-                             }}
-                           }}
+                         document.addEventListener("DOMContentLoaded", () => {{
+                           let url = "https://leopard.tu-braunschweig.de/api/v1/search?q=allMeta%3D"
+                                     + document.getElementById("digibib_bs_link").getAttribute("data-gnd") +"&amp;wt=json&amp;json.wrf=?";
+                           fetch(url).then(response => {{
+                              response.json()
+                                .then(data => {{
+                                  var c = data.response.numFound;
+                                  if(c>0) {{
+                                     document.getElementById("digibib_bs_link_numfound").innerHTML=c;
+                                     document.getElementById("digibib_bs_link").classList.remove("d-none");
+                                  }}
+                              }});
+                           }})
+                           .catch(error => {{
+                             //do nothing
+                           }});
                          }});
                        </script>
                      </xsl:if>
