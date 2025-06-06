@@ -667,9 +667,10 @@
           <xsl:call-template name="dd_block">
             <xsl:with-param name="key" select="'created_changed'"/>
             <xsl:with-param name="labelkey" select="'OMD.profkat.created_changed'"/>
+            <xsl:with-param name="css_class" select="'col2 w-100'"/>
             <xsl:with-param name="items">
                 <tr>
-                  <td>
+                  <td colspan="2">
                     {format-dateTime(./service/servdates/servdate[@type='createdate'], '[D,2].[M,2].[Y]')}{
                      if(not($project='cpb')) then (concat(', ', ./service/servflags/servflag[@type='createdby'])) else()}
                      /
@@ -677,6 +678,16 @@
                     if(not($project='cpb')) then (concat(', ', ./service/servflags/servflag[@type='modifiedby'])) else()}
                   </td>
                 </tr>
+                <xsl:for-each select="./metadata/box.internalinfo/internalinfo[@type='editor']">
+                  <tr>
+                    <td>
+                      {mcri18n:translate(concat('OMD.profkat.internalinfo.',./@type))}
+                    </td>
+                    <td>
+                      <xsl:value-of select="./text()" />
+                    </td>
+                  </tr>
+                </xsl:for-each>
             </xsl:with-param>
           </xsl:call-template>
         </xsl:if>
