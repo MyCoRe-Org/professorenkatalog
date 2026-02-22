@@ -10,7 +10,7 @@
   <artifactId>profkat-base-module</artifactId>
   <packaging>jar</packaging>
   <name>Professorenkatalog Base</name>
-  <description>generic code for professorenkatalog</description>
+  <description>generic code for professorenkatalog </description>
   <properties>
     <forbiddenapis.skip>true</forbiddenapis.skip>
     <manifest.priority>61</manifest.priority>
