@@ -207,10 +207,20 @@
                   <tr>
                     <td>{mcri18n:translate('OMD.common.born')}
                       <xsl:if test="$birth_date and not($birth_date = '#')">
-                        <xsl:if test="contains($birth_date, '.')">
-                          {mcri18n:translate('OMD.common.at')}
-                        </xsl:if>  
-                        {$birth_date}
+                         <xsl:choose>
+                          <!-- bei noch lebenden Personen soll nur das Geburtsjahr angezeigt werden -->
+                          <xsl:when test="$death_date and not($death_date = '#')">
+                            <xsl:if test="contains($birth_date, '.')">
+                              {mcri18n:translate('OMD.common.at')}
+                            </xsl:if>
+                            {$birth_date}
+                          </xsl:when>
+                          <xsl:otherwise>
+                            <xsl:if test="./../../box.birth/birth/von">
+                              {substring(./../../box.birth/birth/von,1,4)}
+                            </xsl:if>
+                          </xsl:otherwise>
+                        </xsl:choose>
                       </xsl:if>
                       <xsl:if test="$birth_place and not($birth_place = '#')">
                         {mcri18n:translate('OMD.common.in')}
