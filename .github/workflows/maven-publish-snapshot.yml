@@ -14,8 +14,6 @@ on:
   push:
     branches:
       - 'main'
-      - 'mycore-2024.06.x'
-      - 'mycore-2023.06.x'
 
 jobs:
   build:
