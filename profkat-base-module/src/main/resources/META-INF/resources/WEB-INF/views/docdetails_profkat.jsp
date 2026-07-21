@@ -89,7 +89,7 @@
             
             <div id="nav_content_root" class="tab-content mt-3">
               <div id="nav_content_data" class="tab-pane active" data-parent="#nav_content_root">
-                <mcr:transformXSL dom="${mcrobj}" xslt="xslt/profkat/docdetails/metadata.xsl" />
+                <mcr:transformXSL dom="${mcrobj}" xslImports="docdetails-metadata" />
               </div>
               <div id="nav_content_documents" class="tab-pane" data-parent="#nav_content_root">
                 <div class="card card-sm profkat-card-copyright">

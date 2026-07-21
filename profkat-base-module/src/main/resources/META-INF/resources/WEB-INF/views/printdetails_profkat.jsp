@@ -78,7 +78,7 @@
               (<fmt:message key="${msgKeyStatus}" />)
             </div>
             <h3><fmt:message key="Webpage.docdetails.tabs.data"/></h3>
-            <mcr:transformXSL dom="${mcrobj}" xslt="xslt/profkat/docdetails/metadata.xsl" />
+            <mcr:transformXSL dom="${mcrobj}" xslImports="docdetails-metadata" />
             <x:if select="$mcrobj/mycoreobject/structure/derobjects/derobject[classification/@categid='display_biography']">
               <hr class="border border-primary" />
               <h3><fmt:message key="Webpage.docdetails.tabs.article"/></h3>
