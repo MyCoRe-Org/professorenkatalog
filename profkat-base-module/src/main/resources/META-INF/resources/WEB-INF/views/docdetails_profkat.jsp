@@ -45,7 +45,7 @@
       <div id="docdetails" class="container">
         <div class="row">
           <div id="docdetails-main" class="col docdetails">
-            <mcr:transformXSL dom="${mcrobj}" xslt="xslt/profkat/docdetails/header.xsl" />
+            <mcr:transformXSL dom="${mcrobj}" xslImports="docdetails-header" />
             <c:if test="${fromWF eq 'true'}">
               <div class="alert alert-info" style="margin-top:20px" role="alert">
                 <h4 style="margin:5px 0px">
