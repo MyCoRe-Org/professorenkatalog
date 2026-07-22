@@ -28,10 +28,7 @@
 
 <mcr:retrieveObject mcrid="${mcrid}" varDOM="mcrobj" cache="true" fromWorkflow="${fromWF}" />
   <c:set var="prof_name">
-    <x:out select="$mcrobj/mycoreobject/metadata/box.surname/surname" />,
-    <x:out select="$mcrobj/mycoreobject/metadata/box.firstname/firstname" />
-    <c:set var="affix"><x:out select="$mcrobj/mycoreobject/metadata/box.nameaffix/nameaffix" /></c:set>
-    <c:if test="${fn:length(affix)>2}">(<c:out value="${affix}" />)</c:if>
+    <mcr:transformXSL dom="${mcrobj}" xslImports="docdetails-title" />
   </c:set>
   <c:set var="pageTitle">${prof_name}</c:set>
 
