@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xed:template xmlns:xed="http://www.mycore.de/xeditor">
+
+  <xed:template id="genres.person">
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="state" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="person-type" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="epochs" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="name-group" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="professorships" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="periods" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="faculties" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="institutes" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="fields-of-study" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="subjects" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="departures" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="email" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="homepages" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="birth" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="death" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="gender" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="confession" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="family-members" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="biographic-entries" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="academic-degrees" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="admin-functions" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="other-functions" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="memberships" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="party-memberships" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="awards" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="main-publications" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="publication-links" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="sources" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="references" />
+    <xed:if test="not(starts-with(//mycoreobject/@ID,'cpb_'))">
+      <xed:include uri="resource:editor/metadata/includes-person.xed" ref="complex-references" />
+    </xed:if>
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="identifiers" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="other-infos" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="internal-infos" />
+    <xed:include uri="resource:editor/metadata/includes-person.xed" ref="gnd-check" />
+  </xed:template>
+
+</xed:template>
