@@ -53,9 +53,7 @@
         <div class="row">
           <div id="docdetails-main" class="col-9 docdetails">
            <div class="docdetails-infobox" style="margin-bottom:32px;">
-              <jsp:include page="includes/citation_profkat.jsp">
-                <jsp:param name="mcrobj" value="${mcrobj}" />
-              </jsp:include>
+             <mcr:transformXSL dom="${mcrobj}" xslImports="docdetails-citation" />
             </div>
             <mcr:transformXSL dom="${mcrobj}" xslt="xslt/profkat/docdetails/header.xsl" />
             <c:if test="${fromWF eq 'true'}">

@@ -132,9 +132,7 @@
               </div>
               <div class="row">
                 <div class="col">
-                  <jsp:include page="includes/citation_profkat.jsp">
-                    <jsp:param name="mcrobj" value="${mcrobj}" />
-                  </jsp:include>
+                  <mcr:transformXSL dom="${mcrobj}" xslImports="docdetails-citation" />
                 </div>
               </div>
               <div class="row mb-3">
