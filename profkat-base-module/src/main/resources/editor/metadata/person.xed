@@ -18,7 +18,7 @@
     <xed:bind xpath="@xsi:noNamespaceSchemaLocation" initially="datamodel-person.xsd" />
     <xed:bind xpath="metadata">
       <xed:include uri="resource:editor/metadata/includes-generic.xed" ref="failed-validation-messages" />
-      <xed:include uri="resource:editor/metadata/genres.xed" ref="genres.person" />
+      <xed:include uri="resource:editor/metadata/object-types.xed" ref="object-types.person" />
     </xed:bind>
     <xed:include uri="resource:editor/metadata/includes-generic.xed" ref="cancel.submit" />
     <xed:include uri="resource:editor/metadata/includes-generic.xed" ref="validation-rules" />

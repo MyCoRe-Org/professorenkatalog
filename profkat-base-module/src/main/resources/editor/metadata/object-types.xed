@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xed:template xmlns:xed="http://www.mycore.de/xeditor">
 
-  <xed:template id="genres.person">
+  <xed:template id="object-types.person">
     <xed:include uri="resource:editor/metadata/includes-person.xed" ref="state" />
     <xed:include uri="resource:editor/metadata/includes-person.xed" ref="person-type" />
     <xed:include uri="resource:editor/metadata/includes-person.xed" ref="epochs" />
