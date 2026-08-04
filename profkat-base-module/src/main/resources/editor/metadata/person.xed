@@ -4,35 +4,29 @@
   role="form"
   class="form-horizontal ir-editor-form profkat-editor-metadata"
   accept-charset="UTF-8" method="post">
+
+  <xed:preload uri="resource:editor/metadata/includes-generic.xed" />
+  <xed:preload uri="resource:editor/metadata/includes-person.xed" />
+  <xed:preload uri="resource:editor/metadata/object-types.xed" />
+
+  <xed:post-processor xsl="editor-person-postprocessor.xsl" />
+
   <div class="form-group row">
     <label class="alert alert-info w-100 ir-editor-alert">
       <xed:output i18n="Editor.Common.headline" />
     </label>
   </div>
-  <xed:post-processor xsl="editor-person-postprocessor.xsl" />
-  <xed:include uri="resource:editor/metadata/includes-generic.xed" ref="cleanup-rules" />
-  <xed:include uri="resource:editor/metadata/includes-generic.xed" ref="in.out" />
+  <xed:include ref="cleanup-rules" />
+  <xed:include ref="in.out" />
   <xed:bind xpath="/mycoreobject">
     <xed:bind xpath="@ID" initially="{$MCR.SWF.Project.ID}_person_00000000" />
     <xed:bind xpath="@label" initially="person" />
     <xed:bind xpath="@xsi:noNamespaceSchemaLocation" initially="datamodel-person.xsd" />
     <xed:bind xpath="metadata">
-      <xed:include uri="resource:editor/metadata/includes-generic.xed" ref="failed-validation-messages" />
-      <xed:include uri="resource:editor/metadata/object-types.xed" ref="object-types.person" />
+      <xed:include ref="failed-validation-messages" />
+      <xed:include ref="object-types-person" />
     </xed:bind>
-    <xed:include uri="resource:editor/metadata/includes-generic.xed" ref="cancel.submit" />
-    <xed:include uri="resource:editor/metadata/includes-generic.xed" ref="validation-rules" />
+    <xed:include ref="cancel.submit" />
+    <xed:include ref="validation-rules" />
   </xed:bind>
-  <script>
-    $(document).ready(function() {
-      $.getScript( 'javascript/xed-check-gnd.js', function() {
-        $('.mcr-gnd-field').on('click change', function(){
-            checkGND(this);
-        });
-        $('.mcr-gnd-field').each( function(){
-            checkGND(this);
-        });
-      });
-    });
-  </script>
 </xed:form>
