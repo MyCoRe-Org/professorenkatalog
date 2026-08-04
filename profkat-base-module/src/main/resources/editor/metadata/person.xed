@@ -5,8 +5,8 @@
   class="form-horizontal ir-editor-form profkat-editor-metadata"
   accept-charset="UTF-8" method="post">
 
-  <xed:preload uri="resource:editor/metadata/includes-generic.xed" />
-  <xed:preload uri="resource:editor/metadata/includes-person.xed" />
+  <xed:preload uri="resource:editor/metadata/generic-includes.xed" />
+  <xed:preload uri="resource:editor/metadata/person-includes.xed" />
   <xed:preload uri="resource:editor/metadata/object-types.xed" />
 
   <xed:post-processor xsl="editor-person-postprocessor.xsl" />
