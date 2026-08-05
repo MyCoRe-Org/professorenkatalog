@@ -28,10 +28,7 @@
 
 <mcr:retrieveObject mcrid="${mcrid}" varDOM="mcrobj" cache="true" fromWorkflow="${fromWF}" />
   <c:set var="prof_name">
-    <x:out select="$mcrobj/mycoreobject/metadata/box.surname/surname" />,
-    <x:out select="$mcrobj/mycoreobject/metadata/box.firstname/firstname" />
-    <c:set var="affix"><x:out select="$mcrobj/mycoreobject/metadata/box.nameaffix/nameaffix" /></c:set>
-    <c:if test="${fn:length(affix)>2}">(<c:out value="${affix}" />)</c:if>
+    <mcr:transformXSL dom="${mcrobj}" xslImports="docdetails-title" />
   </c:set>
   <c:set var="pageTitle">${prof_name}</c:set>
 
@@ -53,11 +50,9 @@
         <div class="row">
           <div id="docdetails-main" class="col-9 docdetails">
            <div class="docdetails-infobox" style="margin-bottom:32px;">
-              <jsp:include page="includes/citation_profkat.jsp">
-                <jsp:param name="mcrobj" value="${mcrobj}" />
-              </jsp:include>
+             <mcr:transformXSL dom="${mcrobj}" xslImports="docdetails-citation" />
             </div>
-            <mcr:transformXSL dom="${mcrobj}" xslt="xslt/profkat/docdetails/header.xsl" />
+            <mcr:transformXSL dom="${mcrobj}" xslImports="docdetails-header" />
             <c:if test="${fromWF eq 'true'}">
               <div class="alert alert-info" style="margin-top:20px" role="alert">
                 <h4 style="margin:5px 0px">
@@ -80,7 +75,7 @@
               (<fmt:message key="${msgKeyStatus}" />)
             </div>
             <h3><fmt:message key="Webpage.docdetails.tabs.data"/></h3>
-            <mcr:transformXSL dom="${mcrobj}" xslt="xslt/profkat/docdetails/metadata.xsl" />
+            <mcr:transformXSL dom="${mcrobj}" xslImports="docdetails-metadata" />
             <x:if select="$mcrobj/mycoreobject/structure/derobjects/derobject[classification/@categid='display_biography']">
               <hr class="border border-primary" />
               <h3><fmt:message key="Webpage.docdetails.tabs.article"/></h3>

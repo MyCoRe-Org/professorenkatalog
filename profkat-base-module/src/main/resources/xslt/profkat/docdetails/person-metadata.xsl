@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns="http://www.w3.org/1999/xhtml" version="3.0" 
+<xsl:stylesheet version="3.0"
+  xmlns="http://www.w3.org/1999/xhtml"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:fn="http://www.w3.org/2005/xpath-functions"
   xmlns:xlink="http://www.w3.org/1999/xlink" 
   xmlns:mcri18n="http://www.mycore.de/xslt/i18n"
-  xmlns:mcracl="http://www.mycore.de/xslt/acl"
   xmlns:mcrclass="http://www.mycore.de/xslt/classification"
-  
-  exclude-result-prefixes="xlink mcri18n mcracl fn"
+  exclude-result-prefixes="#all"
   expand-text="yes">
+
+  <xsl:import href="xslImport:docdetails-metadata:profkat/docdetails/person-metadata.xsl" />
   <xsl:import href="resource:xslt/functions/i18n.xsl" />
-  <xsl:import href="resource:xslt/functions/classification.xsl" />
-  <xsl:import href="resource:xslt/docdetails/docdetails.xsl" />
   <xsl:import href="resource:xslt/profkat/docdetails/profkat_util.xsl" />
-  
-  <xsl:output method="html" indent="yes" standalone="no" encoding="UTF-8"/>
+  <xsl:import href="resource:xslt/docdetails/docdetails.xsl" />
 
   <xsl:param name="WebApplicationBaseURL" />
   <xsl:param name="CurrentLang" />
   <xsl:param name="DefaultLang" />
 
-  <xsl:template match="/mycoreobject">
+  <xsl:template match="/mycoreobject[contains(@ID, '_person_')]">
     <xsl:variable name="project" select="substring-before(@ID, '_')" />
     <div class="row">
       <div id="docdetails-data" class="col">

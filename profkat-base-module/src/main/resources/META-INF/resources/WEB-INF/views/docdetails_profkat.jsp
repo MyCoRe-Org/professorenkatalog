@@ -21,10 +21,7 @@
 
 <mcr:retrieveObject mcrid="${mcrid}" varDOM="mcrobj" cache="true" fromWorkflow="${fromWF}" />
 <c:set var="prof_name">
-  <x:out select="$mcrobj/mycoreobject/metadata/box.surname/surname" />,
-  <x:out select="$mcrobj/mycoreobject/metadata/box.firstname/firstname" />
-  <c:set var="affix"><x:out select="$mcrobj/mycoreobject/metadata/box.nameaffix/nameaffix" /></c:set>
-  <c:if test="${fn:length(affix)>2}">(<c:out value="${affix}" />)</c:if>
+  <mcr:transformXSL dom="${mcrobj}" xslImports="docdetails-title" />
 </c:set>
 <c:set var="pageTitle"><%= StringUtils.normalizeSpace(pageContext.getAttribute("prof_name").toString()) %></c:set> <%-- variable used in html_head.jspf --%>
 
@@ -45,7 +42,7 @@
       <div id="docdetails" class="container">
         <div class="row">
           <div id="docdetails-main" class="col docdetails">
-            <mcr:transformXSL dom="${mcrobj}" xslt="xslt/profkat/docdetails/header.xsl" />
+            <mcr:transformXSL dom="${mcrobj}" xslImports="docdetails-header" />
             <c:if test="${fromWF eq 'true'}">
               <div class="alert alert-info" style="margin-top:20px" role="alert">
                 <h4 style="margin:5px 0px">
@@ -89,7 +86,7 @@
             
             <div id="nav_content_root" class="tab-content mt-3">
               <div id="nav_content_data" class="tab-pane active" data-parent="#nav_content_root">
-                <mcr:transformXSL dom="${mcrobj}" xslt="xslt/profkat/docdetails/metadata.xsl" />
+                <mcr:transformXSL dom="${mcrobj}" xslImports="docdetails-metadata" />
               </div>
               <div id="nav_content_documents" class="tab-pane" data-parent="#nav_content_root">
                 <div class="card card-sm profkat-card-copyright">
@@ -132,9 +129,7 @@
               </div>
               <div class="row">
                 <div class="col">
-                  <jsp:include page="includes/citation_profkat.jsp">
-                    <jsp:param name="mcrobj" value="${mcrobj}" />
-                  </jsp:include>
+                  <mcr:transformXSL dom="${mcrobj}" xslImports="docdetails-citation" />
                 </div>
               </div>
               <div class="row mb-3">
