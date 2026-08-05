@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xed:template xmlns:xed="http://www.mycore.de/xeditor">
+
+  <xed:template id="object-types-person">
+    <xed:include ref="state" />
+    <xed:include ref="person-type" />
+    <xed:include ref="epochs" />
+    <xed:include ref="name-group" />
+    <xed:include ref="professorships" />
+    <xed:include ref="periods" />
+    <xed:include ref="faculties" />
+    <xed:include ref="institutes" />
+    <xed:include ref="fields-of-study" />
+    <xed:include ref="subjects" />
+    <xed:include ref="departures" />
+    <xed:include ref="email" />
+    <xed:include ref="homepages" />
+    <xed:include ref="birth" />
+    <xed:include ref="death" />
+    <xed:include ref="gender" />
+    <xed:include ref="confession" />
+    <xed:include ref="family-members" />
+    <xed:include ref="biographic-entries" />
+    <xed:include ref="academic-degrees" />
+    <xed:include ref="admin-functions" />
+    <xed:include ref="other-functions" />
+    <xed:include ref="memberships" />
+    <xed:include ref="party-memberships" />
+    <xed:include ref="awards" />
+    <xed:include ref="main-publications" />
+    <xed:include ref="publication-links" />
+    <xed:include ref="sources" />
+    <xed:include ref="references" />
+    <xed:if test="not(starts-with(//mycoreobject/@ID,'cpb_'))">
+      <xed:include ref="complex-references" />
+    </xed:if>
+    <xed:include ref="identifiers" />
+    <xed:include ref="other-infos" />
+    <xed:include ref="internal-infos" />
+    <xed:include ref="gnd-check" />
+  </xed:template>
+
+</xed:template>

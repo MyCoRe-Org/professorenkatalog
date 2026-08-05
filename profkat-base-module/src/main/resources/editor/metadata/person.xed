@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xed:form
+  xmlns:xed="http://www.mycore.de/xeditor"
+  role="form"
+  class="form-horizontal ir-editor-form profkat-editor-metadata"
+  accept-charset="UTF-8" method="post">
+
+  <xed:preload uri="resource:editor/metadata/generic-includes.xed" />
+  <xed:preload uri="resource:editor/metadata/person-includes.xed" />
+  <xed:preload uri="resource:editor/metadata/object-types.xed" />
+
+  <xed:post-processor xsl="editor-person-postprocessor.xsl" />
+
+  <div class="form-group row">
+    <label class="alert alert-info w-100 ir-editor-alert">
+      <xed:output i18n="Editor.Common.headline" />
+    </label>
+  </div>
+  <xed:include ref="cleanup-rules" />
+  <xed:include ref="in.out" />
+  <xed:bind xpath="/mycoreobject">
+    <xed:bind xpath="@ID" initially="{$MCR.SWF.Project.ID}_person_00000000" />
+    <xed:bind xpath="@label" initially="person" />
+    <xed:bind xpath="@xsi:noNamespaceSchemaLocation" initially="datamodel-person.xsd" />
+    <xed:bind xpath="metadata">
+      <xed:include ref="failed-validation-messages" />
+      <xed:include ref="object-types-person" />
+    </xed:bind>
+    <xed:include ref="cancel.submit" />
+    <xed:include ref="validation-rules" />
+  </xed:bind>
+</xed:form>
