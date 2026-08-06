@@ -4,7 +4,7 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   exclude-result-prefixes="#all">
 
-  <xsl:import href="xslImport:workspace-title:profkat/workspace/person-object-header.xsl" />
+  <xsl:import href="xslImport:workspace-object-display:profkat/workspace/person-object-display.xsl" />
 
   <xsl:template match="/mycoreobject[contains(@ID, '_person_') and metadata/box.surname/surname]">
     <xsl:variable name="surname" select="(metadata/box.surname/surname)[1]" />

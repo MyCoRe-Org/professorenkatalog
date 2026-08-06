@@ -4,7 +4,7 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   exclude-result-prefixes="#all">
 
-  <xsl:import href="xslImport:workspace-object-header:profkat/workspace/default-object-header.xsl" />
+  <xsl:import href="xslImport:workspace-object-display:profkat/workspace/default-object-display.xsl" />
   <xsl:import href="resource:xslt/functions/i18n.xsl" />
 
   <xsl:param name="CurrentLang" />
