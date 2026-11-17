@@ -9,6 +9,7 @@
   expand-text="yes">
 
   <xsl:import href="xslImport:docdetails-metadata:profkat/docdetails/person-metadata.xsl" />
+  <xsl:import href="resource:xslt/functions/classification.xsl" />
   <xsl:import href="resource:xslt/functions/i18n.xsl" />
   <xsl:import href="resource:xslt/profkat/docdetails/profkat_util.xsl" />
   <xsl:import href="resource:xslt/docdetails/docdetails.xsl" />
